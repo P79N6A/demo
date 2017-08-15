@@ -1,0 +1,32 @@
+PODS:
+  - CocoaLumberjack (2.4.0):
+    - CocoaLumberjack/Default (= 2.4.0)
+    - CocoaLumberjack/Extensions (= 2.4.0)
+  - CocoaLumberjack/Core (2.4.0)
+  - CocoaLumberjack/Default (2.4.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.4.0):
+    - CocoaLumberjack/Default
+  - GCDWebServer/CocoaLumberjack (3.3.3):
+    - CocoaLumberjack (~> 2)
+    - GCDWebServer/Core
+  - GCDWebServer/Core (3.3.3)
+  - GCDWebServer/WebUploader (3.3.3):
+    - GCDWebServer/WebUploader/CocoaLumberjack (= 3.3.3)
+    - GCDWebServer/WebUploader/Core (= 3.3.3)
+  - GCDWebServer/WebUploader/CocoaLumberjack (3.3.3):
+    - GCDWebServer/CocoaLumberjack
+    - GCDWebServer/WebUploader/Core
+  - GCDWebServer/WebUploader/Core (3.3.3):
+    - GCDWebServer/Core
+
+DEPENDENCIES:
+  - GCDWebServer/WebUploader (~> 3.0)
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: aa9dcab71bdf9eaf2a63bbd9ddc87863efe45457
+  GCDWebServer: 1c39a1f0763e4eb492bee021e4270fce097d3555
+
+PODFILE CHECKSUM: c86044f4a246ac59c68a9734aee126d1fa36ccd5
+
+COCOAPODS: 1.2.0
