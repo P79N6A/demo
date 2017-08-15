@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="UTF-8">
+            <script type = "text/javascript">
+                function locationFunction()
+                {
+                    //加载URL，协议头（zimu://）可以自定义
+                    window.location.href = "wammall://callName_?参数列表"
+                }
+            function locationFunction0()
+            {
+                //调用OC的方法,没有参数
+                jstoocNoPrams();
+            }
+            function locationFunction2()
+            {
+                //调用OC的第二个方法
+                jstoocHavePrams('参数1','参数2','参数3');
+            }
+            </script>
+            
+            
+            <style type="text/css">
+                button{
+                    height:  80px;
+                }
+            </style>
+            
+            </head>
+    <body>
+        <button type = "button" onclick = "locationFunction()" > 点击调用OC方法（url）  </button><br>
+        <button type = "button" onclick = "locationFunction0()" > JS调OC第二法无参数(block方式) </button>  <br>
+        <button type = "button" onclick = "locationFunction2()" > JS调OC第二法传参数(block方式) </button>  <br>
+        <button type = "button" onclick = "change.callChangeColor('1233')" > 点击改变颜色(JSExport协议的方式)</button>  <br>
+        
+    </body>
+</html>

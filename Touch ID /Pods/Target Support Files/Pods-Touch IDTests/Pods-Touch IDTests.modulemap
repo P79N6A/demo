@@ -1,0 +1,6 @@
+framework module Pods_Touch_IDTests {
+  umbrella header "Pods-Touch IDTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,6 @@
+framework module Pods_RACUITests {
+  umbrella header "Pods-RACUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ShareItemCell">
+            <rect key="frame" x="0.0" y="0.0" width="108" height="158"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="108" height="158"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="11" translatesAutoresizingMaskIntoConstraints="NO" id="2YY-HI-Fn6">
+                        <rect key="frame" x="5" y="20" width="93" height="93"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="2YY-HI-Fn6" secondAttribute="height" multiplier="1:1" id="ISg-xG-4hf"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="er2-t9-RzG">
+                        <rect key="frame" x="0.0" y="121" width="108" height="15"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.21176470588235294" green="0.1764705882352941" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="er2-t9-RzG" secondAttribute="trailing" id="6me-24-wUD"/>
+                <constraint firstItem="2YY-HI-Fn6" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="5" id="IOr-fQ-OkN"/>
+                <constraint firstAttribute="trailing" secondItem="2YY-HI-Fn6" secondAttribute="trailing" constant="10" id="S9j-hd-qkT"/>
+                <constraint firstItem="er2-t9-RzG" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="b0D-xh-NKa"/>
+                <constraint firstItem="er2-t9-RzG" firstAttribute="top" secondItem="2YY-HI-Fn6" secondAttribute="bottom" constant="8" id="ecs-Zw-Ivm"/>
+                <constraint firstItem="2YY-HI-Fn6" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="20" id="fbx-fh-ybv"/>
+            </constraints>
+            <size key="customSize" width="124" height="199"/>
+            <connections>
+                <outlet property="logoIV" destination="2YY-HI-Fn6" id="ach-Xx-nBG"/>
+                <outlet property="nameL" destination="er2-t9-RzG" id="pXP-6A-MOD"/>
+            </connections>
+            <point key="canvasLocation" x="71" y="128"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="11" width="658" height="658"/>
+    </resources>
+</document>

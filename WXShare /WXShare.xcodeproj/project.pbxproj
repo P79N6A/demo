@@ -1,0 +1,729 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		02FCF14CDD126D368C4D4DF3 /* libPods-WXShareTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E475C927DE205EB95006BA /* libPods-WXShareTests.a */; };
+		0F0649181ECEECFF00C27D45 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0649171ECEECFF00C27D45 /* main.m */; };
+		0F06491B1ECEECFF00C27D45 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F06491A1ECEECFF00C27D45 /* AppDelegate.m */; };
+		0F06491E1ECEECFF00C27D45 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F06491D1ECEECFF00C27D45 /* ViewController.m */; };
+		0F0649211ECEECFF00C27D45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F06491F1ECEECFF00C27D45 /* Main.storyboard */; };
+		0F0649231ECEECFF00C27D45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0F0649221ECEECFF00C27D45 /* Assets.xcassets */; };
+		0F0649261ECEECFF00C27D45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0F0649241ECEECFF00C27D45 /* LaunchScreen.storyboard */; };
+		0F0649311ECEECFF00C27D45 /* WXShareTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F0649301ECEECFF00C27D45 /* WXShareTests.m */; };
+		0F06493C1ECEECFF00C27D45 /* WXShareUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F06493B1ECEECFF00C27D45 /* WXShareUITests.m */; };
+		23C51B4EA20D2D0D9161F26F /* libPods-WXShareUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 73F7035339E9B1051C14298E /* libPods-WXShareUITests.a */; };
+		659D0799715EBFAFC7755F95 /* libPods-WXShare.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B57A9988CEDDD0C31539176 /* libPods-WXShare.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0F06492D1ECEECFF00C27D45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F06490B1ECEECFF00C27D45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F0649121ECEECFF00C27D45;
+			remoteInfo = WXShare;
+		};
+		0F0649381ECEECFF00C27D45 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0F06490B1ECEECFF00C27D45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0F0649121ECEECFF00C27D45;
+			remoteInfo = WXShare;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0594A93EEEFE45264E3C9EA1 /* Pods-WXShareTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShareTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXShareTests/Pods-WXShareTests.debug.xcconfig"; sourceTree = "<group>"; };
+		0F0649131ECEECFF00C27D45 /* WXShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F0649171ECEECFF00C27D45 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		0F0649191ECEECFF00C27D45 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		0F06491A1ECEECFF00C27D45 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		0F06491C1ECEECFF00C27D45 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		0F06491D1ECEECFF00C27D45 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		0F0649201ECEECFF00C27D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0F0649221ECEECFF00C27D45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0F0649251ECEECFF00C27D45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0F0649271ECEECFF00C27D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F06492C1ECEECFF00C27D45 /* WXShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WXShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F0649301ECEECFF00C27D45 /* WXShareTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXShareTests.m; sourceTree = "<group>"; };
+		0F0649321ECEECFF00C27D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0F0649371ECEECFF00C27D45 /* WXShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WXShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0F06493B1ECEECFF00C27D45 /* WXShareUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WXShareUITests.m; sourceTree = "<group>"; };
+		0F06493D1ECEECFF00C27D45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B57A9988CEDDD0C31539176 /* libPods-WXShare.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXShare.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		21E475C927DE205EB95006BA /* libPods-WXShareTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXShareTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F4D199C1098F808C77F90EB /* Pods-WXShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXShare/Pods-WXShare.debug.xcconfig"; sourceTree = "<group>"; };
+		6A8AAF6AB5098676CB2BA5B7 /* Pods-WXShareTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShareTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXShareTests/Pods-WXShareTests.release.xcconfig"; sourceTree = "<group>"; };
+		73F7035339E9B1051C14298E /* libPods-WXShareUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-WXShareUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		96ED6A44113CD3612AF2A4EF /* Pods-WXShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXShare/Pods-WXShare.release.xcconfig"; sourceTree = "<group>"; };
+		AED77743AED7B9CBAE81E96D /* Pods-WXShareUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShareUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-WXShareUITests/Pods-WXShareUITests.release.xcconfig"; sourceTree = "<group>"; };
+		CE627CFE7FCB51D949290ADF /* Pods-WXShareUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WXShareUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WXShareUITests/Pods-WXShareUITests.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0F0649101ECEECFF00C27D45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				659D0799715EBFAFC7755F95 /* libPods-WXShare.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F0649291ECEECFF00C27D45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				02FCF14CDD126D368C4D4DF3 /* libPods-WXShareTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F0649341ECEECFF00C27D45 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23C51B4EA20D2D0D9161F26F /* libPods-WXShareUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0F06490A1ECEECFF00C27D45 = {
+			isa = PBXGroup;
+			children = (
+				0F0649151ECEECFF00C27D45 /* WXShare */,
+				0F06492F1ECEECFF00C27D45 /* WXShareTests */,
+				0F06493A1ECEECFF00C27D45 /* WXShareUITests */,
+				0F0649141ECEECFF00C27D45 /* Products */,
+				F39F4A76BB98DF421CD01301 /* Pods */,
+				DCDC3D1C547A625F0ADD1602 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0F0649141ECEECFF00C27D45 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0F0649131ECEECFF00C27D45 /* WXShare.app */,
+				0F06492C1ECEECFF00C27D45 /* WXShareTests.xctest */,
+				0F0649371ECEECFF00C27D45 /* WXShareUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0F0649151ECEECFF00C27D45 /* WXShare */ = {
+			isa = PBXGroup;
+			children = (
+				0F0649191ECEECFF00C27D45 /* AppDelegate.h */,
+				0F06491A1ECEECFF00C27D45 /* AppDelegate.m */,
+				0F06491C1ECEECFF00C27D45 /* ViewController.h */,
+				0F06491D1ECEECFF00C27D45 /* ViewController.m */,
+				0F06491F1ECEECFF00C27D45 /* Main.storyboard */,
+				0F0649221ECEECFF00C27D45 /* Assets.xcassets */,
+				0F0649241ECEECFF00C27D45 /* LaunchScreen.storyboard */,
+				0F0649271ECEECFF00C27D45 /* Info.plist */,
+				0F0649161ECEECFF00C27D45 /* Supporting Files */,
+			);
+			path = WXShare;
+			sourceTree = "<group>";
+		};
+		0F0649161ECEECFF00C27D45 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				0F0649171ECEECFF00C27D45 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		0F06492F1ECEECFF00C27D45 /* WXShareTests */ = {
+			isa = PBXGroup;
+			children = (
+				0F0649301ECEECFF00C27D45 /* WXShareTests.m */,
+				0F0649321ECEECFF00C27D45 /* Info.plist */,
+			);
+			path = WXShareTests;
+			sourceTree = "<group>";
+		};
+		0F06493A1ECEECFF00C27D45 /* WXShareUITests */ = {
+			isa = PBXGroup;
+			children = (
+				0F06493B1ECEECFF00C27D45 /* WXShareUITests.m */,
+				0F06493D1ECEECFF00C27D45 /* Info.plist */,
+			);
+			path = WXShareUITests;
+			sourceTree = "<group>";
+		};
+		DCDC3D1C547A625F0ADD1602 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B57A9988CEDDD0C31539176 /* libPods-WXShare.a */,
+				21E475C927DE205EB95006BA /* libPods-WXShareTests.a */,
+				73F7035339E9B1051C14298E /* libPods-WXShareUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F39F4A76BB98DF421CD01301 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3F4D199C1098F808C77F90EB /* Pods-WXShare.debug.xcconfig */,
+				96ED6A44113CD3612AF2A4EF /* Pods-WXShare.release.xcconfig */,
+				0594A93EEEFE45264E3C9EA1 /* Pods-WXShareTests.debug.xcconfig */,
+				6A8AAF6AB5098676CB2BA5B7 /* Pods-WXShareTests.release.xcconfig */,
+				CE627CFE7FCB51D949290ADF /* Pods-WXShareUITests.debug.xcconfig */,
+				AED77743AED7B9CBAE81E96D /* Pods-WXShareUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0F0649121ECEECFF00C27D45 /* WXShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F0649401ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShare" */;
+			buildPhases = (
+				7B3A1131921E26F00C47DE94 /* [CP] Check Pods Manifest.lock */,
+				0F06490F1ECEECFF00C27D45 /* Sources */,
+				0F0649101ECEECFF00C27D45 /* Frameworks */,
+				0F0649111ECEECFF00C27D45 /* Resources */,
+				AF175DD0887E00641A3296D4 /* [CP] Embed Pods Frameworks */,
+				DE864030A388142F0EEECAB4 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = WXShare;
+			productName = WXShare;
+			productReference = 0F0649131ECEECFF00C27D45 /* WXShare.app */;
+			productType = "com.apple.product-type.application";
+		};
+		0F06492B1ECEECFF00C27D45 /* WXShareTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F0649431ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShareTests" */;
+			buildPhases = (
+				229EE1097FA0BA4F28D2DA0A /* [CP] Check Pods Manifest.lock */,
+				0F0649281ECEECFF00C27D45 /* Sources */,
+				0F0649291ECEECFF00C27D45 /* Frameworks */,
+				0F06492A1ECEECFF00C27D45 /* Resources */,
+				D4C6C935B740B0DD8772ECD4 /* [CP] Embed Pods Frameworks */,
+				AD83F28B237650A23607E103 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F06492E1ECEECFF00C27D45 /* PBXTargetDependency */,
+			);
+			name = WXShareTests;
+			productName = WXShareTests;
+			productReference = 0F06492C1ECEECFF00C27D45 /* WXShareTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		0F0649361ECEECFF00C27D45 /* WXShareUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0F0649461ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShareUITests" */;
+			buildPhases = (
+				24F815D3E1B4ABBCA015EEB6 /* [CP] Check Pods Manifest.lock */,
+				0F0649331ECEECFF00C27D45 /* Sources */,
+				0F0649341ECEECFF00C27D45 /* Frameworks */,
+				0F0649351ECEECFF00C27D45 /* Resources */,
+				08A69E122464449E311A57EF /* [CP] Embed Pods Frameworks */,
+				CC7E8E27851197876FCB4FA1 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0F0649391ECEECFF00C27D45 /* PBXTargetDependency */,
+			);
+			name = WXShareUITests;
+			productName = WXShareUITests;
+			productReference = 0F0649371ECEECFF00C27D45 /* WXShareUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0F06490B1ECEECFF00C27D45 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = J;
+				TargetAttributes = {
+					0F0649121ECEECFF00C27D45 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QN5E6T35SQ;
+						ProvisioningStyle = Manual;
+					};
+					0F06492B1ECEECFF00C27D45 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0F0649121ECEECFF00C27D45;
+					};
+					0F0649361ECEECFF00C27D45 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 0F0649121ECEECFF00C27D45;
+					};
+				};
+			};
+			buildConfigurationList = 0F06490E1ECEECFF00C27D45 /* Build configuration list for PBXProject "WXShare" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0F06490A1ECEECFF00C27D45;
+			productRefGroup = 0F0649141ECEECFF00C27D45 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0F0649121ECEECFF00C27D45 /* WXShare */,
+				0F06492B1ECEECFF00C27D45 /* WXShareTests */,
+				0F0649361ECEECFF00C27D45 /* WXShareUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0F0649111ECEECFF00C27D45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F0649261ECEECFF00C27D45 /* LaunchScreen.storyboard in Resources */,
+				0F0649231ECEECFF00C27D45 /* Assets.xcassets in Resources */,
+				0F0649211ECEECFF00C27D45 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F06492A1ECEECFF00C27D45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F0649351ECEECFF00C27D45 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08A69E122464449E311A57EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShareUITests/Pods-WXShareUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		229EE1097FA0BA4F28D2DA0A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		24F815D3E1B4ABBCA015EEB6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7B3A1131921E26F00C47DE94 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		AD83F28B237650A23607E103 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShareTests/Pods-WXShareTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF175DD0887E00641A3296D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShare/Pods-WXShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC7E8E27851197876FCB4FA1 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShareUITests/Pods-WXShareUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4C6C935B740B0DD8772ECD4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShareTests/Pods-WXShareTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DE864030A388142F0EEECAB4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-WXShare/Pods-WXShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0F06490F1ECEECFF00C27D45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F06491E1ECEECFF00C27D45 /* ViewController.m in Sources */,
+				0F06491B1ECEECFF00C27D45 /* AppDelegate.m in Sources */,
+				0F0649181ECEECFF00C27D45 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F0649281ECEECFF00C27D45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F0649311ECEECFF00C27D45 /* WXShareTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		0F0649331ECEECFF00C27D45 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0F06493C1ECEECFF00C27D45 /* WXShareUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		0F06492E1ECEECFF00C27D45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F0649121ECEECFF00C27D45 /* WXShare */;
+			targetProxy = 0F06492D1ECEECFF00C27D45 /* PBXContainerItemProxy */;
+		};
+		0F0649391ECEECFF00C27D45 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0F0649121ECEECFF00C27D45 /* WXShare */;
+			targetProxy = 0F0649381ECEECFF00C27D45 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		0F06491F1ECEECFF00C27D45 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F0649201ECEECFF00C27D45 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0F0649241ECEECFF00C27D45 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0F0649251ECEECFF00C27D45 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		0F06493E1ECEECFF00C27D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		0F06493F1ECEECFF00C27D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		0F0649411ECEECFF00C27D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3F4D199C1098F808C77F90EB /* Pods-WXShare.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QN5E6T35SQ;
+				INFOPLIST_FILE = WXShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wammallaa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "59427d69-119e-47ae-ba6c-c8b3a16510b4";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Development";
+			};
+			name = Debug;
+		};
+		0F0649421ECEECFF00C27D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 96ED6A44113CD3612AF2A4EF /* Pods-WXShare.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = WXShare/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.wammallaa;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		0F0649441ECEECFF00C27D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0594A93EEEFE45264E3C9EA1 /* Pods-WXShareTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WXShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = J.WXShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXShare.app/WXShare";
+			};
+			name = Debug;
+		};
+		0F0649451ECEECFF00C27D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A8AAF6AB5098676CB2BA5B7 /* Pods-WXShareTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = WXShareTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = J.WXShareTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXShare.app/WXShare";
+			};
+			name = Release;
+		};
+		0F0649471ECEECFF00C27D45 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CE627CFE7FCB51D949290ADF /* Pods-WXShareUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = WXShareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = J.WXShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WXShare;
+			};
+			name = Debug;
+		};
+		0F0649481ECEECFF00C27D45 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AED77743AED7B9CBAE81E96D /* Pods-WXShareUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = WXShareUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = J.WXShareUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = WXShare;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0F06490E1ECEECFF00C27D45 /* Build configuration list for PBXProject "WXShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F06493E1ECEECFF00C27D45 /* Debug */,
+				0F06493F1ECEECFF00C27D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F0649401ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShare" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F0649411ECEECFF00C27D45 /* Debug */,
+				0F0649421ECEECFF00C27D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F0649431ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShareTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F0649441ECEECFF00C27D45 /* Debug */,
+				0F0649451ECEECFF00C27D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0F0649461ECEECFF00C27D45 /* Build configuration list for PBXNativeTarget "WXShareUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0F0649471ECEECFF00C27D45 /* Debug */,
+				0F0649481ECEECFF00C27D45 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0F06490B1ECEECFF00C27D45 /* Project object */;
+}

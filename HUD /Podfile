@@ -1,0 +1,24 @@
+project 'HUD.xcodeproj'
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'HUD' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
+ pod 'MBProgressHUD', '~> 1.0.0'
+   pod 'AFNetworking', '~> 3.1.0'
+  # Pods for HUD
+
+  target 'HUDTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'HUDUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end

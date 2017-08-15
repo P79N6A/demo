@@ -1,0 +1,12 @@
+PODS:
+  - WechatOpenSDK (1.7.7)
+
+DEPENDENCIES:
+  - WechatOpenSDK
+
+SPEC CHECKSUMS:
+  WechatOpenSDK: cbd332148eb792d444ed4eec94f421d98f2046ee
+
+PODFILE CHECKSUM: c8b2dbd791b6e63de51e3088ca89d10dacac79ed
+
+COCOAPODS: 1.1.1

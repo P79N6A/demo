@@ -1,0 +1,23 @@
+project 'WXShare.xcodeproj'
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'WXShare' do
+  # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
+  # use_frameworks!
+pod 'WechatOpenSDK'
+
+  # Pods for WXShare
+
+  target 'WXShareTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'WXShareUITests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+end
