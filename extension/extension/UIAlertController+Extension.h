@@ -9,6 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface UIAlertController (Extension)
+
+@property (nonatomic, strong,readonly) UILabel *titleLabel;
+
+@property (nonatomic, strong,readonly) UILabel *messageLabel;
+
+
 /**
  * 快速创建一个AlertView
  *@param    title         首行显示的标题
