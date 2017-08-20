@@ -12,6 +12,8 @@
 		ABB6467F1F4343E9006DF7F3 /* UIControl+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB646781F4343E9006DF7F3 /* UIControl+Extension.m */; };
 		ABB646801F4343E9006DF7F3 /* UIImage+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB6467A1F4343E9006DF7F3 /* UIImage+Extension.m */; };
 		ABB646811F4343E9006DF7F3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB6467C1F4343E9006DF7F3 /* UIView+Extension.m */; };
+		ABEE34701F4940F2008003A1 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE346F1F4940F2008003A1 /* UIViewController+Extension.m */; };
+		ABEE34731F495756008003A1 /* WELCustomStatusbarColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */; };
 		ABF84A981F03EE1C007723C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A971F03EE1C007723C8 /* main.m */; };
 		ABF84A9B1F03EE1C007723C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A9A1F03EE1C007723C8 /* AppDelegate.m */; };
 		ABF84A9E1F03EE1C007723C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A9D1F03EE1C007723C8 /* ViewController.m */; };
@@ -42,6 +44,10 @@
 		ABB6467A1F4343E9006DF7F3 /* UIImage+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extension.m"; sourceTree = "<group>"; };
 		ABB6467B1F4343E9006DF7F3 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
 		ABB6467C1F4343E9006DF7F3 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		ABEE346E1F4940F2008003A1 /* UIViewController+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Extension.h"; sourceTree = "<group>"; };
+		ABEE346F1F4940F2008003A1 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
+		ABEE34711F495756008003A1 /* WELCustomStatusbarColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELCustomStatusbarColor.h; sourceTree = "<group>"; };
+		ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELCustomStatusbarColor.m; sourceTree = "<group>"; };
 		ABF84A931F03EE1C007723C8 /* extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = extension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF84A971F03EE1C007723C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABF84A991F03EE1C007723C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -78,6 +84,10 @@
 		ABB646721F4343E9006DF7F3 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				ABEE34711F495756008003A1 /* WELCustomStatusbarColor.h */,
+				ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */,
+				ABEE346E1F4940F2008003A1 /* UIViewController+Extension.h */,
+				ABEE346F1F4940F2008003A1 /* UIViewController+Extension.m */,
 				ABB646731F4343E9006DF7F3 /* NSObject+Extension.h */,
 				ABB646741F4343E9006DF7F3 /* NSObject+Extension.m */,
 				ABB646751F4343E9006DF7F3 /* UIAlertController+Extension.h */,
@@ -250,11 +260,13 @@
 				ABB6467F1F4343E9006DF7F3 /* UIControl+Extension.m in Sources */,
 				ABB646811F4343E9006DF7F3 /* UIView+Extension.m in Sources */,
 				ABB646801F4343E9006DF7F3 /* UIImage+Extension.m in Sources */,
+				ABEE34701F4940F2008003A1 /* UIViewController+Extension.m in Sources */,
 				ABB6467E1F4343E9006DF7F3 /* UIAlertController+Extension.m in Sources */,
 				ABB6467D1F4343E9006DF7F3 /* NSObject+Extension.m in Sources */,
 				ABF84A9E1F03EE1C007723C8 /* ViewController.m in Sources */,
 				ABF84A9B1F03EE1C007723C8 /* AppDelegate.m in Sources */,
 				ABF84A981F03EE1C007723C8 /* main.m in Sources */,
+				ABEE34731F495756008003A1 /* WELCustomStatusbarColor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
