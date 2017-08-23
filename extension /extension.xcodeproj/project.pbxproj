@@ -14,6 +14,11 @@
 		ABB646811F4343E9006DF7F3 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABB6467C1F4343E9006DF7F3 /* UIView+Extension.m */; };
 		ABEE34701F4940F2008003A1 /* UIViewController+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE346F1F4940F2008003A1 /* UIViewController+Extension.m */; };
 		ABEE34731F495756008003A1 /* WELCustomStatusbarColor.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */; };
+		ABEE347E1F497277008003A1 /* UIImage+Blur.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE34751F497277008003A1 /* UIImage+Blur.m */; };
+		ABEE347F1F497277008003A1 /* UIImage+Cut.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE34771F497277008003A1 /* UIImage+Cut.m */; };
+		ABEE34801F497277008003A1 /* UIImage+Extend.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE34791F497277008003A1 /* UIImage+Extend.m */; };
+		ABEE34811F497277008003A1 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE347B1F497277008003A1 /* UIImage+FixOrientation.m */; };
+		ABEE34821F497277008003A1 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEE347D1F497277008003A1 /* UIImage+ImageEffects.m */; };
 		ABF84A981F03EE1C007723C8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A971F03EE1C007723C8 /* main.m */; };
 		ABF84A9B1F03EE1C007723C8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A9A1F03EE1C007723C8 /* AppDelegate.m */; };
 		ABF84A9E1F03EE1C007723C8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF84A9D1F03EE1C007723C8 /* ViewController.m */; };
@@ -48,6 +53,16 @@
 		ABEE346F1F4940F2008003A1 /* UIViewController+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Extension.m"; sourceTree = "<group>"; };
 		ABEE34711F495756008003A1 /* WELCustomStatusbarColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WELCustomStatusbarColor.h; sourceTree = "<group>"; };
 		ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WELCustomStatusbarColor.m; sourceTree = "<group>"; };
+		ABEE34741F497277008003A1 /* UIImage+Blur.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Blur.h"; sourceTree = "<group>"; };
+		ABEE34751F497277008003A1 /* UIImage+Blur.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Blur.m"; sourceTree = "<group>"; };
+		ABEE34761F497277008003A1 /* UIImage+Cut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Cut.h"; sourceTree = "<group>"; };
+		ABEE34771F497277008003A1 /* UIImage+Cut.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Cut.m"; sourceTree = "<group>"; };
+		ABEE34781F497277008003A1 /* UIImage+Extend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+Extend.h"; sourceTree = "<group>"; };
+		ABEE34791F497277008003A1 /* UIImage+Extend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Extend.m"; sourceTree = "<group>"; };
+		ABEE347A1F497277008003A1 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		ABEE347B1F497277008003A1 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
+		ABEE347C1F497277008003A1 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		ABEE347D1F497277008003A1 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		ABF84A931F03EE1C007723C8 /* extension.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = extension.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABF84A971F03EE1C007723C8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABF84A991F03EE1C007723C8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -84,6 +99,16 @@
 		ABB646721F4343E9006DF7F3 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				ABEE34741F497277008003A1 /* UIImage+Blur.h */,
+				ABEE34751F497277008003A1 /* UIImage+Blur.m */,
+				ABEE34761F497277008003A1 /* UIImage+Cut.h */,
+				ABEE34771F497277008003A1 /* UIImage+Cut.m */,
+				ABEE34781F497277008003A1 /* UIImage+Extend.h */,
+				ABEE34791F497277008003A1 /* UIImage+Extend.m */,
+				ABEE347A1F497277008003A1 /* UIImage+FixOrientation.h */,
+				ABEE347B1F497277008003A1 /* UIImage+FixOrientation.m */,
+				ABEE347C1F497277008003A1 /* UIImage+ImageEffects.h */,
+				ABEE347D1F497277008003A1 /* UIImage+ImageEffects.m */,
 				ABEE34711F495756008003A1 /* WELCustomStatusbarColor.h */,
 				ABEE34721F495756008003A1 /* WELCustomStatusbarColor.m */,
 				ABEE346E1F4940F2008003A1 /* UIViewController+Extension.h */,
@@ -257,7 +282,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABEE347F1F497277008003A1 /* UIImage+Cut.m in Sources */,
 				ABB6467F1F4343E9006DF7F3 /* UIControl+Extension.m in Sources */,
+				ABEE34801F497277008003A1 /* UIImage+Extend.m in Sources */,
 				ABB646811F4343E9006DF7F3 /* UIView+Extension.m in Sources */,
 				ABB646801F4343E9006DF7F3 /* UIImage+Extension.m in Sources */,
 				ABEE34701F4940F2008003A1 /* UIViewController+Extension.m in Sources */,
@@ -265,8 +292,11 @@
 				ABB6467D1F4343E9006DF7F3 /* NSObject+Extension.m in Sources */,
 				ABF84A9E1F03EE1C007723C8 /* ViewController.m in Sources */,
 				ABF84A9B1F03EE1C007723C8 /* AppDelegate.m in Sources */,
+				ABEE34811F497277008003A1 /* UIImage+FixOrientation.m in Sources */,
+				ABEE34821F497277008003A1 /* UIImage+ImageEffects.m in Sources */,
 				ABF84A981F03EE1C007723C8 /* main.m in Sources */,
 				ABEE34731F495756008003A1 /* WELCustomStatusbarColor.m in Sources */,
+				ABEE347E1F497277008003A1 /* UIImage+Blur.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

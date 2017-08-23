@@ -11,8 +11,10 @@
 #import "NSObject+Extension.h"
 #import "UIAlertController+Extension.h"
 #import "WELCustomStatusbarColor.h"
+#import "UIImage+Blur.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UIImageView *im;
 @property (weak, nonatomic) IBOutlet UITextField *tf;
 
 @end
@@ -29,7 +31,8 @@
 //        NSLog(@"%s", __func__);
 //    }];
 //    
-    
+    UIImage *im = [UIImage imageNamed:@"31"];
+    self.im.image = [im blurWithFuzzy:2 density:0];
     
 }
 
