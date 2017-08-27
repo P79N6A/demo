@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB50A5921F52DD5F00F3B8C5 /* IQAnimationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */; };
 		ABEDAC841F51A94200854DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC831F51A94200854DC6 /* main.m */; };
 		ABEDAC871F51A94200854DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC861F51A94200854DC6 /* AppDelegate.m */; };
 		ABEDAC8A1F51A94200854DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC891F51A94200854DC6 /* ViewController.m */; };
@@ -122,6 +123,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		AB50A5901F52DD5F00F3B8C5 /* IQAnimationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAnimationImageView.h; sourceTree = "<group>"; };
+		AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAnimationImageView.m; sourceTree = "<group>"; };
 		ABEDAC7F1F51A94200854DC6 /* liwu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liwu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDAC831F51A94200854DC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABEDAC851F51A94200854DC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -253,6 +256,8 @@
 		ABEDAC761F51A94200854DC6 = {
 			isa = PBXGroup;
 			children = (
+				AB50A5901F52DD5F00F3B8C5 /* IQAnimationImageView.h */,
+				AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */,
 				ABEDAC811F51A94200854DC6 /* liwu */,
 				ABEDAC9B1F51A94300854DC6 /* liwuUITests */,
 				ABEDAC801F51A94200854DC6 /* Products */,
@@ -603,6 +608,7 @@
 			files = (
 				ABEDAC8A1F51A94200854DC6 /* ViewController.m in Sources */,
 				ABEDAC871F51A94200854DC6 /* AppDelegate.m in Sources */,
+				AB50A5921F52DD5F00F3B8C5 /* IQAnimationImageView.m in Sources */,
 				ABEDAC841F51A94200854DC6 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -798,6 +804,7 @@
 				ABEDACA31F51A94300854DC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		ABEDACA41F51A94300854DC6 /* Build configuration list for PBXNativeTarget "liwuUITests" */ = {
 			isa = XCConfigurationList;
@@ -806,6 +813,7 @@
 				ABEDACA61F51A94300854DC6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
