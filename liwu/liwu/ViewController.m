@@ -28,6 +28,15 @@
 
 }
 
+-(IBAction)dd:(id)sender{
+    self.iq.filePaths = self.bigZhaoPaths;
+    self.iq.displayTime = 0.08 * 1000000 ;
+    [self.iq startAnimating];
+ 
+}
+-(IBAction)cc:(id)sender{
+    
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
@@ -53,9 +62,6 @@
     //[self performSelectorInBackground:@selector(playAnim)withObject:nil];
     
 
-    self.iq.filePaths = self.bigZhaoPaths;
-    self.iq.displayTime = 0.08 * 1000000 ;
-    [self.iq iq_startAnimating];
     
     return;
     // 1.设置动画的图片
@@ -108,12 +114,12 @@
         
     }
     
-    for (NSInteger i = count-1; i >= 0; i--) {
-        NSString *imageName = [NSString stringWithFormat:@"%@_%03ld", imagePrefix, i + 1];
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
-        [images addObject:imagePath];
-        
-    }
+//    for (NSInteger i = count-1; i >= 0; i--) {
+//        NSString *imageName = [NSString stringWithFormat:@"%@_%03ld", imagePrefix, i + 1];
+//        NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
+//        [images addObject:imagePath];
+//        
+//    }
     
     return images;
 }

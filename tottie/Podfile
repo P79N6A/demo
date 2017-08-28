@@ -8,6 +8,7 @@ target 'tottie' do
   # use_frameworks!
 pod 'lottie-ios'
 pod 'AFNetworking'
+pod 'IQKeyboardManager'
 
   # Pods for tottie
 

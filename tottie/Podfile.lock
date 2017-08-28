@@ -14,16 +14,19 @@ PODS:
   - AFNetworking/Serialization (3.1.0)
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
+  - IQKeyboardManager (4.0.11)
   - lottie-ios (2.0.3)
 
 DEPENDENCIES:
   - AFNetworking
+  - IQKeyboardManager
   - lottie-ios
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
+  IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   lottie-ios: 445f77c7f661f95587e49095a1ac7de43f0da896
 
-PODFILE CHECKSUM: 98c21f24181762bd9b6ca27ee30d3125fdbdac86
+PODFILE CHECKSUM: ddfbce7f9b00ad6fe1a780e6af2d7dc562e69b74
 
 COCOAPODS: 1.2.0

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9CDFD42B6DB540080EDDF0FB /* libPods-liwu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6F51A8322A8FF20B58AB89 /* libPods-liwu.a */; };
 		AB50A5921F52DD5F00F3B8C5 /* IQAnimationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */; };
 		ABEDAC841F51A94200854DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC831F51A94200854DC6 /* main.m */; };
 		ABEDAC871F51A94200854DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC861F51A94200854DC6 /* AppDelegate.m */; };
@@ -110,6 +111,7 @@
 		ABEDAD631F51A96E00854DC6 /* image_092.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDAD041F51A96E00854DC6 /* image_092.png */; };
 		ABEDAD641F51A96E00854DC6 /* image_093.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDAD051F51A96E00854DC6 /* image_093.png */; };
 		ABEDAD651F51A96E00854DC6 /* image_094.png in Resources */ = {isa = PBXBuildFile; fileRef = ABEDAD061F51A96E00854DC6 /* image_094.png */; };
+		F7CDD8C7CC926F0F846A58B9 /* libPods-liwuUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E6624213792100D98A05AA7 /* libPods-liwuUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +125,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1E722C8A8180AE963092155B /* Pods-liwu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liwu.release.xcconfig"; path = "Pods/Target Support Files/Pods-liwu/Pods-liwu.release.xcconfig"; sourceTree = "<group>"; };
+		34816D9F4F31FD6269598812 /* Pods-liwuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liwuUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-liwuUITests/Pods-liwuUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		42378E3476874BB735FCB258 /* Pods-liwu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liwu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-liwu/Pods-liwu.debug.xcconfig"; sourceTree = "<group>"; };
+		9E6624213792100D98A05AA7 /* libPods-liwuUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-liwuUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB50A5901F52DD5F00F3B8C5 /* IQAnimationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAnimationImageView.h; sourceTree = "<group>"; };
 		AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAnimationImageView.m; sourceTree = "<group>"; };
 		ABEDAC7F1F51A94200854DC6 /* liwu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liwu.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -233,6 +239,8 @@
 		ABEDAD041F51A96E00854DC6 /* image_092.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_092.png; sourceTree = "<group>"; };
 		ABEDAD051F51A96E00854DC6 /* image_093.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_093.png; sourceTree = "<group>"; };
 		ABEDAD061F51A96E00854DC6 /* image_094.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = image_094.png; sourceTree = "<group>"; };
+		CF6F51A8322A8FF20B58AB89 /* libPods-liwu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-liwu.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5C802424E4CB82E665F51E1 /* Pods-liwuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-liwuUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-liwuUITests/Pods-liwuUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -240,6 +248,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9CDFD42B6DB540080EDDF0FB /* libPods-liwu.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,12 +256,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7CDD8C7CC926F0F846A58B9 /* libPods-liwuUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7AF72016C7E53AEC52F2FB0F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF6F51A8322A8FF20B58AB89 /* libPods-liwu.a */,
+				9E6624213792100D98A05AA7 /* libPods-liwuUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ABEDAC761F51A94200854DC6 = {
 			isa = PBXGroup;
 			children = (
@@ -261,6 +280,8 @@
 				ABEDAC811F51A94200854DC6 /* liwu */,
 				ABEDAC9B1F51A94300854DC6 /* liwuUITests */,
 				ABEDAC801F51A94200854DC6 /* Products */,
+				EC33E1573077C4F69ACF93F1 /* Pods */,
+				7AF72016C7E53AEC52F2FB0F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -409,6 +430,17 @@
 			path = "梦幻婚礼序列帧1";
 			sourceTree = "<group>";
 		};
+		EC33E1573077C4F69ACF93F1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				42378E3476874BB735FCB258 /* Pods-liwu.debug.xcconfig */,
+				1E722C8A8180AE963092155B /* Pods-liwu.release.xcconfig */,
+				34816D9F4F31FD6269598812 /* Pods-liwuUITests.debug.xcconfig */,
+				F5C802424E4CB82E665F51E1 /* Pods-liwuUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -416,9 +448,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABEDACA11F51A94300854DC6 /* Build configuration list for PBXNativeTarget "liwu" */;
 			buildPhases = (
+				4FDDBB407B4A08DC447A7BDA /* [CP] Check Pods Manifest.lock */,
 				ABEDAC7B1F51A94200854DC6 /* Sources */,
 				ABEDAC7C1F51A94200854DC6 /* Frameworks */,
 				ABEDAC7D1F51A94200854DC6 /* Resources */,
+				E32E76177DC87A8376A1BA70 /* [CP] Embed Pods Frameworks */,
+				F62EAB24CB37596BDA47FE0D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -433,9 +468,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABEDACA41F51A94300854DC6 /* Build configuration list for PBXNativeTarget "liwuUITests" */;
 			buildPhases = (
+				C1F2E58563888A4A329D05A2 /* [CP] Check Pods Manifest.lock */,
 				ABEDAC941F51A94300854DC6 /* Sources */,
 				ABEDAC951F51A94300854DC6 /* Frameworks */,
 				ABEDAC961F51A94300854DC6 /* Resources */,
+				07EB87B78A63E4A368327ACB /* [CP] Embed Pods Frameworks */,
+				E160B02D2F48EF47E044BA9D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -601,6 +639,99 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		07EB87B78A63E4A368327ACB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liwuUITests/Pods-liwuUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4FDDBB407B4A08DC447A7BDA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C1F2E58563888A4A329D05A2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E160B02D2F48EF47E044BA9D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liwuUITests/Pods-liwuUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E32E76177DC87A8376A1BA70 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liwu/Pods-liwu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F62EAB24CB37596BDA47FE0D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-liwu/Pods-liwu-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABEDAC7B1F51A94200854DC6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -743,6 +874,7 @@
 		};
 		ABEDACA21F51A94300854DC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 42378E3476874BB735FCB258 /* Pods-liwu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = liwu/Info.plist;
@@ -754,6 +886,7 @@
 		};
 		ABEDACA31F51A94300854DC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1E722C8A8180AE963092155B /* Pods-liwu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = liwu/Info.plist;
@@ -765,6 +898,7 @@
 		};
 		ABEDACA51F51A94300854DC6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 34816D9F4F31FD6269598812 /* Pods-liwuUITests.debug.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = liwuUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -776,6 +910,7 @@
 		};
 		ABEDACA61F51A94300854DC6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F5C802424E4CB82E665F51E1 /* Pods-liwuUITests.release.xcconfig */;
 			buildSettings = {
 				INFOPLIST_FILE = liwuUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";

@@ -15,30 +15,18 @@
     [self.filePaths enumerateObjectsUsingBlock:^(NSString * _Nonnull filePath, NSUInteger idx, BOOL * _Nonnull stop) {
         usleep(self.displayTime);//1s = 1000ms 1ms = 1000μs
         UIImage *image=[[UIImage alloc]initWithContentsOfFile:filePath];
-        [self performSelectorOnMainThread:@selector(changeImage:) withObject:image waitUntilDone:YES];
+        [self performSelectorOnMainThread:@selector(setImage:) withObject:image waitUntilDone:YES];
     }];
+    
+    [self performSelectorOnMainThread:@selector(setImage:) withObject:nil waitUntilDone:YES];
     _isDisplaying = NO;
-    NSLog(@"%s", __func__);
+    
 
 }
 
--(void)changeImage:(UIImage*)image{
-    self.image=image;
-}
-
-- (void)iq_startAnimating
+- (void)startAnimating
 {
     [self performSelectorInBackground:@selector(playAnim)withObject:nil];
-}
-
-- (void)iq_stopAnimating
-{
-    [NSObject cancelPreviousPerformRequestsWithTarget:self];
-}
-
-- (void)setDisplayTime:(useconds_t)displayTime
-{
-    _displayTime = displayTime;
 }
 
 @end

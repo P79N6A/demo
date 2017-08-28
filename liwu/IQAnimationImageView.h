@@ -11,9 +11,8 @@
 @interface IQAnimationImageView : UIImageView
 
 
-- (void)iq_startAnimating;
+- (void)startAnimating;
 
-- (void)iq_stopAnimating;
 
 /** <##> */
 @property (nonatomic, assign) useconds_t displayTime;//s

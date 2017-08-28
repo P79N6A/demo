@@ -8,6 +8,8 @@
 
 #import "AppDelegate.h"
 
+#import <IQKeyboardManager.h>
+
 @interface AppDelegate ()
 
 @end
@@ -17,9 +19,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self setIQKeyboardManager];
     return YES;
 }
 
+- (void)setIQKeyboardManager{
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    /**
+     *  控制整个功能是否启用。
+     */
+    manager.enable = YES;
+    
+    /**
+     *  控制点击背景是否收起键盘。
+     */
+    manager.shouldResignOnTouchOutside = YES;
+    
+    /**
+     *  控制键盘上的工具条文字颜色是否用户自定义
+     */
+    manager.shouldToolbarUsesTextFieldTintColor = YES;
+    
+    /**
+     *  控制是否显示键盘上的工具条。
+     */
+    manager.enableAutoToolbar = YES;
+}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
