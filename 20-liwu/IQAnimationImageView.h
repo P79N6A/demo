@@ -15,7 +15,7 @@
 
 
 /** <##> */
-@property (nonatomic, assign) useconds_t displayTime;//s
+@property (nonatomic, assign) useconds_t displayTime;//
 
 /** <##> */
 @property (nonatomic, strong) NSArray <NSString *> *filePaths;
