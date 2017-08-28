@@ -107,19 +107,20 @@
 - (NSArray<NSString *> *)loadPathWithImagePrefix:(NSString *)imagePrefix count:(NSInteger)count
 {
     NSMutableArray *images = [NSMutableArray array];
-    for (int i = 0; i < count; i++) {
-        NSString *imageName = [NSString stringWithFormat:@"%@_%03d", imagePrefix, i + 1];
-        NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
-        [images addObject:imagePath];
-        
-    }
-    
-//    for (NSInteger i = count-1; i >= 0; i--) {
-//        NSString *imageName = [NSString stringWithFormat:@"%@_%03ld", imagePrefix, i + 1];
+//    for (int i = 0; i < count; i++) {
+//        NSString *imageName = [NSString stringWithFormat:@"%@_%03d", imagePrefix, i + 1];
 //        NSString *imagePath = [[NSBundle mainBundle] pathForResource:imageName ofType:@"png"];
 //        [images addObject:imagePath];
 //        
 //    }
+    
+   NSString *path =  [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"礼物动图第一期/摩天轮"];
+    
+   NSArray *names = [[NSFileManager defaultManager] contentsOfDirectoryAtPath:path error:NULL];
+    [names enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSString *filePath = [NSString stringWithFormat:@"%@/%@",path,obj];
+        [images addObject:filePath];
+    }];
     
     return images;
 }

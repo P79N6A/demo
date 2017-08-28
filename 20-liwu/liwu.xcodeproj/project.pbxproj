@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9CDFD42B6DB540080EDDF0FB /* libPods-liwu.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6F51A8322A8FF20B58AB89 /* libPods-liwu.a */; };
 		AB50A5921F52DD5F00F3B8C5 /* IQAnimationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */; };
+		AB78F6C41F544F09007C40DA /* 礼物动图第一期 in Resources */ = {isa = PBXBuildFile; fileRef = AB78F6C31F544F09007C40DA /* 礼物动图第一期 */; };
 		ABEDAC841F51A94200854DC6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC831F51A94200854DC6 /* main.m */; };
 		ABEDAC871F51A94200854DC6 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC861F51A94200854DC6 /* AppDelegate.m */; };
 		ABEDAC8A1F51A94200854DC6 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABEDAC891F51A94200854DC6 /* ViewController.m */; };
@@ -131,6 +132,7 @@
 		9E6624213792100D98A05AA7 /* libPods-liwuUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-liwuUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB50A5901F52DD5F00F3B8C5 /* IQAnimationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IQAnimationImageView.h; sourceTree = "<group>"; };
 		AB50A5911F52DD5F00F3B8C5 /* IQAnimationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IQAnimationImageView.m; sourceTree = "<group>"; };
+		AB78F6C31F544F09007C40DA /* 礼物动图第一期 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "礼物动图第一期"; sourceTree = "<group>"; };
 		ABEDAC7F1F51A94200854DC6 /* liwu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = liwu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABEDAC831F51A94200854DC6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABEDAC851F51A94200854DC6 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 			children = (
 				ABEDACA71F51A96E00854DC6 /* 梦幻婚礼序列帧1 */,
 				ABEDAC851F51A94200854DC6 /* AppDelegate.h */,
+				AB78F6C31F544F09007C40DA /* 礼物动图第一期 */,
 				ABEDAC861F51A94200854DC6 /* AppDelegate.m */,
 				ABEDAC881F51A94200854DC6 /* ViewController.h */,
 				ABEDAC891F51A94200854DC6 /* ViewController.m */,
@@ -595,6 +598,7 @@
 				ABEDAD101F51A96E00854DC6 /* image_009.png in Resources */,
 				ABEDAD541F51A96E00854DC6 /* image_077.png in Resources */,
 				ABEDAD0B1F51A96E00854DC6 /* image_004.png in Resources */,
+				AB78F6C41F544F09007C40DA /* 礼物动图第一期 in Resources */,
 				ABEDAD5F1F51A96E00854DC6 /* image_088.png in Resources */,
 				ABEDAD2B1F51A96E00854DC6 /* image_036.png in Resources */,
 				ABEDAC8D1F51A94200854DC6 /* Main.storyboard in Resources */,
