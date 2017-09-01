@@ -21,21 +21,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [self d];
+    //[self d];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-//    LOTAnimationView *animation = [LOTAnimationView animationNamed:@"kiss"];
-////    LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://www.lottiefiles.com/download/543"]];
-//
-//    animation.loopAnimation = NO;
-//    [self.view addSubview:animation];
-//    animation.frame = CGRectMake(0, 100, 300, 300);
-//    animation.backgroundColor = [UIColor blackColor];
-//    [animation playWithCompletion:^(BOOL animationFinished) {
-//        // Do Something
-//    }];
+    
+    NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"我爱你/data.json"];
+    
+    LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:path]];
+    animation.
+//    LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://www.lottiefiles.com/download/543"]];
+
+    animation.loopAnimation = NO;
+    [self.view addSubview:animation];
+    animation.frame = CGRectMake(0, 100, 300, 300);
+    animation.backgroundColor = [UIColor blackColor];
+    [animation playWithCompletion:^(BOOL animationFinished) {
+        // Do Something
+    }];
 
 }
 
