@@ -1,0 +1,778 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		195A0E5111A5903E57099FC4 /* libPods-FreeStreamerDemoTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C338272429F1ED2D94A795F0 /* libPods-FreeStreamerDemoTests.a */; };
+		4C3B40E0BCB03752B66191B2 /* libPods-FreeStreamerDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 767E0D03DEDE36D57E6741D0 /* libPods-FreeStreamerDemo.a */; };
+		7A9DD1681F8DAB1B009F7B68 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1671F8DAB1B009F7B68 /* main.m */; };
+		7A9DD16B1F8DAB1C009F7B68 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD16A1F8DAB1C009F7B68 /* AppDelegate.m */; };
+		7A9DD16E1F8DAB1C009F7B68 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD16D1F8DAB1C009F7B68 /* ViewController.m */; };
+		7A9DD1711F8DAB1C009F7B68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9DD16F1F8DAB1C009F7B68 /* Main.storyboard */; };
+		7A9DD1731F8DAB1C009F7B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A9DD1721F8DAB1C009F7B68 /* Assets.xcassets */; };
+		7A9DD1761F8DAB1C009F7B68 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A9DD1741F8DAB1C009F7B68 /* LaunchScreen.storyboard */; };
+		7A9DD1811F8DAB1D009F7B68 /* FreeStreamerDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1801F8DAB1D009F7B68 /* FreeStreamerDemoTests.m */; };
+		7A9DD18C1F8DAB1D009F7B68 /* FreeStreamerDemoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD18B1F8DAB1D009F7B68 /* FreeStreamerDemoUITests.m */; };
+		7A9DD1A11F8E37F2009F7B68 /* FreeStreamerPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1A01F8E37F2009F7B68 /* FreeStreamerPlayer.m */; };
+		7A9DD1A91F8F08D9009F7B68 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1A61F8F08D9009F7B68 /* UIImage+ImageEffects.m */; };
+		7A9DD1AA1F8F08D9009F7B68 /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1A81F8F08D9009F7B68 /* UIImageView+LBBlurredImage.m */; };
+		7A9DD1AD1F8F5A97009F7B68 /* FSPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1AC1F8F5A97009F7B68 /* FSPlayer.m */; };
+		7A9DD1B01F8F6793009F7B68 /* HLHttpTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1AF1F8F6793009F7B68 /* HLHttpTool.m */; };
+		7A9DD1B31F8F67A1009F7B68 /* NSError+Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1B21F8F67A1009F7B68 /* NSError+Message.m */; };
+		7A9DD1B61F8F68D4009F7B68 /* PlayItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9DD1B51F8F68D4009F7B68 /* PlayItem.m */; };
+		AF68C6332175E5069F19936F /* libPods-FreeStreamerDemoUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 298D972D080AD711C49E2C16 /* libPods-FreeStreamerDemoUITests.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		7A9DD17D1F8DAB1D009F7B68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A9DD15B1F8DAB1B009F7B68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9DD1621F8DAB1B009F7B68;
+			remoteInfo = FreeStreamerDemo;
+		};
+		7A9DD1881F8DAB1D009F7B68 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 7A9DD15B1F8DAB1B009F7B68 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 7A9DD1621F8DAB1B009F7B68;
+			remoteInfo = FreeStreamerDemo;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		135782AD84F4CF3D79219718 /* Pods-FreeStreamerDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemo/Pods-FreeStreamerDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		27C0E4C37DD1A5E4DA5EF434 /* Pods-FreeStreamerDemoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemoUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemoUITests/Pods-FreeStreamerDemoUITests.release.xcconfig"; sourceTree = "<group>"; };
+		298D972D080AD711C49E2C16 /* libPods-FreeStreamerDemoUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FreeStreamerDemoUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		767E0D03DEDE36D57E6741D0 /* libPods-FreeStreamerDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FreeStreamerDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9DD1631F8DAB1B009F7B68 /* FreeStreamerDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FreeStreamerDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9DD1671F8DAB1B009F7B68 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		7A9DD1691F8DAB1C009F7B68 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		7A9DD16A1F8DAB1C009F7B68 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		7A9DD16C1F8DAB1C009F7B68 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		7A9DD16D1F8DAB1C009F7B68 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		7A9DD1701F8DAB1C009F7B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7A9DD1721F8DAB1C009F7B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7A9DD1751F8DAB1C009F7B68 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7A9DD1771F8DAB1C009F7B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9DD17C1F8DAB1D009F7B68 /* FreeStreamerDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeStreamerDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9DD1801F8DAB1D009F7B68 /* FreeStreamerDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeStreamerDemoTests.m; sourceTree = "<group>"; };
+		7A9DD1821F8DAB1D009F7B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9DD1871F8DAB1D009F7B68 /* FreeStreamerDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FreeStreamerDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7A9DD18B1F8DAB1D009F7B68 /* FreeStreamerDemoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FreeStreamerDemoUITests.m; sourceTree = "<group>"; };
+		7A9DD18D1F8DAB1D009F7B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7A9DD19F1F8E37F2009F7B68 /* FreeStreamerPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FreeStreamerPlayer.h; sourceTree = "<group>"; };
+		7A9DD1A01F8E37F2009F7B68 /* FreeStreamerPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FreeStreamerPlayer.m; sourceTree = "<group>"; };
+		7A9DD1A51F8F08D9009F7B68 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		7A9DD1A61F8F08D9009F7B68 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		7A9DD1A71F8F08D9009F7B68 /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
+		7A9DD1A81F8F08D9009F7B68 /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
+		7A9DD1AB1F8F5A97009F7B68 /* FSPlayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FSPlayer.h; sourceTree = "<group>"; };
+		7A9DD1AC1F8F5A97009F7B68 /* FSPlayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FSPlayer.m; sourceTree = "<group>"; };
+		7A9DD1AE1F8F6793009F7B68 /* HLHttpTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HLHttpTool.h; sourceTree = "<group>"; };
+		7A9DD1AF1F8F6793009F7B68 /* HLHttpTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HLHttpTool.m; sourceTree = "<group>"; };
+		7A9DD1B11F8F67A1009F7B68 /* NSError+Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+Message.h"; sourceTree = "<group>"; };
+		7A9DD1B21F8F67A1009F7B68 /* NSError+Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+Message.m"; sourceTree = "<group>"; };
+		7A9DD1B41F8F68D4009F7B68 /* PlayItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayItem.h; sourceTree = "<group>"; };
+		7A9DD1B51F8F68D4009F7B68 /* PlayItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayItem.m; sourceTree = "<group>"; };
+		974E57EADEF591B725444010 /* Pods-FreeStreamerDemoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemoTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemoTests/Pods-FreeStreamerDemoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		BB674C1009E849CD8A95280A /* Pods-FreeStreamerDemoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemoUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemoUITests/Pods-FreeStreamerDemoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C338272429F1ED2D94A795F0 /* libPods-FreeStreamerDemoTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-FreeStreamerDemoTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F4BFEF4D202B3DAE2C8BF8C3 /* Pods-FreeStreamerDemoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemoTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemoTests/Pods-FreeStreamerDemoTests.release.xcconfig"; sourceTree = "<group>"; };
+		FD285BB4B5BEC9BA61A3B140 /* Pods-FreeStreamerDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FreeStreamerDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-FreeStreamerDemo/Pods-FreeStreamerDemo.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7A9DD1601F8DAB1B009F7B68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4C3B40E0BCB03752B66191B2 /* libPods-FreeStreamerDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD1791F8DAB1D009F7B68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				195A0E5111A5903E57099FC4 /* libPods-FreeStreamerDemoTests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD1841F8DAB1D009F7B68 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF68C6332175E5069F19936F /* libPods-FreeStreamerDemoUITests.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		793B607A39583DB7ED40DC0C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				135782AD84F4CF3D79219718 /* Pods-FreeStreamerDemo.debug.xcconfig */,
+				FD285BB4B5BEC9BA61A3B140 /* Pods-FreeStreamerDemo.release.xcconfig */,
+				974E57EADEF591B725444010 /* Pods-FreeStreamerDemoTests.debug.xcconfig */,
+				F4BFEF4D202B3DAE2C8BF8C3 /* Pods-FreeStreamerDemoTests.release.xcconfig */,
+				BB674C1009E849CD8A95280A /* Pods-FreeStreamerDemoUITests.debug.xcconfig */,
+				27C0E4C37DD1A5E4DA5EF434 /* Pods-FreeStreamerDemoUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		7A9DD15A1F8DAB1B009F7B68 = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1651F8DAB1B009F7B68 /* FreeStreamerDemo */,
+				7A9DD17F1F8DAB1D009F7B68 /* FreeStreamerDemoTests */,
+				7A9DD18A1F8DAB1D009F7B68 /* FreeStreamerDemoUITests */,
+				7A9DD1641F8DAB1B009F7B68 /* Products */,
+				793B607A39583DB7ED40DC0C /* Pods */,
+				BCCEC61BAF7507DF3F72F93A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		7A9DD1641F8DAB1B009F7B68 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1631F8DAB1B009F7B68 /* FreeStreamerDemo.app */,
+				7A9DD17C1F8DAB1D009F7B68 /* FreeStreamerDemoTests.xctest */,
+				7A9DD1871F8DAB1D009F7B68 /* FreeStreamerDemoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7A9DD1651F8DAB1B009F7B68 /* FreeStreamerDemo */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1A41F8F08D9009F7B68 /* LBBlurredImage */,
+				7A9DD1691F8DAB1C009F7B68 /* AppDelegate.h */,
+				7A9DD16A1F8DAB1C009F7B68 /* AppDelegate.m */,
+				7A9DD16C1F8DAB1C009F7B68 /* ViewController.h */,
+				7A9DD16D1F8DAB1C009F7B68 /* ViewController.m */,
+				7A9DD16F1F8DAB1C009F7B68 /* Main.storyboard */,
+				7A9DD1721F8DAB1C009F7B68 /* Assets.xcassets */,
+				7A9DD1741F8DAB1C009F7B68 /* LaunchScreen.storyboard */,
+				7A9DD1771F8DAB1C009F7B68 /* Info.plist */,
+				7A9DD1661F8DAB1B009F7B68 /* Supporting Files */,
+				7A9DD19F1F8E37F2009F7B68 /* FreeStreamerPlayer.h */,
+				7A9DD1A01F8E37F2009F7B68 /* FreeStreamerPlayer.m */,
+				7A9DD1AB1F8F5A97009F7B68 /* FSPlayer.h */,
+				7A9DD1AC1F8F5A97009F7B68 /* FSPlayer.m */,
+				7A9DD1B11F8F67A1009F7B68 /* NSError+Message.h */,
+				7A9DD1B21F8F67A1009F7B68 /* NSError+Message.m */,
+				7A9DD1AE1F8F6793009F7B68 /* HLHttpTool.h */,
+				7A9DD1AF1F8F6793009F7B68 /* HLHttpTool.m */,
+				7A9DD1B41F8F68D4009F7B68 /* PlayItem.h */,
+				7A9DD1B51F8F68D4009F7B68 /* PlayItem.m */,
+			);
+			path = FreeStreamerDemo;
+			sourceTree = "<group>";
+		};
+		7A9DD1661F8DAB1B009F7B68 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1671F8DAB1B009F7B68 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		7A9DD17F1F8DAB1D009F7B68 /* FreeStreamerDemoTests */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1801F8DAB1D009F7B68 /* FreeStreamerDemoTests.m */,
+				7A9DD1821F8DAB1D009F7B68 /* Info.plist */,
+			);
+			path = FreeStreamerDemoTests;
+			sourceTree = "<group>";
+		};
+		7A9DD18A1F8DAB1D009F7B68 /* FreeStreamerDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD18B1F8DAB1D009F7B68 /* FreeStreamerDemoUITests.m */,
+				7A9DD18D1F8DAB1D009F7B68 /* Info.plist */,
+			);
+			path = FreeStreamerDemoUITests;
+			sourceTree = "<group>";
+		};
+		7A9DD1A41F8F08D9009F7B68 /* LBBlurredImage */ = {
+			isa = PBXGroup;
+			children = (
+				7A9DD1A51F8F08D9009F7B68 /* UIImage+ImageEffects.h */,
+				7A9DD1A61F8F08D9009F7B68 /* UIImage+ImageEffects.m */,
+				7A9DD1A71F8F08D9009F7B68 /* UIImageView+LBBlurredImage.h */,
+				7A9DD1A81F8F08D9009F7B68 /* UIImageView+LBBlurredImage.m */,
+			);
+			path = LBBlurredImage;
+			sourceTree = "<group>";
+		};
+		BCCEC61BAF7507DF3F72F93A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				767E0D03DEDE36D57E6741D0 /* libPods-FreeStreamerDemo.a */,
+				C338272429F1ED2D94A795F0 /* libPods-FreeStreamerDemoTests.a */,
+				298D972D080AD711C49E2C16 /* libPods-FreeStreamerDemoUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7A9DD1621F8DAB1B009F7B68 /* FreeStreamerDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9DD1901F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemo" */;
+			buildPhases = (
+				4227E9737071D7721AFF316C /* [CP] Check Pods Manifest.lock */,
+				7A9DD15F1F8DAB1B009F7B68 /* Sources */,
+				7A9DD1601F8DAB1B009F7B68 /* Frameworks */,
+				7A9DD1611F8DAB1B009F7B68 /* Resources */,
+				1294BC82F2355E41A31BD44A /* [CP] Embed Pods Frameworks */,
+				E31D511011CDDDA0CD07FBCE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FreeStreamerDemo;
+			productName = FreeStreamerDemo;
+			productReference = 7A9DD1631F8DAB1B009F7B68 /* FreeStreamerDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		7A9DD17B1F8DAB1D009F7B68 /* FreeStreamerDemoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9DD1931F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemoTests" */;
+			buildPhases = (
+				6E9D6319457B3E405402719C /* [CP] Check Pods Manifest.lock */,
+				7A9DD1781F8DAB1D009F7B68 /* Sources */,
+				7A9DD1791F8DAB1D009F7B68 /* Frameworks */,
+				7A9DD17A1F8DAB1D009F7B68 /* Resources */,
+				54A886CB50AE9F1663025576 /* [CP] Embed Pods Frameworks */,
+				174810334EFBD4EA5EE571DC /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A9DD17E1F8DAB1D009F7B68 /* PBXTargetDependency */,
+			);
+			name = FreeStreamerDemoTests;
+			productName = FreeStreamerDemoTests;
+			productReference = 7A9DD17C1F8DAB1D009F7B68 /* FreeStreamerDemoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		7A9DD1861F8DAB1D009F7B68 /* FreeStreamerDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7A9DD1961F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemoUITests" */;
+			buildPhases = (
+				28596791F64284048EE3F5CB /* [CP] Check Pods Manifest.lock */,
+				7A9DD1831F8DAB1D009F7B68 /* Sources */,
+				7A9DD1841F8DAB1D009F7B68 /* Frameworks */,
+				7A9DD1851F8DAB1D009F7B68 /* Resources */,
+				8B9256B7323930E188E52895 /* [CP] Embed Pods Frameworks */,
+				53F982E3AED94FE311C64B74 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				7A9DD1891F8DAB1D009F7B68 /* PBXTargetDependency */,
+			);
+			name = FreeStreamerDemoUITests;
+			productName = FreeStreamerDemoUITests;
+			productReference = 7A9DD1871F8DAB1D009F7B68 /* FreeStreamerDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7A9DD15B1F8DAB1B009F7B68 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = FEIWU888;
+				TargetAttributes = {
+					7A9DD1621F8DAB1B009F7B68 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+					};
+					7A9DD17B1F8DAB1D009F7B68 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A9DD1621F8DAB1B009F7B68;
+					};
+					7A9DD1861F8DAB1D009F7B68 = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 7A9DD1621F8DAB1B009F7B68;
+					};
+				};
+			};
+			buildConfigurationList = 7A9DD15E1F8DAB1B009F7B68 /* Build configuration list for PBXProject "FreeStreamerDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7A9DD15A1F8DAB1B009F7B68;
+			productRefGroup = 7A9DD1641F8DAB1B009F7B68 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7A9DD1621F8DAB1B009F7B68 /* FreeStreamerDemo */,
+				7A9DD17B1F8DAB1D009F7B68 /* FreeStreamerDemoTests */,
+				7A9DD1861F8DAB1D009F7B68 /* FreeStreamerDemoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7A9DD1611F8DAB1B009F7B68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9DD1761F8DAB1C009F7B68 /* LaunchScreen.storyboard in Resources */,
+				7A9DD1731F8DAB1C009F7B68 /* Assets.xcassets in Resources */,
+				7A9DD1711F8DAB1C009F7B68 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD17A1F8DAB1D009F7B68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD1851F8DAB1D009F7B68 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1294BC82F2355E41A31BD44A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemo/Pods-FreeStreamerDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		174810334EFBD4EA5EE571DC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemoTests/Pods-FreeStreamerDemoTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		28596791F64284048EE3F5CB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		4227E9737071D7721AFF316C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		53F982E3AED94FE311C64B74 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemoUITests/Pods-FreeStreamerDemoUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54A886CB50AE9F1663025576 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemoTests/Pods-FreeStreamerDemoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6E9D6319457B3E405402719C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8B9256B7323930E188E52895 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemoUITests/Pods-FreeStreamerDemoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E31D511011CDDDA0CD07FBCE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-FreeStreamerDemo/Pods-FreeStreamerDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7A9DD15F1F8DAB1B009F7B68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9DD16E1F8DAB1C009F7B68 /* ViewController.m in Sources */,
+				7A9DD1B01F8F6793009F7B68 /* HLHttpTool.m in Sources */,
+				7A9DD1B31F8F67A1009F7B68 /* NSError+Message.m in Sources */,
+				7A9DD1A91F8F08D9009F7B68 /* UIImage+ImageEffects.m in Sources */,
+				7A9DD1B61F8F68D4009F7B68 /* PlayItem.m in Sources */,
+				7A9DD1AD1F8F5A97009F7B68 /* FSPlayer.m in Sources */,
+				7A9DD1A11F8E37F2009F7B68 /* FreeStreamerPlayer.m in Sources */,
+				7A9DD1AA1F8F08D9009F7B68 /* UIImageView+LBBlurredImage.m in Sources */,
+				7A9DD16B1F8DAB1C009F7B68 /* AppDelegate.m in Sources */,
+				7A9DD1681F8DAB1B009F7B68 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD1781F8DAB1D009F7B68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9DD1811F8DAB1D009F7B68 /* FreeStreamerDemoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7A9DD1831F8DAB1D009F7B68 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7A9DD18C1F8DAB1D009F7B68 /* FreeStreamerDemoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		7A9DD17E1F8DAB1D009F7B68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9DD1621F8DAB1B009F7B68 /* FreeStreamerDemo */;
+			targetProxy = 7A9DD17D1F8DAB1D009F7B68 /* PBXContainerItemProxy */;
+		};
+		7A9DD1891F8DAB1D009F7B68 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 7A9DD1621F8DAB1B009F7B68 /* FreeStreamerDemo */;
+			targetProxy = 7A9DD1881F8DAB1D009F7B68 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		7A9DD16F1F8DAB1C009F7B68 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9DD1701F8DAB1C009F7B68 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7A9DD1741F8DAB1C009F7B68 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A9DD1751F8DAB1C009F7B68 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7A9DD18E1F8DAB1D009F7B68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7A9DD18F1F8DAB1D009F7B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7A9DD1911F8DAB1D009F7B68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 135782AD84F4CF3D79219718 /* Pods-FreeStreamerDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FreeStreamerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		7A9DD1921F8DAB1D009F7B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD285BB4B5BEC9BA61A3B140 /* Pods-FreeStreamerDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = FreeStreamerDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemo";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		7A9DD1941F8DAB1D009F7B68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 974E57EADEF591B725444010 /* Pods-FreeStreamerDemoTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FreeStreamerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FreeStreamerDemo.app/FreeStreamerDemo";
+			};
+			name = Debug;
+		};
+		7A9DD1951F8DAB1D009F7B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F4BFEF4D202B3DAE2C8BF8C3 /* Pods-FreeStreamerDemoTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = FreeStreamerDemoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FreeStreamerDemo.app/FreeStreamerDemo";
+			};
+			name = Release;
+		};
+		7A9DD1971F8DAB1D009F7B68 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BB674C1009E849CD8A95280A /* Pods-FreeStreamerDemoUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = FreeStreamerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FreeStreamerDemo;
+			};
+			name = Debug;
+		};
+		7A9DD1981F8DAB1D009F7B68 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 27C0E4C37DD1A5E4DA5EF434 /* Pods-FreeStreamerDemoUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = FreeStreamerDemoUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "---.FreeStreamerDemoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FreeStreamerDemo;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7A9DD15E1F8DAB1B009F7B68 /* Build configuration list for PBXProject "FreeStreamerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9DD18E1F8DAB1D009F7B68 /* Debug */,
+				7A9DD18F1F8DAB1D009F7B68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9DD1901F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9DD1911F8DAB1D009F7B68 /* Debug */,
+				7A9DD1921F8DAB1D009F7B68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9DD1931F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9DD1941F8DAB1D009F7B68 /* Debug */,
+				7A9DD1951F8DAB1D009F7B68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7A9DD1961F8DAB1D009F7B68 /* Build configuration list for PBXNativeTarget "FreeStreamerDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7A9DD1971F8DAB1D009F7B68 /* Debug */,
+				7A9DD1981F8DAB1D009F7B68 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 7A9DD15B1F8DAB1B009F7B68 /* Project object */;
+}
