@@ -652,7 +652,7 @@
 				INFOPLIST_FILE = YCDownloadSession/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.feiwu.mlive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feiwwww;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "0dd520cd-1ad9-41a8-87e7-c05a18996b5f";
 				PROVISIONING_PROFILE_SPECIFIER = MiBo_dev;
@@ -666,7 +666,7 @@
 				INFOPLIST_FILE = YCDownloadSession/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.feiwu.mlive;
+				PRODUCT_BUNDLE_IDENTIFIER = com.feiwwww;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};

@@ -17,6 +17,17 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    NSError *err;
+    NSURL *url = [NSURL URLWithString:@"http://www.guangbomi.com/"];
+    
+    NSData *responseData = [NSData dataWithContentsOfURL:url];
+    
+    NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    
+    NSString *responseString = [[NSString alloc] initWithData:responseData encoding:enc];
+    
+
+     NSString *htmlString = [NSString stringWithContentsOfURL:[NSURL URLWithString:@"http://www.guangbomi.com/"] encoding:NSUTF8StringEncoding error:&err];
 }
 
 
