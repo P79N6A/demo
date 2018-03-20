@@ -44,8 +44,8 @@ UISearchControllerDelegate
         //设置背景色
 //        [_searchController.searchBar setBackgroundColor:[UIColor orangeColor]];
         //设置文本框背景
-//        UIImage* searchFieldBackgroundImage = [self GetImageWithColor:[UIColor colorWithRed:228/255 green:229/255 blue:231/256 alpha:0.4] andHeight:35.0f];
-        UIImage* searchFieldBackgroundImage = [self GetImageWithColor:[UIColor whiteColor] andHeight:35.0f];
+        UIImage* searchFieldBackgroundImage = [self GetImageWithColor:[UIColor colorWithRed:238/255 green:238/255 blue:238/255 alpha:0.5] andHeight:35.0f];
+//        UIImage* searchFieldBackgroundImage = [self GetImageWithColor:[UIColor whiteColor] andHeight:35.0f];
 
         
         [_searchController.searchBar setSearchFieldBackgroundImage:[self hyb_imageWithCornerRadius:10 image:searchFieldBackgroundImage] forState:UIControlStateNormal];
