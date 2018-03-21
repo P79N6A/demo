@@ -46,6 +46,15 @@
             
             NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
             
+            if (!searchText) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    !(block)? : block(@[],NO);
+                });
+                
+                return;
+            }
+            
             NSString *rString = @"<li><a href=\".*?\" title=\".*?\" class=\"apic\"><img src=\".*?\" alt=\".*?\" /></a><p><a href=\".*?\">.*?</a></p></li>";
             
             NSArray *rs = [self matchString:searchText toRegexString:rString];
@@ -69,8 +78,10 @@
             
             NSArray *nexts = [self matchString:searchText toRegexString:@"&searchtype=-1\" class=\"next\">下一页</a>"];
             
-            
-            !(block)? : block(temps,[nexts count]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(temps,[nexts count]);
+            });
+
             
             ///< class="next">下一页</span>
             ///< href="?page=22&searchword=ff&searchtype=-1" class="next">下一页</a>
@@ -111,7 +122,15 @@
             
             
             NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
-            
+            if (!searchText) {
+                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    !(block)? : block(@[],NO);
+                });
+                
+                return;
+            }
+
             NSString *rString = @"<li><a href=\".*?\" title=\".*?\" class=\"apic\"><img src=\".*?\" alt=\".*?\" /></a><p><a href=\".*?\">.*?</a></p></li>";
             
             NSArray *rs = [self matchString:searchText toRegexString:rString];
@@ -135,10 +154,12 @@
             
             NSArray *nexts = [self matchString:searchText toRegexString:@"&searchtype=-1\" class=\"next\">下一页</a>"];
             
-            !(block)? : block(temps,[nexts count]);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(temps,[nexts count]);
+            });
 
-            //<span class="next">下一页</span>
-            //<a href="?page=22&searchword=ff&searchtype=-1" class="next">下一页</a>
+            ///< class="next">下一页</span>
+            ///< href="?page=22&searchword=ff&searchtype=-1" class="next">下一页</a>
             NSLog(@"%s--%@", __func__,temps);
             
         }];
@@ -168,7 +189,15 @@
         
         
         NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
-        
+        if (!searchText) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@[]);
+            });
+            
+            return;
+        }
+
         
         NSString *dataRegex = @"<div class=\"player\"><script type=\"text/javascript\" src=\"(.*?)\">.*?</div>";
         NSString *dataStr = [self matchString:searchText toRegexString:dataRegex].lastObject;
@@ -196,7 +225,11 @@
             return b1 < b2;
             
         }];
-        !(block)? : block(lists);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(lists);
+        });
+
         
         NSLog(@"%@",lists);
         
@@ -225,7 +258,15 @@
         
         
         NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
-        
+        if (!searchText) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@[]);
+            });
+            
+            return;
+        }
+
         
         NSString *dataRegex = @"<div class=\"player\"><script type=\"text/javascript\" src=\"(.*?)\">.*?</div>";
         NSString *dataStr = [self matchString:searchText toRegexString:dataRegex].lastObject;
@@ -254,7 +295,11 @@
             return b1 < b2;
             
         }];
-        !(block)? : block(lists);
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(lists);
+        });
+
         
         NSLog(@"%@",lists);
         
@@ -283,7 +328,15 @@
         
         
         NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
-        
+        if (!searchText) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@{});
+            });
+            
+            return;
+        }
+
         
         NSString *iconRegex = @"<img src=\"(.*?)\" alt=\".*?\" class=\"pic l\" />";
         NSString *icon = [self matchString:searchText toRegexString:iconRegex].lastObject;
@@ -353,8 +406,10 @@
                               
                               
                               };
-        !(block)? : block(obj);
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(obj);
+        });
+
         
     }];
     //开启网络任务
@@ -388,7 +443,15 @@
         
         //        NSLog(@"%@",[[NSString alloc] initWithData:data encoding:gb2312]);
         NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
-        
+        if (!searchText) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@[]);
+            });
+            
+            return;
+        }
+
         
         
         NSString *rString = @"<li><a href=\".*?\" title=\".*?\" class=\"apic\"><img src=\".*?\" alt=\".*?\" /></a><p><a href=\".*?\">.*?</a></p></li>";
@@ -415,8 +478,10 @@
             
         }
         
-        !(block)? : block(temps);
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(temps);
+        });
+
         
     }];
     //开启网络任务

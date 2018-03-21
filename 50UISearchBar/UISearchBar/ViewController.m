@@ -61,8 +61,11 @@ UISearchControllerDelegate
 //        （1）如果不设置：self.definesPresentationContext = YES;那么如果设置了hidesNavigationBarDuringPresentation为YES，在进入编辑模式的时候会导致searchBar看不见（偏移-64）。如果设置了hidesNavigationBarDuringPresentation为NO，在进入编辑模式会导致高度为64的空白区域出现（导航栏未渲染出来）。
 //
 //        （2）如果设置：self.definesPresentationContext = YES;在设置hidesNavigationBarDuringPresentation为YES，进入编辑模式会正常显示和使用。如果设置了hidesNavigationBarDuringPresentation为NO，在进入编辑模式会导致搜索框向下偏移64.
-        _searchController.searchBar.scopeButtonTitles = @[@"1",@"3"];
+//        _searchController.searchBar.scopeButtonTitles = @[@"1",@"3"];
 //        _searchController.searchBar.barStyle = UIBarStyleBlack;
+        
+        // titleView -->NO   headerView -->YES
+        _searchController.hidesNavigationBarDuringPresentation = NO;
         
 
     }
@@ -153,11 +156,12 @@ UISearchControllerDelegate
         self.navigationItem.searchController = self.searchController;
         self.navigationItem.hidesSearchBarWhenScrolling = NO;
         
-        NSDictionary *d = [self.searchController.searchBar getAllProperties];
         //View UISearchBarTextField _UISearchBarSearchFieldBackgroundView
         NSLog(@"%s", __func__);
     } else {
-        self.tableView.tableHeaderView = self.searchController.searchBar;
+        //self.tableView.tableHeaderView = self.searchController.searchBar;
+        self.navigationItem.titleView = self.searchController.searchBar;
+
     }
 
     

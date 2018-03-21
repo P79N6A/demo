@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		696595482061F741008C79DD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 696595472061F741008C79DD /* AppDelegate.m */; };
+		6965954B2061F741008C79DD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6965954A2061F741008C79DD /* ViewController.m */; };
+		6965954E2061F741008C79DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6965954C2061F741008C79DD /* Main.storyboard */; };
+		696595502061F741008C79DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6965954F2061F741008C79DD /* Assets.xcassets */; };
+		696595532061F741008C79DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 696595512061F741008C79DD /* LaunchScreen.storyboard */; };
+		696595562061F741008C79DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 696595552061F741008C79DD /* main.m */; };
+		74CC5684C774874956F338AD /* libPods-InMobiSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FC4AF584E2A3703594D89F8 /* libPods-InMobiSDK.a */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0BD9B6C53E45E0606A2B6432 /* Pods-InMobiSDK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMobiSDK.release.xcconfig"; path = "Pods/Target Support Files/Pods-InMobiSDK/Pods-InMobiSDK.release.xcconfig"; sourceTree = "<group>"; };
+		17DE5C52472725DB4B3BBCE4 /* Pods-InMobiSDK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InMobiSDK.debug.xcconfig"; path = "Pods/Target Support Files/Pods-InMobiSDK/Pods-InMobiSDK.debug.xcconfig"; sourceTree = "<group>"; };
+		5FC4AF584E2A3703594D89F8 /* libPods-InMobiSDK.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-InMobiSDK.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		696595432061F741008C79DD /* InMobiSDK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InMobiSDK.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		696595462061F741008C79DD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		696595472061F741008C79DD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		696595492061F741008C79DD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6965954A2061F741008C79DD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6965954D2061F741008C79DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6965954F2061F741008C79DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		696595522061F741008C79DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		696595542061F741008C79DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		696595552061F741008C79DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		696595402061F741008C79DD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				74CC5684C774874956F338AD /* libPods-InMobiSDK.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		27D108C825E14CCA0B3A24CD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5FC4AF584E2A3703594D89F8 /* libPods-InMobiSDK.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6965953A2061F741008C79DD = {
+			isa = PBXGroup;
+			children = (
+				696595452061F741008C79DD /* InMobiSDK */,
+				696595442061F741008C79DD /* Products */,
+				B2F45964176F4694AD1E9511 /* Pods */,
+				27D108C825E14CCA0B3A24CD /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		696595442061F741008C79DD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				696595432061F741008C79DD /* InMobiSDK.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		696595452061F741008C79DD /* InMobiSDK */ = {
+			isa = PBXGroup;
+			children = (
+				696595462061F741008C79DD /* AppDelegate.h */,
+				696595472061F741008C79DD /* AppDelegate.m */,
+				696595492061F741008C79DD /* ViewController.h */,
+				6965954A2061F741008C79DD /* ViewController.m */,
+				6965954C2061F741008C79DD /* Main.storyboard */,
+				6965954F2061F741008C79DD /* Assets.xcassets */,
+				696595512061F741008C79DD /* LaunchScreen.storyboard */,
+				696595542061F741008C79DD /* Info.plist */,
+				696595552061F741008C79DD /* main.m */,
+			);
+			path = InMobiSDK;
+			sourceTree = "<group>";
+		};
+		B2F45964176F4694AD1E9511 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				17DE5C52472725DB4B3BBCE4 /* Pods-InMobiSDK.debug.xcconfig */,
+				0BD9B6C53E45E0606A2B6432 /* Pods-InMobiSDK.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		696595422061F741008C79DD /* InMobiSDK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 696595592061F741008C79DD /* Build configuration list for PBXNativeTarget "InMobiSDK" */;
+			buildPhases = (
+				97E16B311D37B8DA6AA387B4 /* [CP] Check Pods Manifest.lock */,
+				6965953F2061F741008C79DD /* Sources */,
+				696595402061F741008C79DD /* Frameworks */,
+				696595412061F741008C79DD /* Resources */,
+				77AFE3B8528DF3FCC64908AE /* [CP] Embed Pods Frameworks */,
+				EE4F9720D399331BFD205B08 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = InMobiSDK;
+			productName = InMobiSDK;
+			productReference = 696595432061F741008C79DD /* InMobiSDK.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6965953B2061F741008C79DD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Jay;
+				TargetAttributes = {
+					696595422061F741008C79DD = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6965953E2061F741008C79DD /* Build configuration list for PBXProject "InMobiSDK" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6965953A2061F741008C79DD;
+			productRefGroup = 696595442061F741008C79DD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				696595422061F741008C79DD /* InMobiSDK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		696595412061F741008C79DD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				696595532061F741008C79DD /* LaunchScreen.storyboard in Resources */,
+				696595502061F741008C79DD /* Assets.xcassets in Resources */,
+				6965954E2061F741008C79DD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		77AFE3B8528DF3FCC64908AE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InMobiSDK/Pods-InMobiSDK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		97E16B311D37B8DA6AA387B4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-InMobiSDK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EE4F9720D399331BFD205B08 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-InMobiSDK/Pods-InMobiSDK-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6965953F2061F741008C79DD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6965954B2061F741008C79DD /* ViewController.m in Sources */,
+				696595562061F741008C79DD /* main.m in Sources */,
+				696595482061F741008C79DD /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6965954C2061F741008C79DD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6965954D2061F741008C79DD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		696595512061F741008C79DD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				696595522061F741008C79DD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		696595572061F741008C79DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		696595582061F741008C79DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6965955A2061F741008C79DD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 17DE5C52472725DB4B3BBCE4 /* Pods-InMobiSDK.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDU5GR594Q;
+				INFOPLIST_FILE = InMobiSDK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.InMobiSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6965955B2061F741008C79DD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0BD9B6C53E45E0606A2B6432 /* Pods-InMobiSDK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDU5GR594Q;
+				INFOPLIST_FILE = InMobiSDK/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.InMobiSDK;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6965953E2061F741008C79DD /* Build configuration list for PBXProject "InMobiSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				696595572061F741008C79DD /* Debug */,
+				696595582061F741008C79DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		696595592061F741008C79DD /* Build configuration list for PBXNativeTarget "InMobiSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6965955A2061F741008C79DD /* Debug */,
+				6965955B2061F741008C79DD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6965953B2061F741008C79DD /* Project object */;
+}
