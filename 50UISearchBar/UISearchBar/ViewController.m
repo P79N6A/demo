@@ -143,7 +143,7 @@ UISearchControllerDelegate
     // Do any additional setup after loading the view, typically from a nib.
     
     
-    self.datas = @[@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2"];
+    self.datas = @[];// @[@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2"];
 //    self.searchs = @[@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B",@"A",@"B"];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -167,6 +167,13 @@ UISearchControllerDelegate
     
     [ZZYueYuTV search:@"流氓大亨" page:1 block:^(NSArray<NSDictionary *> *obj,BOOL hasMore) {
         NSLog(@"%s", __func__);
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.datas =  @[@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2",@"1",@"2"];
+
+            [self.tableView reloadData];
+
+        });
     }];
     
 }
@@ -207,6 +214,24 @@ UISearchControllerDelegate
     cell.textLabel.text = self.datas[indexPath.row];
     
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath{
+    
+//    cell.transform = CGAffineTransformMakeScale(-self.view.frame.size.width, cell.frame.origin.y);
+//    [UIView animateWithDuration:0.25 delay:0 usingSpringWithDamping:0.5 initialSpringVelocity:0.5 options:UIViewAnimationOptionCurveEaseIn animations:^{
+//        cell.transform = CGAffineTransformIdentity;
+//    } completion:^(BOOL finished) {
+//
+//    }];
+    
+    cell.transform = CGAffineTransformMakeTranslation(0, 40);
+    [UIView animateWithDuration:0.8 animations:^{
+        
+        cell.transform = CGAffineTransformIdentity;
+    }];
+
+    
 }
 
 @end
