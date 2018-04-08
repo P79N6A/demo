@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fvd-sY-fTp"/>
+                        <viewControllerLayoutGuide type="bottom" id="cj3-PA-oOM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QSz-Sw-IXM">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YU4-LQ-hGF" customClass="TTZTagView">
+                                <rect key="frame" x="0.0" y="146" width="375" height="375"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="YU4-LQ-hGF" secondAttribute="height" multiplier="15:15" id="uuF-rn-A17"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cwi-Aq-z2k">
+                                <rect key="frame" x="313" y="537" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.7843137255" blue="0.44705882349999998" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="resetAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="N0J-xn-j3h"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="YU4-LQ-hGF" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="7TR-2B-vCp"/>
+                            <constraint firstItem="Cwi-Aq-z2k" firstAttribute="top" secondItem="YU4-LQ-hGF" secondAttribute="bottom" constant="16" id="Cfz-BF-o2R"/>
+                            <constraint firstAttribute="bottom" secondItem="QSz-Sw-IXM" secondAttribute="bottom" id="FG4-fT-Xig"/>
+                            <constraint firstItem="QSz-Sw-IXM" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MNi-9Z-es0"/>
+                            <constraint firstAttribute="trailing" secondItem="YU4-LQ-hGF" secondAttribute="trailing" id="Md5-6m-wBm"/>
+                            <constraint firstAttribute="trailing" secondItem="QSz-Sw-IXM" secondAttribute="trailing" id="bHf-kU-Lwk"/>
+                            <constraint firstItem="QSz-Sw-IXM" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="dsn-oW-hdR"/>
+                            <constraint firstItem="YU4-LQ-hGF" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="vl0-TW-DJV"/>
+                            <constraint firstAttribute="trailing" secondItem="Cwi-Aq-z2k" secondAttribute="trailing" constant="16" id="xL8-Jx-ryA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="bgImageView" destination="QSz-Sw-IXM" id="do8-CC-sb6"/>
+                        <outlet property="contentView" destination="YU4-LQ-hGF" id="Sy2-1D-XAC"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+        </scene>
+    </scenes>
+</document>
