@@ -16,6 +16,9 @@
 		69BA782D2073717C0019849D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69BA782B2073717C0019849D /* LaunchScreen.storyboard */; };
 		69BA78302073717C0019849D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA782F2073717C0019849D /* main.m */; };
 		69BA783820737A5F0019849D /* TTZTagView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69BA783720737A5F0019849D /* TTZTagView.m */; };
+		69D1D1CE207B37C1005055F3 /* cat.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 69D1D1CD207B37C1005055F3 /* cat.mp3 */; };
+		69D1D1F9207B6775005055F3 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D1F8207B6775005055F3 /* HomeViewController.m */; };
+		69D1D1FC207B709B005055F3 /* TTZData.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D1D1FB207B709B005055F3 /* TTZData.m */; };
 		F92D8E053038CE2A419F8C9C /* libPods-9*9.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A01CD141F9FAC8E6013856A /* libPods-9*9.a */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +39,11 @@
 		69BA782F2073717C0019849D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69BA783620737A5F0019849D /* TTZTagView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZTagView.h; sourceTree = "<group>"; };
 		69BA783720737A5F0019849D /* TTZTagView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZTagView.m; sourceTree = "<group>"; };
+		69D1D1CD207B37C1005055F3 /* cat.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = cat.mp3; sourceTree = "<group>"; };
+		69D1D1F7207B6775005055F3 /* HomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		69D1D1F8207B6775005055F3 /* HomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		69D1D1FA207B709B005055F3 /* TTZData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZData.h; sourceTree = "<group>"; };
+		69D1D1FB207B709B005055F3 /* TTZData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZData.m; sourceTree = "<group>"; };
 		8A01CD141F9FAC8E6013856A /* libPods-9*9.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-9*9.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -81,6 +89,7 @@
 		69BA781F2073717C0019849D /* 9*9 */ = {
 			isa = PBXGroup;
 			children = (
+				69D1D1CD207B37C1005055F3 /* cat.mp3 */,
 				693908B8207A0E8C00A5CAAC /* correct.mp3 */,
 				693908B6207A0AB200A5CAAC /* win.mp3 */,
 				69BA78202073717C0019849D /* AppDelegate.h */,
@@ -94,6 +103,10 @@
 				69BA782F2073717C0019849D /* main.m */,
 				69BA783620737A5F0019849D /* TTZTagView.h */,
 				69BA783720737A5F0019849D /* TTZTagView.m */,
+				69D1D1F7207B6775005055F3 /* HomeViewController.h */,
+				69D1D1F8207B6775005055F3 /* HomeViewController.m */,
+				69D1D1FA207B709B005055F3 /* TTZData.h */,
+				69D1D1FB207B709B005055F3 /* TTZData.m */,
 			);
 			path = "9*9";
 			sourceTree = "<group>";
@@ -171,6 +184,7 @@
 				69BA782D2073717C0019849D /* LaunchScreen.storyboard in Resources */,
 				69BA782A2073717C0019849D /* Assets.xcassets in Resources */,
 				69BA78282073717C0019849D /* Main.storyboard in Resources */,
+				69D1D1CE207B37C1005055F3 /* cat.mp3 in Resources */,
 				693908B7207A0AB200A5CAAC /* win.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -236,6 +250,8 @@
 				69BA783820737A5F0019849D /* TTZTagView.m in Sources */,
 				69BA78252073717C0019849D /* ViewController.m in Sources */,
 				69BA78302073717C0019849D /* main.m in Sources */,
+				69D1D1F9207B6775005055F3 /* HomeViewController.m in Sources */,
+				69D1D1FC207B709B005055F3 /* TTZData.m in Sources */,
 				69BA78222073717C0019849D /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

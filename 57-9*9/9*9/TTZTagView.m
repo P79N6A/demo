@@ -40,7 +40,6 @@
 @property (nonatomic, strong) NSMutableArray <TTZModel *>*models;
 @property (nonatomic, assign) CGRect emptyFrame;
 @property (nonatomic, assign) NSInteger emptyIndex;
-@property (nonatomic, strong) AVAudioPlayer *player;
 @end
 
 @implementation TTZTagView
@@ -163,11 +162,13 @@
             
             
             // 6. 开始播放
-            [self.player play];
-            SystemSoundID sound = [self loadSound:@"win.mp3"];
+//            [self.player play];
+//            SystemSoundID sound = [self loadSound:@"win.mp3"];
             // 播放音效
-            AudioServicesPlayAlertSound(sound);//在播放音效的同时会震动
+//            AudioServicesPlayAlertSound(sound);//在播放音效的同时会震动
             //AudioServicesPlaySystemSound(sound);
+            [self play:@"win"];
+
 
 
         }
@@ -175,48 +176,79 @@
 }
 
 // 初始化音乐播放器
-- (AVAudioPlayer *)player
-{
-    if (!_player) {
-        // 1 初始化播放器需要指定音乐文件的路径
-        NSString *path = [[NSBundle mainBundle]pathForResource:@"win.mp3" ofType:nil];
-        // 2 将路径字符串转换成url，从本地读取文件，需要使用fileURL
-        NSURL *url = [NSURL fileURLWithPath:path];
-        // 3 初始化音频播放器
-        _player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
-        // 4 设置循环播放
-        // 设置循环播放的次数
-        // 循环次数=0，声音会播放一次
-        // 循环次数=1，声音会播放2次
-        // 循环次数小于0，会无限循环播放
-        [_player setNumberOfLoops:0];
-        
-        [_player setVolume:0.5];
-        
-        // 5 准备播放
-        [_player prepareToPlay];
-
-    }
-    
-    return _player;
-}
+//- (AVAudioPlayer *)player
+//{
+//        // 1 初始化播放器需要指定音乐文件的路径
+//        NSString *path = [[NSBundle mainBundle]pathForResource:@"win.mp3" ofType:nil];
+//        // 2 将路径字符串转换成url，从本地读取文件，需要使用fileURL
+//        NSURL *url = [NSURL fileURLWithPath:path];
+//        // 3 初始化音频播放器
+//        AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:nil];
+//        // 4 设置循环播放
+//        // 设置循环播放的次数
+//        // 循环次数=0，声音会播放一次
+//        // 循环次数=1，声音会播放2次
+//        // 循环次数小于0，会无限循环播放
+//        [player setNumberOfLoops:0];
+//
+//        [player setVolume:0.5];
+//
+//        // 5 准备播放
+//        [player prepareToPlay];
+//
+//
+//    return player;
+//}
 
 // 加载音效
-- (SystemSoundID)loadSound:(NSString *)soundFileName
-{
-    // 1. 需要指定声音的文件路径，这个方法需要加载不同的音效
-    NSString *path = [[NSBundle mainBundle]pathForResource:soundFileName ofType:nil];
-    // 2. 将路径字符串转换成url
-    NSURL *url = [NSURL fileURLWithPath:path];
+//- (SystemSoundID)loadSound:(NSString *)soundFileName
+//{
+//    // 1. 需要指定声音的文件路径，这个方法需要加载不同的音效
+//    NSString *path = [[NSBundle mainBundle]pathForResource:soundFileName ofType:nil];
+//    // 2. 将路径字符串转换成url
+//    NSURL *url = [NSURL fileURLWithPath:path];
+//
+//    // 3. 初始化音效
+//    // 3.1 url => CFURLRef
+//    // 3.2 SystemSoundID
+//    SystemSoundID soundId;
+//    // url先写个错的，然后让xcode帮我们智能修订，这里的方法不要硬记！
+//    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundId);
+//
+//    return soundId;
+//}
+
+SystemSoundID soundID;
+
+
+- (void)play:(NSString *)soundFileName{
     
-    // 3. 初始化音效
-    // 3.1 url => CFURLRef
-    // 3.2 SystemSoundID
-    SystemSoundID soundId;
-    // url先写个错的，然后让xcode帮我们智能修订，这里的方法不要硬记！
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)(url), &soundId);
     
-    return soundId;
+    //    NSString *str = [[NSBundle mainBundle] pathForResource:@"vcyber_waiting" ofType:@"wav"];
+    NSString *str = [[NSBundle mainBundle] pathForResource:soundFileName ofType:@"mp3"];
+    //    NSString *str = [[NSBundle mainBundle] pathForResource:@"48s" ofType:@"mp3"];
+    NSURL *url = [NSURL fileURLWithPath:str];
+    
+    
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &soundID);
+    //
+    //    AudioServicesAddSystemSoundCompletion(soundID, NULL, NULL, soundCompleteCallBack, NULL);
+    //
+    //    //AudioServicesPlaySystemSound(soundID);
+    //
+    //    AudioServicesPlayAlertSound(soundID);
+    
+    
+    //    AudioServicesPlaySystemSoundWithCompletion(soundID, ^{
+    //        NSLog(@"播放完成");
+    //        AudioServicesDisposeSystemSoundID(soundID);
+    //    });
+    
+    AudioServicesPlayAlertSoundWithCompletion(soundID, ^{
+        NSLog(@"播放完成");
+    });
+    
+
 }
 
 - (BOOL)A:(CGFloat)a isEqualB:(CGFloat)b{
@@ -229,11 +261,13 @@
 - (void)reset{
     
     // 6. 开始播放
-    [self.player play];
-    SystemSoundID sound = [self loadSound:@"correct.mp3"];
+//    [self.player play];
+//    SystemSoundID sound = [self loadSound:@"correct.mp3"];
     // 播放音效
     //AudioServicesPlayAlertSound(sound);//在播放音效的同时会震动
-    AudioServicesPlaySystemSound(sound);
+//    AudioServicesPlaySystemSound(sound);
+    
+    [self play:@"correct"];
 
     
     [self.models shuffle];
