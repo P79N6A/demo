@@ -1,0 +1,12 @@
+PODS:
+  - AliyunPlayer_iOS/AliyunPlayerSDK (3.3.3)
+
+DEPENDENCIES:
+  - AliyunPlayer_iOS/AliyunPlayerSDK
+
+SPEC CHECKSUMS:
+  AliyunPlayer_iOS: 390124c28b7ace9b2c634128a90b54b8d476d66c
+
+PODFILE CHECKSUM: 4e954ecfa541d72ae1e87b8b8c39d52429cc85ea
+
+COCOAPODS: 1.4.0
