@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB42420020772788001FD170 /* RecordedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB4241FF20772788001FD170 /* RecordedViewController.m */; };
 		AB912DB820770F7D005CD349 /* CatViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB912DB720770F7D005CD349 /* CatViewController.m */; };
 		AB912DB920771031005CD349 /* cat_0.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ABE47B9A20770DD600D75007 /* cat_0.mp3 */; };
 		AB912DBA20771031005CD349 /* cat_0.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE47BC320770DDD00D75007 /* cat_0.png */; };
@@ -464,6 +465,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB4241FE20772788001FD170 /* RecordedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordedViewController.h; sourceTree = "<group>"; };
+		AB4241FF20772788001FD170 /* RecordedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordedViewController.m; sourceTree = "<group>"; };
 		AB912DB620770F7D005CD349 /* CatViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CatViewController.h; sourceTree = "<group>"; };
 		AB912DB720770F7D005CD349 /* CatViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CatViewController.m; sourceTree = "<group>"; };
 		AB912F78207710C4005CD349 /* AnimalModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AnimalModel.h; sourceTree = "<group>"; };
@@ -991,6 +994,8 @@
 				ABE47A3420770CDE00D75007 /* main.m */,
 				AB912DB620770F7D005CD349 /* CatViewController.h */,
 				AB912DB720770F7D005CD349 /* CatViewController.m */,
+				AB4241FE20772788001FD170 /* RecordedViewController.h */,
+				AB4241FF20772788001FD170 /* RecordedViewController.m */,
 			);
 			path = Dog;
 			sourceTree = "<group>";
@@ -1988,6 +1993,7 @@
 			files = (
 				AB912DB820770F7D005CD349 /* CatViewController.m in Sources */,
 				ABE47A3520770CDE00D75007 /* main.m in Sources */,
+				AB42420020772788001FD170 /* RecordedViewController.m in Sources */,
 				ABE47A2720770CDE00D75007 /* AppDelegate.m in Sources */,
 				AB912F7A207710C4005CD349 /* AnimalModel.m in Sources */,
 				AB912F7F20771618005CD349 /* AnimalCell.m in Sources */,

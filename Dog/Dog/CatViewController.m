@@ -11,7 +11,7 @@
 #import "AnimalCell.h"
 #import "common.h"
 
-#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
 @interface CatViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 
@@ -19,6 +19,8 @@
 @property (weak, nonatomic) IBOutlet UIImageView *bgView;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
+
+@property (nonatomic, strong) AVPlayer *player;
 
 @end
 
@@ -35,37 +37,42 @@
     CGFloat width = (kScreenW)/3.0;
     self.layout.itemSize = CGSizeMake(width, width);
     
-    NSString *file = [[NSBundle mainBundle] pathForResource:@"cat.plist" ofType:nil];
-
-    if (self.view.tag == 2) {
-        file = [[NSBundle mainBundle] pathForResource:@"dog.plist" ofType:nil];
-    }
-    NSArray *cats = [[NSArray alloc] initWithContentsOfFile:file];
-    self.models = [AnimalModel modelFormArray:cats];
     
-    if (self.view.tag == 3){
+    NSInteger tag = self.view.tag;
+    
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
         
-        NSMutableArray *models = [NSMutableArray arrayWithCapacity:199];
-        for (NSInteger i = 0 ; i < 199; i ++) {
-            
-            NSString *image = [NSString stringWithFormat:@"Animal%ld",(long)i];
-            NSString *voice = [NSString stringWithFormat:@"Animal%ld.mp3",(long)i];
-
-            if (![UIImage imageNamed:image]) {
-                continue;
-            }
-            AnimalModel *m = [AnimalModel new];
-            m.image = image;
-            m.voice = voice;
-            [models addObject:m];
+        NSString *file = [[NSBundle mainBundle] pathForResource:@"cat.plist" ofType:nil];
+        if (tag == 2) {
+            file = [[NSBundle mainBundle] pathForResource:@"dog.plist" ofType:nil];
         }
-        self.models = models;
-    }
-}
+        NSArray *cats = [[NSArray alloc] initWithContentsOfFile:file];
+        self.models = [AnimalModel modelFormArray:cats];
+        
+        if (tag == 3){
+            
+            NSMutableArray *models = [NSMutableArray arrayWithCapacity:199];
+            for (NSInteger i = 0 ; i < 199; i ++) {
+                
+                NSString *image = [NSString stringWithFormat:@"Animal%ld",(long)i];
+                NSString *voice = [NSString stringWithFormat:@"Animal%ld.mp3",(long)i];
+                
+                if (![UIImage imageNamed:image] || ![[NSBundle mainBundle] pathForResource:voice ofType:nil]) {
+                    continue;
+                }
+                AnimalModel *m = [AnimalModel new];
+                m.image = image;
+                m.voice = voice;
+                [models addObject:m];
+            }
+            self.models = models;
+        }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [self.collectionView reloadData];
+        });
+    });
+    
 }
 
 
@@ -91,26 +98,19 @@
 }
 
 ///
-static SystemSoundID soundID = 0;
 - (void)play:(NSURL *)url{
-    
-    
-    
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef _Nonnull)(url), &soundID);
-    AudioServicesPlayAlertSoundWithCompletion(soundID, ^{
-        NSLog(@"播放完成");
-    });
-    
+    [self.player replaceCurrentItemWithPlayerItem:[AVPlayerItem playerItemWithURL:url]];
+    [self.player play];
 }
-
-void soundCompleteCallBack(SystemSoundID soundID, void * clientDate) {
-    NSLog(@"播放完成");
-    AudioServicesDisposeSystemSoundID(soundID);
-}
-
 - (void)stop {
-    AudioServicesDisposeSystemSoundID(soundID);
+    [self.player pause];
 }
 
+- (AVPlayer *)player{
+    if (!_player) {
+        _player = [AVPlayer playerWithURL:[NSURL URLWithString:@""]];
+    }
+    return _player;
+}
 
 @end
