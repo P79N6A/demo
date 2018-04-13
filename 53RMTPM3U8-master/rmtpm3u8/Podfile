@@ -1,0 +1,15 @@
+platform :ios, "9.0"
+target 'rmtpm3u8' do
+pod 'CYLTabBarController'
+pod 'RTRootNavigationController'
+pod 'Masonry'
+pod 'JKCategories'
+pod 'AFNetworking'
+pod 'JSONModel'
+pod 'SDWebImage'
+pod 'MJRefresh'
+pod 'SVProgressHUD'
+pod 'JKCategories'
+pod 'ZFPlayer'
+pod 'FMDB'
+end

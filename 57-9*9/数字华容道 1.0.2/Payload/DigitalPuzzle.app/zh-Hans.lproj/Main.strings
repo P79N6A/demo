@@ -1,0 +1,27 @@
+
+/* Class = "UILabel"; text = "00:00"; ObjectID = "5yY-7L-D5D"; */
+"5yY-7L-D5D.text" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "3X3 (EASY)"; ObjectID = "BKx-Li-Noj"; */
+"BKx-Li-Noj.normalTitle" = "3X3 (EASY)";
+
+/* Class = "UIButton"; normalTitle = "5 X 5"; ObjectID = "IDL-jZ-Nig"; */
+"IDL-jZ-Nig.normalTitle" = "5 X 5";
+
+/* Class = "UIButton"; normalTitle = "4X4 (NORMAL)"; ObjectID = "Pgd-jQ-3xF"; */
+"Pgd-jQ-3xF.normalTitle" = "4X4 (NORMAL)";
+
+/* Class = "UILabel"; text = "steps:0"; ObjectID = "TIg-uk-4UT"; */
+"TIg-uk-4UT.text" = "steps:0";
+
+/* Class = "UIButton"; normalTitle = "OK"; ObjectID = "YSu-9L-8Aq"; */
+"YSu-9L-8Aq.normalTitle" = "OK";
+
+/* Class = "UIButton"; normalTitle = "Continue"; ObjectID = "lUr-r7-B7L"; */
+"lUr-r7-B7L.normalTitle" = "Continue";
+
+/* Class = "UIButton"; normalTitle = "5X5 (HARD)"; ObjectID = "tyh-CZ-cmB"; */
+"tyh-CZ-cmB.normalTitle" = "5X5 (HARD)";
+
+/* Class = "UILabel"; text = "Swipe the screen and move the squares , to arrange the squares in order."; ObjectID = "yuH-zj-W1j"; */
+"yuH-zj-W1j.text" = "Swipe the screen and move the squares , to arrange the squares in order.";

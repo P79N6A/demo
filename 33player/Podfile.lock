@@ -1,0 +1,18 @@
+PODS:
+  - BCPlayer (0.1.0):
+    - BCPlayer/CocoaHTTPServer (= 0.1.0)
+    - Masonry
+  - BCPlayer/CocoaHTTPServer (0.1.0):
+    - Masonry
+  - Masonry (1.1.0)
+
+DEPENDENCIES:
+  - BCPlayer
+
+SPEC CHECKSUMS:
+  BCPlayer: f3d74d782273225a1ca238a30f7603c6bd03eb4e
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+
+PODFILE CHECKSUM: 157bfafc5cd013a51c4638ff95bb22e65773ece7
+
+COCOAPODS: 1.2.0

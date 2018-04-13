@@ -27,11 +27,16 @@
 //    self.cache = [NSMutableDictionary dictionary];
 //    self.imageView.image = [UIImage yh_imageNamed:@"分享"];
     
+<<<<<<< HEAD
 //    [self d];
+=======
+    //[self d];
+>>>>>>> 81d8d8e3160f82eb5119794f6ef0d31c3358e604
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
+<<<<<<< HEAD
 //    NSString *path = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES).lastObject;
 //
 //    NSString *file = [path stringByAppendingPathComponent:@"28"];
@@ -56,6 +61,19 @@
     [self.view addSubview:animation];
     animation.frame = CGRectMake(0, 100, 300, 300);
     animation.backgroundColor = [UIColor whiteColor];
+=======
+    
+    NSString *path = [[[NSBundle mainBundle] bundlePath] stringByAppendingPathComponent:@"我爱你/data.json"];
+    
+    LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:path]];
+    animation.
+//    LOTAnimationView *animation = [[LOTAnimationView alloc] initWithContentsOfURL:[NSURL URLWithString:@"https://www.lottiefiles.com/download/543"]];
+
+    animation.loopAnimation = NO;
+    [self.view addSubview:animation];
+    animation.frame = CGRectMake(0, 100, 300, 300);
+    animation.backgroundColor = [UIColor blackColor];
+>>>>>>> 81d8d8e3160f82eb5119794f6ef0d31c3358e604
     [animation playWithCompletion:^(BOOL animationFinished) {
         // Do Something
     }];

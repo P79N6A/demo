@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>UIRequiredDeviceCapabilities</key>
+	<dict>
+		<key>armv7</key>
+		<true/>
+	</dict>
+	<key>appleId</key>
+	<string>czljcb@163.com</string>
+	<key>artistId</key>
+	<integer>1252262393</integer>
+	<key>artistName</key>
+	<string>YongQiang Chen</string>
+	<key>bundleDisplayName</key>
+	<string>数字华容道</string>
+	<key>bundleShortVersionString</key>
+	<string>1.0.2</string>
+	<key>bundleVersion</key>
+	<string>1</string>
+	<key>com.apple.iTunesStore.downloadInfo</key>
+	<dict>
+		<key>accountInfo</key>
+		<dict>
+			<key>AccountStoreFront</key>
+			<string>143465-19,32</string>
+			<key>AppleID</key>
+			<string>czljcb@163.com</string>
+			<key>DSPersonID</key>
+			<integer>8393618049</integer>
+			<key>DownloaderID</key>
+			<integer>0</integer>
+			<key>FamilyID</key>
+			<integer>0</integer>
+			<key>FirstName</key>
+			<string>Zhi</string>
+			<key>LastName</key>
+			<string>Cao</string>
+			<key>PurchaserID</key>
+			<integer>8393618049</integer>
+			<key>UserName</key>
+			<string>Zhi Cao</string>
+		</dict>
+		<key>purchaseDate</key>
+		<string>2018-03-31T14:16:10Z</string>
+	</dict>
+	<key>copyright</key>
+	<string>© 2018C</string>
+	<key>drmVersionNumber</key>
+	<integer>0</integer>
+	<key>fileExtension</key>
+	<string>.app</string>
+	<key>gameCenterEnabled</key>
+	<false/>
+	<key>gameCenterEverEnabled</key>
+	<false/>
+	<key>genre</key>
+	<string>游戏</string>
+	<key>genreId</key>
+	<integer>6014</integer>
+	<key>is-purchased-redownload</key>
+	<true/>
+	<key>itemId</key>
+	<integer>1338202296</integer>
+	<key>itemName</key>
+	<string>数字华容道 - 燃烧吧大脑挑战项目</string>
+	<key>kind</key>
+	<string>software</string>
+	<key>playlistName</key>
+	<string>YongQiang Chen</string>
+	<key>product-type</key>
+	<string>ios-app</string>
+	<key>purchaseDate</key>
+	<date>2018-03-31T14:16:10Z</date>
+	<key>rating</key>
+	<dict>
+		<key>content</key>
+		<string>Advisory.NO.UNRESTRICTED_WEB_ACCESS and Advisory.NO.GAMBLING_CONTESTS</string>
+		<key>label</key>
+		<string>4+</string>
+		<key>rank</key>
+		<integer>100</integer>
+		<key>system</key>
+		<string>itunes-games</string>
+	</dict>
+	<key>releaseDate</key>
+	<string>2018-01-23T03:41:04Z</string>
+	<key>s</key>
+	<integer>143465</integer>
+	<key>softwareIcon57x57URL</key>
+	<string>http://a678.phobos.apple.com/us/r30/Purple128/v4/c8/16/ee/c816ee40-e47d-4282-7f5b-2c17b1549706/icon114x114.png</string>
+	<key>softwareIconNeedsShine</key>
+	<false/>
+	<key>softwareSupportedDeviceIds</key>
+	<array>
+		<integer>9</integer>
+		<integer>2</integer>
+		<integer>4</integer>
+	</array>
+	<key>softwareVersionBundleId</key>
+	<string>com.super.DigitalPuzzle</string>
+	<key>softwareVersionExternalIdentifier</key>
+	<integer>825878453</integer>
+	<key>softwareVersionExternalIdentifiers</key>
+	<array>
+		<integer>825716501</integer>
+		<integer>825827622</integer>
+		<integer>825878453</integer>
+	</array>
+	<key>storeCohort</key>
+	<string>7|date=1522504800000&amp;sf=143465&amp;cmp=In-App%20QR%20Code&amp;cpr=118657109&amp;cid=1248884143&amp;rdom=apple.com&amp;pgtp=Artist&amp;pgid=1252262393&amp;prpg=Artist_1252262393&amp;ctxt=Search</string>
+	<key>subgenres</key>
+	<array>
+		<dict>
+			<key>genre</key>
+			<string>策略游戏</string>
+			<key>genreId</key>
+			<integer>7017</integer>
+		</dict>
+		<dict>
+			<key>genre</key>
+			<string>益智解谜</string>
+			<key>genreId</key>
+			<integer>7012</integer>
+		</dict>
+	</array>
+	<key>userName</key>
+	<string>Zhi Cao</string>
+	<key>vendorId</key>
+	<integer>118682800</integer>
+	<key>versionRestrictions</key>
+	<integer>16843008</integer>
+</dict>
+</plist>
