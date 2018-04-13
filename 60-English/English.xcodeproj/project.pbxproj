@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69F10514207EEAA6006DD31A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10513207EEAA6006DD31A /* AppDelegate.m */; };
-		69F10517207EEAA6006DD31A /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10516207EEAA6006DD31A /* ViewController.m */; };
+		69F10517207EEAA6006DD31A /* TTZHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10516207EEAA6006DD31A /* TTZHomeViewController.m */; };
 		69F1051C207EEAA6006DD31A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69F1051B207EEAA6006DD31A /* Assets.xcassets */; };
 		69F1051F207EEAA6006DD31A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F1051D207EEAA6006DD31A /* LaunchScreen.storyboard */; };
 		69F10522207EEAA6006DD31A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10521207EEAA6006DD31A /* main.m */; };
@@ -20,6 +20,13 @@
 		69F10539207EF5B4006DD31A /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69F10538207EF5B4006DD31A /* PlayerView.xib */; };
 		69F1053F207EFB63006DD31A /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F1053E207EFB63006DD31A /* Model.m */; };
 		69F10542207F3D3D006DD31A /* SPVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10541207F3D3D006DD31A /* SPVideoSlider.m */; };
+		AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEDC2080F6D700E02CBF /* TTZBanner.m */; };
+		AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEDE2080F72400E02CBF /* TTZBanner.xib */; };
+		AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE12080FB2500E02CBF /* EnglishCell.m */; };
+		AB27FEE42080FB2500E02CBF /* EnglishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEE22080FB2500E02CBF /* EnglishCell.xib */; };
+		AB27FEE52080FD2B00E02CBF /* XYYData.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9078FA2080E5D50006E945 /* XYYData.m */; };
+		AB27FEE92081016800E02CBF /* EnglishItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE72081016700E02CBF /* EnglishItemCell.m */; };
+		AB27FEEA2081016800E02CBF /* EnglishItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEE82081016700E02CBF /* EnglishItemCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +35,8 @@
 		69F1050F207EEAA6006DD31A /* English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69F10512207EEAA6006DD31A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69F10513207EEAA6006DD31A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		69F10515207EEAA6006DD31A /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		69F10516207EEAA6006DD31A /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		69F10515207EEAA6006DD31A /* TTZHomeViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZHomeViewController.h; sourceTree = "<group>"; };
+		69F10516207EEAA6006DD31A /* TTZHomeViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZHomeViewController.m; sourceTree = "<group>"; };
 		69F1051B207EEAA6006DD31A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		69F1051E207EEAA6006DD31A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69F10520207EEAA6006DD31A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -50,6 +57,18 @@
 		69F10540207F3D3D006DD31A /* SPVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPVideoSlider.h; sourceTree = "<group>"; };
 		69F10541207F3D3D006DD31A /* SPVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPVideoSlider.m; sourceTree = "<group>"; };
 		7A42DA20AAAEB96AFE38FB4F /* libPods-English.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-English.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB27FEDB2080F6D700E02CBF /* TTZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZBanner.h; sourceTree = "<group>"; };
+		AB27FEDC2080F6D700E02CBF /* TTZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZBanner.m; sourceTree = "<group>"; };
+		AB27FEDE2080F72400E02CBF /* TTZBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTZBanner.xib; sourceTree = "<group>"; };
+		AB27FEE02080FB2500E02CBF /* EnglishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnglishCell.h; sourceTree = "<group>"; };
+		AB27FEE12080FB2500E02CBF /* EnglishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishCell.m; sourceTree = "<group>"; };
+		AB27FEE22080FB2500E02CBF /* EnglishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnglishCell.xib; sourceTree = "<group>"; };
+		AB27FEE62081016700E02CBF /* EnglishItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnglishItemCell.h; sourceTree = "<group>"; };
+		AB27FEE72081016700E02CBF /* EnglishItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishItemCell.m; sourceTree = "<group>"; };
+		AB27FEE82081016700E02CBF /* EnglishItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnglishItemCell.xib; sourceTree = "<group>"; };
+		AB9078FA2080E5D50006E945 /* XYYData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYData.m; sourceTree = "<group>"; };
+		AB9078FB2080E5D50006E945 /* XYYData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYData.h; sourceTree = "<group>"; };
+		AB9078FC2080E7F60006E945 /* Common.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,22 +111,18 @@
 		69F10511207EEAA6006DD31A /* English */ = {
 			isa = PBXGroup;
 			children = (
+				AB27FEDA2080F69D00E02CBF /* View */,
+				AB9078F92080E5C00006E945 /* Model */,
+				AB9078F82080E5B30006E945 /* Controller */,
 				69F10537207EF3F2006DD31A /* Base */,
 				69F10512207EEAA6006DD31A /* AppDelegate.h */,
 				69F10513207EEAA6006DD31A /* AppDelegate.m */,
-				69F10515207EEAA6006DD31A /* ViewController.h */,
-				69F10516207EEAA6006DD31A /* ViewController.m */,
 				69F1051B207EEAA6006DD31A /* Assets.xcassets */,
 				69F1051D207EEAA6006DD31A /* LaunchScreen.storyboard */,
 				69F10520207EEAA6006DD31A /* Info.plist */,
 				69F10521207EEAA6006DD31A /* main.m */,
 				69F1052E207EED6F006DD31A /* PlayViewController.h */,
 				69F1052F207EED6F006DD31A /* PlayViewController.m */,
-				69F10531207EEE11006DD31A /* PlayerView.h */,
-				69F10532207EEE11006DD31A /* PlayerView.m */,
-				69F10538207EF5B4006DD31A /* PlayerView.xib */,
-				69F1053D207EFB63006DD31A /* Model.h */,
-				69F1053E207EFB63006DD31A /* Model.m */,
 			);
 			path = English;
 			sourceTree = "<group>";
@@ -115,16 +130,56 @@
 		69F10537207EF3F2006DD31A /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				69F10541207F3D3D006DD31A /* SPVideoSlider.m */,
+				69F10540207F3D3D006DD31A /* SPVideoSlider.h */,
+				69F10531207EEE11006DD31A /* PlayerView.h */,
+				69F10532207EEE11006DD31A /* PlayerView.m */,
+				69F10538207EF5B4006DD31A /* PlayerView.xib */,
 				69F10534207EF0D3006DD31A /* TTZBaseController.h */,
 				69F10535207EF0D3006DD31A /* TTZBaseController.m */,
 				69F1052B207EEB16006DD31A /* TTZNavigationController.h */,
 				69F1052C207EEB16006DD31A /* TTZNavigationController.m */,
 				69F10528207EEB07006DD31A /* TTZTabBarController.h */,
 				69F10529207EEB07006DD31A /* TTZTabBarController.m */,
-				69F10540207F3D3D006DD31A /* SPVideoSlider.h */,
-				69F10541207F3D3D006DD31A /* SPVideoSlider.m */,
+				AB9078FC2080E7F60006E945 /* Common.h */,
 			);
 			path = Base;
+			sourceTree = "<group>";
+		};
+		AB27FEDA2080F69D00E02CBF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				AB27FEDB2080F6D700E02CBF /* TTZBanner.h */,
+				AB27FEDC2080F6D700E02CBF /* TTZBanner.m */,
+				AB27FEDE2080F72400E02CBF /* TTZBanner.xib */,
+				AB27FEE02080FB2500E02CBF /* EnglishCell.h */,
+				AB27FEE12080FB2500E02CBF /* EnglishCell.m */,
+				AB27FEE22080FB2500E02CBF /* EnglishCell.xib */,
+				AB27FEE62081016700E02CBF /* EnglishItemCell.h */,
+				AB27FEE72081016700E02CBF /* EnglishItemCell.m */,
+				AB27FEE82081016700E02CBF /* EnglishItemCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		AB9078F82080E5B30006E945 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				69F10515207EEAA6006DD31A /* TTZHomeViewController.h */,
+				69F10516207EEAA6006DD31A /* TTZHomeViewController.m */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		AB9078F92080E5C00006E945 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB9078FB2080E5D50006E945 /* XYYData.h */,
+				AB9078FA2080E5D50006E945 /* XYYData.m */,
+				69F1053D207EFB63006DD31A /* Model.h */,
+				69F1053E207EFB63006DD31A /* Model.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D1E55A51C986086E3EB1E096 /* Pods */ = {
@@ -197,9 +252,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB27FEE42080FB2500E02CBF /* EnglishCell.xib in Resources */,
 				69F1051F207EEAA6006DD31A /* LaunchScreen.storyboard in Resources */,
 				69F10539207EF5B4006DD31A /* PlayerView.xib in Resources */,
+				AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */,
 				69F1051C207EEAA6006DD31A /* Assets.xcassets in Resources */,
+				AB27FEEA2081016800E02CBF /* EnglishItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,15 +325,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69F10517207EEAA6006DD31A /* ViewController.m in Sources */,
+				AB27FEE52080FD2B00E02CBF /* XYYData.m in Sources */,
+				69F10517207EEAA6006DD31A /* TTZHomeViewController.m in Sources */,
 				69F10533207EEE11006DD31A /* PlayerView.m in Sources */,
 				69F10522207EEAA6006DD31A /* main.m in Sources */,
 				69F1053F207EFB63006DD31A /* Model.m in Sources */,
 				69F1052D207EEB16006DD31A /* TTZNavigationController.m in Sources */,
 				69F1052A207EEB07006DD31A /* TTZTabBarController.m in Sources */,
 				69F10530207EED6F006DD31A /* PlayViewController.m in Sources */,
+				AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */,
 				69F10514207EEAA6006DD31A /* AppDelegate.m in Sources */,
 				69F10536207EF0D3006DD31A /* TTZBaseController.m in Sources */,
+				AB27FEE92081016800E02CBF /* EnglishItemCell.m in Sources */,
+				AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */,
 				69F10542207F3D3D006DD31A /* SPVideoSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -124,7 +124,10 @@
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
     self.prefersStatusBarHidden = self.buttomView.isHidden;
-    !(_statusBarAppearanceUpdate)? : _statusBarAppearanceUpdate();
+    //!(_statusBarAppearanceUpdate)? : _statusBarAppearanceUpdate();
+    
+    if(self.prefersStatusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
+    else [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar - 1];
 
 }
 

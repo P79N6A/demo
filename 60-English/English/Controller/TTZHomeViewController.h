@@ -8,7 +8,7 @@
 
 #import "TTZBaseController.h"
 
-@interface ViewController : TTZBaseController
+@interface TTZHomeViewController : TTZBaseController
 
 
 @end

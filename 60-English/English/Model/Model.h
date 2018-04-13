@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-
-@interface Model : NSObject
+#import "PlayerView.h"
+@interface Model : NSObject <TTZPlayerModel>
 
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *name;

@@ -8,7 +8,7 @@
 
 #import "TTZTabBarController.h"
 #import "TTZNavigationController.h"
-#import "ViewController.h"
+#import "TTZHomeViewController.h"
 
 @interface TTZTabBarController ()
 
@@ -29,7 +29,7 @@
 -(void)YYW_UI {
     
     
-    ViewController *yyzj_radio = [[ViewController alloc] init];
+    TTZHomeViewController *yyzj_radio = [[TTZHomeViewController alloc] init];
     TTZNavigationController *yyzj_radioNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_radio];
     yyzj_radioNav.tabBarItem.image = [UIImage imageNamed:@"O"];
     yyzj_radioNav.tabBarItem.selectedImage = [UIImage imageNamed:@"O_select"];
