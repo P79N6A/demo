@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface TTZBanner : UIView
+@property (weak, nonatomic) IBOutlet UIImageView *logoIV;
 + (instancetype)headerView;
 @end

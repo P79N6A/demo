@@ -16,6 +16,8 @@
 #import "Common.h"
 #import "XYYData.h"
 
+
+
 @interface TTZHomeViewController ()
 <UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic, strong) NSArray <NSString *> *imgs;
@@ -81,24 +83,24 @@
         
         [_tableView registerNib:[UINib nibWithNibName:@"TTZEnglishCell" bundle:nil] forCellReuseIdentifier:@"cell"];
         
-        UIView *bgView = [[UIView alloc] initWithFrame:self.view.bounds];
+//        UIView *bgView = [[UIView alloc] initWithFrame:self.view.bounds];
+//        
+//        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
+//        
+//        gradientLayer.locations = @[@0.0, @1.0];
+//        
+//        gradientLayer.startPoint = CGPointMake(0.5, 0);
+//        
+//        gradientLayer.endPoint = CGPointMake(0.5, 1);
+//        
+//        [bgView.layer addSublayer:gradientLayer];
+//        
+//        gradientLayer.colors = @[ (__bridge id)kColorWithHexString(0x209cff).CGColor,(__bridge id)kColorWithHexString(0x68e0cf).CGColor];
+//        
+//        gradientLayer.frame = CGRectMake(-1, -1,bgView.bounds.size.width+2, bgView.bounds.size.height+2);
         
-        CAGradientLayer *gradientLayer = [CAGradientLayer layer];
-        
-        gradientLayer.locations = @[@0.0, @1.0];
-        
-        gradientLayer.startPoint = CGPointMake(0.5, 0);
-        
-        gradientLayer.endPoint = CGPointMake(0.5, 1);
-        
-        [bgView.layer addSublayer:gradientLayer];
-        
-        gradientLayer.colors = @[ (__bridge id)kColorWithHexString(0x209cff).CGColor,(__bridge id)kColorWithHexString(0x68e0cf).CGColor];
-        
-        gradientLayer.frame = CGRectMake(-1, -1,bgView.bounds.size.width+2, bgView.bounds.size.height+2);
-        
-        _tableView.backgroundView = bgView;
-        _tableView.backgroundColor = [UIColor clearColor];
+        //_tableView.backgroundView = bgView;
+        _tableView.backgroundColor = kBackgroundColor;
         TTZBanner *headerView = [TTZBanner headerView];
         headerView.frame = CGRectMake(0, 0, 0, 145);//220
         _tableView.tableHeaderView = headerView;

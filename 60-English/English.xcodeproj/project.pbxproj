@@ -40,6 +40,7 @@
 		AB009EAF2083311A00D84056 /* XYYHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EAD2083311A00D84056 /* XYYHTTP.m */; };
 		AB009EB02083311A00D84056 /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */; };
 		AB009EB12083333F00D84056 /* YYKKCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009EA720832FE800D84056 /* YYKKCell.xib */; };
+		AB009EB42083846A00D84056 /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EB32083846A00D84056 /* UIView+Loading.m */; };
 		AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEDC2080F6D700E02CBF /* TTZBanner.m */; };
 		AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEDE2080F72400E02CBF /* TTZBanner.xib */; };
 		AB27FEE32080FB2500E02CBF /* TTZEnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE12080FB2500E02CBF /* TTZEnglishCell.m */; };
@@ -110,6 +111,8 @@
 		AB009EAC2083311A00D84056 /* UINavigationController+FullscreenPopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FullscreenPopGesture.h"; sourceTree = "<group>"; };
 		AB009EAD2083311A00D84056 /* XYYHTTP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYHTTP.m; sourceTree = "<group>"; };
 		AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
+		AB009EB22083846900D84056 /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
+		AB009EB32083846A00D84056 /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		AB27FEDB2080F6D700E02CBF /* TTZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZBanner.h; sourceTree = "<group>"; };
 		AB27FEDC2080F6D700E02CBF /* TTZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZBanner.m; sourceTree = "<group>"; };
 		AB27FEDE2080F72400E02CBF /* TTZBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTZBanner.xib; sourceTree = "<group>"; };
@@ -252,6 +255,8 @@
 		AB9078F92080E5C00006E945 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB009EB22083846900D84056 /* UIView+Loading.h */,
+				AB009EB32083846A00D84056 /* UIView+Loading.m */,
 				AB009EAC2083311A00D84056 /* UINavigationController+FullscreenPopGesture.h */,
 				AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */,
 				AB009EAB2083311A00D84056 /* XYYHTTP.h */,
@@ -431,6 +436,7 @@
 				AB009E9F20832B6300D84056 /* EnglishCell.m in Sources */,
 				AB009E8D208326A900D84056 /* XYYCacheCell.m in Sources */,
 				69F1052D207EEB16006DD31A /* TTZNavigationController.m in Sources */,
+				AB009EB42083846A00D84056 /* UIView+Loading.m in Sources */,
 				69F1052A207EEB07006DD31A /* TTZTabBarController.m in Sources */,
 				AB009E8220831C1400D84056 /* VideoListController.m in Sources */,
 				69F10530207EED6F006DD31A /* PlayViewController.m in Sources */,
