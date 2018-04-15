@@ -53,7 +53,7 @@
 - (void)changPlay:(NSDictionary *)model{
     
     self.selectIndex = [self.dics indexOfObject:model];
-    //self.subTitleLB.text = [self.dics[self.selectIndex] valueForKey:@"des"];
+    self.navigationItem.title = [model valueForKey:@"title"];
     NSString *url = [model valueForKey:@"url"];
     Model <TTZPlayerModel>*m = [Model new];
     m.name = [model valueForKey:@"title"];

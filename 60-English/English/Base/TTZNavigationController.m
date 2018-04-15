@@ -7,6 +7,7 @@
 //
 
 #import "TTZNavigationController.h"
+#import "Common.h"
 
 @interface TTZNavigationController ()
 
@@ -21,7 +22,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
 
 }
