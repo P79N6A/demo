@@ -55,31 +55,34 @@
     self.navigationItem.title = [model valueForKey:@"title"];
     [self.tableView reloadData];
 
-    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"PL"] boolValue]){
-        
-        UIAlertController *xyy_alertVC = [UIAlertController alertControllerWithTitle:@"五星好评解锁\n" message:@"解锁所有功能,所有内容提供及时更新 \n注意:为确保你的正常使用,请确保评论成功" preferredStyle:UIAlertControllerStyleAlert];
-        
-        UIAlertAction *xyy_done = [UIAlertAction actionWithTitle:@"现在就去" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+    if(KBOOLLINE){
+        if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"PL"] boolValue]){
             
-            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1354357642?action=write-review"]];
+            UIAlertController *xyy_alertVC = [UIAlertController alertControllerWithTitle:@"五星好评解锁\n" message:@"解锁所有功能,所有内容提供及时更新 \n注意:为确保你的正常使用,请确保评论成功" preferredStyle:UIAlertControllerStyleAlert];
             
-            [XYYHTTP sharedInstance].beginTime = [NSDate new];
-        }];
+            UIAlertAction *xyy_done = [UIAlertAction actionWithTitle:@"现在就去" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                
+                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1354357642?action=write-review"]];
+                
+                [XYYHTTP sharedInstance].beginTime = [NSDate new];
+            }];
+            
+            UIAlertAction *xyy_cancel = [UIAlertAction actionWithTitle:@"下次再说" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [self.navigationController popViewControllerAnimated:YES];
+            }];
+            
+            [xyy_alertVC addAction:xyy_done];
+            
+            [xyy_alertVC addAction:xyy_cancel];
+            
+            [self presentViewController:xyy_alertVC animated:YES completion:nil];
+            
+            return;
+        }
         
-        UIAlertAction *xyy_cancel = [UIAlertAction actionWithTitle:@"下次再说" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-            [self.navigationController popViewControllerAnimated:YES];
-        }];
+        ///AD
         
-        [xyy_alertVC addAction:xyy_done];
-        
-        [xyy_alertVC addAction:xyy_cancel];
-        
-        [self presentViewController:xyy_alertVC animated:YES completion:nil];
-        
-        return;
     }
-
-    
     
     NSString *url = [model valueForKey:@"url"];
     Model <TTZPlayerModel>*m = [Model new];

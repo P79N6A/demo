@@ -12,6 +12,7 @@
 #import "EnglishItemCell.h"
 
 #import "Common.h"
+#import "XYYHTTP.h"
 
 #import <UIImageView+WebCache.h>
 
@@ -43,6 +44,11 @@
     
     self.layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1);
     self.collectionView.backgroundColor = kBackgroundColor;
+    
+    
+    if (KBOOLLINE) {
+        ////AD
+    }
 
 }
 - (void)setDics:(NSArray *)dics{
