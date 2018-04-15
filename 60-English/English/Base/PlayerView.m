@@ -78,9 +78,10 @@
     self.playOrPauseButton.frame = CGRectMake(0, 0, 44, 44);
     self.timeLabel.frame = CGRectMake(44, 0, 65, 44);
     
-    self.progressView.frame = CGRectMake(44 + 65+10, 0, self.videoButtomView.bounds.size.width - 44 - 65-10, 20);
+    self.progressView.frame = CGRectMake(44 + 65+10, 0, self.videoButtomView.bounds.size.width - 44 - 65-10, 44);
     self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.center.y);
-    self.videoSlider.frame = self.progressView.frame;
+    self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 1, self.progressView.frame.origin.y, self.progressView.frame.size.width+1, 44);
+    self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
 }
 
 #pragma mark  开始播放
@@ -411,13 +412,14 @@
 
 - (SPVideoSlider *)videoSlider {
     if (!_videoSlider) {
-        _videoSlider                       = [[SPVideoSlider alloc] init];
+        _videoSlider                       = [[UISlider alloc] init];
         [_videoSlider setMinimumTrackImage:[UIImage imageNamed:@"pic_progressbar_n_171x3_"] forState:UIControlStateNormal];
         [_videoSlider setThumbImage:[UIImage imageNamed:@"player_full_slider_iphone_12x15_"] forState:UIControlStateNormal];
 
         //[_videoSlider setMaximumTrackImage:SPPlayerImage(@"freeprop_progressbar_iphone_40x2_"] forState:UIControlStateNormal];
         _videoSlider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
         //_videoSlider.value = 0.6;
+        //_videoSlider.backgroundColor = [UIColor orangeColor];
         [_videoSlider addTarget:self action:@selector(videoDurationChange:) forControlEvents:UIControlEventValueChanged];
     }
     return _videoSlider;
