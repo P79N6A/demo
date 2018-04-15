@@ -9,6 +9,7 @@
 #import "TTZBaseController.h"
 
 @interface PlayViewController : TTZBaseController
+@property (nonatomic, copy) NSString *mainTitle;
 @property (nonatomic, assign) NSInteger selectIndex;
 @property (nonatomic, strong) NSArray *dics;
 @end

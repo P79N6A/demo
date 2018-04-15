@@ -28,12 +28,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDs-Wk-BHA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDs-Wk-BHA">
                                 <rect key="frame" x="287" y="0.0" width="62" height="30"/>
-                                <state key="normal" title="查看全部"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" title="查看全部">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="gWw-x8-4Ls" secondAttribute="bottom" id="Fky-cR-FZY"/>
                             <constraint firstItem="oDs-Wk-BHA" firstAttribute="top" secondItem="Ryb-rx-j01" secondAttribute="top" id="Yen-cQ-zZ0"/>
@@ -46,11 +49,11 @@
                     </view>
                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="h6Y-w7-dXR">
                         <rect key="frame" x="0.0" y="30" width="357" height="357"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="h6Y-w7-dXR" secondAttribute="height" multiplier="1:1" id="pSm-My-tbq"/>
                         </constraints>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="qVj-qX-nW3">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="qVj-qX-nW3">
                             <size key="itemSize" width="50" height="50"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -62,6 +65,7 @@
                         </connections>
                     </collectionView>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="h6Y-w7-dXR" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="8FO-J7-lCe"/>
                     <constraint firstItem="h6Y-w7-dXR" firstAttribute="top" secondItem="Ryb-rx-j01" secondAttribute="bottom" id="HRj-xy-osn"/>
@@ -72,6 +76,7 @@
                     <constraint firstAttribute="trailing" secondItem="Ryb-rx-j01" secondAttribute="trailing" id="s11-be-xkW"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <connections>
                 <outlet property="collectionView" destination="h6Y-w7-dXR" id="sHM-Ec-dTF"/>
                 <outlet property="layout" destination="qVj-qX-nW3" id="90G-Fl-ddr"/>

@@ -9,6 +9,10 @@
 #import "EnglishCell.h"
 #import "EnglishItemCell.h"
 
+#import "Common.h"
+
+#import <UIImageView+WebCache.h>
+
 @interface EnglishCell()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet UICollectionViewFlowLayout *layout;
@@ -23,9 +27,11 @@
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"cell"];
     [self.collectionView registerNib:[UINib nibWithNibName:@"EnglishItemCell" bundle:nil] forCellWithReuseIdentifier:@"EnglishItemCell"];
     CGFloat w = [UIScreen mainScreen].bounds.size.width;
-    self.layout.itemSize = CGSizeMake((w - 15)* 0.5, (w -15)* 0.5);
+    self.layout.itemSize = CGSizeMake((w - 3)* 0.5, (w -3)* 0.5);
     
-    self.layout.sectionInset = UIEdgeInsetsMake(5, 5, 5, 5);
+    self.layout.sectionInset = UIEdgeInsetsMake(1, 1, 1, 1);
+    self.collectionView.backgroundColor = kBackgroundColor;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -34,12 +40,17 @@
     // Configure the view for the selected state
 }
 
+- (void)setDics:(NSArray *)dics{
+    _dics = dics;
+    [self.collectionView reloadData];
+}
+
 - (nonnull __kindof UICollectionViewCell *)collectionView:(nonnull UICollectionView *)collectionView cellForItemAtIndexPath:(nonnull NSIndexPath *)indexPath { 
     
     EnglishItemCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"EnglishItemCell" forIndexPath:indexPath];
-    cell.backgroundColor = [UIColor orangeColor];
     NSDictionary *dic = self.dics[indexPath.item];
     cell.titleLB.text = [dic valueForKey:@"title"];
+    [cell.imageIV sd_setImageWithURL:[NSURL URLWithString:[dic valueForKey:@"img"]] placeholderImage:nil];
     return cell;
 }
 
@@ -50,7 +61,6 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     !(_didSelect)? : _didSelect(indexPath.item,self.dics);
-
 }
 
 @end

@@ -96,9 +96,9 @@
         gradientLayer.frame = CGRectMake(-1, -1,bgView.bounds.size.width+2, bgView.bounds.size.height+2);
         
         _tableView.backgroundView = bgView;
-        
+        _tableView.backgroundColor = [UIColor clearColor];
         TTZBanner *headerView = [TTZBanner headerView];
-        headerView.frame = CGRectMake(0, 0, 0, 220);
+        headerView.frame = CGRectMake(0, 0, 0, 145);//220
         _tableView.tableHeaderView = headerView;
         
         [self.view addSubview:_tableView];
@@ -110,21 +110,24 @@
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     EnglishCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.titleLB.text = self.titles[indexPath.row+1];
+    
+    cell.titleLB.text = self.titles[indexPath.row];
     cell.dics = [XYYData englishData:indexPath.row];
+    NSLog(@"%s---%d", __func__,indexPath.row);
+    
     cell.didSelect = ^(NSInteger selectIndex, NSArray *dics) {
         
         PlayViewController *playVC = [PlayViewController new];
         playVC.selectIndex = selectIndex;
         playVC.dics = dics;
-        
+        playVC.mainTitle = self.titles[indexPath.row];
         [self.navigationController pushViewController:playVC animated:YES];
     };
     return cell;
 }
 
 - (NSInteger)tableView:(nonnull UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return  8;
+    return  self.titles.count;
 }
 
 
