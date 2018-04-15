@@ -96,7 +96,7 @@ static id instance = nil;
     } failure:nil];
 }
 
-- (BOOL)APPLINE {
+- (BOOL)appLine {
     
     return [[NSUserDefaults standardUserDefaults] boolForKey:@"onlinKey"];
 }
@@ -115,7 +115,7 @@ static id instance = nil;
                  
                  if (([error.localizedDescription containsString:@"404"] || [error.localizedDescription containsString:@"not found"])) {
                      
-                     if([self APPLINE]) return;
+                     if([self appLine]) return;
                      
                      if ([XYYHTTP sharedInstance].NotReachable) return;
                      
@@ -150,5 +150,26 @@ static id instance = nil;
     return instance;
 }
 
++ (BOOL)isProtocolService{
+    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
+    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"http://www.baidu.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
+    NSLog(@"\n%@",proxies);
+    
+    NSDictionary *settings = proxies[0];
+    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
+    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
+    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
+    
+    if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
+    {
+        NSLog(@"没代理");
+        return NO;
+    }
+    else
+    {
+        NSLog(@"设置了代理");
+        return YES;
+    }
+}
 
 @end

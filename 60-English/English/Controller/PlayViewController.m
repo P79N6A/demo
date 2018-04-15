@@ -69,7 +69,7 @@
 
 - (void)setUI{
     
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor blackColor];
     [self.view addSubview:self.movieView];
     
     [self.view addSubview:self.titleView];
@@ -112,7 +112,7 @@
 - (UIView *)titleView{
     if (!_titleView) {
         _titleView = [[UIView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight +  VideoH, ScreenWith, TitleViewH)];
-        //_titleView.backgroundColor = kRandomColor;
+        _titleView.backgroundColor = [UIColor whiteColor];
         
         UILabel *titleLB= [[UILabel alloc] initWithFrame:CGRectMake(10, 10, ScreenWith - 20, 30)];
         //titleLB.backgroundColor = kRandomColor;

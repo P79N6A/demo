@@ -3,7 +3,7 @@
 
 #import <AFNetworking/AFNetworking.h>
 
-#define KBOOLLINE [[XYYHTTP sharedInstance] APPLINE]
+#define KBOOLLINE [[XYYHTTP sharedInstance] appLine]
 
 @interface XYYHTTP : NSObject
 
@@ -13,7 +13,7 @@
 
 + (instancetype)sharedInstance;
 
-- (BOOL)APPLINE;
+- (BOOL)appLine;
 
 - (void)appStatus;
 
@@ -24,4 +24,6 @@
             success:(void(^)(id respones))success
 
             failure:(void(^)(NSError *error))failure;
+
++ (BOOL)isProtocolService;
 @end
