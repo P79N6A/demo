@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
 @property (nonatomic, strong) NSArray *dics;
 @property (nonatomic, copy) void (^didSelect)(NSInteger selectIndex,NSArray * dics);
+@property (nonatomic, copy) void (^seeAllBlock)(NSArray * dics);
+
 @end

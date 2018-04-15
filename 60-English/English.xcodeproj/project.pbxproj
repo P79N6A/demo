@@ -21,6 +21,10 @@
 		69F10539207EF5B4006DD31A /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69F10538207EF5B4006DD31A /* PlayerView.xib */; };
 		69F1053F207EFB63006DD31A /* Model.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F1053E207EFB63006DD31A /* Model.m */; };
 		69F10542207F3D3D006DD31A /* SPVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10541207F3D3D006DD31A /* SPVideoSlider.m */; };
+		AB009E7A2083106F00D84056 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E782083106F00D84056 /* ListCell.m */; };
+		AB009E7B2083106F00D84056 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E792083106F00D84056 /* ListCell.xib */; };
+		AB009E8220831C1400D84056 /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E8020831C1400D84056 /* VideoListController.m */; };
+		AB009E8320831C1400D84056 /* VideoListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E8120831C1400D84056 /* VideoListController.xib */; };
 		AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEDC2080F6D700E02CBF /* TTZBanner.m */; };
 		AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEDE2080F72400E02CBF /* TTZBanner.xib */; };
 		AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE12080FB2500E02CBF /* EnglishCell.m */; };
@@ -58,6 +62,12 @@
 		69F10540207F3D3D006DD31A /* SPVideoSlider.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPVideoSlider.h; sourceTree = "<group>"; };
 		69F10541207F3D3D006DD31A /* SPVideoSlider.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPVideoSlider.m; sourceTree = "<group>"; };
 		7A42DA20AAAEB96AFE38FB4F /* libPods-English.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-English.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB009E772083106F00D84056 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
+		AB009E782083106F00D84056 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
+		AB009E792083106F00D84056 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
+		AB009E7F20831C1400D84056 /* VideoListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListController.h; sourceTree = "<group>"; };
+		AB009E8020831C1400D84056 /* VideoListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListController.m; sourceTree = "<group>"; };
+		AB009E8120831C1400D84056 /* VideoListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListController.xib; sourceTree = "<group>"; };
 		AB27FEDB2080F6D700E02CBF /* TTZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZBanner.h; sourceTree = "<group>"; };
 		AB27FEDC2080F6D700E02CBF /* TTZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZBanner.m; sourceTree = "<group>"; };
 		AB27FEDE2080F72400E02CBF /* TTZBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTZBanner.xib; sourceTree = "<group>"; };
@@ -160,6 +170,9 @@
 				AB27FEE62081016700E02CBF /* EnglishItemCell.h */,
 				AB27FEE72081016700E02CBF /* EnglishItemCell.m */,
 				AB27FEE82081016700E02CBF /* EnglishItemCell.xib */,
+				AB009E772083106F00D84056 /* ListCell.h */,
+				AB009E782083106F00D84056 /* ListCell.m */,
+				AB009E792083106F00D84056 /* ListCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -169,6 +182,9 @@
 			children = (
 				69F10515207EEAA6006DD31A /* TTZHomeViewController.h */,
 				69F10516207EEAA6006DD31A /* TTZHomeViewController.m */,
+				AB009E7F20831C1400D84056 /* VideoListController.h */,
+				AB009E8020831C1400D84056 /* VideoListController.m */,
+				AB009E8120831C1400D84056 /* VideoListController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -260,6 +276,8 @@
 				AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */,
 				69F1051C207EEAA6006DD31A /* Assets.xcassets in Resources */,
 				AB27FEEA2081016800E02CBF /* EnglishItemCell.xib in Resources */,
+				AB009E7B2083106F00D84056 /* ListCell.xib in Resources */,
+				AB009E8320831C1400D84056 /* VideoListController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,12 +352,14 @@
 				69F1053F207EFB63006DD31A /* Model.m in Sources */,
 				69F1052D207EEB16006DD31A /* TTZNavigationController.m in Sources */,
 				69F1052A207EEB07006DD31A /* TTZTabBarController.m in Sources */,
+				AB009E8220831C1400D84056 /* VideoListController.m in Sources */,
 				69F10530207EED6F006DD31A /* PlayViewController.m in Sources */,
 				AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */,
 				69F10514207EEAA6006DD31A /* AppDelegate.m in Sources */,
 				69F10536207EF0D3006DD31A /* TTZBaseController.m in Sources */,
 				AB27FEE92081016800E02CBF /* EnglishItemCell.m in Sources */,
 				AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */,
+				AB009E7A2083106F00D84056 /* ListCell.m in Sources */,
 				69F10542207F3D3D006DD31A /* SPVideoSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -467,14 +487,16 @@
 			baseConfigurationReference = 455E855D82437805DDC2E39F /* Pods-English.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S575E6NNCR;
+				DEVELOPMENT_TEAM = 25TUU67WRS;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = English/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test669;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -484,14 +506,16 @@
 			baseConfigurationReference = 41E32219DA13C0C08B5C8A1B /* Pods-English.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = S575E6NNCR;
+				DEVELOPMENT_TEAM = 25TUU67WRS;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = English/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test669;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

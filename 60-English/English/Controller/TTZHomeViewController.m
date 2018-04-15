@@ -8,6 +8,7 @@
 
 #import "TTZHomeViewController.h"
 #import "PlayViewController.h"
+#import "VideoListController.h"
 
 #import "TTZBanner.h"
 #import "EnglishCell.h"
@@ -113,7 +114,6 @@
     
     cell.titleLB.text = self.titles[indexPath.row];
     cell.dics = [XYYData englishData:indexPath.row];
-    NSLog(@"%s---%d", __func__,indexPath.row);
     
     cell.didSelect = ^(NSInteger selectIndex, NSArray *dics) {
         
@@ -121,6 +121,12 @@
         playVC.selectIndex = selectIndex;
         playVC.dics = dics;
         playVC.mainTitle = self.titles[indexPath.row];
+        [self.navigationController pushViewController:playVC animated:YES];
+    };
+    cell.seeAllBlock = ^(NSArray *dics) {
+        VideoListController *playVC = [VideoListController new];
+        playVC.dics = dics;
+        playVC.title = self.titles[indexPath.row];
         [self.navigationController pushViewController:playVC animated:YES];
     };
     return cell;

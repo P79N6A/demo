@@ -8,15 +8,16 @@
 //
 
 #import "PlayViewController.h"
-#import "PlayerView.h"
-#import "Model.h"
 
+#import "PlayerView.h"
+#import "ListCell.h"
+#import "Model.h"
 #import "Common.h"
 
 #define VideoH ScreenWith/16.0*9.0
 #define TitleViewH 116
 
-@interface PlayViewController ()
+@interface PlayViewController ()<UITableViewDataSource>
 @property (nonatomic, strong) PlayerView *movieView;
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *titleView;
@@ -49,6 +50,23 @@
 
 }
 
+- (void)changPlay:(NSDictionary *)model{
+    
+    self.selectIndex = [self.dics indexOfObject:model];
+    //self.subTitleLB.text = [self.dics[self.selectIndex] valueForKey:@"des"];
+    NSString *url = [model valueForKey:@"url"];
+    Model <TTZPlayerModel>*m = [Model new];
+    m.name = [model valueForKey:@"title"];
+    m.url = [url containsString:@"m3u8"]? url : [NSString stringWithFormat:@"http://app.zhangwangye.com/mdparse/app.php?id=%@",url];
+    [self.movieView playWithModel:m];
+    [self.tableView reloadData];
+}
+
+- (void)dealloc{
+    NSLog(@"%s---guoli", __func__);
+}
+
+
 - (void)setUI{
     
     self.view.backgroundColor = [UIColor whiteColor];
@@ -60,7 +78,22 @@
 
 }
 
+#pragma mark  - UITableViewDataSource
 
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+     __weak typeof(self) weakSelf = self;
+    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    NSDictionary *model = self.dics[indexPath.row];
+    cell.model = model;
+    cell.playBtn.selected = (indexPath.item == self.selectIndex);
+    cell.playBlock = ^(NSDictionary *model) {
+        [weakSelf changPlay:model];
+    };
+    return cell;
+}
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.dics.count;
+}
 
 #pragma mark  -  get/set 方法
 - (PlayerView *)movieView{
@@ -90,6 +123,7 @@
         
         UILabel *playCountLB= [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(titleLB.frame), ScreenWith - 20, 15)];
         //playCountLB.backgroundColor = kRandomColor;
+        playCountLB.textColor = [UIColor lightGrayColor];
         playCountLB.font = [UIFont systemFontOfSize:10];
 
         [_titleView addSubview:playCountLB];
@@ -98,6 +132,7 @@
         UILabel *subTitleLB= [[UILabel alloc] initWithFrame:CGRectMake(10, CGRectGetMaxY(playCountLB.frame)+5, ScreenWith - 20, 20)];
         //subTitleLB.backgroundColor = kRandomColor;
         subTitleLB.font = [UIFont systemFontOfSize:14.0];
+        subTitleLB.textColor = [UIColor lightGrayColor];
         [_titleView addSubview:subTitleLB];
         _subTitleLB = subTitleLB;
         
@@ -139,8 +174,8 @@
         _tableView.frame = CGRectMake(0, CGRectGetMaxY(self.titleView.frame), ScreenWith, ScreenHeight - TitleViewH - VideoH -kStatusBarAndNavigationBarHeight);
 
         //_tableView.delegate = self;
-        
-        //_tableView.dataSource = self;
+        //
+        _tableView.dataSource = self;
         
         //_tableView.rowHeight = UITableViewAutomaticDimension;
         //_tableView.estimatedRowHeight = 200;
@@ -150,7 +185,7 @@
         
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
-        //[_tableView registerNib:[UINib nibWithNibName:@"EnglishCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        [_tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:nil] forCellReuseIdentifier:@"cell"];
         
 //        UIView *bgView = [[UIView alloc] initWithFrame:self.view.bounds];
 //
@@ -169,7 +204,7 @@
 //        gradientLayer.frame = CGRectMake(-1, -1,bgView.bounds.size.width+2, bgView.bounds.size.height+2);
 //
 //        _tableView.backgroundView = bgView;
-        _tableView.backgroundColor = [UIColor orangeColor];
+//        _tableView.backgroundColor = [UIColor orangeColor];
         //[self.view addSubview:_tableView];
         
     }
