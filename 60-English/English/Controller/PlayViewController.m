@@ -11,8 +11,10 @@
 
 #import "PlayerView.h"
 #import "ListCell.h"
+
 #import "Model.h"
 #import "Common.h"
+#import "XYYHTTP.h"
 
 #define VideoH ScreenWith/16.0*9.0
 #define TitleViewH 116
@@ -39,19 +41,21 @@
     self.titleLB.text = self.mainTitle;
     self.playCountLB.text = [NSString stringWithFormat:@"共%lu集,%lu万次点播",(unsigned long)self.dics.count,self.dics.count * 5 + random()%50];
     self.subTitleLB.text = [self.dics[self.selectIndex] valueForKey:@"des"];
-    self.navigationItem.title = [self.dics[self.selectIndex] valueForKey:@"title"];
     self.countTitle.text = [NSString stringWithFormat:@"全%lu集",(unsigned long)self.dics.count];
 
-    NSString *url = [self.dics[self.selectIndex] valueForKey:@"url"];
-    Model <TTZPlayerModel>*m = [Model new];
-    m.name = [self.dics[self.selectIndex] valueForKey:@"title"];
-    m.url = [url containsString:@"m3u8"]? url : [NSString stringWithFormat:@"http://app.zhangwangye.com/mdparse/app.php?id=%@",url];
-    [self.movieView playWithModel:m];
+//    NSString *url = [self.dics[self.selectIndex] valueForKey:@"url"];
+//    Model <TTZPlayerModel>*m = [Model new];
+//    m.name = [self.dics[self.selectIndex] valueForKey:@"title"];
+//    m.url = [url containsString:@"m3u8"]? url : [NSString stringWithFormat:@"http://app.zhangwangye.com/mdparse/app.php?id=%@",url];
+//    [self.movieView playWithModel:m];
+    
+    [self changPlay:self.dics[self.selectIndex]];
 
 }
 
 - (void)changPlay:(NSDictionary *)model{
     
+   if(XYYHTTP.isProtocolService) return;
     self.selectIndex = [self.dics indexOfObject:model];
     self.navigationItem.title = [model valueForKey:@"title"];
     NSString *url = [model valueForKey:@"url"];
