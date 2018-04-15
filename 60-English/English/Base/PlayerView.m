@@ -11,6 +11,12 @@
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 
+#define ScreenWith [UIScreen mainScreen].bounds.size.width
+#define ScreenHeight [UIScreen mainScreen].bounds.size.height
+// iPhone X
+#define  iPhoneX (ScreenHeight == 375.f && ScreenWith == 812.f ? YES : NO)
+
+
 
 @interface PlayerView()
 
@@ -63,13 +69,18 @@
     [super layoutSubviews];
     NSLog(@"%s---小学英语单词记忆法", __func__);
     self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
-    self.topView.frame = CGRectMake(0, 0, self.bounds.size.width, 64);
-    self.buttomView.frame = CGRectMake(0, self.bounds.size.height - 44, self.bounds.size.width, 44);
+    CGFloat spacing = iPhoneX? 24 : 0;
+    self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 64);
+    
+    
+    self.buttomView.frame = CGRectMake(spacing, self.bounds.size.height - 44, self.bounds.size.width - 2 * spacing, 44);
+    
     self.contentView.frame = self.bounds;
     self.fullButton.frame = CGRectMake(self.buttomView.bounds.size.width - 44, 0, 44, 44);
     self.topBgView.frame = self.topView.bounds;
     self.buttomBgView.frame = self.buttomView.bounds;
-    self.backButton.frame = CGRectMake(0, 20, 44, 44);
+    
+    self.backButton.frame = CGRectMake(0, 29, 35, 35);
     self.titleLabel.frame = CGRectMake(44, 20, self.topView.bounds.size.width - 44, 44);
     
     

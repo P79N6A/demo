@@ -55,6 +55,7 @@
                     ];
     
     [self tableView];
+    self.navigationItem.title = @"课程";
 
 }
 

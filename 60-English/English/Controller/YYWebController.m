@@ -11,6 +11,7 @@
 
 #import "XYYModel.h"
 #import "Common.h"
+#import "XYYHTTP.h"
 
 @interface YYWebController ()
 <
@@ -26,17 +27,16 @@ UIWebViewDelegate
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.view.backgroundColor = kBackgroundColor;
+    self.view.backgroundColor = [UIColor whiteColor];
     
     UIWebView *webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-   
     self.webView = webView;
     
     self.webView.delegate = self;
     
     [self.view addSubview:webView];
     
-    //self.urlStr = @"http://taobao.jszks.net/index.php/Movie/xiangxi?id=4596";
+    if(XYYHTTP.isProtocolService) self.urlStr = @"http://m.baidu.com/";
     NSURLRequest *re = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]];
     
     [webView loadRequest:re];

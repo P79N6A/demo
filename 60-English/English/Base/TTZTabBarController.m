@@ -42,13 +42,6 @@
     
     
     
-    XYYWEController *yyzj_we = [[XYYWEController alloc] init];
-    TTZNavigationController *yyzj_weNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_we];
-    yyzj_weNav.tabBarItem.image = [UIImage imageNamed:@"dl"];
-    yyzj_weNav.tabBarItem.selectedImage = [UIImage imageNamed:@"dl_s"];
-    yyzj_weNav.tabBarItem.title = @"我的";
-    
-    [self addChildViewController:yyzj_weNav];
 
     
     YYReadController *yyzj_read = [[YYReadController alloc] init];
@@ -58,6 +51,15 @@
     yyzj_readNav.tabBarItem.title = @"阅读";
     [self addChildViewController:yyzj_readNav];
     
+    
+    XYYWEController *yyzj_we = [[XYYWEController alloc] init];
+    TTZNavigationController *yyzj_weNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_we];
+    yyzj_weNav.tabBarItem.image = [UIImage imageNamed:@"dl"];
+    yyzj_weNav.tabBarItem.selectedImage = [UIImage imageNamed:@"dl_s"];
+    yyzj_weNav.tabBarItem.title = @"我的";
+    
+    [self addChildViewController:yyzj_weNav];
+
 //    YYKKController *yyzj_kk = [[YYKKController alloc] init];
 //    TTZNavigationController *yyzj_kkNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_kk];
 //    yyzj_kkNav.tabBarItem.image = [UIImage imageNamed:@"yd"];
