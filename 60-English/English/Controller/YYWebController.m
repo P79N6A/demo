@@ -7,6 +7,7 @@
 //
 
 #import "YYWebController.h"
+#import "PlayViewController.h"
 
 #import "XYYModel.h"
 #import "Common.h"
@@ -40,12 +41,6 @@ UIWebViewDelegate
     
     [webView loadRequest:re];
     
-    
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(endPlayVideo:)
-                                                 name:UIWindowDidBecomeHiddenNotification
-                                               object:self.view.window];
 }
 
 
@@ -59,14 +54,19 @@ UIWebViewDelegate
         return NO;
     }
 
+    
+
     if ([request.URL.absoluteString containsString:@"m3u8"]) {
-        XYYModel *model = [XYYModel new];
-        model.title = self.title;
-        model.des = @"";
-        model.url = [request.URL.absoluteString componentsSeparatedByString:@"url="].lastObject;
-//        XYYPlayController *playVC = [XYYPlayController new];
-//        playVC.model = model;
-//        [self.navigationController pushViewController:playVC animated:YES];
+
+        NSString *url = [request.URL.absoluteString componentsSeparatedByString:@"url="].lastObject;
+        
+        NSDictionary *dic = @{@"des":self.title,@"title":self.title,@"url":url};
+        PlayViewController *playVC = [PlayViewController new];
+        playVC.dics = @[dic];
+        playVC.selectIndex = 0;
+        playVC.mainTitle = self.title;
+        
+        [self.navigationController pushViewController:playVC animated:YES];
 
         return NO;
     }

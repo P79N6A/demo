@@ -58,12 +58,12 @@
     yyzj_readNav.tabBarItem.title = @"阅读";
     [self addChildViewController:yyzj_readNav];
     
-    YYKKController *yyzj_kk = [[YYKKController alloc] init];
-    TTZNavigationController *yyzj_kkNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_kk];
-    yyzj_kkNav.tabBarItem.image = [UIImage imageNamed:@"yd"];
-    yyzj_kkNav.tabBarItem.selectedImage = [UIImage imageNamed:@"yd_select"];
-    yyzj_kkNav.tabBarItem.title = @"阅读";
-    [self addChildViewController:yyzj_kkNav];
+//    YYKKController *yyzj_kk = [[YYKKController alloc] init];
+//    TTZNavigationController *yyzj_kkNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_kk];
+//    yyzj_kkNav.tabBarItem.image = [UIImage imageNamed:@"yd"];
+//    yyzj_kkNav.tabBarItem.selectedImage = [UIImage imageNamed:@"yd_select"];
+//    yyzj_kkNav.tabBarItem.title = @"阅读";
+//    [self addChildViewController:yyzj_kkNav];
 
     
 }

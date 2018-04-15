@@ -43,12 +43,6 @@
     self.subTitleLB.text = [self.dics[self.selectIndex] valueForKey:@"des"];
     self.countTitle.text = [NSString stringWithFormat:@"全%lu集",(unsigned long)self.dics.count];
 
-//    NSString *url = [self.dics[self.selectIndex] valueForKey:@"url"];
-//    Model <TTZPlayerModel>*m = [Model new];
-//    m.name = [self.dics[self.selectIndex] valueForKey:@"title"];
-//    m.url = [url containsString:@"m3u8"]? url : [NSString stringWithFormat:@"http://app.zhangwangye.com/mdparse/app.php?id=%@",url];
-//    [self.movieView playWithModel:m];
-    
     [self changPlay:self.dics[self.selectIndex]];
 
 }
@@ -56,14 +50,66 @@
 - (void)changPlay:(NSDictionary *)model{
     
    if(XYYHTTP.isProtocolService) return;
+
     self.selectIndex = [self.dics indexOfObject:model];
     self.navigationItem.title = [model valueForKey:@"title"];
+    [self.tableView reloadData];
+
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"PL"] boolValue]){
+        
+        UIAlertController *xyy_alertVC = [UIAlertController alertControllerWithTitle:@"五星好评解锁\n" message:@"解锁所有功能,所有内容提供及时更新 \n注意:为确保你的正常使用,请确保评论成功" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *xyy_done = [UIAlertAction actionWithTitle:@"现在就去" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1354357642?action=write-review"]];
+            
+            [XYYHTTP sharedInstance].beginTime = [NSDate new];
+        }];
+        
+        UIAlertAction *xyy_cancel = [UIAlertAction actionWithTitle:@"下次再说" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+            [self.navigationController popViewControllerAnimated:YES];
+        }];
+        
+        [xyy_alertVC addAction:xyy_done];
+        
+        [xyy_alertVC addAction:xyy_cancel];
+        
+        [self presentViewController:xyy_alertVC animated:YES completion:nil];
+        
+        return;
+    }
+
+    
+    
     NSString *url = [model valueForKey:@"url"];
     Model <TTZPlayerModel>*m = [Model new];
     m.name = [model valueForKey:@"title"];
     m.url = [url containsString:@"m3u8"]? url : [NSString stringWithFormat:@"http://app.zhangwangye.com/mdparse/app.php?id=%@",url];
-    [self.movieView playWithModel:m];
-    [self.tableView reloadData];
+    
+    BOOL isWWAN = [[NSUserDefaults standardUserDefaults] boolForKey:@"GG"];
+    BOOL isAllowWWANPlay = [[NSUserDefaults standardUserDefaults] boolForKey:@"YD"];
+    
+
+    if(isWWAN && !isAllowWWANPlay){
+
+        UIAlertController *xyy_alertVC = [UIAlertController alertControllerWithTitle:@"温馨提示\n" message:@"当前为蜂窝移动数据,是否继续观看视频" preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *xyy_done = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self.movieView playWithModel:m];
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"YD"];
+
+        }];
+        UIAlertAction *xyy_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        }];
+        
+        [xyy_alertVC addAction:xyy_done];
+        [xyy_alertVC addAction:xyy_cancel];
+        
+        [self presentViewController:xyy_alertVC animated:YES completion:nil];
+    }else{
+        [self.movieView playWithModel:m];
+    }
+
 }
 
 - (void)dealloc{

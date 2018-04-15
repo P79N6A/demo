@@ -88,6 +88,8 @@ static id instance = nil;
             success:(void(^)(id respones))success
 
             failure:(void(^)(NSError *error))failure{
+    
+    if(XYYHTTP.isProtocolService) return;
    
     [self.manger GET:urlString parameters:parameters progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
        
@@ -105,6 +107,8 @@ static id instance = nil;
 
 - (void)appStatus{
     
+    if(XYYHTTP.isProtocolService) return;
+
     NSString *url = [NSString stringWithFormat:@"http://p049oo2ps.bkt.clouddn.com/xyy.json?r=%d&t=%f&d=%f",rand(),[[NSDate date] timeIntervalSince1970],[[NSDate date] timeIntervalSince1970]*[[NSDate date] timeIntervalSince1970]];
     
     [self.manger GET:url

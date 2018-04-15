@@ -26,7 +26,6 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return 2;
-    //return KBOOLLINE?1:2;
 }
 
 
@@ -81,7 +80,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     
     if (section == 0) {
-       
         return self.xyy_titleData.count-1;
     }
     
@@ -111,7 +109,6 @@
                     break;
                 case 2: {
                     ABController *ab = [[ABController alloc] init];
-                    
                     [self.navigationController pushViewController:ab animated:YES];
                 }
                     break;
