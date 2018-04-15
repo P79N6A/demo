@@ -25,10 +25,25 @@
 		AB009E7B2083106F00D84056 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E792083106F00D84056 /* ListCell.xib */; };
 		AB009E8220831C1400D84056 /* VideoListController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E8020831C1400D84056 /* VideoListController.m */; };
 		AB009E8320831C1400D84056 /* VideoListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E8120831C1400D84056 /* VideoListController.xib */; };
+		AB009E862083265700D84056 /* XYYWEController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E852083265700D84056 /* XYYWEController.m */; };
+		AB009E8A2083268E00D84056 /* ABController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E872083268D00D84056 /* ABController.m */; };
+		AB009E8D208326A900D84056 /* XYYCacheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E8B208326A900D84056 /* XYYCacheCell.m */; };
+		AB009E90208326DE00D84056 /* XYYF.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E8E208326DE00D84056 /* XYYF.m */; };
+		AB009E912083298300D84056 /* ABController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E892083268E00D84056 /* ABController.xib */; };
+		AB009E9620832A3A00D84056 /* YYWebController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E9220832A3900D84056 /* YYWebController.m */; };
+		AB009E9720832A3A00D84056 /* YYReadController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E9320832A3A00D84056 /* YYReadController.m */; };
+		AB009E9F20832B6300D84056 /* EnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009E9D20832B6300D84056 /* EnglishCell.m */; };
+		AB009EA020832CAC00D84056 /* EnglishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009E9C20832B6200D84056 /* EnglishCell.xib */; };
+		AB009EA320832FCC00D84056 /* YYKKController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EA120832FCB00D84056 /* YYKKController.m */; };
+		AB009EA620832FDB00D84056 /* XYYModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EA520832FDB00D84056 /* XYYModel.m */; };
+		AB009EAA20832FE900D84056 /* YYKKCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EA920832FE900D84056 /* YYKKCell.m */; };
+		AB009EAF2083311A00D84056 /* XYYHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EAD2083311A00D84056 /* XYYHTTP.m */; };
+		AB009EB02083311A00D84056 /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */; };
+		AB009EB12083333F00D84056 /* YYKKCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB009EA720832FE800D84056 /* YYKKCell.xib */; };
 		AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEDC2080F6D700E02CBF /* TTZBanner.m */; };
 		AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEDE2080F72400E02CBF /* TTZBanner.xib */; };
-		AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE12080FB2500E02CBF /* EnglishCell.m */; };
-		AB27FEE42080FB2500E02CBF /* EnglishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEE22080FB2500E02CBF /* EnglishCell.xib */; };
+		AB27FEE32080FB2500E02CBF /* TTZEnglishCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE12080FB2500E02CBF /* TTZEnglishCell.m */; };
+		AB27FEE42080FB2500E02CBF /* TTZEnglishCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEE22080FB2500E02CBF /* TTZEnglishCell.xib */; };
 		AB27FEE52080FD2B00E02CBF /* XYYData.m in Sources */ = {isa = PBXBuildFile; fileRef = AB9078FA2080E5D50006E945 /* XYYData.m */; };
 		AB27FEE92081016800E02CBF /* EnglishItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB27FEE72081016700E02CBF /* EnglishItemCell.m */; };
 		AB27FEEA2081016800E02CBF /* EnglishItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB27FEE82081016700E02CBF /* EnglishItemCell.xib */; };
@@ -68,12 +83,39 @@
 		AB009E7F20831C1400D84056 /* VideoListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoListController.h; sourceTree = "<group>"; };
 		AB009E8020831C1400D84056 /* VideoListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoListController.m; sourceTree = "<group>"; };
 		AB009E8120831C1400D84056 /* VideoListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoListController.xib; sourceTree = "<group>"; };
+		AB009E842083265600D84056 /* XYYWEController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYWEController.h; sourceTree = "<group>"; };
+		AB009E852083265700D84056 /* XYYWEController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYWEController.m; sourceTree = "<group>"; };
+		AB009E872083268D00D84056 /* ABController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ABController.m; sourceTree = "<group>"; };
+		AB009E882083268E00D84056 /* ABController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ABController.h; sourceTree = "<group>"; };
+		AB009E892083268E00D84056 /* ABController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ABController.xib; sourceTree = "<group>"; };
+		AB009E8B208326A900D84056 /* XYYCacheCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYCacheCell.m; sourceTree = "<group>"; };
+		AB009E8C208326A900D84056 /* XYYCacheCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYCacheCell.h; sourceTree = "<group>"; };
+		AB009E8E208326DE00D84056 /* XYYF.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYF.m; sourceTree = "<group>"; };
+		AB009E8F208326DE00D84056 /* XYYF.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYF.h; sourceTree = "<group>"; };
+		AB009E9220832A3900D84056 /* YYWebController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYWebController.m; sourceTree = "<group>"; };
+		AB009E9320832A3A00D84056 /* YYReadController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYReadController.m; sourceTree = "<group>"; };
+		AB009E9420832A3A00D84056 /* YYWebController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYWebController.h; sourceTree = "<group>"; };
+		AB009E9520832A3A00D84056 /* YYReadController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYReadController.h; sourceTree = "<group>"; };
+		AB009E9C20832B6200D84056 /* EnglishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnglishCell.xib; sourceTree = "<group>"; };
+		AB009E9D20832B6300D84056 /* EnglishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishCell.m; sourceTree = "<group>"; };
+		AB009E9E20832B6300D84056 /* EnglishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnglishCell.h; sourceTree = "<group>"; };
+		AB009EA120832FCB00D84056 /* YYKKController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYKKController.m; sourceTree = "<group>"; };
+		AB009EA220832FCC00D84056 /* YYKKController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYKKController.h; sourceTree = "<group>"; };
+		AB009EA420832FDB00D84056 /* XYYModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYModel.h; sourceTree = "<group>"; };
+		AB009EA520832FDB00D84056 /* XYYModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYModel.m; sourceTree = "<group>"; };
+		AB009EA720832FE800D84056 /* YYKKCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = YYKKCell.xib; sourceTree = "<group>"; };
+		AB009EA820832FE900D84056 /* YYKKCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = YYKKCell.h; sourceTree = "<group>"; };
+		AB009EA920832FE900D84056 /* YYKKCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YYKKCell.m; sourceTree = "<group>"; };
+		AB009EAB2083311A00D84056 /* XYYHTTP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XYYHTTP.h; sourceTree = "<group>"; };
+		AB009EAC2083311A00D84056 /* UINavigationController+FullscreenPopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FullscreenPopGesture.h"; sourceTree = "<group>"; };
+		AB009EAD2083311A00D84056 /* XYYHTTP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = XYYHTTP.m; sourceTree = "<group>"; };
+		AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
 		AB27FEDB2080F6D700E02CBF /* TTZBanner.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZBanner.h; sourceTree = "<group>"; };
 		AB27FEDC2080F6D700E02CBF /* TTZBanner.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZBanner.m; sourceTree = "<group>"; };
 		AB27FEDE2080F72400E02CBF /* TTZBanner.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTZBanner.xib; sourceTree = "<group>"; };
-		AB27FEE02080FB2500E02CBF /* EnglishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnglishCell.h; sourceTree = "<group>"; };
-		AB27FEE12080FB2500E02CBF /* EnglishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishCell.m; sourceTree = "<group>"; };
-		AB27FEE22080FB2500E02CBF /* EnglishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnglishCell.xib; sourceTree = "<group>"; };
+		AB27FEE02080FB2500E02CBF /* TTZEnglishCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZEnglishCell.h; sourceTree = "<group>"; };
+		AB27FEE12080FB2500E02CBF /* TTZEnglishCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZEnglishCell.m; sourceTree = "<group>"; };
+		AB27FEE22080FB2500E02CBF /* TTZEnglishCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TTZEnglishCell.xib; sourceTree = "<group>"; };
 		AB27FEE62081016700E02CBF /* EnglishItemCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EnglishItemCell.h; sourceTree = "<group>"; };
 		AB27FEE72081016700E02CBF /* EnglishItemCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnglishItemCell.m; sourceTree = "<group>"; };
 		AB27FEE82081016700E02CBF /* EnglishItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EnglishItemCell.xib; sourceTree = "<group>"; };
@@ -161,15 +203,23 @@
 				AB27FEDB2080F6D700E02CBF /* TTZBanner.h */,
 				AB27FEDC2080F6D700E02CBF /* TTZBanner.m */,
 				AB27FEDE2080F72400E02CBF /* TTZBanner.xib */,
-				AB27FEE02080FB2500E02CBF /* EnglishCell.h */,
-				AB27FEE12080FB2500E02CBF /* EnglishCell.m */,
-				AB27FEE22080FB2500E02CBF /* EnglishCell.xib */,
+				AB27FEE02080FB2500E02CBF /* TTZEnglishCell.h */,
+				AB27FEE12080FB2500E02CBF /* TTZEnglishCell.m */,
+				AB27FEE22080FB2500E02CBF /* TTZEnglishCell.xib */,
 				AB27FEE62081016700E02CBF /* EnglishItemCell.h */,
 				AB27FEE72081016700E02CBF /* EnglishItemCell.m */,
 				AB27FEE82081016700E02CBF /* EnglishItemCell.xib */,
 				AB009E772083106F00D84056 /* ListCell.h */,
 				AB009E782083106F00D84056 /* ListCell.m */,
 				AB009E792083106F00D84056 /* ListCell.xib */,
+				AB009E8C208326A900D84056 /* XYYCacheCell.h */,
+				AB009E8B208326A900D84056 /* XYYCacheCell.m */,
+				AB009E9E20832B6300D84056 /* EnglishCell.h */,
+				AB009E9D20832B6300D84056 /* EnglishCell.m */,
+				AB009E9C20832B6200D84056 /* EnglishCell.xib */,
+				AB009EA820832FE900D84056 /* YYKKCell.h */,
+				AB009EA920832FE900D84056 /* YYKKCell.m */,
+				AB009EA720832FE800D84056 /* YYKKCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +227,17 @@
 		AB9078F82080E5B30006E945 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				AB009EA220832FCC00D84056 /* YYKKController.h */,
+				AB009EA120832FCB00D84056 /* YYKKController.m */,
+				AB009E9520832A3A00D84056 /* YYReadController.h */,
+				AB009E9320832A3A00D84056 /* YYReadController.m */,
+				AB009E9420832A3A00D84056 /* YYWebController.h */,
+				AB009E9220832A3900D84056 /* YYWebController.m */,
+				AB009E882083268E00D84056 /* ABController.h */,
+				AB009E872083268D00D84056 /* ABController.m */,
+				AB009E892083268E00D84056 /* ABController.xib */,
+				AB009E842083265600D84056 /* XYYWEController.h */,
+				AB009E852083265700D84056 /* XYYWEController.m */,
 				69F10515207EEAA6006DD31A /* TTZHomeViewController.h */,
 				69F10516207EEAA6006DD31A /* TTZHomeViewController.m */,
 				AB009E7F20831C1400D84056 /* VideoListController.h */,
@@ -191,6 +252,14 @@
 		AB9078F92080E5C00006E945 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB009EAC2083311A00D84056 /* UINavigationController+FullscreenPopGesture.h */,
+				AB009EAE2083311A00D84056 /* UINavigationController+FullscreenPopGesture.m */,
+				AB009EAB2083311A00D84056 /* XYYHTTP.h */,
+				AB009EAD2083311A00D84056 /* XYYHTTP.m */,
+				AB009EA420832FDB00D84056 /* XYYModel.h */,
+				AB009EA520832FDB00D84056 /* XYYModel.m */,
+				AB009E8F208326DE00D84056 /* XYYF.h */,
+				AB009E8E208326DE00D84056 /* XYYF.m */,
 				AB9078FB2080E5D50006E945 /* XYYData.h */,
 				AB9078FA2080E5D50006E945 /* XYYData.m */,
 				69F1053D207EFB63006DD31A /* Model.h */,
@@ -270,7 +339,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AB27FEE42080FB2500E02CBF /* EnglishCell.xib in Resources */,
+				AB009EB12083333F00D84056 /* YYKKCell.xib in Resources */,
+				AB009EA020832CAC00D84056 /* EnglishCell.xib in Resources */,
+				AB009E912083298300D84056 /* ABController.xib in Resources */,
+				AB27FEE42080FB2500E02CBF /* TTZEnglishCell.xib in Resources */,
 				69F1051F207EEAA6006DD31A /* LaunchScreen.storyboard in Resources */,
 				69F10539207EF5B4006DD31A /* PlayerView.xib in Resources */,
 				AB27FEDF2080F72400E02CBF /* TTZBanner.xib in Resources */,
@@ -347,9 +419,17 @@
 			files = (
 				AB27FEE52080FD2B00E02CBF /* XYYData.m in Sources */,
 				69F10517207EEAA6006DD31A /* TTZHomeViewController.m in Sources */,
+				AB009E8A2083268E00D84056 /* ABController.m in Sources */,
+				AB009E9720832A3A00D84056 /* YYReadController.m in Sources */,
+				AB009EA620832FDB00D84056 /* XYYModel.m in Sources */,
 				69F10533207EEE11006DD31A /* PlayerView.m in Sources */,
+				AB009E862083265700D84056 /* XYYWEController.m in Sources */,
+				AB009EAF2083311A00D84056 /* XYYHTTP.m in Sources */,
+				AB009E90208326DE00D84056 /* XYYF.m in Sources */,
 				69F10522207EEAA6006DD31A /* main.m in Sources */,
 				69F1053F207EFB63006DD31A /* Model.m in Sources */,
+				AB009E9F20832B6300D84056 /* EnglishCell.m in Sources */,
+				AB009E8D208326A900D84056 /* XYYCacheCell.m in Sources */,
 				69F1052D207EEB16006DD31A /* TTZNavigationController.m in Sources */,
 				69F1052A207EEB07006DD31A /* TTZTabBarController.m in Sources */,
 				AB009E8220831C1400D84056 /* VideoListController.m in Sources */,
@@ -357,10 +437,14 @@
 				AB27FEDD2080F6D700E02CBF /* TTZBanner.m in Sources */,
 				69F10514207EEAA6006DD31A /* AppDelegate.m in Sources */,
 				69F10536207EF0D3006DD31A /* TTZBaseController.m in Sources */,
+				AB009EAA20832FE900D84056 /* YYKKCell.m in Sources */,
 				AB27FEE92081016800E02CBF /* EnglishItemCell.m in Sources */,
-				AB27FEE32080FB2500E02CBF /* EnglishCell.m in Sources */,
+				AB009EB02083311A00D84056 /* UINavigationController+FullscreenPopGesture.m in Sources */,
+				AB27FEE32080FB2500E02CBF /* TTZEnglishCell.m in Sources */,
 				AB009E7A2083106F00D84056 /* ListCell.m in Sources */,
 				69F10542207F3D3D006DD31A /* SPVideoSlider.m in Sources */,
+				AB009E9620832A3A00D84056 /* YYWebController.m in Sources */,
+				AB009EA320832FCC00D84056 /* YYKKController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

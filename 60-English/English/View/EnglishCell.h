@@ -1,17 +1,21 @@
 //
 //  EnglishCell.h
-//  English
+//  fzdm
 //
-//  Created by czljcb on 2018/4/13.
-//  Copyright © 2018年 Jay. All rights reserved.
+//  Created by czljcb on 2018/3/16.
+//  Copyright © 2018年 Ward Wong. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
 @interface EnglishCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *titleLB;
-@property (nonatomic, strong) NSArray *dics;
-@property (nonatomic, copy) void (^didSelect)(NSInteger selectIndex,NSArray * dics);
-@property (nonatomic, copy) void (^seeAllBlock)(NSArray * dics);
+
+@property (weak, nonatomic) IBOutlet UIImageView *bgImgView;
+
+@property (weak, nonatomic) IBOutlet UILabel *bgTitleLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *logoLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *topLabel;
 
 @end

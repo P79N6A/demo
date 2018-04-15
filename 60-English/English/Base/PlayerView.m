@@ -412,7 +412,7 @@
 
 - (SPVideoSlider *)videoSlider {
     if (!_videoSlider) {
-        _videoSlider                       = [[UISlider alloc] init];
+        _videoSlider                       = [[SPVideoSlider alloc] init];
         [_videoSlider setMinimumTrackImage:[UIImage imageNamed:@"pic_progressbar_n_171x3_"] forState:UIControlStateNormal];
         [_videoSlider setThumbImage:[UIImage imageNamed:@"player_full_slider_iphone_12x15_"] forState:UIControlStateNormal];
 

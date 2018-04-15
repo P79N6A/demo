@@ -11,7 +11,7 @@
 #import "VideoListController.h"
 
 #import "TTZBanner.h"
-#import "EnglishCell.h"
+#import "TTZEnglishCell.h"
 
 #import "Common.h"
 #import "XYYData.h"
@@ -78,7 +78,7 @@
         
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
-        [_tableView registerNib:[UINib nibWithNibName:@"EnglishCell" bundle:nil] forCellReuseIdentifier:@"cell"];
+        [_tableView registerNib:[UINib nibWithNibName:@"TTZEnglishCell" bundle:nil] forCellReuseIdentifier:@"cell"];
         
         UIView *bgView = [[UIView alloc] initWithFrame:self.view.bounds];
         
@@ -110,7 +110,7 @@
 
 
 - (nonnull UITableViewCell *)tableView:(nonnull UITableView *)tableView cellForRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
-    EnglishCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    TTZEnglishCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
     cell.titleLB.text = self.titles[indexPath.row];
     cell.dics = [XYYData englishData:indexPath.row];

@@ -1,12 +1,37 @@
 PODS:
+  - AFNetworking (3.2.0):
+    - AFNetworking/NSURLSession (= 3.2.0)
+    - AFNetworking/Reachability (= 3.2.0)
+    - AFNetworking/Security (= 3.2.0)
+    - AFNetworking/Serialization (= 3.2.0)
+    - AFNetworking/UIKit (= 3.2.0)
+  - AFNetworking/NSURLSession (3.2.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.0)
+  - AFNetworking/Security (3.2.0)
+  - AFNetworking/Serialization (3.2.0)
+  - AFNetworking/UIKit (3.2.0):
+    - AFNetworking/NSURLSession
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.3.3)
+  - MJRefresh (3.1.15.3)
+  - SDWebImage (4.3.2):
+    - SDWebImage/Core (= 4.3.2)
+  - SDWebImage/Core (4.3.2)
 
 DEPENDENCIES:
+  - AFNetworking
   - AliyunPlayer_iOS/AliyunPlayerSDK
+  - MJRefresh
+  - SDWebImage
 
 SPEC CHECKSUMS:
+  AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   AliyunPlayer_iOS: 390124c28b7ace9b2c634128a90b54b8d476d66c
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
 
-PODFILE CHECKSUM: 4e954ecfa541d72ae1e87b8b8c39d52429cc85ea
+PODFILE CHECKSUM: 61144e39ed4cf5d72096d9dbdbb4411f7a56b7a3
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.2.1

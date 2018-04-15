@@ -8,6 +8,8 @@ target 'English' do
   # use_frameworks!
 pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
 pod 'SDWebImage'
+pod 'MJRefresh'
+pod 'AFNetworking'
 
   # Pods for English
 
