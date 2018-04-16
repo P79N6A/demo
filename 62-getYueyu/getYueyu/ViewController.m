@@ -24,8 +24,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    NSString *url = @"http://www.iqiyi.com/playlist268438002.html";
+    url = @"http://www.iqiyi.com/playlist405588902.html";
     
-    NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://www.iqiyi.com/playlist268438002.html"] encoding:NSUTF8StringEncoding error:NULL];
+    NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
     
     
     
