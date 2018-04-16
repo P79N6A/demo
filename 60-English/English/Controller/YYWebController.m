@@ -12,6 +12,7 @@
 #import "XYYModel.h"
 #import "Common.h"
 #import "XYYHTTP.h"
+#import "LBLADMob.h"
 
 @interface YYWebController ()
 <
@@ -40,6 +41,15 @@ UIWebViewDelegate
     NSURLRequest *re = [NSURLRequest requestWithURL:[NSURL URLWithString:self.urlStr]];
     
     [webView loadRequest:re];
+    
+    if (![LBLADMob sharedInstance].isRemoveAd) {
+        __weak typeof(self) weakSelf = self;
+        [LBLADMob GADBannerViewNoTabbarHeightWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.webView.scrollView.contentInset = UIEdgeInsetsMake(0, 0, adH, 0);
+        self.webView.scrollView.scrollIndicatorInsets = self.webView.scrollView.contentInset;
+    }
+
     
 }
 

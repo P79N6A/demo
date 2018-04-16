@@ -13,8 +13,10 @@
 #import "YYWebController.h"
 
 #import "Common.h"
+#import "LBLADMob.h"
 
 #import <UIImageView+WebCache.h>
+
 
 @interface YYReadController ()
 <
@@ -217,6 +219,14 @@ UITableViewDataSource
                        ];
 
     [self tableView];
+    if (![LBLADMob sharedInstance].isRemoveAd) {
+         __weak typeof(self) weakSelf = self;
+        [LBLADMob GADBannerViewTabbarHeightWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, adH, 0);
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    }
+
 }
 
 

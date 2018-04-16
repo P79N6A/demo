@@ -10,7 +10,7 @@ pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
 pod 'SDWebImage'
 pod 'MJRefresh'
 pod 'AFNetworking'
-#pod 'Google-Mobile-Ads-SDK'
+pod 'Google-Mobile-Ads-SDK'
 
   # Pods for English
 

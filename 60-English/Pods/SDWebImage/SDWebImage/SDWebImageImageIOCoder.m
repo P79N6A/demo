@@ -468,8 +468,6 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
     static BOOL canDecode = NO;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wunguarded-availability"
 #if TARGET_OS_SIMULATOR || SD_WATCH
         canDecode = NO;
 #elif SD_MAC
@@ -489,7 +487,6 @@ static const CGFloat kDestSeemOverlap = 2.0f;   // the numbers of pixels to over
             canDecode = NO;
         }
 #endif
-#pragma clang diagnostic pop
     });
     return canDecode;
 }

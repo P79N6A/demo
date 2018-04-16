@@ -63,7 +63,7 @@ FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadFinishNotification
 @property (nonatomic, assign) BOOL shouldUseCredentialStorage __deprecated_msg("Property deprecated. Does nothing. Kept only for backwards compatibility");
 
 /**
- * The credential used for authentication challenges in `-URLSession:task:didReceiveChallenge:completionHandler:`.
+ * The credential used for authentication challenges in `-connection:didReceiveAuthenticationChallenge:`.
  *
  * This will be overridden by any shared credentials that exist for the username or password of the request URL, if present.
  */
@@ -80,7 +80,7 @@ FOUNDATION_EXPORT NSString * _Nonnull const SDWebImageDownloadFinishNotification
 @property (assign, nonatomic) NSInteger expectedSize;
 
 /**
- * The response returned by the operation's task.
+ * The response returned by the operation's connection.
  */
 @property (strong, nonatomic, nullable) NSURLResponse *response;
 

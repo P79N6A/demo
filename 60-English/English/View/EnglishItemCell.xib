@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -26,8 +26,8 @@
                             <constraint firstAttribute="width" secondItem="5Xb-NV-dFu" secondAttribute="height" multiplier="192:127" id="ddG-DH-dXi"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqF-wZ-gvJ">
-                        <rect key="frame" x="15" y="152" width="162" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fqF-wZ-gvJ">
+                        <rect key="frame" x="15" y="147" width="162" height="17"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="textColor"/>
@@ -38,7 +38,7 @@
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="fqF-wZ-gvJ" secondAttribute="trailing" constant="15" id="8Cv-bB-zle"/>
-                <constraint firstItem="fqF-wZ-gvJ" firstAttribute="top" secondItem="5Xb-NV-dFu" secondAttribute="bottom" constant="20" id="9iN-rv-f34"/>
+                <constraint firstItem="fqF-wZ-gvJ" firstAttribute="top" secondItem="5Xb-NV-dFu" secondAttribute="bottom" constant="15" id="9iN-rv-f34"/>
                 <constraint firstItem="fqF-wZ-gvJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="15" id="9oE-QY-L4s"/>
                 <constraint firstItem="5Xb-NV-dFu" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="YT6-J7-xYC"/>
                 <constraint firstAttribute="trailing" secondItem="5Xb-NV-dFu" secondAttribute="trailing" id="gS6-sB-cE9"/>

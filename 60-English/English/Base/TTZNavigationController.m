@@ -7,7 +7,9 @@
 //
 
 #import "TTZNavigationController.h"
+
 #import "Common.h"
+#import "LBLADMob.h"
 
 @interface TTZNavigationController ()
 
@@ -63,7 +65,8 @@
         
         viewController.navigationItem.leftBarButtonItem = [self backButtonItem];
     }
-    
+    [[LBLADMob sharedInstance] GADLoadInterstitial];
+
     [super pushViewController:viewController animated:animated];
     
 }

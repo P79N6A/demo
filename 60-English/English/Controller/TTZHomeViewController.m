@@ -15,6 +15,7 @@
 
 #import "Common.h"
 #import "XYYData.h"
+#import "LBLADMob.h"
 
 
 
@@ -58,6 +59,14 @@
     
     [self tableView];
     self.navigationItem.title = @"课程";
+
+    if (![LBLADMob sharedInstance].isRemoveAd) {
+        __weak typeof(self) weakSelf = self;
+        [LBLADMob GADBannerViewTabbarHeightWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, adH, 0);
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    }
 
 }
 
