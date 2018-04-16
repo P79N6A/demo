@@ -8,7 +8,11 @@
 
 #import "TTZTabBarController.h"
 #import "TTZNavigationController.h"
-#import "ViewController.h"
+
+#import "TTZHomeViewController.h"
+#import "XYYWEController.h"
+#import "YYReadController.h"
+#import "YYKKController.h"
 
 @interface TTZTabBarController ()
 
@@ -29,14 +33,40 @@
 -(void)YYW_UI {
     
     
-    ViewController *yyzj_radio = [[ViewController alloc] init];
+    TTZHomeViewController *yyzj_radio = [[TTZHomeViewController alloc] init];
     TTZNavigationController *yyzj_radioNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_radio];
-    yyzj_radioNav.tabBarItem.image = [UIImage imageNamed:@"O"];
-    yyzj_radioNav.tabBarItem.selectedImage = [UIImage imageNamed:@"O_select"];
-    yyzj_radioNav.tabBarItem.title = @"粤语台";
+    yyzj_radioNav.tabBarItem.image = [UIImage imageNamed:@"gj"];
+    yyzj_radioNav.tabBarItem.selectedImage = [UIImage imageNamed:@"gj_s"];
+    yyzj_radioNav.tabBarItem.title = @"首页";
     [self addChildViewController:yyzj_radioNav];
     
     
+    
+
+    
+    YYReadController *yyzj_read = [[YYReadController alloc] init];
+    TTZNavigationController *yyzj_readNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_read];
+    yyzj_readNav.tabBarItem.image = [UIImage imageNamed:@"yd"];
+    yyzj_readNav.tabBarItem.selectedImage = [UIImage imageNamed:@"yd_select"];
+    yyzj_readNav.tabBarItem.title = @"阅读";
+    [self addChildViewController:yyzj_readNav];
+    
+    
+    XYYWEController *yyzj_we = [[XYYWEController alloc] init];
+    TTZNavigationController *yyzj_weNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_we];
+    yyzj_weNav.tabBarItem.image = [UIImage imageNamed:@"dl"];
+    yyzj_weNav.tabBarItem.selectedImage = [UIImage imageNamed:@"dl_s"];
+    yyzj_weNav.tabBarItem.title = @"我的";
+    
+    [self addChildViewController:yyzj_weNav];
+
+//    YYKKController *yyzj_kk = [[YYKKController alloc] init];
+//    TTZNavigationController *yyzj_kkNav = [[TTZNavigationController alloc] initWithRootViewController:yyzj_kk];
+//    yyzj_kkNav.tabBarItem.image = [UIImage imageNamed:@"yd"];
+//    yyzj_kkNav.tabBarItem.selectedImage = [UIImage imageNamed:@"yd_select"];
+//    yyzj_kkNav.tabBarItem.title = @"阅读";
+//    [self addChildViewController:yyzj_kkNav];
+
     
 }
 

@@ -7,6 +7,7 @@
 //
 
 #import "TTZNavigationController.h"
+#import "Common.h"
 
 @interface TTZNavigationController ()
 
@@ -21,7 +22,7 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor blackColor],NSFontAttributeName:[UIFont systemFontOfSize:18]}];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
 
 }
@@ -43,18 +44,13 @@
 - (UIBarButtonItem *)backButtonItem{
     
     UIButton *yyzj_but = [UIButton buttonWithType:UIButtonTypeCustom];
-    
     [yyzj_but addTarget:self action:@selector(pop) forControlEvents:UIControlEventTouchUpInside];
-    
     [yyzj_but setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    
+    yyzj_but.showsTouchWhenHighlighted = YES;
     [yyzj_but setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
-    
-    yyzj_but.frame = CGRectMake(0, 0, 44, 44);
-    
-    [yyzj_but setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
-    
+    yyzj_but.frame = CGRectMake(0, 0, 22, 44);
+    //yyzj_but.backgroundColor = [UIColor blueColor];
+    //[yyzj_but setImageEdgeInsets:UIEdgeInsetsMake(0, -5, 0, 0)];
     return [[UIBarButtonItem alloc] initWithCustomView:yyzj_but];
 }
 

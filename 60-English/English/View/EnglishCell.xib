@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="248" id="KGk-i7-Jjw" customClass="EnglishCell">
+            <rect key="frame" x="0.0" y="0.0" width="421" height="248"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="421" height="247.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="opX-GQ-jTq">
+                        <rect key="frame" x="20" y="10" width="381" height="227.5"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Jd-WH-VoX">
+                        <rect key="frame" x="20" y="197.5" width="381" height="40"/>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="0.64862478595890416" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="2v2-RJ-pB0"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="懒人轻松学英语" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cIe-LB-xCe">
+                        <rect key="frame" x="296" y="212.5" width="100" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="eoc-bo-9K7"/>
+                            <constraint firstAttribute="height" constant="20" id="vJ0-HK-v8T"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="懒人轻松学英语" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TkH-yu-J7j">
+                        <rect key="frame" x="296" y="15" width="100" height="20"/>
+                        <color key="backgroundColor" red="1" green="0.49803921569999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20" id="3DA-Lt-5WQ"/>
+                            <constraint firstAttribute="width" constant="100" id="mDS-NE-dje"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="3Jd-WH-VoX" firstAttribute="leading" secondItem="opX-GQ-jTq" secondAttribute="leading" id="3Sa-nN-Fvr"/>
+                    <constraint firstItem="TkH-yu-J7j" firstAttribute="top" secondItem="opX-GQ-jTq" secondAttribute="top" constant="5" id="3UP-Zv-biC"/>
+                    <constraint firstItem="cIe-LB-xCe" firstAttribute="bottom" secondItem="opX-GQ-jTq" secondAttribute="bottom" constant="-5" id="5VG-ZE-9Sl"/>
+                    <constraint firstAttribute="bottom" secondItem="opX-GQ-jTq" secondAttribute="bottom" constant="10" id="75U-60-hzP"/>
+                    <constraint firstItem="opX-GQ-jTq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="H4k-2Z-Xaa"/>
+                    <constraint firstItem="3Jd-WH-VoX" firstAttribute="bottom" secondItem="opX-GQ-jTq" secondAttribute="bottom" id="SXQ-wV-fhV"/>
+                    <constraint firstItem="cIe-LB-xCe" firstAttribute="trailing" secondItem="opX-GQ-jTq" secondAttribute="trailing" constant="-5" id="Zqg-08-meN"/>
+                    <constraint firstAttribute="trailing" secondItem="opX-GQ-jTq" secondAttribute="trailing" constant="20" id="e59-pV-CLm"/>
+                    <constraint firstItem="TkH-yu-J7j" firstAttribute="trailing" secondItem="opX-GQ-jTq" secondAttribute="trailing" constant="-5" id="eMR-bN-6uv"/>
+                    <constraint firstItem="opX-GQ-jTq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kTN-3j-NfZ"/>
+                    <constraint firstItem="3Jd-WH-VoX" firstAttribute="trailing" secondItem="opX-GQ-jTq" secondAttribute="trailing" id="muK-v3-ohQ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bgImgView" destination="opX-GQ-jTq" id="7kc-oe-aRe"/>
+                <outlet property="bgTitleLabel" destination="3Jd-WH-VoX" id="Dcw-Cs-1IP"/>
+                <outlet property="logoLabel" destination="cIe-LB-xCe" id="cWC-yn-uPL"/>
+                <outlet property="topLabel" destination="TkH-yu-J7j" id="uzM-0j-oyr"/>
+            </connections>
+            <point key="canvasLocation" x="22.5" y="-27"/>
+        </tableViewCell>
+    </objects>
+</document>

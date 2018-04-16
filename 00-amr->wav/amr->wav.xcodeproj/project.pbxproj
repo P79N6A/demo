@@ -1,0 +1,511 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		ABDAF6DB1F02A2DD00C3F25F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF6DA1F02A2DD00C3F25F /* main.m */; };
+		ABDAF6DE1F02A2DD00C3F25F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF6DD1F02A2DD00C3F25F /* AppDelegate.m */; };
+		ABDAF6E11F02A2DD00C3F25F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF6E01F02A2DD00C3F25F /* ViewController.m */; };
+		ABDAF6E41F02A2DD00C3F25F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDAF6E21F02A2DD00C3F25F /* Main.storyboard */; };
+		ABDAF6E61F02A2DD00C3F25F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDAF6E51F02A2DD00C3F25F /* Assets.xcassets */; };
+		ABDAF6E91F02A2DD00C3F25F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABDAF6E71F02A2DD00C3F25F /* LaunchScreen.storyboard */; };
+		ABDAF6F41F02A2DD00C3F25F /* amr__wavUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF6F31F02A2DD00C3F25F /* amr__wavUITests.m */; };
+		ABDAF70D1F02A32900C3F25F /* amrFileCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF7001F02A32900C3F25F /* amrFileCodec.m */; };
+		ABDAF70E1F02A32900C3F25F /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDAF7091F02A32900C3F25F /* libopencore-amrnb.a */; };
+		ABDAF70F1F02A32900C3F25F /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABDAF70A1F02A32900C3F25F /* libopencore-amrwb.a */; };
+		ABDAF7101F02A32900C3F25F /* VoiceConverter.m in Sources */ = {isa = PBXBuildFile; fileRef = ABDAF70C1F02A32900C3F25F /* VoiceConverter.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		ABDAF6F01F02A2DD00C3F25F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = ABDAF6CE1F02A2DD00C3F25F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = ABDAF6D51F02A2DD00C3F25F;
+			remoteInfo = "amr->wav";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		ABDAF6D61F02A2DD00C3F25F /* amr->wav.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "amr->wav.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABDAF6DA1F02A2DD00C3F25F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		ABDAF6DC1F02A2DD00C3F25F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		ABDAF6DD1F02A2DD00C3F25F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		ABDAF6DF1F02A2DD00C3F25F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		ABDAF6E01F02A2DD00C3F25F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		ABDAF6E31F02A2DD00C3F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		ABDAF6E51F02A2DD00C3F25F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		ABDAF6E81F02A2DD00C3F25F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		ABDAF6EA1F02A2DD00C3F25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABDAF6EF1F02A2DD00C3F25F /* amr->wavUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "amr->wavUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABDAF6F31F02A2DD00C3F25F /* amr__wavUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = amr__wavUITests.m; sourceTree = "<group>"; };
+		ABDAF6F51F02A2DD00C3F25F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABDAF6FF1F02A32900C3F25F /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		ABDAF7001F02A32900C3F25F /* amrFileCodec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = amrFileCodec.m; sourceTree = "<group>"; };
+		ABDAF7031F02A32900C3F25F /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		ABDAF7041F02A32900C3F25F /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		ABDAF7061F02A32900C3F25F /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		ABDAF7071F02A32900C3F25F /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		ABDAF7091F02A32900C3F25F /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		ABDAF70A1F02A32900C3F25F /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		ABDAF70B1F02A32900C3F25F /* VoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VoiceConverter.h; sourceTree = "<group>"; };
+		ABDAF70C1F02A32900C3F25F /* VoiceConverter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VoiceConverter.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		ABDAF6D31F02A2DD00C3F25F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABDAF70F1F02A32900C3F25F /* libopencore-amrwb.a in Frameworks */,
+				ABDAF70E1F02A32900C3F25F /* libopencore-amrnb.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABDAF6EC1F02A2DD00C3F25F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		ABDAF6CD1F02A2DD00C3F25F = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6D81F02A2DD00C3F25F /* amr->wav */,
+				ABDAF6F21F02A2DD00C3F25F /* amr->wavUITests */,
+				ABDAF6D71F02A2DD00C3F25F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		ABDAF6D71F02A2DD00C3F25F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6D61F02A2DD00C3F25F /* amr->wav.app */,
+				ABDAF6EF1F02A2DD00C3F25F /* amr->wavUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		ABDAF6D81F02A2DD00C3F25F /* amr->wav */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6FE1F02A32900C3F25F /* VoiceConvert */,
+				ABDAF6DC1F02A2DD00C3F25F /* AppDelegate.h */,
+				ABDAF6DD1F02A2DD00C3F25F /* AppDelegate.m */,
+				ABDAF6DF1F02A2DD00C3F25F /* ViewController.h */,
+				ABDAF6E01F02A2DD00C3F25F /* ViewController.m */,
+				ABDAF6E21F02A2DD00C3F25F /* Main.storyboard */,
+				ABDAF6E51F02A2DD00C3F25F /* Assets.xcassets */,
+				ABDAF6E71F02A2DD00C3F25F /* LaunchScreen.storyboard */,
+				ABDAF6EA1F02A2DD00C3F25F /* Info.plist */,
+				ABDAF6D91F02A2DD00C3F25F /* Supporting Files */,
+			);
+			path = "amr->wav";
+			sourceTree = "<group>";
+		};
+		ABDAF6D91F02A2DD00C3F25F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6DA1F02A2DD00C3F25F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		ABDAF6F21F02A2DD00C3F25F /* amr->wavUITests */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6F31F02A2DD00C3F25F /* amr__wavUITests.m */,
+				ABDAF6F51F02A2DD00C3F25F /* Info.plist */,
+			);
+			path = "amr->wavUITests";
+			sourceTree = "<group>";
+		};
+		ABDAF6FE1F02A32900C3F25F /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF6FF1F02A32900C3F25F /* amrFileCodec.h */,
+				ABDAF7001F02A32900C3F25F /* amrFileCodec.m */,
+				ABDAF7011F02A32900C3F25F /* include_bak */,
+				ABDAF7081F02A32900C3F25F /* lib */,
+				ABDAF70B1F02A32900C3F25F /* VoiceConverter.h */,
+				ABDAF70C1F02A32900C3F25F /* VoiceConverter.m */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		ABDAF7011F02A32900C3F25F /* include_bak */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF7021F02A32900C3F25F /* opencore-amrnb */,
+				ABDAF7051F02A32900C3F25F /* opencore-amrwb */,
+			);
+			path = include_bak;
+			sourceTree = "<group>";
+		};
+		ABDAF7021F02A32900C3F25F /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF7031F02A32900C3F25F /* interf_dec.h */,
+				ABDAF7041F02A32900C3F25F /* interf_enc.h */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		ABDAF7051F02A32900C3F25F /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF7061F02A32900C3F25F /* dec_if.h */,
+				ABDAF7071F02A32900C3F25F /* if_rom.h */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		ABDAF7081F02A32900C3F25F /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				ABDAF7091F02A32900C3F25F /* libopencore-amrnb.a */,
+				ABDAF70A1F02A32900C3F25F /* libopencore-amrwb.a */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		ABDAF6D51F02A2DD00C3F25F /* amr->wav */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABDAF6F81F02A2DD00C3F25F /* Build configuration list for PBXNativeTarget "amr->wav" */;
+			buildPhases = (
+				ABDAF6D21F02A2DD00C3F25F /* Sources */,
+				ABDAF6D31F02A2DD00C3F25F /* Frameworks */,
+				ABDAF6D41F02A2DD00C3F25F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "amr->wav";
+			productName = "amr->wav";
+			productReference = ABDAF6D61F02A2DD00C3F25F /* amr->wav.app */;
+			productType = "com.apple.product-type.application";
+		};
+		ABDAF6EE1F02A2DD00C3F25F /* amr->wavUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ABDAF6FB1F02A2DD00C3F25F /* Build configuration list for PBXNativeTarget "amr->wavUITests" */;
+			buildPhases = (
+				ABDAF6EB1F02A2DD00C3F25F /* Sources */,
+				ABDAF6EC1F02A2DD00C3F25F /* Frameworks */,
+				ABDAF6ED1F02A2DD00C3F25F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				ABDAF6F11F02A2DD00C3F25F /* PBXTargetDependency */,
+			);
+			name = "amr->wavUITests";
+			productName = "amr->wavUITests";
+			productReference = ABDAF6EF1F02A2DD00C3F25F /* amr->wavUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		ABDAF6CE1F02A2DD00C3F25F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = czljcb;
+				TargetAttributes = {
+					ABDAF6D51F02A2DD00C3F25F = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 8FNVB7HMWS;
+						ProvisioningStyle = Manual;
+					};
+					ABDAF6EE1F02A2DD00C3F25F = {
+						CreatedOnToolsVersion = 8.3.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = ABDAF6D51F02A2DD00C3F25F;
+					};
+				};
+			};
+			buildConfigurationList = ABDAF6D11F02A2DD00C3F25F /* Build configuration list for PBXProject "amr->wav" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = ABDAF6CD1F02A2DD00C3F25F;
+			productRefGroup = ABDAF6D71F02A2DD00C3F25F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				ABDAF6D51F02A2DD00C3F25F /* amr->wav */,
+				ABDAF6EE1F02A2DD00C3F25F /* amr->wavUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		ABDAF6D41F02A2DD00C3F25F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABDAF6E91F02A2DD00C3F25F /* LaunchScreen.storyboard in Resources */,
+				ABDAF6E61F02A2DD00C3F25F /* Assets.xcassets in Resources */,
+				ABDAF6E41F02A2DD00C3F25F /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABDAF6ED1F02A2DD00C3F25F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		ABDAF6D21F02A2DD00C3F25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABDAF6E11F02A2DD00C3F25F /* ViewController.m in Sources */,
+				ABDAF6DE1F02A2DD00C3F25F /* AppDelegate.m in Sources */,
+				ABDAF6DB1F02A2DD00C3F25F /* main.m in Sources */,
+				ABDAF7101F02A32900C3F25F /* VoiceConverter.m in Sources */,
+				ABDAF70D1F02A32900C3F25F /* amrFileCodec.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		ABDAF6EB1F02A2DD00C3F25F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABDAF6F41F02A2DD00C3F25F /* amr__wavUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		ABDAF6F11F02A2DD00C3F25F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = ABDAF6D51F02A2DD00C3F25F /* amr->wav */;
+			targetProxy = ABDAF6F01F02A2DD00C3F25F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		ABDAF6E21F02A2DD00C3F25F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABDAF6E31F02A2DD00C3F25F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		ABDAF6E71F02A2DD00C3F25F /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				ABDAF6E81F02A2DD00C3F25F /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		ABDAF6F61F02A2DD00C3F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		ABDAF6F71F02A2DD00C3F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		ABDAF6F91F02A2DD00C3F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 8FNVB7HMWS;
+				INFOPLIST_FILE = "amr->wav/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/amr->wav/VoiceConvert/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ishare.hitv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "ac63bfc6-ab89-4b8c-b564-a0827486bbf2";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Profile For Development";
+			};
+			name = Debug;
+		};
+		ABDAF6FA1F02A2DD00C3F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				DEVELOPMENT_TEAM = 8FNVB7HMWS;
+				INFOPLIST_FILE = "amr->wav/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/amr->wav/VoiceConvert/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.ishare.hitv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "196c15bb-972e-499f-803f-2fe26c3dcd9f";
+				PROVISIONING_PROFILE_SPECIFIER = "iOS Profile For AppStore";
+			};
+			name = Release;
+		};
+		ABDAF6FC1F02A2DD00C3F25F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "amr->wavUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lQ.Movie.amr--wavUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "amr->wav";
+			};
+			name = Debug;
+		};
+		ABDAF6FD1F02A2DD00C3F25F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "amr->wavUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "lQ.Movie.amr--wavUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "amr->wav";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		ABDAF6D11F02A2DD00C3F25F /* Build configuration list for PBXProject "amr->wav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABDAF6F61F02A2DD00C3F25F /* Debug */,
+				ABDAF6F71F02A2DD00C3F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ABDAF6F81F02A2DD00C3F25F /* Build configuration list for PBXNativeTarget "amr->wav" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABDAF6F91F02A2DD00C3F25F /* Debug */,
+				ABDAF6FA1F02A2DD00C3F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		ABDAF6FB1F02A2DD00C3F25F /* Build configuration list for PBXNativeTarget "amr->wavUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				ABDAF6FC1F02A2DD00C3F25F /* Debug */,
+				ABDAF6FD1F02A2DD00C3F25F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = ABDAF6CE1F02A2DD00C3F25F /* Project object */;
+}

@@ -96,6 +96,7 @@
 		AB50A57F1F52CD7100F3B8C5 /* tottieUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB50A57E1F52CD7100F3B8C5 /* tottieUITests.m */; };
 		AB50A58A1F52CEB000F3B8C5 /* check.json in Resources */ = {isa = PBXBuildFile; fileRef = AB50A5891F52CEB000F3B8C5 /* check.json */; };
 		AB50A58C1F52D05D00F3B8C5 /* kiss.json in Resources */ = {isa = PBXBuildFile; fileRef = AB50A58B1F52D05D00F3B8C5 /* kiss.json */; };
+		AB7D421B1F89CFFD007BE060 /* heart.json in Resources */ = {isa = PBXBuildFile; fileRef = AB7D421A1F89CFB5007BE060 /* heart.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -206,6 +207,7 @@
 		AB50A5801F52CD7100F3B8C5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB50A5891F52CEB000F3B8C5 /* check.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = check.json; sourceTree = "<group>"; };
 		AB50A58B1F52D05D00F3B8C5 /* kiss.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = kiss.json; sourceTree = "<group>"; };
+		AB7D421A1F89CFB5007BE060 /* heart.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = heart.json; sourceTree = "<group>"; };
 		C155866AE12572BF97902F32 /* Pods-tottie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tottie.release.xcconfig"; path = "Pods/Target Support Files/Pods-tottie/Pods-tottie.release.xcconfig"; sourceTree = "<group>"; };
 		C5307879D17D23AED4508D6F /* Pods-tottieUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tottieUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-tottieUITests/Pods-tottieUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -357,8 +359,12 @@
 		AB50A5631F52CD7100F3B8C5 /* tottie */ = {
 			isa = PBXGroup;
 			children = (
+<<<<<<< HEAD
+				AB7D421A1F89CFB5007BE060 /* heart.json */,
+=======
 				7A09A19C1F5503F40079278D /* images */,
 				7A09A0FF1F5502E20079278D /* 我爱你 */,
+>>>>>>> 81d8d8e3160f82eb5119794f6ef0d31c3358e604
 				AB50A58B1F52D05D00F3B8C5 /* kiss.json */,
 				AB50A5671F52CD7100F3B8C5 /* AppDelegate.h */,
 				AB50A5681F52CD7100F3B8C5 /* AppDelegate.m */,
@@ -446,6 +452,7 @@
 				TargetAttributes = {
 					AB50A5601F52CD7100F3B8C5 = {
 						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = 8FNVB7HMWS;
 						ProvisioningStyle = Automatic;
 					};
 					AB50A5791F52CD7100F3B8C5 = {
@@ -479,6 +486,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< HEAD
+				AB7D421B1F89CFFD007BE060 /* heart.json in Resources */,
+=======
 				7A09A2011F5503F40079278D /* img_3.png in Resources */,
 				7A09A1F91F5503F40079278D /* img_22.png in Resources */,
 				7A09A2101F5503F40079278D /* img_43.png in Resources */,
@@ -494,6 +504,7 @@
 				7A09A2001F5503F40079278D /* img_29.png in Resources */,
 				7A09A2041F5503F40079278D /* img_32.png in Resources */,
 				7A09A20F1F5503F40079278D /* img_42.png in Resources */,
+>>>>>>> 81d8d8e3160f82eb5119794f6ef0d31c3358e604
 				AB50A58A1F52CEB000F3B8C5 /* check.json in Resources */,
 				7A09A2351F5503F40079278D /* img_8.png in Resources */,
 				7A09A1F51F5503F40079278D /* img_19.png in Resources */,
@@ -811,10 +822,14 @@
 			baseConfigurationReference = 30D95029C45BB73110E96408 /* Pods-tottie.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8FNVB7HMWS;
 				INFOPLIST_FILE = tottie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lQ.Word.tottie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ishare.zazhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -823,10 +838,14 @@
 			baseConfigurationReference = C155866AE12572BF97902F32 /* Pods-tottie.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 8FNVB7HMWS;
 				INFOPLIST_FILE = tottie/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = lQ.Word.tottie;
+				PRODUCT_BUNDLE_IDENTIFIER = com.ishare.zazhi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

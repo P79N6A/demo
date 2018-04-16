@@ -126,8 +126,9 @@
 - (void)_setImageForAsset:(LOTAsset *)asset {
   if (asset.imageName) {
     UIImage *image;
-    if (asset.rootDirectory.length > 0) {
-      NSString *rootDirectory  = asset.rootDirectory;
+      
+    if (asset.assetBundle.bundlePath.length > 0) {
+      NSString *rootDirectory  = asset.assetBundle.bundlePath;
       if (asset.imageDirectory.length > 0) {
         rootDirectory = [rootDirectory stringByAppendingPathComponent:asset.imageDirectory];
       }

@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import "TTZTabBarController.h"
-
+#import "XYYHTTP.h"
 @interface AppDelegate ()
 
 @end
@@ -47,9 +47,14 @@
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
 }
 
-
-- (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+-(void)applicationDidBecomeActive:(UIApplication *)application {
+    
+    NSTimeInterval titmC = [[NSDate date]
+                            timeIntervalSinceDate:[XYYHTTP sharedInstance].beginTime==nil?[NSDate date]:[XYYHTTP sharedInstance].beginTime];
+    
+    if (titmC >= 8.0) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"PL"];
+    }
 }
 
 

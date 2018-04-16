@@ -9,6 +9,9 @@ target 'tottie' do
 pod 'lottie-ios'
 pod 'AFNetworking'
 pod 'IQKeyboardManager'
+pod 'SSZipArchive'
+pod 'YHPDFImageLoader'
+pod 'MobileVLCKit'
 
   # Pods for tottie
 

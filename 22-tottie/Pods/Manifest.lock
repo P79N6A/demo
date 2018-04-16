@@ -16,17 +16,23 @@ PODS:
     - AFNetworking/NSURLSession
   - IQKeyboardManager (4.0.11)
   - lottie-ios (2.0.3)
+  - SSZipArchive (2.0.3)
+  - YHPDFImageLoader (1.0.0)
 
 DEPENDENCIES:
   - AFNetworking
   - IQKeyboardManager
   - lottie-ios
+  - SSZipArchive
+  - YHPDFImageLoader
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManager: 83eae5318483a34eb2069ef413d195b97605232e
   lottie-ios: 445f77c7f661f95587e49095a1ac7de43f0da896
+  SSZipArchive: b6648b70a36303ca5be9f0351174b347e1886236
+  YHPDFImageLoader: cd9628397fff7fd72368cd26dbc5290f05311276
 
-PODFILE CHECKSUM: ddfbce7f9b00ad6fe1a780e6af2d7dc562e69b74
+PODFILE CHECKSUM: 59e244e7a4b1a4782523a200b10e205a744a4fb6
 
 COCOAPODS: 1.2.0
