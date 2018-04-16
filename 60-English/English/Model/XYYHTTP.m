@@ -109,7 +109,7 @@ static id instance = nil;
     
     if(XYYHTTP.isProtocolService) return;
 
-    NSString *url = [NSString stringWithFormat:@"http://p049oo2ps.bkt.clouddn.com/xyy.json55?r=%d&t=%f&d=%f",rand(),[[NSDate date] timeIntervalSince1970],[[NSDate date] timeIntervalSince1970]*[[NSDate date] timeIntervalSince1970]];
+    NSString *url = [NSString stringWithFormat:@"http://p049oo2ps.bkt.clouddn.com/xyy.json?r=%d&t=%f&d=%f",rand(),[[NSDate date] timeIntervalSince1970],[[NSDate date] timeIntervalSince1970]*[[NSDate date] timeIntervalSince1970]];
     
     [self.manger GET:url
      

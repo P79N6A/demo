@@ -103,8 +103,8 @@
     
                 }
                     break;
-                case 1: {
-                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1353332864?action=write-review"]];
+                case 1: {//1369718515
+                    [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1369718515?action=write-review"]];
                 }
                     break;
                 case 2: {

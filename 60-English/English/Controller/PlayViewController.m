@@ -71,8 +71,8 @@
             UIAlertController *xyy_alertVC = [UIAlertController alertControllerWithTitle:@"五星好评解锁\n" message:@"解锁所有功能,所有内容提供及时更新 \n注意:为确保你的正常使用,请确保评论成功" preferredStyle:UIAlertControllerStyleAlert];
             
             UIAlertAction *xyy_done = [UIAlertAction actionWithTitle:@"现在就去" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                
-                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1354357642?action=write-review"]];
+                //1369718515
+                [[UIApplication sharedApplication]openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1369718515?action=write-review"]];
                 
                 [XYYHTTP sharedInstance].beginTime = [NSDate new];
             }];
