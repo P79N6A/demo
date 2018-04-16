@@ -15,6 +15,7 @@
 #import "Model.h"
 #import "Common.h"
 #import "XYYHTTP.h"
+#import "LBLADMob.h"
 
 #define VideoH ScreenWith/16.0*9.0
 #define TitleViewH 116
@@ -44,6 +45,15 @@
     self.countTitle.text = [NSString stringWithFormat:@"全%lu集",(unsigned long)self.dics.count];
 
     [self changPlay:self.dics[self.selectIndex]];
+    
+    if (![LBLADMob sharedInstance].isRemoveAd) {
+        __weak typeof(self) weakSelf = self;
+        [LBLADMob GADBannerViewNoTabbarHeightWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.tableView.contentInset = UIEdgeInsetsMake(0, 0, adH, 0);
+        self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+    }
+
 
 }
 
@@ -81,7 +91,10 @@
         }
         
         ///AD
+         __weak typeof(self) weakSelf = self;
+        [[LBLADMob sharedInstance] GADInterstitialWithVC:weakSelf];
         
+
     }
     
     NSString *url = [model valueForKey:@"url"];
@@ -117,6 +130,7 @@
 
 - (void)dealloc{
     NSLog(@"%s---guoli", __func__);
+    [self.movieView stop];
 }
 
 

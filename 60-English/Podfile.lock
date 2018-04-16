@@ -15,23 +15,26 @@ PODS:
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.3.3)
+  - Google-Mobile-Ads-SDK (7.28.0)
   - MJRefresh (3.1.15.3)
-  - SDWebImage (4.3.2):
-    - SDWebImage/Core (= 4.3.2)
-  - SDWebImage/Core (4.3.2)
+  - SDWebImage (4.3.0):
+    - SDWebImage/Core (= 4.3.0)
+  - SDWebImage/Core (4.3.0)
 
 DEPENDENCIES:
   - AFNetworking
   - AliyunPlayer_iOS/AliyunPlayerSDK
+  - Google-Mobile-Ads-SDK
   - MJRefresh
   - SDWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
   AliyunPlayer_iOS: 390124c28b7ace9b2c634128a90b54b8d476d66c
+  Google-Mobile-Ads-SDK: 7f9bc0011df363ae5616449de3682a14c4701612
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
-  SDWebImage: 29bd3c0bc1f01e5eb59720847c64ad4c4ca1af5d
+  SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
 
-PODFILE CHECKSUM: d4d67ff617a130a9f6c4fd9dfc846572426e7f55
+PODFILE CHECKSUM: 0aab985184d13b549739b394bfc2a8429ec07db6
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

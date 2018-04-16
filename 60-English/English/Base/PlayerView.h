@@ -54,7 +54,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 @property (nonatomic, strong) id<TTZPlayerModel> model;
 
--(void)playWithModel:(id<TTZPlayerModel>)model;
+- (void)playWithModel:(id<TTZPlayerModel>)model;
+
+- (void)stop;
 
 @end
 

@@ -9,6 +9,8 @@
 #import "AppDelegate.h"
 #import "TTZTabBarController.h"
 #import "XYYHTTP.h"
+#import "LBLADMob.h"
+
 @interface AppDelegate ()
 
 @end
@@ -25,6 +27,7 @@
     
     [self.window makeKeyAndVisible];
     
+    [LBLADMob initAdMob];
     //[application setStatusBarStyle:UIStatusBarStyleLightContent];
     
     return YES;

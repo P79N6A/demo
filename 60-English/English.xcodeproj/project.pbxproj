@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5F7B8AD424A0073907A4605B /* libPods-English.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A42DA20AAAEB96AFE38FB4F /* libPods-English.a */; };
+		69DEF3382084731F00CC64F4 /* LBLADMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DEF3362084731F00CC64F4 /* LBLADMob.m */; };
 		69F10514207EEAA6006DD31A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10513207EEAA6006DD31A /* AppDelegate.m */; };
 		69F10517207EEAA6006DD31A /* TTZHomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F10516207EEAA6006DD31A /* TTZHomeViewController.m */; };
 		69F1051C207EEAA6006DD31A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69F1051B207EEAA6006DD31A /* Assets.xcassets */; };
@@ -53,6 +54,8 @@
 /* Begin PBXFileReference section */
 		41E32219DA13C0C08B5C8A1B /* Pods-English.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.release.xcconfig"; path = "Pods/Target Support Files/Pods-English/Pods-English.release.xcconfig"; sourceTree = "<group>"; };
 		455E855D82437805DDC2E39F /* Pods-English.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-English.debug.xcconfig"; path = "Pods/Target Support Files/Pods-English/Pods-English.debug.xcconfig"; sourceTree = "<group>"; };
+		69DEF3362084731F00CC64F4 /* LBLADMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LBLADMob.m; sourceTree = "<group>"; };
+		69DEF3372084731F00CC64F4 /* LBLADMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LBLADMob.h; sourceTree = "<group>"; };
 		69F1050F207EEAA6006DD31A /* English.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = English.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69F10512207EEAA6006DD31A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69F10513207EEAA6006DD31A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -255,6 +258,8 @@
 		AB9078F92080E5C00006E945 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				69DEF3372084731F00CC64F4 /* LBLADMob.h */,
+				69DEF3362084731F00CC64F4 /* LBLADMob.m */,
 				AB009EB22083846900D84056 /* UIView+Loading.h */,
 				AB009EB32083846A00D84056 /* UIView+Loading.m */,
 				AB009EAC2083311A00D84056 /* UINavigationController+FullscreenPopGesture.h */,
@@ -376,7 +381,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		561CDA952A0A466381292552 /* [CP] Embed Pods Frameworks */ = {
@@ -405,10 +410,12 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-English/Pods-English-resources.sh",
 				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AliyunLanguageSource.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -436,6 +443,7 @@
 				AB009E9F20832B6300D84056 /* EnglishCell.m in Sources */,
 				AB009E8D208326A900D84056 /* XYYCacheCell.m in Sources */,
 				69F1052D207EEB16006DD31A /* TTZNavigationController.m in Sources */,
+				69DEF3382084731F00CC64F4 /* LBLADMob.m in Sources */,
 				AB009EB42083846A00D84056 /* UIView+Loading.m in Sources */,
 				69F1052A207EEB07006DD31A /* TTZTabBarController.m in Sources */,
 				AB009E8220831C1400D84056 /* VideoListController.m in Sources */,
@@ -579,12 +587,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25TUU67WRS;
+				DEVELOPMENT_TEAM = S575E6NNCR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = English/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test669;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -598,12 +606,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 25TUU67WRS;
+				DEVELOPMENT_TEAM = S575E6NNCR;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = English/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test669;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yunhu.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

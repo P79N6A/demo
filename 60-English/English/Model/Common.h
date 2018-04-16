@@ -47,4 +47,32 @@
 // Status bar & navigation bar height.
 #define  kStatusBarAndNavigationBarHeight  (iPhoneX ? 88.f : 64.f)
 
+
+#ifdef DEBUG
+
+
+
+// 测试 应用ID
+#define kGoogleMobileAdsAppID @"ca-app-pub-3940256099942544~1458002511"
+
+//插页式广告ID
+#define kGoogleMobileAdsInterstitialID @"ca-app-pub-3940256099942544/4411468910"
+
+//横幅广告ID
+#define kGoogleMobileAdsBannerID  @"ca-app-pub-3940256099942544/6300978111"
+
+#else
+
+//// 应用ID
+//#define kGoogleMobileAdsAppID @"ca-app-pub-8803735862522697~8253379170"
+//
+////插页式广告ID
+//#define kGoogleMobileAdsInterstitialID @"ca-app-pub-8803735862522697/1432819955"
+//
+////横幅广告ID
+//#define kGoogleMobileAdsBannerID @"ca-app-pub-8803735862522697/1304827447"
+
+#endif
+
+
 #endif /* Common_h */

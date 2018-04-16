@@ -230,6 +230,7 @@
     self.tableView.tableHeaderView = tableViewHeaderView;
     
     self.tableView.showsVerticalScrollIndicator = NO;
+    
 }
 
 

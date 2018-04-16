@@ -67,6 +67,8 @@
 
 - (void)layoutSubviews{
     [super layoutSubviews];
+    
+    [self timer];
     NSLog(@"%s---小学英语单词记忆法", __func__);
     self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
     CGFloat spacing = iPhoneX? 24 : 0;
@@ -80,7 +82,7 @@
     self.topBgView.frame = self.topView.bounds;
     self.buttomBgView.frame = self.buttomView.bounds;
     
-    self.backButton.frame = CGRectMake(0, 29, 35, 35);
+    self.backButton.frame = CGRectMake(0, 20, 44, 44);
     self.titleLabel.frame = CGRectMake(44, 20, self.topView.bounds.size.width - 44, 44);
     
     
@@ -91,7 +93,7 @@
     
     self.progressView.frame = CGRectMake(44 + 65+10, 0, self.videoButtomView.bounds.size.width - 44 - 65-10, 44);
     self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.center.y);
-    self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 1, self.progressView.frame.origin.y, self.progressView.frame.size.width+1, 44);
+    self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 2, self.progressView.frame.origin.y, self.progressView.frame.size.width+2, 44);
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
 }
 

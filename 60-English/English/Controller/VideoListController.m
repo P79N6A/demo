@@ -13,8 +13,10 @@
 
 #import "Common.h"
 #import "XYYHTTP.h"
+#import "LBLADMob.h"
 
 #import <UIImageView+WebCache.h>
+
 
 @interface VideoListController ()
 <UICollectionViewDelegate,UICollectionViewDataSource>
@@ -46,9 +48,18 @@
     self.collectionView.backgroundColor = kBackgroundColor;
     
     
-    if (KBOOLLINE) {
-        ////AD
+    if (![LBLADMob sharedInstance].isRemoveAd) {
+        __weak typeof(self) weakSelf = self;
+        [LBLADMob GADBannerViewNoTabbarHeightWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.collectionView.contentInset = UIEdgeInsetsMake(0, 0, adH, 0);
+        self.collectionView.scrollIndicatorInsets = self.collectionView.contentInset;
+        if (KBOOLLINE) {
+            ////AD
+            [[LBLADMob sharedInstance] GADInterstitialWithVC:weakSelf];
+        }
     }
+
 
 }
 - (void)setDics:(NSArray *)dics{

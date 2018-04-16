@@ -12,7 +12,6 @@
 #import "NSData+ImageContentType.h"
 #import "UIImage+MultiFormat.h"
 #import "SDWebImageCoderHelper.h"
-#import "SDAnimatedImageRep.h"
 
 @implementation SDWebImageGIFCoder
 
@@ -36,10 +35,7 @@
     }
     
 #if SD_MAC
-    SDAnimatedImageRep *imageRep = [[SDAnimatedImageRep alloc] initWithData:data];
-    NSImage *animatedImage = [[NSImage alloc] initWithSize:imageRep.size];
-    [animatedImage addRepresentation:imageRep];
-    return animatedImage;
+    return [[UIImage alloc] initWithData:data];
 #else
     
     CGImageSourceRef source = CGImageSourceCreateWithData((__bridge CFDataRef)data, NULL);
@@ -165,7 +161,7 @@
             SDWebImageFrame *frame = frames[i];
             float frameDuration = frame.duration;
             CGImageRef frameImageRef = frame.image.CGImage;
-            NSDictionary *frameProperties = @{(__bridge_transfer NSString *)kCGImagePropertyGIFDictionary : @{(__bridge_transfer NSString *)kCGImagePropertyGIFDelayTime : @(frameDuration)}};
+            NSDictionary *frameProperties = @{(__bridge_transfer NSString *)kCGImagePropertyGIFDictionary : @{(__bridge_transfer NSString *)kCGImagePropertyGIFUnclampedDelayTime : @(frameDuration)}};
             CGImageDestinationAddImage(imageDestination, frameImageRef, (__bridge CFDictionaryRef)frameProperties);
         }
     }
