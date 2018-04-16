@@ -17,6 +17,7 @@
 #import "XYYHTTP.h"
 #import "LBLADMob.h"
 
+
 #define VideoH ScreenWith/16.0*9.0
 #define TitleViewH 116
 
@@ -35,7 +36,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    [self test];
     
     [self setUI];
 
@@ -286,6 +287,14 @@
 - (BOOL)prefersHomeIndicatorAutoHidden {
     return YES;
 }
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    NSLog(@"%s", __func__);
+    return UIStatusBarStyleDefault;
+}
+
+
+
 
 
 @end

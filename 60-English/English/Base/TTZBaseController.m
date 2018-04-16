@@ -24,30 +24,30 @@
     // Dispose of any resources that can be recreated.
 }
 
-//FIXME:  -  旋转 状态栏
-- (BOOL)shouldAutorotate{
-    return NO;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    
-    return UIInterfaceOrientationMaskPortrait;
-}
-
-- (BOOL)prefersStatusBarHidden{
-    return NO;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
-
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
-    return UIStatusBarAnimationFade;
-}
-
-- (BOOL)prefersHomeIndicatorAutoHidden {
-    return NO;
-}
-
+////FIXME:  -  旋转 状态栏
+//- (BOOL)shouldAutorotate{
+//    return NO;
+//}
+//
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+//    
+//    return UIInterfaceOrientationMaskPortrait;
+//}
+//
+//- (BOOL)prefersStatusBarHidden{
+//    return NO;
+//}
+//
+//- (UIStatusBarStyle)preferredStatusBarStyle{
+//    return UIStatusBarStyleLightContent;
+//}
+//
+//- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+//    return UIStatusBarAnimationFade;
+//}
+//
+//- (BOOL)prefersHomeIndicatorAutoHidden {
+//    return NO;
+//}
+//
 @end

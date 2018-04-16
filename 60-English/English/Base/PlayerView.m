@@ -484,3 +484,90 @@
 
 
 @end
+
+/////////////
+
+@implementation UITabBarController (Player)
+//FIXME:  -  旋转 状态栏
+- (BOOL)shouldAutorotate{
+    return self.selectedViewController.shouldAutorotate;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    
+    return self.selectedViewController.supportedInterfaceOrientations;
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return self.selectedViewController.prefersStatusBarHidden;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return self.selectedViewController.preferredStatusBarStyle;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+    return self.selectedViewController.preferredStatusBarUpdateAnimation;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    return self.selectedViewController.prefersHomeIndicatorAutoHidden;
+}
+@end
+@implementation UINavigationController (Player)
+//FIXME:  -  旋转 状态栏
+- (BOOL)shouldAutorotate{
+    return self.topViewController.shouldAutorotate;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    
+    return self.topViewController.supportedInterfaceOrientations;
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return self.topViewController.prefersStatusBarHidden;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return self.topViewController.preferredStatusBarStyle;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+    return self.topViewController.preferredStatusBarUpdateAnimation;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    return self.topViewController.prefersHomeIndicatorAutoHidden;
+}
+@end
+@implementation UIViewController (Player)
+//FIXME:  -  旋转 状态栏
+- (BOOL)shouldAutorotate{
+    return NO;
+}
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
+- (BOOL)prefersStatusBarHidden{
+    return NO;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+    return UIStatusBarAnimationFade;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden {
+    return NO;
+}
+@end
+
+
+
+
+

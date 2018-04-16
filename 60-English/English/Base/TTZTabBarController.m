@@ -78,31 +78,31 @@
     [self YYW_UI];
 }
 
-//FIXME:  -  旋转 状态栏
-- (BOOL)shouldAutorotate{
-    return self.selectedViewController.shouldAutorotate;
-}
-
-- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
-    
-    return self.selectedViewController.supportedInterfaceOrientations;
-}
-
-- (BOOL)prefersStatusBarHidden{
-    return self.selectedViewController.prefersStatusBarHidden;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return self.selectedViewController.preferredStatusBarStyle;
-}
-
-- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
-    return self.selectedViewController.preferredStatusBarUpdateAnimation;
-}
-
-- (BOOL)prefersHomeIndicatorAutoHidden {
-    return self.selectedViewController.prefersHomeIndicatorAutoHidden;
-}
+////FIXME:  -  旋转 状态栏
+//- (BOOL)shouldAutorotate{
+//    return self.selectedViewController.shouldAutorotate;
+//}
+//
+//- (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+//    
+//    return self.selectedViewController.supportedInterfaceOrientations;
+//}
+//
+//- (BOOL)prefersStatusBarHidden{
+//    return self.selectedViewController.prefersStatusBarHidden;
+//}
+//
+//- (UIStatusBarStyle)preferredStatusBarStyle{
+//    return self.selectedViewController.preferredStatusBarStyle;
+//}
+//
+//- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
+//    return self.selectedViewController.preferredStatusBarUpdateAnimation;
+//}
+//
+//- (BOOL)prefersHomeIndicatorAutoHidden {
+//    return self.selectedViewController.prefersHomeIndicatorAutoHidden;
+//}
 
 
 @end
