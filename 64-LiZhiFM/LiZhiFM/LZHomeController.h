@@ -8,7 +8,7 @@
 
 #import "LZBaseViewController.h"
 
-@interface ViewController : LZBaseViewController
+@interface LZHomeController : LZBaseViewController
 
 
 @end

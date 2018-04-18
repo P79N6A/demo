@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "UIView+Loading.h"
+#import "LZCommon.h"
 
 @interface LZBaseViewController : UIViewController
 
