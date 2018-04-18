@@ -9,6 +9,7 @@
 #import "LZBaseViewController.h"
 
 #import "UIImageView+LBBlurredImage.h"
+#import "UIView+Loading.h"
 
 @interface LZBaseViewController ()
 
@@ -22,11 +23,15 @@
     [self setUI];
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    [self.view hideLoading:@"贯文化自信的中国让"];
+}
+
 #pragma mark  -  自定义方法
 - (void)setUI{
     UIImageView *bg = [[UIImageView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
-    [bg setImageToBlur:[UIImage imageNamed:@"03511538eaa8b631aaeb4c79503b2f432151df473900b-BhbAhj_fw658"]
+    [bg setImageToBlur:[UIImage imageNamed:@"Snip20180418_3"]
                         blurRadius:kLBBlurredImageDefaultBlurRadius
                    completionBlock:^(){
                        NSLog(@"The blurred image has been set");

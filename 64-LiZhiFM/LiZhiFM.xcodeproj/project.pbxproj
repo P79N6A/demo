@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ABF0043F2087847B004DC9CA /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0043B2087847B004DC9CA /* UIView+Loading.m */; };
+		ABF004402087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */; };
 		ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6A2084EE6700448645 /* AppDelegate.m */; };
 		ABFC9A6E2084EE6700448645 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6D2084EE6700448645 /* ViewController.m */; };
 		ABFC9A712084EE6700448645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFC9A6F2084EE6700448645 /* Main.storyboard */; };
@@ -20,6 +22,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ABF0043B2087847B004DC9CA /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Loading.m"; path = "../../../60-English/English/Model/UIView+Loading.m"; sourceTree = "<group>"; };
+		ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+FullscreenPopGesture.m"; path = "../../../60-English/English/Model/UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
+		ABF0043D2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+FullscreenPopGesture.h"; path = "../../../60-English/English/Model/UINavigationController+FullscreenPopGesture.h"; sourceTree = "<group>"; };
+		ABF0043E2087847B004DC9CA /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Loading.h"; path = "../../../60-English/English/Model/UIView+Loading.h"; sourceTree = "<group>"; };
 		ABFC9A662084EE6700448645 /* LiZhiFM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiZhiFM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFC9A692084EE6700448645 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABFC9A6A2084EE6700448645 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +103,10 @@
 		ABFC9A832084EF8000448645 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				ABF0043D2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.h */,
+				ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */,
+				ABF0043E2087847B004DC9CA /* UIView+Loading.h */,
+				ABF0043B2087847B004DC9CA /* UIView+Loading.m */,
 				ABFC9A842084EF9700448645 /* LBBlurredImage */,
 				ABFC9A8B2084F22100448645 /* LZData.h */,
 				ABFC9A8C2084F22100448645 /* LZData.m */,
@@ -191,6 +201,8 @@
 				ABFC9A8A2084F01B00448645 /* UIImageView+LBBlurredImage.m in Sources */,
 				ABFC9A6E2084EE6700448645 /* ViewController.m in Sources */,
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,
+				ABF0043F2087847B004DC9CA /* UIView+Loading.m in Sources */,
+				ABF004402087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m in Sources */,
 				ABFC9A792084EE6700448645 /* main.m in Sources */,
 				ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */,
 			);
