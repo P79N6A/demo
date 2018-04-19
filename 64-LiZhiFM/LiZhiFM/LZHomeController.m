@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self setUI];
+//    [self setUI];
 }
 
 
@@ -50,8 +50,8 @@
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         
         [_tableView registerNib:[UINib nibWithNibName:@"TTZEnglishCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-        _tableView.backgroundColor = kBackgroundColor;
-        TTZBanner *headerView = [TTZBanner headerView];
+        _tableView.backgroundColor = [UIColor clearColor];
+        TTZBannerView *headerView = [TTZBannerView new];
 //        headerView.frame = CGRectMake(0, 0, 0, 145);//220
 //        _tableView.tableHeaderView = headerView;
         
