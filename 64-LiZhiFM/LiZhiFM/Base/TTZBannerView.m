@@ -10,7 +10,7 @@
 
 #import <Masonry/Masonry.h>
 #import <UIImageView+WebCache.h>
-#import "common.h"
+#import "LZCommon.h"
 
 #define kPageControlBottomMargin 5
 #define kLargeNumber 10000

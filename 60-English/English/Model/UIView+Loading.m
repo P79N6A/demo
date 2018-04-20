@@ -35,7 +35,8 @@ static char ACTIVITY_LABEL_KEY;
  */
 - (void)showLoading {
     // 默认展示灰色loading
-    [self showLoadingWithColor:[UIColor grayColor]];//
+    //[self showLoadingWithColor:[UIColor grayColor]];//
+    [self showLoadingWithColor:[UIColor whiteColor]];//
 }
 
 /**
@@ -52,6 +53,7 @@ static char ACTIVITY_LABEL_KEY;
     self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
     [self addSubview:self.loadingView];
     self.loadingView.color = color;
+    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     [self.loadingView startAnimating];
     self.loadingView.userInteractionEnabled = NO;
     self.userInteractionEnabled = NO;
@@ -73,26 +75,31 @@ static char ACTIVITY_LABEL_KEY;
     self.userInteractionEnabled = YES;
     
     if (msg.length) {
-        
-        self.loadingLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 74)];
-        self.loadingLabel.layer.cornerRadius = 10;
-        self.loadingLabel.layer.masksToBounds = YES;
-        self.loadingLabel.textColor = [UIColor whiteColor];
-        self.loadingLabel.font = [UIFont systemFontOfSize:18];
-        self.loadingLabel.text = msg;
-        self.loadingLabel.numberOfLines = 2;
-        self.loadingLabel.textAlignment = NSTextAlignmentCenter;
-        self.loadingLabel.center = self.center;
-        [self addSubview:self.loadingLabel];
-        self.loadingLabel.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.75 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            [UIView animateWithDuration:0.25 animations:^{
-                self.loadingLabel.alpha = 0.0;
-            } completion:^(BOOL finished) {
-                [self.loadingLabel removeFromSuperview];
-            }];
-        });
+        [self showHud:msg];
     }
 }
+
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+- (void)showHud:(NSString *)msg{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+                                                    message:msg
+                                                   delegate:self
+                                          cancelButtonTitle:@"确定"
+                                          otherButtonTitles:nil];
+    [alert show];
+    [self performSelector:@selector(dimissAlert:)withObject:alert afterDelay:1.0];
+}
+
+- (void)dimissAlert:(UIAlertView *)alert{
+    if(alert){
+        [alert dismissWithClickedButtonIndex:[alert cancelButtonIndex] animated:YES];
+    }
+}
+#pragma clang diagnostic pop
+
+
+
+
 
 @end
