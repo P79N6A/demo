@@ -25,23 +25,28 @@
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
     
-    LZPlayView *playView = [LZPlayView playView];//[[LZPlayView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 100, ScreenWith, 100)];
-    playView.frame = CGRectMake(0, ScreenHeight - 70, ScreenWith, 70);
+    LZPlayView *playView = [LZPlayView playView];
+    playView.frame = CGRectMake(0, ScreenHeight - 70+55, ScreenWith, 70);
     
     __weak typeof(LZPlayView) *weakPlayView = playView;
     playView.move = ^(CGFloat y){
-        if (y == ScreenHeight - 70) {
+        if (y == ScreenHeight - 70+55) {
             [UIView animateWithDuration:0.25 animations:^{
-                weakPlayView.transform = CGAffineTransformTranslate(weakPlayView.transform, 0, 55);
+                weakPlayView.y = ScreenHeight - 70-kTabbarSafeBottomMargin;
             }];
+
             return ;
         }
         [UIView animateWithDuration:0.25 animations:^{
-            weakPlayView.transform = CGAffineTransformIdentity;
+            weakPlayView.y = ScreenHeight - 70+55;
         }];
 
+
     };
+    
+    
     [self.view addSubview:playView];
+    self.playView = playView;
 }
 
 

@@ -7,8 +7,10 @@
 //
 
 #import "LZNetViewController.h"
+#import "LZNavigationController.h"
 
 #import "RadioCell.h"
+#import "LZPlayView.h"
 
 #import "LZliveChannelModel.h"
 //#import "LZData.h"
@@ -16,7 +18,7 @@
 #import <MJExtension/MJExtension.h>
 
 @interface LZNetViewController ()
-<UITableViewDataSource>
+<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @end
 
@@ -57,14 +59,24 @@
     cell.model = model;
     return cell;
 }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+  
+    LZliveChannelModel *model = self.models[indexPath.row];
+    if (!model.live_stream) {
+        model.live_stream = model.streams.firstObject.url;
+    }
+    LZNavigationController *nav = (LZNavigationController *)self.navigationController;
+    LZPlayView *playView = nav.playView;
+    playView.model = model;
 
+}
 #pragma mark  -  get/set 方法
 -(UITableView *)tableView {
     if (_tableView == nil) {
         
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         
-        //_tableView.delegate = self;
+        _tableView.delegate = self;
         
         _tableView.dataSource = self;
         

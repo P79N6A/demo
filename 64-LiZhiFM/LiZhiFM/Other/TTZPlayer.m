@@ -16,6 +16,11 @@ static TTZPlayer *instance = nil;
 @interface TTZPlayer()
 @property (nonatomic, strong) AliVcMediaPlayer *mediaPlayer;
 @property (nonatomic, strong) UIView *contentView;
+/** 加载中 */
+@property (nonatomic, copy) PlayerLoading loadingBlock;//void (^playerLoading)(void);
+
+/** 加载完毕 */
+@property (nonatomic, copy) PlayerCompletion completionBlock;//void (^playerCompletion)(void);
 
 @end
 
@@ -36,7 +41,12 @@ static TTZPlayer *instance = nil;
 }
 
 #pragma mark  开始播放
-- (void)playWithModel:(id<TTZPlayerModel>)model{
+- (void)playWithModel:(id<TTZPlayerModel>)model
+         onStartCache:(PlayerLoading)loading
+           onEndCache:(PlayerCompletion)completion{
+    
+    _loadingBlock = loading;
+    _completionBlock = completion;
     
     [self stop];
     self.model = model;
@@ -178,7 +188,7 @@ static TTZPlayer *instance = nil;
         //设置播放类型，0为点播、1为直播，默认使用自动
         _mediaPlayer.mediaType = MediaType_AUTO;
         //设置超时时间，单位为毫秒
-        _mediaPlayer.timeout = 25000;
+        _mediaPlayer.timeout = 15000;
         //缓冲区超过设置值时开始丢帧，单位为毫秒。直播时设置，点播设置无效。范围：500～100000
         _mediaPlayer.dropBufferDuration = 8000;
         
@@ -232,7 +242,7 @@ static TTZPlayer *instance = nil;
 #pragma mark  - 获取到视频的相关信息
 - (void)OnVideoPrepared:(NSNotification *)noti{
     NSLog(@"%s--获取到视频的相关信息", __func__);
-    !(_playerLoading)? : _playerLoading();
+    !(_loadingBlock)? : _loadingBlock();
 }
 
 #pragma mark  - 视频正常播放完成
@@ -242,7 +252,7 @@ static TTZPlayer *instance = nil;
 
 #pragma mark  - 播放器播放失败
 - (void)OnVideoError:(NSNotification *)noti{
-    NSLog(@"%s--播放器播放失败", __func__);
+    NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
 }
 
 #pragma mark  - 播放器Seek完成后
@@ -253,14 +263,14 @@ static TTZPlayer *instance = nil;
 #pragma mark  - 播放器开始缓冲视频时
 - (void)OnStartCache:(NSNotification *)noti{
     NSLog(@"%s--播放器开始缓冲视频时", __func__);
-    !(_playerLoading)? : _playerLoading();
+    !(_loadingBlock)? : _loadingBlock();
 
 }
 
 #pragma mark  - 播放器结束缓冲视频
 - (void)OnEndCache:(NSNotification *)noti{
     NSLog(@"%s--播放器结束缓冲视频", __func__);
-    !(_playerCompletion)? : _playerCompletion();
+    !(_completionBlock)? : _completionBlock();
 
 }
 
@@ -272,7 +282,7 @@ static TTZPlayer *instance = nil;
 #pragma mark  - 播放器状态首帧显示
 - (void)onVideoFirstFrame:(NSNotification *)noti{
     NSLog(@"%s--播放器状态首帧显示", __func__);
-    !(_playerCompletion)? : _playerCompletion();
+    !(_completionBlock)? : _completionBlock();
 }
 
 #pragma mark  - 播放器开启循环播放

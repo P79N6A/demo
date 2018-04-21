@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@class LZliveChannelModel;
 @interface LZPlayView : UIView
 
-@property (nonatomic, copy) void(^move)(CGFloat) ;
+@property (nonatomic, copy) void(^move)(CGFloat);
+
+@property (nonatomic, strong) LZliveChannelModel *model;
 
 + (instancetype)playView;
 

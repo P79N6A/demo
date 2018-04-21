@@ -7,11 +7,23 @@
 //
 
 #import "LZPlayView.h"
+
 #import "LZCommon.h"
+#import "TTZPlayer.h"
+#import "UIView+Loading.h"
+
+#import "LZliveChannelModel.h"
+
+#import <UIImageView+WebCache.h>
 
 @interface LZPlayView()
 
 @property (weak, nonatomic) IBOutlet UIButton *lockBtn;
+@property (weak, nonatomic) IBOutlet UIImageView *imgIV;
+@property (weak, nonatomic) IBOutlet UILabel *nameLB;
+@property (weak, nonatomic) IBOutlet UILabel *desLB;
+@property (weak, nonatomic) IBOutlet UIButton *playBtn;
+@property (weak, nonatomic) IBOutlet UIView *contentView;
 
 
 @end
@@ -22,12 +34,37 @@
     return [[NSBundle mainBundle] loadNibNamed:@"LZPlayView" owner:nil options:nil].lastObject;
 }
 
+- (void)awakeFromNib{
+    [super awakeFromNib];
+    kViewRadius(self.imgIV, 5);
+}
+
 - (IBAction)lockAction:(UIButton *)sender {
     sender.selected = !sender.isSelected;
     
     if (sender.isSelected) {
-        !(_move)? : _move(ScreenHeight - 70-55);
+        !(_move)? : _move(ScreenHeight - 70+55);
     }
+}
+- (IBAction)play:(UIButton *)sender {
+    
+}
+
+
+- (void)setModel:(LZliveChannelModel <TTZPlayerModel>*)model{
+    _model = model;
+    [self.imgIV sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:[UIImage imageNamed:@"logo"]];
+    self.nameLB.text = model.name;
+    self.desLB.text = model.liveSectionName;
+    
+    [[TTZPlayer defaultPlayer] playWithModel:model
+                                onStartCache:^{
+                                    [self.contentView showLoading:nil];
+                                }
+                                  onEndCache:^{
+                                      [self.contentView hideLoading:nil];
+                                  }];
+    !(_move)? : _move(ScreenHeight - 70+55);
 }
 
 

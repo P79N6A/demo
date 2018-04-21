@@ -40,13 +40,13 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3fQ-aN-IhR">
-                            <rect key="frame" x="55" y="3.6666666666666679" width="42" height="20.999999999999996"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <rect key="frame" x="54.999999999999993" y="7.3333333333333339" width="37.333333333333321" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tgo-l7-FGK">
-                            <rect key="frame" x="55" y="37" width="31" height="14.333333333333329"/>
+                            <rect key="frame" x="55" y="35" width="31" height="13.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
@@ -60,17 +60,20 @@
                             </constraints>
                             <state key="normal" image="pause"/>
                             <state key="selected" image="play"/>
+                            <connections>
+                                <action selector="play:" destination="iN0-l3-epB" eventType="touchUpInside" id="5SA-Ed-MB9"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.83999999999999997" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstItem="3fQ-aN-IhR" firstAttribute="top" secondItem="e1d-5K-Cdh" secondAttribute="top" id="IeG-GE-l5j"/>
+                        <constraint firstItem="3fQ-aN-IhR" firstAttribute="top" secondItem="e1d-5K-Cdh" secondAttribute="top" constant="3" id="IeG-GE-l5j"/>
                         <constraint firstItem="E3d-25-z0H" firstAttribute="centerY" secondItem="R87-Eb-Dgf" secondAttribute="centerY" id="MdJ-3E-Zjm"/>
                         <constraint firstItem="3fQ-aN-IhR" firstAttribute="leading" secondItem="e1d-5K-Cdh" secondAttribute="trailing" constant="5" id="iAK-pa-TcS"/>
                         <constraint firstItem="e1d-5K-Cdh" firstAttribute="leading" secondItem="R87-Eb-Dgf" secondAttribute="leading" constant="10" id="oTI-yB-56m"/>
                         <constraint firstItem="Tgo-l7-FGK" firstAttribute="leading" secondItem="3fQ-aN-IhR" secondAttribute="leading" id="og8-Eh-CNk"/>
                         <constraint firstItem="e1d-5K-Cdh" firstAttribute="centerY" secondItem="R87-Eb-Dgf" secondAttribute="centerY" id="vc4-nH-mRd"/>
-                        <constraint firstItem="Tgo-l7-FGK" firstAttribute="bottom" secondItem="e1d-5K-Cdh" secondAttribute="bottom" id="zct-0i-JZh"/>
+                        <constraint firstItem="Tgo-l7-FGK" firstAttribute="bottom" secondItem="e1d-5K-Cdh" secondAttribute="bottom" constant="-3" id="zct-0i-JZh"/>
                     </constraints>
                 </view>
             </subviews>
@@ -87,7 +90,12 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
+                <outlet property="contentView" destination="R87-Eb-Dgf" id="PXW-Pw-N6K"/>
+                <outlet property="desLB" destination="Tgo-l7-FGK" id="qXF-oB-uN1"/>
+                <outlet property="imgIV" destination="e1d-5K-Cdh" id="gOE-8Y-H5F"/>
                 <outlet property="lockBtn" destination="zcK-Iy-U0Y" id="mTH-QU-sA9"/>
+                <outlet property="nameLB" destination="3fQ-aN-IhR" id="Nie-Hm-wBv"/>
+                <outlet property="playBtn" destination="E3d-25-z0H" id="gbM-nm-QPJ"/>
             </connections>
             <point key="canvasLocation" x="56.5" y="3"/>
         </view>

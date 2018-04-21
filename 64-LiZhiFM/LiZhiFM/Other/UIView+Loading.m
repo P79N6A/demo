@@ -35,7 +35,7 @@ static char ACTIVITY_LABEL_KEY;
 - (void)showLoading:(NSString *)message {
     if (!self.loadingView) {
         UIActivityIndicatorView * loadingView = [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
-        loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhite;
         [self addSubview:loadingView];
         loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
         self.loadingView = loadingView;

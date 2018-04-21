@@ -19,16 +19,13 @@
 
 @end
 
+
+typedef void(^PlayerLoading)(void);
+typedef void(^PlayerCompletion)(void);
+
 @interface TTZPlayer : NSObject
 
 + (instancetype)defaultPlayer;
-
-/** 加载中 */
-@property (nonatomic, copy) void (^playerLoading)(void);
-
-/** 加载完毕 */
-@property (nonatomic, copy) void (^playerCompletion)(void);
-
 
 -(void)play;
 
@@ -41,6 +38,8 @@
 
 @property (nonatomic, strong) id<TTZPlayerModel> model;
 
--(void)playWithModel:(id<TTZPlayerModel>)model;
+-(void)playWithModel:(id<TTZPlayerModel>)model
+        onStartCache:(PlayerLoading)loading
+          onEndCache:(PlayerCompletion)completion;
 
 @end

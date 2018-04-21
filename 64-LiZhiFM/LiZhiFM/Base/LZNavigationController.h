@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
+@class LZPlayView;
 @interface LZNavigationController : UINavigationController
-
+@property (nonatomic, weak) LZPlayView *playView;
 @end

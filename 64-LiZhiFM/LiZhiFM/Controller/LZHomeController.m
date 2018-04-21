@@ -9,21 +9,24 @@
 #import "LZHomeController.h"
 #import "LZNetViewController.h"
 #import "LZCateViewController.h"
+#import "LZNavigationController.h"
 
 #import "TTZBannerView.h"
 #import "RadioCell.h"
+#import "LZPlayView.h"
 
 #import "LZliveChannelModel.h"
 
 #import "LZHTTP.h"
 #import "LZData.h"
+#import "TTZPlayer.h"
 
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
 
 
 
-@interface LZHomeController ()<UITableViewDataSource>
+@interface LZHomeController ()<UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray <LZliveChannelModel *> *models;
 @end
@@ -97,13 +100,24 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    LZliveChannelModel *model = self.models[indexPath.row];
+    if (!model.live_stream) {
+        model.live_stream = model.streams.firstObject.url;
+    }
+    
+    LZNavigationController *nav = (LZNavigationController *)self.navigationController;
+    LZPlayView *playView = nav.playView;
+    playView.model = model;
+}
+
 #pragma mark  -  get/set 方法
 -(UITableView *)tableView {
     if (_tableView == nil) {
         
         _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
         
-        //_tableView.delegate = self;
+        _tableView.delegate = self;
         
         _tableView.dataSource = self;
         
