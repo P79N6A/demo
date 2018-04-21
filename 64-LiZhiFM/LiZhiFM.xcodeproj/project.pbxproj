@@ -8,8 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		40394915C01BE7923657C04B /* libPods-LiZhiFM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84676D6E2A95D15B59499828 /* libPods-LiZhiFM.a */; };
-		ABF0043F2087847B004DC9CA /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0043B2087847B004DC9CA /* UIView+Loading.m */; };
-		ABF004402087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */; };
+		AB2E6410208B0A520089C39B /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640B208B0A510089C39B /* UIView+Loading.m */; };
+		AB2E6411208B0A520089C39B /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */; };
+		AB2E6412208B0A520089C39B /* LZHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640E208B0A510089C39B /* LZHTTP.m */; };
 		ABF0044320878BA1004DC9CA /* LZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0044220878BA1004DC9CA /* LZNavigationController.m */; };
 		ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0044620878F0F004DC9CA /* TTZBannerView.m */; };
 		ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6A2084EE6700448645 /* AppDelegate.m */; };
@@ -27,10 +28,12 @@
 /* Begin PBXFileReference section */
 		31506467FB154F23BE4D4A2E /* Pods-LiZhiFM.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiZhiFM.release.xcconfig"; path = "Pods/Target Support Files/Pods-LiZhiFM/Pods-LiZhiFM.release.xcconfig"; sourceTree = "<group>"; };
 		84676D6E2A95D15B59499828 /* libPods-LiZhiFM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiZhiFM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		ABF0043B2087847B004DC9CA /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UIView+Loading.m"; path = "../../../60-English/English/Model/UIView+Loading.m"; sourceTree = "<group>"; };
-		ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "UINavigationController+FullscreenPopGesture.m"; path = "../../../60-English/English/Model/UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
-		ABF0043D2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UINavigationController+FullscreenPopGesture.h"; path = "../../../60-English/English/Model/UINavigationController+FullscreenPopGesture.h"; sourceTree = "<group>"; };
-		ABF0043E2087847B004DC9CA /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "UIView+Loading.h"; path = "../../../60-English/English/Model/UIView+Loading.h"; sourceTree = "<group>"; };
+		AB2E640A208B0A510089C39B /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
+		AB2E640B208B0A510089C39B /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
+		AB2E640D208B0A510089C39B /* LZHTTP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZHTTP.h; sourceTree = "<group>"; };
+		AB2E640E208B0A510089C39B /* LZHTTP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZHTTP.m; sourceTree = "<group>"; };
+		AB2E640F208B0A520089C39B /* UINavigationController+FullscreenPopGesture.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+FullscreenPopGesture.h"; sourceTree = "<group>"; };
 		ABF0044120878BA1004DC9CA /* LZNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNavigationController.h; sourceTree = "<group>"; };
 		ABF0044220878BA1004DC9CA /* LZNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZNavigationController.m; sourceTree = "<group>"; };
 		ABF0044420878D77004DC9CA /* LZCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZCommon.h; sourceTree = "<group>"; };
@@ -139,10 +142,12 @@
 		ABFC9A832084EF8000448645 /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				ABF0043D2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.h */,
-				ABF0043C2087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m */,
-				ABF0043E2087847B004DC9CA /* UIView+Loading.h */,
-				ABF0043B2087847B004DC9CA /* UIView+Loading.m */,
+				AB2E640F208B0A520089C39B /* UINavigationController+FullscreenPopGesture.h */,
+				AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */,
+				AB2E640A208B0A510089C39B /* UIView+Loading.h */,
+				AB2E640B208B0A510089C39B /* UIView+Loading.m */,
+				AB2E640D208B0A510089C39B /* LZHTTP.h */,
+				AB2E640E208B0A510089C39B /* LZHTTP.m */,
 				ABFC9A842084EF9700448645 /* LBBlurredImage */,
 				ABFC9A8B2084F22100448645 /* LZData.h */,
 				ABFC9A8C2084F22100448645 /* LZData.m */,
@@ -273,7 +278,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -283,16 +288,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB2E6411208B0A520089C39B /* UINavigationController+FullscreenPopGesture.m in Sources */,
 				ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */,
 				ABFC9A8D2084F22100448645 /* LZData.m in Sources */,
 				ABFC9A892084F01B00448645 /* UIImage+ImageEffects.m in Sources */,
+				AB2E6410208B0A520089C39B /* UIView+Loading.m in Sources */,
 				ABFC9A8A2084F01B00448645 /* UIImageView+LBBlurredImage.m in Sources */,
 				ABFC9A6E2084EE6700448645 /* LZHomeController.m in Sources */,
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,
-				ABF0043F2087847B004DC9CA /* UIView+Loading.m in Sources */,
-				ABF004402087847B004DC9CA /* UINavigationController+FullscreenPopGesture.m in Sources */,
 				ABFC9A792084EE6700448645 /* main.m in Sources */,
 				ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */,
+				AB2E6412208B0A520089C39B /* LZHTTP.m in Sources */,
 				ABF0044320878BA1004DC9CA /* LZNavigationController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
