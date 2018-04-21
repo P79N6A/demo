@@ -23,7 +23,7 @@
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    [self.view showLoading];
+    [self.view showLoading:@"加载中..."];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.view hideLoading:@"贯文化自信的中国"];
     });

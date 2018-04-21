@@ -30,32 +30,36 @@ static char ACTIVITY_LABEL_KEY;
     objc_setAssociatedObject(self, &ACTIVITY_LABEL_KEY, loadingLabel, OBJC_ASSOCIATION_RETAIN);
 }
 
-/**
- 展示loading（默认灰色）
- */
-- (void)showLoading {
-    // 默认展示灰色loading
-    //[self showLoadingWithColor:[UIColor grayColor]];//
-    [self showLoadingWithColor:[UIColor whiteColor]];//
-}
 
-/**
- 展示指定颜色的loading
- 
- @param color loading的颜色
- */
-- (void)showLoadingWithColor:(UIColor *)color {
-    if (self.loadingView) {
-        [self.loadingView removeFromSuperview];
-        self.loadingView = nil;
+
+- (void)showLoading:(NSString *)message {
+    if (!self.loadingView) {
+        UIActivityIndicatorView * loadingView = [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
+        loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+        [self addSubview:loadingView];
+        loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+        self.loadingView = loadingView;
     }
-    self.loadingView = [[UIActivityIndicatorView alloc] initWithFrame:self.bounds];
-    self.loadingView.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [self addSubview:self.loadingView];
-    self.loadingView.color = color;
-    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-    [self.loadingView startAnimating];
-    self.loadingView.userInteractionEnabled = NO;
+    if(!self.loadingView.isAnimating) [self.loadingView startAnimating];
+    
+    if (message.length) {
+        if (!self.loadingLabel) {
+            UILabel * loadingLabel = [[UILabel alloc] initWithFrame:self.loadingView.bounds];
+            loadingLabel.center = CGPointMake(loadingLabel.center.x, loadingLabel.center.y + 35);
+            loadingLabel.textColor = [UIColor whiteColor];
+            loadingLabel.font = [UIFont systemFontOfSize:13.0];
+            loadingLabel.textAlignment = NSTextAlignmentCenter;
+            [self.loadingView addSubview:loadingLabel];
+            self.loadingLabel = loadingLabel;
+        }
+        self.loadingLabel.text = message;
+        
+    }else{
+        if (self.loadingLabel){
+            [self.loadingLabel removeFromSuperview];
+            self.loadingLabel = nil;
+        }
+    }
     self.userInteractionEnabled = NO;
 }
 
@@ -66,14 +70,15 @@ static char ACTIVITY_LABEL_KEY;
     if (self.loadingView) {
         [self.loadingView removeFromSuperview];
         self.loadingView = nil;
+        self.loadingLabel = nil;
+
     }
+    self.userInteractionEnabled = YES;
 }
 
 - (void)hideLoading:(NSString *)msg
 {
     [self removeLoading];
-    self.userInteractionEnabled = YES;
-    
     if (msg.length) {
         [self showHud:msg];
     }
@@ -82,13 +87,13 @@ static char ACTIVITY_LABEL_KEY;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)showHud:(NSString *)msg{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@""
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
                                                     message:msg
-                                                   delegate:self
+                                                   delegate:nil
                                           cancelButtonTitle:@"确定"
                                           otherButtonTitles:nil];
     [alert show];
-    [self performSelector:@selector(dimissAlert:)withObject:alert afterDelay:1.0];
+    [self performSelector:@selector(dimissAlert:)withObject:alert afterDelay:1.5];
 }
 
 - (void)dimissAlert:(UIAlertView *)alert{

@@ -8,22 +8,8 @@
 #import <UIKit/UIKit.h>
 
 @interface UIView (Loading)
-/**
- 展示loading（默认灰色）
- */
-- (void)showLoading;
 
-/**
- 展示指定颜色的loading
- 
- @param color loading的颜色
- */
-- (void)showLoadingWithColor:(UIColor *)color;
-
-/**
- 移除loading
- */
-//- (void)removeLoading;
-- (void)hideLoading:(NSString *)msg;
+- (void)showLoading:(NSString *)message;
+- (void)hideLoading:(NSString *)message;
 
 @end
