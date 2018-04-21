@@ -10,14 +10,18 @@
 
 #import "TTZBannerView.h"
 
-
-#import <Masonry/Masonry.h>
+#import "LZliveChannelModel.h"
 
 #import "LZHTTP.h"
+
+#import <Masonry/Masonry.h>
+#import <MJExtension/MJExtension.h>
+
 
 
 @interface LZHomeController ()<UITableViewDataSource>
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) NSArray <LZliveChannelModel *> *models;
 @end
 
 @implementation LZHomeController
@@ -45,10 +49,16 @@
     [[LZHTTP sharedInstance] getRequest:@"http://pacc.radio.cn/channels/getlivebyparam"
                              parameters:@{@"channelPlaceId":@"3225"}
                                 success:^(id respones) {
-                                    
+                                  
+                                    NSArray *liveChannels = [respones valueForKey:@"liveChannel"];
+                                    if ([liveChannels isKindOfClass:[NSArray class]]) {
+                                        self.models = [LZliveChannelModel mj_objectArrayWithKeyValuesArray:liveChannels];
+                                        [self.tableView reloadData];
+                                    }
+                                    [self.view hideLoading:nil];
                                 }
                                 failure:^(NSError *error) {
-                                    
+                                    [self.view hideLoading:nil];
                                 }];
 }
 

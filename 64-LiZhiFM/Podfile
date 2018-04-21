@@ -9,6 +9,8 @@ target 'LiZhiFM' do
 pod 'Masonry'
 pod 'SDWebImage'
 pod 'AFNetworking'
+pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
+pod 'MJExtension'
   # Pods for LiZhiFM
 
 end
