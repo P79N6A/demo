@@ -43,9 +43,11 @@
 //    "commentId": "180421819845",
 //    "isCollect": "0"
 //}
+
+@property (nonatomic, copy) NSString *Id;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) NSString *img;
 @property (nonatomic, copy) NSString *liveSectionName;
 @property (nonatomic, strong) NSArray <LZStreamModel *>*streams;
-
+@property (nonatomic, copy) NSString *live_stream;
 @end

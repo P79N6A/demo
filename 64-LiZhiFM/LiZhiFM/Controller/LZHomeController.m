@@ -7,12 +7,16 @@
 //
 
 #import "LZHomeController.h"
+#import "LZNetViewController.h"
+#import "LZCateViewController.h"
 
 #import "TTZBannerView.h"
+#import "RadioCell.h"
 
 #import "LZliveChannelModel.h"
 
 #import "LZHTTP.h"
+#import "LZData.h"
 
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
@@ -63,15 +67,33 @@
 }
 
 
+- (void)netClick{
+    
+    NSArray *network = [[LZData homeDict] valueForKey:@"Network"];
+    NSArray <LZliveChannelModel *>*models = [LZliveChannelModel mj_objectArrayWithKeyValuesArray:network];
+
+    LZNetViewController *vc = [LZNetViewController new];
+    vc.title = @"网络";
+    vc.models = models;
+    
+    [self.navigationController pushViewController:vc animated:YES];
+}
+- (void)cateClick{
+    [self.navigationController pushViewController:[LZCateViewController new] animated:YES];
+}
+
+
 #pragma mark  - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 10;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.backgroundColor = [UIColor orangeColor];
+    RadioCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RadioCell"];
+    //cell.backgroundColor = [UIColor orangeColor];
+    LZliveChannelModel *model = self.models[indexPath.row];
+    cell.model = model;
     return cell;
 }
 
@@ -85,23 +107,23 @@
         
         _tableView.dataSource = self;
         
-        _tableView.rowHeight = UITableViewAutomaticDimension;
-        _tableView.estimatedRowHeight = 200;
-        //_tableView.rowHeight = IS_PAD?400:200;
+        //_tableView.rowHeight = UITableViewAutomaticDimension;
+        //_tableView.estimatedRowHeight = 200;
+        _tableView.rowHeight = 125;//165;//IS_PAD?400:200;
         
         //_tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
         
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-        [_tableView registerNib:[UINib nibWithNibName:@"TTZEnglishCell" bundle:nil] forCellReuseIdentifier:@"TTZEnglishCell"];
-        //_tableView.backgroundColor = [UIColor clearColor];
+        [_tableView registerNib:[UINib nibWithNibName:@"RadioCell" bundle:nil] forCellReuseIdentifier:@"RadioCell"];
+        _tableView.backgroundColor = kBackgroundColor;
         
         
 //        TTZBannerView *headerView = [TTZBannerView new];
 //        headerView.frame = CGRectMake(0, 0, 0, 145);//220
         
         
-        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 180)];
+        UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 185)];
         UIView *toolView = [[UIView alloc] init];
         UIButton *netBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [netBtn setImage:[UIImage imageNamed:@"zuire"] forState:UIControlStateNormal];
@@ -109,6 +131,7 @@
         [netBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
         [netBtn setTitle:@"网络" forState:UIControlStateNormal];
         [netBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [netBtn addTarget:self action:@selector(netClick) forControlEvents:UIControlEventTouchUpInside];
 
         UIButton *cateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [cateBtn setImage:[UIImage imageNamed:@"fenlei"] forState:UIControlStateNormal];
@@ -116,6 +139,7 @@
         [cateBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
         [cateBtn setTitle:@"分类" forState:UIControlStateNormal];
         [cateBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [cateBtn addTarget:self action:@selector(cateClick) forControlEvents:UIControlEventTouchUpInside];
 
         UIView *line = [UIView new];
         
@@ -135,7 +159,7 @@
         
         [toolView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.right.bottom.equalTo(headerView).offset(0);
-            make.height.mas_equalTo(35);
+            make.height.mas_equalTo(40);
         }];
         
         [netBtn mas_makeConstraints:^(MASConstraintMaker *make) {

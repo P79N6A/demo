@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 
 @interface LZData : NSObject
-
++ (NSDictionary *)homeDict;
 @end
