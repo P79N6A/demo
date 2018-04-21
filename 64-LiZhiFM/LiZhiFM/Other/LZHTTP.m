@@ -160,7 +160,7 @@ static id instance = nil;
     
     if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
     {
-        NSLog(@"没代理");
+        //NSLog(@"没代理");
         return NO;
     }
     else

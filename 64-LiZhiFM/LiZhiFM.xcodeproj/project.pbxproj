@@ -17,6 +17,9 @@
 		AB2E6421208B18250089C39B /* LZNetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E6420208B18250089C39B /* LZNetViewController.m */; };
 		AB2E6424208B1DB20089C39B /* LZCateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E6423208B1DB20089C39B /* LZCateViewController.m */; };
 		AB2E6427208B23460089C39B /* TTZPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E6426208B23460089C39B /* TTZPlayer.m */; };
+		AB2E642A208B34220089C39B /* LZPlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E6429208B34220089C39B /* LZPlayView.m */; };
+		AB2E642D208B353C0089C39B /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E642B208B353B0089C39B /* UIView+Extension.m */; };
+		AB61A466208B4D08002598D2 /* LZPlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB61A465208B4D08002598D2 /* LZPlayView.xib */; };
 		ABF0044320878BA1004DC9CA /* LZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0044220878BA1004DC9CA /* LZNavigationController.m */; };
 		ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0044620878F0F004DC9CA /* TTZBannerView.m */; };
 		ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6A2084EE6700448645 /* AppDelegate.m */; };
@@ -51,6 +54,11 @@
 		AB2E6423208B1DB20089C39B /* LZCateViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZCateViewController.m; sourceTree = "<group>"; };
 		AB2E6425208B23450089C39B /* TTZPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZPlayer.h; sourceTree = "<group>"; };
 		AB2E6426208B23460089C39B /* TTZPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZPlayer.m; sourceTree = "<group>"; };
+		AB2E6428208B34220089C39B /* LZPlayView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZPlayView.h; sourceTree = "<group>"; };
+		AB2E6429208B34220089C39B /* LZPlayView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZPlayView.m; sourceTree = "<group>"; };
+		AB2E642B208B353B0089C39B /* UIView+Extension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		AB2E642C208B353C0089C39B /* UIView+Extension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		AB61A465208B4D08002598D2 /* LZPlayView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZPlayView.xib; sourceTree = "<group>"; };
 		ABF0044120878BA1004DC9CA /* LZNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZNavigationController.h; sourceTree = "<group>"; };
 		ABF0044220878BA1004DC9CA /* LZNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZNavigationController.m; sourceTree = "<group>"; };
 		ABF0044420878D77004DC9CA /* LZCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZCommon.h; sourceTree = "<group>"; };
@@ -111,6 +119,9 @@
 			children = (
 				ABF0044520878F0F004DC9CA /* TTZBannerView.h */,
 				ABF0044620878F0F004DC9CA /* TTZBannerView.m */,
+				AB2E6428208B34220089C39B /* LZPlayView.h */,
+				AB2E6429208B34220089C39B /* LZPlayView.m */,
+				AB61A465208B4D08002598D2 /* LZPlayView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -200,6 +211,8 @@
 		ABFC9A832084EF8000448645 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				AB2E642C208B353C0089C39B /* UIView+Extension.h */,
+				AB2E642B208B353B0089C39B /* UIView+Extension.m */,
 				AB2E6425208B23450089C39B /* TTZPlayer.h */,
 				AB2E6426208B23460089C39B /* TTZPlayer.m */,
 				AB2E640F208B0A520089C39B /* UINavigationController+FullscreenPopGesture.h */,
@@ -291,6 +304,7 @@
 				ABFC9A762084EE6700448645 /* LaunchScreen.storyboard in Resources */,
 				ABFC9A732084EE6700448645 /* Assets.xcassets in Resources */,
 				ABFC9A712084EE6700448645 /* Main.storyboard in Resources */,
+				AB61A466208B4D08002598D2 /* LZPlayView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,10 +369,12 @@
 				AB2E6424208B1DB20089C39B /* LZCateViewController.m in Sources */,
 				ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */,
 				ABFC9A8D2084F22100448645 /* LZData.m in Sources */,
+				AB2E642D208B353C0089C39B /* UIView+Extension.m in Sources */,
 				ABFC9A892084F01B00448645 /* UIImage+ImageEffects.m in Sources */,
 				AB2E6410208B0A520089C39B /* UIView+Loading.m in Sources */,
 				ABFC9A8A2084F01B00448645 /* UIImageView+LBBlurredImage.m in Sources */,
 				ABFC9A6E2084EE6700448645 /* LZHomeController.m in Sources */,
+				AB2E642A208B34220089C39B /* LZPlayView.m in Sources */,
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,
 				ABFC9A792084EE6700448645 /* main.m in Sources */,
 				AB2E6427208B23460089C39B /* TTZPlayer.m in Sources */,
@@ -501,6 +517,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25TUU67WRS;
 				INFOPLIST_FILE = LiZhiFM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WWW.LiZhiFM;
@@ -515,6 +532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 25TUU67WRS;
 				INFOPLIST_FILE = LiZhiFM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = WWW.LiZhiFM;

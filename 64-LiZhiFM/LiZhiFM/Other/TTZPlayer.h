@@ -12,11 +12,10 @@
 
 @protocol TTZPlayerModel<NSObject>
 
-@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *live_stream;
 @property (nonatomic, copy, readonly) NSString *name;
-@property (nonatomic, copy, readonly) NSString *icon;
-@property (nonatomic, copy, readonly) NSString *main;
-@property (nonatomic, copy, readonly) NSString *des;
+@property (nonatomic, copy, readonly) NSString *img;
+@property (nonatomic, copy, readonly) NSString *liveSectionName;
 
 @end
 

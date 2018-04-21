@@ -41,7 +41,7 @@ static TTZPlayer *instance = nil;
     [self stop];
     self.model = model;
     //prepareToPlay:此方法传入的参数是NSURL类型.
-    [self.mediaPlayer prepareToPlay:[NSURL URLWithString:model.url]];
+    [self.mediaPlayer prepareToPlay:[NSURL URLWithString:model.live_stream]];
     //开始播放
     [self play];
     
@@ -49,11 +49,11 @@ static TTZPlayer *instance = nil;
     //设置歌曲题目
     [infos setObject:model.name forKey:MPMediaItemPropertyTitle];
     //设置歌手名
-    [infos setObject:model.main?model.main : @"未知" forKey:MPMediaItemPropertyArtist];
+    //[infos setObject:model.main?model.main : @"未知" forKey:MPMediaItemPropertyArtist];
     //设置专辑名
-    [infos setObject:model.des?model.des : @"暂无介绍" forKey:MPMediaItemPropertyAlbumTitle];
+    [infos setObject:model.liveSectionName?model.liveSectionName : @"暂无介绍" forKey:MPMediaItemPropertyAlbumTitle];
     //设置显示的图片
-    UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:model.icon];
+    UIImage *cachedImage = [[SDImageCache sharedImageCache] imageFromDiskCacheForKey:model.img];
 
     UIImage *newImage = cachedImage?cachedImage:[UIImage imageNamed:@"logo"];
     [infos setObject:[[MPMediaItemArtwork alloc] initWithImage:newImage]

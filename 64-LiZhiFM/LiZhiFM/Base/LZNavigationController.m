@@ -8,6 +8,11 @@
 
 #import "LZNavigationController.h"
 
+#import "LZPlayView.h"
+
+#import "LZCommon.h"
+#import "UIView+Extension.h"
+
 @interface LZNavigationController ()
 
 @end
@@ -19,6 +24,24 @@
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
+    
+    LZPlayView *playView = [LZPlayView playView];//[[LZPlayView alloc] initWithFrame:CGRectMake(0, ScreenHeight - 100, ScreenWith, 100)];
+    playView.frame = CGRectMake(0, ScreenHeight - 70, ScreenWith, 70);
+    
+    __weak typeof(LZPlayView) *weakPlayView = playView;
+    playView.move = ^(CGFloat y){
+        if (y == ScreenHeight - 70) {
+            [UIView animateWithDuration:0.25 animations:^{
+                weakPlayView.transform = CGAffineTransformTranslate(weakPlayView.transform, 0, 55);
+            }];
+            return ;
+        }
+        [UIView animateWithDuration:0.25 animations:^{
+            weakPlayView.transform = CGAffineTransformIdentity;
+        }];
+
+    };
+    [self.view addSubview:playView];
 }
 
 

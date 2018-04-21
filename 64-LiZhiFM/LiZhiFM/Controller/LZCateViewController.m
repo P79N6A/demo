@@ -31,7 +31,7 @@
 <UITableViewDataSource,UITableViewDelegate>
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSArray <LZliveChannelModel *> *models;
-
+//@property (nonatomic, assign) NSInteger num;
 
 @end
 
@@ -89,10 +89,34 @@
                                     [self.view hideLoading:nil];
                                     NSArray *liveChannels = [respones valueForKey:@"liveChannel"];
                                     if ([liveChannels isKindOfClass:[NSArray class]]) {
+                                        
+                                       
+                                       
+//                                        @property (nonatomic, copy) NSString *name;
+//                                        @property (nonatomic, copy) NSString *img;
+//                                        @property (nonatomic, copy) NSString *liveSectionName;
+//                                        @property (nonatomic, strong) NSArray <LZStreamModel *>*streams;
+//                                        @property (nonatomic, copy) NSString *live_stream;
+
                                         NSArray <LZliveChannelModel *>*models = [LZliveChannelModel mj_objectArrayWithKeyValuesArray:liveChannels];
                                         LZNetViewController *vc = [LZNetViewController new];
                                         vc.title = model.name;
                                         vc.models = models;
+                                        
+//                                        NSLog(@"@\"%@\": @[",model.name)
+//                                        [models enumerateObjectsUsingBlock:^(LZliveChannelModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//                                            NSLog(@"@{@\"name\":@\"%@\",@\"img\":@\"%@\",@\"liveSectionName\":@\"%@\",@\"live_stream\":@\"%@\"},",obj.name,obj.img ,obj.liveSectionName,obj.streams.firstObject.url);
+//                                        }];
+//                                        NSLog(@"],")
+//
+//                                        self.num ++;
+//                                        if (self.num >= self.models.count) {
+//                                            return ;
+//                                        }
+//                                        LZliveChannelModel *m = self.models[self.num];
+//                                        [self loadData:m];
+//
+//                                        return ;
                                         [self.navigationController pushViewController:vc animated:YES];
                                     }
                                 }
