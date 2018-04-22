@@ -9,7 +9,7 @@
 
 @interface TTZBannerView : UIView
 
-@property(nonatomic, strong) NSArray *models;
+@property(nonatomic, strong) NSArray *models;// name icon
 
 @property(nonatomic, copy)void (^selectItemAtIndexPath)(id);
 

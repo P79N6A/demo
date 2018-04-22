@@ -36,6 +36,7 @@
     kViewBorderRadius(self.pay30, 5, 1, [UIColor whiteColor]);
     self.title = @"关于广告";
 
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"恢复购买" style:UIBarButtonItemStyleDone target:self action:@selector(reset)];
 
 }
 
@@ -49,6 +50,10 @@
 - (IBAction)pay12Action:(UIButton *)sender {
 }
 - (IBAction)pay30Action:(UIButton *)sender {
+}
+
+- (void)reset{
+    
 }
 
 /*

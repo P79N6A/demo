@@ -26,19 +26,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="成为支持者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7c-TG-VKy">
-                    <rect key="frame" x="132" y="64" width="111.5" height="26.5"/>
+                    <rect key="frame" x="132" y="55" width="111.5" height="26.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支持应用的发展或永久移除广告" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqI-bo-Id5">
-                    <rect key="frame" x="66.5" y="100.5" width="243" height="21"/>
+                    <rect key="frame" x="66.5" y="91.5" width="243" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cIY-sb-3iw">
-                    <rect key="frame" x="8" y="151.5" width="359" height="90"/>
+                    <rect key="frame" x="8" y="142.5" width="359" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清峰子" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OpZ-Wx-Trc">
                             <rect key="frame" x="15" y="24" width="52" height="21"/>
@@ -83,7 +83,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdO-JR-wkC">
-                    <rect key="frame" x="8" y="249.5" width="359" height="90"/>
+                    <rect key="frame" x="8" y="240.5" width="359" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="周星星" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tz2-gn-UgT">
                             <rect key="frame" x="15" y="24" width="52" height="21"/>
@@ -126,8 +126,14 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds " value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="备注:你是否曾经移除过广告？如果没有请选择购买【清峰子/周星星】,如果有请选择恢复购买，如果你认同开发者的工作，也可以赠送一个🍗。" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rgo-NZ-MIM">
+                    <rect key="frame" x="15" y="443.5" width="345" height="47"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N5n-MM-P9x">
-                    <rect key="frame" x="8" y="347.5" width="359" height="90"/>
+                    <rect key="frame" x="8" y="338.5" width="359" height="90"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🍗" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="58p-Pp-wOm">
                             <rect key="frame" x="15" y="24" width="23" height="21"/>
@@ -174,8 +180,10 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="cIY-sb-3iw" firstAttribute="top" secondItem="gqI-bo-Id5" secondAttribute="bottom" constant="30" id="4tP-Ga-eZY"/>
+                <constraint firstItem="Rgo-NZ-MIM" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="15" id="Ag7-90-Nbc"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="pdO-JR-wkC" secondAttribute="trailing" constant="8" id="D3V-Zh-Rck"/>
                 <constraint firstItem="cIY-sb-3iw" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="Io4-uu-oN4"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="Rgo-NZ-MIM" secondAttribute="trailing" constant="15" id="Lrs-za-OBh"/>
                 <constraint firstItem="pdO-JR-wkC" firstAttribute="top" secondItem="cIY-sb-3iw" secondAttribute="bottom" constant="8" id="Lud-Nj-odS"/>
                 <constraint firstItem="pdO-JR-wkC" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="Myv-1j-A82"/>
                 <constraint firstItem="N5n-MM-P9x" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="8" id="ST6-Cf-Uhz"/>
@@ -183,9 +191,10 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="N5n-MM-P9x" secondAttribute="trailing" constant="8" id="Vy9-69-eEP"/>
                 <constraint firstItem="gqI-bo-Id5" firstAttribute="top" secondItem="p7c-TG-VKy" secondAttribute="bottom" constant="10" id="alV-gQ-EhY"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="cIY-sb-3iw" secondAttribute="trailing" constant="8" id="bDH-Bv-lHF"/>
+                <constraint firstItem="Rgo-NZ-MIM" firstAttribute="top" secondItem="N5n-MM-P9x" secondAttribute="bottom" constant="15" id="cTN-Ea-ZUP"/>
                 <constraint firstItem="gqI-bo-Id5" firstAttribute="centerX" secondItem="p7c-TG-VKy" secondAttribute="centerX" id="dRJ-5F-MjL"/>
                 <constraint firstItem="N5n-MM-P9x" firstAttribute="top" secondItem="pdO-JR-wkC" secondAttribute="bottom" constant="8" id="kqq-kt-lgu"/>
-                <constraint firstItem="p7c-TG-VKy" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="44" id="nwg-64-vTE"/>
+                <constraint firstItem="p7c-TG-VKy" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" constant="35" id="nwg-64-vTE"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="34.5" y="167.5"/>

@@ -13,6 +13,7 @@
 #import "LZCommon.h"
 #import "UIView+Extension.h"
 
+
 @interface LZNavigationController ()
 
 @end
@@ -21,13 +22,15 @@
 
 
 -(void)setUI {
+    
     self.view.backgroundColor = [UIColor whiteColor];
     [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
+    self.navigationBar.tintColor = [UIColor whiteColor];
+    
     
     LZPlayView *playView = [LZPlayView playView];
     playView.frame = CGRectMake(0, ScreenHeight - 70+55, ScreenWith, 70);
-    
     __weak typeof(LZPlayView) *weakPlayView = playView;
     playView.move = ^(CGFloat y){
         if (y == ScreenHeight - 70+55) {
@@ -40,11 +43,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             weakPlayView.y = ScreenHeight - 70+55;
         }];
-
-
     };
-    
-    
     [self.view addSubview:playView];
     self.playView = playView;
 }
@@ -83,10 +82,8 @@
 -(void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
     
     if (self.childViewControllers.count >= 1){
-        
         viewController.hidesBottomBarWhenPushed = YES;
-        
-        viewController.navigationItem.leftBarButtonItem = [self backButtonItem];
+        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(pop)];//[self backButtonItem];
     }
     
     [super pushViewController:viewController animated:animated];
