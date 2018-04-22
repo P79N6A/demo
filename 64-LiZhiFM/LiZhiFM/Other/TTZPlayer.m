@@ -253,6 +253,7 @@ static TTZPlayer *instance = nil;
 #pragma mark  - 播放器播放失败
 - (void)OnVideoError:(NSNotification *)noti{
     NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
+    !(_completionBlock)? : _completionBlock();
 }
 
 #pragma mark  - 播放器Seek完成后
@@ -277,6 +278,7 @@ static TTZPlayer *instance = nil;
 #pragma mark  - 播放器主动调用Stop功能
 - (void)onVideoStop:(NSNotification *)noti{
     NSLog(@"%s--播放器主动调用Stop功能", __func__);
+    !(_completionBlock)? : _completionBlock();
 }
 
 #pragma mark  - 播放器状态首帧显示

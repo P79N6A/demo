@@ -56,7 +56,7 @@
                         @{@"name":@"请我吃个鸡腿",@"img":@"鸡腿-1",@"des":@""}
                         ],
                     @[
-                        @{@"name":@"我的收藏",@"img":@"love it",@"des":@""},
+//                        @{@"name":@"我的收藏",@"img":@"love it",@"des":@""},
                         @{@"name":@"分享应用",@"img":@"share",@"des":@""},
                         @{@"name":@"好评反馈",@"img":@"ic_rate_review",@"des":@""},
                         @{@"name":@"联系我们",@"img":@"联系人",@"des":@""},
@@ -143,7 +143,7 @@
     
     NSDictionary *model = self.titles[indexPath.section][indexPath.row];
 
-    if (indexPath.row == 4) {
+    if (indexPath.row == 3) {
         ZDYCacheCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CacheCellID" forIndexPath:indexPath];
         cell.iconImageView.image = [UIImage imageNamed:model[@"img"]];
         cell.update = YES;
@@ -187,16 +187,13 @@
     }
     
     switch (indexPath.row) {
-        case 0:
-            
-            break;
-        case 2:
+        case 1:
         {
             [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"itms-apps://itunes.apple.com/app/id1297897150?action=write-review"]];
 
         }
             break;
-        case 1:
+        case 0:
         {
             NSURL *url = [NSURL URLWithString:@"https://itunes.apple.com/cn/app/%E9%A6%99%E6%B8%AF%E7%94%B5%E5%8F%B0-%E9%A6%99%E6%B8%AF%E5%B9%BF%E6%92%AD%E7%94%B5%E5%8F%B0-hk-radio-%E8%A6%81%E5%90%AC%E5%90%AC%E9%A6%99%E6%B8%AF%E6%94%B6%E9%9F%B3%E6%9C%BA/id1297897150?mt=8&uo=4"];
             
@@ -212,7 +209,7 @@
 
         }
             break;
-        case 3:
+        case 2:
         {
             AboutController *aboutVC = [AboutController new];
             aboutVC.title = @"联系我们";
@@ -220,7 +217,7 @@
 
         }
             break;
-        case 4:
+        case 3:
         {
             UIAlertController *alerVc = [UIAlertController alertControllerWithTitle:@"是否清除缓存?" message:nil preferredStyle:UIAlertControllerStyleAlert];
             

@@ -85,7 +85,8 @@
     LZNetViewController *vc = [LZNetViewController new];
     vc.title = @"网络";
     vc.models = models;
-    
+    [self.navigationController pushViewController:vc animated:YES];
+
 }
 - (void)cateClick{
     [self.navigationController pushViewController:[LZCateViewController new] animated:YES];

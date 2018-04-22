@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -27,7 +26,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EU5-Oa-nVr">
                     <rect key="frame" x="110.5" y="324" width="154" height="30"/>
-                    <state key="normal" title="交流Q群：205287408"/>
+                    <state key="normal" title="通讯Q群：205287408"/>
                     <connections>
                         <action selector="qq:" destination="-1" eventType="touchUpInside" id="X0u-Fm-Ien"/>
                     </connections>
@@ -39,7 +38,7 @@
                     <nil key="highlightedColor"/>
                 </label>
             </subviews>
-            <color key="backgroundColor" red="0.50980392159999999" green="0.3921568627" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="vfc-8H-3ed" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="AJj-if-sL5"/>
                 <constraint firstItem="EU5-Oa-nVr" firstAttribute="top" secondItem="vfc-8H-3ed" secondAttribute="bottom" constant="20" id="JBM-Ru-P0c"/>
