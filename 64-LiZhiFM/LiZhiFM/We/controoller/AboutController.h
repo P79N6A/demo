@@ -6,8 +6,8 @@
 //  Copyright © 2017年 czljcb. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "LZBaseViewController.h"
 
-@interface AboutController : UIViewController
+@interface AboutController : LZBaseViewController
 
 @end

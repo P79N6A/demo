@@ -8,6 +8,8 @@
 
 #import "WeController.h"
 #import "AboutController.h"
+#import "LZDrumstickController.h"
+#import "LZAdViewController.h"
 
 #import "WeCell.h"
 #import "ZDYCacheCell.h"
@@ -39,12 +41,9 @@
     [self setUI];
 }
 
--(void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    
-    
-    [self.tableView reloadData];
-    
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)setUI {
@@ -53,15 +52,15 @@
     self.titles = @[
                     
                     @[
-                        @{@"name":@"解锁所有功能",@"img":@"",@"des":@"移除广告"},
-                        @{@"name":@"请我吃个鸡腿",@"img":@"",@"des":@""}
+                        @{@"name":@"解锁所有功能",@"img":@"购物",@"des":@"移除广告"},
+                        @{@"name":@"请我吃个鸡腿",@"img":@"鸡腿-1",@"des":@""}
                         ],
                     @[
-                        @{@"name":@"我的收藏",@"img":@"",@"des":@"移除广告"},
-                        @{@"name":@"分享应用",@"img":@"",@"des":@"移除广告"},
-                        @{@"name":@"好评反馈",@"img":@"",@"des":@"移除广告"},
-                        @{@"name":@"联系我们",@"img":@"",@"des":@"移除广告"},
-                        @{@"name":@"清除缓存",@"img":@"",@"des":@"移除广告"}
+                        @{@"name":@"我的收藏",@"img":@"love it",@"des":@""},
+                        @{@"name":@"分享应用",@"img":@"share",@"des":@""},
+                        @{@"name":@"好评反馈",@"img":@"ic_rate_review",@"des":@""},
+                        @{@"name":@"联系我们",@"img":@"联系人",@"des":@""},
+                        @{@"name":@"清除缓存",@"img":@"清理缓存",@"des":@""}
                         ]
                     ];
     
@@ -168,10 +167,17 @@
     if (!indexPath.section) {
         switch (indexPath.row) {
             case 0:
-                
+            {
+                LZAdViewController *vc = [[LZAdViewController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+
+            }
                 break;
             case 1:
-                
+            {
+                LZDrumstickController *vc = [[LZDrumstickController alloc]init];
+                [self.navigationController pushViewController:vc animated:YES];
+            }
                 break;
 
             default:

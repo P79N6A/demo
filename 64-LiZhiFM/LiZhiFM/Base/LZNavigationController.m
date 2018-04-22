@@ -22,7 +22,7 @@
 
 -(void)setUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:20]}];
+    [self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]}];
     self.navigationBar.barTintColor = [UIColor orangeColor];
     
     LZPlayView *playView = [LZPlayView playView];
@@ -54,6 +54,9 @@
     [self popViewControllerAnimated:YES];
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return self.topViewController.preferredStatusBarStyle;
+}
 
 
 - (void)viewDidLoad {

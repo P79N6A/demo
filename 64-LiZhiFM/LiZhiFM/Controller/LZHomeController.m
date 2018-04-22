@@ -152,6 +152,7 @@
         [netBtn setTitle:@"网络" forState:UIControlStateNormal];
         [netBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [netBtn addTarget:self action:@selector(netClick) forControlEvents:UIControlEventTouchUpInside];
+        netBtn.titleLabel.font = [UIFont systemFontOfSize:18];
 
         UIButton *cateBtn = [UIButton buttonWithType:UIButtonTypeCustom];
         [cateBtn setImage:[UIImage imageNamed:@"fenlei"] forState:UIControlStateNormal];
@@ -159,6 +160,7 @@
         [cateBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 0, 0, -10)];
         [cateBtn setTitle:@"分类" forState:UIControlStateNormal];
         [cateBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        cateBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [cateBtn addTarget:self action:@selector(cateClick) forControlEvents:UIControlEventTouchUpInside];
 
         UIView *line = [UIView new];

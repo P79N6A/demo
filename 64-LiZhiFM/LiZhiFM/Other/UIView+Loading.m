@@ -45,7 +45,7 @@ static char ACTIVITY_LABEL_KEY;
     if (message.length) {
         if (!self.loadingLabel) {
             UILabel * loadingLabel = [[UILabel alloc] initWithFrame:self.loadingView.bounds];
-            loadingLabel.center = CGPointMake(loadingLabel.center.x, loadingLabel.center.y + 35);
+            loadingLabel.center = CGPointMake(loadingLabel.center.x, loadingLabel.center.y + 25);
             loadingLabel.textColor = [UIColor whiteColor];
             loadingLabel.font = [UIFont systemFontOfSize:13.0];
             loadingLabel.textAlignment = NSTextAlignmentCenter;

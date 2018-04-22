@@ -9,15 +9,17 @@
 /* Begin PBXBuildFile section */
 		40394915C01BE7923657C04B /* libPods-LiZhiFM.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 84676D6E2A95D15B59499828 /* libPods-LiZhiFM.a */; };
 		AB273DFA208C5926002B0313 /* AboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DE2208C5904002B0313 /* AboutController.xib */; };
-		AB273DFC208C5926002B0313 /* TimgerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DF4208C5904002B0313 /* TimgerCell.xib */; };
 		AB273DFD208C5926002B0313 /* WeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DF7208C5904002B0313 /* WeCell.xib */; };
 		AB273DFE208C5934002B0313 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DE1208C5904002B0313 /* AboutController.m */; };
 		AB273E01208C5934002B0313 /* WeController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DE8208C5904002B0313 /* WeController.m */; };
 		AB273E03208C5934002B0313 /* Tool.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DED208C5904002B0313 /* Tool.m */; };
-		AB273E05208C5934002B0313 /* TimgerCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DF3208C5904002B0313 /* TimgerCell.m */; };
 		AB273E06208C5934002B0313 /* WeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DF6208C5904002B0313 /* WeCell.m */; };
 		AB273E07208C5934002B0313 /* ZDYCacheCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DF9208C5904002B0313 /* ZDYCacheCell.m */; };
 		AB273E0A208C5AB9002B0313 /* UIBarButtonItem+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273E09208C5AB9002B0313 /* UIBarButtonItem+Button.m */; };
+		AB273E0E208C6670002B0313 /* LZDrumstickController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273E0C208C6670002B0313 /* LZDrumstickController.m */; };
+		AB273E0F208C6670002B0313 /* LZDrumstickController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273E0D208C6670002B0313 /* LZDrumstickController.xib */; };
+		AB273E13208C6BD8002B0313 /* LZAdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273E11208C6BD8002B0313 /* LZAdViewController.m */; };
+		AB273E14208C6BD8002B0313 /* LZAdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273E12208C6BD8002B0313 /* LZAdViewController.xib */; };
 		AB2E6410208B0A520089C39B /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640B208B0A510089C39B /* UIView+Loading.m */; };
 		AB2E6411208B0A520089C39B /* UINavigationController+FullscreenPopGesture.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */; };
 		AB2E6412208B0A520089C39B /* LZHTTP.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2E640E208B0A510089C39B /* LZHTTP.m */; };
@@ -54,9 +56,6 @@
 		AB273DE8208C5904002B0313 /* WeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeController.m; sourceTree = "<group>"; };
 		AB273DEC208C5904002B0313 /* Tool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tool.h; sourceTree = "<group>"; };
 		AB273DED208C5904002B0313 /* Tool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tool.m; sourceTree = "<group>"; };
-		AB273DF2208C5904002B0313 /* TimgerCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TimgerCell.h; sourceTree = "<group>"; };
-		AB273DF3208C5904002B0313 /* TimgerCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TimgerCell.m; sourceTree = "<group>"; };
-		AB273DF4208C5904002B0313 /* TimgerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TimgerCell.xib; sourceTree = "<group>"; };
 		AB273DF5208C5904002B0313 /* WeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeCell.h; sourceTree = "<group>"; };
 		AB273DF6208C5904002B0313 /* WeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeCell.m; sourceTree = "<group>"; };
 		AB273DF7208C5904002B0313 /* WeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WeCell.xib; sourceTree = "<group>"; };
@@ -64,6 +63,12 @@
 		AB273DF9208C5904002B0313 /* ZDYCacheCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZDYCacheCell.m; sourceTree = "<group>"; };
 		AB273E08208C5AB9002B0313 /* UIBarButtonItem+Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Button.h"; sourceTree = "<group>"; };
 		AB273E09208C5AB9002B0313 /* UIBarButtonItem+Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Button.m"; sourceTree = "<group>"; };
+		AB273E0B208C6670002B0313 /* LZDrumstickController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZDrumstickController.h; sourceTree = "<group>"; };
+		AB273E0C208C6670002B0313 /* LZDrumstickController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZDrumstickController.m; sourceTree = "<group>"; };
+		AB273E0D208C6670002B0313 /* LZDrumstickController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZDrumstickController.xib; sourceTree = "<group>"; };
+		AB273E10208C6BD8002B0313 /* LZAdViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZAdViewController.h; sourceTree = "<group>"; };
+		AB273E11208C6BD8002B0313 /* LZAdViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZAdViewController.m; sourceTree = "<group>"; };
+		AB273E12208C6BD8002B0313 /* LZAdViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LZAdViewController.xib; sourceTree = "<group>"; };
 		AB2E640A208B0A510089C39B /* UIView+Loading.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
 		AB2E640B208B0A510089C39B /* UIView+Loading.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
 		AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+FullscreenPopGesture.m"; sourceTree = "<group>"; };
@@ -159,6 +164,12 @@
 				AB273DE2208C5904002B0313 /* AboutController.xib */,
 				AB273DE7208C5904002B0313 /* WeController.h */,
 				AB273DE8208C5904002B0313 /* WeController.m */,
+				AB273E0B208C6670002B0313 /* LZDrumstickController.h */,
+				AB273E0C208C6670002B0313 /* LZDrumstickController.m */,
+				AB273E0D208C6670002B0313 /* LZDrumstickController.xib */,
+				AB273E10208C6BD8002B0313 /* LZAdViewController.h */,
+				AB273E11208C6BD8002B0313 /* LZAdViewController.m */,
+				AB273E12208C6BD8002B0313 /* LZAdViewController.xib */,
 			);
 			path = controoller;
 			sourceTree = "<group>";
@@ -175,9 +186,6 @@
 		AB273DEE208C5904002B0313 /* view */ = {
 			isa = PBXGroup;
 			children = (
-				AB273DF2208C5904002B0313 /* TimgerCell.h */,
-				AB273DF3208C5904002B0313 /* TimgerCell.m */,
-				AB273DF4208C5904002B0313 /* TimgerCell.xib */,
 				AB273DF5208C5904002B0313 /* WeCell.h */,
 				AB273DF6208C5904002B0313 /* WeCell.m */,
 				AB273DF7208C5904002B0313 /* WeCell.xib */,
@@ -382,13 +390,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB273DFA208C5926002B0313 /* AboutController.xib in Resources */,
-				AB273DFC208C5926002B0313 /* TimgerCell.xib in Resources */,
 				AB273DFD208C5926002B0313 /* WeCell.xib in Resources */,
 				AB2E641E208B14930089C39B /* RadioCell.xib in Resources */,
 				ABFC9A762084EE6700448645 /* LaunchScreen.storyboard in Resources */,
+				AB273E0F208C6670002B0313 /* LZDrumstickController.xib in Resources */,
 				ABFC9A732084EE6700448645 /* Assets.xcassets in Resources */,
 				ABFC9A712084EE6700448645 /* Main.storyboard in Resources */,
 				AB61A466208B4D08002598D2 /* LZPlayView.xib in Resources */,
+				AB273E14208C6BD8002B0313 /* LZAdViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -450,7 +459,6 @@
 				AB273DFE208C5934002B0313 /* AboutController.m in Sources */,
 				AB273E01208C5934002B0313 /* WeController.m in Sources */,
 				AB273E03208C5934002B0313 /* Tool.m in Sources */,
-				AB273E05208C5934002B0313 /* TimgerCell.m in Sources */,
 				AB273E0A208C5AB9002B0313 /* UIBarButtonItem+Button.m in Sources */,
 				AB273E06208C5934002B0313 /* WeCell.m in Sources */,
 				AB273E07208C5934002B0313 /* ZDYCacheCell.m in Sources */,
@@ -468,9 +476,11 @@
 				AB2E642A208B34220089C39B /* LZPlayView.m in Sources */,
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,
 				ABFC9A792084EE6700448645 /* main.m in Sources */,
+				AB273E13208C6BD8002B0313 /* LZAdViewController.m in Sources */,
 				AB2E6427208B23460089C39B /* TTZPlayer.m in Sources */,
 				ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */,
 				AB2E6412208B0A520089C39B /* LZHTTP.m in Sources */,
+				AB273E0E208C6670002B0313 /* LZDrumstickController.m in Sources */,
 				AB2E6421208B18250089C39B /* LZNetViewController.m in Sources */,
 				ABF0044320878BA1004DC9CA /* LZNavigationController.m in Sources */,
 			);

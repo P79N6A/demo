@@ -16,6 +16,12 @@
 [View.layer setCornerRadius:(Radius)];\
 [View.layer setMasksToBounds:YES]
 
+#define kViewBorderRadius(View,Radius,Width,Color)\
+[View.layer setCornerRadius:(Radius)];\
+[View.layer setMasksToBounds:YES];\
+[View.layer setBorderWidth:(Width)];\
+[View.layer setBorderColor:[Color CGColor]]
+
 
 #define kRandomColor kRGBColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
