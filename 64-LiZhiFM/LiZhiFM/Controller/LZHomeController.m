@@ -10,6 +10,7 @@
 #import "LZNetViewController.h"
 #import "LZCateViewController.h"
 #import "LZNavigationController.h"
+#import "WeController.h"
 
 #import "TTZBannerView.h"
 #import "RadioCell.h"
@@ -20,6 +21,7 @@
 #import "LZHTTP.h"
 #import "LZData.h"
 #import "TTZPlayer.h"
+#import "UIBarButtonItem+Button.h"
 
 #import <Masonry/Masonry.h>
 #import <MJExtension/MJExtension.h>
@@ -48,6 +50,7 @@
 
 - (void)setUI{
     [self.view addSubview:self.tableView];
+    self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithImage:@"logo" target:self action:@selector(profileClick)];
 }
 
 
@@ -69,6 +72,10 @@
                                 }];
 }
 
+- (void)profileClick{
+    [self.navigationController pushViewController:[WeController new] animated:YES];
+
+}
 
 - (void)netClick{
     
@@ -79,7 +86,6 @@
     vc.title = @"网络";
     vc.models = models;
     
-    [self.navigationController pushViewController:vc animated:YES];
 }
 - (void)cateClick{
     [self.navigationController pushViewController:[LZCateViewController new] animated:YES];

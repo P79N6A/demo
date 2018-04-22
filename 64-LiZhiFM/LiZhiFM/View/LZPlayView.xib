@@ -64,15 +64,25 @@
                                 <action selector="play:" destination="iN0-l3-epB" eventType="touchUpInside" id="5SA-Ed-MB9"/>
                             </connections>
                         </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HCr-7V-7AR">
+                            <rect key="frame" x="313" y="0.0" width="44" height="13"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="13" id="LqZ-Gr-i48"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.83999999999999997" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="3fQ-aN-IhR" firstAttribute="top" secondItem="e1d-5K-Cdh" secondAttribute="top" constant="3" id="IeG-GE-l5j"/>
                         <constraint firstItem="E3d-25-z0H" firstAttribute="centerY" secondItem="R87-Eb-Dgf" secondAttribute="centerY" id="MdJ-3E-Zjm"/>
+                        <constraint firstItem="HCr-7V-7AR" firstAttribute="top" secondItem="R87-Eb-Dgf" secondAttribute="top" id="P7a-Ew-xqh"/>
                         <constraint firstItem="3fQ-aN-IhR" firstAttribute="leading" secondItem="e1d-5K-Cdh" secondAttribute="trailing" constant="5" id="iAK-pa-TcS"/>
+                        <constraint firstItem="HCr-7V-7AR" firstAttribute="leading" secondItem="E3d-25-z0H" secondAttribute="leading" id="jxe-oY-tds"/>
                         <constraint firstItem="e1d-5K-Cdh" firstAttribute="leading" secondItem="R87-Eb-Dgf" secondAttribute="leading" constant="10" id="oTI-yB-56m"/>
                         <constraint firstItem="Tgo-l7-FGK" firstAttribute="leading" secondItem="3fQ-aN-IhR" secondAttribute="leading" id="og8-Eh-CNk"/>
                         <constraint firstItem="e1d-5K-Cdh" firstAttribute="centerY" secondItem="R87-Eb-Dgf" secondAttribute="centerY" id="vc4-nH-mRd"/>
+                        <constraint firstItem="HCr-7V-7AR" firstAttribute="trailing" secondItem="E3d-25-z0H" secondAttribute="trailing" id="xEz-Je-Sla"/>
                         <constraint firstItem="Tgo-l7-FGK" firstAttribute="bottom" secondItem="e1d-5K-Cdh" secondAttribute="bottom" constant="-3" id="zct-0i-JZh"/>
                     </constraints>
                 </view>

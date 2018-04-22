@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AboutController">
+            <connections>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © iShare" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vfc-8H-3ed">
+                    <rect key="frame" x="114.5" y="283" width="146.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EU5-Oa-nVr">
+                    <rect key="frame" x="110.5" y="324" width="154" height="30"/>
+                    <state key="normal" title="交流Q群：205287408"/>
+                    <connections>
+                        <action selector="qq:" destination="-1" eventType="touchUpInside" id="X0u-Fm-Ien"/>
+                    </connections>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="广州iShare信息科技有限公司" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyW-nR-vDa">
+                    <rect key="frame" x="77" y="374" width="221.5" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="0.50980392159999999" green="0.3921568627" blue="0.74509803919999995" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="vfc-8H-3ed" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-40" id="AJj-if-sL5"/>
+                <constraint firstItem="EU5-Oa-nVr" firstAttribute="top" secondItem="vfc-8H-3ed" secondAttribute="bottom" constant="20" id="JBM-Ru-P0c"/>
+                <constraint firstItem="uyW-nR-vDa" firstAttribute="top" secondItem="EU5-Oa-nVr" secondAttribute="bottom" constant="20" id="LQG-EK-Ehc"/>
+                <constraint firstItem="uyW-nR-vDa" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Olf-sj-7bp"/>
+                <constraint firstItem="EU5-Oa-nVr" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PvC-O0-MAH"/>
+                <constraint firstItem="vfc-8H-3ed" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="aeL-Pf-AwL"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

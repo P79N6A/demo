@@ -48,6 +48,14 @@
 }
 - (IBAction)play:(UIButton *)sender {
     
+    
+    if (![TTZPlayer defaultPlayer].model) {
+        return;
+    }
+    
+    sender.selected = !sender.isSelected;
+    sender.isSelected? [[TTZPlayer defaultPlayer] pause] : [[TTZPlayer defaultPlayer] play];
+    
 }
 
 
