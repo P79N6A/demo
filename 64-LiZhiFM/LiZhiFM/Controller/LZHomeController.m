@@ -122,8 +122,8 @@
 -(UITableView *)tableView {
     if (_tableView == nil) {
         
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
-        
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, ScreenWith, ScreenHeight-kStatusBarAndNavigationBarHeight) style:UITableViewStylePlain];
+
         _tableView.delegate = self;
         
         _tableView.dataSource = self;
@@ -132,7 +132,6 @@
         //_tableView.estimatedRowHeight = 200;
         _tableView.rowHeight = 125;//165;//IS_PAD?400:200;
         
-        //_tableView.contentInset = UIEdgeInsetsMake(10, 0, 10, 0);
         
         [_tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
         [_tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
@@ -140,8 +139,6 @@
         _tableView.backgroundColor = kBackgroundColor;
         
         
-//        TTZBannerView *headerView = [TTZBannerView new];
-//        headerView.frame = CGRectMake(0, 0, 0, 145);//220
         
         
         UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, 185)];

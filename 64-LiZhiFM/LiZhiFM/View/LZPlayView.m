@@ -25,6 +25,8 @@
 @property (weak, nonatomic) IBOutlet UIButton *playBtn;
 @property (weak, nonatomic) IBOutlet UIView *contentView;
 
+@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, assign) LZPlayViewState state;
 
 @end
 
@@ -43,7 +45,13 @@
     sender.selected = !sender.isSelected;
     
     if (sender.isSelected) {
-        !(_move)? : _move(ScreenHeight - 70+45);
+        
+        if (self.state != LZPlayViewStateShow) {
+            self.state = LZPlayViewStateShow;
+            !(_move)? : _move(LZPlayViewStateShow);
+        }
+    }else{
+        [self timer];
     }
 }
 - (IBAction)play:(UIButton *)sender {
@@ -72,12 +80,64 @@
                                   onEndCache:^{
                                       [self.contentView hideLoading:nil];
                                   }];
-    !(_move)? : _move(ScreenHeight - 70+45);
+    
+    
+    if (self.state != LZPlayViewStateShow) {
+        self.state = LZPlayViewStateShow;
+        !(_move)? : _move(LZPlayViewStateShow);
+    }
+
+    
+    if (!self.lockBtn.isSelected) {
+        if (_timer) {
+            [self stopTimer];
+        }
+        [self timer];
+    }
 }
 
 
+- (NSTimer *)timer{
+    if (!_timer) {
+        __weak typeof(self) weakSelf = self;
+        NSTimer *timer = [NSTimer timerWithTimeInterval:3.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:NO];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        _timer = timer;
+    }
+    return _timer;
+}
+
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (! newSuperview && _timer) {
+        [self stopTimer];
+    }
+}
+
+- (void)timeChange:(NSTimer *)sender{
+    [self.timer invalidate];
+    self.timer = nil;
+    if (self.state != LZPlayViewStateNotShow) {
+        self.state = LZPlayViewStateNotShow;
+        !(_move)? : _move(LZPlayViewStateNotShow);
+    }
+}
+
+- (void)stopTimer{
+    [self.timer invalidate];
+    self.timer = nil;
+}
+
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-     if (!self.lockBtn.isSelected) !(_move)? : _move(self.frame.origin.y);
+    if (!self.lockBtn.isSelected) {
+        self.state = !self.state;
+        !(_move)? : _move(self.state);
+        if (self.state == LZPlayViewStateShow) {
+            [self timer];
+        }else{
+            [self stopTimer];
+        }
+    }
 }
 
 @end

@@ -12,6 +12,7 @@
 		69928E85208DB1EE00BAC237 /* TTZKeyChain.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E7E208DB1EE00BAC237 /* TTZKeyChain.m */; };
 		69928E86208DB1EE00BAC237 /* TTZPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E80208DB1EE00BAC237 /* TTZPay.m */; };
 		69928E87208DB1EE00BAC237 /* UIDevice+Pay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E82208DB1EE00BAC237 /* UIDevice+Pay.m */; };
+		69928E8A208DC18300BAC237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69928E89208DC18300BAC237 /* Main.storyboard */; };
 		AB273DFA208C5926002B0313 /* AboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DE2208C5904002B0313 /* AboutController.xib */; };
 		AB273DFD208C5926002B0313 /* WeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DF7208C5904002B0313 /* WeCell.xib */; };
 		AB273DFE208C5934002B0313 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DE1208C5904002B0313 /* AboutController.m */; };
@@ -40,7 +41,6 @@
 		ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABF0044620878F0F004DC9CA /* TTZBannerView.m */; };
 		ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6A2084EE6700448645 /* AppDelegate.m */; };
 		ABFC9A6E2084EE6700448645 /* LZHomeController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A6D2084EE6700448645 /* LZHomeController.m */; };
-		ABFC9A712084EE6700448645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFC9A6F2084EE6700448645 /* Main.storyboard */; };
 		ABFC9A732084EE6700448645 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFC9A722084EE6700448645 /* Assets.xcassets */; };
 		ABFC9A762084EE6700448645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFC9A742084EE6700448645 /* LaunchScreen.storyboard */; };
 		ABFC9A792084EE6700448645 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A782084EE6700448645 /* main.m */; };
@@ -59,6 +59,7 @@
 		69928E80208DB1EE00BAC237 /* TTZPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTZPay.m; sourceTree = "<group>"; };
 		69928E81208DB1EE00BAC237 /* UIDevice+Pay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Pay.h"; sourceTree = "<group>"; };
 		69928E82208DB1EE00BAC237 /* UIDevice+Pay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Pay.m"; sourceTree = "<group>"; };
+		69928E89208DC18300BAC237 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		84676D6E2A95D15B59499828 /* libPods-LiZhiFM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiZhiFM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB273DE0208C5904002B0313 /* AboutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		AB273DE1208C5904002B0313 /* AboutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
@@ -112,7 +113,6 @@
 		ABFC9A6A2084EE6700448645 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		ABFC9A6C2084EE6700448645 /* LZHomeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZHomeController.h; sourceTree = "<group>"; };
 		ABFC9A6D2084EE6700448645 /* LZHomeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZHomeController.m; sourceTree = "<group>"; };
-		ABFC9A702084EE6700448645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABFC9A722084EE6700448645 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABFC9A752084EE6700448645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABFC9A772084EE6700448645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -295,9 +295,9 @@
 				ABFC9A7F2084EE8500448645 /* Base */,
 				ABFC9A692084EE6700448645 /* AppDelegate.h */,
 				ABFC9A6A2084EE6700448645 /* AppDelegate.m */,
-				ABFC9A6F2084EE6700448645 /* Main.storyboard */,
 				ABFC9A722084EE6700448645 /* Assets.xcassets */,
 				ABFC9A742084EE6700448645 /* LaunchScreen.storyboard */,
+				69928E89208DC18300BAC237 /* Main.storyboard */,
 				ABFC9A772084EE6700448645 /* Info.plist */,
 				ABFC9A782084EE6700448645 /* main.m */,
 			);
@@ -424,8 +424,8 @@
 				AB2E641E208B14930089C39B /* RadioCell.xib in Resources */,
 				ABFC9A762084EE6700448645 /* LaunchScreen.storyboard in Resources */,
 				AB273E0F208C6670002B0313 /* LZDrumstickController.xib in Resources */,
+				69928E8A208DC18300BAC237 /* Main.storyboard in Resources */,
 				ABFC9A732084EE6700448645 /* Assets.xcassets in Resources */,
-				ABFC9A712084EE6700448645 /* Main.storyboard in Resources */,
 				AB61A466208B4D08002598D2 /* LZPlayView.xib in Resources */,
 				AB273E14208C6BD8002B0313 /* LZAdViewController.xib in Resources */,
 			);
@@ -531,14 +531,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		ABFC9A6F2084EE6700448645 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				ABFC9A702084EE6700448645 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		ABFC9A742084EE6700448645 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -663,7 +655,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29SPCAWTH7;
 				INFOPLIST_FILE = LiZhiFM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chinaradio.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -681,7 +673,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 29SPCAWTH7;
 				INFOPLIST_FILE = LiZhiFM/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.chinaradio.com;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *pay30;
 @property (weak, nonatomic) IBOutlet UIButton *pay6;
 @property (weak, nonatomic) IBOutlet UIButton *pay12;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 
 @end
 
@@ -28,6 +29,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    self.top.constant += kStatusBarAndNavigationBarHeight;
     kViewRadius(self.adView1, 5);
     kViewRadius(self.adView2, 5);
     kViewRadius(self.adView3, 5);

@@ -13,6 +13,7 @@
 
 @interface LZDrumstickController ()
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *top;
 
 @end
 
@@ -22,6 +23,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //self.view.backgroundColor = kBackgroundColor;
+    self.top.constant += kStatusBarAndNavigationBarHeight;
+
     kViewRadius(self.payBtn, 5);
     self.title = @"鸡腿";
 }

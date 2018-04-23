@@ -9,9 +9,16 @@
 #import <UIKit/UIKit.h>
 
 @class LZliveChannelModel;
+
+
+typedef NS_ENUM(NSUInteger, LZPlayViewState) {
+    LZPlayViewStateNotShow = 0,//
+    LZPlayViewStateShow = 1 //
+};
+
 @interface LZPlayView : UIView
 
-@property (nonatomic, copy) void(^move)(CGFloat);
+@property (nonatomic, copy) void(^move)(LZPlayViewState state);
 
 @property (nonatomic, strong) LZliveChannelModel *model;
 

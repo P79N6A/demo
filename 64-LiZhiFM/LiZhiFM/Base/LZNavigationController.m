@@ -32,16 +32,17 @@
     LZPlayView *playView = [LZPlayView playView];
     playView.frame = CGRectMake(0, ScreenHeight - 70+45, ScreenWith, 70);
     __weak typeof(LZPlayView) *weakPlayView = playView;
-    playView.move = ^(CGFloat y){
-        if (y == ScreenHeight - 70+45) {
+    playView.move = ^(LZPlayViewState state){
+        
+        if (state == LZPlayViewStateShow) {
             [UIView animateWithDuration:0.25 animations:^{
                 weakPlayView.y = ScreenHeight - 70-kTabbarSafeBottomMargin;
             }];
-
             return ;
         }
+
         [UIView animateWithDuration:0.25 animations:^{
-            weakPlayView.y = ScreenHeight - 70+45;
+            weakPlayView.y = ScreenHeight - 70 + 45;
         }];
     };
     [self.view addSubview:playView];

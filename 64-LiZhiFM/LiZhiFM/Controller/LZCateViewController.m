@@ -15,17 +15,18 @@
 #import "LZData.h"
 
 #import "LZHTTP.h"
+#import "LZCommon.h"
 
 #import <MJExtension/MJExtension.h>
 
 
 
 
-#ifdef DEBUG
-#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#else
-#define NSLog(...)
-#endif
+//#ifdef DEBUG
+//#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#else
+//#define NSLog(...)
+//#endif
 
 @interface LZCateViewController ()
 <UITableViewDataSource,UITableViewDelegate>
@@ -130,7 +131,7 @@
 -(UITableView *)tableView {
     if (_tableView == nil) {
         
-        _tableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kStatusBarAndNavigationBarHeight, ScreenWith, ScreenHeight-kStatusBarAndNavigationBarHeight) style:UITableViewStylePlain];
         
         _tableView.delegate = self;
         
