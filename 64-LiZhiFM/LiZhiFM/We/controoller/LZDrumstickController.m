@@ -9,6 +9,7 @@
 #import "LZDrumstickController.h"
 
 #import "LZCommon.h"
+#import "TTZPay.h"
 
 @interface LZDrumstickController ()
 @property (weak, nonatomic) IBOutlet UIButton *payBtn;
@@ -30,7 +31,14 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)payAction:(UIButton *)sender {
-    
+    NSDictionary *product = @{@"com.chinaradio.www_30":@"清峰子",@"com.chinaradio.www_30":@"周星星",@"com.chinaradio.www_06":@"请我吃鸡腿"};
+    [[TTZPay defaultPay] buyWithProductIdentifier:@"com.chinaradio.www_06"
+                                      allProducts:product
+                                       loadingBuy:^(NSString *message) {
+                                           [self.view showLoading:message];
+                                       } payComplete:^(NSString *message) {
+                                           [self.view hideLoading:message];
+                                       }];
 }
 
 /*

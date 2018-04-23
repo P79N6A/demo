@@ -87,7 +87,7 @@ static char ACTIVITY_LABEL_KEY;
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)showHud:(NSString *)msg{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"温馨提示"
                                                     message:msg
                                                    delegate:nil
                                           cancelButtonTitle:@"确定"

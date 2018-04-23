@@ -43,7 +43,7 @@
     sender.selected = !sender.isSelected;
     
     if (sender.isSelected) {
-        !(_move)? : _move(ScreenHeight - 70+55);
+        !(_move)? : _move(ScreenHeight - 70+45);
     }
 }
 - (IBAction)play:(UIButton *)sender {
@@ -72,7 +72,7 @@
                                   onEndCache:^{
                                       [self.contentView hideLoading:nil];
                                   }];
-    !(_move)? : _move(ScreenHeight - 70+55);
+    !(_move)? : _move(ScreenHeight - 70+45);
 }
 
 

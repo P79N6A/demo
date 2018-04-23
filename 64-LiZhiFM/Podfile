@@ -9,8 +9,10 @@ target 'LiZhiFM' do
 pod 'Masonry'
 pod 'SDWebImage'
 pod 'AFNetworking'
-pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
+pod 'AliyunPlayer_iOS/AliyunPlayerSDK','~> 3.4.0.1'
 pod 'MJExtension'
+pod 'Google-Mobile-Ads-SDK'
+
   # Pods for LiZhiFM
 
 end
