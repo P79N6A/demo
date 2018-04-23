@@ -115,8 +115,7 @@
 }
 
 - (void)timeChange:(NSTimer *)sender{
-    [self.timer invalidate];
-    self.timer = nil;
+    [self stopTimer];
     if(self.lockBtn.isSelected) return;
     if (self.state != LZPlayViewStateNotShow) {
         self.state = LZPlayViewStateNotShow;
