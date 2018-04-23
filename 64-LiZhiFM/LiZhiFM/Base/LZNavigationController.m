@@ -12,6 +12,7 @@
 
 #import "LZCommon.h"
 #import "UIView+Extension.h"
+#import "TTZADMob.h"
 
 
 @interface LZNavigationController ()
@@ -30,19 +31,19 @@
     
     
     LZPlayView *playView = [LZPlayView playView];
-    playView.frame = CGRectMake(0, ScreenHeight - 70+45, ScreenWith, 70);
+    playView.frame = CGRectMake(0, kScreenH - 70+45, kScreenW, 70);
     __weak typeof(LZPlayView) *weakPlayView = playView;
     playView.move = ^(LZPlayViewState state){
         
         if (state == LZPlayViewStateShow) {
             [UIView animateWithDuration:0.25 animations:^{
-                weakPlayView.y = ScreenHeight - 70-kTabbarSafeBottomMargin;
+                weakPlayView.y = kScreenH - 70-kTabbarSafeBottomMargin;
             }];
             return ;
         }
 
         [UIView animateWithDuration:0.25 animations:^{
-            weakPlayView.y = ScreenHeight - 70 + 45;
+            weakPlayView.y = kScreenH - 70 + 45;
         }];
     };
     [self.view addSubview:playView];
@@ -85,6 +86,7 @@
     if (self.childViewControllers.count >= 1){
         viewController.hidesBottomBarWhenPushed = YES;
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"back"] style:UIBarButtonItemStyleDone target:self action:@selector(pop)];//[self backButtonItem];
+        [[TTZADMob sharedInstance] GADLoadInterstitial];
     }
     
     [super pushViewController:viewController animated:animated];

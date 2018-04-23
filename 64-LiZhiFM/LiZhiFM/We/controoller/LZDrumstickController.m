@@ -34,7 +34,7 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)payAction:(UIButton *)sender {
-    NSDictionary *product = @{@"com.chinaradio.www_30":@"清峰子",@"com.chinaradio.www_30":@"周星星",@"com.chinaradio.www_06":@"请我吃鸡腿"};
+    NSDictionary *product = @{@"com.chinaradio.www_30":@"清峰子",@"com.chinaradio.www_12":@"周星星",@"com.chinaradio.www_06":@"请我吃鸡腿"};
     [[TTZPay defaultPay] buyWithProductIdentifier:@"com.chinaradio.www_06"
                                       allProducts:product
                                        loadingBuy:^(NSString *message) {

@@ -72,7 +72,7 @@
     self.tableView.tableFooterView = [UIView new];
     
     UIView *headerView = [[UIView alloc] initWithFrame:self.view.bounds];
-    headerView.height = ScreenWith * 160.0 / 375;
+    headerView.height = kScreenW * 160.0 / 375;
     headerView.backgroundColor = [UIColor clearColor];
     
     UIView *lineView = [[UIView alloc] initWithFrame:CGRectMake(0, headerView.height-0.3, headerView.width, 0.3)];

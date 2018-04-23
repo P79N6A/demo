@@ -13,6 +13,7 @@
 		69928E86208DB1EE00BAC237 /* TTZPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E80208DB1EE00BAC237 /* TTZPay.m */; };
 		69928E87208DB1EE00BAC237 /* UIDevice+Pay.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E82208DB1EE00BAC237 /* UIDevice+Pay.m */; };
 		69928E8A208DC18300BAC237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69928E89208DC18300BAC237 /* Main.storyboard */; };
+		69928E8D208DC65600BAC237 /* TTZADMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 69928E8C208DC65600BAC237 /* TTZADMob.m */; };
 		AB273DFA208C5926002B0313 /* AboutController.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DE2208C5904002B0313 /* AboutController.xib */; };
 		AB273DFD208C5926002B0313 /* WeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB273DF7208C5904002B0313 /* WeCell.xib */; };
 		AB273DFE208C5934002B0313 /* AboutController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB273DE1208C5904002B0313 /* AboutController.m */; };
@@ -60,6 +61,8 @@
 		69928E81208DB1EE00BAC237 /* UIDevice+Pay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Pay.h"; sourceTree = "<group>"; };
 		69928E82208DB1EE00BAC237 /* UIDevice+Pay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Pay.m"; sourceTree = "<group>"; };
 		69928E89208DC18300BAC237 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		69928E8B208DC65600BAC237 /* TTZADMob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTZADMob.h; sourceTree = "<group>"; };
+		69928E8C208DC65600BAC237 /* TTZADMob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTZADMob.m; sourceTree = "<group>"; };
 		84676D6E2A95D15B59499828 /* libPods-LiZhiFM.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LiZhiFM.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB273DE0208C5904002B0313 /* AboutController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AboutController.h; sourceTree = "<group>"; };
 		AB273DE1208C5904002B0313 /* AboutController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AboutController.m; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 				AB2E642B208B353B0089C39B /* UIView+Extension.m */,
 				AB2E6425208B23450089C39B /* TTZPlayer.h */,
 				AB2E6426208B23460089C39B /* TTZPlayer.m */,
+				69928E8B208DC65600BAC237 /* TTZADMob.h */,
+				69928E8C208DC65600BAC237 /* TTZADMob.m */,
 				AB2E640F208B0A520089C39B /* UINavigationController+FullscreenPopGesture.h */,
 				AB2E640C208B0A510089C39B /* UINavigationController+FullscreenPopGesture.m */,
 				AB2E640A208B0A510089C39B /* UIView+Loading.h */,
@@ -519,6 +524,7 @@
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,
 				ABFC9A792084EE6700448645 /* main.m in Sources */,
 				AB273E13208C6BD8002B0313 /* LZAdViewController.m in Sources */,
+				69928E8D208DC65600BAC237 /* TTZADMob.m in Sources */,
 				AB2E6427208B23460089C39B /* TTZPlayer.m in Sources */,
 				ABFC9A6B2084EE6700448645 /* AppDelegate.m in Sources */,
 				AB2E6412208B0A520089C39B /* LZHTTP.m in Sources */,
