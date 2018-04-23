@@ -14,6 +14,7 @@
 
 #import "LZliveChannelModel.h"
 //#import "LZData.h"
+#import "TTZADMob.h"
 
 #import <MJExtension/MJExtension.h>
 
@@ -38,6 +39,14 @@
 
 - (void)setUI{
     [self.view addSubview:self.tableView];
+    if (![TTZADMob sharedInstance].isRemoveAd) {
+        __weak typeof(self) weakSelf = self;
+//        [[TTZADMob sharedInstance] GADInterstitialWithVC:weakSelf];
+        [TTZADMob GADBannerViewOnBelowNavWithVC:weakSelf];
+        int adH = IS_PAD?90:50;
+        self.tableView.contentInset = UIEdgeInsetsMake(adH, 0, 0, 0);
+    }
+
 }
 
 //- (void)loadData{

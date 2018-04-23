@@ -65,7 +65,7 @@ static TTZADMob *instance = nil;
 
     BOOL isRemoveAd = [TTZPay paymentStateWithProductIdentifier:@"com.chinaradio.www_30"] || [TTZPay paymentStateWithProductIdentifier:@"com.chinaradio.www_12"];
     
-    TTZADMob.sharedInstance.isRemoveAd = NO;//isRemoveAd;
+    TTZADMob.sharedInstance.isRemoveAd = isRemoveAd;
     
     if(TTZADMob.sharedInstance.isRemoveAd) return;
 
@@ -194,6 +194,29 @@ static TTZADMob *instance = nil;
     
     [view addSubview:gjs_bannerView];
 }
+
++(void)GADBannerViewOnBelowNavWithVC:(UIViewController *)VC{
+    
+    if(TTZADMob.sharedInstance.isRemoveAd) return;
+    
+    GADRequest *gjs_request = [[GADRequest alloc] init];
+    
+    gjs_request.testDevices = @[kGADSimulatorID];
+    
+    GADBannerView *gjs_bannerView = [[GADBannerView alloc] initWithAdSize:GADAdSizeFromCGSize(CGSizeMake(kScreenW, IS_PAD?90:50)) origin:CGPointMake(0, kStatusBarAndNavigationBarHeight)];
+    
+    gjs_bannerView.rootViewController = VC;
+    gjs_bannerView.delegate = self.sharedInstance;
+    
+    gjs_bannerView.adSize = kGADAdSizeSmartBannerPortrait;
+    
+    gjs_bannerView.adUnitID = kGoogleMobileAdsBannerID;
+    
+    [gjs_bannerView loadRequest:gjs_request];
+    
+    [VC.view addSubview:gjs_bannerView];
+}
+
 
 #pragma mark GADBannerViewDelegate
 

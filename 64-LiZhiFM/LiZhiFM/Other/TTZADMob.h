@@ -28,4 +28,6 @@
 +(void)GADBannerViewNoTabbarHeightWithVC:(UIViewController *)VC;
 
 +(void)GADBannerViewHasTabbarHeightWithVC:(UIViewController *)VC;
+
++(void)GADBannerViewOnBelowNavWithVC:(UIViewController *)VC;
 @end
