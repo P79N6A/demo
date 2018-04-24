@@ -46,8 +46,6 @@
 		ABFC9A762084EE6700448645 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFC9A742084EE6700448645 /* LaunchScreen.storyboard */; };
 		ABFC9A792084EE6700448645 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A782084EE6700448645 /* main.m */; };
 		ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A812084EEAC00448645 /* LZBaseViewController.m */; };
-		ABFC9A892084F01B00448645 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A882084EFA600448645 /* UIImage+ImageEffects.m */; };
-		ABFC9A8A2084F01B00448645 /* UIImageView+LBBlurredImage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A862084EFA500448645 /* UIImageView+LBBlurredImage.m */; };
 		ABFC9A8D2084F22100448645 /* LZData.m in Sources */ = {isa = PBXBuildFile; fileRef = ABFC9A8C2084F22100448645 /* LZData.m */; };
 /* End PBXBuildFile section */
 
@@ -122,10 +120,6 @@
 		ABFC9A782084EE6700448645 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ABFC9A802084EEAC00448645 /* LZBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZBaseViewController.h; sourceTree = "<group>"; };
 		ABFC9A812084EEAC00448645 /* LZBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZBaseViewController.m; sourceTree = "<group>"; };
-		ABFC9A852084EFA500448645 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
-		ABFC9A862084EFA500448645 /* UIImageView+LBBlurredImage.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+LBBlurredImage.m"; sourceTree = "<group>"; };
-		ABFC9A872084EFA500448645 /* UIImageView+LBBlurredImage.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImageView+LBBlurredImage.h"; sourceTree = "<group>"; };
-		ABFC9A882084EFA600448645 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		ABFC9A8B2084F22100448645 /* LZData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LZData.h; sourceTree = "<group>"; };
 		ABFC9A8C2084F22100448645 /* LZData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LZData.m; sourceTree = "<group>"; };
 		D656D9A8E6105A538839C73F /* Pods-LiZhiFM.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiZhiFM.debug.xcconfig"; path = "Pods/Target Support Files/Pods-LiZhiFM/Pods-LiZhiFM.debug.xcconfig"; sourceTree = "<group>"; };
@@ -335,24 +329,12 @@
 				AB2E640B208B0A510089C39B /* UIView+Loading.m */,
 				AB2E640D208B0A510089C39B /* LZHTTP.h */,
 				AB2E640E208B0A510089C39B /* LZHTTP.m */,
-				ABFC9A842084EF9700448645 /* LBBlurredImage */,
 				ABFC9A8B2084F22100448645 /* LZData.h */,
 				ABFC9A8C2084F22100448645 /* LZData.m */,
 				AB273E08208C5AB9002B0313 /* UIBarButtonItem+Button.h */,
 				AB273E09208C5AB9002B0313 /* UIBarButtonItem+Button.m */,
 			);
 			path = Other;
-			sourceTree = "<group>";
-		};
-		ABFC9A842084EF9700448645 /* LBBlurredImage */ = {
-			isa = PBXGroup;
-			children = (
-				ABFC9A852084EFA500448645 /* UIImage+ImageEffects.h */,
-				ABFC9A882084EFA600448645 /* UIImage+ImageEffects.m */,
-				ABFC9A872084EFA500448645 /* UIImageView+LBBlurredImage.h */,
-				ABFC9A862084EFA500448645 /* UIImageView+LBBlurredImage.m */,
-			);
-			path = LBBlurredImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -516,9 +498,7 @@
 				ABF0044720878F0F004DC9CA /* TTZBannerView.m in Sources */,
 				ABFC9A8D2084F22100448645 /* LZData.m in Sources */,
 				AB2E642D208B353C0089C39B /* UIView+Extension.m in Sources */,
-				ABFC9A892084F01B00448645 /* UIImage+ImageEffects.m in Sources */,
 				AB2E6410208B0A520089C39B /* UIView+Loading.m in Sources */,
-				ABFC9A8A2084F01B00448645 /* UIImageView+LBBlurredImage.m in Sources */,
 				ABFC9A6E2084EE6700448645 /* LZHomeController.m in Sources */,
 				AB2E642A208B34220089C39B /* LZPlayView.m in Sources */,
 				ABFC9A822084EEAC00448645 /* LZBaseViewController.m in Sources */,

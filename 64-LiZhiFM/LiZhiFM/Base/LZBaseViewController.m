@@ -8,7 +8,6 @@
 
 #import "LZBaseViewController.h"
 
-#import "UIImageView+LBBlurredImage.h"
 
 @interface LZBaseViewController ()
 

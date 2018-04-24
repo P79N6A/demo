@@ -39,6 +39,26 @@
 - (void)awakeFromNib{
     [super awakeFromNib];
     kViewRadius(self.imgIV, 5);
+    
+    /**
+     *   模糊效果的三种风格
+     *
+     UIBlurEffectStyleExtraLight,//额外亮度，（高亮风格）
+     UIBlurEffectStyleLight,//亮风格
+     UIBlurEffectStyleDark//暗风格
+     *
+     */
+    //实现模糊效果
+//    UIBlurEffect *blurEffrct =[UIBlurEffect effectWithStyle:UIBlurEffectStyleLight];
+//    
+//    //毛玻璃视图
+//    UIVisualEffectView *visualEffectView = [[UIVisualEffectView alloc]initWithEffect:blurEffrct];
+//    
+//    visualEffectView.frame = CGRectMake(0, 0, 300, 500);
+//    
+//    visualEffectView.alpha = 0.9;
+//    
+//    [self addSubview:visualEffectView];
 }
 
 - (IBAction)lockAction:(UIButton *)sender {

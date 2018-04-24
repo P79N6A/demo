@@ -9,6 +9,16 @@
 #import "AppDelegate.h"
 #import "TTZADMob.h"
 
+
+#import "LZHTTP.h"
+
+#ifdef DEBUG
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+#else
+#define NSLog(...)
+#endif
+
+
 @interface AppDelegate ()
 
 @end
@@ -20,6 +30,26 @@
     // Override point for customization after application launch.
     [TTZADMob initAdMob];
     
+    
+    for (NSInteger i = 10000; i < 15000; i++) {
+        
+        NSString *url = [NSString stringWithFormat:@"http://i.qingting.fm/wapi/channels/%ld",(long)i];
+        [[LZHTTP sharedInstance] getRequest:url
+                                 parameters:nil
+                                    success:^(id respones) {
+                                        
+                                        NSString *desc =  [[respones valueForKey:@"data"] valueForKey:@"desc"];
+                                        NSString *name =  [[respones valueForKey:@"data"] valueForKey:@"name"];
+                                        if(name) {
+                                            //NSLog(@"@{@\"name\":@\"%@\",@\"desc\":@\"%@\"},",name,desc);
+                                            NSLog(@"@\"%@\":@\"%@\",",name,desc);
+
+                                        }
+                                    }
+                                    failure:^(NSError *error) {
+                                        NSLog(@"%s--%@", __func__,error);
+                                    }];
+    }
     return YES;
 }
 
