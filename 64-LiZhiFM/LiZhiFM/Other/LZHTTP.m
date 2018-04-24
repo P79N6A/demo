@@ -158,6 +158,8 @@ static id instance = nil;
     //NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
     //NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
     
+    return NO;
+    
     if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
     {
         //NSLog(@"没代理");

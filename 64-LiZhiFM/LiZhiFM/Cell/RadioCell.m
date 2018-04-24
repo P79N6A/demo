@@ -9,6 +9,7 @@
 #import "RadioCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "LZliveChannelModel.h"
+#import "LZData.h"
 
 @interface RadioCell ()
 
@@ -55,12 +56,16 @@
 -(void)setModel:(LZliveChannelModel *)model {
     _model = model;
     
-//    _des.text = model.liveSectionName;
+
+    NSString *desc = [[LZData descDict] valueForKey:model.key];
+    _des.text = desc.length ? desc : @"暂无相关介绍";
     [_icon sd_setImageWithURL:[NSURL URLWithString:model.img] placeholderImage:[UIImage imageNamed:@"logo"]];
     _name.text = model.name;
     _main.text = model.liveSectionName;
     
 
 }
+
+
 
 @end

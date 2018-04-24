@@ -10,4 +10,5 @@
 
 @interface LZData : NSObject
 + (NSDictionary *)homeDict;
++ (NSDictionary *)descDict;
 @end

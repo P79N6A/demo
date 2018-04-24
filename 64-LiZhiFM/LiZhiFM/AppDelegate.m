@@ -26,30 +26,20 @@
 @implementation AppDelegate
 
 
+
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [TTZADMob initAdMob];
     
+//    NSString *str1 = @"qwe不重要的文字ty";
+//    NSString *str2 = @"哈qwe这也是ty";
+//    NSArray *arr = [self matchLongestSubstrings:str1 with:str2];
+//    NSLog(@"最长的字符串:%@", arr);
+//
     
-    for (NSInteger i = 10000; i < 15000; i++) {
-        
-        NSString *url = [NSString stringWithFormat:@"http://i.qingting.fm/wapi/channels/%ld",(long)i];
-        [[LZHTTP sharedInstance] getRequest:url
-                                 parameters:nil
-                                    success:^(id respones) {
-                                        
-                                        NSString *desc =  [[respones valueForKey:@"data"] valueForKey:@"desc"];
-                                        NSString *name =  [[respones valueForKey:@"data"] valueForKey:@"name"];
-                                        if(name) {
-                                            //NSLog(@"@{@\"name\":@\"%@\",@\"desc\":@\"%@\"},",name,desc);
-                                            NSLog(@"@\"%@\":@\"%@\",",name,desc);
+    
 
-                                        }
-                                    }
-                                    failure:^(NSError *error) {
-                                        NSLog(@"%s--%@", __func__,error);
-                                    }];
-    }
     return YES;
 }
 

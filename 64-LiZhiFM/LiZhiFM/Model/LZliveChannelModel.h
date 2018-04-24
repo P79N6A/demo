@@ -50,4 +50,5 @@
 @property (nonatomic, copy) NSString *liveSectionName;
 @property (nonatomic, strong) NSArray <LZStreamModel *>*streams;
 @property (nonatomic, copy) NSString *live_stream;
+@property (nonatomic, copy) NSString *key;
 @end
