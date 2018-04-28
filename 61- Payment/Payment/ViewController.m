@@ -78,14 +78,27 @@
 - (IBAction)buyAction {
     NSLog(@"%s----点击周星星", __func__);
     
-    [[TTZPay defaultPay] buyWithProductIdentifier:@"com.chinaradio.www_12"
-                                      allProducts:self.products
-                                       loadingBuy:^(NSString *message) {
-                                           [self.view showLoading:message];
-                                       }
-                                      payComplete:^(NSString *message) {
-                                          [self.view hideLoading:message];
-                                      }];
+//    [[TTZPay defaultPay] buyWithProductIdentifier:@"com.chinaradio.www_12"
+//                                      allProducts:self.products
+//                                       loadingBuy:^(NSString *message) {
+//                                           [self.view showLoading:message];
+//                                       }
+//                                      payComplete:^(NSString *message) {
+//                                          [self.view hideLoading:message];
+//                                      }];
+    
+    [[TTZPay defaultPay] buyWithProductIdentifier:@"com.chinaradio.www_12" allProducts:self.products loadingBuy:^(NSString *message) {
+                                                   [self.view showLoading:message];
+
+    } statusBuy:^(NSString *message) {
+        [self.view hideLoading:message];
+    } paySuccess:^(NSString *message) {
+        [self.view hideLoading:message];
+        NSLog(@"%s", __func__);
+    } verifySuccess:^(NSString *message) {
+        [self.view hideLoading:message];
+        NSLog(@"%s", __func__);
+    }];
 }
 //FIXME:  -  恢复购买
 - (IBAction)restoreBuyAction {

@@ -17,12 +17,8 @@
 
 // 苹果内购
 @property (nonatomic, copy) NSString *productID;
-
 @property (nonatomic, copy) payCompleteBlock payComplete;
-@property (nonatomic, copy) payCompleteBlock verifyComplete;
 @property (nonatomic, copy) loadingBuyBlock loadingBuy;
-@property (nonatomic, copy) loadingBuyBlock statusBuy;
-
 @property (nonatomic, strong) NSDictionary *products;
 
 @end
@@ -107,47 +103,6 @@
     
 }
 
-- (void)buyWithProductIdentifier:(NSString *)productId
-                     allProducts:(NSDictionary *)products
-                      loadingBuy:(loadingBuyBlock)loadingBlock
-                       statusBuy:(loadingBuyBlock)statusBlock
-                      paySuccess:(payCompleteBlock)payBlock
-                   verifySuccess:(payCompleteBlock)verifyBlock{
-    
-    
-    if(![SKPaymentQueue canMakePayments]) {
-        NSLog(@"-------------0.0 不允许程序内付费");
-        !(statusBlock)? : statusBlock(@"设备不能或不允许购买");
-        return;
-    }
-    
-    if ([UIDevice currentDevice].isJailbroken) {
-        NSLog(@"-------------0.0 不允许越狱设备付费");
-        !(statusBlock)? : statusBlock(@"越狱设备不允许购买");
-        return;
-    }
-    
-    [self removeAllUncompleteTransaction];
-    
-    
-    self.payComplete = payBlock;
-    self.verifyComplete = verifyBlock;
-    
-    self.loadingBuy = loadingBlock;
-    self.statusBuy = statusBlock;
-    self.productID = productId;
-    self.products = products;
-    
-    NSArray *product = [[NSArray alloc] initWithObjects:productId, nil];
-    NSSet *nsset = [NSSet setWithArray:product];
-    SKProductsRequest *request = [[SKProductsRequest alloc] initWithProductIdentifiers:nsset];
-    request.delegate = self;
-    [request start];
-    !(loadingBlock)? : loadingBlock(@"加载中...");
-    NSLog(@"-------------1.0 加载中对应的产品信息");
-    
-}
-
 #pragma mark  -  SKProductsRequestDelegate
 //收到产品返回信息
 - (void)productsRequest:(SKProductsRequest *)request didReceiveResponse:(SKProductsResponse *)response{
@@ -155,9 +110,7 @@
     NSArray *product = response.products;
     if([product count] == 0){
         NSLog(@"--------------2.0 没有商品");
-        //!(_payComplete)? : _payComplete(@"没有项目可购买");
-        !(_statusBuy)? (!(_payComplete)? : _payComplete(@"没有项目可购买")) : _statusBuy(@"没有项目可购买");
-
+        !(_payComplete)? : _payComplete(@"没有项目可购买");
         return;
     }
     
@@ -185,9 +138,7 @@
 //请求失败
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
     NSLog(@"-------------2.0 请求产品错误:%@", error);
-    //!(_payComplete)? : _payComplete(error.localizedDescription);
-    !(_statusBuy)? (!(_payComplete)? : _payComplete(error.localizedDescription)) : _statusBuy(error.localizedDescription);
-
+    !(_payComplete)? : _payComplete(error.localizedDescription);
 }
 
 - (void)requestDidFinish:(SKRequest *)request{
@@ -203,7 +154,7 @@
         switch (tran.transactionState) {
             case SKPaymentTransactionStatePurchased:
                 NSLog(@"-------------5.0 支付成功");
-                if([self.productID isEqualToString:tran.payment.productIdentifier]) !(_payComplete)? : _payComplete(@"支付成功");
+                !(_payComplete)? : _payComplete(@"支付成功");
                 [self completeTransaction:tran];
                 break;
             case SKPaymentTransactionStatePurchasing:
@@ -217,9 +168,7 @@
             case SKPaymentTransactionStateFailed:
                 [[SKPaymentQueue defaultQueue] finishTransaction:tran];
                 NSLog(@"-------------5.0 支付失败：%@",tran.error.localizedDescription);
-                //!(_payComplete)? : _payComplete([NSString stringWithFormat:@"支付失败:%@",tran.error.localizedDescription]);
-                !(_statusBuy)? (!(_payComplete)? : _payComplete([NSString stringWithFormat:@"支付失败:%@",tran.error.localizedDescription])) : _statusBuy([NSString stringWithFormat:@"支付失败:%@",tran.error.localizedDescription]);
-
+                !(_payComplete)? : _payComplete([NSString stringWithFormat:@"支付失败:%@",tran.error.localizedDescription]);
                 break;
             default:
                 break;
@@ -251,15 +200,12 @@
 
 - (void)paymentQueue:(SKPaymentQueue *)queue restoreCompletedTransactionsFailedWithError:(NSError *)error {
     NSLog(@"-------------4.0 恢复失败:%@",error.localizedDescription);
-    //!(_payComplete)? : _payComplete([NSString stringWithFormat:@"恢复失败:%@",error.localizedDescription]);
-    !(_statusBuy)? (!(_payComplete)? : _payComplete([NSString stringWithFormat:@"恢复失败:%@",error.localizedDescription])) : _statusBuy([NSString stringWithFormat:@"恢复失败:%@",error.localizedDescription]);
-
+    !(_payComplete)? : _payComplete([NSString stringWithFormat:@"恢复失败:%@",error.localizedDescription]);
 }
 // 恢复购买
 - (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue *)queue {
     NSLog(@"-------------5.0 恢复购买队列数:%lu",(unsigned long)queue.transactions.count);
-    if(!queue.transactions.count) !(_statusBuy)? (!(_payComplete)? : _payComplete(@"没有已购买项目")) : _statusBuy(@"没有已购买项目");
-;//!(_payComplete)? : _payComplete(@"没有已购买项目");
+    if(!queue.transactions.count) !(_payComplete)? : _payComplete(@"没有已购买项目");
 
     for (SKPaymentTransaction *transaction in queue.transactions)
     {
@@ -334,17 +280,15 @@
                                              
                                              if (error) {
                                                  NSLog(@"-------------6.0 请求失败:%@",error.localizedDescription);
-                                                 //!(_payComplete)? : _payComplete([NSString stringWithFormat:@"请求失败:%@",error.localizedDescription]);
-                                                 !(_statusBuy)? (!(_payComplete)? : _payComplete([NSString stringWithFormat:@"请求失败:%@",error.localizedDescription])) : _statusBuy([NSString stringWithFormat:@"请求失败:%@",error.localizedDescription]);
-
+                                                 !(_payComplete)? : _payComplete([NSString stringWithFormat:@"请求失败:%@",error.localizedDescription]);
+                                                 
                                              } else {
                                                  NSError *error;
                                                  NSDictionary *jsonResponse = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
                                                  if (!jsonResponse) {
                                                      NSLog(@"-------------6.0 验证失败:%@",error.localizedDescription);
-                                                     //!(_payComplete)? : _payComplete([NSString stringWithFormat:@"验证失败:%@",error.localizedDescription]);
-                                                     !(_statusBuy)? (!(_payComplete)? : _payComplete([NSString stringWithFormat:@"验证失败:%@",error.localizedDescription])) : _statusBuy([NSString stringWithFormat:@"验证失败:%@",error.localizedDescription]);
-
+                                                     !(_payComplete)? : _payComplete([NSString stringWithFormat:@"验证失败:%@",error.localizedDescription]);
+                                                     
                                                      return ;
                                                  }
                                                  
@@ -369,9 +313,7 @@
                                                  NSInteger status = [[jsonResponse valueForKey:@"status"] integerValue];
                                                  if(status){
                                                      NSLog(@"-------------6.0 验证出错:%ld",(long)status);
-                                                     //!(_payComplete)? : _payComplete([NSString stringWithFormat:@"\n验证出错:%ld\n",(long)status]);
-                                                     !(_statusBuy)? (!(_payComplete)? : _payComplete([NSString stringWithFormat:@"\n验证出错:%ld\n",(long)status])) : _statusBuy([NSString stringWithFormat:@"\n验证出错:%ld\n",(long)status]);
-
+                                                     !(_payComplete)? : _payComplete([NSString stringWithFormat:@"\n验证出错:%ld\n",(long)status]);
                                                      return;
                                                  }
                                                  //NSString *environment = [jsonResponse valueForKey:@"environment"];
@@ -397,26 +339,19 @@
                                                          [TTZKeyChain saveData:inAppData forKey:product_id];
                                                          NSString *ok = [NSString stringWithFormat:@"\n验证成功[%@]\n",title];
                                                          [msg appendString:ok];
-                                                         if([self.productID isEqualToString:product_id]) !(_verifyComplete)? (!(_payComplete)? : _payComplete(ok)) : _verifyComplete(ok);
-
                                                          
                                                      }else if (status){
                                                          NSString *error = [NSString stringWithFormat:@"\n验证出错[%@]:%ld\n",title,(long)status];
                                                          [msg appendString:error];
-                                                         if([self.productID isEqualToString:product_id]) !(_statusBuy)? : _statusBuy(error);
-
                                                          
                                                      }else{
                                                          NSString *nor = [NSString stringWithFormat:@"\nAppID异常[%@]:%@\n",title,bundle_id];
                                                          [msg appendString:nor];
-                                                         if([self.productID isEqualToString:product_id]) !(_statusBuy)? : _statusBuy(nor);
                                                          
                                                      }
                                                  }];
                                                  NSLog(@"-------------6.0 验证成功:%@",msg);
-                                                 //!(_payComplete)? : _payComplete(msg);
-                                                 //!(_verifyComplete)? (!(_payComplete)? : _payComplete(msg)) : _verifyComplete(msg);
-
+                                                 !(_payComplete)? : _payComplete(msg);
                                                  
                                                  //NSString  *transaction_id = [in_app valueForKey:@"transaction_id"];
                                                  

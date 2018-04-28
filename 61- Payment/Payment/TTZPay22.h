@@ -26,15 +26,6 @@ typedef void(^loadingBuyBlock)(NSString *message);
 
 + (instancetype)defaultPay;
 
-/// pay
-- (void)buyWithProductIdentifier:(NSString *)productId//
-                     allProducts:(NSDictionary *)products//所有产品
-                      loadingBuy:(loadingBuyBlock)loadingBlock
-                       statusBuy:(loadingBuyBlock)statusBlock
-                      paySuccess:(payCompleteBlock)payBlock
-                   verifySuccess:(payCompleteBlock)verifyBlock;
-
-
 /// 苹果内购
 - (void)buyWithProductIdentifier:(NSString *)productId
                      allProducts:(NSDictionary *)products
@@ -42,19 +33,10 @@ typedef void(^loadingBuyBlock)(NSString *message);
                      payComplete:(payCompleteBlock)completionBlock;
 
 
-
-
 /// 恢复购买
 - (void)restoreBuyloading:(loadingBuyBlock)loadingBlock
               allProducts:(NSDictionary *)products// @{@"productId",@"title"}
               payComplete:(payCompleteBlock)completionBlock;
-
-- (void)restoreBuyWithProducts:(NSDictionary *)products
-                    loadingBuy:(loadingBuyBlock)loadingBlock
-                     statusBuy:(loadingBuyBlock)statusBlock
-                    paySuccess:(payCompleteBlock)payBlock
-                 verifySuccess:(payCompleteBlock)verifyBlock;
-
 
 
 + (TTZPaymentState)PaymentStateWithProductIdentifier:(NSString *)productId;
