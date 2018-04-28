@@ -19,8 +19,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.identifier = @"com.photoedit.www_19";
+//    self.identifier = @"com.photoedit.www_19";
     [[SKPaymentQueue defaultQueue] addTransactionObserver:self];
+//    [self completeTransaction:nil];
     
 }
 
@@ -29,7 +30,73 @@
     
 }
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+
+//FIXME:  -  消耗型
+- (IBAction)Action {
+//    NSLog(@"%s----点击鸡腿----一周", __func__);
+//    self.identifier = @"com.photoedit.www_19";
+    [self buy];
+    
+}
+//FIXME:  -  非消耗型
+- (IBAction)qingFengZiAction {
+//    NSLog(@"%s----点击请疯子---一个月", __func__);
+//    self.identifier = @"com.photoedit.www_60";
+    [self buy];
+}
+//FIXME:  -  非消耗型
+- (IBAction)buyAction {
+//    NSLog(@"%s----点击周星星", __func__);
+    
+}
+//FIXME:  -  恢复购买
+- (IBAction)restoreBuyAction {
+    NSLog(@"%s----点击恢复购买", __func__);
+}
+
+- (IBAction)comphotoeditwww_18:(id)sender {
+    NSLog(@"%s----一个月去广告-非续期订阅", __func__);
+        self.identifier = @"com.photoedit.www_18";
+    [self buy];
+
+
+}
+- (IBAction)comphotoeditwww_12:(id)sender {
+    NSLog(@"%s----去广告专业版-非消耗型项目", __func__);
+    self.identifier = @"com.photoedit.www_12";
+    [self buy];
+
+
+}
+- (IBAction)comphotoeditwww_06:(id)sender {
+    NSLog(@"%s----请我吃鸡腿-消耗型项目", __func__);
+    self.identifier = @"com.photoedit.www_06";
+    [self buy];
+
+}
+
+- (IBAction)comphotoeditwww_19:(id)sender {
+    NSLog(@"%s----连续一周会员-自动续期订阅", __func__);
+    self.identifier = @"com.photoedit.www_19";
+    [self buy];
+
+    
+}
+- (IBAction)comphotoeditwww_01:(id)sender {
+    NSLog(@"%s----连续一周去广告-自动续期订阅", __func__);
+    self.identifier = @"com.photoedit.www_01";
+    [self buy];
+
+}
+- (IBAction)comphotoeditwww_60:(id)sender {
+    NSLog(@"%s----连续一月会员-自动续期订阅", __func__);
+    self.identifier = @"com.photoedit.www_60";
+    [self buy];
+
+}
+
+
+- (void)buy{
    
     if ([SKPaymentQueue canMakePayments]) {
         //允许应用内付费购买
@@ -85,7 +152,7 @@
 }
 
 - (void)request:(SKRequest *)request didFailWithError:(NSError *)error{
-
+NSLog(@"%s---%@", __func__,error);
 }
 
 #pragma mark  -  SKPaymentTransactionObserver
@@ -150,7 +217,8 @@
     NSError *error;
     NSDictionary *requestContents = @{
                                       @"receipt-data": receipt,
-                                      @"password":@"8ec5c2ae169b48a0902b0e2ab4c293d9"
+                                      @"password":@"8ec5c2ae169b48a0902b0e2ab4c293d9",
+                                      @"exclude-old-transactions": @(YES)
                                       };
     NSData *requestData = [NSJSONSerialization dataWithJSONObject:requestContents
                                                           options:0
@@ -160,7 +228,7 @@
     
     
 
-    [self verifyReceiptData:requestData isSandbox:NO];
+    [self verifyReceiptData:requestData isSandbox:YES];
     
 }
 
@@ -224,14 +292,14 @@
                                                  
                                                  if(status){
                                                      
-                                                     if (status == 21007) {
-                                                         [self verifyReceiptData:requestData isSandbox:YES];
+                                                     if (status == 21008) {
+                                                         [self verifyReceiptData:requestData isSandbox:NO];
                                                          return;
                                                      }
                                                      NSLog(@"-------------6.0 验证出错:%ld",(long)status);
                                                      return;
                                                  }
-                                                 [self checkIsValidSubscribe:[NSDate date] response:jsonResponse];
+                                                 [self checkIsValidSubscribeWithResponse:jsonResponse];
                                                 NSLog(@"-------------6.0 验证成功");
                                       
                                                  
@@ -243,19 +311,16 @@
 
 
 //FIXME:  -  订阅产品需要验证订阅是否过期
-- (BOOL)checkIsValidSubscribe:(NSDate *)date
-                     response:(NSDictionary *)response
+- (BOOL)checkIsValidSubscribeWithResponse:(NSDictionary *)response
 {
     long long expirationTime = [self expirationDateFromResponse:response productId:self.identifier];
     BOOL isCurrentInfoValid = [self checkIsCurrentInfoValid:response productId:self.identifier];
     BOOL isRenewInfoValid = [self checkIsRenewInfoValid:response productId:self.identifier];
     //NSDate *expireDate = [NSDate dateWithTimeIntervalSince1970:expirationTime/1000];
+    //NSTimeInterval timeInterval = [expireDate timeIntervalSinceDate:date];
+
     long long nowTime = [self nowDateFromResponse:response productId:self.identifier];
-    
-    nowTime = nowTime? nowTime : [date timeIntervalSince1970] * 1000;
-    
-    
-    NSTimeInterval timeInterval = expirationTime - nowTime;//[expireDate timeIntervalSinceDate:date];
+    NSTimeInterval timeInterval = expirationTime - nowTime;
     
     BOOL isValidSubscribed = NO;
     if (timeInterval > 0 && isCurrentInfoValid) {
@@ -264,6 +329,8 @@
     } else if (isRenewInfoValid) {
         isValidSubscribed = YES;
     }
+    
+    NSLog(@"%s------99.订阅状态：%d", __func__,isValidSubscribed);
     
     return isValidSubscribed;
 }
@@ -292,17 +359,17 @@
 - (long long)nowDateFromResponse:(NSDictionary *)jsonResponse
                               productId:(NSString *)productId {
     
-    NSDictionary *receipt = jsonResponse[@"receipt"];
-
-    NSNumber *nowMs = receipt[@"request_date_ms"];
-            
-    return nowMs.longLongValue;
+    NSDictionary *receipt = [jsonResponse valueForKey:@"receipt"];
     
-    return 0;
+    long long nowMs = [[receipt valueForKey:@"request_date_ms"] longLongValue];
+    
+    return nowMs? nowMs : [[NSDate date] timeIntervalSince1970]*1000;
+    
 }
 
 
-- (BOOL)checkIsRenewInfoValid:(NSDictionary *)jsonResponse productId:(NSString *)productId {
+- (BOOL)checkIsRenewInfoValid:(NSDictionary *)jsonResponse
+                    productId:(NSString *)productId {
     NSArray *renewalInfos = jsonResponse[@"pending_renewal_info"];
     if (renewalInfos && renewalInfos.count > 0) {
         for (NSDictionary *renewalInfo in renewalInfos) {

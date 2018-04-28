@@ -19,35 +19,87 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="99K-Zm-BZi">
-                                <rect key="frame" x="43" y="192" width="46" height="30"/>
+                                <rect key="frame" x="47" y="49" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="周星星"/>
                                 <connections>
                                     <action selector="buyAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQE-39-WkB"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWD-Rp-DCW">
+                                <rect key="frame" x="45" y="87" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="🍗 "/>
+                                <connections>
+                                    <action selector="Action" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8E-p9-yVA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-hl-gXf">
+                                <rect key="frame" x="43" y="20" width="46" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="清峰子"/>
+                                <connections>
+                                    <action selector="qingFengZiAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="R0U-iC-xWM"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VMB-pf-5NV">
-                                <rect key="frame" x="126" y="192" width="62" height="30"/>
+                                <rect key="frame" x="35" y="141" width="62" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="恢复购买"/>
                                 <connections>
                                     <action selector="restoreBuyAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="c76-Rx-YXh"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QWD-Rp-DCW">
-                                <rect key="frame" x="58" y="252" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhN-El-Mwz">
+                                <rect key="frame" x="13" y="222" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="🍗"/>
+                                <state key="normal" title="去广告专业版"/>
                                 <connections>
-                                    <action selector="Action" destination="BYZ-38-t0r" eventType="touchUpInside" id="H8E-p9-yVA"/>
+                                    <action selector="comphotoeditwww_12:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rJr-ON-Gk8"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c9g-hl-gXf">
-                                <rect key="frame" x="42" y="141" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dQ0-vj-FJ2">
+                                <rect key="frame" x="12" y="179" width="92" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="清峰子"/>
+                                <state key="normal" title="一个月去广告"/>
                                 <connections>
-                                    <action selector="qingFengZiAction" destination="BYZ-38-t0r" eventType="touchUpInside" id="R0U-iC-xWM"/>
+                                    <action selector="comphotoeditwww_18:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ip2-ZB-UaH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oST-s6-Pzl">
+                                <rect key="frame" x="17" y="267" width="84" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <string key="title">请我吃鸡腿	</string>
+                                </state>
+                                <connections>
+                                    <action selector="comphotoeditwww_06:" destination="BYZ-38-t0r" eventType="touchUpInside" id="PGh-0U-sfr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yn-8Z-GIh">
+                                <rect key="frame" x="13" y="305" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="连续一周会员"/>
+                                <connections>
+                                    <action selector="comphotoeditwww_19:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iUN-D6-JHb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0mC-8i-VUb">
+                                <rect key="frame" x="4" y="343" width="108" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="连续一周去广告"/>
+                                <connections>
+                                    <action selector="comphotoeditwww_01:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dhG-Me-pWg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xPT-qd-ckp">
+                                <rect key="frame" x="24" y="381" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <string key="title">连续一月会员	</string>
+                                </state>
+                                <connections>
+                                    <action selector="comphotoeditwww_60:" destination="BYZ-38-t0r" eventType="touchUpInside" id="p2V-ZU-jal"/>
                                 </connections>
                             </button>
                         </subviews>

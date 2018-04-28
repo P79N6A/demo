@@ -4,6 +4,17 @@
 //
 //  Created by Jay on 2018/4/18.
 //  Copyright © 2018年 czljcb. All rights reserved.
+/*
+ 订阅
+ 1周  3min
+ 1月  5min
+ 2月  10min
+ 3月  15min
+ 6月  30min
+ 1年  1h
+
+ */
+
 //
 
 #import <Foundation/Foundation.h>
