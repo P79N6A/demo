@@ -7,11 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "TTZMedia.h"
 
 #import <AVFoundation/AVFoundation.h>
 
-@interface ViewController ()
-
+@interface ViewController ()<UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *images;
 @end
 
 @implementation ViewController
@@ -21,9 +23,58 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
 
-    NSArray *images = [self thumbnailImageForVideo:[NSURL fileURLWithPath:@"/Users/jay/Desktop/1.mp4"] atTime:0];
+    self.images = [TTZMedia thumbnailImageForVideo:@"/Users/jay/Desktop/1.mp4"];//[self thumbnailImageForVideo:[NSURL fileURLWithPath:@"/Users/jay/Desktop/1.mp4"] atTime:0];
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
     
     NSLog(@"%s", __func__);
+}
+
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    [TTZMedia AVsaveVideoPath:@"/Users/jay/Downloads/MixVideo.mov"
+                 WithWaterImg:[UIImage imageNamed:@"Snip20180503_38"]
+               WithCoverImage:[UIImage imageNamed:@"Snip20180403_3"]
+                  WithQustion:@"qustion"
+                 WithFileName:@"fileName"];
+    return;
+    [TTZMedia importMP3WithURL:@"/Users/jay/Downloads/20180503102411_460.mp4"
+                         range:NSMakeRange(0, 0)
+                    completion:^(NSString *path) {
+                        NSLog(@"%s-合成-%@", __func__,path);
+                    }];
+    return;
+    [TTZMedia importVideoWithURL:@"/Users/jay/Downloads/20180503102411_460.mp4"
+                           range:NSMakeRange(10, 20)
+                      completion:^(NSString *path) {
+                          NSLog(@"%s-合成-%@", __func__,path);
+                      }];
+    return;
+    [TTZMedia addBackgroundMiusicWithVideoUrlStr:@"/Users/jay/Downloads/20180503102411_460.mp4"
+                                        audioUrl:@"/Users/jay/Desktop/月半弯.mp3"
+                        andCaptureVideoWithRange:NSMakeRange(0, 20)
+                                      completion:^(NSString *path) {
+                                          NSLog(@"%s-合成-%@", __func__,path);
+                                      }];
+    return;
+    [TTZMedia addBackgroundMiusicWithVideoURL:@"/Users/jay/Downloads/20180503102411_460.mp4"
+                                     audioURL:@"/Users/jay/Desktop/月半弯.mp3"
+                                   completion:^(NSString *path) {
+                                       NSLog(@"%s-合成-%@", __func__,path);
+                                   }];
+}
+
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return self.images.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    cell.imageView.image = self.images[indexPath.item];
+    return cell;
 }
 
 -(NSInteger )getVideoAllTimeWith:(NSURL *)url
@@ -31,19 +82,14 @@
     NSDictionary *opts = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:NO]
                                                      forKey:AVURLAssetPreferPreciseDurationAndTimingKey];
     AVURLAsset *urlAsset = [AVURLAsset URLAssetWithURL:url options:opts];  // 初始化视频媒体文件
-    int minute = 0, second = 0;
+    NSInteger second = 0;
     second = ceil(urlAsset.duration.value / urlAsset.duration.timescale); // 获取视频总时长,单位秒
-    //NSLog(@"movie duration : %d", second);
-    //    if (second >= 60) {
-    //        int index = second / 60;
-    //        minute = index;
-    //        second = second - index*60;
-    //    }
     
     return second;
 }
 
-- (NSArray *) thumbnailImageForVideo:(NSURL *)videoURL atTime:(NSTimeInterval)time
+- (NSArray *) thumbnailImageForVideo:(NSURL *)videoURL
+                              atTime:(NSTimeInterval)time
 {
     
     NSMutableArray * returnArr = [NSMutableArray array];

@@ -13,6 +13,7 @@
 		695A366720947A21005F34A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 695A366620947A21005F34A4 /* Assets.xcassets */; };
 		695A366A20947A21005F34A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 695A366820947A21005F34A4 /* LaunchScreen.storyboard */; };
 		695A366D20947A21005F34A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 695A366C20947A21005F34A4 /* main.m */; };
+		69745AA3209C38FE00ED68ED /* TTZMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 69745AA2209C38FE00ED68ED /* TTZMedia.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		695A366920947A21005F34A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		695A366B20947A21005F34A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		695A366C20947A21005F34A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69745AA1209C38FE00ED68ED /* TTZMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZMedia.h; sourceTree = "<group>"; };
+		69745AA2209C38FE00ED68ED /* TTZMedia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZMedia.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				695A366820947A21005F34A4 /* LaunchScreen.storyboard */,
 				695A366B20947A21005F34A4 /* Info.plist */,
 				695A366C20947A21005F34A4 /* main.m */,
+				69745AA1209C38FE00ED68ED /* TTZMedia.h */,
+				69745AA2209C38FE00ED68ED /* TTZMedia.m */,
 			);
 			path = video;
 			sourceTree = "<group>";
@@ -145,6 +150,7 @@
 				695A366220947A21005F34A4 /* ViewController.m in Sources */,
 				695A366D20947A21005F34A4 /* main.m in Sources */,
 				695A365F20947A21005F34A4 /* AppDelegate.m in Sources */,
+				69745AA3209C38FE00ED68ED /* TTZMedia.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
