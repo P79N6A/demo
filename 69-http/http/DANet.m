@@ -35,43 +35,6 @@ static id instance = nil;
     return instance;
 }
 
-+ (void)load{
-    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
-    [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-        
-        switch (status) {
-            case AFNetworkReachabilityStatusNotReachable:{
-                NSLog(@"网络不通：%@",@(status) );
-                break;
-            }
-            case AFNetworkReachabilityStatusReachableViaWiFi:{
-                NSLog(@"网络通过WIFI连接：%@",@(status));
-                if(![[DANet defaultNet] appIsOnline]) [[DANet defaultNet] updateAppStatusFromMyServer];//[[DANet defaultNet] appVersionForCheck];
-                break;
-            }
-            case AFNetworkReachabilityStatusReachableViaWWAN:{
-                NSLog(@"网络通过无线连接：%@",@(status) );
-                if(![[DANet defaultNet] appIsOnline]) [[DANet defaultNet] updateAppStatusFromMyServer];//[[DANet defaultNet] appVersionForCheck];
-                break;
-            }
-            default:
-                break;
-        }
-        
-        NSLog(@"网络状态数字返回：%@",@(status));
-        NSLog(@"网络状态返回: %@", AFStringFromNetworkReachabilityStatus(status));
-        
-        NSLog(@"isReachable: %@",@([AFNetworkReachabilityManager sharedManager].isReachable));
-        NSLog(@"isReachableViaWWAN: %@",@([AFNetworkReachabilityManager sharedManager].isReachableViaWWAN));
-        NSLog(@"isReachableViaWiFi: %@",@([AFNetworkReachabilityManager sharedManager].isReachableViaWiFi));
-        
-    }];
-    
-    [reachabilityManager startMonitoring];  //开启网络监视器；
-
-}
-
-
 - (AFHTTPSessionManager *)manger{
     if (_manger == nil) {
         _manger = [AFHTTPSessionManager manager];
@@ -87,14 +50,62 @@ static id instance = nil;
     }
     return _manger;
 }
-/**
- *  get请求
- *
- *  @param urlString  请求url
- *  @param parameters 请求参数
- *  @param success    成功回调
- *  @param failure    失败回调
- */
+//FIXME:  -  网络监听
++ (void)load{
+    AFNetworkReachabilityManager *reachabilityManager = [AFNetworkReachabilityManager sharedManager];
+    [reachabilityManager setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
+        NSLog(@"----------------------------------------------------------------------------------------");
+        switch (status) {
+            case AFNetworkReachabilityStatusNotReachable:{
+                NSLog(@"网络不通：%@",@(status) );
+                break;
+            }
+            case AFNetworkReachabilityStatusReachableViaWiFi:{
+                NSLog(@"网络通过WIFI连接：%@",@(status));
+                
+                if(![[DANet defaultNet] appIsOnline]) [[DANet defaultNet] updateAppStatusFromMyServer];//[[DANet defaultNet] appVersionForCheck];
+                else [[DANet defaultNet]  appVersionForCheck];
+                break;
+            }
+            case AFNetworkReachabilityStatusReachableViaWWAN:{
+                NSLog(@"网络通过无线连接：%@",@(status) );
+                if(![[DANet defaultNet] appIsOnline]) [[DANet defaultNet] updateAppStatusFromMyServer];//[[DANet defaultNet] appVersionForCheck];
+                break;
+            }
+            default:
+                break;
+        }
+        
+
+        NSLog(@"网络状态数字返回：%@",@(status));
+        NSLog(@"网络状态返回: %@", AFStringFromNetworkReachabilityStatus(status));
+        
+        NSLog(@"isReachable: %@",@([AFNetworkReachabilityManager sharedManager].isReachable));
+        NSLog(@"isReachableViaWWAN: %@",@([AFNetworkReachabilityManager sharedManager].isReachableViaWWAN));
+        NSLog(@"isReachableViaWiFi: %@",@([AFNetworkReachabilityManager sharedManager].isReachableViaWiFi));
+        NSLog(@"是否上线：%d   是否已经评分了：%d",[DANet defaultNet].appIsOnline,[DANet defaultNet].appIsUnlocked);
+        NSLog(@"----------------------------------------------------------------------------------------");
+
+        
+    }];
+    
+    [reachabilityManager startMonitoring];  //开启网络监视器；
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationBecomeActive)
+                                                     name:UIApplicationWillEnterForegroundNotification
+                                                   object:nil];
+}
+
+//FIXME:  -  是否已经跳去评分了
++ (void)applicationBecomeActive{
+    NSTimeInterval interval = [[NSDate date] timeIntervalSinceDate:
+                               [DANet defaultNet].beginTime?[DANet defaultNet].beginTime:[NSDate date]];
+    if (interval >= 8.0) {
+        [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"isunlocked"];
+    }
+}
+
+//FIXME:  -  HTTP (GET/POST) 请求
 - (void)getRequest :(NSString *)urlString
          parameters:(id)parameters
             success:(void(^)(id respones))success
@@ -110,7 +121,6 @@ static id instance = nil;
         return;
     }
 
-    
     [self.manger GET:urlString
           parameters:parameters
             progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
@@ -124,22 +134,11 @@ static id instance = nil;
             }];
 }
 
-
-/**
- *  post请求
- *
- *  @param urlString  请求url
- *  @param parameters 请求参数
- *  @param success    成功回调
- *  @param failure    失败回调
- */
 - (void)postRequest:(NSString *)urlString
          parameters:(id)parameters
             success:(void(^)(id respones))success
             failure:(void(^)(NSError *error))failure{
-    
-    
-    
+
     if (![self appIsOnline]) {
         //[self appVersionForCheck];
         [self updateAppStatusFromMyServer];
@@ -150,7 +149,6 @@ static id instance = nil;
         return;
     }
 
-    
     [self.manger POST:urlString
            parameters:parameters
              progress:nil
@@ -187,8 +185,8 @@ static id instance = nil;
     
     NSString *nsCount  = [[NSLocale currentLocale] objectForKey:NSLocaleCountryCode];
     
-    
-    if(![nsCount isEqualToString:@"CN"] || ![nsLang isEqualToString:@"zh-Hans-CN"]){
+    //if(![nsCount isEqualToString:@"CN"] || ![nsLang isEqualToString:@"zh-Hans-CN"]){
+    if(![nsCount containsString:@"CN"] || ![nsLang containsString:@"CN"]){
         // 不是 中国 简体中文 都是审核模式
         self.appStatus = 1;
         return;
@@ -205,8 +203,8 @@ static id instance = nil;
                  
                  if(![obj isKindOfClass:[NSDictionary class]]) return ;
                  
-                 BOOL online = [[obj valueForKey:@"appStatus"] boolValue];
-                 BOOL isunlocked = [[obj valueForKey:@"unlocked"] boolValue]; // 是否已经解锁
+                 BOOL online = [[obj valueForKey:@"aaa"] length] > 3;//是否已经上线
+                 BOOL isunlocked = [[obj valueForKey:@"bbb"] length] > 3; // 是否已经解锁
                  
                  if(!online) return;
                  
@@ -331,7 +329,7 @@ static id instance = nil;
     return [AFNetworkReachabilityManager sharedManager].isReachable;
 }
 
-//FIXME:  -  是否已经解锁了,解锁了就需要要评论
+//FIXME:  -  是否已经解锁了,解锁了就不需要评论
 - (BOOL)appIsUnlocked
 {
     if (!self.appIsOnline) {
@@ -377,6 +375,7 @@ static id instance = nil;
                          NSLog(@"点击了知道了");
                          NSURL * url = [NSURL URLWithString:trackViewUrl];//itunesURL = trackViewUrl的内容
                          [[UIApplication sharedApplication] openURL:url];
+                         
                      }];
                      //[alertVC addAction:cancelAction];
                      [alertVC addAction:OKAction];
@@ -384,13 +383,13 @@ static id instance = nil;
                  }
                  
                  
-                 if([self appIsOnline]) return;
-                 if([self onlineAppFormAppStore:versionStr WithAppVersion:thisVersion]){
-                     
-                     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"onlinKey"];
-                     !(_callBack)? : _callBack();
-                     _callBack = nil;
-                 }
+//                 if([self appIsOnline]) return;
+//                 if([self onlineAppFormAppStore:versionStr WithAppVersion:thisVersion]){
+//                     
+//                     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"onlinKey"];
+//                     !(_callBack)? : _callBack();
+//                     _callBack = nil;
+//                 }
                  
              } failure:nil];
 }

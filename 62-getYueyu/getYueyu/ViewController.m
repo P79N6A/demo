@@ -22,9 +22,51 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    NSURL * url = [NSURL URLWithString:@"http://api.jiefu.tv/app2/api/dt/shareItem/newList.html?pageNum=2&pageSize=10000"];
+    //创建请求
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    
+    
+    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:@"http://m.yueyuwz.com" forHTTPHeaderField:@"Origin"];
+    
+    //创建Session
+    NSURLSession * session = [NSURLSession sharedSession];
+    //创建任务
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+      NSDictionary *obj =  [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:NULL];
+//        NSLog(@"%s", __func__);
+        NSArray *array = [obj valueForKey:@"data"];
+        [array enumerateObjectsUsingBlock:^(NSDictionary *  _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            NSLog(@"@{@\"gifPath\":@\"%@\",@\"picPath\":@\"%@\",@\"id\":@\"%@\",@\"name\":@\"%@\"},",model[@"gifPath"],model[@"picPath"],model[@"id"],model[@"name"]);
+
+        }];
+        
+        
+        NSLog(@"%s", __func__);
+        
+        
+    }];
+    //开启网络任务
+    [task resume];
+
+    
+    return;
     // Do any additional setup after loading the view, typically from a nib.
     
+    //NSString *json = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://api.jiefu.tv/app2/api/dt/shareItem/newList.html?pageNum=0&pageSize=1000"] encoding:NSUTF8StringEncoding error:NULL];
     
+    //NSError *error;
+   //BOOL falg = [json writeToFile:@"users/czljcb/desktop/cz.json" atomically:YES encoding:NSUTF8StringEncoding error:&error];
+    
+//    NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://api.jiefu.tv/app2/api/dt/shareItem/newList.html?pageNum=0&pageSize=1000"]];
+//    [data writeToFile:@"users/czljcb/desktop/cz.json" atomically:YES];
+//    NSLog(@"%s", __func__);
+//    return;
     NSArray *lists = @[
 //                       @{@"url":@"http://m.qingting.fm/channel/list/54",@"title":@"国家"},
 //                       @{@"url":@"http://m.qingting.fm/channel/list/60",@"title":@"网络"},
