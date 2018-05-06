@@ -10,7 +10,7 @@ static id instance = nil;
 @property(nonatomic, strong)AFHTTPSessionManager *manger;
 @property (nonatomic, copy) NSString *userAgent;
 @property (nonatomic, strong) NSArray *citys; //有值证明网络已经回来
-@property (nonatomic, assign) NSInteger appStatus; // 有值证明网络已经回来
+@property (nonatomic, assign) BOOL appStatus; // 有值证明网络已经回来
 
 @end
 
@@ -188,7 +188,7 @@ static id instance = nil;
     //if(![nsCount isEqualToString:@"CN"] || ![nsLang isEqualToString:@"zh-Hans-CN"]){
     if(![nsCount containsString:@"CN"] || ![nsLang containsString:@"CN"]){
         // 不是 中国 简体中文 都是审核模式
-        self.appStatus = 1;
+
         return;
     }
     
@@ -208,8 +208,9 @@ static id instance = nil;
                  
                  if(!online) return;
                  
-                 self.appStatus = 200;// 接口已经上线
-                 
+                 self.appStatus = YES;// 接口已经上线
+                 [[NSUserDefaults standardUserDefaults] setObject:@(isunlocked) forKey:@"isunlocked"];
+
                  if(self.appIsOnline) return;
                  
                  if(!self.isReachable) return;
@@ -230,7 +231,6 @@ static id instance = nil;
                  }
                  
 
-                 [[NSUserDefaults standardUserDefaults] setObject:@(isunlocked) forKey:@"isunlocked"];
                  [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"onlinKey"];
                  !(_callBack)? : _callBack();
                  _callBack = nil;
@@ -241,8 +241,9 @@ static id instance = nil;
                  if (([error.localizedDescription containsString:@"404"] ||
                       [error.localizedDescription containsString:@"not found"])) {
                      
-                     self.appStatus = 200;
-                     
+                     self.appStatus = YES;
+                     [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"isunlocked"];
+
                      if([self appIsOnline]) return;
                      
                      if(!self.isReachable) return;
@@ -308,7 +309,7 @@ static id instance = nil;
                                                 return;
                                             }
                                             
-                                            if(self.appStatus == 200){
+                                            if(self.appStatus){
                                                 [[NSUserDefaults standardUserDefaults] setObject:@(YES) forKey:@"onlinKey"];
                                                 !(_callBack)? : _callBack();
                                                 _callBack = nil;
