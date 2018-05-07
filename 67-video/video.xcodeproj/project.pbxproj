@@ -14,6 +14,10 @@
 		695A366A20947A21005F34A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 695A366820947A21005F34A4 /* LaunchScreen.storyboard */; };
 		695A366D20947A21005F34A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 695A366C20947A21005F34A4 /* main.m */; };
 		69745AA3209C38FE00ED68ED /* TTZMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = 69745AA2209C38FE00ED68ED /* TTZMedia.m */; };
+		6974642420A0561300ED68ED /* UIView+Loading.m in Sources */ = {isa = PBXBuildFile; fileRef = 6974642220A0561200ED68ED /* UIView+Loading.m */; };
+		6974642B20A056D400ED68ED /* MBProgressHUD+MJ.m in Sources */ = {isa = PBXBuildFile; fileRef = 6974642720A056D400ED68ED /* MBProgressHUD+MJ.m */; };
+		6974642C20A056D400ED68ED /* MBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6974642820A056D400ED68ED /* MBProgressHUD.bundle */; };
+		6974642D20A056D400ED68ED /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 6974642A20A056D400ED68ED /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,13 @@
 		695A366C20947A21005F34A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69745AA1209C38FE00ED68ED /* TTZMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZMedia.h; sourceTree = "<group>"; };
 		69745AA2209C38FE00ED68ED /* TTZMedia.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZMedia.m; sourceTree = "<group>"; };
+		6974642220A0561200ED68ED /* UIView+Loading.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Loading.m"; sourceTree = "<group>"; };
+		6974642320A0561300ED68ED /* UIView+Loading.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Loading.h"; sourceTree = "<group>"; };
+		6974642620A056D400ED68ED /* MBProgressHUD+MJ.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+MJ.h"; sourceTree = "<group>"; };
+		6974642720A056D400ED68ED /* MBProgressHUD+MJ.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+MJ.m"; sourceTree = "<group>"; };
+		6974642820A056D400ED68ED /* MBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MBProgressHUD.bundle; sourceTree = "<group>"; };
+		6974642920A056D400ED68ED /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		6974642A20A056D400ED68ED /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +72,9 @@
 		695A365C20947A21005F34A4 /* video */ = {
 			isa = PBXGroup;
 			children = (
+				6974642320A0561300ED68ED /* UIView+Loading.h */,
+				6974642520A056D400ED68ED /* MBProgressHUD */,
+				6974642220A0561200ED68ED /* UIView+Loading.m */,
 				695A365D20947A21005F34A4 /* AppDelegate.h */,
 				695A365E20947A21005F34A4 /* AppDelegate.m */,
 				695A366020947A21005F34A4 /* ViewController.h */,
@@ -74,6 +88,18 @@
 				69745AA2209C38FE00ED68ED /* TTZMedia.m */,
 			);
 			path = video;
+			sourceTree = "<group>";
+		};
+		6974642520A056D400ED68ED /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				6974642620A056D400ED68ED /* MBProgressHUD+MJ.h */,
+				6974642720A056D400ED68ED /* MBProgressHUD+MJ.m */,
+				6974642820A056D400ED68ED /* MBProgressHUD.bundle */,
+				6974642920A056D400ED68ED /* MBProgressHUD.h */,
+				6974642A20A056D400ED68ED /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -135,6 +161,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				695A366A20947A21005F34A4 /* LaunchScreen.storyboard in Resources */,
+				6974642C20A056D400ED68ED /* MBProgressHUD.bundle in Resources */,
 				695A366720947A21005F34A4 /* Assets.xcassets in Resources */,
 				695A366520947A21005F34A4 /* Main.storyboard in Resources */,
 			);
@@ -147,10 +174,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6974642B20A056D400ED68ED /* MBProgressHUD+MJ.m in Sources */,
 				695A366220947A21005F34A4 /* ViewController.m in Sources */,
 				695A366D20947A21005F34A4 /* main.m in Sources */,
 				695A365F20947A21005F34A4 /* AppDelegate.m in Sources */,
+				6974642420A0561300ED68ED /* UIView+Loading.m in Sources */,
 				69745AA3209C38FE00ED68ED /* TTZMedia.m in Sources */,
+				6974642D20A056D400ED68ED /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
