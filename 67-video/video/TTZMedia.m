@@ -356,95 +356,14 @@ static AVURLAsset* videoAsset = nil;
 
 
 
-///使用AVfoundation添加水印
 + (void)AVsaveVideoPath:(NSString*)videoURL
-           WithWaterImg:(UIImage*)img
-         WithCoverImage:(UIImage*)coverImg
-            WithQustion:(NSString*)question
-           WithFileName:(NSString*)fileName
-{
-    
-//    //1 创建AVAsset实例 AVAsset包含了video的所有信息 self.videoUrl输入视频的路径
-//    AVAsset *videoAsset = [AVAsset assetWithURL:[NSURL fileURLWithPath:videoURL]];
-//    //2 创建AVMutableComposition实例. apple developer 里边的解释 【AVMutableComposition is a mutable subclass of AVComposition you use when you want to create a new composition from existing assets. You can add and remove tracks, and you can add, remove, and scale time ranges.】
-//    AVMutableComposition *mixComposition = [[AVMutableComposition alloc] init];
-//
-//    //3 视频通道  工程文件中的轨道，有音频轨、视频轨等，里面可以插入各种对应的素材
-//    AVMutableCompositionTrack *videoTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeVideo
-//                                                                        preferredTrackID:kCMPersistentTrackID_Invalid];
-//    //把视频轨道数据加入到可变轨道中 这部分可以做视频裁剪TimeRange
-//    [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration)
-//                        ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
-//                         atTime:kCMTimeZero error:nil];
-//
-//    //3.1 AVMutableVideoCompositionInstruction 视频轨道中的一个视频，可以缩放、旋转等
-//    AVMutableVideoCompositionInstruction *mainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
-//    mainInstruction.timeRange = CMTimeRangeMake(kCMTimeZero, videoAsset.duration);
-//
-//    // 3.2 AVMutableVideoCompositionLayerInstruction 一个视频轨道，包含了这个轨道上的所有视频素材
-//    AVMutableVideoCompositionLayerInstruction *videolayerInstruction = [AVMutableVideoCompositionLayerInstruction videoCompositionLayerInstructionWithAssetTrack:videoTrack];
-//
-//    AVAssetTrack *videoAssetTrack = [[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0];
-//    UIImageOrientation videoAssetOrientation_  = UIImageOrientationUp;
-//    BOOL isVideoAssetPortrait_  = NO;
-//    CGAffineTransform videoTransform = videoAssetTrack.preferredTransform;
-//    if (videoTransform.a == 0 && videoTransform.b == 1.0 && videoTransform.c == -1.0 && videoTransform.d == 0) {
-//        videoAssetOrientation_ = UIImageOrientationRight;
-//        isVideoAssetPortrait_ = YES;
-//    }
-//    if (videoTransform.a == 0 && videoTransform.b == -1.0 && videoTransform.c == 1.0 && videoTransform.d == 0) {
-//        videoAssetOrientation_ =  UIImageOrientationLeft;
-//        isVideoAssetPortrait_ = YES;
-//    }
-//    if (videoTransform.a == 1.0 && videoTransform.b == 0 && videoTransform.c == 0 && videoTransform.d == 1.0) {
-//        videoAssetOrientation_ =  UIImageOrientationUp;
-//    }
-//    if (videoTransform.a == -1.0 && videoTransform.b == 0 && videoTransform.c == 0 && videoTransform.d == -1.0) {
-//        videoAssetOrientation_ = UIImageOrientationDown;
-//    }
-//    [videolayerInstruction setTransform:videoAssetTrack.preferredTransform atTime:kCMTimeZero];
-//    [videolayerInstruction setOpacity:0.0 atTime:videoAsset.duration];
-//
-//    // 3.3 - Add instructions
-//    mainInstruction.layerInstructions = [NSArray arrayWithObjects:videolayerInstruction,nil];
-//    //AVMutableVideoComposition：管理所有视频轨道，可以决定最终视频的尺寸，裁剪需要在这里进行
-//    AVMutableVideoComposition *mainCompositionInst = [AVMutableVideoComposition videoComposition];
-//
-//    CGSize naturalSize;
-//    if(isVideoAssetPortrait_){
-//        naturalSize = CGSizeMake(videoAssetTrack.naturalSize.height, videoAssetTrack.naturalSize.width);
-//    } else {
-//        naturalSize = videoAssetTrack.naturalSize;
-//    }
-//
-//    float renderWidth, renderHeight;
-//    renderWidth = naturalSize.width;
-//    renderHeight = naturalSize.height;
-//    mainCompositionInst.renderSize = CGSizeMake(renderWidth, renderHeight);
-//    mainCompositionInst.instructions = [NSArray arrayWithObject:mainInstruction];
-//    mainCompositionInst.frameDuration = CMTimeMake(1, 30);
-//    [self applyVideoEffectsToComposition:mainCompositionInst size:naturalSize];
-//
-//    // 4 - 输出路径
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths objectAtIndex:0];
-//    NSString *myPathDocs =  [@"/Users/jay/Desktop" stringByAppendingPathComponent:
-//                             [NSString stringWithFormat:@"FinalVideo-%d.mov",arc4random() % 1000]];
-//
-//    // 5 - 视频文件输出
-//    AVAssetExportSession *exporter = [[AVAssetExportSession alloc] initWithAsset:mixComposition
-//                                                                      presetName:AVAssetExportPresetHighestQuality];
-//    exporter.outputURL=[NSURL fileURLWithPath:myPathDocs];
-//    exporter.outputFileType = AVFileTypeQuickTimeMovie;
-//    exporter.shouldOptimizeForNetworkUse = YES;
-//    exporter.videoComposition = mainCompositionInst;
-//    [exporter exportAsynchronouslyWithCompletionHandler:^{
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//            //这里是输出视频之后的操作，做你想做的
-//            [self exportDidFinish:exporter];
-//        });
-//    }];
+           waterImg:(UIImage*)img
+           imagePonit:(CGRect)iFrame
+            qustion:(NSString*)question
+            qustionPonit:(CGRect)qFrame{
 
+    
+    
     //1 创建AVAsset实例 AVAsset包含了video的所有信息 self.videoUrl输入视频的路径
     AVAsset *videoAsset = [AVAsset assetWithURL:[NSURL fileURLWithPath:videoURL]];
     //2 创建AVMutableComposition实例. apple developer 里边的解释 【AVMutableComposition is a mutable subclass of AVComposition you use when you want to create a new composition from existing assets. You can add and remove tracks, and you can add, remove, and scale time ranges.】
@@ -457,6 +376,14 @@ static AVURLAsset* videoAsset = nil;
     [videoTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration)
                         ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeVideo] objectAtIndex:0]
                          atTime:kCMTimeZero error:nil];
+    
+    AVMutableCompositionTrack *audioTrack = [mixComposition addMutableTrackWithMediaType:AVMediaTypeAudio
+                                                                        preferredTrackID:kCMPersistentTrackID_Invalid];
+    //把视频轨道数据加入到可变轨道中 这部分可以做视频裁剪TimeRange
+    [audioTrack insertTimeRange:CMTimeRangeMake(kCMTimeZero, videoAsset.duration)
+                        ofTrack:[[videoAsset tracksWithMediaType:AVMediaTypeAudio] objectAtIndex:0]
+                         atTime:kCMTimeZero error:nil];
+    
     
     //3.1 AVMutableVideoCompositionInstruction 视频轨道中的一个视频，可以缩放、旋转等
     AVMutableVideoCompositionInstruction *mainInstruction = [AVMutableVideoCompositionInstruction videoCompositionInstruction];
@@ -503,8 +430,13 @@ static AVURLAsset* videoAsset = nil;
     renderHeight = naturalSize.height;
     mainCompositionInst.renderSize = CGSizeMake(renderWidth, renderHeight);
     mainCompositionInst.instructions = [NSArray arrayWithObject:mainInstruction];
-    mainCompositionInst.frameDuration = CMTimeMake(1, 10);
-    [self applyVideoEffectsToComposition:mainCompositionInst size:naturalSize];
+    mainCompositionInst.frameDuration = CMTimeMake(1, 30);
+    [self applyVideoEffectsToComposition:mainCompositionInst
+                                    size:naturalSize
+                                waterImg:img
+                              imageFrame:iFrame
+                                 qustion:question
+                            qustionFrame:qFrame];
     
     // 4 - 输出路径
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -526,7 +458,6 @@ static AVURLAsset* videoAsset = nil;
         });
     }];
 
-    
 }
 
 +(void)exportDidFinish:(AVAssetExportSession*)session {
@@ -591,86 +522,32 @@ static AVURLAsset* videoAsset = nil;
 
 
 + (void)applyVideoEffectsToComposition:(AVMutableVideoComposition *)composition
-                                  size:(CGSize)size {
-
-//    // 1 - Set up the text layer
-//    CATextLayer *subtitle1Text = [[CATextLayer alloc] init];
-//    [subtitle1Text setFont:@"Helvetica-Bold"];
-//    [subtitle1Text setFontSize:36];
-//    [subtitle1Text setFrame:CGRectMake(0, 100,100, 100)];
-//    [subtitle1Text setString:@"哈哈  这是水印"];
-//        [subtitle1Text setAlignmentMode:kCAAlignmentCenter];
-//    [subtitle1Text setForegroundColor:[[UIColor redColor] CGColor]];
-//    [subtitle1Text setBackgroundColor:[UIColor orangeColor].CGColor];
-//
-//
-//    CATextLayer *lary = [CATextLayer layer];
-//    lary.string = @"dasfasa";
-//    lary.bounds = CGRectMake(0, 0, 320, 20);
-//    lary.font = CFBridgingRetain(@"HiraKakuProN-W3");//字体的名字 不是 UIFont
-//    lary.fontSize = 12.f;//字体的大小
-//    //或者
-//    //UIFont *font = [UIFont systemFontOfSize:14];
-//    //    CFStringRef fontCFString = (__bridge CFStringRef)font.fontName;
-//    //       CGFontRef fontRef = CGFontCreateWithFontName(fontCFString);
-//    //       textLayer.font = fontRef;
-//    //       textLayer.fontSize = font.pointSize;
-//    //       CGFontRelease(fontRef); //与CFRelease的功能相当 当字体的null的时候不会引起程序出错
-//
-//    lary.wrapped = YES;//默认为No.  当Yes时，字符串自动适应layer的bounds大小
-//    lary.alignmentMode = kCAAlignmentCenter;//字体的对齐方式
-//    lary.position = CGPointMake(50, 50);//layer在view的位置 适用于跟随摸一个不固定长的的控件后面需要的
-//    lary.contentsScale = [UIScreen mainScreen].scale;//解决文字模糊 以Retina方式来渲染，防止画出来的文本像素化
-//    lary.foregroundColor =[UIColor redColor].CGColor;//字体的颜色 文本颜色
-//    lary.backgroundColor = [UIColor redColor].CGColor;
-//
-//    CALayer *imgLayer = [CALayer layer];
-//    UIImage *overlayImage  = [UIImage imageNamed:@"Snip20180403_3"];
-//    [imgLayer setContents:(id)[overlayImage CGImage]];
-//    imgLayer.frame = CGRectMake(0, 0, 50, 50);
-//
-//
-//    // 2 - The usual overlay
-//    CALayer *overlayLayer = [CALayer layer];
-//    [overlayLayer addSublayer:lary];
-//    [overlayLayer addSublayer:imgLayer];
-//
-//    overlayLayer.frame = CGRectMake(0, 0, size.width, size.height);
-//    [overlayLayer setMasksToBounds:YES];
-//
-//
-//
-//    CALayer *parentLayer = [CALayer layer];
-//
-//    CALayer *videoLayer = [CALayer layer];
-//
-//    parentLayer.frame = CGRectMake(0, 0, size.width, size.height);
-//
-//    videoLayer.frame = CGRectMake(0, 0, size.width, size.height);
-//
-//    [parentLayer addSublayer:videoLayer];
-//    [parentLayer addSublayer:overlayLayer];
-//
-//
-//    composition.animationTool = [AVVideoCompositionCoreAnimationTool
-//                                 videoCompositionCoreAnimationToolWithPostProcessingAsVideoLayer:videoLayer inLayer:parentLayer];
+                                  size:(CGSize)size
+                              waterImg:(UIImage*)img
+                            imageFrame:(CGRect)iFrame
+                               qustion:(NSString*)question
+                          qustionFrame:(CGRect)qFrame{
 
     // 1 - Set up the text layer
     CATextLayer *subtitle1Text = [[CATextLayer alloc] init];
     [subtitle1Text setFont:@"Helvetica-Bold"];
     [subtitle1Text setFontSize:36];
-    [subtitle1Text setFrame:CGRectMake(0, size.height-100, size.width, 100)];
-    [subtitle1Text setString:@"哈哈  这是水印"];
+    //subtitle1Text.bounds = CGRectMake(0, 0, qFrame.size.width, qFrame.size.height);
+    //subtitle1Text.position= qFrame.origin;
+    subtitle1Text.frame = CGRectMake(qFrame.origin.x,size.height - qFrame.size.height - qFrame.origin.y, qFrame.size.width, qFrame.size.height);
+    [subtitle1Text setString:question];
     //    [subtitle1Text setAlignmentMode:kCAAlignmentCenter];
     [subtitle1Text setForegroundColor:[[UIColor redColor] CGColor]];
     
     
     
     CALayer *imgLayer = [CALayer layer];
-    UIImage *overlayImage  = [UIImage imageNamed:@"Snip20180503_38"];
+    UIImage *overlayImage  = img;
     [imgLayer setContents:(id)[overlayImage CGImage]];
-    imgLayer.frame = CGRectMake(0, 0, 100, 100);
-    
+    //imgLayer.bounds = CGRectMake(0, 0, iFrame.size.width, iFrame.size.height);
+    //imgLayer.position= iFrame.origin;
+    imgLayer.frame = CGRectMake(iFrame.origin.x,size.height - iFrame.size.height - iFrame.origin.y, iFrame.size.width, iFrame.size.height);
+
     
     // 2 - The usual overlay
     CALayer *overlayLayer = [CALayer layer];
@@ -696,14 +573,17 @@ static AVURLAsset* videoAsset = nil;
     [parentLayer addSublayer:overlayLayer];
     
     //*********** For A Special Time
-    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
-    [animation setDuration:0];
-    [animation setFromValue:[NSNumber numberWithFloat:1.0]];
-    [animation setToValue:[NSNumber numberWithFloat:0.0]];
-    [animation setBeginTime:5];
-    [animation setRemovedOnCompletion:NO];
-    [animation setFillMode:kCAFillModeForwards];
-    [overlayLayer addAnimation:animation forKey:@"animateOpacity"];
+//    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+//    [animation setDuration:0];
+//    [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+//    [animation setToValue:[NSNumber numberWithFloat:0.0]];
+//    [animation setBeginTime:5];
+//
+//    [animation setRemovedOnCompletion:NO];
+//    [animation setFillMode:kCAFillModeForwards];
+//    [overlayLayer addAnimation:animation forKey:@"animateOpacity"];
+
+//    [self teset:5 duration:3 layer:overlayLayer];
 
     
     composition.animationTool = [AVVideoCompositionCoreAnimationTool
@@ -711,6 +591,48 @@ static AVURLAsset* videoAsset = nil;
 
 
 }
+
+
+
++ (void)teset:(NSTimeInterval )start
+     duration:(NSTimeInterval )duration
+        layer:(CALayer *)overlayLayer{
+    
+    [self hide:0.000001 duration:start layer:overlayLayer];
+    //*********** For A Special Time
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    [animation setFromValue:[NSNumber numberWithFloat:1.0]];
+    [animation setToValue:[NSNumber numberWithFloat:1.0]];
+    [animation setBeginTime:CACurrentMediaTime()+ start];
+    [animation setDuration:duration];
+
+    [animation setRemovedOnCompletion:YES];
+    [animation setFillMode:kCAFillModeForwards];
+    [overlayLayer addAnimation:animation forKey:@"animateOpacity22"];
+
+    [self hide:start + duration duration:CGFLOAT_MAX layer:overlayLayer];
+
+    
+}
+
++ (void)hide:(NSTimeInterval )start
+     duration:(NSTimeInterval )duration
+        layer:(CALayer *)overlayLayer{
+    
+    //*********** For A Special Time
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
+    [animation setFromValue:[NSNumber numberWithFloat:0.0]];
+    [animation setToValue:[NSNumber numberWithFloat:0.0]];
+    [animation setBeginTime:CACurrentMediaTime() + start];
+    [animation setDuration:duration];
+    
+    [animation setRemovedOnCompletion:NO];
+    [animation setFillMode:kCAFillModeForwards];
+    [overlayLayer addAnimation:animation forKey:@"animateOpacity22r"];
+    
+    
+}
+
 
 
 

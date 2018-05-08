@@ -82,11 +82,11 @@ typedef void (^CompletionBlock)(NSString *);
 + (NSArray <UIImage *>*)thumbnailImageForVideo:(NSString *)videoURL;
 
 
-+ (void)AVsaveVideoPath:(NSURL*)videoPath
-           WithWaterImg:(UIImage*)img
-         WithCoverImage:(UIImage*)coverImg
-            WithQustion:(NSString*)question
-           WithFileName:(NSString*)fileName;
++ (void)AVsaveVideoPath:(NSString*)videoURL
+               waterImg:(UIImage*)img
+             imagePonit:(CGRect)iFrame
+                qustion:(NSString*)question
+           qustionPonit:(CGRect)qFrame;
 
 /**
  获取多媒体时长
