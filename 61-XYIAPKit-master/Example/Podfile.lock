@@ -1,0 +1,31 @@
+PODS:
+  - XYIAPKit (0.8.0):
+    - XYIAPKit/Core (= 0.8.0)
+  - XYIAPKit/Core (0.8.0)
+  - XYIAPKit/iTunesReceiptVerify (0.8.0):
+    - XYIAPKit/Core
+    - YYModel (~> 1.0.4)
+  - XYIAPKit/KeychainPersistence (0.8.0):
+    - XYIAPKit/Core
+  - XYIAPKit/UserDefaultPersistence (0.8.0):
+    - XYIAPKit/Core
+  - YYModel (1.0.4)
+
+DEPENDENCIES:
+  - XYIAPKit (from `../`)
+  - XYIAPKit/Core (from `../`)
+  - XYIAPKit/iTunesReceiptVerify (from `../`)
+  - XYIAPKit/KeychainPersistence (from `../`)
+  - XYIAPKit/UserDefaultPersistence (from `../`)
+
+EXTERNAL SOURCES:
+  XYIAPKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  XYIAPKit: c23e2e8d2ef93fb3bc1c0de84994d14087a4e12c
+  YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
+
+PODFILE CHECKSUM: 5f1f7fbf904c79ff7cac5ef70af99f42a80d8023
+
+COCOAPODS: 1.4.0
