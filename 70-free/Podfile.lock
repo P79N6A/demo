@@ -14,13 +14,16 @@ PODS:
   - AFNetworking/Serialization (3.2.0)
   - AFNetworking/UIKit (3.2.0):
     - AFNetworking/NSURLSession
+  - TXLiteAVSDK_Player (4.5.4018)
 
 DEPENDENCIES:
   - AFNetworking
+  - TXLiteAVSDK_Player
 
 SPEC CHECKSUMS:
   AFNetworking: 8ac6017b94ea105479f7776e5288e48ae9c59bb4
+  TXLiteAVSDK_Player: a44d4094d63e620e140eb10c4cc6baf91fdbf33e
 
-PODFILE CHECKSUM: 0469d5dd5db6f12561d06f7dc37c460251207694
+PODFILE CHECKSUM: 674a0827eddd792abf2505525a2bf4e25c06b8f7
 
 COCOAPODS: 1.4.0

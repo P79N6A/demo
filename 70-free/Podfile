@@ -8,5 +8,6 @@ target 'free' do
   # use_frameworks!
 pod 'AFNetworking'
   # Pods for free
+pod 'TXLiteAVSDK_Player'
 
 end

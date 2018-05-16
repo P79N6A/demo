@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import "DANet.h"
+#import <TXLiteAVSDK_Player/TXLivePlayer.h>
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
-
+/** <##> */
+@property (nonatomic, strong) TXLivePlayer *txLivePlayer;
 @end
 
 @implementation ViewController
@@ -43,6 +45,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    _txLivePlayer = [[TXLivePlayer alloc] init];
+    [_txLivePlayer setupVideoWidget:CGRectMake(0, 0, 375, 667) containView:self.view insertIndex:1];
+    [_txLivePlayer startPlay:@"http://124.232.141.34:471/15013_xv_78678200_78678200_0_0_0-15013_xa_78678200_78678200_0_0_0-0-0.m3u8?uuid=2ceab779090942dab047e6b199ac11b0&org=yyweb&m=d3455fe8604e8529ac2f574eeaa85f64&r=336184326&v=1&t=1526097262&uid=0" type:PLAY_TYPE_LIVE_RTMP];
+    
+    return;
     NSDictionary *parame = @{
                              @"xing":@"曹",
                              @"ming":@"志",
