@@ -135,7 +135,7 @@
     [self stop];
     self.model = model;
     //prepareToPlay:此方法传入的参数是NSURL类型.
-    [self.mediaPlayer prepareToPlay:[NSURL URLWithString:model.url]];
+    [self.mediaPlayer prepareToPlay:model.url];
     //开始播放
     [self play];
     

@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @interface VideoModel : NSObject
-@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSURL *url;
 @property (nonatomic, copy) NSString *name;
 
 @end
