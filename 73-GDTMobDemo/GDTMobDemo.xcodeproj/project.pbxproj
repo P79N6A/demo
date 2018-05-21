@@ -1,0 +1,415 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		56E9877EB761B7BA8897BBCF /* libPods-GDTMobDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F34565940EA8467F5C7F7958 /* libPods-GDTMobDemo.a */; };
+		6904EBBD20B2774300954B05 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904EBBC20B2774300954B05 /* AppDelegate.m */; };
+		6904EBC020B2774300954B05 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904EBBF20B2774300954B05 /* ViewController.m */; };
+		6904EBC320B2774300954B05 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6904EBC120B2774300954B05 /* Main.storyboard */; };
+		6904EBC520B2774300954B05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6904EBC420B2774300954B05 /* Assets.xcassets */; };
+		6904EBC820B2774300954B05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6904EBC620B2774300954B05 /* LaunchScreen.storyboard */; };
+		6904EBCB20B2774300954B05 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904EBCA20B2774300954B05 /* main.m */; };
+		6904EBD320B27BAB00954B05 /* GDTMob.m in Sources */ = {isa = PBXBuildFile; fileRef = 6904EBD220B27BAB00954B05 /* GDTMob.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		6904EBB820B2774300954B05 /* GDTMobDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GDTMobDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6904EBBB20B2774300954B05 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		6904EBBC20B2774300954B05 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		6904EBBE20B2774300954B05 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		6904EBBF20B2774300954B05 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		6904EBC220B2774300954B05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6904EBC420B2774300954B05 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6904EBC720B2774300954B05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6904EBC920B2774300954B05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6904EBCA20B2774300954B05 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6904EBD120B27BAB00954B05 /* GDTMob.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDTMob.h; sourceTree = "<group>"; };
+		6904EBD220B27BAB00954B05 /* GDTMob.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GDTMob.m; sourceTree = "<group>"; };
+		A090C31636E050B8808D343F /* Pods-GDTMobDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GDTMobDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GDTMobDemo/Pods-GDTMobDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		B8D8BA69A377C66ECE01D342 /* Pods-GDTMobDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GDTMobDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GDTMobDemo/Pods-GDTMobDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F34565940EA8467F5C7F7958 /* libPods-GDTMobDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GDTMobDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		6904EBB520B2774300954B05 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				56E9877EB761B7BA8897BBCF /* libPods-GDTMobDemo.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1334AF755C8322DBD1EDFC20 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A090C31636E050B8808D343F /* Pods-GDTMobDemo.debug.xcconfig */,
+				B8D8BA69A377C66ECE01D342 /* Pods-GDTMobDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		1A84D38B050BE55CC0143522 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F34565940EA8467F5C7F7958 /* libPods-GDTMobDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6904EBAF20B2774300954B05 = {
+			isa = PBXGroup;
+			children = (
+				6904EBBA20B2774300954B05 /* GDTMobDemo */,
+				6904EBB920B2774300954B05 /* Products */,
+				1334AF755C8322DBD1EDFC20 /* Pods */,
+				1A84D38B050BE55CC0143522 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		6904EBB920B2774300954B05 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				6904EBB820B2774300954B05 /* GDTMobDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6904EBBA20B2774300954B05 /* GDTMobDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6904EBBB20B2774300954B05 /* AppDelegate.h */,
+				6904EBBC20B2774300954B05 /* AppDelegate.m */,
+				6904EBBE20B2774300954B05 /* ViewController.h */,
+				6904EBBF20B2774300954B05 /* ViewController.m */,
+				6904EBC120B2774300954B05 /* Main.storyboard */,
+				6904EBC420B2774300954B05 /* Assets.xcassets */,
+				6904EBC620B2774300954B05 /* LaunchScreen.storyboard */,
+				6904EBC920B2774300954B05 /* Info.plist */,
+				6904EBCA20B2774300954B05 /* main.m */,
+				6904EBD120B27BAB00954B05 /* GDTMob.h */,
+				6904EBD220B27BAB00954B05 /* GDTMob.m */,
+			);
+			path = GDTMobDemo;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		6904EBB720B2774300954B05 /* GDTMobDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6904EBCE20B2774300954B05 /* Build configuration list for PBXNativeTarget "GDTMobDemo" */;
+			buildPhases = (
+				2AB951AD95F2C86B6F9198D5 /* [CP] Check Pods Manifest.lock */,
+				6904EBB420B2774300954B05 /* Sources */,
+				6904EBB520B2774300954B05 /* Frameworks */,
+				6904EBB620B2774300954B05 /* Resources */,
+				555CEB5D58939764E8000C22 /* [CP] Embed Pods Frameworks */,
+				05FD9557FD445F1EA11E1CBE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GDTMobDemo;
+			productName = GDTMobDemo;
+			productReference = 6904EBB820B2774300954B05 /* GDTMobDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		6904EBB020B2774300954B05 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Jay;
+				TargetAttributes = {
+					6904EBB720B2774300954B05 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 6904EBB320B2774300954B05 /* Build configuration list for PBXProject "GDTMobDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 6904EBAF20B2774300954B05;
+			productRefGroup = 6904EBB920B2774300954B05 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				6904EBB720B2774300954B05 /* GDTMobDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		6904EBB620B2774300954B05 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6904EBC820B2774300954B05 /* LaunchScreen.storyboard in Resources */,
+				6904EBC520B2774300954B05 /* Assets.xcassets in Resources */,
+				6904EBC320B2774300954B05 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		05FD9557FD445F1EA11E1CBE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GDTMobDemo/Pods-GDTMobDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		2AB951AD95F2C86B6F9198D5 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GDTMobDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		555CEB5D58939764E8000C22 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GDTMobDemo/Pods-GDTMobDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6904EBB420B2774300954B05 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6904EBD320B27BAB00954B05 /* GDTMob.m in Sources */,
+				6904EBC020B2774300954B05 /* ViewController.m in Sources */,
+				6904EBCB20B2774300954B05 /* main.m in Sources */,
+				6904EBBD20B2774300954B05 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		6904EBC120B2774300954B05 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6904EBC220B2774300954B05 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6904EBC620B2774300954B05 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6904EBC720B2774300954B05 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		6904EBCC20B2774300954B05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		6904EBCD20B2774300954B05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		6904EBCF20B2774300954B05 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A090C31636E050B8808D343F /* Pods-GDTMobDemo.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDU5GR594Q;
+				INFOPLIST_FILE = GDTMobDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GDTMobDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6904EBD020B2774300954B05 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B8D8BA69A377C66ECE01D342 /* Pods-GDTMobDemo.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LDU5GR594Q;
+				INFOPLIST_FILE = GDTMobDemo/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.GDTMobDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		6904EBB320B2774300954B05 /* Build configuration list for PBXProject "GDTMobDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6904EBCC20B2774300954B05 /* Debug */,
+				6904EBCD20B2774300954B05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6904EBCE20B2774300954B05 /* Build configuration list for PBXNativeTarget "GDTMobDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6904EBCF20B2774300954B05 /* Debug */,
+				6904EBD020B2774300954B05 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 6904EBB020B2774300954B05 /* Project object */;
+}
