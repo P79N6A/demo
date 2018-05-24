@@ -17,7 +17,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 @protocol TTZPlayerModel<NSObject>
 
-@property (nonatomic, copy, readonly) NSURL *url;
+@property (nonatomic, copy, readonly) NSString *live_stream;
 @property (nonatomic, copy, readonly) NSString *name;
 
 @end

@@ -10,11 +10,17 @@
 #import "SPVideoSlider.h"
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
+#import <MediaPlayer/MediaPlayer.h>
 
-#define  ScreenWith [UIScreen mainScreen].bounds.size.width
-#define  ScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneX (ScreenHeight == 375.f && ScreenWith == 812.f ? YES : NO)
+#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
+#define  iPhoneX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 
+typedef NS_ENUM(NSUInteger, Direction) {
+    DirectionLeftOrRight,
+    DirectionUpOrDown,
+    DirectionNone
+};
 
 
 @interface PlayerView()
@@ -67,6 +73,14 @@
 /** 屏幕状态 */
 @property (nonatomic, assign) PlayViewState state;
 
+@property (nonatomic, strong) MPVolumeView *volumeView;
+
+@property (nonatomic, strong) UISlider *volumeViewSlider;
+
+@property (assign, nonatomic) CGPoint startPoint;
+@property (assign, nonatomic) CGFloat volumeValue;
+@property (assign, nonatomic) Direction direction;
+
 @end
 
 @implementation PlayerView
@@ -77,11 +91,16 @@
     return [[NSBundle mainBundle] loadNibNamed:@"PlayerView" owner:nil options:nil].firstObject;
 }
 
+
 - (void)awakeFromNib{
     [super awakeFromNib];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     [self addGestureRecognizer:tapGestureRecognizer];
+    
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    [self addGestureRecognizer:pan];
+
     
     [self.buttomView addSubview:self.videoButtomView];
     [self.videoButtomView addSubview:self.playOrPauseButton];
@@ -120,22 +139,40 @@
     self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.center.y);
     self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 2, self.progressView.frame.origin.y, self.progressView.frame.size.width+2, 44);
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
+    
+    self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
+
 }
 
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self layout];
     [self timer];
-    NSLog(@"%s---小学英语单词记忆法", __func__);
+}
+
+- (void)dealloc{
+    [self stop];
+    NSLog(@"%s", __func__);
 }
 
 #pragma mark  开始播放
 - (void)playWithModel:(id<TTZPlayerModel>)model{
     
+    
+    NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
+    if ([model.live_stream hasPrefix:@"http://"] || [model.live_stream hasPrefix:@"https://"]) {
+        url = [NSURL URLWithString:model.live_stream];
+    }else if ([model.live_stream hasPrefix:@"rtmp"] || [model.live_stream hasPrefix:@"flv"]){
+        url = [NSURL URLWithString:model.live_stream];
+    }else { //本地视频 需要完整路径
+        url = [NSURL fileURLWithPath:model.live_stream];
+    }
+
+    
     [self stop];
     self.model = model;
     //prepareToPlay:此方法传入的参数是NSURL类型.
-    [self.mediaPlayer prepareToPlay:model.url];
+    [self.mediaPlayer prepareToPlay:url];
     //开始播放
     [self play];
     
@@ -231,6 +268,53 @@
     
 }
 
+- (void)panGesture:(UIPanGestureRecognizer *)sender{
+
+    if(self.state == PlayViewStateSmall) return;
+    
+    CGPoint point = [sender translationInView:self];
+    
+    if (sender.state == UIGestureRecognizerStateBegan) {
+        //记录首次触摸坐标
+        self.startPoint = point;
+        //音/量
+        self.volumeValue = self.volumeViewSlider.value;
+    }else if (sender.state == UIGestureRecognizerStateChanged) {
+        //得出手指在Button上移动的距离
+        CGPoint panPoint = CGPointMake(point.x - self.startPoint.x, point.y - self.startPoint.y);
+        //分析出用户滑动的方向
+        if (panPoint.x >= 30 || panPoint.x <= -30) {
+            //进度
+            self.direction = DirectionLeftOrRight;
+        } else if (panPoint.y >= 30 || panPoint.y <= -30) {
+            //音量和亮度
+            self.direction = DirectionUpOrDown;
+        }
+        
+        if (self.direction == DirectionNone) {
+            return;
+        } else if (self.direction == DirectionUpOrDown) {
+            
+            //音量
+            if (panPoint.y < 0) {
+                //增大音量
+                [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
+                if (self.volumeValue + (-panPoint.y / 30 / 10) - self.volumeViewSlider.value >= 0.1) {
+                    [self.volumeViewSlider setValue:0.1 animated:NO];
+                    [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
+                }
+                
+            } else {
+                //减少音量
+                [self.volumeViewSlider setValue:self.volumeValue - (panPoint.y / 30.0 / 10) animated:YES];
+            }
+            
+        }
+        
+    }
+    
+}
+
 //FIXME:  -  视频触摸的回调
 - (void)handleTapGesture{
     
@@ -280,9 +364,10 @@
     /*
      * 记录进入全屏前的parentView和frame
      */
-    self.playViewParentView = self.superview;
-    if(CGRectEqualToRect(CGRectZero, self.playViewSmallFrame)) self.playViewSmallFrame = self.frame;
-
+    if(CGRectEqualToRect(CGRectZero, self.playViewSmallFrame)) {
+        self.playViewSmallFrame = self.frame;
+        self.playViewParentView = self.superview;
+    }
     /*
      * movieView移到window上
      */
@@ -327,10 +412,10 @@
     /*
      * 记录进入全屏前的parentView和frame
      */
-    self.playViewParentView = self.superview;
-    if(CGRectEqualToRect(CGRectZero, self.playViewSmallFrame)) self.playViewSmallFrame = self.frame;
-
-    
+    if(CGRectEqualToRect(CGRectZero, self.playViewSmallFrame)) {
+        self.playViewSmallFrame = self.frame;
+        self.playViewParentView = self.superview;
+    }
     /*
      * movieView移到window上
      */
@@ -420,7 +505,7 @@
         //设置播放类型，0为点播、1为直播，默认使用自动
         _mediaPlayer.mediaType = MediaType_AUTO;
         //设置超时时间，单位为毫秒
-        _mediaPlayer.timeout = 10000;
+        _mediaPlayer.timeout = 20000;
         //缓冲区超过设置值时开始丢帧，单位为毫秒。直播时设置，点播设置无效。范围：500～100000
         _mediaPlayer.dropBufferDuration = 8000;
         
@@ -624,6 +709,21 @@
         
     }
     return _playOrPauseButton;
+}
+
+- (MPVolumeView *)volumeView {
+    if (_volumeView == nil) {
+        _volumeView  = [[MPVolumeView alloc] init];
+        
+        [_volumeView sizeToFit];
+        for (UIView *view in [_volumeView subviews]){
+            if ([view.class.description isEqualToString:@"MPVolumeSlider"]){
+                self.volumeViewSlider = (UISlider*)view;
+                break;
+            }
+        }
+    }
+    return _volumeView;
 }
 
 
