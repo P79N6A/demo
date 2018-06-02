@@ -19,15 +19,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    [LZData getTVBYBPage:2 block:^(NSArray<NSDictionary *> *obj) {
-//        NSLog(@"%s", __func__);
-//    }];
-    
-    [LZData getTVBYBDetail:@"http://www.hktvyb.com/vod/detail/id/3183.html" block:^(NSDictionary *obj) {
+    [LZData getTVBYBPage:2 block:^(NSArray<NSDictionary *> *obj) {
         NSLog(@"%s", __func__);
     }];
     
-    [LZData getTVBYBM3u8:@"http://www.hktvyb.com/vod/play/id/3183/sid/5/nid/1.html" block:^(NSArray *obj) {
+    [LZData getTVBYBDetail:@"http://www.hktvyb.com/vod/detail/id/925.html" block:^(NSDictionary *obj) {
+        NSLog(@"%s", __func__);
+    }];
+    
+    [LZData getTVBYBM3u8:@"http://www.hktvyb.com/vod/play/id/925/sid/1/nid/1.html" block:^(NSArray *obj) {
         
     }];
 }
