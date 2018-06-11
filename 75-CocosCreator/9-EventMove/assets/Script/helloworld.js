@@ -1,5 +1,7 @@
 
 
+var common = require("common");
+
 cc.Class({
     extends: cc.Component,
 
@@ -39,6 +41,19 @@ cc.Class({
     // use this for initialization
     onLoad: function () {
 
+
+        cc.log('onLoad--helloword');
+
+        var nodes = this.node.children;
+        cc.log(nodes);
+        var monster = this.node.getChildByName('alert');
+        cc.log(monster);
+        var label = cc.find('alert/New Label',this.node);
+        cc.log(label);
+        label = cc.find('Canvas/alert/New Label');
+        cc.log(label);
+        Global.backLabel = label;
+        common.backLabel = label;
         this.label.string = this.text;
         this.monsterMove(5);
 
