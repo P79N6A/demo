@@ -14,6 +14,7 @@
 		69A6077320BFCE9000AEF08F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6077120BFCE9000AEF08F /* LaunchScreen.storyboard */; };
 		69A6077620BFCE9000AEF08F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A6077520BFCE9000AEF08F /* main.m */; };
 		69A6077E20BFCEFB00AEF08F /* LZData.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A6077C20BFCEFB00AEF08F /* LZData.m */; };
+		69B882FC20CF6E31005FB5BB /* UIView+EffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B882FB20CF6E31005FB5BB /* UIView+EffectView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		69A6077520BFCE9000AEF08F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		69A6077C20BFCEFB00AEF08F /* LZData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LZData.m; sourceTree = "<group>"; };
 		69A6077D20BFCEFB00AEF08F /* LZData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZData.h; sourceTree = "<group>"; };
+		69B882FA20CF6E31005FB5BB /* UIView+EffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+EffectView.h"; sourceTree = "<group>"; };
+		69B882FB20CF6E31005FB5BB /* UIView+EffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+EffectView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				69A6077120BFCE9000AEF08F /* LaunchScreen.storyboard */,
 				69A6077420BFCE9000AEF08F /* Info.plist */,
 				69A6077520BFCE9000AEF08F /* main.m */,
+				69B882FA20CF6E31005FB5BB /* UIView+EffectView.h */,
+				69B882FB20CF6E31005FB5BB /* UIView+EffectView.m */,
 			);
 			path = tvbyb;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A6076B20BFCE9000AEF08F /* ViewController.m in Sources */,
+				69B882FC20CF6E31005FB5BB /* UIView+EffectView.m in Sources */,
 				69A6077620BFCE9000AEF08F /* main.m in Sources */,
 				69A6076820BFCE9000AEF08F /* AppDelegate.m in Sources */,
 				69A6077E20BFCEFB00AEF08F /* LZData.m in Sources */,
