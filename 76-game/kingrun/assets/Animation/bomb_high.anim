@@ -1,0 +1,37 @@
+{
+  "__type__": "cc.AnimationClip",
+  "_name": "bomb_high",
+  "_objFlags": 0,
+  "_rawFiles": null,
+  "_duration": 1,
+  "sample": 10,
+  "speed": 1,
+  "wrapMode": 1,
+  "curveData": {
+    "props": {
+      "position": [
+        {
+          "frame": 0,
+          "value": [
+            380,
+            -48
+          ]
+        },
+        {
+          "frame": 1,
+          "value": [
+            -370,
+            -59
+          ]
+        }
+      ]
+    }
+  },
+  "events": [
+    {
+      "frame": 0.8,
+      "func": "judgeDown",
+      "params": []
+    }
+  ]
+}

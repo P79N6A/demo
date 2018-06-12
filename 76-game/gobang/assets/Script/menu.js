@@ -1,0 +1,21 @@
+cc.Class({
+    extends: cc.Component,
+
+    properties: {
+
+    },
+
+    // use this for initialization
+    onLoad: function () {
+    },
+
+    // called every frame
+    update: function (dt) {
+
+    },
+
+    startGame (){
+        cc.director.loadScene("game");
+    },
+    
+});
