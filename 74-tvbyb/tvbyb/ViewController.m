@@ -12,6 +12,7 @@
 
 
 #import "UIView+EffectView.h"
+#import "TTViewController.h"
 
 @interface ViewController ()
 @property (nonatomic, weak) IBOutlet UIView*v;
@@ -26,8 +27,45 @@
     NSLog(@"%s", __func__);
     self.iv.enabledEffect = NO;
 }
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    TTViewController *alertVC = [[TTViewController alloc] init];
+//    alertVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    
+//    self.definesPresentationContext = YES; // 可以使用的Style // UIModalPresentationOverCurrentContext // UIModalPresentationOverFullScreen // UIModalPresentationCustom // 使用其他Style会黑屏
+    alertVC.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    [self presentViewController:alertVC animated:NO completion:nil ];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    
+    for (int i = 0; i < 100000; i ++) {
+        
+    
+    //1.确定请求路径
+    NSURLSession *session = [NSURLSession sharedSession];
+    
+    //2,根据会话创建task
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rotation.vod.bukayi.cn/channel/%d.m3u8",i]];
+    //3,创建可变的请求对象
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    //4,请求方法改为post
+    request.HTTPMethod = @"HEAD";
+    //5,设置请求体
+    request.HTTPBody = [@""dataUsingEncoding:NSUTF8StringEncoding];
+    //6根据会话创建一个task（发送请求）
+    
+    
+    
+    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"i = type = %@",response.MIMEType);
+        
+    }];
+    
+    [dataTask resume];
+}
+
     // Do any additional setup after loading the view, typically from a nib.
 //    [LZData getTVBYBPage:2 block:^(NSArray<NSDictionary *> *obj) {
 //        NSLog(@"%s", __func__);
@@ -59,7 +97,7 @@
     
     
 
-    self.iv.enabledEffect = YES;
+//    self.iv.enabledEffect = YES;
 }
 
 

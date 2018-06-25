@@ -1,0 +1,650 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0CEF0C8769662CEC14649C5FD2CBE0EB /* Aspects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F35B6A41DA673809A295873608A5DEC8 /* Aspects-dummy.m */; };
+		2DE6201A98A17CD6FCD704CF430FBBDA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		4825DA9C56C675202BA04B9A5C08F2AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+		987BF8DAD24EF46E9191696E9AFB0D6D /* HotFix.m in Sources */ = {isa = PBXBuildFile; fileRef = A1BB3F2278E4FD4828DB994B5D1B80E8 /* HotFix.m */; };
+		ABBD257BC1F51B3929B978B3FF43A68D /* HotFix-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF22B7D7C7C1A7C9B4CEB1B54CB48C1 /* HotFix-dummy.m */; };
+		D77458A1CE4FFFD8846599C02325966B /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = D457E0BFADC2F671EC54DCA986ABB6F8 /* Aspects.m */; };
+		E3A0944C22CDA63A1ADF0CCE5D55AE00 /* HotFix.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D0910FB2887439539DD1C60510CD1DA /* HotFix.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E3AB0327F2C7456BA0A222934AD600BA /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = DE640DE6F8A9969D9344B3073C86B328 /* Aspects.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E51D21D3AF9BA5CD6445BDAF76DDFD7A /* Pods-HotFox-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = DE2B221B70137BB4E34025E6AE54E0AB /* Pods-HotFox-dummy.m */; };
+		F07212035105359924F9C67CDFB0F0C2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		6EF5388D7B2C1837A0E3117FA4CA082B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 63827E226CB8031B392C02BB57AC948E;
+			remoteInfo = HotFix;
+		};
+		A652B8BFDD4EE35F24BEF3291FE2C455 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7C5FD310966070D9553E5B95C59641B;
+			remoteInfo = Aspects;
+		};
+		B5E30448A0E9675D9BD4C5578DDA3836 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C7C5FD310966070D9553E5B95C59641B;
+			remoteInfo = Aspects;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0AF22B7D7C7C1A7C9B4CEB1B54CB48C1 /* HotFix-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "HotFix-dummy.m"; sourceTree = "<group>"; };
+		0D0910FB2887439539DD1C60510CD1DA /* HotFix.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = HotFix.h; path = HotFix/HotFix.h; sourceTree = "<group>"; };
+		2AB25BF8C1C19EE53D5FA3BC971E04E5 /* libAspects.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAspects.a; path = libAspects.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B644A888FB6F04E0569A7952F7E7ECC /* libHotFix.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libHotFix.a; path = libHotFix.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E8DB73BDB2022F49C5F78309EAF100E /* Pods-HotFox-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HotFox-frameworks.sh"; sourceTree = "<group>"; };
+		5D41A40A42F1E71165B98DC558178E6F /* HotFix.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = HotFix.xcconfig; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		7806BEA8560C4175F23DED951A4A01D6 /* Pods-HotFox-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-HotFox-resources.sh"; sourceTree = "<group>"; };
+		7CA3D6EA5C8582BBCE72FE0BEE25B742 /* Aspects.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Aspects.xcconfig; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A1BB3F2278E4FD4828DB994B5D1B80E8 /* HotFix.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = HotFix.m; path = HotFix/HotFix.m; sourceTree = "<group>"; };
+		A2AE58C8EFB9B918C8AC76D0D98B74A4 /* Pods-HotFox-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-HotFox-acknowledgements.markdown"; sourceTree = "<group>"; };
+		C89B106762ED644ADD96DC7F0915F134 /* Aspects-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Aspects-prefix.pch"; sourceTree = "<group>"; };
+		C96376E8C995DECE4E71008C7F207A86 /* HotFix-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "HotFix-prefix.pch"; sourceTree = "<group>"; };
+		CB784A0141748F1199B6981D4AA9933B /* Pods-HotFox.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HotFox.debug.xcconfig"; sourceTree = "<group>"; };
+		D457E0BFADC2F671EC54DCA986ABB6F8 /* Aspects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
+		D669BE1D5D73C4D341CC52F099FC5E27 /* Pods-HotFox-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-HotFox-acknowledgements.plist"; sourceTree = "<group>"; };
+		DE2B221B70137BB4E34025E6AE54E0AB /* Pods-HotFox-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-HotFox-dummy.m"; sourceTree = "<group>"; };
+		DE640DE6F8A9969D9344B3073C86B328 /* Aspects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		E3CA45085D90C29E5B10B14A54C82F6E /* Pods-HotFox.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-HotFox.release.xcconfig"; sourceTree = "<group>"; };
+		F35B6A41DA673809A295873608A5DEC8 /* Aspects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Aspects-dummy.m"; sourceTree = "<group>"; };
+		F869E10F0012E415ACE6BC3D53A7B761 /* libPods-HotFox.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-HotFox.a"; path = "libPods-HotFox.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BF255151FBBE758578B56CEA23C6F78D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2DE6201A98A17CD6FCD704CF430FBBDA /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FC5A0FB8E71EA238D06606D3A4702C28 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F07212035105359924F9C67CDFB0F0C2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FF7BBE728C49110B1F0CD42AB3E4F3AB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4825DA9C56C675202BA04B9A5C08F2AD /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3EBBC1B407C45010145D43727BF66505 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7CA3D6EA5C8582BBCE72FE0BEE25B742 /* Aspects.xcconfig */,
+				F35B6A41DA673809A295873608A5DEC8 /* Aspects-dummy.m */,
+				C89B106762ED644ADD96DC7F0915F134 /* Aspects-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/Aspects";
+			sourceTree = "<group>";
+		};
+		6BB67794FA678F76E0B6A26DBAC60AD7 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BCCA211F7B1324F55A6C6E320E4F4C49 /* Pods-HotFox */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				8E130D63633588DD511391184D2CFC48 /* Pods */,
+				8CAA1E9ED1FC46531F8A8B72B310AC3E /* Products */,
+				6BB67794FA678F76E0B6A26DBAC60AD7 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		8CAA1E9ED1FC46531F8A8B72B310AC3E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2AB25BF8C1C19EE53D5FA3BC971E04E5 /* libAspects.a */,
+				2B644A888FB6F04E0569A7952F7E7ECC /* libHotFix.a */,
+				F869E10F0012E415ACE6BC3D53A7B761 /* libPods-HotFox.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8E0B528C5F0F7B6A5288DD4BA1A028E8 /* HotFix */ = {
+			isa = PBXGroup;
+			children = (
+				0D0910FB2887439539DD1C60510CD1DA /* HotFix.h */,
+				A1BB3F2278E4FD4828DB994B5D1B80E8 /* HotFix.m */,
+				E71D552BC3F628F3928BA34BE8C4864D /* Support Files */,
+			);
+			name = HotFix;
+			path = HotFix;
+			sourceTree = "<group>";
+		};
+		8E130D63633588DD511391184D2CFC48 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E66D816C853C4BAFBCA2A0DD108D8ED0 /* Aspects */,
+				8E0B528C5F0F7B6A5288DD4BA1A028E8 /* HotFix */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BCCA211F7B1324F55A6C6E320E4F4C49 /* Pods-HotFox */ = {
+			isa = PBXGroup;
+			children = (
+				A2AE58C8EFB9B918C8AC76D0D98B74A4 /* Pods-HotFox-acknowledgements.markdown */,
+				D669BE1D5D73C4D341CC52F099FC5E27 /* Pods-HotFox-acknowledgements.plist */,
+				DE2B221B70137BB4E34025E6AE54E0AB /* Pods-HotFox-dummy.m */,
+				3E8DB73BDB2022F49C5F78309EAF100E /* Pods-HotFox-frameworks.sh */,
+				7806BEA8560C4175F23DED951A4A01D6 /* Pods-HotFox-resources.sh */,
+				CB784A0141748F1199B6981D4AA9933B /* Pods-HotFox.debug.xcconfig */,
+				E3CA45085D90C29E5B10B14A54C82F6E /* Pods-HotFox.release.xcconfig */,
+			);
+			name = "Pods-HotFox";
+			path = "Target Support Files/Pods-HotFox";
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		E66D816C853C4BAFBCA2A0DD108D8ED0 /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				DE640DE6F8A9969D9344B3073C86B328 /* Aspects.h */,
+				D457E0BFADC2F671EC54DCA986ABB6F8 /* Aspects.m */,
+				3EBBC1B407C45010145D43727BF66505 /* Support Files */,
+			);
+			name = Aspects;
+			path = Aspects;
+			sourceTree = "<group>";
+		};
+		E71D552BC3F628F3928BA34BE8C4864D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5D41A40A42F1E71165B98DC558178E6F /* HotFix.xcconfig */,
+				0AF22B7D7C7C1A7C9B4CEB1B54CB48C1 /* HotFix-dummy.m */,
+				C96376E8C995DECE4E71008C7F207A86 /* HotFix-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/HotFix";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		0838161285D7F3F57DBEEAF1DF631472 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3AB0327F2C7456BA0A222934AD600BA /* Aspects.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		446B586626C0EC29CCA1418A0AE0778F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3A0944C22CDA63A1ADF0CCE5D55AE00 /* HotFix.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		22D6FC99D3496AD173F292CA173C4762 /* Pods-HotFox */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 53BA5442468BD15DCB421E0E33C4F21C /* Build configuration list for PBXNativeTarget "Pods-HotFox" */;
+			buildPhases = (
+				F1BE850D355204809AC7E466F5BC7586 /* Sources */,
+				FC5A0FB8E71EA238D06606D3A4702C28 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				84676AC18F386F7241650CEFC2288039 /* PBXTargetDependency */,
+				B39222157786357BC786AC35E4FAD6C4 /* PBXTargetDependency */,
+			);
+			name = "Pods-HotFox";
+			productName = "Pods-HotFox";
+			productReference = F869E10F0012E415ACE6BC3D53A7B761 /* libPods-HotFox.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		63827E226CB8031B392C02BB57AC948E /* HotFix */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E37CF410A8B8E4F7330404EE4D832271 /* Build configuration list for PBXNativeTarget "HotFix" */;
+			buildPhases = (
+				C57C5B2ADB3FBFB06154C85E15AAB09E /* Sources */,
+				BF255151FBBE758578B56CEA23C6F78D /* Frameworks */,
+				446B586626C0EC29CCA1418A0AE0778F /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				40A58D3EF2EED51CCB1136FFAB83990F /* PBXTargetDependency */,
+			);
+			name = HotFix;
+			productName = HotFix;
+			productReference = 2B644A888FB6F04E0569A7952F7E7ECC /* libHotFix.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		C7C5FD310966070D9553E5B95C59641B /* Aspects */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = ADDD598D97160FAFC23522D96D16607C /* Build configuration list for PBXNativeTarget "Aspects" */;
+			buildPhases = (
+				333DA74B4E797F48FFF01D823B85E3CC /* Sources */,
+				FF7BBE728C49110B1F0CD42AB3E4F3AB /* Frameworks */,
+				0838161285D7F3F57DBEEAF1DF631472 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Aspects;
+			productName = Aspects;
+			productReference = 2AB25BF8C1C19EE53D5FA3BC971E04E5 /* libAspects.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 8CAA1E9ED1FC46531F8A8B72B310AC3E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C7C5FD310966070D9553E5B95C59641B /* Aspects */,
+				63827E226CB8031B392C02BB57AC948E /* HotFix */,
+				22D6FC99D3496AD173F292CA173C4762 /* Pods-HotFox */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		333DA74B4E797F48FFF01D823B85E3CC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0CEF0C8769662CEC14649C5FD2CBE0EB /* Aspects-dummy.m in Sources */,
+				D77458A1CE4FFFD8846599C02325966B /* Aspects.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C57C5B2ADB3FBFB06154C85E15AAB09E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				ABBD257BC1F51B3929B978B3FF43A68D /* HotFix-dummy.m in Sources */,
+				987BF8DAD24EF46E9191696E9AFB0D6D /* HotFix.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1BE850D355204809AC7E466F5BC7586 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E51D21D3AF9BA5CD6445BDAF76DDFD7A /* Pods-HotFox-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		40A58D3EF2EED51CCB1136FFAB83990F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Aspects;
+			target = C7C5FD310966070D9553E5B95C59641B /* Aspects */;
+			targetProxy = A652B8BFDD4EE35F24BEF3291FE2C455 /* PBXContainerItemProxy */;
+		};
+		84676AC18F386F7241650CEFC2288039 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Aspects;
+			target = C7C5FD310966070D9553E5B95C59641B /* Aspects */;
+			targetProxy = B5E30448A0E9675D9BD4C5578DDA3836 /* PBXContainerItemProxy */;
+		};
+		B39222157786357BC786AC35E4FAD6C4 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HotFix;
+			target = 63827E226CB8031B392C02BB57AC948E /* HotFix */;
+			targetProxy = 6EF5388D7B2C1837A0E3117FA4CA082B /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		270B0140004623A9E4DDC0B8479E03B1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CA3D6EA5C8582BBCE72FE0BEE25B742 /* Aspects.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Aspects/Aspects-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39C5BC78A31CDE101068C530CAC7FA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		632D2662ACB972B4D244AE7B45E44958 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D41A40A42F1E71165B98DC558178E6F /* HotFix.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/HotFix/HotFix-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6E964B9E04FE2E0D5B4C4A45DF8D1564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7CA3D6EA5C8582BBCE72FE0BEE25B742 /* Aspects.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Aspects/Aspects-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		72FD45E21C2FAC2A86A92AEBFD3EA1D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CB784A0141748F1199B6981D4AA9933B /* Pods-HotFox.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89C8BB24E37B25BAEEB8FBA01EE05DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		BA754AE60B1C05186A0D586612B17254 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D41A40A42F1E71165B98DC558178E6F /* HotFix.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/HotFix/HotFix-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D22EA069973C06E378F70BDD2C607D3D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3CA45085D90C29E5B10B14A54C82F6E /* Pods-HotFox.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39C5BC78A31CDE101068C530CAC7FA0F /* Debug */,
+				89C8BB24E37B25BAEEB8FBA01EE05DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		53BA5442468BD15DCB421E0E33C4F21C /* Build configuration list for PBXNativeTarget "Pods-HotFox" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				72FD45E21C2FAC2A86A92AEBFD3EA1D1 /* Debug */,
+				D22EA069973C06E378F70BDD2C607D3D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		ADDD598D97160FAFC23522D96D16607C /* Build configuration list for PBXNativeTarget "Aspects" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6E964B9E04FE2E0D5B4C4A45DF8D1564 /* Debug */,
+				270B0140004623A9E4DDC0B8479E03B1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E37CF410A8B8E4F7330404EE4D832271 /* Build configuration list for PBXNativeTarget "HotFix" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				632D2662ACB972B4D244AE7B45E44958 /* Debug */,
+				BA754AE60B1C05186A0D586612B17254 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

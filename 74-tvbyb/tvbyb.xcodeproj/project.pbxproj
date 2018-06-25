@@ -15,6 +15,7 @@
 		69A6077620BFCE9000AEF08F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A6077520BFCE9000AEF08F /* main.m */; };
 		69A6077E20BFCEFB00AEF08F /* LZData.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A6077C20BFCEFB00AEF08F /* LZData.m */; };
 		69B882FC20CF6E31005FB5BB /* UIView+EffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B882FB20CF6E31005FB5BB /* UIView+EffectView.m */; };
+		69B8830220D0A743005FB5BB /* TTViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69B8830120D0A743005FB5BB /* TTViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		69A6077D20BFCEFB00AEF08F /* LZData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LZData.h; sourceTree = "<group>"; };
 		69B882FA20CF6E31005FB5BB /* UIView+EffectView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+EffectView.h"; sourceTree = "<group>"; };
 		69B882FB20CF6E31005FB5BB /* UIView+EffectView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+EffectView.m"; sourceTree = "<group>"; };
+		69B8830020D0A743005FB5BB /* TTViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTViewController.h; sourceTree = "<group>"; };
+		69B8830120D0A743005FB5BB /* TTViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +73,8 @@
 				69A6076720BFCE9000AEF08F /* AppDelegate.m */,
 				69A6076920BFCE9000AEF08F /* ViewController.h */,
 				69A6076A20BFCE9000AEF08F /* ViewController.m */,
+				69B8830020D0A743005FB5BB /* TTViewController.h */,
+				69B8830120D0A743005FB5BB /* TTViewController.m */,
 				69A6076C20BFCE9000AEF08F /* Main.storyboard */,
 				69A6076F20BFCE9000AEF08F /* Assets.xcassets */,
 				69A6077120BFCE9000AEF08F /* LaunchScreen.storyboard */,
@@ -154,6 +159,7 @@
 			files = (
 				69A6076B20BFCE9000AEF08F /* ViewController.m in Sources */,
 				69B882FC20CF6E31005FB5BB /* UIView+EffectView.m in Sources */,
+				69B8830220D0A743005FB5BB /* TTViewController.m in Sources */,
 				69A6077620BFCE9000AEF08F /* main.m in Sources */,
 				69A6076820BFCE9000AEF08F /* AppDelegate.m in Sources */,
 				69A6077E20BFCEFB00AEF08F /* LZData.m in Sources */,

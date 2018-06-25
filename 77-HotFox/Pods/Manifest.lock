@@ -1,0 +1,15 @@
+PODS:
+  - Aspects (1.4.1)
+  - HotFix (1.0.0):
+    - Aspects
+
+DEPENDENCIES:
+  - HotFix
+
+SPEC CHECKSUMS:
+  Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
+  HotFix: 78f8f69484c854481dd4892a3c3550661b9cf421
+
+PODFILE CHECKSUM: f58d54c1f67d2b32d76723284245e1fe83f5de8b
+
+COCOAPODS: 1.4.0
