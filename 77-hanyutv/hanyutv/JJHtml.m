@@ -59,26 +59,27 @@
             [main appendString:@"/"];
             [main appendString:mainContents[i]];
         }
+        main = [main substringFromIndex:1];
         
-        NSString *statusRegex = @"<font class=\"note\">(.*?)</font>";
+        NSString *statusRegex = @"<p>【集 数】(.*?)</p>";
         NSString *status = [self matchString:searchText toRegexString:statusRegex].lastObject;
         
         NSString *typeRegex = @"<p>类型：(.*?)</p>";
         NSString *type = [self matchString:searchText toRegexString:typeRegex].lastObject;
         
-        NSString *yearRegex = @"<p>年份：(.*?)</p>";
+        NSString *yearRegex = @"<p>【首播时间】(.*?)</p>";
         NSString *year = [self matchString:searchText toRegexString:yearRegex].lastObject;
         
         NSString *languageRegex = @"<div>语言：(.*?)</div>";
         NSString *language = [self matchString:searchText toRegexString:languageRegex].lastObject;
         
-        NSString *desRegex = @"<div class=\"description\">([\\w\\W]*?)</div>";
+        NSString *desRegex = @"<p>【剧情简介】(.*?)</p>";
         NSString *des = [self matchString:searchText toRegexString:desRegex].lastObject;
         des = [self filterHtmlTag:des];
         
-        NSString *hlsRegex = @"<li><a .?title=\'.*?\' href=\'.*?\' target=\"_self\">.*?</a>";
-        NSString *m3u8Regex = @"<li><a .?title=\'(.*?)\' href=\'(.*?)\' target=\"_self\">.*?</a>";
-        NSArray *hlss = [self matchString:searchText toRegexString:hlsRegex];
+        NSString *hlsRegex = @"<li><a href=\"#play\" onclick=\"ck_m3u8\(\'(.*?)\',this\);\" title=\".*?\">(.*?)</a></li>";
+        NSString *m3u8Regex = @"<li><a .?title=\'.*?\' href=\'.*?\' target=\"_self\">.*?</a>";
+        NSArray *hlss = [self matchString:@"<li><a href=\"#play\" onclick=\"ck_m3u8('http://cn2.zuidadianying.com/20171021/nYU2UYiY/index.m3u8',this);\" title=\"《W-两个世界》第01集\">第01集</a></li>" toRegexString:hlsRegex];
         
         NSMutableArray *m3u8s = [NSMutableArray array];
         for (NSString *hlsHtml in hlss) {
