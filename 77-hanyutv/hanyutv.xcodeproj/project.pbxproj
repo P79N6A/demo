@@ -1,0 +1,557 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9AF47AC920DFD3ED00C578A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */; };
+		9AF47ACC20DFD3ED00C578A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47ACB20DFD3ED00C578A2 /* ViewController.m */; };
+		9AF47ACF20DFD3ED00C578A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF47ACD20DFD3ED00C578A2 /* Main.storyboard */; };
+		9AF47AD120DFD3ED00C578A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9AF47AD020DFD3ED00C578A2 /* Assets.xcassets */; };
+		9AF47AD420DFD3ED00C578A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF47AD220DFD3ED00C578A2 /* LaunchScreen.storyboard */; };
+		9AF47AD720DFD3ED00C578A2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AD620DFD3ED00C578A2 /* main.m */; };
+		9AF47AE120DFD3EE00C578A2 /* hanyutvTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AE020DFD3EE00C578A2 /* hanyutvTests.m */; };
+		9AF47AEC20DFD3EE00C578A2 /* hanyutvUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AEB20DFD3EE00C578A2 /* hanyutvUITests.m */; };
+		9AF47AFB20DFD41B00C578A2 /* JJHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AF920DFD41B00C578A2 /* JJHtml.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9AF47ADD20DFD3EE00C578A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF47ABC20DFD3ED00C578A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AF47AC320DFD3ED00C578A2;
+			remoteInfo = hanyutv;
+		};
+		9AF47AE820DFD3EE00C578A2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9AF47ABC20DFD3ED00C578A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9AF47AC320DFD3ED00C578A2;
+			remoteInfo = hanyutv;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9AF47AC420DFD3ED00C578A2 /* hanyutv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hanyutv.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF47AC720DFD3ED00C578A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		9AF47ACA20DFD3ED00C578A2 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		9AF47ACB20DFD3ED00C578A2 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		9AF47ACE20DFD3ED00C578A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		9AF47AD020DFD3ED00C578A2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9AF47AD320DFD3ED00C578A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9AF47AD520DFD3ED00C578A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AF47AD620DFD3ED00C578A2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		9AF47ADC20DFD3EE00C578A2 /* hanyutvTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hanyutvTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF47AE020DFD3EE00C578A2 /* hanyutvTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hanyutvTests.m; sourceTree = "<group>"; };
+		9AF47AE220DFD3EE00C578A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AF47AE720DFD3EE00C578A2 /* hanyutvUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = hanyutvUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF47AEB20DFD3EE00C578A2 /* hanyutvUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = hanyutvUITests.m; sourceTree = "<group>"; };
+		9AF47AED20DFD3EE00C578A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9AF47AF920DFD41B00C578A2 /* JJHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJHtml.m; sourceTree = "<group>"; };
+		9AF47AFA20DFD41B00C578A2 /* JJHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJHtml.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9AF47AC120DFD3ED00C578A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47AD920DFD3EE00C578A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47AE420DFD3EE00C578A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9AF47ABB20DFD3ED00C578A2 = {
+			isa = PBXGroup;
+			children = (
+				9AF47AC620DFD3ED00C578A2 /* hanyutv */,
+				9AF47ADF20DFD3EE00C578A2 /* hanyutvTests */,
+				9AF47AEA20DFD3EE00C578A2 /* hanyutvUITests */,
+				9AF47AC520DFD3ED00C578A2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9AF47AC520DFD3ED00C578A2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9AF47AC420DFD3ED00C578A2 /* hanyutv.app */,
+				9AF47ADC20DFD3EE00C578A2 /* hanyutvTests.xctest */,
+				9AF47AE720DFD3EE00C578A2 /* hanyutvUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9AF47AC620DFD3ED00C578A2 /* hanyutv */ = {
+			isa = PBXGroup;
+			children = (
+				9AF47AFA20DFD41B00C578A2 /* JJHtml.h */,
+				9AF47AF920DFD41B00C578A2 /* JJHtml.m */,
+				9AF47AC720DFD3ED00C578A2 /* AppDelegate.h */,
+				9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */,
+				9AF47ACA20DFD3ED00C578A2 /* ViewController.h */,
+				9AF47ACB20DFD3ED00C578A2 /* ViewController.m */,
+				9AF47ACD20DFD3ED00C578A2 /* Main.storyboard */,
+				9AF47AD020DFD3ED00C578A2 /* Assets.xcassets */,
+				9AF47AD220DFD3ED00C578A2 /* LaunchScreen.storyboard */,
+				9AF47AD520DFD3ED00C578A2 /* Info.plist */,
+				9AF47AD620DFD3ED00C578A2 /* main.m */,
+			);
+			path = hanyutv;
+			sourceTree = "<group>";
+		};
+		9AF47ADF20DFD3EE00C578A2 /* hanyutvTests */ = {
+			isa = PBXGroup;
+			children = (
+				9AF47AE020DFD3EE00C578A2 /* hanyutvTests.m */,
+				9AF47AE220DFD3EE00C578A2 /* Info.plist */,
+			);
+			path = hanyutvTests;
+			sourceTree = "<group>";
+		};
+		9AF47AEA20DFD3EE00C578A2 /* hanyutvUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9AF47AEB20DFD3EE00C578A2 /* hanyutvUITests.m */,
+				9AF47AED20DFD3EE00C578A2 /* Info.plist */,
+			);
+			path = hanyutvUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9AF47AC320DFD3ED00C578A2 /* hanyutv */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AF47AF020DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutv" */;
+			buildPhases = (
+				9AF47AC020DFD3ED00C578A2 /* Sources */,
+				9AF47AC120DFD3ED00C578A2 /* Frameworks */,
+				9AF47AC220DFD3ED00C578A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = hanyutv;
+			productName = hanyutv;
+			productReference = 9AF47AC420DFD3ED00C578A2 /* hanyutv.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9AF47ADB20DFD3EE00C578A2 /* hanyutvTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AF47AF320DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvTests" */;
+			buildPhases = (
+				9AF47AD820DFD3EE00C578A2 /* Sources */,
+				9AF47AD920DFD3EE00C578A2 /* Frameworks */,
+				9AF47ADA20DFD3EE00C578A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AF47ADE20DFD3EE00C578A2 /* PBXTargetDependency */,
+			);
+			name = hanyutvTests;
+			productName = hanyutvTests;
+			productReference = 9AF47ADC20DFD3EE00C578A2 /* hanyutvTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9AF47AE620DFD3EE00C578A2 /* hanyutvUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9AF47AF620DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvUITests" */;
+			buildPhases = (
+				9AF47AE320DFD3EE00C578A2 /* Sources */,
+				9AF47AE420DFD3EE00C578A2 /* Frameworks */,
+				9AF47AE520DFD3EE00C578A2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9AF47AE920DFD3EE00C578A2 /* PBXTargetDependency */,
+			);
+			name = hanyutvUITests;
+			productName = hanyutvUITests;
+			productReference = 9AF47AE720DFD3EE00C578A2 /* hanyutvUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9AF47ABC20DFD3ED00C578A2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = Jayson;
+				TargetAttributes = {
+					9AF47AC320DFD3ED00C578A2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					9AF47ADB20DFD3EE00C578A2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9AF47AC320DFD3ED00C578A2;
+					};
+					9AF47AE620DFD3EE00C578A2 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 9AF47AC320DFD3ED00C578A2;
+					};
+				};
+			};
+			buildConfigurationList = 9AF47ABF20DFD3ED00C578A2 /* Build configuration list for PBXProject "hanyutv" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9AF47ABB20DFD3ED00C578A2;
+			productRefGroup = 9AF47AC520DFD3ED00C578A2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9AF47AC320DFD3ED00C578A2 /* hanyutv */,
+				9AF47ADB20DFD3EE00C578A2 /* hanyutvTests */,
+				9AF47AE620DFD3EE00C578A2 /* hanyutvUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9AF47AC220DFD3ED00C578A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AF47AD420DFD3ED00C578A2 /* LaunchScreen.storyboard in Resources */,
+				9AF47AD120DFD3ED00C578A2 /* Assets.xcassets in Resources */,
+				9AF47ACF20DFD3ED00C578A2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47ADA20DFD3EE00C578A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47AE520DFD3EE00C578A2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9AF47AC020DFD3ED00C578A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AF47AFB20DFD41B00C578A2 /* JJHtml.m in Sources */,
+				9AF47ACC20DFD3ED00C578A2 /* ViewController.m in Sources */,
+				9AF47AD720DFD3ED00C578A2 /* main.m in Sources */,
+				9AF47AC920DFD3ED00C578A2 /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47AD820DFD3EE00C578A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AF47AE120DFD3EE00C578A2 /* hanyutvTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9AF47AE320DFD3EE00C578A2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9AF47AEC20DFD3EE00C578A2 /* hanyutvUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9AF47ADE20DFD3EE00C578A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AF47AC320DFD3ED00C578A2 /* hanyutv */;
+			targetProxy = 9AF47ADD20DFD3EE00C578A2 /* PBXContainerItemProxy */;
+		};
+		9AF47AE920DFD3EE00C578A2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9AF47AC320DFD3ED00C578A2 /* hanyutv */;
+			targetProxy = 9AF47AE820DFD3EE00C578A2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9AF47ACD20DFD3ED00C578A2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AF47ACE20DFD3ED00C578A2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		9AF47AD220DFD3ED00C578A2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9AF47AD320DFD3ED00C578A2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9AF47AEE20DFD3EE00C578A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		9AF47AEF20DFD3EE00C578A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9AF47AF120DFD3EE00C578A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9AF47AF220DFD3EE00C578A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutv/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9AF47AF420DFD3EE00C578A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutvTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hanyutv.app/hanyutv";
+			};
+			name = Debug;
+		};
+		9AF47AF520DFD3EE00C578A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutvTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutvTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/hanyutv.app/hanyutv";
+			};
+			name = Release;
+		};
+		9AF47AF720DFD3EE00C578A2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutvUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = hanyutv;
+			};
+			name = Debug;
+		};
+		9AF47AF820DFD3EE00C578A2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = hanyutvUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Japan.hanyutvUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = hanyutv;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9AF47ABF20DFD3ED00C578A2 /* Build configuration list for PBXProject "hanyutv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AF47AEE20DFD3EE00C578A2 /* Debug */,
+				9AF47AEF20DFD3EE00C578A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AF47AF020DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutv" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AF47AF120DFD3EE00C578A2 /* Debug */,
+				9AF47AF220DFD3EE00C578A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AF47AF320DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AF47AF420DFD3EE00C578A2 /* Debug */,
+				9AF47AF520DFD3EE00C578A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9AF47AF620DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9AF47AF720DFD3EE00C578A2 /* Debug */,
+				9AF47AF820DFD3EE00C578A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9AF47ABC20DFD3ED00C578A2 /* Project object */;
+}

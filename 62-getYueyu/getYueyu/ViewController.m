@@ -24,6 +24,8 @@
     [super viewDidLoad];
     
     
+    [self test3];
+    return;
     NSURL * url = [NSURL URLWithString:@"http://api.jiefu.tv/app2/api/dt/shareItem/newList.html?pageNum=2&pageSize=10000"];
     //创建请求
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
@@ -170,10 +172,101 @@
     
 }
 
+//{
+//    "img": "http://pic7.qiyipic.com/image/20180414/b3/38/a_100137605_m_601_m3_180_236.jpg",
+//    "title": "泰语入门学习",
+//    "type": "爱课堂",
+//    "des": "喜欢记得点赞 留下你的专属评论哟 持续更新中...",
+//    "language": "其它",
+//    "vlist": [
+//              {
+//                  "vpic": "http://pic5.qiyipic.com/image/20180606/b2/e1/v_116549462_m_601.jpg",
+//                  "shortTitle": "初恋这件小事",
+//                  "vurl": "http://www.iqiyi.com/v_19rr0cmp7g.html",
+//                ]
+//}
+- (NSString *)encodeToPercentEscapeString: (NSString *) input
+
+{
+    
+    // Encode all the reserved characters, per RFC 3986
+    
+    // (<http://www.ietf.org/rfc/rfc3986.txt>)
+    
+    NSString *outputStr = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
+                                                                                                
+                                                                                                (CFStringRef)input,
+                                                                                                
+                                                                                                NULL,
+                                                                                                
+                                                                                                (CFStringRef)@"!*'();:@&=+$,/?%#[]",
+                                                                                                
+                                                                                                kCFStringEncodingUTF8));
+    
+    return outputStr;
+    
+}
+
+
+-(void)test3{
+    NSString *url = @"http://www.iqiyi.com/playlist268438002.html";
+    url = @"http://www.iqiyi.com/playlist405588902.html";
+    url = @"http://www.iqiyi.com/u/2394136908/v";
+    
+    NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
+    
+    
+    
+    NSString *ul = [html componentsSeparatedByString:@"wrapper-piclist site-piclist site-piclist-180101 site-piclist-180101_indivi site-piclist-180101_threeline wrapper-piclist-auto "].lastObject;
+    
+    NSMutableArray *lis = (NSMutableArray *)[ul componentsSeparatedByString:@"<div class=\"site-piclist_pic\">"];
+    [lis removeObjectAtIndex:0];
+    
+    
+    NSMutableArray *objs = [NSMutableArray array];
+    
+    [lis enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *urlString = @"<a href=\"(.*?)\" class=\"site-piclist_pic_link";
+        NSString *url = [self matchString:obj toRegexString:urlString].lastObject;
+        
+        NSString *titleString = @"title=\"(.*?)\" target=\"iqiyiblank\"";
+        NSString *title = [self matchString:obj toRegexString:titleString].lastObject;
+        title = [self encodeToPercentEscapeString:title];
+        
+//            NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        
+//        NSData *data = [title dataUsingEncoding:enc];
+//            NSString *retStr = [[NSString alloc] initWithData:data encoding:enc];
+        
+
+
+        //中文转unicode
+
+        
+        NSString *imgString = @"src=\"(.*?)\" alt";
+        NSString *img = [self matchString:obj toRegexString:imgString].lastObject;
+        
+        NSString *timeString = @"mod-listTitle_right\">(.*?)<\/span>";
+        NSString *time = [self matchString:obj toRegexString:timeString].lastObject;
+        //NSString *countString = @"1341729209>(.*?)<\/em>";
+        //NSString *count = [self matchString:obj toRegexString:countString].lastObject;
+        
+        [objs addObject:@{@"vurl":url,@"shortTitle":title,@"vpic":img}];
+        //        NSLog(@"@{@\"vurl\":@\"%@\",@\"shortTitle\":@\"%@\",@\"vpic\":@\"%@\",@\"time\":@\"%@\"},",url,title ,img,time);
+        
+        //        NSLog(@"%s", __func__);
+    }];
+    
+    NSData *date = [NSJSONSerialization dataWithJSONObject:objs options:NSJSONWritingPrettyPrinted error:NULL];
+    NSString *json = [[NSString alloc] initWithData:date encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",json);
+}
 
 - (void)test{
     NSString *url = @"http://www.iqiyi.com/playlist268438002.html";
     url = @"http://www.iqiyi.com/playlist405588902.html";
+//    url = @"http://www.iqiyi.com/u/1379702113/v";
     
     NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
     
@@ -184,6 +277,8 @@
     NSMutableArray *lis = (NSMutableArray *)[ul componentsSeparatedByString:@"</li>"];
     [lis removeLastObject];
     
+    
+    NSMutableArray *objs = [NSMutableArray array];
     
     [lis enumerateObjectsUsingBlock:^(NSString *  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -201,10 +296,15 @@
         //NSString *countString = @"1341729209>(.*?)<\/em>";
         //NSString *count = [self matchString:obj toRegexString:countString].lastObject;
         
-        NSLog(@"@{@\"url\":@\"%@\",@\"title\":@\"%@\",@\"img\":@\"%@\",@\"time\":@\"%@\"},",url,title ,img,time);
+        [objs addObject:@{@"vurl":url,@"shortTitle":title,@"vpic":img}];
+//        NSLog(@"@{@\"vurl\":@\"%@\",@\"shortTitle\":@\"%@\",@\"vpic\":@\"%@\",@\"time\":@\"%@\"},",url,title ,img,time);
         
         //        NSLog(@"%s", __func__);
     }];
+    
+    NSData *date = [NSJSONSerialization dataWithJSONObject:objs options:NSJSONWritingPrettyPrinted error:NULL];
+    NSString *json = [[NSString alloc] initWithData:date encoding:NSUTF8StringEncoding];
+    NSLog(@"%@",json);
     
 }
 
