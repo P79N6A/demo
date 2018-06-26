@@ -22,8 +22,8 @@
         
     }];
     
-    [JJHtml getHanYuTVDetail:@"https://m.y3600.com/78/774.html" block:^(NSDictionary *obj) {
-        
+    [JJHtml getHanYuTVDetail:@"https://m.y3600.com/411/453.html" block:^(NSDictionary *obj) {
+        NSLog(@"");
     }];
 }
 

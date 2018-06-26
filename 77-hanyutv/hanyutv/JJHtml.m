@@ -8,14 +8,14 @@
                    block: (void(^)(NSDictionary *))block{
     
     
-    //    if ([JJHttp defaultHttp].isProtocolService) {
-    //        !(block)? : block(@{});
-    //        return;
-    //    }
+    if (self.isProtocolService) {
+            !(block)? : block(@{});
+            return;
+        }
     
     NSURL * url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -46,20 +46,20 @@
         NSString *nameRegex = @"<div class=\"ui-content\"><h1>(.*?)</h1>";
         NSString *name = [self matchString:searchText toRegexString:nameRegex].lastObject;
         
-        
-        NSString *mainShow = @"<p>【主要演员.*?</a></p>";
-        NSString *mainStr = [self matchString:searchText toRegexString:mainShow].firstObject;
-        
-        NSString *mainRegex = @"class=infotextkey>(.*?)</a>";
-        NSArray *mainContents = [self matchString:mainStr toRegexString:mainRegex];
+//        NSString *mainShow = @"<p>【主要演员.*?</p>";
+//        mainShow = @"<p>【主要演员】(.*?)</p>";
+//        NSString *mainStr = [self matchString:searchText toRegexString:mainShow].lastObject;
+//
+//        NSString *mainRegex = @"class=infotextkey>(.*?)</a>";
+//        NSArray *mainContents = [self matchString:mainStr toRegexString:mainRegex];
         
 
-        NSMutableString *main = [NSMutableString string];
-        for (NSInteger i = 1;i < mainContents.count; i+=2) {
-            [main appendString:@"/"];
-            [main appendString:mainContents[i]];
-        }
-        main = [main substringFromIndex:1];
+//        NSMutableString *main = [NSMutableString string];
+//        for (NSInteger i = 1;i < mainContents.count; i+=2) {
+//            [main appendString:@"/"];
+//            [main appendString:mainContents[i]];
+//        }
+//        main = [main substringFromIndex:1];
         
         NSString *statusRegex = @"<p>【集 数】(.*?)</p>";
         NSString *status = [self matchString:searchText toRegexString:statusRegex].lastObject;
@@ -77,19 +77,50 @@
         NSString *des = [self matchString:searchText toRegexString:desRegex].lastObject;
         des = [self filterHtmlTag:des];
         
-        NSString *hlsRegex = @"<li><a href=\"#play\" onclick=\"ck_m3u8\(\'(.*?)\',this\);\" title=\".*?\">(.*?)</a></li>";
-        NSString *m3u8Regex = @"<li><a .?title=\'.*?\' href=\'.*?\' target=\"_self\">.*?</a>";
-        NSArray *hlss = [self matchString:@"<li><a href=\"#play\" onclick=\"ck_m3u8('http://cn2.zuidadianying.com/20171021/nYU2UYiY/index.m3u8',this);\" title=\"《W-两个世界》第01集\">第01集</a></li>" toRegexString:hlsRegex];
+        NSString *hlsRegex = @"<li><a href=\"#play\" onclick=\"ck_m3u8.*?\'.*?\'.*?\" title=\".*?\">.*?</a></li>";
+        NSString *m3u8Regex = @"<li><a href=\"#play\" onclick=\"ck_m3u8.*?\'(.*?)\'.*?\" title=\".*?\">(.*?)</a></li>";
+        NSArray *hlss = [self matchString:searchText toRegexString:hlsRegex];
+        
+     
+        NSString *hlsRegex1 = @"<li><a onclick=\"ck_m3u8.*?\'.*?\'.*?\" href=\"#play\" title=\".*?\">.*?</a></li>";
+        NSString *m3u8Regex1 = @"<li><a onclick=\"ck_m3u8.*?\'(.*?)\'.*?\" href=\"#play\" title=\".*?\">(.*?)</a></li>";
+        NSArray *hlss1 = [self matchString:searchText toRegexString:hlsRegex1];
         
         NSMutableArray *m3u8s = [NSMutableArray array];
         for (NSString *hlsHtml in hlss) {
             NSArray *urls = [self matchString:hlsHtml toRegexString:m3u8Regex];
-            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            dict[@"vn"] = urls[1];
-            dict[@"vurl"] = [NSString stringWithFormat:@"http://m.yueyuwz.com%@", urls[2]];
-            dict[@"desc"] = des;
-            [m3u8s addObject:dict];
+            NSString *title = urls[2];
+            __block  NSMutableArray * values;
+            [m3u8s enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([[obj valueForKey:@"title"] isEqualToString:title]) {
+                    values = obj[@"url"];
+                }
+            }];
+            if (values) {
+                [values addObject:urls[1]];
+            }else{
+                NSDictionary *v = @{@"title":urls[2],@"url":@[urls[1]].mutableCopy};
+                [m3u8s addObject:v];
+            }
         }
+        for (NSString *hlsHtml in hlss1) {
+            NSArray *urls = [self matchString:hlsHtml toRegexString:m3u8Regex1];
+            NSString *title = urls[2];
+            __block  NSMutableArray * values;
+            [m3u8s enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if ([[obj valueForKey:@"title"] isEqualToString:title]) {
+                    values = obj[@"url"];
+                }
+            }];
+            if (values) {
+                [values addObject:urls[1]];
+            }else{
+                NSDictionary *v = @{@"title":urls[2],@"url":@[urls[1]].mutableCopy};
+                [m3u8s addObject:v];
+            }
+        }
+        
+        
         
         NSDictionary *obj = @{
                               @"img":icon.length?icon : @"",
@@ -99,7 +130,7 @@
                               @"year":year.length?year : @"未知",
                               @"des":des.length? des : @"暂无介绍",
                               @"vlist":m3u8s.count? m3u8s : @[],
-                              @"main" : main.length? main:@"未知",
+//                              @"main" : main.length? main:@"未知",
                               @"language" : language.length?language:@"未知"
                               };
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,10 +145,10 @@
                  block: (void(^)(NSArray <NSDictionary *>*))block{
     
     
-    //    if ([JJHttp defaultHttp].isProtocolService) {
-    //        !(block)? : block(@[]);
-    //        return;
-    //    }
+    if (self.isProtocolService) {
+            !(block)? : block(@[]);
+            return;
+        }
     
     NSString *str =  @"https://m.y3600.com/hanju/index.html";
     if (page > 1) {
@@ -128,7 +159,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -183,16 +214,16 @@
     //www.yywssone.com
     
     
-//    if ([JJHttp defaultHttp].isProtocolService) {
-//        !(block)? : block(@[],NO);
-//        return;
-//    }
+    if (self.isProtocolService){
+        !(block)? : block(@[],NO);
+        return;
+    }
     
     if(page == 1){
         kw = [self URLEncodedString:kw];
         NSURL * url = [NSURL URLWithString:@"http://m.yueyuwz.com/search.asp"];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-        [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"http://m.yueyuwz.com" forHTTPHeaderField:@"Origin"];
         request.HTTPMethod = @"POST";
         
@@ -248,7 +279,7 @@
         //创建请求
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         
-        [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+        [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
         [request setValue:@"http://m.yueyuwz.com" forHTTPHeaderField:@"Origin"];
         
         NSURLSession * session = [NSURLSession sharedSession];
@@ -304,16 +335,16 @@
 + (void)getTVM3u8:(NSString *)urlStr block: (void(^)(NSArray *))block{
     
     
-//    if ([JJHttp defaultHttp].isProtocolService) {
-//        !(block)? : block(@[]);
-//        return;
-//    }
+    if (self.isProtocolService) {
+        !(block)? : block(@[]);
+        return;
+    }
     
     
     NSURL * url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -367,16 +398,16 @@
 + (void)getTVM3u8:(NSString *)urlStr title:(NSString *)title block: (void(^)(NSArray *))block{
     
     
-//    if ([JJHttp defaultHttp].isProtocolService) {
-//        !(block)? : block(@[]);
-//        return;
-//    }
+    if (self.isProtocolService) {
+        !(block)? : block(@[]);
+        return;
+    }
     
     NSURL * url = [NSURL URLWithString:urlStr];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -436,14 +467,14 @@
 + (void)getTVDetail:(NSString *)urlStr block: (void(^)(NSDictionary *))block{
     
     
-//    if ([JJHttp defaultHttp].isProtocolService) {
-//        !(block)? : block(@{});
-//        return;
-//    }
+    if (self.isProtocolService) {
+        !(block)? : block(@{});
+        return;
+    }
     
     NSURL * url = [NSURL URLWithString:urlStr];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -530,10 +561,10 @@
               block: (void(^)(NSArray <NSDictionary *>*))block{
     
     
-//    if ([JJHttp defaultHttp].isProtocolService) {
-//        !(block)? : block(@[]);
-//        return;
-//    }
+    if (self.isProtocolService) {
+        !(block)? : block(@[]);
+        return;
+    }
     
     NSString *str =  urlStr;
     if (page > 1) {
@@ -544,7 +575,7 @@
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -721,27 +752,64 @@
 }
 
 
-////+ (BOOL)isProtocolService{
-////    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
-////    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"http://www.baidu.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
-////    //NSLog(@"\n%@",proxies);
-////
-////    NSDictionary *settings = proxies[0];
-////    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
-////    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
-////    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
-////
-////    if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
-////    {
-////        NSLog(@"没代理");
-////        return NO;
-////
-////    }else{
-////        NSLog(@"设置了代理");
-////
-////        return YES;
-////    }
-////}
++ (BOOL)isProtocolService{
+    
+    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
+    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"http://www.baidu.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
+    //NSLog(@"\n%@",proxies);
+
+    NSDictionary *settings = proxies[0];
+    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
+    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
+    //    NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
+
+    if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
+    {
+        NSLog(@"没代理");
+        return NO;
+
+    }else{
+        NSLog(@"设置了代理");
+
+        return YES;
+    }
+}
+
+
++ (NSString *)userAgent{
+    
+    
+        NSArray *userAgents = @[
+                                @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Mobile Safari/537.36",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC_D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+                                @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 ACHEETAHI/2100501044",
+                                @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 bdbrowser_i18n/4.6.0.7",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; HTC D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.1.0.527 U3/0.8.0 Mobile Safari/534.30",
+                                @"Mozilla/5.0 (Android; Mobile; rv:35.0) Gecko/35.0 Firefox/35.0",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 SogouMSE,SogouMobileBrowser/3.5.1",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Oupeng/10.2.3.88150 Mobile Safari/537.36",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 MQQBrowser/5.6 Mobile Safari/537.36",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/534.24 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.24 T5/2.0 baidubrowser/5.3.4.0 (Baidu; P1 4.4.4)",
+                                @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/535.19 (KHTML, like Gecko) Version/4.0 LieBaoFast/2.28.1 Mobile Safari/535.19",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A365 Safari/600.1.4",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X; zh-CN) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/12A365 UCBrowser/10.2.5.551 Mobile",
+                                @"Mozilla/5.0 (iPhone 5SGLOBAL; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/6.0 MQQBrowser/5.6 Mobile/12A365 Safari/8536.25",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/7.0 Mobile/12A365 Safari/9537.53",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4.9 (KHTML, like Gecko) Version/6.0 Mobile/10A523 Safari/8536.25",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mercury/8.9.4 Mobile/11B554a Safari/9537.53",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 SogouMobileBrowser/3.5.1",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D167 Safari/9537.53",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Coast/4.01.88243 Mobile/12A365 Safari/7534.48.3",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) CriOS/40.0.2214.69 Mobile/12A365 Safari/600.1.4",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.0 Mobile/14F89 Safari/602.1",
+                                @"Mozilla/5.0 (iPhone; CPU iPhone OS 11_1_1 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.0 Mobile/15F89 Safari/602.1",
+                                ];
+    
+    NSInteger index = arc4random() % userAgents.count;
+    return  userAgents[index];
+}
+
+
 //
 //
 //
