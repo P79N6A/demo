@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.backgroundColor = [UIColor redColor];
+        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.7];
     }
     return self;
 }
@@ -24,6 +24,7 @@
     [codes enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
         
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.layer.cornerRadius = 5.0;
         btn.tag = idx;
         [btn addTarget:self action:@selector(clickAction:) forControlEvents:UIControlEventTouchUpInside];
         btn.showsTouchWhenHighlighted = YES;

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F1B838CB3D6030EDF0C2467 /* libPods-hanyutv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C28A96D3694CDADE68B94D9E /* libPods-hanyutv.a */; };
+		2EC951543A6B80FD557DA005 /* libPods-hanyutvTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49985CD4C0159145F306111 /* libPods-hanyutvTests.a */; };
 		9AF47AC920DFD3ED00C578A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */; };
 		9AF47ACC20DFD3ED00C578A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47ACB20DFD3ED00C578A2 /* ViewController.m */; };
 		9AF47ACF20DFD3ED00C578A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF47ACD20DFD3ED00C578A2 /* Main.storyboard */; };
@@ -16,6 +18,7 @@
 		9AF47AE120DFD3EE00C578A2 /* hanyutvTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AE020DFD3EE00C578A2 /* hanyutvTests.m */; };
 		9AF47AEC20DFD3EE00C578A2 /* hanyutvUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AEB20DFD3EE00C578A2 /* hanyutvUITests.m */; };
 		9AF47AFB20DFD41B00C578A2 /* JJHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AF920DFD41B00C578A2 /* JJHtml.m */; };
+		DFE20A3F3552C0201217AC79 /* libPods-hanyutvUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DD6183BCA0DD09169AF4326 /* libPods-hanyutvUITests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5DD6183BCA0DD09169AF4326 /* libPods-hanyutvUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hanyutvUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F7797519A9D26D9E05B1CF7 /* Pods-hanyutv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutv.release.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv.release.xcconfig"; sourceTree = "<group>"; };
+		80314DC7B99311D47981F6BB /* Pods-hanyutv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF47AC420DFD3ED00C578A2 /* hanyutv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hanyutv.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF47AC720DFD3ED00C578A2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -54,6 +60,12 @@
 		9AF47AED20DFD3EE00C578A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9AF47AF920DFD41B00C578A2 /* JJHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JJHtml.m; sourceTree = "<group>"; };
 		9AF47AFA20DFD41B00C578A2 /* JJHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JJHtml.h; sourceTree = "<group>"; };
+		B49985CD4C0159145F306111 /* libPods-hanyutvTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hanyutvTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C28A96D3694CDADE68B94D9E /* libPods-hanyutv.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hanyutv.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBBE9A6ED195C55C826D517D /* Pods-hanyutvUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutvUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutvUITests/Pods-hanyutvUITests.release.xcconfig"; sourceTree = "<group>"; };
+		D623862B694494BA87A02067 /* Pods-hanyutvTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutvTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutvTests/Pods-hanyutvTests.release.xcconfig"; sourceTree = "<group>"; };
+		D733315CF1442731AC7D359F /* Pods-hanyutvTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutvTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutvTests/Pods-hanyutvTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D8B1E9187C111CEF4E2C581E /* Pods-hanyutvUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutvUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutvUITests/Pods-hanyutvUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F1B838CB3D6030EDF0C2467 /* libPods-hanyutv.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2EC951543A6B80FD557DA005 /* libPods-hanyutvTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DFE20A3F3552C0201217AC79 /* libPods-hanyutvUITests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +103,8 @@
 				9AF47ADF20DFD3EE00C578A2 /* hanyutvTests */,
 				9AF47AEA20DFD3EE00C578A2 /* hanyutvUITests */,
 				9AF47AC520DFD3ED00C578A2 /* Products */,
+				E05D01D5A4D546414423E14E /* Pods */,
+				F73DC9BC08F871168004B168 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,6 +154,29 @@
 			path = hanyutvUITests;
 			sourceTree = "<group>";
 		};
+		E05D01D5A4D546414423E14E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				80314DC7B99311D47981F6BB /* Pods-hanyutv.debug.xcconfig */,
+				6F7797519A9D26D9E05B1CF7 /* Pods-hanyutv.release.xcconfig */,
+				D733315CF1442731AC7D359F /* Pods-hanyutvTests.debug.xcconfig */,
+				D623862B694494BA87A02067 /* Pods-hanyutvTests.release.xcconfig */,
+				D8B1E9187C111CEF4E2C581E /* Pods-hanyutvUITests.debug.xcconfig */,
+				CBBE9A6ED195C55C826D517D /* Pods-hanyutvUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F73DC9BC08F871168004B168 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C28A96D3694CDADE68B94D9E /* libPods-hanyutv.a */,
+				B49985CD4C0159145F306111 /* libPods-hanyutvTests.a */,
+				5DD6183BCA0DD09169AF4326 /* libPods-hanyutvUITests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -144,9 +184,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AF47AF020DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutv" */;
 			buildPhases = (
+				F4A585CAD0BA4F7FAFAAC0CA /* [CP] Check Pods Manifest.lock */,
 				9AF47AC020DFD3ED00C578A2 /* Sources */,
 				9AF47AC120DFD3ED00C578A2 /* Frameworks */,
 				9AF47AC220DFD3ED00C578A2 /* Resources */,
+				410A3616421F8164C4AC365E /* [CP] Embed Pods Frameworks */,
+				251D7353AE7264B1F330DE5D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -161,9 +204,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AF47AF320DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvTests" */;
 			buildPhases = (
+				3B7588AA9032865433BA6C71 /* [CP] Check Pods Manifest.lock */,
 				9AF47AD820DFD3EE00C578A2 /* Sources */,
 				9AF47AD920DFD3EE00C578A2 /* Frameworks */,
 				9AF47ADA20DFD3EE00C578A2 /* Resources */,
+				22719212FF90EF6E531B4CCD /* [CP] Embed Pods Frameworks */,
+				99FA911A02CA25EE9D82DDB2 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -179,9 +225,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9AF47AF620DFD3EE00C578A2 /* Build configuration list for PBXNativeTarget "hanyutvUITests" */;
 			buildPhases = (
+				93EE47D16955B1389C530526 /* [CP] Check Pods Manifest.lock */,
 				9AF47AE320DFD3EE00C578A2 /* Sources */,
 				9AF47AE420DFD3EE00C578A2 /* Frameworks */,
 				9AF47AE520DFD3EE00C578A2 /* Resources */,
+				D3A49ED78298B4171B0D4B13 /* [CP] Embed Pods Frameworks */,
+				D4958D0B2079A75FC15BA874 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +313,153 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		22719212FF90EF6E531B4CCD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutvTests/Pods-hanyutvTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		251D7353AE7264B1F330DE5D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3B7588AA9032865433BA6C71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hanyutvTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		410A3616421F8164C4AC365E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		93EE47D16955B1389C530526 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hanyutvUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		99FA911A02CA25EE9D82DDB2 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutvTests/Pods-hanyutvTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D3A49ED78298B4171B0D4B13 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutvUITests/Pods-hanyutvUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4958D0B2079A75FC15BA874 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-hanyutvUITests/Pods-hanyutvUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F4A585CAD0BA4F7FAFAAC0CA /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-hanyutv-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9AF47AC020DFD3ED00C578A2 /* Sources */ = {
@@ -434,6 +630,7 @@
 		};
 		9AF47AF120DFD3EE00C578A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 80314DC7B99311D47981F6BB /* Pods-hanyutv.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -447,6 +644,7 @@
 		};
 		9AF47AF220DFD3EE00C578A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F7797519A9D26D9E05B1CF7 /* Pods-hanyutv.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -460,6 +658,7 @@
 		};
 		9AF47AF420DFD3EE00C578A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D733315CF1442731AC7D359F /* Pods-hanyutvTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -474,6 +673,7 @@
 		};
 		9AF47AF520DFD3EE00C578A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D623862B694494BA87A02067 /* Pods-hanyutvTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -488,6 +688,7 @@
 		};
 		9AF47AF720DFD3EE00C578A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8B1E9187C111CEF4E2C581E /* Pods-hanyutvUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = hanyutvUITests/Info.plist;
@@ -501,6 +702,7 @@
 		};
 		9AF47AF820DFD3EE00C578A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBBE9A6ED195C55C826D517D /* Pods-hanyutvUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = hanyutvUITests/Info.plist;

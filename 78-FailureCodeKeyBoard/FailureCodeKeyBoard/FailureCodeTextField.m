@@ -45,11 +45,11 @@
 
 - (void)setUI{
     
-    CGFloat inset = 5;
-    CGFloat keyBoardViewH = 217;
-    CGFloat spacing = 10;
+    CGFloat inset = 3;
+    CGFloat keyBoardViewH = 260;
+    CGFloat spacing = 6;
     CGFloat width = ([UIScreen mainScreen].bounds.size.width - 2 * inset - 4 * spacing) * 0.2;
-    CGFloat smallHeight = 0.75;
+    CGFloat smallHeight = 0.80;
     CGFloat height = (keyBoardViewH - 2 * inset - 4 * spacing) / (4 + smallHeight);
 
     NSArray *keyCodes = @[
