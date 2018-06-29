@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F1B838CB3D6030EDF0C2467 /* libPods-hanyutv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C28A96D3694CDADE68B94D9E /* libPods-hanyutv.a */; };
 		2EC951543A6B80FD557DA005 /* libPods-hanyutvTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B49985CD4C0159145F306111 /* libPods-hanyutvTests.a */; };
+		69A949CB20E5BEE7007AC00A /* TTZURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A949CA20E5BEE7007AC00A /* TTZURLProtocol.m */; };
 		9AF47AC920DFD3ED00C578A2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47AC820DFD3ED00C578A2 /* AppDelegate.m */; };
 		9AF47ACC20DFD3ED00C578A2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AF47ACB20DFD3ED00C578A2 /* ViewController.m */; };
 		9AF47ACF20DFD3ED00C578A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AF47ACD20DFD3ED00C578A2 /* Main.storyboard */; };
@@ -40,6 +41,8 @@
 
 /* Begin PBXFileReference section */
 		5DD6183BCA0DD09169AF4326 /* libPods-hanyutvUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-hanyutvUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69A949C920E5BEE7007AC00A /* TTZURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTZURLProtocol.h; sourceTree = "<group>"; };
+		69A949CA20E5BEE7007AC00A /* TTZURLProtocol.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTZURLProtocol.m; sourceTree = "<group>"; };
 		6F7797519A9D26D9E05B1CF7 /* Pods-hanyutv.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutv.release.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv.release.xcconfig"; sourceTree = "<group>"; };
 		80314DC7B99311D47981F6BB /* Pods-hanyutv.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-hanyutv.debug.xcconfig"; path = "Pods/Target Support Files/Pods-hanyutv/Pods-hanyutv.debug.xcconfig"; sourceTree = "<group>"; };
 		9AF47AC420DFD3ED00C578A2 /* hanyutv.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = hanyutv.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +135,8 @@
 				9AF47AD220DFD3ED00C578A2 /* LaunchScreen.storyboard */,
 				9AF47AD520DFD3ED00C578A2 /* Info.plist */,
 				9AF47AD620DFD3ED00C578A2 /* main.m */,
+				69A949C920E5BEE7007AC00A /* TTZURLProtocol.h */,
+				69A949CA20E5BEE7007AC00A /* TTZURLProtocol.m */,
 			);
 			path = hanyutv;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				9AF47ACC20DFD3ED00C578A2 /* ViewController.m in Sources */,
 				9AF47AD720DFD3ED00C578A2 /* main.m in Sources */,
 				9AF47AC920DFD3ED00C578A2 /* AppDelegate.m in Sources */,
+				69A949CB20E5BEE7007AC00A /* TTZURLProtocol.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
