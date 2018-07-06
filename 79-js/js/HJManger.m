@@ -118,7 +118,12 @@
         
         NSString *dataRegex = @"<div id=\".*?\"><script charset=\".*?\" src=\"(.*?)\"></script><script charset=\".*?\" src=\".*?\"></script><script charset=\".*?\" src=\".*?\"></script>";
         NSString *dataStr = [self matchString:searchText toRegexString:dataRegex].lastObject;
-        NSString *ur [NSString stringWithFormat:@"http://www.97taiju.com%@", dataStr];
+        NSString *url = [NSString stringWithFormat:@"http://www.97taiju.com%@", dataStr];
+        NSString *jsContet = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
+        NSString *jsonRegex = @"var ff_urls='(.*?)';";
+        NSString *json = [self matchString:jsContet toRegexString:jsonRegex].lastObject;
+
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:NULL];
         NSLog(@"%s", __func__);
 //        NSString *url = [NSString stringWithFormat:@"http://m.yueyuwz.com%@", dataStr];
 //
