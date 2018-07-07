@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6977FFF920EF55A3002E70D1 /* HJManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 6977FFF820EF55A2002E70D1 /* HJManger.m */; };
+		6977FFF920EF55A3002E70D1 /* TaiJuHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 6977FFF820EF55A2002E70D1 /* TaiJuHtml.m */; };
 		6993B3A720EF0533006A90E9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6993B3A620EF0533006A90E9 /* AppDelegate.m */; };
 		6993B3AA20EF0533006A90E9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6993B3A920EF0533006A90E9 /* ViewController.m */; };
 		6993B3AD20EF0533006A90E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6993B3AB20EF0533006A90E9 /* Main.storyboard */; };
@@ -17,8 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6977FFF720EF55A2002E70D1 /* HJManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HJManger.h; sourceTree = "<group>"; };
-		6977FFF820EF55A2002E70D1 /* HJManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HJManger.m; sourceTree = "<group>"; };
+		6977FFF720EF55A2002E70D1 /* TaiJuHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaiJuHtml.h; sourceTree = "<group>"; };
+		6977FFF820EF55A2002E70D1 /* TaiJuHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaiJuHtml.m; sourceTree = "<group>"; };
 		6993B3A220EF0533006A90E9 /* js.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = js.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6993B3A520EF0533006A90E9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6993B3A620EF0533006A90E9 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,8 +61,8 @@
 		6993B3A420EF0533006A90E9 /* js */ = {
 			isa = PBXGroup;
 			children = (
-				6977FFF720EF55A2002E70D1 /* HJManger.h */,
-				6977FFF820EF55A2002E70D1 /* HJManger.m */,
+				6977FFF720EF55A2002E70D1 /* TaiJuHtml.h */,
+				6977FFF820EF55A2002E70D1 /* TaiJuHtml.m */,
 				6993B3A520EF0533006A90E9 /* AppDelegate.h */,
 				6993B3A620EF0533006A90E9 /* AppDelegate.m */,
 				6993B3A820EF0533006A90E9 /* ViewController.h */,
@@ -150,7 +150,7 @@
 				6993B3AA20EF0533006A90E9 /* ViewController.m in Sources */,
 				6993B3B520EF0533006A90E9 /* main.m in Sources */,
 				6993B3A720EF0533006A90E9 /* AppDelegate.m in Sources */,
-				6977FFF920EF55A3002E70D1 /* HJManger.m in Sources */,
+				6977FFF920EF55A3002E70D1 /* TaiJuHtml.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

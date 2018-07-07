@@ -6,59 +6,69 @@
 //  Copyright © 2018年 sdl. All rights reserved.
 //
 
-#import "HJManger.h"
+#import "TaiJuHtml.h"
 
-@implementation HJManger
+@implementation TaiJuHtml
 
-+ (void)search:(NSString *)kw
-          page:(NSInteger)page
-         block: (void(^)(NSArray <NSDictionary *>*,BOOL))block{
-    
-    
++ (void)taiJuSearch:(NSString *)kw
+          pageNo:(NSInteger)page
+         completed: (void(^)(NSArray <NSDictionary *>*objs))block{
     
     if (self.isProtocolService){
-        !(block)? : block(@[],NO);
+        !(block)? : block(@[]);
         return;
     }
     page = page? page : 1;
-//    http://m.hanju.cc/search.php?kwtype=0&keyword=%BA%F3&channeltype=4
+    NSString* encodedString = [[NSString stringWithFormat:@"http://www.97taiju.com/index.php?s=vod-search-wd-%@-p.html",kw] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+
+    if (page>1) {
+        encodedString = [[NSString stringWithFormat:@"http://www.97taiju.com/index.php?s=vod-search-wd-%@-p-%ld.html",kw,(long)page] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    }
+    NSURL * url = [NSURL URLWithString:encodedString];
     
-    kw = [self URLEncodedString:kw];
-    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"http://www.hanju.cc/plus/search.php?keyword=%@&searchtype=titlekeyword&channeltype=4&orderby=&kwtype=0&pagesize=10&typeid=0&PageNo=%ld",kw,(long)page]];
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"http://www.hanju.cc" forHTTPHeaderField:@"Origin"];
+    [request setValue:@"http://www.97taiju.com" forHTTPHeaderField:@"Origin"];
     //request.HTTPMethod = @"POST";
     
     //NSData *paramData = [[NSString stringWithFormat:@"keyword=%@",kw] dataUsingEncoding:NSUTF8StringEncoding];
     //request.HTTPBody = paramData;
     NSURLSession * session = [NSURLSession sharedSession];
     NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSStringEncoding gb2312 = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
         
-        NSString *searchText = [[NSString alloc] initWithData:data encoding:gb2312];
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         if (!searchText) {
             dispatch_async(dispatch_get_main_queue(), ^{
-                !(block)? : block(@[],NO);
+                !(block)? : block(@[]);
             });
             
             return;
         }
         
+        NSString *rString = @"<dt><a href=\".*?\" target=\"_blank\" title=\".*?\"><img src=\".*?\" onerror=\".*?\" alt=\".*?\"/></a></dt>";
+        
+        NSArray *rs = [self matchString:searchText toRegexString:rString];
+        NSLog(@"%s", __func__);
+        NSString *rS = @"<dt><a href=\"(.*?)\" target=\"_blank\" title=\"(.*?)\"><img src=\"(.*?)\" onerror=\".*?\" alt=\".*?\"/></a></dt>";
+        
+        
         NSMutableArray *temps = [NSMutableArray array];
-        NSString *dataRegex = @"<h3><a href=\"(.*?)\" target=\"_blank\">(.*?)</a></h3>";
-        NSArray <NSString *> *datas = [self matchString:searchText toRegexString:dataRegex];
-        for (NSInteger i = 0 ; i < datas.count/3; i ++) {
+        
+        for (NSString *r in rs) {
+            NSArray *d = [self matchString:r toRegexString:rS];
+            if (d.count < 4) {
+                continue;
+            }
+            NSLog(@"%s--%@", __func__,d);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
-            dict[@"url"] =  [NSString stringWithFormat:@"http://m.hanju.cc%@",datas[i*3+1]];
-            dict[@"title"] = [self flattenHTML:datas[i*3+2]];
-            dict[@"img"] = @"";
+            dict[@"img"] = d[3];
+            dict[@"url"] = [NSString stringWithFormat:@"http://www.97taiju.com/%@", d[1]];
+            dict[@"title"] = d[2];
             [temps addObject:dict];
         }
-        
-        
+
         dispatch_async(dispatch_get_main_queue(), ^{
-            !(block)? : block(temps,temps.count == 10);
+            !(block)? : block(temps);
         });
         
         
@@ -69,26 +79,12 @@
 }
 
 
-+ (NSString *)URLEncodedString:(NSString *)str
-{
-    if(!str) return @"";
-    
-    NSStringEncoding gb2312 = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-    
-    NSString *unencodedString = str;
-    NSString *encodedString = (NSString *)
-    CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault,
-                                                              (CFStringRef)unencodedString,
-                                                              NULL,
-                                                              (CFStringRef)@"!*'();:@&=+$,/?%#[]",
-                                                              gb2312));
-    
-    return encodedString;
-}
 
 
-+ (void)getTVM3u8:(NSString *)urlStr title:(NSString *)title block: (void(^)(NSArray *))block{
-    
+
++ (void)taiJuM3u8:(NSString *)urlStr
+            completed: (void(^)(NSArray *objs))block{
+
     
     if ([self isProtocolService]) {
         !(block)? : block(@[]);
@@ -124,6 +120,15 @@
         NSString *json = [self matchString:jsContet toRegexString:jsonRegex].lastObject;
 
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:NULL];
+        NSArray *Data = dict[@"Data"];
+        NSMutableArray *hls = [NSMutableArray array];
+        [Data enumerateObjectsUsingBlock:^(NSDictionary  * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray <NSArray *>*playurls = obj[@"playurls"];
+            [playurls enumerateObjectsUsingBlock:^(NSArray * _Nonnull playurl, NSUInteger idx, BOOL * _Nonnull stop) {
+                [hls addObject:@{@"tltle":playurl[0],@"url":playurl[1]}];
+            }];
+            
+        }];
         NSLog(@"%s", __func__);
 //        NSString *url = [NSString stringWithFormat:@"http://m.yueyuwz.com%@", dataStr];
 //
@@ -154,7 +159,7 @@
 //        }];
 //
         dispatch_async(dispatch_get_main_queue(), ^{
-            !(block)? : block(@[]);
+            !(block)? : block(hls);
         });
         
     }];
@@ -164,8 +169,8 @@
 
 
 
-+ (void)getTaiYuTVDetail:(NSString *)urlStr
-           completeBlock: (void(^)(NSDictionary *))block{
++ (void)getTaiJuDetail:(NSString *)urlStr
+           completed: (void(^)(NSDictionary *obj))block{
     
     if (self.isProtocolService) {
         !(block)? : block(@{});
@@ -260,9 +265,9 @@
 
 
 //FIXME:  -  泰剧列表
-+ (void)getTaiJuTVPage:(NSInteger)page
-                 block: (void(^)(NSArray <NSDictionary *>*))block{
-    
++ (void)getTaiJuPageNo:(NSInteger)page
+                 completed: (void(^)(NSArray <NSDictionary *>*objs))block{
+
     
     if (self.isProtocolService) {
         !(block)? : block(@[]);
@@ -313,7 +318,7 @@
             NSLog(@"%s--%@", __func__,d);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"img"] = d[3];
-            dict[@"live_stream"] = [NSString stringWithFormat:@"http://www.97taiju.com/%@", d[1]];
+            dict[@"url"] = [NSString stringWithFormat:@"http://www.97taiju.com/%@", d[1]];
             dict[@"title"] = d[2];
             [temps addObject:dict];
         }

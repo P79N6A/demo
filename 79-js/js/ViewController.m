@@ -9,7 +9,7 @@
 #import "ViewController.h"
 
 #import <JavaScriptCore/JavaScriptCore.h>
-#import "HJManger.h"
+#import "TaiJuHtml.h"
 
 @interface ViewController ()
 @property (nonatomic, strong) JSContext *jsContext;
@@ -17,19 +17,26 @@
 
 @implementation ViewController
 
+
+
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    [HJManger getTaiJuTVPage:1 block:^(NSArray<NSDictionary *> *objs) {
-        NSLog(@"%s", __func__);
-    }];
-    [HJManger getTaiYuTVDetail:@"http://www.97taiju.com/taiju/meilihuanyingaizhijianying/" completeBlock:^(NSDictionary *obj) {
-       NSLog(@"%s", __func__);
-    }];
     
-    [HJManger getTVM3u8:@"http://www.97taiju.com/taiju/meilihuanyingaizhijianying/play-475-0-24.html#play" title:@"" block:^(NSArray *objs) {
+    [TaiJuHtml getTaiJuPageNo:1 completed:^(NSArray<NSDictionary *> *objs) {
         
     }];
+    [TaiJuHtml getTaiJuDetail:@"http://www.97taiju.com/taiju/kuayueshenhai/" completed:^(NSDictionary *obj) {
+        NSLog(@"%s", __func__);
+    }];
+    [TaiJuHtml taiJuM3u8:@"http://www.97taiju.com/taiju/kuayueshenhai/play-491-1-3.html#play" completed:^(NSArray *objs) {
+        
+    }];
+    [TaiJuHtml taiJuSearch:@"我" pageNo:1 completed:^(NSArray<NSDictionary *> *objs) {
+        
+    }];
+    
     return;
     // Do any additional setup after loading the view, typically from a nib.
     // 一个JSContext对象，就类似于Js中的window，
