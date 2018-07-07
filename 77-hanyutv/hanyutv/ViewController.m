@@ -18,11 +18,11 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    [JJHtml getHanYuTVPage:10 block:^(NSArray<NSDictionary *> *obj) {
+    [JJHtml getHanYuTVPage:0 block:^(NSArray<NSDictionary *> *obj) {
         
     }];
     
-    [JJHtml getHanYuTVDetail:@"https://m.y3600.com/411/453.html" block:^(NSDictionary *obj) {
+    [JJHtml getHanYuTVDetail:@"https://m.y3600.com/78/1346.html" completeBlock:^(NSDictionary *obj) {
         NSLog(@"");
     }];
 }
