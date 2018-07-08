@@ -39,45 +39,45 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
-    for (int i = 0; i < 100000; i ++) {
-        
-    
-    //1.确定请求路径
-    NSURLSession *session = [NSURLSession sharedSession];
-    
-    //2,根据会话创建task
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rotation.vod.bukayi.cn/channel/%d.m3u8",i]];
-    //3,创建可变的请求对象
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    //4,请求方法改为post
-    request.HTTPMethod = @"HEAD";
-    //5,设置请求体
-    request.HTTPBody = [@""dataUsingEncoding:NSUTF8StringEncoding];
-    //6根据会话创建一个task（发送请求）
-    
-    
-    
-    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSLog(@"i = type = %@",response.MIMEType);
-        
-    }];
-    
-    [dataTask resume];
-}
+//
+//    for (int i = 0; i < 100000; i ++) {
+//
+//
+//    //1.确定请求路径
+//    NSURLSession *session = [NSURLSession sharedSession];
+//
+//    //2,根据会话创建task
+//    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://rotation.vod.bukayi.cn/channel/%d.m3u8",i]];
+//    //3,创建可变的请求对象
+//    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+//    //4,请求方法改为post
+//    request.HTTPMethod = @"HEAD";
+//    //5,设置请求体
+//    request.HTTPBody = [@""dataUsingEncoding:NSUTF8StringEncoding];
+//    //6根据会话创建一个task（发送请求）
+//
+//
+//
+//    NSURLSessionDataTask *dataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+//        NSLog(@"i = type = %@",response.MIMEType);
+//
+//    }];
+//
+//    [dataTask resume];
+//}
 
     // Do any additional setup after loading the view, typically from a nib.
-//    [LZData getTVBYBPage:2 block:^(NSArray<NSDictionary *> *obj) {
-//        NSLog(@"%s", __func__);
-//    }];
+    [LZData getTVBYBPage:2 block:^(NSArray<NSDictionary *> *obj) {
+//        NSLog(@"%s--%@", __func__,obj);
+    }];
+
+    [LZData getTVBYBDetail:@"http://www.hktvyb.com/vod/detail/id/1379.html" block:^(NSDictionary *obj) {
+        NSLog(@"%s--%@", __func__,obj);
+    }];
 //
-//    [LZData getTVBYBDetail:@"http://www.hktvyb.com/vod/detail/id/925.html" block:^(NSDictionary *obj) {
-//        NSLog(@"%s", __func__);
-//    }];
-//
-//    [LZData getTVBYBM3u8:@"http://www.hktvyb.com/vod/play/id/925/sid/1/nid/1.html" block:^(NSArray *obj) {
-//
-//    }];
+    [LZData getTVBYBM3u8:@"http://www.hktvyb.com/vod/play/id/1379/sid/1/nid/1.html" block:^(NSArray *obj) {
+
+    }];
     
     
 //    UIBlurEffectStyleExtraLight,
