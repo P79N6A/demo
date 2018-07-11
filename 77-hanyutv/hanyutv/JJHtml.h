@@ -22,7 +22,8 @@
 
 + (void)getHanYuTVPage:(NSInteger)page
                  block: (void(^)(NSArray <NSDictionary *>*))block;
+
 + (void)getHanYuTVDetail:(NSString *)urlStr
-                   block: (void(^)(NSDictionary *))block;
+           completeBlock: (void(^)(NSDictionary *))block;
 
 @end

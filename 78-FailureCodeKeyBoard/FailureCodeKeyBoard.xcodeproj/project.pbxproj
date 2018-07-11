@@ -15,6 +15,7 @@
 		6908583720E082D700E32A6E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6908583620E082D700E32A6E /* main.m */; };
 		6908583F20E082EB00E32A6E /* FailureCodeKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = 6908583E20E082EB00E32A6E /* FailureCodeKeyBoard.m */; };
 		6908584220E0832100E32A6E /* FailureCodeTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = 6908584120E0832100E32A6E /* FailureCodeTextField.m */; };
+		9AB5E00120F1042900790D24 /* DebugView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AB5DFFF20F1042900790D24 /* DebugView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,8 @@
 		6908583E20E082EB00E32A6E /* FailureCodeKeyBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FailureCodeKeyBoard.m; sourceTree = "<group>"; };
 		6908584020E0832100E32A6E /* FailureCodeTextField.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FailureCodeTextField.h; sourceTree = "<group>"; };
 		6908584120E0832100E32A6E /* FailureCodeTextField.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FailureCodeTextField.m; sourceTree = "<group>"; };
+		9AB5DFFF20F1042900790D24 /* DebugView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DebugView.m; sourceTree = "<group>"; };
+		9AB5E00020F1042900790D24 /* DebugView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DebugView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +67,7 @@
 		6908582620E082D700E32A6E /* FailureCodeKeyBoard */ = {
 			isa = PBXGroup;
 			children = (
+				9AB5DFFE20F1042900790D24 /* DebugView */,
 				6908582720E082D700E32A6E /* AppDelegate.h */,
 				6908582820E082D700E32A6E /* AppDelegate.m */,
 				6908582A20E082D700E32A6E /* ViewController.h */,
@@ -79,6 +83,15 @@
 				6908584120E0832100E32A6E /* FailureCodeTextField.m */,
 			);
 			path = FailureCodeKeyBoard;
+			sourceTree = "<group>";
+		};
+		9AB5DFFE20F1042900790D24 /* DebugView */ = {
+			isa = PBXGroup;
+			children = (
+				9AB5DFFF20F1042900790D24 /* DebugView.m */,
+				9AB5E00020F1042900790D24 /* DebugView.h */,
+			);
+			path = DebugView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +169,7 @@
 				6908582C20E082D700E32A6E /* ViewController.m in Sources */,
 				6908584220E0832100E32A6E /* FailureCodeTextField.m in Sources */,
 				6908583720E082D700E32A6E /* main.m in Sources */,
+				9AB5E00120F1042900790D24 /* DebugView.m in Sources */,
 				6908582920E082D700E32A6E /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

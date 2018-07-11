@@ -4,10 +4,10 @@
 
 @implementation JJHtml
 
+//FIXME:  -  韩剧详情
 + (void)getHanYuTVDetail:(NSString *)urlStr
-                   block: (void(^)(NSDictionary *))block{
-    
-    
+            completeBlock: (void(^)(NSDictionary *))block{
+    //https://m.y3600.com/411/index.html
     if (self.isProtocolService) {
             !(block)? : block(@{});
             return;
@@ -30,14 +30,7 @@
             
             return;
         }
-        
-//        NSString *contentRegex = @"<ul class=\"content\">[\\w\\W]*?</ul>";
-//        NSString *content = [self matchString:searchText toRegexString:contentRegex].lastObject;
-//
-//        NSString *allRegex = @"<p><img src=\"(.*?)\" alt=\"\" /></p><p>(.*?)</p><p>.*?</p><p>.*?</p><p>(.*?)</p><p>.*?</p><p>.*?</p><p>(.*?)</p><p>.*?</p><p>.*?</p><p>(.*?)</p>";
-//        NSString *all = [self matchString:content toRegexString:allRegex].lastObject;
-//
-        
+
         NSString *iconRegex = @"<p><img src=\"(.*?)\" alt=\".*?\" /></p>";
         NSString *icon = [self matchString:searchText toRegexString:iconRegex].lastObject;
         icon = [icon containsString:@"http"]?icon:[NSString stringWithFormat:@"https:%@",icon];
@@ -130,7 +123,7 @@
                               @"year":year.length?year : @"未知",
                               @"des":des.length? des : @"暂无介绍",
                               @"vlist":m3u8s.count? m3u8s : @[],
-//                              @"main" : main.length? main:@"未知",
+                              //@"main" : main.length? main:@"未知",
                               @"language" : language.length?language:@"未知"
                               };
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -141,6 +134,7 @@
     [task resume];
 }
 
+//FIXME:  -  韩剧列表
 + (void)getHanYuTVPage:(NSInteger)page
                  block: (void(^)(NSArray <NSDictionary *>*))block{
     
