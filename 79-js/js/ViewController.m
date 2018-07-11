@@ -23,6 +23,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    NSMutableArray  *jsons= [NSMutableArray array];
+    
+    for (NSInteger i = 1; i < 8; i ++) {
+        NSString *url = [NSString stringWithFormat:@"http://taobao.jszks.net/index.php/Dudu/hanjutv/p/%ld",i];
+        NSString *json = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
+        NSDictionary *obj = [NSJSONSerialization JSONObjectWithData:[json dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:NULL];
+        NSArray *list = [obj valueForKey:@"list"];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        [list enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSString *Id = [obj valueForKey:@"id"];
+            NSString *urlId = [NSString stringWithFormat:@"http://taobao.jszks.net/index.php/Dudu/hanjutvxiangxi?iid=%@",Id];
+            NSString *tvjson = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:urlId] encoding:NSUTF8StringEncoding error:NULL];
+            NSDictionary *tvobj = [NSJSONSerialization JSONObjectWithData:[tvjson dataUsingEncoding:NSUTF8StringEncoding] options:NSJSONReadingAllowFragments error:NULL];
+            NSArray *tvlist = [tvobj valueForKey:@"list"];
+            dict[@"Id"] = Id;
+            dict[@"zhuti"] = [obj valueForKey:@"zhuti"];
+            dict[@"img"] = [obj valueForKey:@"img"];
+            dict[@"title"] = [obj valueForKey:@"title"];
+            dict[@"list"] = tvlist;
+
+            [jsons addObject:dict];
+        }];
+        
+        NSLog(@"%s---%@", __func__,json);
+    }
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:jsons options:NSJSONWritingPrettyPrinted error:NULL];
+    [data writeToFile:@"/Users/jay/Desktop/hanjutv.json" options:NSDataWritingAtomic error:NULL];
+    
+    NSString *txt =[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    NSLog(@"%s", __func__);
+    return;
     
     [TaiJuHtml getTaiJuPageNo:1 completed:^(NSArray<NSDictionary *> *objs) {
         
