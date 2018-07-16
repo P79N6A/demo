@@ -275,6 +275,7 @@
     }
     
     NSString *str =  @"http://www.97taiju.com/list/taiju/index.html";
+    str = @"http://www.97pd.com/list/dongman/";
     if (page > 1) {
         str = [NSString stringWithFormat:@"http://www.97taiju.com/list/taiju/index-%ld.html",(long)page];
     }

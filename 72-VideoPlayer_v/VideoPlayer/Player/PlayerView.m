@@ -11,16 +11,20 @@
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
+#import <SafariServices/SafariServices.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 
 typedef NS_ENUM(NSUInteger, Direction) {
     DirectionLeftOrRight,
     DirectionUpOrDown,
     DirectionNone
 };
+
+
+
 
 
 @interface PlayerView()
@@ -40,6 +44,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 /** 全屏按键 */
 @property (weak, nonatomic) IBOutlet UIButton *fullButton;
 /** loading菊花 */
+@property (weak, nonatomic) IBOutlet UILabel *loadingLabel;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *loadingView;
 /** 返回按键 */
 @property (weak, nonatomic) IBOutlet UIButton *backButton;
@@ -83,6 +88,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 @end
 
+
+@implementation VideoModel
+@end
 @implementation PlayerView
 
 
@@ -108,14 +116,31 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.videoButtomView addSubview:self.progressView];
     [self.videoButtomView addSubview:self.videoSlider];
     
+    [self initUI];
+    
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
-- (void)layout{
-    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5, self.bounds.size.height * 0.5);
-    self.errorBtn.center = self.loadingView.center;
+- (void)initUI{
+    self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+
     
-    CGFloat spacing = iPhoneX? 24 : 0;
+    self.topBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_top"];
+    [self.backButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_back"] forState:UIControlStateNormal];
+    
+    self.buttomBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_buttom"];
+    [self.fullButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_small"] forState:UIControlStateNormal];
+    [self.fullButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_full"] forState:UIControlStateSelected];
+
+}
+
+- (void)layout{
+    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
+    self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
+    
+    self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
+    
+    CGFloat spacing = iPhoneXX? 24 : 0;
     self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 64);
     
     
@@ -133,9 +158,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     self.videoButtomView.frame = CGRectMake(0, 0, self.buttomView.bounds.size.width - 44, self.buttomView.bounds.size.height);
     
     self.playOrPauseButton.frame = CGRectMake(0, 0, 44, 44);
-    self.timeLabel.frame = CGRectMake(44, 0, 65, 44);
+    self.timeLabel.frame = CGRectMake(44, 0, 75, 44);
     
-    self.progressView.frame = CGRectMake(44 + 65+10, 0, self.videoButtomView.bounds.size.width - 44 - 65-10, 44);
+    self.progressView.frame = CGRectMake(44 + 75+10, 0, self.videoButtomView.bounds.size.width - 44 - 75-10, 44);
     self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.center.y);
     self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 2, self.progressView.frame.origin.y, self.progressView.frame.size.width+2, 44);
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
@@ -151,13 +176,50 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 
 - (void)dealloc{
-    [self stop];
+    [_mediaPlayer destroy];
+    //取消设置屏幕常亮
+    //[UIApplication sharedApplication].idleTimerDisabled = NO;
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
     NSLog(@"%s", __func__);
 }
-
+//FIXME:  -  防代理服务器
+- (BOOL)isProtocolService{
+    
+#ifdef DEBUG
+    return NO;
+#else
+    NSDictionary *proxySettings = (__bridge NSDictionary *)(CFNetworkCopySystemProxySettings());
+    NSArray *proxies = (__bridge NSArray *)(CFNetworkCopyProxiesForURL((__bridge CFURLRef _Nonnull)([NSURL URLWithString:@"http://www.baidu.com"]), (__bridge CFDictionaryRef _Nonnull)(proxySettings)));
+    //NSLog(@"\n%@",proxies);
+    
+    NSDictionary *settings = proxies[0];
+    //NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyHostNameKey]);
+    //NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyPortNumberKey]);
+    //NSLog(@"%@",[settings objectForKey:(NSString *)kCFProxyTypeKey]);
+    
+    if ([[settings objectForKey:(NSString *)kCFProxyTypeKey] isEqualToString:@"kCFProxyTypeNone"])
+    {
+        //NSLog(@"没代理");
+        return NO;
+    }
+    else
+    {
+        NSLog(@"设置了代理");
+        return YES;
+    }
+#endif
+}
 #pragma mark  开始播放
 - (void)playWithModel:(id<TTZPlayerModel>)model{
     
+    //设置屏幕常亮
+    [UIApplication sharedApplication].idleTimerDisabled = YES;
+
+    [self.loadingView startAnimating];
+    self.loadingLabel.text = @"加载中...";
+    self.loadingLabel.hidden = self.loadingView.isHidden;
+    self.errorBtn.hidden = !self.loadingView.isHidden;
+
     
     NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
     if ([model.live_stream hasPrefix:@"http://"] || [model.live_stream hasPrefix:@"https://"]) {
@@ -168,6 +230,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
         url = [NSURL fileURLWithPath:model.live_stream];
     }
 
+    if ([self isProtocolService]) {
+        url = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
+    }
     
     [self stop];
     self.model = model;
@@ -177,6 +242,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self play];
     
     self.titleLabel.text = model.name;
+    
+
+    NSLog(@"%s----URL---%@", __func__,url.absoluteString);
+    
+    //[self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
 }
 
 - (void)play
@@ -196,21 +266,42 @@ typedef NS_ENUM(NSUInteger, Direction) {
 {
     return self.mediaPlayer.isPlaying;
 }
+
 //FIXME:  -  隐藏状态栏
-- (void)setPrefersStatusBarHidden:(BOOL)prefersStatusBarHidden{
-    _prefersStatusBarHidden = prefersStatusBarHidden;
-    if(prefersStatusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
+- (void)setStatusBarHidden:(BOOL)statusBarHidden{
+    _statusBarHidden = statusBarHidden;
+    if(statusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
     else [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar - 1];
 }
 
 - (IBAction)rePlay:(UIButton *)sender {
-    sender.hidden = YES;
+
+    if (self.allowSafariPlay) {
+        
+        WHWebViewController *web = [[WHWebViewController alloc] init];
+        web.urlString = self.model.live_stream;
+        web.canDownRefresh = YES;
+        web.navigationItem.title = self.model.name;
+        
+        UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
+        webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
+        webVC.navigationBar.tintColor = [UIColor whiteColor];
+        [webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        [[self viewController] presentViewController:webVC animated:YES completion:nil];
+        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
+        return;
+    }
     [self playWithModel:self.model];
 }
 
 
+
 //FIXME:  -  屏幕旋转回调
 - (void)changeRotate:(NSNotification*)noti {
+    
+    NSLog(@"%s--playView->VC:%@;topVC:%@", __func__,[self viewController],[self topViewController]);
+    
+    if([self viewController] && [self topViewController] && [self viewController] != [self topViewController]) return;
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (self.state == PlayViewStateSmall) {
@@ -324,7 +415,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     }
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
-    self.prefersStatusBarHidden = self.buttomView.isHidden;
+    self.statusBarHidden = self.buttomView.isHidden;
     
 }
 //FIXME:  -  返回
@@ -470,6 +561,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
         self.frame = self.playViewSmallFrame;
         [self.playViewParentView addSubview:self];
         self.state = PlayViewStateSmall;
+        self.statusBarHidden = NO;
     }];
     
     [self refreshStatusBarOrientation:UIInterfaceOrientationPortrait];
@@ -606,9 +698,18 @@ typedef NS_ENUM(NSUInteger, Direction) {
 - (void)OnVideoError:(NSNotification *)noti{
     NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
     NSString *errorMsg = [noti.userInfo valueForKey:@"errorMsg"];
-    [self.errorBtn setTitle:errorMsg forState:UIControlStateNormal];
+    
+    if (self.allowSafariPlay) {
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(可点击跳转至Safari浏览器观看)",errorMsg] forState:UIControlStateNormal];
+    }else{
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(可点击重新播放或者切换视频源)",errorMsg] forState:UIControlStateNormal];
+    }
+    
     self.errorBtn.hidden = NO;
     
+    [self.loadingView stopAnimating];
+    self.loadingLabel.hidden = self.loadingView.isHidden;
+
     [self.timer invalidate];
     self.timer = nil;
 }
@@ -623,6 +724,10 @@ typedef NS_ENUM(NSUInteger, Direction) {
     NSLog(@"%s--播放器开始缓冲视频时", __func__);
     //!(_playerLoading)? : _playerLoading();
     [self.loadingView startAnimating];
+    self.loadingLabel.text = @"缓存中...";
+    self.loadingLabel.hidden = self.loadingView.isHidden;
+    self.errorBtn.hidden = !self.loadingView.isHidden;
+
 }
 
 #pragma mark  - 播放器结束缓冲视频
@@ -630,6 +735,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
     NSLog(@"%s--播放器结束缓冲视频", __func__);
     //!(_playerCompletion)? : _playerCompletion();
     [self.loadingView stopAnimating];
+    self.loadingLabel.hidden = self.loadingView.isHidden;
+    
     if(self.mediaPlayer.duration) [self timer];
 }
 
@@ -642,7 +749,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 - (void)onVideoFirstFrame:(NSNotification *)noti{
     NSLog(@"%s--播放器状态首帧显示", __func__);
     //!(_playerCompletion)? : _playerCompletion();
-    if(self.mediaPlayer.duration) [self timer];
+    if(self.mediaPlayer.duration) {[self timer];self.errorBtn.hidden = YES;}
 }
 
 #pragma mark  - 播放器开启循环播放
@@ -673,10 +780,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
 - (SPVideoSlider *)videoSlider {
     if (!_videoSlider) {
         _videoSlider                       = [[SPVideoSlider alloc] init];
-        [_videoSlider setMinimumTrackImage:[UIImage imageNamed:@"pic_progressbar_n_171x3_"] forState:UIControlStateNormal];
-        [_videoSlider setThumbImage:[UIImage imageNamed:@"player_full_slider_iphone_12x15_"] forState:UIControlStateNormal];
+        [_videoSlider setMinimumTrackImage:[UIImage imageFromBundleWithName:@"fullplayer_progressbar_n_171x3_"] forState:UIControlStateNormal];
+        [_videoSlider setThumbImage:[UIImage imageFromBundleWithName:@"fullplayer_slider_iphone_12x15_"] forState:UIControlStateNormal];
         
-        //[_videoSlider setMaximumTrackImage:SPPlayerImage(@"freeprop_progressbar_iphone_40x2_"] forState:UIControlStateNormal];
         _videoSlider.maximumTrackTintColor = [UIColor colorWithRed:0.5 green:0.5 blue:0.5 alpha:0.5];
         //_videoSlider.value = 0.6;
         //_videoSlider.backgroundColor = [UIColor orangeColor];
@@ -702,8 +808,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     if (!_playOrPauseButton) {
         _playOrPauseButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_playOrPauseButton setImage:[UIImage imageNamed:@"fullplayer_icon_pause"] forState:UIControlStateSelected];
-        [_playOrPauseButton setImage:[UIImage imageNamed:@"fullplayer_icon_play"] forState:UIControlStateNormal];
+        [_playOrPauseButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_pause"] forState:UIControlStateSelected];
+        [_playOrPauseButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_play"] forState:UIControlStateNormal];
         _playOrPauseButton.selected = YES;
         [_playOrPauseButton addTarget:self action:@selector(playOrPause:) forControlEvents:UIControlEventTouchUpInside];
         
@@ -868,9 +974,24 @@ typedef NS_ENUM(NSUInteger, Direction) {
 @implementation UIViewController (Player)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
+    
+    NSString *className = NSStringFromClass([self class]);
+    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
+           ] containsObject:className])
+    {
+        return YES;
+    }
+    
     return NO;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
+    NSString *className = NSStringFromClass([self class]);
+    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
+           ] containsObject:className])
+    {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    }
+    
     return UIInterfaceOrientationMaskPortrait;
 }
 
@@ -890,6 +1011,50 @@ typedef NS_ENUM(NSUInteger, Direction) {
     return NO;
 }
 @end
+
+
+@implementation UIView (Player)
+//FIXME:  -  View获取所在的Controller
+- (UIViewController *)viewController{
+    for (UIView* next = [self superview]; next; next = next.superview) {
+        UIResponder *nextResponder = [next nextResponder];
+        if ([nextResponder isKindOfClass:[UIViewController class]]) {
+            return (UIViewController *)nextResponder;
+        }
+    }
+    return nil;
+}
+- (UIViewController *)topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+        
+    }
+    return resultVC;
+}
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
+}
+@end
+
+
+@implementation UIImage (Bundle)
++ (UIImage *)imageFromBundleWithName:(NSString *)imageName{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"resources" ofType:@".bundle"];
+    NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
+    return [UIImage imageNamed:fullImageName];
+}
+@end
+
 
 
 
