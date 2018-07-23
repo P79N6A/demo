@@ -82,6 +82,13 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 @property (nonatomic, strong) UISlider *volumeViewSlider;
 
+@property (weak, nonatomic) IBOutlet UIButton *lockBtn;
+
+/*静默进度条 */
+@property (weak, nonatomic) IBOutlet UIProgressView *fullProgressView;
+@property (weak, nonatomic) IBOutlet UIProgressView *fullBufView;
+
+
 @property (assign, nonatomic) CGPoint startPoint;
 @property (assign, nonatomic) CGFloat volumeValue;
 @property (assign, nonatomic) Direction direction;
@@ -131,41 +138,54 @@ typedef NS_ENUM(NSUInteger, Direction) {
     self.buttomBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_buttom"];
     [self.fullButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_small"] forState:UIControlStateNormal];
     [self.fullButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_full"] forState:UIControlStateSelected];
+    
+    [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_off_iphone_44x44_"] forState:UIControlStateNormal];
+    [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_on_iphone_44x44_"] forState:UIControlStateSelected];
+
+
 
 }
 
 - (void)layout{
+    CGFloat spacing = iPhoneXX? 24 : 0;
+
     self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
     self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
+    self.lockBtn.frame = CGRectMake(0, 0, 40, 40);
+    self.lockBtn.center = CGPointMake(15+20+spacing, self.loadingView.center.y);
+    
     self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
     
-    CGFloat spacing = iPhoneXX? 24 : 0;
-    self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 64);
+    self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 84);
     
-    
-    self.buttomView.frame = CGRectMake(spacing, self.bounds.size.height - 44, self.bounds.size.width - 2 * spacing, 44);
+    self.buttomView.frame = CGRectMake(spacing, self.bounds.size.height - 64, self.bounds.size.width - 2 * spacing, 64);
     
     self.contentView.frame = self.bounds;
-    self.fullButton.frame = CGRectMake(self.buttomView.bounds.size.width - 44, 0, 44, 44);
+    self.fullButton.frame = CGRectMake(self.buttomView.bounds.size.width - 44, self.buttomView.bounds.size.height - 44, 44, 44);
+    
     self.topBgView.frame = self.topView.bounds;
     self.buttomBgView.frame = self.buttomView.bounds;
     
-    self.backButton.frame = CGRectMake(0, 20, 44, 44);
-    self.titleLabel.frame = CGRectMake(44, 20, self.topView.bounds.size.width - 44, 44);
+    self.backButton.frame = CGRectMake(0, 20+spacing*0.5, 44, 44);
+    self.titleLabel.frame = CGRectMake(44, 20+spacing*0.5, self.topView.bounds.size.width - 44, 44);
     
     
-    self.videoButtomView.frame = CGRectMake(0, 0, self.buttomView.bounds.size.width - 44, self.buttomView.bounds.size.height);
+    self.videoButtomView.frame = CGRectMake(0, self.buttomView.bounds.size.height - 44, self.buttomView.bounds.size.width - 44, 44);
     
     self.playOrPauseButton.frame = CGRectMake(0, 0, 44, 44);
     self.timeLabel.frame = CGRectMake(44, 0, 75, 44);
     
     self.progressView.frame = CGRectMake(44 + 75+10, 0, self.videoButtomView.bounds.size.width - 44 - 75-10, 44);
-    self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.center.y);
+    self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.bounds.size.height * 0.5);
+    
     self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 2, self.progressView.frame.origin.y, self.progressView.frame.size.width+2, 44);
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
     
     self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
+
+    self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
+    self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
 
 }
 
@@ -301,6 +321,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     NSLog(@"%s--playView->VC:%@;topVC:%@", __func__,[self viewController],[self topViewController]);
     
+    
+    if(self.lockBtn.isSelected) return;
+    
     if([self viewController] && [self topViewController] && [self viewController] != [self topViewController]) return;
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
@@ -360,8 +383,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 
 - (void)panGesture:(UIPanGestureRecognizer *)sender{
+    
 
     if(self.state == PlayViewStateSmall) return;
+    
+    if(self.lockBtn.isSelected) return;
     
     CGPoint point = [sender translationInView:self];
     
@@ -413,6 +439,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
         self.buttomView.hidden = !self.buttomView.isHidden;
         return;
     }
+    self.lockBtn.hidden =  !self.lockBtn.isHidden;
+    self.fullProgressView.hidden = !self.lockBtn.isHidden;
+    self.fullBufView.hidden = self.fullProgressView.isHidden;
+
+    if (self.lockBtn.isSelected)  return;
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
     self.statusBarHidden = self.buttomView.isHidden;
@@ -438,10 +469,18 @@ typedef NS_ENUM(NSUInteger, Direction) {
         sender.selected = NO;
     }
 }
+//FIXME:  -  🔐屏
+- (IBAction)lockScrrenAction:(UIButton *)sender {
+    sender.selected = !sender.isSelected;
+    self.topView.hidden = !self.buttomView.isHidden;
+    self.buttomView.hidden = !self.buttomView.isHidden;
+    self.statusBarHidden = self.buttomView.isHidden;
+}
 
 //FIXME:  -  向左
 - (void)enterFullscreenLeft {
     
+    self.lockBtn.hidden = NO;
     self.buttomView.hidden = NO;
     self.topView.hidden = NO;
     self.fullButton.selected = YES;
@@ -488,7 +527,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 //FIXME:  -  向右
 - (void)enterFullscreenRight {
     
-    
+    self.lockBtn.hidden = NO;
     self.buttomView.hidden = NO;
     self.topView.hidden = NO;
     self.fullButton.selected = YES;
@@ -534,7 +573,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 //FIXME:  -  竖屏
 - (void)exitFullscreen {
-    
+    self.lockBtn.hidden = YES;
     self.buttomView.hidden = YES;
     self.topView.hidden = YES;
     self.fullButton.selected = NO;
@@ -670,11 +709,14 @@ typedef NS_ENUM(NSUInteger, Direction) {
     NSTimeInterval current = self.mediaPlayer.currentPosition;
     
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
-    NSLog(@"%s----%f", __func__,self.progressView.progress);
     self.videoSlider.value = current / total;
+
+    NSLog(@"%s----缓存：%f----进度：%f", __func__,self.progressView.progress,self.videoSlider.value);
     total = total/1000;
     current = current/1000;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+    self.fullProgressView.progress = self.videoSlider.value;
+    self.fullBufView.progress = self.progressView.progress;
 }
 
 
@@ -686,6 +728,10 @@ typedef NS_ENUM(NSUInteger, Direction) {
     NSTimeInterval total = self.mediaPlayer.duration/1000;
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
+    if(islive){
+        self.fullBufView = nil;
+        self.fullProgressView = nil;
+    }
     self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
 }
 
@@ -736,6 +782,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     //!(_playerCompletion)? : _playerCompletion();
     [self.loadingView stopAnimating];
     self.loadingLabel.hidden = self.loadingView.isHidden;
+    self.errorBtn.hidden = YES;
     
     if(self.mediaPlayer.duration) [self timer];
 }
