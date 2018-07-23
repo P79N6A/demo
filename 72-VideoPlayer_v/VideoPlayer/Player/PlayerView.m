@@ -324,6 +324,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     if(self.lockBtn.isSelected) return;
     
+    if(self.state == PlayViewStateAnimating) return;
+    
     if([self viewController] && [self topViewController] && [self viewController] != [self topViewController]) return;
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
