@@ -14,9 +14,9 @@
 		693601AB20A6B556005083BE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 693601AA20A6B556005083BE /* Assets.xcassets */; };
 		693601AE20A6B556005083BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 693601AC20A6B556005083BE /* LaunchScreen.storyboard */; };
 		693601B120A6B556005083BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 693601B020A6B556005083BE /* main.m */; };
-		693601BD20A6B58C005083BE /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693601B920A6B58C005083BE /* PlayerView.m */; };
-		693601BE20A6B58C005083BE /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 693601BA20A6B58C005083BE /* PlayerView.xib */; };
 		693601BF20A6B58C005083BE /* SPVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 693601BC20A6B58C005083BE /* SPVideoSlider.m */; };
+		9A6A64112106180100C3EDD5 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6A640E2106180000C3EDD5 /* PlayerView.xib */; };
+		9A6A64122106180100C3EDD5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A64102106180000C3EDD5 /* PlayerView.m */; };
 		B74C3CE7B920EB441C3703E2 /* libPods-VideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 52D7EF7F560980725C3A9614 /* libPods-VideoPlayer.a */; };
 /* End PBXBuildFile section */
 
@@ -33,13 +33,13 @@
 		693601AD20A6B556005083BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		693601AF20A6B556005083BE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		693601B020A6B556005083BE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		693601B820A6B58C005083BE /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
-		693601B920A6B58C005083BE /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
-		693601BA20A6B58C005083BE /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
 		693601BB20A6B58C005083BE /* SPVideoSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPVideoSlider.h; sourceTree = "<group>"; };
 		693601BC20A6B58C005083BE /* SPVideoSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPVideoSlider.m; sourceTree = "<group>"; };
 		69387D3381D38B0DFCA42FB1 /* Pods-VideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoPlayer/Pods-VideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
 		6A49EA3FBEB1AE290619F905 /* Pods-VideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoPlayer/Pods-VideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
+		9A6A640E2106180000C3EDD5 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		9A6A640F2106180000C3EDD5 /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		9A6A64102106180000C3EDD5 /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,9 +101,9 @@
 			isa = PBXGroup;
 			children = (
 				691F700B20FC69720023FEC1 /* resources.bundle */,
-				693601B820A6B58C005083BE /* PlayerView.h */,
-				693601B920A6B58C005083BE /* PlayerView.m */,
-				693601BA20A6B58C005083BE /* PlayerView.xib */,
+				9A6A640F2106180000C3EDD5 /* PlayerView.h */,
+				9A6A64102106180000C3EDD5 /* PlayerView.m */,
+				9A6A640E2106180000C3EDD5 /* PlayerView.xib */,
 				693601BB20A6B58C005083BE /* SPVideoSlider.h */,
 				693601BC20A6B58C005083BE /* SPVideoSlider.m */,
 			);
@@ -184,7 +184,7 @@
 				693601AB20A6B556005083BE /* Assets.xcassets in Resources */,
 				693601A920A6B556005083BE /* Main.storyboard in Resources */,
 				691F700C20FC69720023FEC1 /* resources.bundle in Resources */,
-				693601BE20A6B58C005083BE /* PlayerView.xib in Resources */,
+				9A6A64112106180100C3EDD5 /* PlayerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,9 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				693601A620A6B556005083BE /* ViewController.m in Sources */,
+				9A6A64122106180100C3EDD5 /* PlayerView.m in Sources */,
 				693601B120A6B556005083BE /* main.m in Sources */,
 				693601A320A6B556005083BE /* AppDelegate.m in Sources */,
-				693601BD20A6B58C005083BE /* PlayerView.m in Sources */,
 				693601BF20A6B58C005083BE /* SPVideoSlider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
