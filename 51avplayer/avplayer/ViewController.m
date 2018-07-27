@@ -9,6 +9,7 @@
 #import "ViewController.h"
 
 #import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 @interface ViewController ()
 /** <##> */
@@ -22,7 +23,7 @@
     // Do any additional setup after loading the view, typically from a nib.
     
 
-    NSURL *url = [NSURL URLWithString:@"http://v.91kds.com/b9/bst1.m3u8?id=szwshd&nwtime=1521791023&sign=5c058e64a0e8ffc6b2b74de8ef60c61b&mip=113.111.49.151&from=net"];
+    NSURL *url = [NSURL URLWithString:@"http://111.223.51.7:8000/listen.pls?sid=1"];
     
     
     //防盗链
@@ -43,6 +44,13 @@
 
     [self.player play];
 
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    NSURL *url = [NSURL URLWithString:@"http://111.223.51.7:8000/listen.pls?sid=1"];
+    MPMoviePlayerController *vc = [[MPMoviePlayerController alloc] initWithContentURL:url];
+    [self.view addSubview:vc.view];
 }
 
 

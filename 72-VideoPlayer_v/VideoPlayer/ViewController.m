@@ -21,8 +21,9 @@
     VideoModel *model = [VideoModel new];
     model.name = @"hello tv";
 //    model.live_stream = [NSURL fileURLWithPath:@"/Users/jay/Downloads/20180503102411_460.mp4"];
-    model.live_stream = @"https://vd3.bdstatic.com/mda-iekywrziqr96hr4c/mda-iekywrziqr96hr4c.mp4";
+    model.live_stream = @"http://play.532s.com/ppvod/sYxwDTmD.m3u8";
 //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
+    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
     PlayerView *player = [PlayerView playerView];
     player.frame = CGRectMake(0, 100, 320, 200);
