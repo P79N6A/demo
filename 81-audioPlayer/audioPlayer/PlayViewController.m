@@ -29,7 +29,7 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
     if (self.delegate && [self.delegate respondsToSelector:@selector(dismiss)]) {
-        [self.delegate dismiss];
+//        [self.delegate dismiss];
     }
 }
 /*

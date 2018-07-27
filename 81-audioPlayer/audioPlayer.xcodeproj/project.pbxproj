@@ -11,6 +11,7 @@
 		693D1410210B0C2100092DB0 /* UIView+EffectView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D140E210B0C2100092DB0 /* UIView+EffectView.m */; };
 		693D1414210B13B500092DB0 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D1412210B13B500092DB0 /* PlayViewController.m */; };
 		693D1418210B14E200092DB0 /* TransFromAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D1417210B14E200092DB0 /* TransFromAnimation.m */; };
+		693D141B210B297D00092DB0 /* SwipeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 693D141A210B297D00092DB0 /* SwipeViewController.m */; };
 		9A2107DB210A0D93008E0E4D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2107DA210A0D93008E0E4D /* AppDelegate.m */; };
 		9A2107DE210A0D93008E0E4D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A2107DD210A0D93008E0E4D /* ViewController.m */; };
 		9A2107E1210A0D93008E0E4D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A2107DF210A0D93008E0E4D /* Main.storyboard */; };
@@ -48,6 +49,8 @@
 		693D1412210B13B500092DB0 /* PlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		693D1416210B14E200092DB0 /* TransFromAnimation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransFromAnimation.h; sourceTree = "<group>"; };
 		693D1417210B14E200092DB0 /* TransFromAnimation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransFromAnimation.m; sourceTree = "<group>"; };
+		693D1419210B297C00092DB0 /* SwipeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SwipeViewController.h; sourceTree = "<group>"; };
+		693D141A210B297D00092DB0 /* SwipeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SwipeViewController.m; sourceTree = "<group>"; };
 		9A2107D6210A0D93008E0E4D /* audioPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = audioPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A2107D9210A0D93008E0E4D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9A2107DA210A0D93008E0E4D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -116,6 +119,8 @@
 		9A2107D8210A0D93008E0E4D /* audioPlayer */ = {
 			isa = PBXGroup;
 			children = (
+				693D1419210B297C00092DB0 /* SwipeViewController.h */,
+				693D141A210B297D00092DB0 /* SwipeViewController.m */,
 				693D140F210B0C2100092DB0 /* UIView+EffectView.h */,
 				693D140E210B0C2100092DB0 /* UIView+EffectView.m */,
 				693D140C210AF8B000092DB0 /* UIView+Loading.h */,
@@ -296,6 +301,7 @@
 				693D1418210B14E200092DB0 /* TransFromAnimation.m in Sources */,
 				693D140D210AF8B000092DB0 /* UIView+Loading.m in Sources */,
 				693D1410210B0C2100092DB0 /* UIView+EffectView.m in Sources */,
+				693D141B210B297D00092DB0 /* SwipeViewController.m in Sources */,
 				9A21080D210A0E11008E0E4D /* AudioPlayer.m in Sources */,
 				693D1414210B13B500092DB0 /* PlayViewController.m in Sources */,
 			);

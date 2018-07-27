@@ -10,6 +10,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "PlayViewController.h"
 #import "TransFromAnimation.h"
+#import "SwipeViewController.h"
 
 
 #import "AudioPlayer.h"
@@ -41,6 +42,7 @@
 
 @property(nonatomic,strong)TransFromAnimation *presentAnimation;
 @property(nonatomic,strong)TransFromAnimation *dismissAnimation;
+@property(nonatomic,strong)SwipeViewController *swipeVC;
 
 
 @end
@@ -95,6 +97,8 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath{
     
     PlayViewController *presentToVC=[[PlayViewController alloc]init];
+    [self.swipeVC handleDismissViewController:presentToVC];
+
     presentToVC.transitioningDelegate=self;
     presentToVC.delegate=self;
 
@@ -150,6 +154,7 @@
     self.presentAnimation = [TransFromAnimation transfromWithAnimationType:YJPPresentAnimationPresent];
     
     self.dismissAnimation = [TransFromAnimation transfromWithAnimationType:YJPPresentAnimationDismiss];
+    self.swipeVC = [SwipeViewController new];
 
     
     [AudioPlayer.player playWithURL:@"http://thai-host.com:8100/pattaya103.ogg"
