@@ -135,6 +135,9 @@
     return self.dismissAnimation;
 }
 
+- (nullable id <UIViewControllerInteractiveTransitioning>)interactionControllerForDismissal:(id <UIViewControllerAnimatedTransitioning>)animator{
+    return self.swipeVC.interacting ? self.swipeVC : nil;
+}
 
 -(void)dismiss
 {
