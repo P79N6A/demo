@@ -7,7 +7,7 @@
 //
 
 #import "PlayerView.h"
-#import "SPVideoSlider.h"
+#import "PlayerSubView.h"
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -17,13 +17,24 @@
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 
-typedef NS_ENUM(NSUInteger, Direction) {
-    DirectionLeftOrRight,
-    DirectionUpOrDown,
-    DirectionNone
+//typedef NS_ENUM(NSUInteger, Direction) {
+//    DirectionLeftOrRight,
+//    DirectionUpOrDown,
+//    DirectionNone
+//};
+
+// 枚举值，包含水平移动方向和垂直移动方向
+typedef NS_ENUM(NSInteger, PanDirection){
+    PanDirectionHorizontalMoved, // 横向移动
+    PanDirectionVerticalMoved    // 纵向移动
 };
 
-
+typedef NS_ENUM(NSUInteger, PlayViewState) {
+    PlayViewStateSmall,
+    PlayViewStateAnimating,
+    PlayViewStateFullScreenRight,
+    PlayViewStateFullScreenLeft,
+};
 
 
 
@@ -77,9 +88,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
 @property (nonatomic, assign) PlayViewState state;
 
 @property (nonatomic, strong) MPVolumeView *volumeView;
-
 @property (nonatomic, strong) UISlider *volumeViewSlider;
 
+/*锁屏 */
 @property (weak, nonatomic) IBOutlet UIButton *lockBtn;
 
 /*静默进度条 */
@@ -87,9 +98,20 @@ typedef NS_ENUM(NSUInteger, Direction) {
 @property (weak, nonatomic) IBOutlet UIProgressView *fullBufView;
 
 
-@property (assign, nonatomic) CGPoint startPoint;
-@property (assign, nonatomic) CGFloat volumeValue;
-@property (assign, nonatomic) Direction direction;
+//@property (assign, nonatomic) CGPoint startPoint;
+//@property (assign, nonatomic) CGFloat volumeValue;
+//@property (assign, nonatomic) Direction direction;
+
+/** 平移方向 */
+@property (nonatomic, assign) PanDirection           panDirection;
+/** 用来保存快进的总时长 */
+@property (nonatomic, assign) CGFloat                sumTime;
+/** 是否在调节音量*/
+@property (nonatomic, assign) BOOL                   isVolume;
+/** 快进view */
+@property (nonatomic, strong) SPVideoPlayerFastView *fastView ;
+/** 亮度view */
+@property (nonatomic, strong) SPBrightnessView       *brightnessView;
 
 @end
 
@@ -104,14 +126,13 @@ typedef NS_ENUM(NSUInteger, Direction) {
     return [[NSBundle mainBundle] loadNibNamed:@"PlayerView" owner:nil options:nil].firstObject;
 }
 
-
+//FIXME:  -  添加控件
 - (void)awakeFromNib{
     [super awakeFromNib];
     
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     [self addGestureRecognizer:tapGestureRecognizer];
-    
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGesture:)];
+    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDirection:)];
     [self addGestureRecognizer:pan];
 
     
@@ -120,12 +141,15 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.videoButtomView addSubview:self.timeLabel];
     [self.videoButtomView addSubview:self.progressView];
     [self.videoButtomView addSubview:self.videoSlider];
+    [self addSubview:self.fastView];
+    [self addSubview:self.brightnessView];
     
     [self initUI];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 }
 
+//FIXME:  -  初次化图片和文本
 - (void)initUI{
     self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
 
@@ -143,7 +167,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 
 }
-
+//FIXME:  -  布局位置
 - (void)layout{
     CGFloat spacing = iPhoneXX? 24 : 0;
 
@@ -184,6 +208,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
     self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
+    
+    self.fastView.frame = CGRectMake(0, 0, 80*self.playViewSmallFrame.size.width/(self.playViewSmallFrame.size.height?self.playViewSmallFrame.size.height:320), 80);
+    self.fastView.center = self.errorBtn.center;
+    
+    self.brightnessView.center = self.errorBtn.center;
 
 }
 
@@ -291,7 +320,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if(statusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
     else [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar - 1];
 }
-
+//FIXME:  -  重新播放
 - (IBAction)rePlay:(UIButton *)sender {
 
     if (self.allowSafariPlay) {
@@ -312,8 +341,6 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self playWithModel:self.model];
 }
 
-
-
 //FIXME:  -  屏幕旋转回调
 - (void)changeRotate:(NSNotification*)noti {
     
@@ -328,9 +355,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (self.state == PlayViewStateSmall) {
-//        self.buttomView.hidden = NO;
-//        self.topView.hidden = NO;
-//        self.fullButton.selected = YES;
+
         switch (orientation) {
             case UIDeviceOrientationLandscapeRight://home button就在左边了。
                 NSLog(@"home向左");
@@ -348,10 +373,6 @@ typedef NS_ENUM(NSUInteger, Direction) {
         }
         
     }else  if (self.state != PlayViewStateSmall){
-//        self.buttomView.hidden = YES;
-//        self.topView.hidden = YES;
-//        self.fullButton.selected = NO;
-        
         switch (orientation) {
             case UIDeviceOrientationPortrait:
                 NSLog(@"竖屏");
@@ -382,55 +403,187 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
 }
 
-- (void)panGesture:(UIPanGestureRecognizer *)sender{
-    
+//FIXME:  -  处理音量和亮度
+- (void)verticalMoved:(CGFloat)value {
+    if (self.isVolume) {
+        self.volumeViewSlider.value -= value / 10000;
+        return;
+    }
+    [UIScreen mainScreen].brightness -= value / 10000;
+    self.brightnessView.brightness = [UIScreen mainScreen].brightness;
+}
 
-    if(self.state == PlayViewStateSmall) return;
+//FIXME:  -  快进和后退
+- (void)horizontalMoved:(CGFloat)value {
+    //self.isDragged = YES;
     
-    if(self.lockBtn.isSelected) return;
+    // 每次滑动需要叠加时间
+    self.sumTime += value / 200 * 1000;
+    // 需要限定sumTime的范围
+    NSTimeInterval totalMovieDuration           = self.mediaPlayer.duration;
+    if (self.sumTime > totalMovieDuration) { self.sumTime = totalMovieDuration;}
+    if (self.sumTime < 0) { self.sumTime = 0; }
     
-    CGPoint point = [sender translationInView:self];
+    if (value == 0) { return; }
     
-    if (sender.state == UIGestureRecognizerStateBegan) {
-        //记录首次触摸坐标
-        self.startPoint = point;
-        //音/量
-        self.volumeValue = self.volumeViewSlider.value;
-    }else if (sender.state == UIGestureRecognizerStateChanged) {
-        //得出手指在Button上移动的距离
-        CGPoint panPoint = CGPointMake(point.x - self.startPoint.x, point.y - self.startPoint.y);
-        //分析出用户滑动的方向
-        if (panPoint.x >= 30 || panPoint.x <= -30) {
-            //进度
-            self.direction = DirectionLeftOrRight;
-        } else if (panPoint.y >= 30 || panPoint.y <= -30) {
-            //音量和亮度
-            self.direction = DirectionUpOrDown;
-        }
-        
-        if (self.direction == DirectionNone) {
-            return;
-        } else if (self.direction == DirectionUpOrDown) {
-            
-            //音量
-            if (panPoint.y < 0) {
-                //增大音量
-                [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
-                if (self.volumeValue + (-panPoint.y / 30 / 10) - self.volumeViewSlider.value >= 0.1) {
-                    [self.volumeViewSlider setValue:0.1 animated:NO];
-                    [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
-                }
-                
-            } else {
-                //减少音量
-                [self.volumeViewSlider setValue:self.volumeValue - (panPoint.y / 30.0 / 10) animated:YES];
-            }
-            
-        }
-        
+    self.fastView.alpha = 1.0;
+
+    
+    NSTimeInterval total = self.mediaPlayer.duration;
+    NSTimeInterval current = self.sumTime;
+    
+    total = total/1000.0;
+    current = self.sumTime/1000.0;
+    
+    NSString *timeString = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+    NSString *currentTimeString = [NSString stringWithFormat:@"%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60];
+
+
+    
+    NSMutableAttributedString *timeAttString = [[NSMutableAttributedString alloc] initWithString:timeString];
+    
+    [timeAttString addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(0, currentTimeString.length)];
+    self.fastView.fastTimeLabel.attributedText = timeAttString;
+    if (value > 0) { // 快进
+        self.fastView.fastIconView.image = [UIImage imageFromBundleWithName:@"fullplayer_progress_r"];
+    } else { // 快退
+        self.fastView.fastIconView.image = [UIImage imageFromBundleWithName:@"fullplayer_progress_l"];
     }
     
+    self.fastView.fastProgressView.progress = current/total;
 }
+
+//FIXME:  -  手势处理事件
+- (void)panDirection:(UIPanGestureRecognizer *)pan {
+    
+    if(self.state == PlayViewStateSmall) return;
+    if(self.lockBtn.isSelected) return;
+
+    //根据在view上Pan的位置，确定是调音量还是亮度
+    CGPoint locationPoint = [pan locationInView:self];
+    
+    // 我们要响应水平移动和垂直移动
+    // 根据上次和本次移动的位置，算出一个速率的point
+    CGPoint veloctyPoint = [pan velocityInView:self];
+    
+    // 判断是垂直移动还是水平移动
+    switch (pan.state) {
+        case UIGestureRecognizerStateBegan:{ // 开始移动
+            // 使用绝对值来判断移动的方向
+            CGFloat x = fabs(veloctyPoint.x);
+            CGFloat y = fabs(veloctyPoint.y);
+            if (x > y) { // 水平移动
+                // 取消隐藏
+                self.panDirection = PanDirectionHorizontalMoved;
+                // 给sumTime初值
+                self.sumTime      = self.mediaPlayer.currentPosition;
+            }
+            else if (x < y){ // 垂直移动
+                self.panDirection = PanDirectionVerticalMoved;
+                // 开始滑动的时候,状态改为正在控制音量
+                if (locationPoint.x > self.bounds.size.width / 2) {
+                    self.isVolume = YES;
+                }else { // 状态改为显示亮度调节
+                    self.isVolume = NO;
+                }
+            }
+            break;
+        }
+        case UIGestureRecognizerStateChanged:{ // 正在移动
+            switch (self.panDirection) {
+                case PanDirectionHorizontalMoved:{
+                    [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值
+                    NSLog(@"%s--水平移动的方法只要x方向", __func__);
+                    break;
+                }
+                case PanDirectionVerticalMoved:{
+                    [self verticalMoved:veloctyPoint.y]; // 垂直移动方法只要y方向的值
+                    NSLog(@"%s-垂直移动方法只要y方向的值", __func__);
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
+        }
+        case UIGestureRecognizerStateEnded:{ // 移动停止
+            // 移动结束也需要判断垂直或者平移
+            // 比如水平移动结束时，要快进到指定位置，如果这里没有判断，当我们调节音量完之后，会出现屏幕跳动的bug
+            switch (self.panDirection) {
+                case PanDirectionHorizontalMoved:{
+                    [self.mediaPlayer seekTo:self.sumTime];
+                    // 把sumTime滞空，不然会越加越多
+                    self.sumTime = 0;
+                    [UIView animateWithDuration:0.50 animations:^{
+                        self.fastView.alpha = 0.0;
+                    }];
+                    break;
+                }
+                case PanDirectionVerticalMoved:{
+                    // 垂直移动结束后，把状态改为不再控制音量
+                    self.isVolume = NO;
+                    break;
+                }
+                default:
+                    break;
+            }
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+
+//- (void)panGesture:(UIPanGestureRecognizer *)sender{
+//    
+//
+//    if(self.state == PlayViewStateSmall) return;
+//    
+//    if(self.lockBtn.isSelected) return;
+//    
+//    CGPoint point = [sender translationInView:self];
+//    
+//    if (sender.state == UIGestureRecognizerStateBegan) {
+//        //记录首次触摸坐标
+//        self.startPoint = point;
+//        //音/量
+//        self.volumeValue = self.volumeViewSlider.value;
+//    }else if (sender.state == UIGestureRecognizerStateChanged) {
+//        //得出手指在Button上移动的距离
+//        CGPoint panPoint = CGPointMake(point.x - self.startPoint.x, point.y - self.startPoint.y);
+//        //分析出用户滑动的方向
+//        if (panPoint.x >= 30 || panPoint.x <= -30) {
+//            //进度
+//            self.direction = DirectionLeftOrRight;
+//        } else if (panPoint.y >= 30 || panPoint.y <= -30) {
+//            //音量和亮度
+//            self.direction = DirectionUpOrDown;
+//        }
+//        
+//        if (self.direction == DirectionNone) {
+//            return;
+//        } else if (self.direction == DirectionUpOrDown) {
+//            
+//            //音量
+//            if (panPoint.y < 0) {
+//                //增大音量
+//                [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
+//                if (self.volumeValue + (-panPoint.y / 30 / 10) - self.volumeViewSlider.value >= 0.1) {
+//                    [self.volumeViewSlider setValue:0.1 animated:NO];
+//                    [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
+//                }
+//                
+//            } else {
+//                //减少音量
+//                [self.volumeViewSlider setValue:self.volumeValue - (panPoint.y / 30.0 / 10) animated:YES];
+//            }
+//            
+//        }
+//        
+//    }
+//    
+//}
 
 //FIXME:  -  视频触摸的回调
 - (void)handleTapGesture{
@@ -880,6 +1033,25 @@ typedef NS_ENUM(NSUInteger, Direction) {
     return _volumeView;
 }
 
+- (SPBrightnessView *)brightnessView {
+    if (!_brightnessView) {
+        _brightnessView = [[SPBrightnessView alloc] init];
+    }
+    return _brightnessView;
+}
+
+/** 快进快退的view */
+- (SPVideoPlayerFastView *)fastView {
+    if (!_fastView) {
+        _fastView                     = [[SPVideoPlayerFastView alloc] init];
+        _fastView.backgroundColor     =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.618];
+        _fastView.layer.cornerRadius  = 10;
+        _fastView.layer.masksToBounds = YES;
+        _fastView.alpha = 0.0;
+    }
+    return _fastView;
+}
+
 
 - (NSString *)error:(NSString *)code{
 
@@ -1083,7 +1255,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 @implementation UIImage (Bundle)
 + (UIImage *)imageFromBundleWithName:(NSString *)imageName{
     
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"resources" ofType:@".bundle"];
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"PlayerView" ofType:@".bundle"];
     NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
     return [UIImage imageNamed:fullImageName];
 }
