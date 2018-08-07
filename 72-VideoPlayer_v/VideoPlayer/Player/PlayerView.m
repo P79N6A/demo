@@ -1018,7 +1018,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }
     return _playOrPauseButton;
 }
-
+/** 音量的view */
 - (MPVolumeView *)volumeView {
     if (_volumeView == nil) {
         _volumeView  = [[MPVolumeView alloc] init];
@@ -1034,6 +1034,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return _volumeView;
 }
 
+/** 亮度的view */
 - (SPBrightnessView *)brightnessView {
     if (!_brightnessView) {
         _brightnessView = [[SPBrightnessView alloc] init];
