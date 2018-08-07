@@ -273,7 +273,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         url = [NSURL URLWithString:model.live_stream];
     }else if ([model.live_stream hasPrefix:@"rtmp"] || [model.live_stream hasPrefix:@"flv"]){
         url = [NSURL URLWithString:model.live_stream];
-    }else { //本地视频 需要完整路径
+    }else if(model.live_stream.length){ //本地视频 需要完整路径
         url = [NSURL fileURLWithPath:model.live_stream];
     }
 
@@ -291,9 +291,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.titleLabel.text = model.name;
     
 
-    NSLog(@"%s----URL---%@", __func__,url.absoluteString);
+    NSLog(@"%s----URL---%@----%@", __func__,url.absoluteString,[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject]);
     
-    //[self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
+    [self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
 }
 
 - (void)play
@@ -344,13 +344,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  屏幕旋转回调
 - (void)changeRotate:(NSNotification*)noti {
     
-    NSLog(@"%s--playView->VC:%@;topVC:%@", __func__,[self viewController],[self topViewController]);
+    NSLog(@"playView所在的控制器:%@;topVC:%@",[self viewController],[self topViewController]);
     
     
     if(self.lockBtn.isSelected) return;
     
     if(self.state == PlayViewStateAnimating) return;
     
+    // 播放器所在的控制器不是最顶层的控制器就不执行
     if([self viewController] && [self topViewController] && [self viewController] != [self topViewController]) return;
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
@@ -864,7 +865,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
 
-    NSLog(@"%s----缓存：%f----进度：%f", __func__,self.progressView.progress,self.videoSlider.value);
+    NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
     total = total/1000;
     current = current/1000;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
