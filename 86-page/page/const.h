@@ -32,23 +32,23 @@
 #define RGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
 /// 灰色
-#define DZMColor_1 RGB(51, g: 51, b: 51)
+#define DZMColor_1 RGB(51,51,51)
 
 
 /// 粉红色
-#define DZMColor_2 RGB(253, g: 85, b: 103)
+#define DZMColor_2 RGB(253,85,103)
 
 /// 阅读上下状态栏颜色
-#define DZMColor_3 RGB(127, g: 136, b: 138)
+#define DZMColor_3 RGB(127,136,138)
 
 /// 小说阅读上下状态栏字体颜色
-#define DZMColor_4 RGB(127, g: 136, b: 138)
+#define DZMColor_4 RGB(127,136,138)
 
 /// 小说阅读颜色
-#define DZMColor_5RGB(145, g: 145, b: 145)
+#define DZMColor_5 RGB(145,145,145)
 
 /// LeftView文字颜色
-#define DZMColor_6 RGB(200, g: 200, b: 200)
+#define DZMColor_6 RGB(200,200,200)
 
 
 /// 阅读背景颜色支持
@@ -62,35 +62,35 @@
 #define DZMMenuUIColor  [[UIColor blackColor] colorWithAlphaComponent:0.85]
 
 // MARK: -- 字体支持
-let DZMFont_10:UIFont = UIFont.systemFont(ofSize: 10)
-let DZMFont_12:UIFont = UIFont.systemFont(ofSize: 12)
-let DZMFont_18:UIFont = UIFont.systemFont(ofSize: 18)
+#define DZMFont_10  [UIFont systemFontOfSize:10]
+#define DZMFont_12  [UIFont systemFontOfSize:12]
+#define DZMFont_18  [UIFont systemFontOfSize:18]
 
 
 // MARK: -- 间距支持
 #define DZMSpace_1 15
-#define DZMSpace_2:CGFloat = 25
-#define DZMSpace_3:CGFloat = 1
-#define DZMSpace_4:CGFloat = 10
-#define DZMSpace_5:CGFloat = 20
-#define DZMSpace_6:CGFloat = 5
+#define DZMSpace_2 25
+#define DZMSpace_3  1
+#define DZMSpace_4 10
+#define DZMSpace_5 20
+#define DZMSpace_6 5
 
 // MARK: 拖拽触发光标范围
-let DZMCursorOffset:CGFloat = -20
+#define DZMCursorOffset  -20
 
 
 // MARK: -- Key
 
 /// 是夜间还是日间模式   true:夜间 false:日间
-let DZMKey_IsNighOrtDay:String = "isNightOrDay"
+#define DZMKey_IsNighOrtDay @"isNightOrDay"
 
 /// ReadView 手势开启状态
-let DZMKey_ReadView_Ges_isOpen:String = "isOpen"
+#define DZMKey_ReadView_Ges_isOpen  @"isOpen"
 
 // MARK: 通知名称
 
 /// ReadView 手势通知
-let DZMNotificationName_ReadView_Ges = "ReadView_Ges"
+#define DZMNotificationName_ReadView_Ges  @"ReadView_Ges"
 
 
 

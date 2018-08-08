@@ -64,7 +64,6 @@
             slider;
         })];
 
-        
     }
     return self;
 }

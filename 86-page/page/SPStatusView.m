@@ -7,7 +7,9 @@
 //
 
 #import "SPStatusView.h"
-#import "SPBatteryView.m"
+#import "SPBatteryView.h"
+
+#import "const.h"
 
 
 @interface SPStatusView ()
@@ -25,7 +27,7 @@
     self = [super initWithFrame:frame];
     if (self) {
        
-//        self.backgroundColor = [];
+        self.backgroundColor = [DZMColor_1 colorWithAlphaComponent:0.4];
         
         [self addSubview:({
             
@@ -36,11 +38,50 @@
             batteryView.batteryLevel = [UIDevice currentDevice].batteryLevel;
             batteryView;
         })];
+        
+        
+        [self addSubview:({
+            UILabel *timeLabel = [[UILabel alloc] init];
+            timeLabel.textAlignment = NSTextAlignmentCenter;
+            timeLabel.font = DZMFont_12;
+            timeLabel.textColor = DZMColor_3;
+            _timeLabel = timeLabel;
+            timeLabel;
+        })];
 
+        
+        [self addSubview:({
+            UILabel *titleLabel = [[UILabel alloc] init];
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            titleLabel.font = DZMFont_12;
+            titleLabel.textColor = DZMColor_3;
+            _titleLabel = titleLabel;
+            titleLabel;
+        })];
+        
+        [self didChangeTime];
         
     }
     return self;
 }
+
+
+// MARK: -- 获取时间
+/// 获取当前时间传入 时间格式 "YYYY-MM-dd-HH-mm-ss"
+//func GetCurrentTimerString(dateFormat:String) ->String {
+//
+//    let dateformatter = DateFormatter()
+//
+//    dateformatter.dateFormat = dateFormat
+//
+//    return dateformatter.string(from: Date())
+//}
+- (NSString *)GetCurrentTimerString:(NSString *)dateFormat{
+    NSDateFormatter *dateformatter = [[NSDateFormatter alloc] init];
+    dateformatter.dateFormat = dateFormat;
+    return [dateformatter stringFromDate:[NSDate date]];
+}
+
 //
 //override func addSubviews() {
 //    
@@ -104,6 +145,12 @@
 //        RunLoop.current.add(timer!, forMode: RunLoopMode.commonModes)
 //    }
 //}
+
+- (void)addTimer{
+    if (!_timer) {
+        NSTimer *timer = [NSTimer scheduledTimerWithTimeInterval:15 target: selector:<#(nonnull SEL)#> userInfo:<#(nullable id)#> repeats:<#(BOOL)#>];
+    }
+}
 //
 ///// 删除定时器
 //func removeTimer() {
@@ -123,6 +170,11 @@
 //    
 //    batteryView.batteryLevel = UIDevice.current.batteryLevel
 //}
+
+- (void)didChangeTime{
+    self.timeLabel.text = [self GetCurrentTimerString:@"HH:mm"];
+    self.batteryView.batteryLevel = [UIDevice currentDevice].batteryLevel;
+}
 //
 ///// 销毁
 //deinit {
