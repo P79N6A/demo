@@ -24,10 +24,12 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    self.pages = @[@"0",@"1",@"2",@"3"];
+    self.pages = @[@"0",@"1",@"2",@"3",@"10",@"11",@"12",@"13",@"20",@"21",@"22",@"23",@"30",@"31",@"32",@"33",@"40",@"41",@"42",@"43"];
     [self addChildViewController:self.pageVC];
     [self.pageVC didMoveToParentViewController:self];
     [self.view addSubview:self.pageVC.view];
+    
+    ;
 }
 
 - (UIPageViewController *)pageVC{
@@ -47,16 +49,17 @@
 
 
 
+
 //FIXME:  -  UIPageViewControllerDataSource
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController{
     
-//    if([viewController isKindOfClass:[ReadViewController class]]) {
+    if([viewController isKindOfClass:[ReadViewController class]]) {
         self.currentViewController = viewController;
         
-//        BackViewController *backViewController = [BackViewController new];
-//        [backViewController updateWithViewController:viewController];
-//        return backViewController;
-//    }
+        BackViewController *backViewController = [BackViewController new];
+        [backViewController updateWithViewController:viewController];
+        return backViewController;
+    }
     
     
     NSUInteger index = [self.pages indexOfObject:self.currentViewController.title];
@@ -71,13 +74,13 @@
 }
 - (nullable UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController{
    
-//    if([viewController isKindOfClass:[ReadViewController class]]) {
+    if([viewController isKindOfClass:[ReadViewController class]]) {
         self.currentViewController = viewController;
         
-//        BackViewController *backViewController = [BackViewController new];
-//        [backViewController updateWithViewController:viewController];
-//        return backViewController;
-//    }
+        BackViewController *backViewController = [BackViewController new];
+        [backViewController updateWithViewController:viewController];
+        return backViewController;
+    }
     NSUInteger index = [self.pages indexOfObject:self.currentViewController.title];
     if (index == NSNotFound || index >= (self.pages.count - 1)) {
         return nil;

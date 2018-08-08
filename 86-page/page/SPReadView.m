@@ -8,6 +8,8 @@
 
 #import "SPReadView.h"
 #import "SPTopView.h"
+#import "SPButtomView.h"
+#import "SPBatteryView.h"
 #import <CoreText/CoreText.h>
 
 
@@ -29,8 +31,12 @@
 
 @interface SPReadView ()
 @property (nonatomic,assign) CTFrameRef frameRef;
-@property (nonatomic, weak) SPTopView *topView;
+@property (nonatomic, weak)  SPTopView *topView;
+@property (nonatomic, weak)  SPButtomView *buttomView;
+@property (nonatomic, weak)  UIView *tapView;
+@property (nonatomic, weak)  UIButton *coverButton;
 @property (nonatomic, assign) BOOL statusBarHidden;
+@property (nonatomic, weak)  SPBatteryView *batteryView;
 @end
 
 
@@ -42,21 +48,61 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         
-        [self addGestureRecognizer:({
-            UITapGestureRecognizer *pan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolView:)];
-            pan;
+        [self addSubview:({
+            UIView *tapView = [[UIView alloc] init];
+            _tapView = tapView;
+            [tapView addGestureRecognizer:({
+                UITapGestureRecognizer *pan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolView:)];
+                pan;
+            })];
+            tapView;
         })];
         
+
         [self addSubview:({
+            UIButton *coverBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            _coverButton = coverBtn;
+            [coverBtn addTarget:self action:@selector(showToolView:) forControlEvents:UIControlEventTouchUpInside];
+            coverBtn.backgroundColor = [UIColor clearColor];
+            coverBtn.hidden = YES;
+            coverBtn;
+        })];
+        
+//        [self addSubview:({
+//            
+//            SPBatteryView *batteryView = [[SPBatteryView alloc] init];
+//            _batteryView = batteryView;
+//            batteryView.tintColor = [UIColor colorWithRed:127/255.0 green:136/255.0 blue:138/255.0 alpha:1.0];
+//            [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+//            batteryView.batteryLevel = 0.7;//[UIDevice currentDevice].batteryLevel;
+//            batteryView;
+//        })];
+        
+        [self.coverButton addSubview:({
             SPTopView *topView = [[SPTopView alloc] initWithFrame:CGRectMake(0, -kStatusBarAndNavigationBarHeight, kScreenWidth, kStatusBarAndNavigationBarHeight)];
-            topView.hidden = YES;
             topView.backgroundColor = [UIColor lightGrayColor];
             _topView = topView;
             topView;
         })];
         
+        [self.coverButton addSubview:({
+            SPButtomView *buttomView = [[SPButtomView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kTabbarSafeBottomMargin + 112)];
+            buttomView.backgroundColor = [UIColor lightGrayColor];
+            _buttomView = buttomView;
+            buttomView;
+        })];
+        
     }
     return self;
+}
+
+- (void)layoutSubviews{
+    [super layoutSubviews];
+    self.tapView.frame = CGRectMake(88, 0, self.bounds.size.width - 88 * 2 , self.bounds.size.height);
+    self.coverButton.frame = self.bounds;
+
+    self.batteryView.frame = CGRectMake(self.bounds.size.width - 25.0, 0.5 * (self.bounds.size.height - 10.0), 100, 100);
+
 }
 
 //FIXME:  -  隐藏状态栏
@@ -69,19 +115,23 @@
 
 - (void)showToolView:(UITapGestureRecognizer *)sender{
     
-    if (self.topView.isHidden) {
+    if (self.coverButton.isHidden) {
         self.statusBarHidden = NO;
-        self.topView.hidden = NO;
+        self.coverButton.hidden = NO;
         [UIView animateWithDuration:0.25 animations:^{
             self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight);
+            self.buttomView.transform = CGAffineTransformMakeTranslation(0, -(kTabbarSafeBottomMargin+112));
+
         } completion:^(BOOL finished) {
         }];
     }else{
         self.statusBarHidden = YES;
         [UIView animateWithDuration:0.25 animations:^{
             self.topView.transform = CGAffineTransformIdentity;
+            self.buttomView.transform = CGAffineTransformIdentity;
+
         } completion:^(BOOL finished) {
-            self.topView.hidden = YES;
+            self.coverButton.hidden = YES;
         }];
 
     }
