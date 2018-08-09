@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SPButtomView : UIView
-
+@property (nonatomic, copy) void (^funClick)(NSInteger code);
 @end

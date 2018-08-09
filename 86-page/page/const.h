@@ -52,11 +52,11 @@
 
 
 /// 阅读背景颜色支持
-#define DZMReadBGColor_1 RGB(238, g: 224, b: 202)
-#define DZMReadBGColor_2 RGB(205, g: 239, b: 205)
-#define DZMReadBGColor_3 RGB(206, g: 233, b: 241)
-#define DZMReadBGColor_4 RGB(251, g: 237, b: 199)  // 牛皮黄
-#define DZMReadBGColor_5 RGB(51, g: 51, b: 51)
+#define DZMReadBGColor_1 RGB(238,224,202)
+#define DZMReadBGColor_2 RGB(205,239,205)
+#define DZMReadBGColor_3 RGB(206,233,241)
+#define DZMReadBGColor_4 RGB(251,237,199)  // 牛皮黄
+#define DZMReadBGColor_5 RGB(51,51,51)
 
 /// 菜单背景颜色
 #define DZMMenuUIColor  [[UIColor blackColor] colorWithAlphaComponent:0.85]
@@ -77,6 +77,14 @@
 
 // MARK: 拖拽触发光标范围
 #define DZMCursorOffset  -20
+
+
+
+#define NovelsSettingViewH  (isX ? 250 : 218)
+
+
+#define DZMSizeW(w) ((w) * (ScreenWidth / 375))
+#define DZMSizeH(h) ((h) * (ScreenWidth / 667))
 
 
 // MARK: -- Key

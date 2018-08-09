@@ -9,8 +9,11 @@
 #import "SPReadView.h"
 #import "SPTopView.h"
 #import "SPButtomView.h"
-#import "SPBatteryView.h"
+#import "SPStatusView.h"
+#import "SPSettingView.h"
+#import "const.h"
 #import <CoreText/CoreText.h>
+
 
 
 // iPhone X
@@ -36,7 +39,7 @@
 @property (nonatomic, weak)  UIView *tapView;
 @property (nonatomic, weak)  UIButton *coverButton;
 @property (nonatomic, assign) BOOL statusBarHidden;
-@property (nonatomic, weak)  SPBatteryView *batteryView;
+@property (nonatomic, weak)  SPSettingView *settingView;
 @end
 
 
@@ -68,15 +71,14 @@
             coverBtn;
         })];
         
-//        [self addSubview:({
-//            
-//            SPBatteryView *batteryView = [[SPBatteryView alloc] init];
-//            _batteryView = batteryView;
-//            batteryView.tintColor = [UIColor colorWithRed:127/255.0 green:136/255.0 blue:138/255.0 alpha:1.0];
-//            [UIDevice currentDevice].batteryMonitoringEnabled = YES;
-//            batteryView.batteryLevel = 0.7;//[UIDevice currentDevice].batteryLevel;
-//            batteryView;
-//        })];
+        
+        [self addSubview:({
+            
+            SPStatusView *statusView = [[SPStatusView alloc] initWithFrame:CGRectMake(DZMSpace_1, ScreenHeight - DZMSpace_2, ScreenWidth - 2 * DZMSpace_1, DZMSpace_2)];
+            
+            statusView;
+            
+        })];
         
         [self.coverButton addSubview:({
             SPTopView *topView = [[SPTopView alloc] initWithFrame:CGRectMake(0, -kStatusBarAndNavigationBarHeight, kScreenWidth, kStatusBarAndNavigationBarHeight)];
@@ -86,9 +88,33 @@
         })];
         
         [self.coverButton addSubview:({
+            
+            SPSettingView *settingView = [[SPSettingView alloc] init];
+            _settingView = settingView;
+            settingView.backgroundColor = [UIColor lightGrayColor];
+            settingView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, NovelsSettingViewH);
+            settingView;
+        })];
+
+        
+        [self.coverButton addSubview:({
             SPButtomView *buttomView = [[SPButtomView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kTabbarSafeBottomMargin + 112)];
             buttomView.backgroundColor = [UIColor lightGrayColor];
             _buttomView = buttomView;
+            buttomView.funClick = ^(NSInteger code) {
+                
+                [UIView animateWithDuration:0.25 animations:^{
+                    //self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
+                    CGRect frame = self.settingView.frame;
+                    frame.origin.y = ScreenHeight - NovelsSettingViewH;
+                    self.settingView.frame = frame;
+                    
+                    self.buttomView.transform = CGAffineTransformIdentity;
+                } completion:^(BOOL finished) {
+                    
+                }];
+                
+            };
             buttomView;
         })];
         
@@ -101,7 +127,7 @@
     self.tapView.frame = CGRectMake(88, 0, self.bounds.size.width - 88 * 2 , self.bounds.size.height);
     self.coverButton.frame = self.bounds;
 
-    self.batteryView.frame = CGRectMake(self.bounds.size.width - 25.0, 0.5 * (self.bounds.size.height - 10.0), 100, 100);
+//    self.batteryView.frame = CGRectMake(self.bounds.size.width - 25.0, 0.5 * (self.bounds.size.height - 10.0), 100, 100);
 
 }
 
@@ -129,7 +155,7 @@
         [UIView animateWithDuration:0.25 animations:^{
             self.topView.transform = CGAffineTransformIdentity;
             self.buttomView.transform = CGAffineTransformIdentity;
-
+            self.settingView.transform = CGAffineTransformIdentity;
         } completion:^(BOOL finished) {
             self.coverButton.hidden = YES;
         }];

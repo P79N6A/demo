@@ -27,6 +27,7 @@
             UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
             [button setImage:[UIImage imageNamed:icon] forState:UIControlStateNormal];
             button.tag = [funcIcons indexOfObject:icon];
+            [button addTarget:self action:@selector(funAction:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:button];
         }
         
@@ -66,6 +67,10 @@
 
     }
     return self;
+}
+
+- (void)funAction:(UIButton *)sender{
+    !(_funClick)? : _funClick(sender.tag);
 }
 
 

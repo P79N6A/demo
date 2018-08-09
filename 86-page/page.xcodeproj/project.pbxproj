@@ -21,6 +21,10 @@
 		69DB194621199CE600715D7B /* SPButtomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB194521199CE600715D7B /* SPButtomView.m */; };
 		69DB1949211A92C300715D7B /* SPBatteryView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1948211A92C300715D7B /* SPBatteryView.m */; };
 		69DB194C211A9D1900715D7B /* SPStatusView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB194B211A9D1900715D7B /* SPStatusView.m */; };
+		69DB1950211BEEF000715D7B /* SPSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB194F211BEEF000715D7B /* SPSettingView.m */; };
+		69DB1953211BEF8900715D7B /* SPColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1952211BEF8900715D7B /* SPColorView.m */; };
+		69DB1956211C0E3400715D7B /* SPHaloButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1955211C0E3400715D7B /* SPHaloButton.m */; };
+		69DB1959211C117A00715D7B /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1958211C117900715D7B /* UIView+YGPulseView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +54,14 @@
 		69DB194A211A9D1900715D7B /* SPStatusView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPStatusView.h; sourceTree = "<group>"; };
 		69DB194B211A9D1900715D7B /* SPStatusView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPStatusView.m; sourceTree = "<group>"; };
 		69DB194D211A9E3700715D7B /* const.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = const.h; sourceTree = "<group>"; };
+		69DB194E211BEEF000715D7B /* SPSettingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPSettingView.h; sourceTree = "<group>"; };
+		69DB194F211BEEF000715D7B /* SPSettingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSettingView.m; sourceTree = "<group>"; };
+		69DB1951211BEF8900715D7B /* SPColorView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPColorView.h; sourceTree = "<group>"; };
+		69DB1952211BEF8900715D7B /* SPColorView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPColorView.m; sourceTree = "<group>"; };
+		69DB1954211C0E3400715D7B /* SPHaloButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPHaloButton.h; sourceTree = "<group>"; };
+		69DB1955211C0E3400715D7B /* SPHaloButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPHaloButton.m; sourceTree = "<group>"; };
+		69DB1957211C117900715D7B /* UIView+YGPulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YGPulseView.h"; sourceTree = "<group>"; };
+		69DB1958211C117900715D7B /* UIView+YGPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YGPulseView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +94,8 @@
 		69DB191F2119757100715D7B /* page */ = {
 			isa = PBXGroup;
 			children = (
+				69DB1957211C117900715D7B /* UIView+YGPulseView.h */,
+				69DB1958211C117900715D7B /* UIView+YGPulseView.m */,
 				69DB193C211980EF00715D7B /* BackViewController.h */,
 				69DB193B211980EF00715D7B /* BackViewController.m */,
 				69DB19202119757100715D7B /* AppDelegate.h */,
@@ -106,6 +120,12 @@
 				69DB1948211A92C300715D7B /* SPBatteryView.m */,
 				69DB194A211A9D1900715D7B /* SPStatusView.h */,
 				69DB194B211A9D1900715D7B /* SPStatusView.m */,
+				69DB194E211BEEF000715D7B /* SPSettingView.h */,
+				69DB194F211BEEF000715D7B /* SPSettingView.m */,
+				69DB1951211BEF8900715D7B /* SPColorView.h */,
+				69DB1952211BEF8900715D7B /* SPColorView.m */,
+				69DB1954211C0E3400715D7B /* SPHaloButton.h */,
+				69DB1955211C0E3400715D7B /* SPHaloButton.m */,
 				69DB194D211A9E3700715D7B /* const.h */,
 			);
 			path = page;
@@ -184,14 +204,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DB19252119757100715D7B /* ViewController.m in Sources */,
+				69DB1959211C117A00715D7B /* UIView+YGPulseView.m in Sources */,
 				69DB194021198A7C00715D7B /* SPReadView.m in Sources */,
 				69DB194621199CE600715D7B /* SPButtomView.m in Sources */,
 				69DB19302119757100715D7B /* main.m in Sources */,
 				69DB193D211980EF00715D7B /* BackViewController.m in Sources */,
+				69DB1956211C0E3400715D7B /* SPHaloButton.m in Sources */,
+				69DB1953211BEF8900715D7B /* SPColorView.m in Sources */,
 				69DB19392119766800715D7B /* ReadViewController.m in Sources */,
 				69DB19222119757100715D7B /* AppDelegate.m in Sources */,
 				69DB1949211A92C300715D7B /* SPBatteryView.m in Sources */,
 				69DB1943211993EA00715D7B /* SPTopView.m in Sources */,
+				69DB1950211BEEF000715D7B /* SPSettingView.m in Sources */,
 				69DB194C211A9D1900715D7B /* SPStatusView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
