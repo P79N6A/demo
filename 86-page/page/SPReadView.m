@@ -89,10 +89,9 @@
         
         [self.coverButton addSubview:({
             
-            SPSettingView *settingView = [[SPSettingView alloc] init];
+            SPSettingView *settingView = [[SPSettingView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, NovelsSettingViewH)];
             _settingView = settingView;
             settingView.backgroundColor = [UIColor lightGrayColor];
-            settingView.frame = CGRectMake(0, ScreenHeight, ScreenWidth, NovelsSettingViewH);
             settingView;
         })];
 
@@ -104,10 +103,7 @@
             buttomView.funClick = ^(NSInteger code) {
                 
                 [UIView animateWithDuration:0.25 animations:^{
-                    //self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
-                    CGRect frame = self.settingView.frame;
-                    frame.origin.y = ScreenHeight - NovelsSettingViewH;
-                    self.settingView.frame = frame;
+                    self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
                     
                     self.buttomView.transform = CGAffineTransformIdentity;
                 } completion:^(BOOL finished) {
@@ -185,7 +181,7 @@
     
     NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
     paragraphStyle.lineSpacing = 10;
-    paragraphStyle.paragraphSpacing = 10;
+    //paragraphStyle.paragraphSpacing = 10;
     paragraphStyle.alignment = NSTextAlignmentJustified;
     paragraphStyle.lineHeightMultiple = 1.0;
     attribute[NSParagraphStyleAttributeName] = paragraphStyle;

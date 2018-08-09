@@ -9,6 +9,8 @@
 #import "ReadViewController.h"
 
 @interface ReadViewController ()
+@property (weak, nonatomic) IBOutlet UILabel *titleLB;
+@property (weak, nonatomic) IBOutlet SPReadView *readView;
 
 @end
 
@@ -18,9 +20,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
-    self.titleLB.text = self.title;
-    self.readView.content = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:@"http://127.0.0.1/test/demo.js"] encoding:NSUTF8StringEncoding error:NULL];
+    self.readView.content = self.content;
 }
 
 - (void)didReceiveMemoryWarning {

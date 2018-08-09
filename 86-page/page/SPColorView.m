@@ -56,6 +56,9 @@
 
 - (void)clickButton:(SPHaloButton *)sender{
     [self selectButton:sender];
+    
+    UIView *readView = sender.superview.superview.superview.superview;
+    readView.backgroundColor = self.colors[sender.tag];
 }
 
 - (void)selectButton:(SPHaloButton *)sender{

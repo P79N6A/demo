@@ -25,6 +25,8 @@
 		69DB1953211BEF8900715D7B /* SPColorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1952211BEF8900715D7B /* SPColorView.m */; };
 		69DB1956211C0E3400715D7B /* SPHaloButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1955211C0E3400715D7B /* SPHaloButton.m */; };
 		69DB1959211C117A00715D7B /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1958211C117900715D7B /* UIView+YGPulseView.m */; };
+		69DB195C211C231000715D7B /* SPFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB195B211C231000715D7B /* SPFuncView.m */; };
+		69DB195F211C401D00715D7B /* SPChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB195E211C401D00715D7B /* SPChapterModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +64,10 @@
 		69DB1955211C0E3400715D7B /* SPHaloButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPHaloButton.m; sourceTree = "<group>"; };
 		69DB1957211C117900715D7B /* UIView+YGPulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+YGPulseView.h"; sourceTree = "<group>"; };
 		69DB1958211C117900715D7B /* UIView+YGPulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+YGPulseView.m"; sourceTree = "<group>"; };
+		69DB195A211C231000715D7B /* SPFuncView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPFuncView.h; sourceTree = "<group>"; };
+		69DB195B211C231000715D7B /* SPFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPFuncView.m; sourceTree = "<group>"; };
+		69DB195D211C401D00715D7B /* SPChapterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPChapterModel.h; sourceTree = "<group>"; };
+		69DB195E211C401D00715D7B /* SPChapterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPChapterModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +108,8 @@
 				69DB19212119757100715D7B /* AppDelegate.m */,
 				69DB19232119757100715D7B /* ViewController.h */,
 				69DB19242119757100715D7B /* ViewController.m */,
+				69DB195D211C401D00715D7B /* SPChapterModel.h */,
+				69DB195E211C401D00715D7B /* SPChapterModel.m */,
 				69DB19262119757100715D7B /* Main.storyboard */,
 				69DB19292119757100715D7B /* Assets.xcassets */,
 				69DB192B2119757100715D7B /* LaunchScreen.storyboard */,
@@ -124,6 +132,8 @@
 				69DB194F211BEEF000715D7B /* SPSettingView.m */,
 				69DB1951211BEF8900715D7B /* SPColorView.h */,
 				69DB1952211BEF8900715D7B /* SPColorView.m */,
+				69DB195A211C231000715D7B /* SPFuncView.h */,
+				69DB195B211C231000715D7B /* SPFuncView.m */,
 				69DB1954211C0E3400715D7B /* SPHaloButton.h */,
 				69DB1955211C0E3400715D7B /* SPHaloButton.m */,
 				69DB194D211A9E3700715D7B /* const.h */,
@@ -203,11 +213,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69DB195C211C231000715D7B /* SPFuncView.m in Sources */,
 				69DB19252119757100715D7B /* ViewController.m in Sources */,
 				69DB1959211C117A00715D7B /* UIView+YGPulseView.m in Sources */,
 				69DB194021198A7C00715D7B /* SPReadView.m in Sources */,
 				69DB194621199CE600715D7B /* SPButtomView.m in Sources */,
 				69DB19302119757100715D7B /* main.m in Sources */,
+				69DB195F211C401D00715D7B /* SPChapterModel.m in Sources */,
 				69DB193D211980EF00715D7B /* BackViewController.m in Sources */,
 				69DB1956211C0E3400715D7B /* SPHaloButton.m in Sources */,
 				69DB1953211BEF8900715D7B /* SPColorView.m in Sources */,

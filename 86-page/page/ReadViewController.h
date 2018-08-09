@@ -9,8 +9,11 @@
 #import <UIKit/UIKit.h>
 #import "SPReadView.h"
 
+
 @interface ReadViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UILabel *titleLB;
-@property (weak, nonatomic) IBOutlet SPReadView *readView;
+
+@property (nonatomic, assign) NSInteger chapter;
+@property (nonatomic, assign) NSInteger page;
+@property (nonatomic, copy) NSString *content;
 
 @end
