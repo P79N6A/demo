@@ -592,6 +592,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  视频触摸的回调
 - (void)handleTapGesture{
     
+    
+    [NSObject cancelPreviousPerformRequestsWithTarget:self selector:@selector(hiddenControll) object:nil];
+    if (self.buttomView.isHidden) {//不隐藏的时候
+        [self performSelector:@selector(hiddenControll) withObject:nil afterDelay:3.0];
+    }
+
+    
     if (self.state == PlayViewStateSmall) {
         self.buttomView.hidden = !self.buttomView.isHidden;
         return;
@@ -606,6 +613,27 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.statusBarHidden = self.buttomView.isHidden;
     
 }
+
+//FIXME:  -  隐藏工具菜单
+- (void)hiddenControll{
+
+    if (self.state == PlayViewStateSmall) {
+        self.buttomView.hidden = YES;
+        return;
+    }
+
+    self.lockBtn.hidden =  YES;
+    // min 进度 打开
+    self.fullProgressView.hidden = NO;
+    self.fullBufView.hidden = NO;
+    
+    if (self.lockBtn.isSelected)  return;
+    self.topView.hidden = YES;
+    self.buttomView.hidden = YES;
+    self.statusBarHidden = YES;
+
+}
+
 //FIXME:  -  返回
 - (IBAction)backAction {
     [self fullAciton:self.fullButton];
@@ -859,7 +887,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         self.timer = nil;
     }
 }
-
+//FIXME:  -  定时刷新进度
 - (void)timeChange:(NSTimer *)sender{
     
     NSTimeInterval total = self.mediaPlayer.duration;
