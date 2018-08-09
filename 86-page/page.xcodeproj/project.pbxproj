@@ -100,24 +100,34 @@
 		69DB191F2119757100715D7B /* page */ = {
 			isa = PBXGroup;
 			children = (
+				69DB1960211C4E3000715D7B /* Reader */,
 				69DB1957211C117900715D7B /* UIView+YGPulseView.h */,
 				69DB1958211C117900715D7B /* UIView+YGPulseView.m */,
-				69DB193C211980EF00715D7B /* BackViewController.h */,
-				69DB193B211980EF00715D7B /* BackViewController.m */,
 				69DB19202119757100715D7B /* AppDelegate.h */,
 				69DB19212119757100715D7B /* AppDelegate.m */,
-				69DB19232119757100715D7B /* ViewController.h */,
-				69DB19242119757100715D7B /* ViewController.m */,
-				69DB195D211C401D00715D7B /* SPChapterModel.h */,
-				69DB195E211C401D00715D7B /* SPChapterModel.m */,
 				69DB19262119757100715D7B /* Main.storyboard */,
 				69DB19292119757100715D7B /* Assets.xcassets */,
 				69DB192B2119757100715D7B /* LaunchScreen.storyboard */,
 				69DB192E2119757100715D7B /* Info.plist */,
 				69DB192F2119757100715D7B /* main.m */,
-				69DB19362119766800715D7B /* ReadViewController.h */,
-				69DB19372119766800715D7B /* ReadViewController.m */,
-				69DB19382119766800715D7B /* ReadViewController.xib */,
+			);
+			path = page;
+			sourceTree = "<group>";
+		};
+		69DB1960211C4E3000715D7B /* Reader */ = {
+			isa = PBXGroup;
+			children = (
+				69DB194D211A9E3700715D7B /* const.h */,
+				69DB1963211C4E6800715D7B /* ViewController */,
+				69DB1962211C4E5E00715D7B /* Model */,
+				69DB1961211C4E5500715D7B /* View */,
+			);
+			path = Reader;
+			sourceTree = "<group>";
+		};
+		69DB1961211C4E5500715D7B /* View */ = {
+			isa = PBXGroup;
+			children = (
 				69DB193E21198A7C00715D7B /* SPReadView.h */,
 				69DB193F21198A7C00715D7B /* SPReadView.m */,
 				69DB194421199CE600715D7B /* SPButtomView.h */,
@@ -136,9 +146,31 @@
 				69DB195B211C231000715D7B /* SPFuncView.m */,
 				69DB1954211C0E3400715D7B /* SPHaloButton.h */,
 				69DB1955211C0E3400715D7B /* SPHaloButton.m */,
-				69DB194D211A9E3700715D7B /* const.h */,
 			);
-			path = page;
+			path = View;
+			sourceTree = "<group>";
+		};
+		69DB1962211C4E5E00715D7B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				69DB195D211C401D00715D7B /* SPChapterModel.h */,
+				69DB195E211C401D00715D7B /* SPChapterModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		69DB1963211C4E6800715D7B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				69DB19232119757100715D7B /* ViewController.h */,
+				69DB19242119757100715D7B /* ViewController.m */,
+				69DB19362119766800715D7B /* ReadViewController.h */,
+				69DB19372119766800715D7B /* ReadViewController.m */,
+				69DB19382119766800715D7B /* ReadViewController.xib */,
+				69DB193C211980EF00715D7B /* BackViewController.h */,
+				69DB193B211980EF00715D7B /* BackViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
