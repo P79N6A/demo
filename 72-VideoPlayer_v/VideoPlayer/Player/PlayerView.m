@@ -134,7 +134,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self addGestureRecognizer:tapGestureRecognizer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDirection:)];
     [self addGestureRecognizer:pan];
-
+    
     
     [self.buttomView addSubview:self.videoButtomView];
     [self.videoButtomView addSubview:self.playOrPauseButton];
@@ -152,7 +152,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  初次化图片和文本
 - (void)initUI{
     self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-
+    
     
     self.topBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_top"];
     [self.backButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_back"] forState:UIControlStateNormal];
@@ -163,14 +163,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_off_iphone_44x44_"] forState:UIControlStateNormal];
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_on_iphone_44x44_"] forState:UIControlStateSelected];
-
-
-
+    
+    
+    
 }
 //FIXME:  -  布局位置
 - (void)layout{
     CGFloat spacing = iPhoneXX? 24 : 0;
-
+    
     self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
     self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
@@ -205,7 +205,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
     
     self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
-
+    
     self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     
@@ -213,7 +213,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.fastView.center = self.errorBtn.center;
     
     self.brightnessView.center = self.errorBtn.center;
-
+    
 }
 
 - (void)layoutSubviews{
@@ -261,12 +261,12 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     //设置屏幕常亮
     [UIApplication sharedApplication].idleTimerDisabled = YES;
-
+    
     [self.loadingView startAnimating];
     self.loadingLabel.text = @"加载中...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
-
+    
     
     NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
     if ([model.live_stream hasPrefix:@"http://"] || [model.live_stream hasPrefix:@"https://"]) {
@@ -276,7 +276,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }else if(model.live_stream.length){ //本地视频 需要完整路径
         url = [NSURL fileURLWithPath:model.live_stream];
     }
-
+    
     if ([self isProtocolService]) {
         url = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
     }
@@ -290,7 +290,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.titleLabel.text = model.name;
     
-
+    
     NSLog(@"%s----URL---%@----%@", __func__,url.absoluteString,[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject]);
     
     [self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
@@ -322,7 +322,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 //FIXME:  -  重新播放
 - (IBAction)rePlay:(UIButton *)sender {
-
+    
     if (self.allowSafariPlay) {
         
         WHWebViewController *web = [[WHWebViewController alloc] init];
@@ -356,7 +356,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     UIDeviceOrientation orientation = [UIDevice currentDevice].orientation;
     if (self.state == PlayViewStateSmall) {
-
+        
         switch (orientation) {
             case UIDeviceOrientationLandscapeRight://home button就在左边了。
                 NSLog(@"home向左");
@@ -385,13 +385,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             case UIDeviceOrientationLandscapeRight://home button就在左边了。
                 NSLog(@"home向左");
                 [self enterFullscreenLeft];
-
+                
                 
                 break;
             case UIDeviceOrientationLandscapeLeft:
                 NSLog(@"home向右");
                 [self enterFullscreenRight];
-
+                
                 
                 break;
                 
@@ -428,7 +428,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (value == 0) { return; }
     
     self.fastView.alpha = 1.0;
-
+    
     
     NSTimeInterval total = self.mediaPlayer.duration;
     NSTimeInterval current = self.sumTime;
@@ -438,8 +438,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     NSString *timeString = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
     NSString *currentTimeString = [NSString stringWithFormat:@"%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60];
-
-
+    
+    
     
     NSMutableAttributedString *timeAttString = [[NSMutableAttributedString alloc] initWithString:timeString];
     
@@ -459,7 +459,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     if(self.state == PlayViewStateSmall) return;
     if(self.lockBtn.isSelected) return;
-
+    
     //根据在view上Pan的位置，确定是调音量还是亮度
     CGPoint locationPoint = [pan locationInView:self];
     
@@ -476,13 +476,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             if (x > y) { // 水平移动
                 // 取消隐藏
                 self.panDirection = PanDirectionHorizontalMoved;
-                // 给sumTime初值
-                self.sumTime      = self.mediaPlayer.currentPosition;
+                // 给sumTime初值 (点播)
+                if(!self.videoButtomView.isHidden) self.sumTime = self.mediaPlayer.currentPosition;
             }
             else if (x < y){ // 垂直移动
                 self.panDirection = PanDirectionVerticalMoved;
                 // 开始滑动的时候,状态改为正在控制音量
-                if (locationPoint.x > self.bounds.size.width / 2) {
+                if (locationPoint.x > self.bounds.size.width * 0.4) {
                     self.isVolume = YES;
                 }else { // 状态改为显示亮度调节
                     self.isVolume = NO;
@@ -493,7 +493,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         case UIGestureRecognizerStateChanged:{ // 正在移动
             switch (self.panDirection) {
                 case PanDirectionHorizontalMoved:{
-                    [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值
+                    if(!self.videoButtomView.isHidden) [self horizontalMoved:veloctyPoint.x]; // 水平移动的方法只要x方向的值
                     NSLog(@"%s--水平移动的方法只要x方向", __func__);
                     break;
                 }
@@ -512,12 +512,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             // 比如水平移动结束时，要快进到指定位置，如果这里没有判断，当我们调节音量完之后，会出现屏幕跳动的bug
             switch (self.panDirection) {
                 case PanDirectionHorizontalMoved:{
-                    [self.mediaPlayer seekTo:self.sumTime];
-                    // 把sumTime滞空，不然会越加越多
-                    self.sumTime = 0;
-                    [UIView animateWithDuration:0.50 animations:^{
-                        self.fastView.alpha = 0.0;
-                    }];
+                    
+                    if(!self.videoButtomView.isHidden){
+                        [self.mediaPlayer seekTo:self.sumTime];
+                        // 把sumTime滞空，不然会越加越多
+                        self.sumTime = 0;
+                        [UIView animateWithDuration:0.50 animations:^{
+                            self.fastView.alpha = 0.0;
+                        }];
+                    }
                     break;
                 }
                 case PanDirectionVerticalMoved:{
@@ -596,7 +599,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.lockBtn.hidden =  !self.lockBtn.isHidden;
     self.fullProgressView.hidden = !self.lockBtn.isHidden;
     self.fullBufView.hidden = self.fullProgressView.isHidden;
-
+    
     if (self.lockBtn.isSelected)  return;
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
@@ -689,7 +692,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (self.state == PlayViewStateFullScreenRight) {
         return;
     }
-
+    
     
     self.state = PlayViewStateAnimating;
     
@@ -731,7 +734,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.buttomView.hidden = YES;
     self.topView.hidden = YES;
     self.fullButton.selected = NO;
-
+    
     if (self.state == PlayViewStateSmall) {
         return;
     }
@@ -864,7 +867,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
-
+    
     NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
     total = total/1000;
     current = current/1000;
@@ -899,7 +902,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
     //NSString *errorMsg = [noti.userInfo valueForKey:@"errorMsg"];
     NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
-
+    
     if (self.allowSafariPlay) {
         [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(跳转Safari浏览器观看)",errorMsg] forState:UIControlStateNormal];
     }else{
@@ -910,7 +913,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     [self.loadingView stopAnimating];
     self.loadingLabel.hidden = self.loadingView.isHidden;
-
+    
     [self.timer invalidate];
     self.timer = nil;
 }
@@ -928,7 +931,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.loadingLabel.text = @"缓存中...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
-
+    
 }
 
 #pragma mark  - 播放器结束缓冲视频
@@ -1056,47 +1059,47 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 
 - (NSString *)error:(NSString *)code{
-
+    
     NSDictionary * errorDic = @{
-                   @"4500":@"请求错误",
-                   @"4501":@"数据错误",
-                   @"4502":@"请求saas服务器错误",
-                   @"4503":@"请求mts服务器错误",
-                   @"4504":@"服务器返回参数无效",
-                   @"4521":@"非法的播放器状态",
-                   @"4022":@"没有设置显示窗口，请先设置播放视图",
-                   @"4023":@"内存不足",
-                   @"4024":@"系统权限被拒绝",
-                   @"4101":@"视频下载时连接不到服务器",
-                   @"4102":@"视频下载时网络超时",
-                   @"4103":@"请求saas服务器错误",
-                   @"4104":@"请求mts服务器错误",
-                   @"4105":@"服务器返回参数无效",
-                   @"4106":@"视频下载流无效或地址过期",
-                   @"4107":@"未找到加密文件，请从控制台下载加密文件并集成",
-                   @"4108":@"获取秘钥失败，请检查秘钥文件",
-                   @"4109":@"下载地址无效",
-                   @"4110":@"磁盘空间不够",
-                   @"4111":@"视频文件保存路径不存在，请重新设置",
-                   @"4112":@"当前视频不可下载",
-                   @"4113":@"下载模式改变无法继续下载",
-                   @"4114":@"当前视频已经添加到下载项，请避免重复添加",
-                   @"4115":@"未找到合适的下载项，请先添加",
-                   @"4001":@"参数非法",
-                   @"4002":@"鉴权过期",
-                   @"4003":@"视频源无效",
-                   @"4004":@"视频源不存在",
-                   @"4005":@"读取视频源失败",
-                   @"4008":@"加载超时",
-                   @"4009":@"请求数据错误",
-
-                   @"4011":@"视频格式不支持",
-                   @"4012":@"解析失败",
-                   @"4013":@"解码失败",
-                   @"4019":@"编码格式不支持",
-                   @"4400":@"未知错误",
-
-                   };
+                                @"4500":@"请求错误",
+                                @"4501":@"数据错误",
+                                @"4502":@"请求saas服务器错误",
+                                @"4503":@"请求mts服务器错误",
+                                @"4504":@"服务器返回参数无效",
+                                @"4521":@"非法的播放器状态",
+                                @"4022":@"没有设置显示窗口，请先设置播放视图",
+                                @"4023":@"内存不足",
+                                @"4024":@"系统权限被拒绝",
+                                @"4101":@"视频下载时连接不到服务器",
+                                @"4102":@"视频下载时网络超时",
+                                @"4103":@"请求saas服务器错误",
+                                @"4104":@"请求mts服务器错误",
+                                @"4105":@"服务器返回参数无效",
+                                @"4106":@"视频下载流无效或地址过期",
+                                @"4107":@"未找到加密文件，请从控制台下载加密文件并集成",
+                                @"4108":@"获取秘钥失败，请检查秘钥文件",
+                                @"4109":@"下载地址无效",
+                                @"4110":@"磁盘空间不够",
+                                @"4111":@"视频文件保存路径不存在，请重新设置",
+                                @"4112":@"当前视频不可下载",
+                                @"4113":@"下载模式改变无法继续下载",
+                                @"4114":@"当前视频已经添加到下载项，请避免重复添加",
+                                @"4115":@"未找到合适的下载项，请先添加",
+                                @"4001":@"参数非法",
+                                @"4002":@"鉴权过期",
+                                @"4003":@"视频源无效",
+                                @"4004":@"视频源不存在",
+                                @"4005":@"读取视频源失败",
+                                @"4008":@"加载超时",
+                                @"4009":@"请求数据错误",
+                                
+                                @"4011":@"视频格式不支持",
+                                @"4012":@"解析失败",
+                                @"4013":@"解码失败",
+                                @"4019":@"编码格式不支持",
+                                @"4400":@"未知错误",
+                                
+                                };
     NSString *msg = errorDic[code];
     
     return msg?msg : @"未知错误";
