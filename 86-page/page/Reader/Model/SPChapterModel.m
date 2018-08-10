@@ -7,6 +7,7 @@
 //
 
 #import "SPChapterModel.h"
+#import "SPReadConfig.h"
 #import <CoreText/CoreText.h>
 
 @implementation SPChapterModel
@@ -42,19 +43,19 @@
     attrStr = [[NSMutableAttributedString  alloc] initWithString:self.content];
     
     
-    NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
-    attribute[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    attribute[NSFontAttributeName] = [UIFont systemFontOfSize:14.0];
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 10;
-    //paragraphStyle.paragraphSpacing = 10;
-    paragraphStyle.alignment = NSTextAlignmentJustified;
-    paragraphStyle.lineHeightMultiple = 1.0;
-    attribute[NSParagraphStyleAttributeName] = paragraphStyle;
+//    NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
+//    attribute[NSForegroundColorAttributeName] = [UIColor orangeColor];
+//    attribute[NSFontAttributeName] = [UIFont systemFontOfSize:14.0];
+//
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    paragraphStyle.lineSpacing = 10;
+//    //paragraphStyle.paragraphSpacing = 10;
+//    paragraphStyle.alignment = NSTextAlignmentJustified;
+//    paragraphStyle.lineHeightMultiple = 1.0;
+//    attribute[NSParagraphStyleAttributeName] = paragraphStyle;
 
     
-    [attrStr setAttributes:attribute range:NSMakeRange(0, attrStr.length)];
+    [attrStr setAttributes:SPReadConfig.attributeStyle range:NSMakeRange(0, attrStr.length)];
     
     attrString = [attrStr copy];
     

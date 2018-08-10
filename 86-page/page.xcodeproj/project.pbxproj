@@ -27,6 +27,7 @@
 		69DB1959211C117A00715D7B /* UIView+YGPulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1958211C117900715D7B /* UIView+YGPulseView.m */; };
 		69DB195C211C231000715D7B /* SPFuncView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB195B211C231000715D7B /* SPFuncView.m */; };
 		69DB195F211C401D00715D7B /* SPChapterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB195E211C401D00715D7B /* SPChapterModel.m */; };
+		69DB1966211C4F2000715D7B /* SPReadConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB1965211C4F2000715D7B /* SPReadConfig.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		69DB195B211C231000715D7B /* SPFuncView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPFuncView.m; sourceTree = "<group>"; };
 		69DB195D211C401D00715D7B /* SPChapterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPChapterModel.h; sourceTree = "<group>"; };
 		69DB195E211C401D00715D7B /* SPChapterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPChapterModel.m; sourceTree = "<group>"; };
+		69DB1964211C4F2000715D7B /* SPReadConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPReadConfig.h; sourceTree = "<group>"; };
+		69DB1965211C4F2000715D7B /* SPReadConfig.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPReadConfig.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +158,8 @@
 			children = (
 				69DB195D211C401D00715D7B /* SPChapterModel.h */,
 				69DB195E211C401D00715D7B /* SPChapterModel.m */,
+				69DB1964211C4F2000715D7B /* SPReadConfig.h */,
+				69DB1965211C4F2000715D7B /* SPReadConfig.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -251,6 +256,7 @@
 				69DB194021198A7C00715D7B /* SPReadView.m in Sources */,
 				69DB194621199CE600715D7B /* SPButtomView.m in Sources */,
 				69DB19302119757100715D7B /* main.m in Sources */,
+				69DB1966211C4F2000715D7B /* SPReadConfig.m in Sources */,
 				69DB195F211C401D00715D7B /* SPChapterModel.m in Sources */,
 				69DB193D211980EF00715D7B /* BackViewController.m in Sources */,
 				69DB1956211C0E3400715D7B /* SPHaloButton.m in Sources */,
@@ -395,8 +401,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDU5GR594Q;
+				DEVELOPMENT_TEAM = S575E6NNCR;
 				INFOPLIST_FILE = page/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.page;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -409,8 +416,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LDU5GR594Q;
+				DEVELOPMENT_TEAM = S575E6NNCR;
 				INFOPLIST_FILE = page/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.page;
 				PRODUCT_NAME = "$(TARGET_NAME)";

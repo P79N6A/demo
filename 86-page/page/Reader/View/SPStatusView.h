@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface SPStatusView : UIView
-
+@property (nonatomic, weak)  UILabel *titleLabel;
 @end

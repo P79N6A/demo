@@ -15,7 +15,6 @@
 @interface SPStatusView ()
 @property (nonatomic, weak)  SPBatteryView *batteryView;
 @property (nonatomic, weak)  UILabel *timeLabel;
-@property (nonatomic, weak)  UILabel *titleLabel;
 @property (nonatomic, weak)  NSTimer *timer;
 
 @end

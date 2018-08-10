@@ -12,6 +12,7 @@
 #import "SPStatusView.h"
 #import "SPSettingView.h"
 #import "const.h"
+#import "SPReadConfig.h"
 #import <CoreText/CoreText.h>
 
 
@@ -40,6 +41,8 @@
 @property (nonatomic, weak)  UIButton *coverButton;
 @property (nonatomic, assign) BOOL statusBarHidden;
 @property (nonatomic, weak)  SPSettingView *settingView;
+@property (nonatomic, weak)  SPStatusView *statusView;
+
 @end
 
 
@@ -50,7 +53,7 @@
 {
     self = [super initWithCoder:aDecoder];
     if (self) {
-        
+        self.backgroundColor = [UIColor clearColor];
         [self addSubview:({
             UIView *tapView = [[UIView alloc] init];
             _tapView = tapView;
@@ -75,7 +78,7 @@
         [self addSubview:({
             
             SPStatusView *statusView = [[SPStatusView alloc] initWithFrame:CGRectMake(DZMSpace_1, ScreenHeight - DZMSpace_2, ScreenWidth - 2 * DZMSpace_1, DZMSpace_2)];
-            
+            _statusView = statusView;
             statusView;
             
         })];
@@ -162,6 +165,8 @@
 
 
 -(void)drawRect:(CGRect)rect{
+    
+    self.frameRef = [self parserContent:_content];
     if (!_frameRef) {
         return;
     }
@@ -171,28 +176,37 @@
     CGContextScaleCTM(ctx, 1.0, -1.0);
     CTFrameDraw(_frameRef, ctx);
 }
+
 - (CTFrameRef)parserContent:(NSString *)content{
     
     
     
-    NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
-    attribute[NSForegroundColorAttributeName] = [UIColor orangeColor];
-    attribute[NSFontAttributeName] = [UIFont systemFontOfSize:14.0];
-    
-    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
-    paragraphStyle.lineSpacing = 10;
-    //paragraphStyle.paragraphSpacing = 10;
-    paragraphStyle.alignment = NSTextAlignmentJustified;
-    paragraphStyle.lineHeightMultiple = 1.0;
-    attribute[NSParagraphStyleAttributeName] = paragraphStyle;
+//    NSMutableDictionary *attribute = [NSMutableDictionary dictionary];
+//    attribute[NSForegroundColorAttributeName] = [UIColor orangeColor];
+//    attribute[NSFontAttributeName] = [UIFont systemFontOfSize:14.0];
+//
+//    NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+//    paragraphStyle.lineSpacing = 10;
+//    //paragraphStyle.paragraphSpacing = 10;
+//    paragraphStyle.alignment = NSTextAlignmentJustified;
+//    paragraphStyle.lineHeightMultiple = 1.0;
+//    attribute[NSParagraphStyleAttributeName] = paragraphStyle;
 
     
-    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content attributes:attribute];
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:content attributes:SPReadConfig.attributeStyle];
+    
+    NSLog(@"%s-fontSize-%ld", __func__,(long)SPReadConfig.defaultConfig.fontSize);
+    NSLog(@"%s-lineSpace-%ld", __func__,(long)SPReadConfig.defaultConfig.lineSpace);
+    NSLog(@"%s-fontColor-%@", __func__,(long)SPReadConfig.defaultConfig.fontColor);
+    NSLog(@"%s-themeColor-%@", __func__,(long)SPReadConfig.defaultConfig.themeColor);
+    NSLog(@"%s-fontType-%ld", __func__,(long)SPReadConfig.defaultConfig.fontType);
 
     
     CTFramesetterRef setterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedString);
     
-    CGPathRef pathRef = CGPathCreateWithRect([UIScreen mainScreen].bounds, NULL);
+    //CGPathRef pathRef = CGPathCreateWithRect(self.bounds, NULL);
+    CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(LeftSpacing, TopSpacing, self.bounds.size.width - 2 * LeftSpacing, self.bounds.size.height - 2 * TopSpacing), NULL);
+
     CTFrameRef frameRef = CTFramesetterCreateFrame(setterRef, CFRangeMake(0, 0), pathRef, NULL);
     CFRelease(setterRef);
     CFRelease(pathRef);
@@ -203,14 +217,14 @@
 
 - (void)setContent:(NSString *)content{
     _content = content;
-    self.frameRef = [self parserContent:content];
+    [self setNeedsDisplay];
 }
 
 
 - (void)setFrameRef:(CTFrameRef)frameRef{
     _frameRef = frameRef;
-    [self setNeedsDisplay];
-    self.backgroundColor = [UIColor whiteColor];
+    //self.backgroundColor = [SPReadConfig defaultConfig].themeColor;
+    self.statusView.titleLabel.text = self.progressTitle;
 }
 
 @end

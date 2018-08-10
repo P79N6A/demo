@@ -8,6 +8,9 @@
 
 #import "ReadViewController.h"
 
+#import "SPChapterModel.h"
+#import "SPReadConfig.h"
+
 @interface ReadViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
 @property (weak, nonatomic) IBOutlet SPReadView *readView;
@@ -20,7 +23,10 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.readView.content = self.content;
+    self.readView.progressTitle = [NSString stringWithFormat:@"%ld(%d-%d)",self.chapter+1,self.page+1,self.model.pageCount];
+    self.readView.content = [self.model stringOfPage:self.page];
+    self.view.backgroundColor = [SPReadConfig defaultConfig].themeColor;;
+
 }
 
 - (void)didReceiveMemoryWarning {

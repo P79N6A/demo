@@ -9,6 +9,7 @@
 #import "SPSettingView.h"
 #import "SPColorView.h"
 #import "SPFuncView.h"
+#import "SPReadConfig.h"
 
 #import "const.h"
 
@@ -26,9 +27,18 @@
     self = [super initWithFrame:frame];
     if (self) {
 
-        NSArray *colors = @[[UIColor whiteColor],DZMReadBGColor_1,DZMReadBGColor_2,DZMReadBGColor_3,DZMReadBGColor_4,DZMReadBGColor_5];
         [self addSubview:({
-            SPColorView *colorView = [[SPColorView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 74) colors:colors selectIndex:0];
+            
+            __block NSUInteger index = 0;
+            NSArray <UIColor *>*colors = @[[UIColor whiteColor],DZMReadBGColor_1,DZMReadBGColor_2,DZMReadBGColor_3,DZMReadBGColor_4,DZMReadBGColor_5];
+            [colors enumerateObjectsUsingBlock:^(UIColor * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+                if (CGColorEqualToColor(obj.CGColor, [SPReadConfig defaultConfig].themeColor.CGColor)) {
+                    index = idx;
+                    *stop = YES;
+                }
+            }];
+            
+            SPColorView *colorView = [[SPColorView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 74) colors:colors selectIndex:index];
             _colorView = colorView;
             colorView;
         })];
@@ -49,12 +59,13 @@
         })];
         
         [self addSubview:({
-            
+            NSInteger index = [SPReadConfig defaultConfig].fontType;
+
             SPFuncView *fontView = [[SPFuncView alloc] initWithFrame:CGRectMake(0,74 + funcViewH, ScreenWidth, funcViewH)
                                                               funcType:SPFuncViewTypeFont
                                                                  title:@"字体"
                                                                 labels:@[@"系统",@"黑体",@"楷体",@"宋体"]
-                                                           selectIndex:0];
+                                                           selectIndex:index];
             _fontView = fontView;
             fontView;
         })];

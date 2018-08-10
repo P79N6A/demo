@@ -79,12 +79,23 @@
 #define DZMCursorOffset  -20
 
 
+/// 阅读最小阅读字体大小
+#define DZMReadMinFontSize  12
+
+/// 阅读最大阅读字体大小
+#define DZMReadMaxFontSize  25
+
 
 #define NovelsSettingViewH  (isX ? 250 : 218)
 
 
 #define DZMSizeW(w) ((w) * (ScreenWidth / 375))
 #define DZMSizeH(h) ((h) * (ScreenWidth / 667))
+
+#define TopSpacing 40.0f
+#define BottomSpacing 40.0f
+#define LeftSpacing 20.0f
+#define RightSpacing  20.0f
 
 
 // MARK: -- Key

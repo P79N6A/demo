@@ -7,6 +7,7 @@
 //
 
 #import "SPFuncView.h"
+#import "SPReadConfig.h"
 #import "const.h"
 
 
@@ -101,10 +102,35 @@
 
 - (void)clickFontSize:(UIButton *)sender{
     
+    if (sender.tag == 0) {//left
+
+        if (([SPReadConfig defaultConfig].fontSize - 1) >= DZMReadMinFontSize) {
+            
+            [SPReadConfig defaultConfig].fontSize = [SPReadConfig defaultConfig].fontSize - 1;
+            [self.superview.superview.superview setNeedsDisplay];
+        }
+        return;
+    }
+    
+    if (([SPReadConfig defaultConfig].fontSize + 1) <= DZMReadMaxFontSize) {
+        
+        [SPReadConfig defaultConfig].fontSize = [SPReadConfig defaultConfig].fontSize + 1;
+        [self.superview.superview.superview setNeedsDisplay];
+        
+    }
+    
+
+    
 }
 - (void)clickButton:(UIButton *)sender{
     if(sender.isSelected) return;
     [self selectButton:sender];
+    
+    if (self.funcType == SPFuncViewTypeFont) {
+        [SPReadConfig defaultConfig].fontType = sender.tag;
+        [self.superview.superview.superview setNeedsDisplay];
+        return;
+    }
     
 }
 
@@ -121,31 +147,5 @@
 
 @end
 
-//
-//    /// .fontSize
-//    @objc func clickFontSize(button:UIButton) {
-//
-//        if button.tag == 0 { // left
-//
-//            // 没有小于最小字体
-//            if (DZMReadConfigure.shared().fontSize - fontSpace) >= DZMReadMinFontSize {
-//
-//                DZMReadConfigure.shared().fontSize -= fontSpace
-//
-//                readMenu.delegate?.readMenuClickSetuptFontSize?(readMenu: readMenu, fontSize: CGFloat(DZMReadConfigure.shared().fontSize))
-//            }
-//
-//        }else{ // right
-//
-//            // 没有大于最大字体
-//            if (DZMReadConfigure.shared().fontSize + fontSpace) <= DZMReadMaxFontSize {
-//
-//                DZMReadConfigure.shared().fontSize += fontSpace
-//
-//                readMenu.delegate?.readMenuClickSetuptFontSize?(readMenu: readMenu, fontSize: CGFloat(DZMReadConfigure.shared().fontSize))
-//            }
-//        }
-//    }
-//
 //
 

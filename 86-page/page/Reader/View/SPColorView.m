@@ -8,6 +8,7 @@
 
 #import "SPColorView.h"
 #import "SPHaloButton.h"
+#import "SPReadConfig.h"
 
 #import "const.h"
 
@@ -57,8 +58,9 @@
 - (void)clickButton:(SPHaloButton *)sender{
     [self selectButton:sender];
     
-    UIView *readView = sender.superview.superview.superview.superview;
-    readView.backgroundColor = self.colors[sender.tag];
+    [SPReadConfig defaultConfig].themeType = sender.tag;
+    self.superview.superview.superview.superview.backgroundColor = [SPReadConfig defaultConfig].themeColor;
+
 }
 
 - (void)selectButton:(SPHaloButton *)sender{
