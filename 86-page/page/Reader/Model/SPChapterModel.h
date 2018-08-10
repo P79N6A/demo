@@ -15,4 +15,5 @@
 @property (nonatomic, strong) NSMutableArray <NSNumber *>*pages;
 @property (nonatomic, assign) NSInteger pageCount;
 -(NSString *)stringOfPage:(NSUInteger)index;
+-(void)updateFont;
 @end

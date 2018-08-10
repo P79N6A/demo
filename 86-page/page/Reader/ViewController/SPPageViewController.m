@@ -6,24 +6,26 @@
 //  Copyright © 2018年 Jay. All rights reserved.
 //
 
-#import "ViewController.h"
+#import "SPPageViewController.h"
 #import "ReadViewController.h"
 #import "BackViewController.h"
 
 #import "SPChapterModel.h"
 
 
-@interface ViewController ()<UIPageViewControllerDataSource>
+@interface SPPageViewController ()<UIPageViewControllerDataSource>
 @property (nonatomic, strong) UIPageViewController *pageVC;
-@property (nonatomic, strong) NSArray *pages;
 @property (nonatomic, strong) ReadViewController *currentViewController;
 @property (nonatomic, strong) NSArray <SPChapterModel *> *models;
 @property (nonatomic, assign) NSInteger chapter;
 @property (nonatomic, assign) NSInteger page;
 
+@property (nonatomic, assign) NSInteger startIndex;
+@property (nonatomic, assign) NSInteger endIndex;
+
 @end
 
-@implementation ViewController
+@implementation SPPageViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -40,12 +42,27 @@
     self.chapter = 0;
     self.page = 0;
     
-    self.pages = @[@"0",@"1",@"2",@"3",@"10",@"11",@"12",@"13",@"20",@"21",@"22",@"23",@"30",@"31",@"32",@"33",@"40",@"41",@"42",@"43"];
     [self addChildViewController:self.pageVC];
     [self.pageVC didMoveToParentViewController:self];
     [self.view addSubview:self.pageVC.view];
     
-    ;
+    [[NSNotificationCenter defaultCenter] addObserverForName:@"KSPFontSizeChange" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        
+        [self.models enumerateObjectsUsingBlock:^(SPChapterModel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            [obj updateFont];
+        }];
+        
+        NSArray *indexs = self.models[self.chapter].pages;
+        
+        [indexs enumerateObjectsUsingBlock:^(NSNumber * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            
+            if (obj.integerValue) {
+                <#statements#>
+            }
+            
+        }];
+        
+    }];
 }
 
 #pragma mark - Create Read View Controller
@@ -58,6 +75,11 @@
     readView.model = self.models[chapter];
     readView.chapter = chapter;
     readView.page = page;
+    self.chapter = chapter;
+    self.page = page;
+    
+    self.startIndex = readView.model.pages[page].integerValue;
+    self.endIndex = self.startIndex + [readView.model stringOfPage:page].length;
     
     return readView;
 }

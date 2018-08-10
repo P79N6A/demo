@@ -102,11 +102,13 @@
 
 - (void)clickFontSize:(UIButton *)sender{
     
+    
     if (sender.tag == 0) {//left
 
         if (([SPReadConfig defaultConfig].fontSize - 1) >= DZMReadMinFontSize) {
             
             [SPReadConfig defaultConfig].fontSize = [SPReadConfig defaultConfig].fontSize - 1;
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"KSPFontSizeChange" object:nil];
             [self.superview.superview.superview setNeedsDisplay];
         }
         return;
@@ -115,6 +117,7 @@
     if (([SPReadConfig defaultConfig].fontSize + 1) <= DZMReadMaxFontSize) {
         
         [SPReadConfig defaultConfig].fontSize = [SPReadConfig defaultConfig].fontSize + 1;
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"KSPFontSizeChange" object:nil];
         [self.superview.superview.superview setNeedsDisplay];
         
     }
