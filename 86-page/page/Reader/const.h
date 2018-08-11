@@ -111,6 +111,8 @@
 /// ReadView 手势通知
 #define DZMNotificationName_ReadView_Ges  @"ReadView_Ges"
 
+#define DZMNotificationNameFontSizeChange  @"DZMNotificationNameFontSizeChange"
+#define DZMNotificationNameThemeColorChange  @"DZMNotificationNameThemeColorChange"
 
 
 #endif /* const_h */

@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPSettingView : UIView
+@interface SPSettingView : UIButton
 
 @end

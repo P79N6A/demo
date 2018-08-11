@@ -39,14 +39,16 @@
         CGFloat spaceW = (ScreenWidth - 2 * DZMSpace_1 - count * publicButtonWH) / (count - 1);
         for (NSInteger i = 0; i < count; i ++) {
             UIColor *color = self.colors[i];
-            SPHaloButton *publicButton = [[SPHaloButton alloc] initWithFrame:CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH) haloColor:color];
+            SPHaloButton *publicButton = [UIButton buttonWithType:UIButtonTypeCustom];//[[SPHaloButton alloc] initWithFrame:CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH) haloColor:color];
+            publicButton.frame = CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH);
+            publicButton.backgroundColor = [UIColor redColor];
             publicButton.tag = i;
             publicButton.layer.cornerRadius = publicButtonWH * 0.5;
             [publicButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:publicButton];
-            if (self.selectIndex == i) {
-                [self clickButton:publicButton];
-            }
+//            if (self.selectIndex == i) {
+//                [self clickButton:publicButton];
+//            }
         }
     }
     return self;
@@ -57,10 +59,10 @@
 
 - (void)clickButton:(SPHaloButton *)sender{
     [self selectButton:sender];
-    
     [SPReadConfig defaultConfig].themeType = sender.tag;
-    self.superview.superview.superview.superview.backgroundColor = [SPReadConfig defaultConfig].themeColor;
-
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameThemeColorChange object:nil];
+    
+    NSLog(@"%s-DZMNotificationNameThemeColorChange-%ld", __func__,(long)sender.tag);
 }
 
 - (void)selectButton:(SPHaloButton *)sender{

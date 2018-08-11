@@ -38,7 +38,7 @@
 @property (nonatomic, weak)  SPTopView *topView;
 @property (nonatomic, weak)  SPButtomView *buttomView;
 @property (nonatomic, weak)  UIView *tapView;
-@property (nonatomic, weak)  UIButton *coverButton;
+@property (nonatomic, weak)  UIView *coverButton;
 @property (nonatomic, assign) BOOL statusBarHidden;
 @property (nonatomic, weak)  SPSettingView *settingView;
 @property (nonatomic, weak)  SPStatusView *statusView;
@@ -66,10 +66,13 @@
         
 
         [self addSubview:({
-            UIButton *coverBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+            UIView *coverBtn = [[UIView alloc] init];
             _coverButton = coverBtn;
-            [coverBtn addTarget:self action:@selector(showToolView:) forControlEvents:UIControlEventTouchUpInside];
-            coverBtn.backgroundColor = [UIColor clearColor];
+            [coverBtn addGestureRecognizer:({
+                UITapGestureRecognizer *pan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolView:)];
+                pan;
+            })];
+            //coverBtn.backgroundColor = [UIColor orangeColor];
             coverBtn.hidden = YES;
             coverBtn;
         })];
@@ -83,14 +86,14 @@
             
         })];
         
-        [self.coverButton addSubview:({
+        [self addSubview:({
             SPTopView *topView = [[SPTopView alloc] initWithFrame:CGRectMake(0, -kStatusBarAndNavigationBarHeight, kScreenWidth, kStatusBarAndNavigationBarHeight)];
             topView.backgroundColor = [UIColor lightGrayColor];
             _topView = topView;
             topView;
         })];
         
-        [self.coverButton addSubview:({
+        [self addSubview:({
             
             SPSettingView *settingView = [[SPSettingView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, NovelsSettingViewH)];
             _settingView = settingView;
@@ -99,7 +102,7 @@
         })];
 
         
-        [self.coverButton addSubview:({
+        [self addSubview:({
             SPButtomView *buttomView = [[SPButtomView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kTabbarSafeBottomMargin + 112)];
             buttomView.backgroundColor = [UIColor lightGrayColor];
             _buttomView = buttomView;
@@ -204,8 +207,8 @@
     
     CTFramesetterRef setterRef = CTFramesetterCreateWithAttributedString((__bridge CFAttributedStringRef)attributedString);
     
-    //CGPathRef pathRef = CGPathCreateWithRect(self.bounds, NULL);
-    CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(LeftSpacing, TopSpacing, self.bounds.size.width - 2 * LeftSpacing, self.bounds.size.height - 2 * TopSpacing), NULL);
+    CGPathRef pathRef = CGPathCreateWithRect(self.bounds, NULL);
+    //CGPathRef pathRef = CGPathCreateWithRect(CGRectMake(LeftSpacing, TopSpacing, self.bounds.size.width - 2 * LeftSpacing, self.bounds.size.height - 2 * TopSpacing), NULL);
 
     CTFrameRef frameRef = CTFramesetterCreateFrame(setterRef, CFRangeMake(0, 0), pathRef, NULL);
     CFRelease(setterRef);

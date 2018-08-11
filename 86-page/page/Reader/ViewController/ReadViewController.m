@@ -10,6 +10,7 @@
 
 #import "SPChapterModel.h"
 #import "SPReadConfig.h"
+#include "const.h"
 
 @interface ReadViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
@@ -23,10 +24,13 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.readView.progressTitle = [NSString stringWithFormat:@"%ld(%d-%d)",self.chapter+1,self.page+1,self.model.pageCount];
+    self.readView.progressTitle = [NSString stringWithFormat:@"%ld(%d-%ld)",self.chapter+1,self.page+1,(long)self.model.pageCount];
     self.readView.content = [self.model stringOfPage:self.page];
     self.view.backgroundColor = [SPReadConfig defaultConfig].themeColor;;
-
+    __weak typeof(self) weakSelf = self;
+    [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNameThemeColorChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+        weakSelf.view.backgroundColor = [SPReadConfig defaultConfig].themeColor;;
+    }];
 }
 
 - (void)didReceiveMemoryWarning {

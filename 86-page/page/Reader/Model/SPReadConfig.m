@@ -50,7 +50,7 @@
         
         _lineSpace = 10.0f;
         _fontSize = 14.0f;
-        _fontColor = [UIColor blackColor];
+        _fontColor = DZMColor_5;//[UIColor blackColor];
         //_themeColor = [UIColor whiteColor];
         _fontType = 0;
         _themeType = 0;

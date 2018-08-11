@@ -12,6 +12,8 @@
 
 #import "SPChapterModel.h"
 
+#import "const.h"
+
 
 @interface SPPageViewController ()<UIPageViewControllerDataSource>
 @property (nonatomic, strong) UIPageViewController *pageVC;
@@ -20,8 +22,7 @@
 @property (nonatomic, assign) NSInteger chapter;
 @property (nonatomic, assign) NSInteger page;
 
-@property (nonatomic, assign) NSInteger startIndex;
-@property (nonatomic, assign) NSInteger endIndex;
+@property (nonatomic, assign) NSInteger nowIndex;
 
 @end
 
@@ -46,22 +47,41 @@
     [self.pageVC didMoveToParentViewController:self];
     [self.view addSubview:self.pageVC.view];
     
-    [[NSNotificationCenter defaultCenter] addObserverForName:@"KSPFontSizeChange" object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+    [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNameFontSizeChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         
         [self.models enumerateObjectsUsingBlock:^(SPChapterModel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
             [obj updateFont];
         }];
         
         NSArray *indexs = self.models[self.chapter].pages;
+//        0,
+//        229,
+//        462,
+//        679,
+//        910
         
+//        399,609
+
+        __block NSInteger page = -1;
         [indexs enumerateObjectsUsingBlock:^(NSNumber * obj, NSUInteger idx, BOOL * _Nonnull stop) {
             
-            if (obj.integerValue) {
-                <#statements#>
+            if (obj.integerValue < self.nowIndex) {
+                page = idx;
+            }else if (obj.integerValue == self.nowIndex){
+                self.page = idx;
+                *stop = YES;
+            }else {
+                
+                if (page>-1) {
+                    self.page = idx-1;
+                    *stop = YES;
+                }
             }
             
         }];
         
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+
     }];
 }
 
@@ -78,8 +98,7 @@
     self.chapter = chapter;
     self.page = page;
     
-    self.startIndex = readView.model.pages[page].integerValue;
-    self.endIndex = self.startIndex + [readView.model stringOfPage:page].length;
+    self.nowIndex = (readView.model.pages[page].integerValue + [readView.model stringOfPage:page].length)/2;
     
     return readView;
 }
