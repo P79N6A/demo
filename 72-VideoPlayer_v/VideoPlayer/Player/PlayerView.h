@@ -1,19 +1,11 @@
-//
-//  PlayView.h
-//  English
-//
-//  Created by Jay on 2018/4/12.
-//  Copyright © 2018年 Jay. All rights reserved.
-//
+/**
+ * date : 2018/08/06
+ * date : 2018/08/09 直播隐藏快进
+ * date : 2018/08/09 3秒自动隐藏工具菜单
+ */
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, PlayViewState) {
-    PlayViewStateSmall,
-    PlayViewStateAnimating,
-    PlayViewStateFullScreenRight,
-    PlayViewStateFullScreenLeft,
-};
 
 @protocol TTZPlayerModel<NSObject>
 
@@ -32,7 +24,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 是否隐藏状态栏 */
 @property (nonatomic, assign) BOOL statusBarHidden;
 
-@property (nonatomic, assign) BOOL isPlaying;
+@property (nonatomic, assign,readonly) BOOL isPlaying;
 
 @property (nonatomic, assign) BOOL allowSafariPlay;
 

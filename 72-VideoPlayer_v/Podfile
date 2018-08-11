@@ -8,6 +8,7 @@ target 'VideoPlayer' do
   # use_frameworks!
 pod 'AliyunPlayer_iOS/AliyunPlayerSDK'
 
+
   # Pods for VideoPlayer
 
 end

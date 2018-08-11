@@ -1,0 +1,12 @@
+PODS:
+  - KSYMediaPlayer_iOS/KSYMediaPlayer_vod (3.0.3)
+
+DEPENDENCIES:
+  - KSYMediaPlayer_iOS/KSYMediaPlayer_vod
+
+SPEC CHECKSUMS:
+  KSYMediaPlayer_iOS: bd163c277487e99df58941f10f090af2fb53fd6d
+
+PODFILE CHECKSUM: 1124eaf9bacecb20b5567730a1bd599fac7460af
+
+COCOAPODS: 1.4.0
