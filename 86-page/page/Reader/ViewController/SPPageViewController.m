@@ -15,7 +15,7 @@
 #import "const.h"
 
 
-@interface SPPageViewController ()<UIPageViewControllerDataSource>
+@interface SPPageViewController ()<UIPageViewControllerDataSource,UIPageViewControllerDelegate>
 @property (nonatomic, strong) UIPageViewController *pageVC;
 @property (nonatomic, strong) ReadViewController *currentViewController;
 @property (nonatomic, strong) NSArray <SPChapterModel *> *models;
@@ -118,6 +118,7 @@
         _pageVC.doubleSided = YES;
         
         _pageVC.dataSource = self;
+        _pageVC.delegate = self;
     }
     return _pageVC;
 }
@@ -185,6 +186,25 @@
     return vc;
 
 }
+
+
+//FIXME:  -  UIPageViewControllerDelegate
+
+// Sent when a gesture-initiated transition begins.
+- (void)pageViewController:(UIPageViewController *)pageViewController willTransitionToViewControllers:(NSArray<UIViewController *> *)pendingViewControllers{
+
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNamePageWillScroll object:nil];
+    
+    NSLog(@"%s---%@", __func__,pendingViewControllers);
+}
+
+
+// Sent when a gesture-initiated transition ends. The 'finished' parameter indicates whether the animation finished, while the 'completed' parameter indicates whether the transition completed or bailed out (if the user let go early).
+- (void)pageViewController:(UIPageViewController *)pageViewController didFinishAnimating:(BOOL)finished previousViewControllers:(NSArray<UIViewController *> *)previousViewControllers transitionCompleted:(BOOL)completed{
+    NSLog(@"%s", __func__);
+}
+
+
 
 
 @end

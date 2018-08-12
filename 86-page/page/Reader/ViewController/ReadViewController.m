@@ -36,6 +36,7 @@
     [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNameFontChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         [weakSelf.readView setNeedsDisplay];
     }];
+    
 }
 
 - (void)didReceiveMemoryWarning {

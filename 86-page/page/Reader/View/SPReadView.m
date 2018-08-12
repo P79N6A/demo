@@ -72,7 +72,6 @@
                 UITapGestureRecognizer *pan = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showToolView:)];
                 pan;
             })];
-            //coverBtn.backgroundColor = [UIColor orangeColor];
             coverBtn.hidden = YES;
             coverBtn;
         })];
@@ -87,29 +86,29 @@
         })];
         
         [self addSubview:({
-            SPTopView *topView = [[SPTopView alloc] initWithFrame:CGRectMake(0, -kStatusBarAndNavigationBarHeight, kScreenWidth, kStatusBarAndNavigationBarHeight)];
-            topView.backgroundColor = [UIColor lightGrayColor];
+            SPTopView *topView = [[SPTopView alloc] initWithFrame:CGRectMake(0, -kStatusBarAndNavigationBarHeight-DZMSpace_1, kScreenWidth, kStatusBarAndNavigationBarHeight)];
+            topView.backgroundColor = DZMMenuUIColor;
             _topView = topView;
             topView;
         })];
         
         [self addSubview:({
             
-            SPSettingView *settingView = [[SPSettingView alloc] initWithFrame:CGRectMake(0, ScreenHeight, ScreenWidth, NovelsSettingViewH)];
+            SPSettingView *settingView = [[SPSettingView alloc] initWithFrame:CGRectMake(0, ScreenHeight+DZMSpace_1, ScreenWidth, NovelsSettingViewH)];
             _settingView = settingView;
-            settingView.backgroundColor = [UIColor lightGrayColor];
+            settingView.backgroundColor = DZMMenuUIColor;
             settingView;
         })];
 
         
         [self addSubview:({
-            SPButtomView *buttomView = [[SPButtomView alloc] initWithFrame:CGRectMake(0, kScreenHeight, kScreenWidth, kTabbarSafeBottomMargin + 112)];
-            buttomView.backgroundColor = [UIColor lightGrayColor];
+            SPButtomView *buttomView = [[SPButtomView alloc] initWithFrame:CGRectMake(0, kScreenHeight + DZMSpace_1, kScreenWidth, kTabbarSafeBottomMargin + 112)];
+            buttomView.backgroundColor = DZMMenuUIColor;
             _buttomView = buttomView;
             buttomView.funClick = ^(NSInteger code) {
                 
                 [UIView animateWithDuration:0.25 animations:^{
-                    self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
+                    self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH-DZMSpace_1);
                     
                     self.buttomView.transform = CGAffineTransformIdentity;
                 } completion:^(BOOL finished) {
@@ -119,6 +118,14 @@
             };
             buttomView;
         })];
+        
+         __weak typeof(self) weakSelf = self;
+        [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNamePageWillScroll object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            
+            if (!weakSelf.coverButton.isHidden) {
+                [weakSelf showToolView:nil];
+            }
+        }];
         
     }
     return self;
@@ -133,8 +140,8 @@
     if (self.isShow && self.coverButton.isHidden) {
         self.statusBarHidden = NO;
         self.coverButton.hidden = NO;
-        self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight);
-        self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
+        self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight+DZMSpace_1);
+        self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH-DZMSpace_1);
 
         self.buttomView.transform = CGAffineTransformIdentity;
 
@@ -152,14 +159,16 @@
 }
 
 
+
+
 - (void)showToolView:(UITapGestureRecognizer *)sender{
     
     if (self.coverButton.isHidden) {
         self.statusBarHidden = NO;
         self.coverButton.hidden = NO;
         [UIView animateWithDuration:0.25 animations:^{
-            self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight);
-            self.buttomView.transform = CGAffineTransformMakeTranslation(0, -(kTabbarSafeBottomMargin+112));
+            self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight+DZMSpace_1);
+            self.buttomView.transform = CGAffineTransformMakeTranslation(0, -(kTabbarSafeBottomMargin+112+DZMSpace_1));
 
         } completion:^(BOOL finished) {
         }];

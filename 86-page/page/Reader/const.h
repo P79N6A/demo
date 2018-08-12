@@ -115,5 +115,7 @@
 #define DZMNotificationNameThemeColorChange  @"DZMNotificationNameThemeColorChange"
 #define DZMNotificationNameFontChange  @"DZMNotificationNameFontChange"
 
+#define DZMNotificationNamePageWillScroll  @"DZMNotificationNamePageWillScroll"
+
 
 #endif /* const_h */
