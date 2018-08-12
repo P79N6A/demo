@@ -15,6 +15,6 @@
 
 @property (nonatomic, assign) NSInteger chapter;
 @property (nonatomic, assign) NSInteger page;
-//@property (nonatomic, copy) NSString *content;
+@property (nonatomic, assign) BOOL isShow;
 @property (nonatomic, strong) SPChapterModel *model;
 @end

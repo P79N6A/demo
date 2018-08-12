@@ -113,6 +113,7 @@
 
 #define DZMNotificationNameFontSizeChange  @"DZMNotificationNameFontSizeChange"
 #define DZMNotificationNameThemeColorChange  @"DZMNotificationNameThemeColorChange"
+#define DZMNotificationNameFontChange  @"DZMNotificationNameFontChange"
 
 
 #endif /* const_h */

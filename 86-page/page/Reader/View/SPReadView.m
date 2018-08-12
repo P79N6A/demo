@@ -129,7 +129,17 @@
     self.tapView.frame = CGRectMake(88, 0, self.bounds.size.width - 88 * 2 , self.bounds.size.height);
     self.coverButton.frame = self.bounds;
 
-//    self.batteryView.frame = CGRectMake(self.bounds.size.width - 25.0, 0.5 * (self.bounds.size.height - 10.0), 100, 100);
+
+    if (self.isShow && self.coverButton.isHidden) {
+        self.statusBarHidden = NO;
+        self.coverButton.hidden = NO;
+        self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight);
+        self.settingView.transform = CGAffineTransformMakeTranslation(0, -NovelsSettingViewH);
+
+        self.buttomView.transform = CGAffineTransformIdentity;
+
+        
+    }
 
 }
 
@@ -138,6 +148,7 @@
     _statusBarHidden = statusBarHidden;
     if(statusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
     else [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar - 1];
+    
 }
 
 

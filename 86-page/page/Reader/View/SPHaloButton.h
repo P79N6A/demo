@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SPHaloButton : UIControl
-@property (nonatomic, weak) UIImageView *imageView;
+@interface SPHaloButton : UIButton
+@property (nonatomic, weak) UIImageView *spImageView;
 - (instancetype)initWithFrame:(CGRect)frame
                     haloColor:(UIColor *)color;
 + (CGSize)HaloButtonSize:(CGSize)size;

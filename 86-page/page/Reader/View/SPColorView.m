@@ -1,4 +1,4 @@
-//
+ //
 //  SPColorView.m
 //  page
 //
@@ -39,16 +39,14 @@
         CGFloat spaceW = (ScreenWidth - 2 * DZMSpace_1 - count * publicButtonWH) / (count - 1);
         for (NSInteger i = 0; i < count; i ++) {
             UIColor *color = self.colors[i];
-            SPHaloButton *publicButton = [UIButton buttonWithType:UIButtonTypeCustom];//[[SPHaloButton alloc] initWithFrame:CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH) haloColor:color];
-            publicButton.frame = CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH);
-            publicButton.backgroundColor = [UIColor redColor];
+            SPHaloButton *publicButton = [[SPHaloButton alloc] initWithFrame:CGRectMake(DZMSpace_1 + i * (publicButtonWH + spaceW), DZMSpace_1,  publicButtonWH, publicButtonWH) haloColor:color];
             publicButton.tag = i;
             publicButton.layer.cornerRadius = publicButtonWH * 0.5;
             [publicButton addTarget:self action:@selector(clickButton:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:publicButton];
-//            if (self.selectIndex == i) {
-//                [self clickButton:publicButton];
-//            }
+            if (self.selectIndex == i) {
+                [self selectButton:publicButton];
+            }
         }
     }
     return self;
@@ -67,11 +65,11 @@
 
 - (void)selectButton:(SPHaloButton *)sender{
     
-    self.selectButton.imageView.layer.borderColor = [UIColor clearColor].CGColor;
-    self.selectButton.imageView.layer.borderWidth = 0;
+    self.selectButton.spImageView.layer.borderColor = [UIColor clearColor].CGColor;
+    self.selectButton.spImageView.layer.borderWidth = 0;
     
-    sender.imageView.layer.borderColor = DZMColor_2.CGColor;
-    sender.imageView.layer.borderWidth = 2.0;
+    sender.spImageView.layer.borderColor = DZMColor_2.CGColor;
+    sender.spImageView.layer.borderWidth = 2.0;
     
     self.selectButton = sender;
 }

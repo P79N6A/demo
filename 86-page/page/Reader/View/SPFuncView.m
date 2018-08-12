@@ -85,7 +85,6 @@
             [leftButton addTarget:self action:@selector(clickFontSize:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:leftButton];
             _leftButton = leftButton;
-            leftButton.backgroundColor = [UIColor orangeColor];
                         // right
             UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
             rightButton.tag = 1;
@@ -95,7 +94,6 @@
             [rightButton addTarget:self action:@selector(clickFontSize:) forControlEvents:UIControlEventTouchUpInside];
             [self addSubview:rightButton];
             _rightButton = rightButton;
-            rightButton.backgroundColor = [UIColor redColor];
 
         }
     }
@@ -121,7 +119,6 @@
         
         [SPReadConfig defaultConfig].fontSize = [SPReadConfig defaultConfig].fontSize + 1;
         [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameFontSizeChange object:nil];
-        [self.superview.superview.superview setNeedsDisplay];
         
     }
     
@@ -134,7 +131,7 @@
     
     if (self.funcType == SPFuncViewTypeFont) {
         [SPReadConfig defaultConfig].fontType = sender.tag;
-        [self.superview.superview.superview setNeedsDisplay];
+        [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameFontChange object:nil];
         return;
     }
     

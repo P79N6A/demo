@@ -80,27 +80,33 @@
             
         }];
         
-        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:YES]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     }];
 }
 
 #pragma mark - Create Read View Controller
 
--(ReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page{
+-(ReadViewController *)readViewWithChapter:(NSUInteger)chapter
+                                      page:(NSUInteger)page
+                                isShowTool:(BOOL)show{
     
-    
-
     ReadViewController *readView = [[ReadViewController alloc] init];
     readView.model = self.models[chapter];
     readView.chapter = chapter;
     readView.page = page;
+    readView.isShow = show;
+    
     self.chapter = chapter;
     self.page = page;
-    
     self.nowIndex = (readView.model.pages[page].integerValue + [readView.model stringOfPage:page].length)/2;
     
     return readView;
+}
+-(ReadViewController *)readViewWithChapter:(NSUInteger)chapter page:(NSUInteger)page{
+    
+   return [self readViewWithChapter:chapter page:page isShowTool:NO];
+
 }
 
 
