@@ -1,30 +1,23 @@
-//
-//  UIView+YGPulseView.m
-//  YGPulseView
-//
-//  Created by YGeorge on 22/11/2016.
-//  Copyright (c) 2016 YGeorge. All rights reserved.
-//
 
-#import "UIView+YGPulseView.h"
+#import "UIView+PulseView.h"
 
 NSString *const YGPulseKey = @"YGPulseKey";
 NSString *const YGRadarKey = @"YGRadarKey";
 NSString *const YGLayerName = @"YGLayerName";
 
-@implementation UIView (YGPulseView)
+@implementation UIView (PulseView)
 
 - (void)startPulseWithColor:(UIColor *)color {
-    [self startPulseWithColor:color scaleFrom:1.1f to:1.3f frequency:1.0f opacity:0.5f animation:YGPulseViewAnimationTypeRegularPulsing];
+    [self startPulseWithColor:color scaleFrom:1.1f to:1.3f frequency:1.0f opacity:0.5f animation:PulseViewAnimationTypeRegularPulsing];
 }
 
-- (void)startPulseWithColor:(UIColor *)color animation:(YGPulseViewAnimationType)animationType {
-    CGFloat frequency = animationType == YGPulseViewAnimationTypeRadarPulsing ? 1.5f : 1.0f;
-    CGFloat startScale = animationType == YGPulseViewAnimationTypeRadarPulsing ? 1.0f : 1.2f;
+- (void)startPulseWithColor:(UIColor *)color animation:(PulseViewAnimationType)animationType {
+    CGFloat frequency = animationType == PulseViewAnimationTypeRadarPulsing ? 1.5f : 1.0f;
+    CGFloat startScale = animationType == PulseViewAnimationTypeRadarPulsing ? 1.0f : 1.2f;
     [self startPulseWithColor:color scaleFrom:startScale to:1.4f frequency:frequency opacity:0.7f animation:animationType];
 }
 
-- (void)startPulseWithColor:(UIColor *)color scaleFrom:(CGFloat)initialScale to:(CGFloat)finishScale frequency:(CGFloat)frequency opacity:(CGFloat)opacity animation:(YGPulseViewAnimationType)animationType {
+- (void)startPulseWithColor:(UIColor *)color scaleFrom:(CGFloat)initialScale to:(CGFloat)finishScale frequency:(CGFloat)frequency opacity:(CGFloat)opacity animation:(PulseViewAnimationType)animationType {
     
     // 停止一遍
     [self stopPulse];
@@ -43,11 +36,11 @@ NSString *const YGLayerName = @"YGLayerName";
     scaleAnimation.fromValue = @(initialScale);
     scaleAnimation.toValue = @(finishScale);
     scaleAnimation.duration = frequency;
-    scaleAnimation.autoreverses = animationType == YGPulseViewAnimationTypeRegularPulsing;
+    scaleAnimation.autoreverses = animationType == PulseViewAnimationTypeRegularPulsing;
     scaleAnimation.repeatCount = INT32_MAX;
     [externalBorder addAnimation:scaleAnimation forKey:YGPulseKey];
 
-    if (animationType == YGPulseViewAnimationTypeRadarPulsing) {
+    if (animationType == PulseViewAnimationTypeRadarPulsing) {
         CABasicAnimation *opacityAnimation = [CABasicAnimation animationWithKeyPath:@"opacity"];
         opacityAnimation.fromValue = @(opacity);
         opacityAnimation.toValue = @(0.0);

@@ -7,7 +7,7 @@
 //
 
 #import "SPHaloButton.h"
-#import "UIView+YGPulseView.h"
+#import "UIView+PulseView.h"
 #import "const.h"
 
 @interface SPHaloButton()
@@ -58,7 +58,7 @@
 
 - (void)openHalo:(UIColor *)color{
     self.haloColor = color;
-    [self.spImageView startPulseWithColor:color scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:YGPulseViewAnimationTypeRegularPulsing];
+    [self.spImageView startPulseWithColor:color scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
 }
 
 - (void)closeHalo{
