@@ -1,0 +1,1 @@
+../../../VitamioSDK-iOS/Vitamio/include/Vitamio/VPlayerManageDef.h

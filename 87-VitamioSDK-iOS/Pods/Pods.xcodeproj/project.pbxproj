@@ -1,0 +1,380 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		50DA7DF963DAF17C103E324B0B89CDBF /* Pods-VitamioSDK-iOS-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BDD993414E86E664DFEDF153B2D5D93 /* Pods-VitamioSDK-iOS-dummy.m */; };
+		AF7C7AB3147FB4B2F9ED19BB96004AEB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		063E3D8E89724797DBE566CECAB5FA6E /* Pods-VitamioSDK-iOS-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VitamioSDK-iOS-acknowledgements.markdown"; sourceTree = "<group>"; };
+		3165335682CE0415FEDC95735B819639 /* libffmpeg.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libffmpeg.a; path = Vitamio/libffmpeg.a; sourceTree = "<group>"; };
+		350CBA16BC3F7336E6D15136F4EE93C7 /* libPods-VitamioSDK-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-VitamioSDK-iOS.a"; path = "libPods-VitamioSDK-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D3CE6FDB10163B4F117D04B927E77BB /* VMediaPlayerDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VMediaPlayerDelegate.h; path = Vitamio/include/Vitamio/VMediaPlayerDelegate.h; sourceTree = "<group>"; };
+		5BDD993414E86E664DFEDF153B2D5D93 /* Pods-VitamioSDK-iOS-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VitamioSDK-iOS-dummy.m"; sourceTree = "<group>"; };
+		5C025E615EE47C548B0D49BA12952015 /* Pods-VitamioSDK-iOS-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VitamioSDK-iOS-acknowledgements.plist"; sourceTree = "<group>"; };
+		611DD416AC3CC24F005C54829AFE2EE0 /* libVitamio.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libVitamio.a; path = Vitamio/libVitamio.a; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		74D705EF6FAAC97461DB63233AD1C97B /* VMediaExtracterDef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VMediaExtracterDef.h; path = Vitamio/include/Vitamio/VMediaExtracterDef.h; sourceTree = "<group>"; };
+		7960C7A7C47140C4DB42F6D9BD5B5E3C /* VMediaPlayer.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VMediaPlayer.h; path = Vitamio/include/Vitamio/VMediaPlayer.h; sourceTree = "<group>"; };
+		7E780D2A416C775F65722EBC836A43D9 /* VDefines.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VDefines.h; path = Vitamio/include/Vitamio/VDefines.h; sourceTree = "<group>"; };
+		8A568BC187CDEF2ECBF97000BA800450 /* VMediaExtracter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VMediaExtracter.h; path = Vitamio/include/Vitamio/VMediaExtracter.h; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A6272BD3D5D10A13946362BC6C86FE01 /* VSingleton.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VSingleton.h; path = Vitamio/include/Vitamio/VSingleton.h; sourceTree = "<group>"; };
+		AD85591BA55F15CFFA766988BBBF5EDD /* Pods-VitamioSDK-iOS-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VitamioSDK-iOS-resources.sh"; sourceTree = "<group>"; };
+		CBF70A873982F10B6045FA3E2C205E6C /* Vitamio.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = Vitamio.h; path = Vitamio/include/Vitamio/Vitamio.h; sourceTree = "<group>"; };
+		CFFB7E98649D4249D170C66FBDF4453E /* Pods-VitamioSDK-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VitamioSDK-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		D326B14D0D08BCBF91C7D58A02D9B1EA /* libopenssl.a */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = archive.ar; name = libopenssl.a; path = Vitamio/libopenssl.a; sourceTree = "<group>"; };
+		E2344F900BAE6CE9B4C45C3F15358E11 /* Pods-VitamioSDK-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VitamioSDK-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		F0FE449DDA16F73AF4FCD2D0DEA3FAF3 /* VPlayerManageDef.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = VPlayerManageDef.h; path = Vitamio/include/Vitamio/VPlayerManageDef.h; sourceTree = "<group>"; };
+		F35CC7791DDEFBDCF419BFB6A8FF0B33 /* Pods-VitamioSDK-iOS-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VitamioSDK-iOS-frameworks.sh"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		2D191514F8DDE9DF25FDE5FA4E5942F9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AF7C7AB3147FB4B2F9ED19BB96004AEB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0E4C206F156BDE00365D167E8B0B4C9E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3165335682CE0415FEDC95735B819639 /* libffmpeg.a */,
+				D326B14D0D08BCBF91C7D58A02D9B1EA /* libopenssl.a */,
+				611DD416AC3CC24F005C54829AFE2EE0 /* libVitamio.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2E6F193F3D52545578125C39D881AC53 /* Pods-VitamioSDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				063E3D8E89724797DBE566CECAB5FA6E /* Pods-VitamioSDK-iOS-acknowledgements.markdown */,
+				5C025E615EE47C548B0D49BA12952015 /* Pods-VitamioSDK-iOS-acknowledgements.plist */,
+				5BDD993414E86E664DFEDF153B2D5D93 /* Pods-VitamioSDK-iOS-dummy.m */,
+				F35CC7791DDEFBDCF419BFB6A8FF0B33 /* Pods-VitamioSDK-iOS-frameworks.sh */,
+				AD85591BA55F15CFFA766988BBBF5EDD /* Pods-VitamioSDK-iOS-resources.sh */,
+				E2344F900BAE6CE9B4C45C3F15358E11 /* Pods-VitamioSDK-iOS.debug.xcconfig */,
+				CFFB7E98649D4249D170C66FBDF4453E /* Pods-VitamioSDK-iOS.release.xcconfig */,
+			);
+			name = "Pods-VitamioSDK-iOS";
+			path = "Target Support Files/Pods-VitamioSDK-iOS";
+			sourceTree = "<group>";
+		};
+		6A2F29A38A09899DB884EFBAD5426ADC /* VitamioSDK-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7E780D2A416C775F65722EBC836A43D9 /* VDefines.h */,
+				CBF70A873982F10B6045FA3E2C205E6C /* Vitamio.h */,
+				8A568BC187CDEF2ECBF97000BA800450 /* VMediaExtracter.h */,
+				74D705EF6FAAC97461DB63233AD1C97B /* VMediaExtracterDef.h */,
+				7960C7A7C47140C4DB42F6D9BD5B5E3C /* VMediaPlayer.h */,
+				4D3CE6FDB10163B4F117D04B927E77BB /* VMediaPlayerDelegate.h */,
+				F0FE449DDA16F73AF4FCD2D0DEA3FAF3 /* VPlayerManageDef.h */,
+				A6272BD3D5D10A13946362BC6C86FE01 /* VSingleton.h */,
+				0E4C206F156BDE00365D167E8B0B4C9E /* Frameworks */,
+			);
+			name = "VitamioSDK-iOS";
+			path = "VitamioSDK-iOS";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				F2781FE728AA6B5BBD2798F76BB5680C /* Pods */,
+				90F3E79C2173FCA755DB187DD9BEE824 /* Products */,
+				FA6E9B6206FBEA72B17C2D2AE5BDF3B5 /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		90F3E79C2173FCA755DB187DD9BEE824 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				350CBA16BC3F7336E6D15136F4EE93C7 /* libPods-VitamioSDK-iOS.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		F2781FE728AA6B5BBD2798F76BB5680C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6A2F29A38A09899DB884EFBAD5426ADC /* VitamioSDK-iOS */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		FA6E9B6206FBEA72B17C2D2AE5BDF3B5 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				2E6F193F3D52545578125C39D881AC53 /* Pods-VitamioSDK-iOS */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5D9B5A68B55BA0DBB8D972888D97E928 /* Pods-VitamioSDK-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4A6C8971CF06658DCC98450F388723AA /* Build configuration list for PBXNativeTarget "Pods-VitamioSDK-iOS" */;
+			buildPhases = (
+				E80B75F1E5C504CEDEFB8D24C218012C /* Sources */,
+				2D191514F8DDE9DF25FDE5FA4E5942F9 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Pods-VitamioSDK-iOS";
+			productName = "Pods-VitamioSDK-iOS";
+			productReference = 350CBA16BC3F7336E6D15136F4EE93C7 /* libPods-VitamioSDK-iOS.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0830;
+				LastUpgradeCheck = 0700;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 90F3E79C2173FCA755DB187DD9BEE824 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5D9B5A68B55BA0DBB8D972888D97E928 /* Pods-VitamioSDK-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E80B75F1E5C504CEDEFB8D24C218012C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50DA7DF963DAF17C103E324B0B89CDBF /* Pods-VitamioSDK-iOS-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		17413B2036304A075ADCEA12A1799B8F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CFFB7E98649D4249D170C66FBDF4453E /* Pods-VitamioSDK-iOS.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		39C5BC78A31CDE101068C530CAC7FA0F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		5F2D9E1495C51E4052356C6BF96621AE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E2344F900BAE6CE9B4C45C3F15358E11 /* Pods-VitamioSDK-iOS.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		89C8BB24E37B25BAEEB8FBA01EE05DAF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				39C5BC78A31CDE101068C530CAC7FA0F /* Debug */,
+				89C8BB24E37B25BAEEB8FBA01EE05DAF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4A6C8971CF06658DCC98450F388723AA /* Build configuration list for PBXNativeTarget "Pods-VitamioSDK-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5F2D9E1495C51E4052356C6BF96621AE /* Debug */,
+				17413B2036304A075ADCEA12A1799B8F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

@@ -1,0 +1,15 @@
+PODS:
+  - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
+  - VitamioSDK-iOS (1.0.2)
+
+DEPENDENCIES:
+  - AliyunPlayer_iOS/AliyunPlayerSDK
+  - VitamioSDK-iOS (~> 1.0.2)
+
+SPEC CHECKSUMS:
+  AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
+  VitamioSDK-iOS: e42b72c80508fd163e0dbbde0145b3f089f2629a
+
+PODFILE CHECKSUM: 6d18d7b103cfb18864f8f6fc19c8f182e26422fa
+
+COCOAPODS: 1.4.0
