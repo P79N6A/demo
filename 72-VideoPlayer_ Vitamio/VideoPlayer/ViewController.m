@@ -10,7 +10,7 @@
 #import "Player/PlayerView.h"
 
 @interface ViewController ()
-
+@property (nonatomic, weak) PlayerView *player;
 @end
 
 @implementation ViewController
@@ -29,6 +29,23 @@
     player.frame = CGRectMake(0, 100, 320, 200);
     [player playWithModel:model];
     [self.view addSubview:player];
+    _player = player;
+}
+
+- (IBAction)video:(id)sender {
+    VideoModel *model = [VideoModel new];
+    model.name = @"hello tv";
+    model.live_stream = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
+    
+    [_player playWithModel:model];
+}
+
+- (IBAction)living:(id)sender {
+    VideoModel *model = [VideoModel new];
+    model.name = @"hello tv";
+    model.live_stream = @"http://m.567it.com/jade.m3u8";
+    
+    [_player playWithModel:model];
 }
 
 

@@ -11,6 +11,8 @@
 // 进度view
 @interface SPVideoSlider : UISlider
 @property (nonatomic, strong) UIImage *thumbBackgroundImage;
+/** 缓存片区 */
+@property (nonatomic, strong) NSArray *segments;;
 @end
 
 //--------------------------------------------------------------------------------------

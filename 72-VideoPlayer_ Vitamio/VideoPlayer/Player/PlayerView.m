@@ -811,9 +811,21 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (!_mediaPlayer) {
         _mediaPlayer = [VMediaPlayer sharedInstance];
         [_mediaPlayer setupPlayerWithCarrierView:self.contentView withDelegate:self];
+        [_mediaPlayer setVideoFillMode:VMVideoFillMode100];
         //[self addNotification];
     }
     return _mediaPlayer;
+}
+
+- (NSString *)getCacheRootDirectory{
+    NSString *cache = [[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] stringByAppendingPathComponent:@"MediasCaches"];
+    if (![[NSFileManager defaultManager] fileExistsAtPath:cache]) {
+        [[NSFileManager defaultManager] createDirectoryAtPath:cache
+                                  withIntermediateDirectories:YES
+                                                   attributes:nil
+                                                        error:NULL];
+    }
+    return cache;
 }
 //- (AliVcMediaPlayer *)mediaPlayer{
 //    if (!_mediaPlayer) {
@@ -931,6 +943,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if(islive){
         self.fullBufView = nil;
         self.fullProgressView = nil;
+    }else{
+        player.useCache = YES;
+        [player setCacheDirectory:[self getCacheRootDirectory]];
     }
     self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
     
@@ -980,8 +995,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     [player setVideoQuality:VMVideoQualityHigh];
     
-    //player.useCache = YES;
-    //[player setCacheDirectory:[self getCacheRootDirectory]];
+//    player.useCache = YES;
+//    [player setCacheDirectory:[self getCacheRootDirectory]];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
@@ -1081,9 +1096,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             float val = (float)[segs[i] longLongValue] / player.getDuration;
             [arr addObject:[NSNumber numberWithFloat:val]];
         }
-        //self.progressSld.segments = arr;
-        self.progressView.progress = [arr.lastObject floatValue];
-        self.fullBufView.progress = self.progressView.progress;
+        self.videoSlider.segments = arr;
+        //self.progressView.progress = [arr.lastObject floatValue];
+        //self.fullBufView.progress = self.progressView.progress;
     }
 }
 
@@ -1095,8 +1110,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)mediaPlayer:(VMediaPlayer *)player cacheComplete:(id)arg
 {
     NSLog(@"NAL .... media cacheComplete");
-    self.progressView.progress = 1.0;
-    self.fullBufView.progress = self.progressView.progress;
+    self.videoSlider.segments = @[@(0),@(1.0)];
+
+    //self.progressView.progress = 1.0;
+    //self.fullBufView.progress = self.progressView.progress;
 }
 
 #pragma mark  - 获取到视频的相关信息
