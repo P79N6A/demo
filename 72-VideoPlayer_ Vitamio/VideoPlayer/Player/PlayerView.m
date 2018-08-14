@@ -284,13 +284,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         url = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
     }
     
-    [self stop];
+    [self.mediaPlayer reset];
     
     self.model = model;
     //prepareToPlay:此方法传入的参数是NSURL类型.
     [self.mediaPlayer setDataSource:url];
     //开始播放
-    [self.mediaPlayer  prepareAsync];
+    [self.mediaPlayer prepareAsync];
     
     self.titleLabel.text = model.name;
     
@@ -306,7 +306,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 - (void)stop{
-    [self.mediaPlayer reset];
+    [self.mediaPlayer unSetupPlayer];
 }
 
 - (void)pause{
@@ -943,10 +943,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if(islive){
         self.fullBufView = nil;
         self.fullProgressView = nil;
-    }else{
-        player.useCache = YES;
-        [player setCacheDirectory:[self getCacheRootDirectory]];
     }
+    
     self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
     
     if(total) {[self timer];self.errorBtn.hidden = YES;}
