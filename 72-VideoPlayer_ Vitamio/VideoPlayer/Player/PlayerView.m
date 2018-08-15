@@ -204,7 +204,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.titleLabel.frame = CGRectMake(44, 20+spacing*0.5, self.topView.bounds.size.width - 44, 44);
     
     self.modeButton.frame = CGRectMake(0, 0, 70, 70);
-    self.modeButton.center = CGPointMake(self.buttomView.bounds.size.width - (35+spacing), self.lockBtn.center.y);
+    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
 
     
     self.videoButtomView.frame = CGRectMake(0, self.buttomView.bounds.size.height - 44, self.buttomView.bounds.size.width - 44, 44);
