@@ -9,6 +9,42 @@
 #import "PlayerSubView.h"
 #import "PlayerView.h"
 
+
+@implementation SPCacheView
+
+
+
+- (void)setSegments:(NSArray *)segs{
+    _segments = segs;
+    [self setNeedsDisplay];
+}
+
+- (void)drawRect:(CGRect)rect
+{
+    @synchronized(self) {
+        float rw = rect.size.width;
+        //float ycrop = 12.0;
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        CGContextSaveGState(context); {
+            CGContextSetRGBFillColor(context, 1, 1, 1, 0.5);
+            for (int i = 0; i < self.segments.count / 2; i++) {
+                CGRect cur = CGRectZero;
+                cur.origin.x    = rw * [self.segments[2*i] floatValue];
+                cur.origin.y    = 0.5 * (rect.size.height - 2);//rect.origin.y + ycrop;
+                cur.size.width  = rw * [self.segments[2*i+1] floatValue] - cur.origin.x;
+                cur.size.height = 2;// - ycrop * 2.0;
+                CGContextFillRect(context, cur);
+            }
+            if (self.segments == nil) {
+                CGContextFillRect(context, CGRectZero);
+            }
+            CGContextStrokePath(context);
+        } CGContextRestoreGState(context);
+    }
+}
+
+@end
+
 @interface SPVideoSlider()
 
 @property (nonatomic, strong) UIImageView *thumbBackgroundImageView;
@@ -47,11 +83,11 @@
         float ycrop = 12.0;
         CGContextRef context = UIGraphicsGetCurrentContext();
         CGContextSaveGState(context); {
-            CGContextSetRGBFillColor(context, 0.3794, 0.7968, 0.7911, 1.0);
+            CGContextSetRGBFillColor(context, 1, 1, 1, 0.5);
             for (int i = 0; i < self.segments.count / 2; i++) {
                 CGRect cur = CGRectZero;
                 cur.origin.x    = rw * [self.segments[2*i] floatValue];
-                cur.origin.y    = 0.5 * (rect.size.height - 3);//rect.origin.y + ycrop;
+                cur.origin.y    = 0.5 * (rect.size.height - 2);//rect.origin.y + ycrop;
                 cur.size.width  = rw * [self.segments[2*i+1] floatValue] - cur.origin.x;
                 cur.size.height = 2;// - ycrop * 2.0;
                 CGContextFillRect(context, cur);

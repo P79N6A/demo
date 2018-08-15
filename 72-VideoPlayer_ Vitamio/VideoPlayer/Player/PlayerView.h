@@ -2,6 +2,7 @@
  * date : 2018/08/06
  * date : 2018/08/09 直播隐藏快进
  * date : 2018/08/09 3秒自动隐藏工具菜单
+ * date : 2018/08/15 网速／加载进度／模式切换
  */
 
 #import <UIKit/UIKit.h>
@@ -9,14 +10,18 @@
 
 @protocol TTZPlayerModel<NSObject>
 
-@property (nonatomic, copy, readonly) NSString *live_stream;
+@property (nonatomic, copy, readonly) NSString *url;
 @property (nonatomic, copy, readonly) NSString *name;
+/** 是否是点播*/
+@property (nonatomic, assign, readonly) BOOL isVod;
 
 @end
 
 @interface VideoModel : NSObject<TTZPlayerModel>
-@property (nonatomic, copy) NSString *live_stream;
+@property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *name;
+@property (nonatomic, assign) BOOL isVod;
+
 @end
 
 @interface PlayerView : UIView

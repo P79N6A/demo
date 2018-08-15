@@ -7,6 +7,13 @@
 
 #import <UIKit/UIKit.h>
 
+
+//--------------------------------------------------------------------------------------
+// 缓存view
+@interface SPCacheView : UIProgressView
+/** 缓存片区 */
+@property (nonatomic, strong) NSArray *segments;;
+@end
 //--------------------------------------------------------------------------------------
 // 进度view
 @interface SPVideoSlider : UISlider
