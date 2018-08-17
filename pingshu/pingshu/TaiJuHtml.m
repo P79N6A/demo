@@ -575,6 +575,7 @@
 
         [indexs enumerateObjectsUsingBlock:^(NSString * s, NSUInteger idx, BOOL * _Nonnull stop) {
             NSArray *d = [self matchString:s toRegexString:indexReg];
+          
             NSArray *DD = [self matchString:ses[idx+1] toRegexString:seReg];
             NSMutableArray *temps = [NSMutableArray array];
             NSMutableDictionary *dic = [NSMutableDictionary dictionary];
@@ -582,8 +583,8 @@
             for (NSString  *r  in DD) {
                 NSArray *D = [self matchString:r toRegexString:DDReg];
                 if (D.count < 5) {
-                                    continue;
-                                }
+                    continue;
+                 }
                 NSMutableDictionary *dict = [NSMutableDictionary dictionary];
                 dict[@"img"] = [NSString stringWithFormat:@"http://m.zgpingshu.com%@", D[2]];
                 dict[@"url"] = [NSString stringWithFormat:@"http://m.zgpingshu.com%@", D[1]];
