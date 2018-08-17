@@ -19,8 +19,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [self.login setTitle:@"tttr" forState:TTControlStateLoading];
+//    [self.login setTitle:@"功能的高期望" forState:TTControlStateLoading];
     [self.login setTitle:@"tttr" forState:UIControlStateNormal];
+
+    
+    
+}
+
+
+- (IBAction)start:(id)sender {
+    self.login.loading = YES;
+}
+
+- (IBAction)stop:(id)sender {
+    self.login.loading = NO;
 
 }
 

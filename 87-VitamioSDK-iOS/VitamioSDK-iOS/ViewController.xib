@@ -48,7 +48,7 @@
                         <action selector="playButtonAction2:" destination="-1" eventType="touchUpInside" id="16"/>
                     </connections>
                 </button>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="http://m.567it.com/jade.m3u8" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="15">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="rtmp://wv3.tp33.net/tv/ttv11" borderStyle="roundedRect" minimumFontSize="17" clearButtonMode="whileEditing" id="15">
                     <rect key="frame" x="36" y="155" width="647" height="30"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

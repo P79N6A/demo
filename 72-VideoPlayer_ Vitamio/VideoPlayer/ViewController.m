@@ -51,6 +51,16 @@
 }
 
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+    VideoModel *model = [VideoModel new];
+    model.name = @"hello radio";
+    model.url = @"http://111.223.51.7:8000/listen.pls?sid=1";
+    
+    [_player playWithModel:model];
+
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

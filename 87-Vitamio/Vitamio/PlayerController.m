@@ -233,8 +233,8 @@
 
 	[player setVideoQuality:VMVideoQualityHigh];
 
-	player.useCache = YES;
-	[player setCacheDirectory:[self getCacheRootDirectory]];
+//    player.useCache = YES;
+//    [player setCacheDirectory:[self getCacheRootDirectory]];
 }
 
 - (void)mediaPlayer:(VMediaPlayer *)player seekComplete:(id)arg
