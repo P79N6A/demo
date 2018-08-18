@@ -10,6 +10,105 @@
 
 @implementation TaiJuHtml
 
+
+//FIXME:  -  泰剧列表(百家---)
++ (void)searchTaiJuPageKeyWord:(NSString *)kw
+              completed: (void(^)(NSArray <NSDictionary *>*objs))block{
+    
+    if (self.isProtocolService) {
+        !(block)? : block(@[]);
+        return;
+    }
+    
+    NSString *str =  @"http://mpublic.zgpingshu.com/search/index.php";
+    //    if (page > 1) {
+    //        str = [NSString stringWithFormat:@"http://www.97taiju.com/list/taiju/index-%ld.html",(long)page];
+    //    }
+    
+    //next: 5
+    //table: music
+    //action: getmorenews
+    //limit: 10
+    //small_length: 120
+    //classid: 8,9,16,17,18,64,66,65,67,68,69,70,71,72,73,74,75,76,77
+    
+    NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+
+    NSURL * url = [NSURL URLWithString:str];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:10.0];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    request.HTTPMethod = @"POST";
+    //5,设置请求体
+    NSString *parmages = //@"keyboard=44&orderby=3&show=title%2Cnewstext%2Cwriter%2Cbefrom";
+    [NSString stringWithFormat:@"keyboard=%@&orderby=3&show=title,newstext,writer,befrom",kw];
+//    keyboard=%C8%FD&orderby=3&show=title%2Cnewstext%2Cwriter%2Cbefrom
+    parmages = [parmages stringByAddingPercentEscapesUsingEncoding:enc];
+    request.HTTPBody = [parmages dataUsingEncoding:NSUTF8StringEncoding];
+    //6根据会话创建一个task（发送请求）
+    
+    
+    NSURLSession * session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:enc];
+        
+        
+        if (!searchText) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@[]);
+            });
+            
+            return;
+        }
+        
+        NSString *rString = @"<li><a .*?</div></li>";
+        NSArray *rs = [self matchString:searchText toRegexString:rString];
+        NSLog(@"%s", __func__);
+        
+        
+        NSString *rS = @"<li><a href=\"(.*?)\" class=\".*?\"><div class=\".*?\"><img class=\".*?\" src=\"(.*?)\" alt=\"(.*?)\"></div><div class=\".*?\"><p class=\".*?\"><span class=\".*?\">.*?</span><span class=\"product-show-distance huo\">(.*?)</span></p><p class=\".*?\">(.*?)</p></div></a><div class=\".*?\"><div class=\".*?\"><p class=\".*?\" align=\"center\"><span>(.*?)</span> <span>(.*?)</span> <span>(.*?)</span> <span>(.*?)</span></p></div></a></div><div class=\"interval\"></div></li>";
+        
+        rS = @"<li><a href=\"(.*?)\" class=\".*?\"><div class=\".*?\"><img class=\".*?\" src=\"(.*?)\" alt=\".*?\"></div><div class=\"weui_media_bd\"><p class=\"weui_media_title product-buttom\"><span class=\"product-show-title\">(.*?)</span><span class=\"product-show-distance huo\"><i class=\"iconfont icon-huo\"></i><i class=\"iconfont icon-huo\"></i><i class=\"iconfont icon-huo\"></i><i class=\"iconfont icon-huo\"></i></span></p><p class=\"weui_media_desc product-buttom\">(.*?)</p></div></a><div class=\"interval\"></div></li>";
+        
+        
+//        NSString *hotS = @"<i class=\"iconfont icon-huo\"></i>";
+        
+        NSMutableArray *temps = [NSMutableArray array];
+        
+        
+        for (NSString *r in rs) {
+            NSArray *d = [self matchString:r toRegexString:rS];
+            if (d.count < 5) {
+                continue;
+            }
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            dict[@"img"] = [NSString stringWithFormat:@"http:%@", d[2]];//http://titlepic.zgpingshu.com/918475b4d7657d4c085a42aab22a7d14.jpg
+            dict[@"url"] = [NSString stringWithFormat:@"http:%@", d[1]];
+            dict[@"title"] = [self flattenHTML:d[3]];;
+            dict[@"des"] = d[4];
+            
+            
+            [temps addObject:dict];
+            
+        }
+        
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(temps);
+        });
+    }];
+    //开启网络任务
+    [task resume];
+    
+}
+
+
+
 + (void)taiJuSearch:(NSString *)kw
           pageNo:(NSInteger)page
          completed: (void(^)(NSArray <NSDictionary *>*objs,BOOL))block{
@@ -510,6 +609,103 @@
     [task resume];
 }
 
+
+
+
+//FIXME:  -  泰剧列表(百家---)
++ (void)getTaiJuPageURL:(NSString *)str
+             completed: (void(^)(NSArray <NSDictionary *>*objs))block{
+    
+    if (self.isProtocolService) {
+        !(block)? : block(@[]);
+        return;
+    }
+    
+    //NSString *str =  @"http://m.zgpingshu.com/e/action/get_music_list.php";
+    //    if (page > 1) {
+    //        str = [NSString stringWithFormat:@"http://www.97taiju.com/list/taiju/index-%ld.html",(long)page];
+    //    }
+    
+    //next: 5
+    //table: music
+    //action: getmorenews
+    //limit: 10
+    //small_length: 120
+    //classid: 8,9,16,17,18,64,66,65,67,68,69,70,71,72,73,74,75,76,77
+    
+    
+    NSURL * url = [NSURL URLWithString:str];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:10.0];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    //request.HTTPMethod = @"POST";
+    //5,设置请求体
+    //NSString *parmages = [NSString stringWithFormat:@"next=%ld&table=music&action=getmorenews&limit=10&small_length=120&classid=%@",(long)page,@"4"];
+    //request.HTTPBody = [parmages dataUsingEncoding:NSUTF8StringEncoding];
+    //6根据会话创建一个task（发送请求）
+    
+    
+    NSURLSession * session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:enc];
+        
+        
+        if (!searchText) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(@[]);
+            });
+            
+            return;
+        }
+        
+        NSString *rString = @"<li><a .*?</div></li>";
+        NSArray *rs = [self matchString:searchText toRegexString:rString];
+        NSLog(@"%s", __func__);
+        
+        
+        NSString *rS = @"<li><a href=\"(.*?)\" class=\".*?\"><div class=\".*?\"><img class=\".*?\" src=\"(.*?)\" alt=\"(.*?)\"></div><div class=\".*?\"><p class=\".*?\"><span class=\".*?\">.*?</span><span class=\"product-show-distance huo\">(.*?)</span></p><p class=\".*?\">(.*?)</p></div></a><div class=\".*?\"><div class=\".*?\"><p class=\".*?\" align=\"center\"><span>(.*?)</span> <span>(.*?)</span> <span>(.*?)</span> <span>(.*?)</span></p></div></div><div class=\"interval\"></div></li>";
+        
+        
+        NSString *hotS = @"<i class=\"iconfont icon-huo\"></i>";
+        
+        NSMutableArray *temps = [NSMutableArray array];
+        
+        
+        for (NSString *r in rs) {
+            NSArray *d = [self matchString:r toRegexString:rS];
+            if (d.count < 10) {
+                continue;
+            }
+            NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+            dict[@"img"] = [NSString stringWithFormat:@"http:%@", d[2]];//http://titlepic.zgpingshu.com/918475b4d7657d4c085a42aab22a7d14.jpg
+            dict[@"url"] = [NSString stringWithFormat:@"http://m.zgpingshu.com%@", d[1]];
+            dict[@"title"] = d[3];
+            dict[@"des"] = d[5];
+            
+            dict[@"hot"] = @([self matchString:r toRegexString:hotS].count);
+            dict[@"number"] = d[6];
+            dict[@"duration"] = d[7];
+            dict[@"bit"] = d[8];
+            dict[@"status"] = d[9];
+            
+            [temps addObject:dict];
+            
+        }
+        
+        
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(temps);
+        });
+    }];
+    //开启网络任务
+    [task resume];
+    
+}
 
 
 //FIXME:  -  泰剧列表(名家)

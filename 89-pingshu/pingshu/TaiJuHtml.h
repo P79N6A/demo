@@ -11,20 +11,29 @@
 @interface TaiJuHtml : NSObject
 
 
-+ (void)taiJuSearch:(NSString *)kw
-             pageNo:(NSInteger)page
-          completed:(void(^)(NSArray <NSDictionary *>*objs,BOOL hasMore))block;
+//+ (void)taiJuSearch:(NSString *)kw
+//             pageNo:(NSInteger)page
+//          completed:(void(^)(NSArray <NSDictionary *>*objs,BOOL hasMore))block;
+
++ (void)searchTaiJuPageKeyWord:(NSString *)kw
+                     completed: (void(^)(NSArray <NSDictionary *>*objs))block;
 
 + (void)taiJuM3u8:(NSString *)urlStr
         completed:(void(^)(NSString *obj))block;
 
+
 + (void)getLongTaiJuPageNo:(NSInteger)page
                classId:(NSString *)class
              completed:(void(^)(NSArray <NSDictionary *>*objs))block;
+
 + (void)getTaiJuPageNo:(NSInteger)page
              completed:(void(^)(NSArray <NSDictionary *>*objs))block;
 
+
 + (void)getMingRenTangCompleted: (void(^)(NSArray <NSDictionary *>*objs))block;
++ (void)getTaiJuPageURL:(NSString *)str
+              completed: (void(^)(NSArray <NSDictionary *>*objs))block;
+
 
 + (void)getTaiJuDetail:(NSString *)urlStr
              completed:(void(^)(NSDictionary *obj))block;

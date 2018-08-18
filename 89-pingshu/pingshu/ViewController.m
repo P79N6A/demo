@@ -18,6 +18,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [TaiJuHtml searchTaiJuPageKeyWord:@"三" completed:^(NSArray<NSDictionary *> *objs) {
+        NSLog(@"%s", __func__);
+    }];
+    [TaiJuHtml getTaiJuPageURL:@"http://m.zgpingshu.com/mingrentang/shilianjun/" completed:^(NSArray<NSDictionary *> *objs) {
+        NSLog(@"%s", __func__);
+    }];
     
     [TaiJuHtml getMingRenTangCompleted:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
