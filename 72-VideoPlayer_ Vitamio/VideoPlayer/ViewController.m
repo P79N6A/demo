@@ -45,21 +45,21 @@
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
     model.name = @"hello tv";
-    model.url = @"http://m.567it.com/jade.m3u8";
+    model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
     
     [_player playWithModel:model];
 }
 
 
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
-    
-    VideoModel *model = [VideoModel new];
-    model.name = @"hello radio";
-    model.url = @"http://111.223.51.7:8000/listen.pls?sid=1";
-    
-    [_player playWithModel:model];
-
-}
+//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//    
+//    VideoModel *model = [VideoModel new];
+//    model.name = @"hello radio";
+//    model.url = @"http://111.223.51.7:8000/listen.pls?sid=1";
+//    
+//    [_player playWithModel:model];
+//
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
