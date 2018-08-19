@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "TaiJuHtml.h"
+#import "PingShuHtml.h"
 
 @interface ViewController ()
 
@@ -18,30 +18,30 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    [TaiJuHtml searchTaiJuPageKeyWord:@"三" completed:^(NSArray<NSDictionary *> *objs) {
+    [PingShuHtml searchPingShuKeyWord:@"三" completed:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
     }];
-    [TaiJuHtml getTaiJuPageURL:@"http://m.zgpingshu.com/mingrentang/shilianjun/" completed:^(NSArray<NSDictionary *> *objs) {
-        NSLog(@"%s", __func__);
-    }];
-    
-    [TaiJuHtml getMingRenTangCompleted:^(NSArray<NSDictionary *> *objs) {
+    [PingShuHtml getPingShuURL:@"http://m.zgpingshu.com/mingrentang/shilianjun/" completed:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
     }];
     
-    [TaiJuHtml getLongTaiJuPageNo:0 classId:@"" completed:^(NSArray<NSDictionary *> *objs) {
+    [PingShuHtml getMingRenTangCompleted:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
     }];
     
-    [TaiJuHtml getTaiJuDetail:@"http://m.zgpingshu.com/pingshu/shantianfang/575/" completed:^(NSDictionary *obj) {
+    [PingShuHtml getLongPingShuPageNo:0 classId:@"" completed:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
     }];
     
-    [TaiJuHtml taiJuM3u8:@"http://m.zgpingshu.com/playdata/575/2.html" completed:^(NSString *obj) {
+    [PingShuHtml getPingShuDetail:@"http://m.zgpingshu.com/pingshu/shantianfang/575/" completed:^(NSDictionary *obj) {
+        NSLog(@"%s", __func__);
+    }];
+    
+    [PingShuHtml pingShuMp3:@"http://m.zgpingshu.com/playdata/575/2.html" completed:^(NSString *obj) {
      NSLog(@"%s", __func__);
     }];
     
-    [TaiJuHtml getTaiJuPageNo:0 completed:^(NSArray<NSDictionary *> *objs) {
+    [PingShuHtml getPingShuPageNo:0 completed:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);
     }];
 }

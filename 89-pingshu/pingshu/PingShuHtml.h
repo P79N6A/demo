@@ -1,40 +1,32 @@
-//
-//  HJManger.h
-//  HJManger
-//
-//  Created by xin on 2018/7/2.
-//  Copyright © 2018年 sdl. All rights reserved.
-//
+
 
 #import <Foundation/Foundation.h>
 
-@interface TaiJuHtml : NSObject
+@interface PingShuHtml : NSObject
 
 
-//+ (void)taiJuSearch:(NSString *)kw
-//             pageNo:(NSInteger)page
-//          completed:(void(^)(NSArray <NSDictionary *>*objs,BOOL hasMore))block;
 
-+ (void)searchTaiJuPageKeyWord:(NSString *)kw
+
++ (void)searchPingShuKeyWord:(NSString *)kw
                      completed: (void(^)(NSArray <NSDictionary *>*objs))block;
 
-+ (void)taiJuM3u8:(NSString *)urlStr
++ (void)pingShuMp3:(NSString *)urlStr
         completed:(void(^)(NSString *obj))block;
 
 
-+ (void)getLongTaiJuPageNo:(NSInteger)page
++ (void)getLongPingShuPageNo:(NSInteger)page
                classId:(NSString *)class
              completed:(void(^)(NSArray <NSDictionary *>*objs))block;
 
-+ (void)getTaiJuPageNo:(NSInteger)page
++ (void)getPingShuPageNo:(NSInteger)page
              completed:(void(^)(NSArray <NSDictionary *>*objs))block;
 
 
 + (void)getMingRenTangCompleted: (void(^)(NSArray <NSDictionary *>*objs))block;
-+ (void)getTaiJuPageURL:(NSString *)str
++ (void)getPingShuURL:(NSString *)str
               completed: (void(^)(NSArray <NSDictionary *>*objs))block;
 
 
-+ (void)getTaiJuDetail:(NSString *)urlStr
++ (void)getPingShuDetail:(NSString *)urlStr
              completed:(void(^)(NSDictionary *obj))block;
 @end

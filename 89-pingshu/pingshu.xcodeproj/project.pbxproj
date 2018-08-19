@@ -13,7 +13,7 @@
 		69CECCC9212576C7001453F6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69CECCC8212576C7001453F6 /* Assets.xcassets */; };
 		69CECCCC212576C7001453F6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69CECCCA212576C7001453F6 /* LaunchScreen.storyboard */; };
 		69CECCCF212576C7001453F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CECCCE212576C7001453F6 /* main.m */; };
-		69CECCD7212576FC001453F6 /* TaiJuHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CECCD6212576FC001453F6 /* TaiJuHtml.m */; };
+		69CECCD7212576FC001453F6 /* PingShuHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CECCD6212576FC001453F6 /* PingShuHtml.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,8 +27,8 @@
 		69CECCCB212576C7001453F6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		69CECCCD212576C7001453F6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CECCCE212576C7001453F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		69CECCD5212576FB001453F6 /* TaiJuHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaiJuHtml.h; sourceTree = "<group>"; };
-		69CECCD6212576FC001453F6 /* TaiJuHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaiJuHtml.m; sourceTree = "<group>"; };
+		69CECCD5212576FB001453F6 /* PingShuHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PingShuHtml.h; sourceTree = "<group>"; };
+		69CECCD6212576FC001453F6 /* PingShuHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PingShuHtml.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 		69CECCBE212576C7001453F6 /* pingshu */ = {
 			isa = PBXGroup;
 			children = (
-				69CECCD5212576FB001453F6 /* TaiJuHtml.h */,
-				69CECCD6212576FC001453F6 /* TaiJuHtml.m */,
+				69CECCD5212576FB001453F6 /* PingShuHtml.h */,
+				69CECCD6212576FC001453F6 /* PingShuHtml.m */,
 				69CECCBF212576C7001453F6 /* AppDelegate.h */,
 				69CECCC0212576C7001453F6 /* AppDelegate.m */,
 				69CECCC2212576C7001453F6 /* ViewController.h */,
@@ -147,7 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69CECCD7212576FC001453F6 /* TaiJuHtml.m in Sources */,
+				69CECCD7212576FC001453F6 /* PingShuHtml.m in Sources */,
 				69CECCC4212576C7001453F6 /* ViewController.m in Sources */,
 				69CECCCF212576C7001453F6 /* main.m in Sources */,
 				69CECCC1212576C7001453F6 /* AppDelegate.m in Sources */,

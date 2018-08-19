@@ -6,13 +6,13 @@
 //  Copyright © 2018年 sdl. All rights reserved.
 //
 
-#import "TaiJuHtml.h"
+#import "PingShuHtml.h"
 
-@implementation TaiJuHtml
+@implementation PingShuHtml
 
 
 //FIXME:  -  泰剧列表(百家---)
-+ (void)searchTaiJuPageKeyWord:(NSString *)kw
++ (void)searchPingShuKeyWord:(NSString *)kw
               completed: (void(^)(NSArray <NSDictionary *>*objs))block{
     
     if (self.isProtocolService) {
@@ -188,7 +188,7 @@
 
 
 
-+ (void)taiJuM3u8:(NSString *)urlStr
++ (void)pingShuMp3:(NSString *)urlStr
             completed: (void(^)(NSString *obj))block{
 
     
@@ -286,7 +286,7 @@
 
 
 
-+ (void)getTaiJuDetail:(NSString *)urlStr
++ (void)getPingShuDetail:(NSString *)urlStr
            completed: (void(^)(NSDictionary *obj))block{
     
     if (self.isProtocolService) {
@@ -419,7 +419,7 @@
 
 
 //FIXME:  -  泰剧列表(百家)
-+ (void)getTaiJuPageNo:(NSInteger)page
++ (void)getPingShuPageNo:(NSInteger)page
              completed: (void(^)(NSArray <NSDictionary *>*objs))block{
     
     if (self.isProtocolService) {
@@ -514,7 +514,7 @@
 }
 
 //FIXME:  -  泰剧列表(长篇)
-+ (void)getLongTaiJuPageNo:(NSInteger)page
++ (void)getLongPingShuPageNo:(NSInteger)page
                classId:(NSString *)class
                  completed: (void(^)(NSArray <NSDictionary *>*objs))block{
 
@@ -613,7 +613,7 @@
 
 
 //FIXME:  -  泰剧列表(百家---)
-+ (void)getTaiJuPageURL:(NSString *)str
++ (void)getPingShuURL:(NSString *)str
              completed: (void(^)(NSArray <NSDictionary *>*objs))block{
     
     if (self.isProtocolService) {
