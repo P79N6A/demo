@@ -5,7 +5,7 @@
 @interface PingShuHtml : NSObject
 
 
-
++ (void)test;
 
 + (void)searchPingShuKeyWord:(NSString *)kw
                      completed: (void(^)(NSArray <NSDictionary *>*objs))block;

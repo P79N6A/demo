@@ -17,6 +17,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [PingShuHtml test];
     // Do any additional setup after loading the view, typically from a nib.
     [PingShuHtml searchPingShuKeyWord:@"三" completed:^(NSArray<NSDictionary *> *objs) {
         NSLog(@"%s", __func__);

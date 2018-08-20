@@ -11,6 +11,77 @@
 @implementation PingShuHtml
 
 
++ (void)test{
+    NSString *str =  @"http://bddn.cn/gb.htm";
+    //    if (page > 1) {
+    //        str = [NSString stringWithFormat:@"http://www.97taiju.com/list/taiju/index-%ld.html",(long)page];
+    //    }
+    
+    //next: 5
+    //table: music
+    //action: getmorenews
+    //limit: 10
+    //small_length: 120
+    //classid: 8,9,16,17,18,64,66,65,67,68,69,70,71,72,73,74,75,76,77
+    
+    NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+    
+    NSURL * url = [NSURL URLWithString:str];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:10.0];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+
+    //6根据会话创建一个task（发送请求）
+    
+    
+    NSURLSession * session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSStringEncoding enc =CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:enc];
+        searchText=[searchText stringByReplacingOccurrencesOfString:@"\n" withString:@""];
+        searchText=[searchText stringByReplacingOccurrencesOfString:@"\r" withString:@""];
+
+        
+        NSString *rString = @"<td width=\"72\" class=\"STYLE4\"><div align=\"center\"><a href=\".*?\" target=\"_blank\">.*?</a></div></td>";
+        
+        rString = @"</table><table width=\"770\" height=\"25\" border=\"0\" align=\"center\">  <tr>    <td width=\"72\" bgcolor=\"#.*?\" class=\"STYLE4\"><div align=\"center\">.*?：</div></td>[\\w\\W]*?</table>";
+        
+        NSArray *rs = [self matchString:searchText toRegexString:rString];
+        
+        NSString *rReg = @"<a href=\".*?\" target=\"_blank\">.*?</a>";
+
+        
+        NSMutableArray *array = [NSMutableArray array];
+        for (NSString *r in rs) {
+            NSArray *ms = [self matchString:r toRegexString:rReg];
+            NSString*cate = [self matchString:r toRegexString:@"<div align=\"center\">(.*?)：</div>"].lastObject;
+            NSMutableArray *list = [NSMutableArray array];
+            for (NSString *m in ms) {
+                NSArray*info = [self matchString:m toRegexString:@"<a href=\"(.*?)\" target=\"_blank\">(.*?)</a>"];
+                
+                NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:info[1]] encoding:NSUTF8StringEncoding error:NULL];
+                NSString*url = [self matchString:html toRegexString:@"showPlayer\\(\'(.*?)\', \'a1\'\\);"].lastObject;
+
+                
+                [list addObject:@{@"url":url,@"name":info[2]}];
+                NSLog(@"--%@----%@",info[2],url);
+
+            }
+            [array addObject:@{@"title":cate,@"list":list}];
+        }
+        
+        NSLog(@"%s--%@", __func__,array);
+        
+        
+    }];
+    //开启网络任务
+    [task resume];
+
+}
+
 //FIXME:  -  泰剧列表(百家---)
 + (void)searchPingShuKeyWord:(NSString *)kw
               completed: (void(^)(NSArray <NSDictionary *>*objs))block{
