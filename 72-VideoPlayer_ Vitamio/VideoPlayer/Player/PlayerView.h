@@ -3,6 +3,7 @@
  * date : 2018/08/09 直播隐藏快进
  * date : 2018/08/09 3秒自动隐藏工具菜单
  * date : 2018/08/15 网速／加载进度／模式切换
+ * date : 2018/08/22 状态栏模式切换
  */
 
 #import <UIKit/UIKit.h>
@@ -43,6 +44,10 @@
 
 @end
 
+
+@interface UIViewController (Player)
+@property (nonatomic, assign) UIStatusBarStyle spStatusBarStyle;
+@end
 
 @interface UIView (Player)
 - (UIViewController *)viewController;

@@ -13,6 +13,7 @@
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <SafariServices/SafariServices.h>
+#import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -1454,6 +1455,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return self.topViewController.prefersHomeIndicatorAutoHidden;
 }
 @end
+static char kSPStatusBarStyleKey;
 @implementation UIViewController (Player)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
@@ -1483,7 +1485,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return self.spStatusBarStyle;//UIStatusBarStyleLightContent;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
@@ -1492,6 +1494,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
     return NO;
+}
+
+// statusBarStyle
+- (UIStatusBarStyle)spStatusBarStyle {
+    id style = objc_getAssociatedObject(self, &kSPStatusBarStyleKey);
+    return (UIStatusBarStyle)(style != nil) ? [style integerValue] : UIStatusBarStyleLightContent;
+}
+- (void)setSpStatusBarStyle:(UIStatusBarStyle)spStatusBarStyle{
+    objc_setAssociatedObject(self, &kSPStatusBarStyleKey, @(spStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 @end
 
