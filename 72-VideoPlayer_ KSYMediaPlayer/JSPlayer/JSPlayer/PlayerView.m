@@ -100,6 +100,13 @@ typedef NS_ENUM(NSUInteger, Direction) {
 /** 切换模式 */
 @property (weak, nonatomic) IBOutlet UIButton *modeButton;
 
+/** 重试 */
+@property (strong, nonatomic)  UIButton *rePlayButton;
+
+/** 浏览器 */
+@property (strong, nonatomic)  UIButton *safariButton;
+
+
 @property (nonatomic, assign) BOOL reloading;
 @property (nonatomic, strong) NSArray *status;
 @property (nonatomic, strong) NSArray *loadStatus;
@@ -141,6 +148,10 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.videoButtomView addSubview:self.timeLabel];
     [self.videoButtomView addSubview:self.progressView];
     [self.videoButtomView addSubview:self.videoSlider];
+    
+    [self.errorBtn addSubview:self.rePlayButton];
+    [self.errorBtn addSubview:self.rePlayButton];
+
     
     [self initUI];
     
@@ -1156,6 +1167,24 @@ typedef NS_ENUM(NSUInteger, Direction) {
     }
     return _playOrPauseButton;
 }
+
+- (UIButton *)rePlayButton{
+    if(!_rePlayButton){
+        _rePlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_rePlayButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_replay"] forState:UIControlStateNormal];
+        [_rePlayButton addTarget:self action:@selector(rePlayAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _rePlayButton;
+}
+- (UIButton *)safariButton{
+    if(!_safariButton){
+        _safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_safariButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_safari"] forState:UIControlStateNormal];
+        [_safariButton addTarget:self action:@selector(safariAction:) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _safariButton;
+}
+
 
 - (MPVolumeView *)volumeView {
     if (_volumeView == nil) {
