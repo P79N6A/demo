@@ -72,7 +72,7 @@
             }
             [array addObject:@{@"title":cate,@"list":list}];
         }
-        
+    
         NSLog(@"%s--%@", __func__,array);
         
         
