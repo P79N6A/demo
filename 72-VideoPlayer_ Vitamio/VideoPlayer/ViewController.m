@@ -42,6 +42,8 @@
     [_player playWithModel:model];
     
     self.spStatusBarStyle = UIStatusBarStyleDefault;
+    self.spStatusBarHidden = YES;
+
 }
 
 - (IBAction)living:(id)sender {
@@ -50,7 +52,9 @@
     model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
     
     [_player playWithModel:model];
-    self.spStatusBarStyle = UIStatusBarStyleLightContent;
+    //self.spStatusBarStyle = UIStatusBarStyleLightContent;
+    self.spStatusBarHidden = NO;
+
 }
 
 

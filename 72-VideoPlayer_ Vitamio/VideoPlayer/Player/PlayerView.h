@@ -47,6 +47,7 @@
 
 @interface UIViewController (Player)
 @property (nonatomic, assign) UIStatusBarStyle spStatusBarStyle;
+@property (nonatomic, assign) BOOL spStatusBarHidden;
 @end
 
 @interface UIView (Player)

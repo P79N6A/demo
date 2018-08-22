@@ -1456,6 +1456,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 @end
 static char kSPStatusBarStyleKey;
+static char kSPStatusBarHiddenKey;
 @implementation UIViewController (Player)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
@@ -1481,7 +1482,8 @@ static char kSPStatusBarStyleKey;
 }
 
 - (BOOL)prefersStatusBarHidden{
-    return NO;
+    //BOOL isHidden = self.spStatusBarHidden;
+    return self.spStatusBarHidden;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
@@ -1503,6 +1505,16 @@ static char kSPStatusBarStyleKey;
 }
 - (void)setSpStatusBarStyle:(UIStatusBarStyle)spStatusBarStyle{
     objc_setAssociatedObject(self, &kSPStatusBarStyleKey, @(spStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+//StatusBarHidden
+- (BOOL)spStatusBarHidden {
+    id isHidden = objc_getAssociatedObject(self, &kSPStatusBarHiddenKey);
+    return (isHidden != nil) ? [isHidden boolValue] : NO;
+}
+- (void)setSpStatusBarHidden:(BOOL)spStatusBarHidden{
+    objc_setAssociatedObject(self, &kSPStatusBarHiddenKey, @(spStatusBarHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
     [self setNeedsStatusBarAppearanceUpdate];
 }
 @end
