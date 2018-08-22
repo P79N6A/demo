@@ -45,6 +45,22 @@
                                     <action selector="click:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hWP-cC-r5q"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bwr-qU-MYM">
+                                <rect key="frame" x="34" y="368" width="38" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="video"/>
+                                <connections>
+                                    <action selector="video:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k84-UN-1Wf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ab7-Mv-1N8">
+                                <rect key="frame" x="35" y="452" width="36" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="living"/>
+                                <connections>
+                                    <action selector="living:" destination="BYZ-38-t0r" eventType="touchUpInside" id="AKR-U5-dAI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>

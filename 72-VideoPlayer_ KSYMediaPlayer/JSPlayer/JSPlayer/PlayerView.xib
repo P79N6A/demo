@@ -46,7 +46,7 @@
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbQ-zS-Z3k">
                             <rect key="frame" x="130" y="0.0" width="80" height="20"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
@@ -74,11 +74,18 @@
                         <action selector="rePlay:" destination="iN0-l3-epB" eventType="touchUpInside" id="syO-9g-HHy"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrJ-lN-Fsc">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IrJ-lN-Fsc">
                     <rect key="frame" x="25" y="79" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <connections>
                         <action selector="lockScrrenAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Tpa-7S-wPB"/>
+                    </connections>
+                </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0n-WV-eic">
+                    <rect key="frame" x="155" y="71" width="88" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="videoViewMode:" destination="iN0-l3-epB" eventType="touchUpInside" id="5df-A6-ePo"/>
                     </connections>
                 </button>
                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbg-uH-ljM">
@@ -128,6 +135,7 @@
                 <outlet property="loadingLabel" destination="F4D-2r-UdV" id="wML-Fr-6gL"/>
                 <outlet property="loadingView" destination="QCw-hv-uYn" id="dXE-21-0ff"/>
                 <outlet property="lockBtn" destination="IrJ-lN-Fsc" id="bqb-bS-WWE"/>
+                <outlet property="modeButton" destination="F0n-WV-eic" id="0F8-HG-TaJ"/>
                 <outlet property="networkSpeedLabel" destination="PbQ-zS-Z3k" id="wyW-w0-4fo"/>
                 <outlet property="titleLabel" destination="GDd-vT-fId" id="tFp-Z5-E5m"/>
                 <outlet property="topBgView" destination="Fhm-Dn-mng" id="SI3-cf-ZW8"/>

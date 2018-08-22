@@ -41,8 +41,8 @@
     
     [_player playWithModel:model];
     
-    self.spStatusBarStyle = UIStatusBarStyleDefault;
-    self.spStatusBarHidden = YES;
+//    self.spStatusBarStyle = UIStatusBarStyleDefault;
+//    self.spStatusBarHidden = YES;
 
 }
 
@@ -53,7 +53,7 @@
     
     [_player playWithModel:model];
     //self.spStatusBarStyle = UIStatusBarStyleLightContent;
-    self.spStatusBarHidden = NO;
+//    self.spStatusBarHidden = NO;
 
 }
 

@@ -22,7 +22,28 @@
 @end
 
 @implementation ViewController
+- (IBAction)video:(id)sender {
+    VideoModel *model = [VideoModel new];
+    model.name = @"hello tv";
+    model.live_stream = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
+    
+    [_playerView playWithModel:model];
+    
+    //    self.spStatusBarStyle = UIStatusBarStyleDefault;
+    //    self.spStatusBarHidden = YES;
+    
+}
 
+- (IBAction)living:(id)sender {
+    VideoModel *model = [VideoModel new];
+    model.name = @"hello tv";
+    model.live_stream = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
+    
+    [_playerView playWithModel:model];
+    //self.spStatusBarStyle = UIStatusBarStyleLightContent;
+    //    self.spStatusBarHidden = NO;
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
@@ -35,7 +56,7 @@
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
     PlayerView *player = [PlayerView playerView];
-    player.frame = CGRectMake( 0, 100,  [UIScreen mainScreen].bounds.size.width,  [UIScreen mainScreen].bounds.size.width * 9.0 / 16.0);
+    player.frame = CGRectMake( 0, 100, 300,  300 * 9.0 / 16.0);
     [player playWithModel:model];
     [self.view addSubview:player];
     _playerView = player;
