@@ -12,6 +12,7 @@
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <SafariServices/SafariServices.h>
+#import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -267,7 +268,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 #endif
 }
 #pragma mark  开始播放
-- (void)playWithModel:(id<TTZPlayerModel>)model{
+- (void)playWithModel:(id<SPPlayerModel>)model{
     
     //设置屏幕常亮
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -279,12 +280,12 @@ typedef NS_ENUM(NSUInteger, Direction) {
     
     
     NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
-    if ([model.live_stream hasPrefix:@"http://"] || [model.live_stream hasPrefix:@"https://"]) {
-        url = [NSURL URLWithString:model.live_stream];
-    }else if ([model.live_stream hasPrefix:@"rtmp"] || [model.live_stream hasPrefix:@"flv"]){
-        url = [NSURL URLWithString:model.live_stream];
+    if ([model.url hasPrefix:@"http://"] || [model.url hasPrefix:@"https://"]) {
+        url = [NSURL URLWithString:model.url];
+    }else if ([model.url hasPrefix:@"rtmp"] || [model.url hasPrefix:@"flv"]){
+        url = [NSURL URLWithString:model.url];
     }else { //本地视频 需要完整路径
-        url = [NSURL fileURLWithPath:model.live_stream];
+        url = [NSURL fileURLWithPath:model.url];
     }
     
     if ([self isProtocolService]) {
@@ -300,7 +301,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     //开始播放
     //[self play];
     
-    self.titleLabel.text = model.name;
+    self.titleLabel.text = model.title;
     
     
     NSLog(@"%s----URL---%@", __func__,url.absoluteString);
@@ -336,9 +337,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
         WHWebViewController *web = [[WHWebViewController alloc] init];
-        web.urlString = self.model.live_stream;
+        web.urlString = self.model.url;
         web.canDownRefresh = YES;
-        web.navigationItem.title = self.model.name;
+        web.navigationItem.title = self.model.title;
         
         UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
         webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
@@ -569,6 +570,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
         return;
     }
     
+    UIViewController *currViewController = self.viewController ? self.viewController : self.topViewController;
+    currViewController.spHomeIndicatorAutoHidden = YES;
+    
     self.state = PlayViewStateAnimating;
     
     /*
@@ -617,6 +621,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
         return;
     }
     
+    UIViewController *currViewController = self.viewController ? self.viewController : self.topViewController;
+    currViewController.spHomeIndicatorAutoHidden = YES;
     
     self.state = PlayViewStateAnimating;
     
@@ -663,6 +669,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if (self.state == PlayViewStateSmall) {
         return;
     }
+    
+    UIViewController *currViewController = self.viewController ? self.viewController : self.topViewController;
+    currViewController.spHomeIndicatorAutoHidden = NO;
     
     self.state = PlayViewStateAnimating;
     
@@ -845,7 +854,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
                 dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^(){
                     if (_mediaPlayer) {
                         NSLog(@"reload stream");
-                        [_mediaPlayer reload:[NSURL URLWithString:self.model.live_stream] flush:YES mode:MPMovieReloadMode_Accurate];
+                        [_mediaPlayer reload:[NSURL URLWithString:self.model.url] flush:YES mode:MPMovieReloadMode_Accurate];
                     }
                 });
             }
@@ -1142,6 +1151,12 @@ typedef NS_ENUM(NSUInteger, Direction) {
         [_videoSlider addTarget:self action:@selector(videoDurationChange:) forControlEvents:UIControlEventTouchUpInside];
         [_videoSlider addTarget:self action:@selector(progressDraggBegin:) forControlEvents:UIControlEventTouchDown];
 
+        [_videoSlider addGestureRecognizer:({
+            UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                  action:@selector(progressSliderTapped:)];
+            tap;
+        })];
+
     }
     return _videoSlider;
 }
@@ -1260,24 +1275,32 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 //FIXME:  -  事件监听
 - (void)videoDurationChange:(SPVideoSlider *)sender{
-    NSLog(@"%s", __func__);
     self.progressDragging = NO;
     [self.mediaPlayer seekTo:sender.value * self.mediaPlayer.duration accurate:YES];
 }
 - (void)progressDraggBegin:(SPVideoSlider *)sender{
-    NSLog(@"%s", __func__);
     self.progressDragging = YES;
 }
+-(void)progressSliderTapped:(UIGestureRecognizer *)g
+{
+    UISlider* s = (UISlider*)g.view;
+    if (s.highlighted) return;
+    CGPoint pt = [g locationInView:s];
+    CGFloat percentage = pt.x / s.bounds.size.width;
+    CGFloat delta = percentage * (s.maximumValue - s.minimumValue);
+    CGFloat value = s.minimumValue + delta;
+    [s setValue:value animated:YES];
 
+    [self.mediaPlayer seekTo:s.value * self.mediaPlayer.duration accurate:YES];
+}
 
 - (void)playOrPause:(UIButton *)sender{
     sender.selected = !sender.isSelected;
     if (sender.isSelected) {
         [self play];
-        
+    
     }else{
         [self pause];
-        
     }
 }
 
@@ -1340,6 +1363,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     return self.topViewController.prefersHomeIndicatorAutoHidden;
 }
 @end
+static char kSPStatusBarStyleKey;
+static char kSPStatusBarHiddenKey;
+static char kSPHomeIndicatorAutoHiddenKey;
 @implementation UIViewController (Player)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
@@ -1365,11 +1391,11 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 
 - (BOOL)prefersStatusBarHidden{
-    return NO;
+    return self.spStatusBarHidden;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return self.spStatusBarStyle;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
@@ -1377,8 +1403,39 @@ typedef NS_ENUM(NSUInteger, Direction) {
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
-    return NO;
+    return self.spHomeIndicatorAutoHidden;
 }
+// statusBarStyle
+- (UIStatusBarStyle)spStatusBarStyle {
+    id style = objc_getAssociatedObject(self, &kSPStatusBarStyleKey);
+    return (UIStatusBarStyle)(style != nil) ? [style integerValue] : UIStatusBarStyleLightContent;
+}
+- (void)setSpStatusBarStyle:(UIStatusBarStyle)spStatusBarStyle{
+    objc_setAssociatedObject(self, &kSPStatusBarStyleKey, @(spStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+//StatusBarHidden
+- (BOOL)spStatusBarHidden {
+    id isHidden = objc_getAssociatedObject(self, &kSPStatusBarHiddenKey);
+    return (isHidden != nil) ? [isHidden boolValue] : NO;
+}
+- (void)setSpStatusBarHidden:(BOOL)spStatusBarHidden{
+    objc_setAssociatedObject(self, &kSPStatusBarHiddenKey, @(spStatusBarHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+//HomeIndicatorAutoHidden
+- (BOOL)spHomeIndicatorAutoHidden {
+    id isHidden = objc_getAssociatedObject(self, &kSPHomeIndicatorAutoHiddenKey);
+    return (isHidden != nil) ? [isHidden boolValue] : NO;
+}
+- (void)setSpHomeIndicatorAutoHidden:(BOOL)spHomeIndicatorAutoHidden{
+    objc_setAssociatedObject(self, &kSPHomeIndicatorAutoHiddenKey, @(spHomeIndicatorAutoHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (@available(iOS 11.0, *)) {
+        [self setNeedsUpdateOfHomeIndicatorAutoHidden];
+    }
+}
+
 @end
 
 

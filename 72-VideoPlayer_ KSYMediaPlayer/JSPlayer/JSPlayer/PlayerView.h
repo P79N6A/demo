@@ -1,10 +1,6 @@
-//
-//  PlayView.h
-//  English
-//
-//  Created by Jay on 2018/4/12.
-//  Copyright © 2018年 Jay. All rights reserved.
-//
+/**
+ * date : 2018/08/23 5秒自动隐藏工具菜单
+ */
 
 #import <UIKit/UIKit.h>
 
@@ -15,16 +11,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     PlayViewStateFullScreenLeft,
 };
 
-@protocol TTZPlayerModel<NSObject>
+@protocol SPPlayerModel<NSObject>
 
-@property (nonatomic, copy, readonly) NSString *live_stream;
-@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *title;
 
 @end
 
-@interface VideoModel : NSObject<TTZPlayerModel>
-@property (nonatomic, copy) NSString *live_stream;
-@property (nonatomic, copy) NSString *name;
+@interface VideoModel : NSObject<SPPlayerModel>
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *title;
 @end
 
 @interface PlayerView : UIView
@@ -36,17 +32,22 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 @property (nonatomic, assign) BOOL allowSafariPlay;
 
-@property (nonatomic, strong) id<TTZPlayerModel> model;
+@property (nonatomic, strong) id<SPPlayerModel> model;
 
 + (instancetype)playerView;
 
-- (void)playWithModel:(id<TTZPlayerModel>)model;
+- (void)playWithModel:(id<SPPlayerModel>)model;
 
 - (void)stop;
 
 @end
 
 
+@interface UIViewController (Player)
+@property (nonatomic, assign) UIStatusBarStyle spStatusBarStyle;
+@property (nonatomic, assign) BOOL spStatusBarHidden;
+@property (nonatomic, assign) BOOL spHomeIndicatorAutoHidden;
+@end
 @interface UIView (Player)
 - (UIViewController *)viewController;
 - (UIViewController *)topViewController;

@@ -24,8 +24,8 @@
 @implementation ViewController
 - (IBAction)video:(id)sender {
     VideoModel *model = [VideoModel new];
-    model.name = @"hello tv";
-    model.live_stream = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
+    model.title = @"hello tv";
+    model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
     
     [_playerView playWithModel:model];
     
@@ -36,8 +36,8 @@
 
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
-    model.name = @"hello tv";
-    model.live_stream = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
+    model.title = @"hello tv";
+    model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
     
     [_playerView playWithModel:model];
     //self.spStatusBarStyle = UIStatusBarStyleLightContent;
@@ -49,9 +49,9 @@
     // Do any additional setup after loading the view, typically from a nib.
 
     VideoModel *model = [VideoModel new];
-    model.name = @"hello tv";
+    model.title = @"hello tv";
     //    model.live_stream = [NSURL fileURLWithPath:@"/Users/jay/Downloads/20180503102411_460.mp4"];
-    model.live_stream = @"http://youku163.zuida-bofang.com/20180731/10509_02188919/index.m3u8";
+    model.url = @"http://youku163.zuida-bofang.com/20180731/10509_02188919/index.m3u8";
     //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
@@ -95,8 +95,8 @@
     NSArray *lists = @[@"rtmp://live.hkstv.hk.lxdns.com/live/hks",@"https://doubanzyv1.tyswmp.com/2018/07/30/yLdWQynQOGPZjkK2/playlist.m3u8",@"http://m.567it.com/jade.m3u8"];
     
     VideoModel *model = [VideoModel new];
-    model.name = @"hello tv";
-    model.live_stream = lists[sender.tag];
+    model.title = @"hello tv";
+    model.url = lists[sender.tag];
     
     [self.playerView playWithModel:model];
 
