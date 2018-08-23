@@ -150,7 +150,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     [self.videoButtomView addSubview:self.videoSlider];
     
     [self.errorBtn addSubview:self.rePlayButton];
-    [self.errorBtn addSubview:self.rePlayButton];
+    [self.errorBtn addSubview:self.safariButton];
 
     
     [self initUI];
@@ -179,43 +179,47 @@ typedef NS_ENUM(NSUInteger, Direction) {
 - (void)layout{
     CGFloat spacing = iPhoneXX? 24 : 0;
     
+    self.contentView.frame = self.bounds;
+    
+    self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
+    
     self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
     self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 70, 70);
     self.lockBtn.center = CGPointMake(35+spacing, self.loadingView.center.y);
-    
-    self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
-    
-    self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 84);
-    self.networkSpeedLabel.frame = CGRectMake(self.topView.frame.size.width * 0.75-85 , 0, 85, iPhoneXX?46:20);
-    
-    self.buttomView.frame = CGRectMake(spacing, self.bounds.size.height - 64, self.bounds.size.width - 2 * spacing, 64);
-    
-    self.contentView.frame = self.bounds;
-    self.fullButton.frame = CGRectMake(self.buttomView.bounds.size.width - 44, self.buttomView.bounds.size.height - 44, 44, 44);
-    
-    self.topBgView.frame = self.topView.bounds;
-    self.buttomBgView.frame = self.buttomView.bounds;
-    
-    self.backButton.frame = CGRectMake(0, 20+spacing*0.5, 44, 44);
-    self.titleLabel.frame = CGRectMake(44, 20+spacing*0.5, self.topView.bounds.size.width - 44, 44);
-    
     self.modeButton.frame = CGRectMake(0, 0, 70, 70);
     self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
+    self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
     
-    self.videoButtomView.frame = CGRectMake(0, self.buttomView.bounds.size.height - 44, self.buttomView.bounds.size.width - 44, 44);
+    if (self.allowSafariPlay) {
+        self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
+        self.safariButton.frame = CGRectMake(44, 0, 44, 44);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 22);
+        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 22);
+    }else{
+        self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 22);
+    }
     
+    self.topView.frame = CGRectMake(0, 0, self.bounds.size.width, 84);
+    self.topBgView.frame = self.topView.bounds;
+    self.backButton.frame = CGRectMake(spacing, 20+spacing*0.5, 44, 44);
+    self.titleLabel.frame = CGRectMake(44+spacing, 20+spacing*0.5, self.topView.bounds.size.width - 44, 44);
+    self.networkSpeedLabel.frame = CGRectMake(self.topView.frame.size.width * 0.75-85 , 0, 85, iPhoneXX?46:20);
+    
+    self.buttomView.frame = CGRectMake(0, self.bounds.size.height - 64, self.bounds.size.width, 64);
+    self.buttomBgView.frame = self.buttomView.bounds;
+    self.fullButton.frame = CGRectMake(self.buttomView.bounds.size.width - 44-spacing, self.buttomView.bounds.size.height - 44, 44, 44);
+    
+    self.videoButtomView.frame = CGRectMake(spacing, self.buttomView.bounds.size.height - 44, self.buttomView.bounds.size.width - 44 - 2 * spacing, 44);
     self.playOrPauseButton.frame = CGRectMake(0, 0, 44, 44);
     self.timeLabel.frame = CGRectMake(44, 0, 75, 44);
-    
     self.progressView.frame = CGRectMake(44 + 75+10, 0, self.videoButtomView.bounds.size.width - 44 - 75-10, 44);
     self.progressView.center = CGPointMake(self.progressView.center.x, self.videoButtomView.bounds.size.height * 0.5);
-    
     self.videoSlider.frame = CGRectMake(self.progressView.frame.origin.x - 2, self.progressView.frame.origin.y, self.progressView.frame.size.width+2, 44);
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
     
-    self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
     
     self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
@@ -329,8 +333,8 @@ typedef NS_ENUM(NSUInteger, Direction) {
 
 - (IBAction)rePlay:(UIButton *)sender {
     
-    if (self.allowSafariPlay) {
-        
+    if (self.allowSafariPlay && sender.tag) {
+        [self exitFullscreen];
         WHWebViewController *web = [[WHWebViewController alloc] init];
         web.urlString = self.model.live_stream;
         web.canDownRefresh = YES;
@@ -340,7 +344,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
         webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
         webVC.navigationBar.tintColor = [UIColor whiteColor];
         [webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
-        [[self viewController] presentViewController:webVC animated:YES completion:nil];
+        [self.viewController?self.viewController:self.topViewController presentViewController:webVC animated:YES completion:nil];
         //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
         return;
     }
@@ -907,7 +911,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
 - (NSTimer *)timer{
     if (!_timer) {
         __weak typeof(self) weakSelf = self;
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/4.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/3.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         _timer = timer;
     }
@@ -947,7 +951,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     self.fullProgressView.progress = self.videoSlider.value;
     self.fullBufView.progress = self.progressView.progress;
     
-    self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",1024.0*((_mediaPlayer.readSize - _lastSize)?(_mediaPlayer.readSize - _lastSize):0)];
+    self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",1024.0*((_mediaPlayer.readSize - _lastSize)?(_mediaPlayer.readSize - _lastSize):0) * 3.0];
     _lastSize = _mediaPlayer.readSize;
 
 }
@@ -1054,9 +1058,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
     
     if (self.allowSafariPlay) {
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(跳转Safari浏览器观看)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];
     }else{
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或者切换视频源)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或切换视频源)",errorMsg] forState:UIControlStateNormal];
     }
     
     self.errorBtn.hidden = NO;
@@ -1172,7 +1176,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if(!_rePlayButton){
         _rePlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rePlayButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_replay"] forState:UIControlStateNormal];
-        [_rePlayButton addTarget:self action:@selector(rePlayAction:) forControlEvents:UIControlEventTouchUpInside];
+        _rePlayButton.tag = 0;
+        _rePlayButton.showsTouchWhenHighlighted = YES;
+        [_rePlayButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _rePlayButton;
 }
@@ -1180,7 +1186,9 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if(!_safariButton){
         _safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_safariButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_safari"] forState:UIControlStateNormal];
-        [_safariButton addTarget:self action:@selector(safariAction:) forControlEvents:UIControlEventTouchUpInside];
+        _safariButton.tag = 1;
+        _safariButton.showsTouchWhenHighlighted = YES;
+        [_safariButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
     }
     return _safariButton;
 }
