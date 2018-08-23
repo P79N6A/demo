@@ -10,6 +10,7 @@
 #import "SPPlayerSubview.h"
 
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
+#import <KSYMediaPlayer/KSYMediaInfoProber.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <SafariServices/SafariServices.h>
 #import <objc/runtime.h>
@@ -134,6 +135,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, assign) double lastSize;
 @property (nonatomic, assign) int fvr_costtime;
 @property (nonatomic, assign) int far_costtime;
+@property (nonatomic, strong) KSYMediaInfoProber *videoInfo;
 @end
 
 
@@ -246,6 +248,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     
     self.fastView.frame = CGRectMake(0, 0, 80*self.playViewSmallFrame.size.width/(self.playViewSmallFrame.size.height?self.playViewSmallFrame.size.height:320), 80);
+    //self.fastView.frame = CGRectMake(0, 0, 200, 180*kScreenHeight/kScreenWidth+50);
     self.fastView.center = self.errorBtn.center;
     self.brightnessView.center = self.errorBtn.center;
     
@@ -327,7 +330,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     self.titleLabel.text = model.title;
     
-    
+    _videoInfo = [[KSYMediaInfoProber alloc] initWithContentURL:url];
+
     NSLog(@"%s----URL---%@", __func__,url.absoluteString);
 }
 
@@ -487,6 +491,12 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }
     
     self.fastView.fastProgressView.progress = current/total;
+//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+//        UIImage *image = [self.videoInfo getVideoThumbnailImageAtTime:current width:0 height:0];
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.fastView.fastVideoImageView.image = image;
+//        });
+//    });
 }
 
 
@@ -888,6 +898,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         [self setupObservers:_mediaPlayer];
         _prepared_time = (long long int)([self getCurrentTime] * 1000);
         [_mediaPlayer prepareToPlay];
+        
     }
     return _mediaPlayer;
 }

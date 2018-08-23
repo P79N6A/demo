@@ -210,7 +210,7 @@
     [self addSubview:self.backgroundImageView];
     [self addSubview:self.fastIconView];
     [self addSubview:self.fastTimeLabel];
-    //    [self addSubview:self.fastVideoImageView];
+    //[self addSubview:self.fastVideoImageView];
     [self addSubview:self.fastProgressView];
 }
 
@@ -275,7 +275,7 @@
     //    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
     //    if (currentOrientation == UIDeviceOrientationPortrait || !self.fastVideoImageView.image)
     { // 竖屏
-        
+    
         self.fastProgressView.hidden = NO;
         //self.fastVideoImageView.hidden = YES;
         
@@ -287,48 +287,48 @@
         CGPoint fastIconViewCenter = self.fastIconView.center;
         fastIconViewCenter.x = selfW*0.5;
         self.fastIconView.center = fastIconViewCenter;
-        
+
         CGFloat fastProgressViewX = padding;
         CGFloat fastProgressViewY = CGRectGetMaxY(self.fastIconView.frame)+5;
         CGFloat fastProgressViewW = selfW-2*fastProgressViewX;
         CGFloat fastProgressViewH = 20;
         self.fastProgressView.frame = CGRectMake(fastProgressViewX, fastProgressViewY, fastProgressViewW, fastProgressViewH);
-        
+
         CGFloat fastTimeLabelX = padding;
         CGFloat fastTimeLabelY = CGRectGetMaxY(self.fastProgressView.frame)+5;
         CGFloat fastTimeLabelW = selfW-2*fastTimeLabelX;
         CGFloat fastTimeLabelH = fastIconViewH;
         self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
-        
+
     }
     //    else
-    //    { // 横屏
-    //
-    //        self.fastProgressView.hidden = YES;
-    //        self.fastVideoImageView.hidden = NO;
-    //
-    //        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-    //        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-    //
-    //        // 要与屏幕宽高成比例
-    //        CGFloat fastVideoImageViewX = padding;
-    //        CGFloat fastVideoImageViewW = 180;
-    //        CGFloat fastVideoImageViewH = fastVideoImageViewW*screenHeight/screenWidth;
-    //        CGFloat fastVideoImageViewY = 35;
-    //        self.fastVideoImageView.frame = CGRectMake(fastVideoImageViewX, fastVideoImageViewY, fastVideoImageViewW, fastVideoImageViewH);
-    //
-    //        CGFloat fastIconViewX = 20;
-    //        CGFloat fastIconViewY = 5;
-    //        CGFloat fastIconViewH = 30;
-    //        CGFloat fastIconViewW = fastIconViewH;
-    //        self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
-    //
-    //        CGFloat fastTimeLabelX = CGRectGetMaxX(self.fastIconView.frame);
-    //        CGFloat fastTimeLabelY = fastIconViewY;
-    //        CGFloat fastTimeLabelW = 100;
-    //        CGFloat fastTimeLabelH = fastIconViewH;
-    //        self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
-    //    }
+//        { // 横屏
+//
+//            self.fastProgressView.hidden = YES;
+//            self.fastVideoImageView.hidden = NO;
+//
+//            CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+//            CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+//
+//            // 要与屏幕宽高成比例
+//            CGFloat fastVideoImageViewX = padding;
+//            CGFloat fastVideoImageViewW = 180;
+//            CGFloat fastVideoImageViewH = fastVideoImageViewW*screenHeight/screenWidth;
+//            CGFloat fastVideoImageViewY = 35;
+//            self.fastVideoImageView.frame = CGRectMake(fastVideoImageViewX, fastVideoImageViewY, fastVideoImageViewW, fastVideoImageViewH);
+//
+//            CGFloat fastIconViewX = 20;
+//            CGFloat fastIconViewY = 5;
+//            CGFloat fastIconViewH = 30;
+//            CGFloat fastIconViewW = fastIconViewH;
+//            self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
+//
+//            CGFloat fastTimeLabelX = CGRectGetMaxX(self.fastIconView.frame);
+//            CGFloat fastTimeLabelY = fastIconViewY;
+//            CGFloat fastTimeLabelW = 100;
+//            CGFloat fastTimeLabelH = fastIconViewH;
+//            self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
+//        }
 }
 
 @end
