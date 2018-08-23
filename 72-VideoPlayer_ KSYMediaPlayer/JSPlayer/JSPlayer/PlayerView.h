@@ -4,12 +4,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger, PlayViewState) {
-    PlayViewStateSmall,
-    PlayViewStateAnimating,
-    PlayViewStateFullScreenRight,
-    PlayViewStateFullScreenLeft,
-};
+
 
 @protocol SPPlayerModel<NSObject>
 
@@ -53,7 +48,4 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (UIViewController *)topViewController;
 @end
 
-@interface UIImage (Bundle)
-+ (UIImage *)imageFromBundleWithName:(NSString *)imageName;
-@end
 

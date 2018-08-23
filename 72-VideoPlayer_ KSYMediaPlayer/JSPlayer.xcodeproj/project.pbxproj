@@ -16,7 +16,7 @@
 		69DB18D82113EF8D00715D7B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18D72113EF8D00715D7B /* main.m */; };
 		69DB18E5211401AD00715D7B /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18E0211401AD00715D7B /* PlayerView.m */; };
 		69DB18E6211401AD00715D7B /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DB18E1211401AD00715D7B /* PlayerView.xib */; };
-		69DB18E8211401AD00715D7B /* SPVideoSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18E4211401AD00715D7B /* SPVideoSlider.m */; };
+		69DB18E8211401AD00715D7B /* SPPlayerSubview.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18E4211401AD00715D7B /* SPPlayerSubview.m */; };
 		6E9A902F8C4FED62CBC5710D /* libPods-JSPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BD4241AC3FD170D4DEB239AA /* libPods-JSPlayer.a */; };
 /* End PBXBuildFile section */
 
@@ -36,8 +36,8 @@
 		69DB18DF211401AD00715D7B /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		69DB18E0211401AD00715D7B /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
 		69DB18E1211401AD00715D7B /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
-		69DB18E3211401AD00715D7B /* SPVideoSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPVideoSlider.h; sourceTree = "<group>"; };
-		69DB18E4211401AD00715D7B /* SPVideoSlider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPVideoSlider.m; sourceTree = "<group>"; };
+		69DB18E3211401AD00715D7B /* SPPlayerSubview.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPPlayerSubview.h; sourceTree = "<group>"; };
+		69DB18E4211401AD00715D7B /* SPPlayerSubview.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPPlayerSubview.m; sourceTree = "<group>"; };
 		7AFD986C45404912630ADAA6 /* Pods-JSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-JSPlayer/Pods-JSPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		BD4241AC3FD170D4DEB239AA /* libPods-JSPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JSPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -104,8 +104,8 @@
 				69DB18DF211401AD00715D7B /* PlayerView.h */,
 				69DB18E0211401AD00715D7B /* PlayerView.m */,
 				69DB18E1211401AD00715D7B /* PlayerView.xib */,
-				69DB18E3211401AD00715D7B /* SPVideoSlider.h */,
-				69DB18E4211401AD00715D7B /* SPVideoSlider.m */,
+				69DB18E3211401AD00715D7B /* SPPlayerSubview.h */,
+				69DB18E4211401AD00715D7B /* SPPlayerSubview.m */,
 			);
 			path = JSPlayer;
 			sourceTree = "<group>";
@@ -250,7 +250,7 @@
 				69DB18D82113EF8D00715D7B /* main.m in Sources */,
 				69DB18CA2113EF8D00715D7B /* AppDelegate.m in Sources */,
 				69DB18E5211401AD00715D7B /* PlayerView.m in Sources */,
-				69DB18E8211401AD00715D7B /* SPVideoSlider.m in Sources */,
+				69DB18E8211401AD00715D7B /* SPPlayerSubview.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

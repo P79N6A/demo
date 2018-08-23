@@ -7,7 +7,7 @@
 //
 
 #import "PlayerView.h"
-#import "SPVideoSlider.h"
+#import "SPPlayerSubview.h"
 
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -23,7 +23,12 @@
 //    DirectionUpOrDown,
 //    DirectionNone
 //};
-
+typedef NS_ENUM(NSUInteger, PlayViewState) {
+    PlayViewStateSmall,
+    PlayViewStateAnimating,
+    PlayViewStateFullScreenRight,
+    PlayViewStateFullScreenLeft,
+};
 
 // 枚举值，包含水平移动方向和垂直移动方向
 typedef NS_ENUM(NSInteger, PanDirection){
@@ -1648,14 +1653,7 @@ static char kSPHomeIndicatorAutoHiddenKey;
 @end
 
 
-@implementation UIImage (Bundle)
-+ (UIImage *)imageFromBundleWithName:(NSString *)imageName{
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Player" ofType:@".bundle"];
-    NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
-    return [UIImage imageNamed:fullImageName];
-}
-@end
+
 
 
 

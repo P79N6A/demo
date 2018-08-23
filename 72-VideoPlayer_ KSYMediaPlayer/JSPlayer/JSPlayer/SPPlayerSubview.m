@@ -6,8 +6,7 @@
 //  Copyright © 2018年 Jay. All rights reserved.
 //
 
-#import "SPVideoSlider.h"
-#import "PlayerView.h"
+#import "SPPlayerSubview.h"
 
 @interface SPVideoSlider()
 
@@ -589,4 +588,12 @@
 
 @end
 
+@implementation UIImage (Bundle)
++ (UIImage *)imageFromBundleWithName:(NSString *)imageName{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"Player" ofType:@".bundle"];
+    NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
+    return [UIImage imageNamed:fullImageName];
+}
+@end
 

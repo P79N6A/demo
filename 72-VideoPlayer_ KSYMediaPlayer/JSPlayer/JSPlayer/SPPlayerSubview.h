@@ -56,4 +56,7 @@
 
 @end
 
+@interface UIImage (Bundle)
++ (UIImage *)imageFromBundleWithName:(NSString *)imageName;
+@end
 
