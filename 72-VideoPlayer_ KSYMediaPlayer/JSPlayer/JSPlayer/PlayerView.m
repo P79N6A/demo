@@ -1118,6 +1118,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     //NSLog(@"%s----缓存(%f)：%f----进度(%f)：%f", __func__,cache,self.progressView.progress,current,self.videoSlider.value);
 
+
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
     self.fullProgressView.progress = self.videoSlider.value;
     self.fullBufView.progress = self.progressView.progress;
@@ -1226,7 +1227,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma mark  - 播放器播放失败
 - (void)OnVideoError:(NSNotification *)noti{
     NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
+    
     NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
+
     
     if (self.allowSafariPlay) {
         [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];
@@ -1407,45 +1410,30 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 - (NSString *)error:(NSString *)code{
-    
+ 
+
     NSDictionary * errorDic = @{
-                                @"4500":@"请求错误",
-                                @"4501":@"数据错误",
-                                @"4502":@"请求saas服务器错误",
-                                @"4503":@"请求mts服务器错误",
-                                @"4504":@"服务器返回参数无效",
-                                @"4521":@"非法的播放器状态",
-                                @"4022":@"没有设置显示窗口，请先设置播放视图",
-                                @"4023":@"内存不足",
-                                @"4024":@"系统权限被拒绝",
-                                @"4101":@"视频下载时连接不到服务器",
-                                @"4102":@"视频下载时网络超时",
-                                @"4103":@"请求saas服务器错误",
-                                @"4104":@"请求mts服务器错误",
-                                @"4105":@"服务器返回参数无效",
-                                @"4106":@"视频下载流无效或地址过期",
-                                @"4107":@"未找到加密文件，请从控制台下载加密文件并集成",
-                                @"4108":@"获取秘钥失败，请检查秘钥文件",
-                                @"4109":@"下载地址无效",
-                                @"4110":@"磁盘空间不够",
-                                @"4111":@"视频文件保存路径不存在，请重新设置",
-                                @"4112":@"当前视频不可下载",
-                                @"4113":@"下载模式改变无法继续下载",
-                                @"4114":@"当前视频已经添加到下载项，请避免重复添加",
-                                @"4115":@"未找到合适的下载项，请先添加",
-                                @"4001":@"参数非法",
-                                @"4002":@"鉴权过期",
-                                @"4003":@"视频源无效",
-                                @"4004":@"视频源不存在",
-                                @"4005":@"读取视频源失败",
-                                @"4008":@"加载超时",
-                                @"4009":@"请求数据错误",
-                                
-                                @"4011":@"视频格式不支持",
-                                @"4012":@"解析失败",
-                                @"4013":@"解码失败",
-                                @"4019":@"编码格式不支持",
-                                @"4400":@"未知错误",
+                                @"-10051":@"网络不通",
+                                @"-10050":@"无效的url",
+                                @"-10016":@"次数过多的3xx跳转(8次)",
+                                @"-10015":@"音频解码失败",
+                                @"-10014":@"视频解码失败",
+                                @"-10013":@"不支持的音频编码类型",
+                                @"-10012":@"不支持的视频编码类型",
+                                @"-10011":@"无效的媒体数据",
+                                @"-10010":@"http请求返回5xx",
+                                @"-10009":@"http请求返回4xx",
+                                @"-10008":@"http请求返回404",
+                                @"-10007":@"http请求返回403",
+                                @"-10006":@"http请求返回401",
+                                @"-10005":@"http请求返回400",
+                                @"-10004":@"连接服务器失败",
+                                @"-10003":@"创建socket失败",
+                                @"-10002":@"DNS解析失败",
+                                @"-10001":@"不支持的流媒体协议",
+                                @"-1004":@"读写数据异常",
+                                @"1":@"未知错误",
+                                @"0":@"正常"
                                 
                                 };
     NSString *msg = errorDic[code];
