@@ -68,6 +68,273 @@
 @end
 
 
+@interface SPBrightnessView ()
+
+@property (nonatomic, strong) UIImageView        *backImage;
+@property (nonatomic, strong) UILabel            *title;
+@property (nonatomic, strong) UIView            *longView;
+@property (nonatomic, strong) NSMutableArray    *tipArray;
+
+@end
+
+@implementation SPBrightnessView
+
+
+- (instancetype)init {
+    if (self = [super init]) {
+        
+        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+        
+        self.frame = CGRectMake(screenWidth * 0.5, screenHeight * 0.5, 155, 155);
+        
+        self.layer.cornerRadius  = 10;
+        self.layer.masksToBounds = YES;
+        
+        // 使用UIToolbar实现毛玻璃效果，简单粗暴，支持iOS7+
+        UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:self.bounds];
+        toolbar.alpha = 0.97;
+        [self addSubview:toolbar];
+        
+        self.backImage = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 79, 76)];
+        self.backImage.image =  [UIImage imageFromBundleWithName:@"fullplayer_brightness"];
+        [self addSubview:self.backImage];
+        self.backImage.center = CGPointMake(155 * 0.5, 155 * 0.5);
+        
+        self.title      = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 30)];
+        self.title.font          = [UIFont boldSystemFontOfSize:16];
+        self.title.textColor     = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
+        self.title.textAlignment = NSTextAlignmentCenter;
+        self.title.text          = @"亮度";
+        [self addSubview:self.title];
+        
+        self.longView         = [[UIView alloc]initWithFrame:CGRectMake(13, 132, self.bounds.size.width - 26, 7)];
+        self.longView.backgroundColor = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
+        [self addSubview:self.longView];
+        
+        [self createTips];
+        self.alpha = 0.0;
+    }
+    return self;
+}
+
+// 创建 Tips
+- (void)createTips {
+    
+    self.tipArray = [NSMutableArray arrayWithCapacity:16];
+    
+    CGFloat tipW = (self.longView.bounds.size.width - 17) / 16;
+    CGFloat tipH = 5;
+    CGFloat tipY = 1;
+    
+    for (int i = 0; i < 16; i++) {
+        CGFloat tipX          = i * (tipW + 1) + 1;
+        UIImageView *image    = [[UIImageView alloc] init];
+        image.backgroundColor = [UIColor whiteColor];
+        image.frame           = CGRectMake(tipX, tipY, tipW, tipH);
+        [self.longView addSubview:image];
+        [self.tipArray addObject:image];
+    }
+    [self updateLongView:[UIScreen mainScreen].brightness];
+}
+
+
+
+- (void)setBrightness:(CGFloat)brightness{
+    _brightness = brightness;
+    [self appearSoundView];
+    [self updateLongView:brightness];
+}
+
+
+#pragma mark - Methond
+
+- (void)appearSoundView {
+    if (self.alpha == 0.0) {
+        self.alpha = 1.0;
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self disAppearSoundView];
+        });
+    }
+}
+
+- (void)disAppearSoundView {
+    
+    if (self.alpha == 1.0) {
+        [UIView animateWithDuration:0.8 animations:^{
+            self.alpha = 0.0;
+        }];
+    }
+}
+
+#pragma mark - Update View
+
+- (void)updateLongView:(CGFloat)sound {
+    CGFloat stage = 1 / 15.0;
+    NSInteger level = sound / stage;
+    
+    for (int i = 0; i < self.tipArray.count; i++) {
+        UIImageView *img = self.tipArray[i];
+        
+        if (i <= level) {
+            img.hidden = NO;
+        } else {
+            img.hidden = YES;
+        }
+    }
+}
+
+
+@end
+
+
+
+#pragma mark - 快进的view
+
+@implementation SPVideoPlayerFastView
+
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
+    if (self = [super initWithCoder:aDecoder]) {
+        [self initialize];
+    }
+    return self;
+}
+
+- (void)initialize {
+    [self addSubview:self.backgroundImageView];
+    [self addSubview:self.fastIconView];
+    [self addSubview:self.fastTimeLabel];
+    //    [self addSubview:self.fastVideoImageView];
+    [self addSubview:self.fastProgressView];
+}
+
+- (UIImageView *)fastIconView {
+    
+    if (!_fastIconView) {
+        _fastIconView = [[UIImageView alloc] init];
+        
+    }
+    return _fastIconView;
+}
+
+- (UILabel *)fastTimeLabel {
+    if (!_fastTimeLabel) {
+        _fastTimeLabel               = [[UILabel alloc] init];
+        _fastTimeLabel.textColor     = [UIColor whiteColor];
+        _fastTimeLabel.textAlignment = NSTextAlignmentCenter;
+        _fastTimeLabel.font          = [UIFont systemFontOfSize:14.0];
+    }
+    return _fastTimeLabel;
+}
+
+//- (UIImageView *)fastVideoImageView {
+//    if (!_fastVideoImageView) {
+//        _fastVideoImageView = [[UIImageView alloc] init];
+//        _fastVideoImageView.layer.cornerRadius = 6;
+//        _fastVideoImageView.layer.masksToBounds = YES;
+//        _fastVideoImageView.contentMode = UIViewContentModeScaleAspectFit;
+//        _fastVideoImageView.backgroundColor = [UIColor blackColor];
+//    }
+//    return _fastVideoImageView;
+//}
+
+- (UIProgressView *)fastProgressView {
+    if (!_fastProgressView) {
+        _fastProgressView                   = [[UIProgressView alloc] init];
+        _fastProgressView.progressTintColor = [UIColor greenColor];
+        _fastProgressView.trackTintColor    = [[UIColor lightGrayColor] colorWithAlphaComponent:0.4];
+    }
+    return _fastProgressView;
+}
+
+
+- (UIImageView *)backgroundImageView {
+    if (!_backgroundImageView) {
+        _backgroundImageView = [[UIImageView alloc] init];
+        _backgroundImageView.userInteractionEnabled = YES;
+    }
+    return _backgroundImageView;
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    CGFloat selfW = self.bounds.size.width;
+    //    CGFloat selfH = self.bounds.size.height;
+    
+    self.backgroundImageView.frame = self.bounds;
+    
+    CGFloat padding = 10;
+    
+    //    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    //    if (currentOrientation == UIDeviceOrientationPortrait || !self.fastVideoImageView.image)
+    { // 竖屏
+        
+        self.fastProgressView.hidden = NO;
+        //self.fastVideoImageView.hidden = YES;
+        
+        CGFloat fastIconViewX = 0;
+        CGFloat fastIconViewY = 5;
+        CGFloat fastIconViewH = 30;
+        CGFloat fastIconViewW = fastIconViewH;
+        self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
+        CGPoint fastIconViewCenter = self.fastIconView.center;
+        fastIconViewCenter.x = selfW*0.5;
+        self.fastIconView.center = fastIconViewCenter;
+        
+        CGFloat fastProgressViewX = padding;
+        CGFloat fastProgressViewY = CGRectGetMaxY(self.fastIconView.frame)+5;
+        CGFloat fastProgressViewW = selfW-2*fastProgressViewX;
+        CGFloat fastProgressViewH = 20;
+        self.fastProgressView.frame = CGRectMake(fastProgressViewX, fastProgressViewY, fastProgressViewW, fastProgressViewH);
+        
+        CGFloat fastTimeLabelX = padding;
+        CGFloat fastTimeLabelY = CGRectGetMaxY(self.fastProgressView.frame)+5;
+        CGFloat fastTimeLabelW = selfW-2*fastTimeLabelX;
+        CGFloat fastTimeLabelH = fastIconViewH;
+        self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
+        
+    }
+    //    else
+    //    { // 横屏
+    //
+    //        self.fastProgressView.hidden = YES;
+    //        self.fastVideoImageView.hidden = NO;
+    //
+    //        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    //        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    //
+    //        // 要与屏幕宽高成比例
+    //        CGFloat fastVideoImageViewX = padding;
+    //        CGFloat fastVideoImageViewW = 180;
+    //        CGFloat fastVideoImageViewH = fastVideoImageViewW*screenHeight/screenWidth;
+    //        CGFloat fastVideoImageViewY = 35;
+    //        self.fastVideoImageView.frame = CGRectMake(fastVideoImageViewX, fastVideoImageViewY, fastVideoImageViewW, fastVideoImageViewH);
+    //
+    //        CGFloat fastIconViewX = 20;
+    //        CGFloat fastIconViewY = 5;
+    //        CGFloat fastIconViewH = 30;
+    //        CGFloat fastIconViewW = fastIconViewH;
+    //        self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
+    //
+    //        CGFloat fastTimeLabelX = CGRectGetMaxX(self.fastIconView.frame);
+    //        CGFloat fastTimeLabelY = fastIconViewY;
+    //        CGFloat fastTimeLabelW = 100;
+    //        CGFloat fastTimeLabelH = fastIconViewH;
+    //        self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
+    //    }
+}
+
+@end
+
+
 #import <WebKit/WebKit.h>
 
 #define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)

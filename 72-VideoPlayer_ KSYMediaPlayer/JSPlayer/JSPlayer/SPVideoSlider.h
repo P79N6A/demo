@@ -14,6 +14,26 @@
 
 @end
 
+//--------------------------------------------------------------------------------------
+// 快进快退的view,快进快退时显示在中间
+@interface SPVideoPlayerFastView : UIView
+@property (nonatomic, strong) UIImageView *backgroundImageView; // 背景图
+@property (nonatomic, strong) UILabel *fastTimeLabel;          // 时间
+@property (nonatomic, strong) UIImageView *fastIconView;       // 快进快退的图标
+//@property (nonatomic, strong) UIImageView *fastVideoImageView; // 快进快退的视频图,横屏时显示
+@property (nonatomic, strong) UIProgressView *fastProgressView; // 进度条,竖屏时显示
+
+@end
+
+
+//--------------------------------------------------------------------------------------
+// 亮度的view
+@interface SPBrightnessView : UIView
+
+@property (nonatomic, assign) CGFloat brightness;
+
+@end
+
 
 
 @interface WHWebViewController : UIViewController

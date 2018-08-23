@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69CECCF6212D6852001453F6 /* Player.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69CECCF5212D6851001453F6 /* Player.bundle */; };
+		69CECCFA212E8817001453F6 /* Player.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69CECCF9212E8817001453F6 /* Player.bundle */; };
 		69DB18CA2113EF8D00715D7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18C92113EF8D00715D7B /* AppDelegate.m */; };
 		69DB18CD2113EF8D00715D7B /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB18CC2113EF8D00715D7B /* ViewController.m */; };
 		69DB18D02113EF8D00715D7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB18CE2113EF8D00715D7B /* Main.storyboard */; };
@@ -22,7 +22,7 @@
 
 /* Begin PBXFileReference section */
 		50DED3B4479D48D16C7789A5 /* Pods-JSPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JSPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JSPlayer/Pods-JSPlayer.debug.xcconfig"; sourceTree = "<group>"; };
-		69CECCF5212D6851001453F6 /* Player.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Player.bundle; sourceTree = "<group>"; };
+		69CECCF9212E8817001453F6 /* Player.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Player.bundle; sourceTree = "<group>"; };
 		69DB18C52113EF8D00715D7B /* JSPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JSPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB18C82113EF8D00715D7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69DB18C92113EF8D00715D7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -100,7 +100,7 @@
 		69DB18DE211401AD00715D7B /* JSPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				69CECCF5212D6851001453F6 /* Player.bundle */,
+				69CECCF9212E8817001453F6 /* Player.bundle */,
 				69DB18DF211401AD00715D7B /* PlayerView.h */,
 				69DB18E0211401AD00715D7B /* PlayerView.m */,
 				69DB18E1211401AD00715D7B /* PlayerView.xib */,
@@ -182,7 +182,7 @@
 			files = (
 				69DB18D52113EF8D00715D7B /* LaunchScreen.storyboard in Resources */,
 				69DB18D22113EF8D00715D7B /* Assets.xcassets in Resources */,
-				69CECCF6212D6852001453F6 /* Player.bundle in Resources */,
+				69CECCFA212E8817001453F6 /* Player.bundle in Resources */,
 				69DB18D02113EF8D00715D7B /* Main.storyboard in Resources */,
 				69DB18E6211401AD00715D7B /* PlayerView.xib in Resources */,
 			);
