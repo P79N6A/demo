@@ -73,7 +73,7 @@
 #define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
 
 
 @interface WHWebViewController ()<WKNavigationDelegate>
@@ -196,7 +196,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor colorWithRed:38/255.0 green:38/255.0 blue:38/255.0 alpha:1.0];
     [self showLeftBarButtonItem];
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progress];

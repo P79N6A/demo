@@ -337,7 +337,7 @@ typedef NS_ENUM(NSUInteger, Direction) {
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
         WHWebViewController *web = [[WHWebViewController alloc] init];
-        web.urlString = self.model.url;
+        web.urlString = @"http://www.baidu.com";//self.model.url;
         web.canDownRefresh = YES;
         web.navigationItem.title = self.model.title;
         
