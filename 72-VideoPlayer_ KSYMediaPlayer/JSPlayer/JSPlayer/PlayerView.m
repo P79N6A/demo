@@ -10,7 +10,6 @@
 #import "SPPlayerSubview.h"
 
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
-#import <KSYMediaPlayer/KSYMediaInfoProber.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <SafariServices/SafariServices.h>
 #import <objc/runtime.h>
@@ -135,7 +134,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, assign) double lastSize;
 @property (nonatomic, assign) int fvr_costtime;
 @property (nonatomic, assign) int far_costtime;
-@property (nonatomic, strong) KSYMediaInfoProber *videoInfo;
 @end
 
 
@@ -330,7 +328,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     self.titleLabel.text = model.title;
     
-    _videoInfo = [[KSYMediaInfoProber alloc] initWithContentURL:url];
 
     NSLog(@"%s----URL---%@", __func__,url.absoluteString);
 }

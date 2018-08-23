@@ -29,6 +29,7 @@
 
 @property (nonatomic, strong) id<SPPlayerModel> model;
 
+
 + (instancetype)playerView;
 
 - (void)playWithModel:(id<SPPlayerModel>)model;
