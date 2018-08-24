@@ -9,9 +9,10 @@
 #import "HybridNSURLProtocol.h"
 #import <UIKit/UIKit.h>
 #import <MediaPlayer/MediaPlayer.h>
-static NSString*const sourUrl  = @"https://m.baidu.com/static/index/plus/plus_logo.png";
-static NSString*const sourIconUrl  = @"http://m.baidu.com/static/search/baiduapp_icon.png";
-static NSString*const localUrl = @"http://mecrm.qa.medlinker.net/public/image?id=57026794&certType=workCertPicUrl&time=1484625241";
+#import <AVKit/AVKit.h>
+//static NSString*const sourUrl  = @"https://m.baidu.com/static/index/plus/plus_logo.png";
+//static NSString*const sourIconUrl  = @"http://m.baidu.com/static/search/baiduapp_icon.png";
+//static NSString*const localUrl = @"http://mecrm.qa.medlinker.net/public/image?id=57026794&certType=workCertPicUrl&time=1484625241";
 
 static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 @interface HybridNSURLProtocol ()<NSURLSessionDelegate>
@@ -42,27 +43,26 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     NSString *requestUrl = request.URL.absoluteString;
 
     //request截取重定向
-    if ([requestUrl isEqualToString:sourUrl])
-    {
-        NSURL* url1 = [NSURL URLWithString:localUrl];
-        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
-    }
+//    if ([requestUrl isEqualToString:sourUrl])
+//    {
+//        NSURL* url1 = [NSURL URLWithString:localUrl];
+//        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
+//    }
     if([requestUrl containsString:@".m3u8"]
        //       ||[requestUrl.pathExtension hasPrefix:@"mp4"]
        )
     {
         
-        NSLog(@"%s--并提供相关证-%@", __func__,request);
+        NSLog(@"%s--视频源列表-%@", __func__,request);
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if([self.topViewController isKindOfClass:[MPMoviePlayerViewController class]]) return ;
-            
             MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:request.URL];
             playVC.view.frame = CGRectMake(0, 100, 414, 300);
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:playVC animated:YES completion:nil];
         });
     }
-    NSLog(@"request.URL.absoluteString = %@\r\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\r\n",request.URL.absoluteString);
+    NSLog(@"URL = %@\r\n-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\r\n",request.URL.absoluteString);
 
     return mutableReqeust;
 }
@@ -79,20 +79,20 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     [NSURLProtocol setProperty:@YES forKey:KHybridNSURLProtocolHKey inRequest:mutableReqeust];
     
     //这里最好加上缓存判断，加载本地离线文件， 这个直接简单的例子。
-    if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
-    {
-            NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
-            NSURLResponse* response = [[NSURLResponse alloc] initWithURL:self.request.URL MIMEType:@"image/png" expectedContentLength:data.length textEncodingName:nil];
-            [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
-            [self.client URLProtocol:self didLoadData:data];
-            [self.client URLProtocolDidFinishLoading:self];
-    }
-    else
-    {
+//    if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
+//    {
+//            NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
+//            NSURLResponse* response = [[NSURLResponse alloc] initWithURL:self.request.URL MIMEType:@"image/png" expectedContentLength:data.length textEncodingName:nil];
+//            [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+//            [self.client URLProtocol:self didLoadData:data];
+//            [self.client URLProtocolDidFinishLoading:self];
+//    }
+//    else
+//    {
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
         self.task = [session dataTaskWithRequest:self.request];
         [self.task resume];
-    }
+//    }
 }
 - (void)stopLoading
 {

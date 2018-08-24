@@ -85,7 +85,10 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         mutableReqeust = nil;
     }
     else
-    if([requestUrl.pathExtension hasPrefix:@"m3u8"]
+    if(
+//       [requestUrl containsString:@".mp4"]
+       [requestUrl containsString:@".m3u8"]
+//       ||[requestUrl containsString:@".mp3"]
 //       ||[requestUrl.pathExtension hasPrefix:@"mp4"]
        )
     {

@@ -22,7 +22,7 @@
     UIWebView *webView = [[UIWebView alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.view addSubview:webView];
     self.webView11 = webView;
-    [self.webView11 loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://m.iqiyi.com/"]]];
+    [self.webView11 loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://v.qq.com/"]]];
 }
 
 
