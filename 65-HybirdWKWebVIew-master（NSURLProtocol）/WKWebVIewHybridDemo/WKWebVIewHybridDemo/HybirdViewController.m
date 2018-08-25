@@ -61,7 +61,7 @@
         if ([_webView respondsToSelector:@selector(setDelegate:)]) {
             [_webView setUIDelegate:self];
         }
-        NSURL *url = [NSURL URLWithString:@"http://www.baidu.com"];
+        NSURL *url = [NSURL URLWithString:@"http://m.yueyuwz.com/"];
         NSURLRequest *request = [NSURLRequest requestWithURL:url];
         [_webView loadRequest:request];
         

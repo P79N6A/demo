@@ -40,6 +40,10 @@
     model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
     
     [_player playWithModel:model];
+    
+//    self.spStatusBarStyle = UIStatusBarStyleDefault;
+//    self.spStatusBarHidden = YES;
+
 }
 
 - (IBAction)living:(id)sender {
@@ -48,6 +52,9 @@
     model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
     
     [_player playWithModel:model];
+    //self.spStatusBarStyle = UIStatusBarStyleLightContent;
+//    self.spStatusBarHidden = NO;
+
 }
 
 
