@@ -12,7 +12,7 @@
 
 
 + (void)test{
-    NSString *str =  @"http://bddn.cn/gb.htm";
+    NSString *str =  @"http://bddn.cn/zwgb.htm";//@"http://bddn.cn/gb.htm";
     //    if (page > 1) {
     //        str = [NSString stringWithFormat:@"http://www.97taiju.com/list/taiju/index-%ld.html",(long)page];
     //    }
@@ -46,8 +46,8 @@
 
         
         NSString *rString = @"<td width=\"72\" class=\"STYLE4\"><div align=\"center\"><a href=\".*?\" target=\"_blank\">.*?</a></div></td>";
-        
-        rString = @"</table><table width=\"770\" height=\"25\" border=\"0\" align=\"center\">  <tr>    <td width=\"72\" bgcolor=\"#.*?\" class=\"STYLE4\"><div align=\"center\">.*?：</div></td>[\\w\\W]*?</table>";
+
+        rString = @"</table><table width=\"770\" height=\"25\" border=\"0\" align=\"center\">  <tbody><tr>    <td width=\"72\" bgcolor=\"#.*?\" class=\"STYLE4\"><div align=\"center\">.*?：</div></td>[\\w\\W]*?</table>";
         
         NSArray *rs = [self matchString:searchText toRegexString:rString];
         
@@ -64,7 +64,11 @@
                 
                 NSString *html = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:info[1]] encoding:NSUTF8StringEncoding error:NULL];
                 NSString*url = [self matchString:html toRegexString:@"showPlayer\\(\'(.*?)\', \'a1\'\\);"].lastObject;
+                if (!html) {
+                    url = info[1];
+                    NSLog(@"--出差了----%@",info[1]);
 
+                }
                 
                 [list addObject:@{@"url":url,@"name":info[2]}];
                 NSLog(@"--%@----%@",info[2],url);
@@ -73,8 +77,11 @@
             [array addObject:@{@"title":cate,@"list":list}];
         }
         
-        NSLog(@"%s--%@", __func__,array);
+        ///NSLog(@"%s--%@", __func__,array);
         
+        NSData *d = [NSJSONSerialization dataWithJSONObject:array options:NSJSONReadingAllowFragments error:NULL];
+        NSString *josn = [[NSString alloc] initWithData:d encoding:NSUTF8StringEncoding];
+        NSLog(@"%s", __func__);
         
     }];
     //开启网络任务
