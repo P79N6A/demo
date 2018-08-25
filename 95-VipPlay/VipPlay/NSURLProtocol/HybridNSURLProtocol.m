@@ -122,7 +122,11 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 //            };
 //
 //            [[UIViewController topkeyWindowViewController] presentViewController:playerVC animated:YES completion:nil];
+        
+        
         dispatch_async(dispatch_get_main_queue(), ^{
+            if([[self topViewController] isKindOfClass:[MPMoviePlayerViewController class]]) return ;
+
             MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray lastObject]]];
             playVC.view.frame = CGRectMake(0, 100, 414, 300);
             [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:playVC animated:YES completion:nil];
@@ -193,6 +197,27 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
     [self.client URLProtocolDidFinishLoading:self];
+}
+
+//FIXME:  -  自定义方法
++ (UIViewController *)topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+        
+    }
+    return resultVC;
+}
++ (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
 }
 
 @end

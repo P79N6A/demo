@@ -17,6 +17,10 @@
 
 @property (nonatomic, strong) UIButton       *leftButton;
 @property (nonatomic, strong) UIButton       *rightButton;
+
+@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSArray *platformlist;
+
 @end
 
 @implementation ViewController
@@ -63,8 +67,14 @@
                                                  name:UIWindowDidBecomeHiddenNotification
                                                object:self.view.window];
     
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.leftButton];
-    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.rightButton],];
+    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton]];
+    
+    
+    
+    self.showsToolBar = YES;
+    self.navigationType = AXWebViewControllerNavigationToolItem;
+    self.maxAllowedTitleLength = 999;
+
 }
 
 - (void)playerItemBecameCurrent:(NSNotification *)notification{
@@ -88,10 +98,11 @@
 
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
     configuration.menuWidth = 100;
-    
-    __weak typeof(self) mySelf = self;
-    [FTPopOverMenu showForSender:sender withMenuArray:@[@"11",@"22"] doneBlock:^(NSInteger selectedIndex) {
-//        [mySelf refreshVideoModel:self.modelsArray[selectedIndex]];
+    configuration.textAlignment = NSTextAlignmentCenter;
+     __weak typeof(self) weakSelf = self;
+    [FTPopOverMenu showForSender:sender withMenuArray:[self.platformlist valueForKey:@"name"] doneBlock:^(NSInteger selectedIndex) {
+        
+            [weakSelf loadURL:[NSURL URLWithString:weakSelf.platformlist[selectedIndex][@"url"]]];
     } dismissBlock:^{
         NSLog(@"user canceled. do nothing.");
     }];
@@ -103,9 +114,10 @@
     
     FTPopOverMenuConfiguration *configuration = [FTPopOverMenuConfiguration defaultConfiguration];
     configuration.menuWidth = 150;
-    
-    [FTPopOverMenu showForSender:sender withMenuArray:@[@"33",@"44"] doneBlock:^(NSInteger selectedIndex) {
-      
+    configuration.textAlignment = NSTextAlignmentCenter;
+ __weak typeof(self) weakSelf = self;
+    [FTPopOverMenu showForSender:sender withMenuArray:[self.list valueForKey:@"name"] doneBlock:^(NSInteger selectedIndex) {
+        [weakSelf vipVideoCurrentApiDidChange:weakSelf.list[selectedIndex][@"url"]];
     } dismissBlock:^{
         NSLog(@"user canceled. do nothing.");
     }];
@@ -116,11 +128,12 @@
     NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
     NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     NSLog(@"%@,error %@",dict, error);
-    //[self transformJsonToModel:dict[@"list"]];
-    //[self transformPlatformJsonToModel:dict[@"platformlist"]];
+    self.list = dict[@"list"];
+    self.platformlist = dict[@"platformlist"];
+
 }
 
-- (void)vipVideoCurrentApiDidChange:(NSNotification *)notification{
+- (void)vipVideoCurrentApiDidChange:(NSString  *)vipURL{
     
 #if 1//AX_WEB_VIEW_CONTROLLER_USING_WEBKIT
     [self.webView evaluateJavaScript:@"document.location.href" completionHandler:^(NSString *url, NSError * _Nullable error) {
@@ -131,8 +144,9 @@
             return ;
         }
         
-     
-//        [self loadURL:[NSURL URLWithString:finalUrl]];
+        NSString *finalUrl = [NSString stringWithFormat:@"%@%@", vipURL,originUrl];
+
+        [self loadURL:[NSURL URLWithString:finalUrl]];
     }];
 #else
     NSString *url =  [self.webView stringByEvaluatingJavaScriptFromString:@"document.location.href"];
@@ -142,7 +156,7 @@
         return ;
     }
     
-    NSString *finalUrl = [NSString stringWithFormat:@"%@%@", [[VipURLManager sharedInstance] currentVipApi]?:@"",originUrl?:@""];
+    NSString *finalUrl = [NSString stringWithFormat:@"%@%@", vipURL,originUrl];
     NSLog(@"finalUrl = %@", finalUrl);
 //    [self loadURL:[NSURL URLWithString:finalUrl]];
 #endif

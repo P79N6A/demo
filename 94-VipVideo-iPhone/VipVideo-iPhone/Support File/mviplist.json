@@ -11,7 +11,16 @@
                     {
                     "name":"某平台3",
                     "url":"http://127.0.0.1/test/test.html"
+                    },
+                    {
+                    "name":"某平台2",
+                    "url":"https://www.youku.com/"
+                    },
+                    {
+                    "name":"某平台3",
+                    "url":"http://v.qq.com/"
                     }
+
                     ],
     
     "list": [
