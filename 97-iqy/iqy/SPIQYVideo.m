@@ -88,7 +88,7 @@ static SPIQYVideo *instance = nil;
     if (!_webView) {
         // 1.创建webview，并设置大小，"20"为状态栏高度
         
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0,0,375,0)];
+        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0,0,375,667)];
         
         // 2.创建请求
         
@@ -114,8 +114,8 @@ static SPIQYVideo *instance = nil;
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     NSString *JsStr = @"(document.getElementsByTagName(\"video\")[0]).src";
-    [webView evaluateJavaScript:JsStr completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-        if(![response isEqual:[NSNull null]] && response != nil){
+    [webView evaluateJavaScript:JsStr completionHandler:^(NSString * response, NSError * _Nullable error) {
+        if(![response isEqual:[NSNull null]] && response.length){
             //截获到视频地址了
             NSLog(@"response == %@",response);
             dispatch_async(dispatch_get_main_queue(), ^{
