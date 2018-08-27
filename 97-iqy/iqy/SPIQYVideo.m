@@ -88,7 +88,7 @@ static SPIQYVideo *instance = nil;
     if (!_webView) {
         // 1.创建webview，并设置大小，"20"为状态栏高度
         
-        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0,0,375,667)];
+        WKWebView *webView = [[WKWebView alloc] initWithFrame:CGRectMake(0,0,375,0)];
         
         // 2.创建请求
         
