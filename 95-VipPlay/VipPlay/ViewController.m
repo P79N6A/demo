@@ -135,6 +135,11 @@
     return _mediaCountButton;
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    [self.mediaCountButton startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -166,7 +171,6 @@
     
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton]];
     [self.view addSubview:self.mediaCountButton];
-    [self.mediaCountButton startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
 
     
     self.showsToolBar = YES;
