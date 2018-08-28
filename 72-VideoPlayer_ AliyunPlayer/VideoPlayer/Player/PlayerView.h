@@ -2,6 +2,7 @@
  * date : 2018/08/06
  * date : 2018/08/09 直播隐藏快进
  * date : 2018/08/09 3秒自动隐藏工具菜单
+ * date : 2018/08/28 重试和Safari
  */
 
 #import <UIKit/UIKit.h>
@@ -9,14 +10,14 @@
 
 @protocol TTZPlayerModel<NSObject>
 
-@property (nonatomic, copy, readonly) NSString *live_stream;
-@property (nonatomic, copy, readonly) NSString *name;
+@property (nonatomic, copy, readonly) NSString *url;
+@property (nonatomic, copy, readonly) NSString *title;
 
 @end
 
 @interface VideoModel : NSObject<TTZPlayerModel>
-@property (nonatomic, copy) NSString *live_stream;
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString *url;
+@property (nonatomic, copy) NSString *title;
 @end
 
 @interface PlayerView : UIView
