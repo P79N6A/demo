@@ -43,8 +43,9 @@
 - (UIViewController *)viewController;
 - (UIViewController *)topViewController;
 @end
-
-@interface UIImage (Bundle)
-+ (UIImage *)imageFromBundleWithName:(NSString *)imageName;
+@interface UIViewController (Player)
+@property (nonatomic, assign) UIStatusBarStyle spStatusBarStyle;
+@property (nonatomic, assign) BOOL spStatusBarHidden;
+@property (nonatomic, assign) BOOL spHomeIndicatorAutoHidden;
 @end
 

@@ -12,6 +12,7 @@
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <SafariServices/SafariServices.h>
+#import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
@@ -113,6 +114,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 亮度view */
 @property (nonatomic, strong) SPBrightnessView       *brightnessView;
 
+/** 切换模式 */
+@property (weak, nonatomic) IBOutlet UIButton *modeButton;
+
 @end
 
 
@@ -164,7 +168,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_off_iphone_44x44_"] forState:UIControlStateNormal];
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_on_iphone_44x44_"] forState:UIControlStateSelected];
     
-    
+    [self.modeButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_mode"] forState:UIControlStateNormal];
+
     
 }
 //FIXME:  -  布局位置
@@ -176,7 +181,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.lockBtn.frame = CGRectMake(0, 0, 40, 40);
     self.lockBtn.center = CGPointMake(15+20+spacing, self.loadingView.center.y);
-    
+    self.modeButton.frame = CGRectMake(0, 0, 70, 70);
+    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
+
     self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
     
     self.topView.frame = CGRectMake(spacing, 0, self.bounds.size.width - 2 * spacing, 84);
@@ -588,7 +595,20 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //    }
 //    
 //}
+- (IBAction)videoViewMode:(UIButton *)sender {
+    
+    static ScalingMode modes[] = {
+        scalingModeAspectFit,
+        scalingModeAspectFitWithCropping,
+    };
 
+    
+    
+    static int curModeIdx = 0;
+    
+    curModeIdx = (curModeIdx + 1) % (int)(sizeof(modes)/sizeof(modes[0]));
+    [self.mediaPlayer setScalingMode:modes[curModeIdx]];//
+}
 //FIXME:  -  视频触摸的回调
 - (void)handleTapGesture{
     
@@ -611,7 +631,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
     self.statusBarHidden = self.buttomView.isHidden;
-    
+    self.modeButton.hidden = self.buttomView.isHidden;
+
 }
 
 //FIXME:  -  隐藏工具菜单
@@ -631,6 +652,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.topView.hidden = YES;
     self.buttomView.hidden = YES;
     self.statusBarHidden = YES;
+    self.modeButton.hidden = YES;
 
 }
 
@@ -660,12 +682,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.topView.hidden = !self.buttomView.isHidden;
     self.buttomView.hidden = !self.buttomView.isHidden;
     self.statusBarHidden = self.buttomView.isHidden;
+    self.modeButton.hidden = self.buttomView.isHidden;
+
 }
 
 //FIXME:  -  向左
 - (void)enterFullscreenLeft {
     
     self.lockBtn.hidden = NO;
+    self.modeButton.hidden = NO;
     self.buttomView.hidden = NO;
     self.topView.hidden = NO;
     self.fullButton.selected = YES;
@@ -713,6 +738,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)enterFullscreenRight {
     
     self.lockBtn.hidden = NO;
+    self.modeButton.hidden = NO;
     self.buttomView.hidden = NO;
     self.topView.hidden = NO;
     self.fullButton.selected = YES;
@@ -759,6 +785,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  竖屏
 - (void)exitFullscreen {
     self.lockBtn.hidden = YES;
+    self.modeButton.hidden = YES;
     self.buttomView.hidden = YES;
     self.topView.hidden = YES;
     self.fullButton.selected = NO;
@@ -1210,6 +1237,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return self.topViewController.prefersHomeIndicatorAutoHidden;
 }
 @end
+static char kSPStatusBarStyleKey;
+static char kSPStatusBarHiddenKey;
+static char kSPHomeIndicatorAutoHiddenKey;
 @implementation UIViewController (Player)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
@@ -1235,11 +1265,11 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 - (BOOL)prefersStatusBarHidden{
-    return NO;
+    return self.spStatusBarHidden;
 }
 
 - (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
+    return self.spStatusBarStyle;
 }
 
 - (UIStatusBarAnimation)preferredStatusBarUpdateAnimation{
@@ -1247,7 +1277,37 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
-    return NO;
+    return self.spHomeIndicatorAutoHidden;
+}
+// statusBarStyle
+- (UIStatusBarStyle)spStatusBarStyle {
+    id style = objc_getAssociatedObject(self, &kSPStatusBarStyleKey);
+    return (UIStatusBarStyle)(style != nil) ? [style integerValue] : UIStatusBarStyleLightContent;
+}
+- (void)setSpStatusBarStyle:(UIStatusBarStyle)spStatusBarStyle{
+    objc_setAssociatedObject(self, &kSPStatusBarStyleKey, @(spStatusBarStyle), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+
+//StatusBarHidden
+- (BOOL)spStatusBarHidden {
+    id isHidden = objc_getAssociatedObject(self, &kSPStatusBarHiddenKey);
+    return (isHidden != nil) ? [isHidden boolValue] : NO;
+}
+- (void)setSpStatusBarHidden:(BOOL)spStatusBarHidden{
+    objc_setAssociatedObject(self, &kSPStatusBarHiddenKey, @(spStatusBarHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    [self setNeedsStatusBarAppearanceUpdate];
+}
+//HomeIndicatorAutoHidden
+- (BOOL)spHomeIndicatorAutoHidden {
+    id isHidden = objc_getAssociatedObject(self, &kSPHomeIndicatorAutoHiddenKey);
+    return (isHidden != nil) ? [isHidden boolValue] : NO;
+}
+- (void)setSpHomeIndicatorAutoHidden:(BOOL)spHomeIndicatorAutoHidden{
+    objc_setAssociatedObject(self, &kSPHomeIndicatorAutoHiddenKey, @(spHomeIndicatorAutoHidden), OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    if (@available(iOS 11.0, *)) {
+        [self setNeedsUpdateOfHomeIndicatorAutoHidden];
+    }
 }
 @end
 
@@ -1284,15 +1344,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 @end
 
-
-@implementation UIImage (Bundle)
-+ (UIImage *)imageFromBundleWithName:(NSString *)imageName{
-    
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"PlayerView" ofType:@".bundle"];
-    NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
-    return [UIImage imageNamed:fullImageName];
-}
-@end
 
 
 

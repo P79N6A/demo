@@ -341,7 +341,7 @@
 #define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
 
 
 @interface WHWebViewController ()<WKNavigationDelegate>
@@ -590,4 +590,13 @@
 
 @end
 
+
+@implementation UIImage (Bundle)
++ (UIImage *)imageFromBundleWithName:(NSString *)imageName{
+    
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"PlayerView" ofType:@".bundle"];
+    NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
+    return [UIImage imageNamed:fullImageName];
+}
+@end
 

@@ -14,6 +14,7 @@
 		6941E8662133DE7100BD2765 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6941E8642133DE7100BD2765 /* LaunchScreen.storyboard */; };
 		6941E8692133DE7100BD2765 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E8682133DE7100BD2765 /* main.m */; };
 		6941E8712133DE8400BD2765 /* SPIQYVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E86F2133DE8400BD2765 /* SPIQYVideo.m */; };
+		6941E8752134ED9000BD2765 /* test.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E8742134ED9000BD2765 /* test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		6941E8682133DE7100BD2765 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6941E86F2133DE8400BD2765 /* SPIQYVideo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPIQYVideo.m; sourceTree = "<group>"; };
 		6941E8702133DE8400BD2765 /* SPIQYVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPIQYVideo.h; sourceTree = "<group>"; };
+		6941E8732134ED9000BD2765 /* test.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
+		6941E8742134ED9000BD2765 /* test.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = test.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +70,8 @@
 				6941E85A2133DE7100BD2765 /* AppDelegate.m */,
 				6941E85C2133DE7100BD2765 /* ViewController.h */,
 				6941E85D2133DE7100BD2765 /* ViewController.m */,
+				6941E8732134ED9000BD2765 /* test.h */,
+				6941E8742134ED9000BD2765 /* test.m */,
 				6941E85F2133DE7100BD2765 /* Main.storyboard */,
 				6941E8622133DE7100BD2765 /* Assets.xcassets */,
 				6941E8642133DE7100BD2765 /* LaunchScreen.storyboard */,
@@ -147,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6941E8752134ED9000BD2765 /* test.m in Sources */,
 				6941E8712133DE8400BD2765 /* SPIQYVideo.m in Sources */,
 				6941E85E2133DE7100BD2765 /* ViewController.m in Sources */,
 				6941E8692133DE7100BD2765 /* main.m in Sources */,

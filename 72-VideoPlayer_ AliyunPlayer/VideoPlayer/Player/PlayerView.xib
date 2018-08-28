@@ -74,6 +74,13 @@
                         <action selector="lockScrrenAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="Tpa-7S-wPB"/>
                     </connections>
                 </button>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aXk-jI-d9Z">
+                    <rect key="frame" x="155" y="71" width="88" height="44"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <connections>
+                        <action selector="videoViewMode:" destination="iN0-l3-epB" eventType="touchUpInside" id="NxJ-uC-Bur"/>
+                    </connections>
+                </button>
                 <progressView hidden="YES" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbg-uH-ljM">
                     <rect key="frame" x="124" y="92" width="150" height="2"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -121,6 +128,7 @@
                 <outlet property="loadingLabel" destination="F4D-2r-UdV" id="wML-Fr-6gL"/>
                 <outlet property="loadingView" destination="QCw-hv-uYn" id="dXE-21-0ff"/>
                 <outlet property="lockBtn" destination="IrJ-lN-Fsc" id="bqb-bS-WWE"/>
+                <outlet property="modeButton" destination="aXk-jI-d9Z" id="Yrg-g1-IRf"/>
                 <outlet property="titleLabel" destination="GDd-vT-fId" id="tFp-Z5-E5m"/>
                 <outlet property="topBgView" destination="Fhm-Dn-mng" id="SI3-cf-ZW8"/>
                 <outlet property="topView" destination="Hhh-jq-1hg" id="Kce-Oh-yUN"/>
