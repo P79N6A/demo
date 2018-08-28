@@ -87,7 +87,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     if(
        [requestUrl containsString:@".m3u8"]
 //       [requestUrl.pathExtension hasPrefix:@"m3u8"]
-//       ||[requestUrl.pathExtension hasPrefix:@"mp4"]
+       ||[requestUrl containsString:@".mp4"]
        )
     {
 //        if (![[UIViewController topViewController] isKindOfClass:[HLPlayerViewController class]]) {

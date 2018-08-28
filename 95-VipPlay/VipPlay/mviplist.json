@@ -10,14 +10,50 @@
                     },
                     {
                     "name":"某平台3",
-                    "url":"http://www.iqiyi.com/v_19rrb21cf0.html"
+                    "url":"https://v.qq.com"
                     }
                     ],
     
     "list": [
              {
              "name": "原地址",
+             "url": "http://www.lanzhuzhibo.com/jiexi/?url="
+             },
+             {
+             "name": "默认解析接口",
              "url": ""
+             },
+             {
+             "name": "电视台及视频流播放接口",
+             "url": "http://www.lanzhuzhibo.com/jiexi1/?url="
+             },
+             {
+             "name": "腾讯优酷等全网Vip视频播放接口",
+             "url": "http://www.lanzhuzhibo.com/jiexi/?url="
+             },
+             {
+             "name": "http://y.mt2t.com/lines?url=",
+             "url": "二号解析接口"
+             },
+             {
+             "name": "四号解析接口",
+             "url": "http://jqaaa.com/jx.php?url="
+             },
+             {
+             "name": "五号解析接口",
+             "url": "http://api.662820.com/xnflv/index.php?url="
+             },
+             {
+             "name": "六号解析接口",
+             "url": "http://api.xfsub.com/index.php?url="
+             },
+             {
+             "name": "七号解析接口",
+             "url": "http://jiexi.92fz.cn/player/vip.php?url="
+             },
+             {
+             "name": "八号解析接口",
+             "url": "http://www.662820.com/xnflv/index.php?url="
              },
              {
              "name": "万能接口5",

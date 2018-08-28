@@ -18,7 +18,6 @@
 		6941E792212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E78E212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m */; };
 		6941E793212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E790212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m */; };
 		6941E8082130142700BD2765 /* mviplist.json in Resources */ = {isa = PBXBuildFile; fileRef = 6941E8072130142700BD2765 /* mviplist.json */; };
-		6941E84C2133DB0E00BD2765 /* SPIQYVideo.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E84B2133DB0E00BD2765 /* SPIQYVideo.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,8 +38,6 @@
 		6941E78F212FD25400BD2765 /* NSURLProtocol+WKWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+WKWebVIew.h"; sourceTree = "<group>"; };
 		6941E790212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+WKWebVIew.m"; sourceTree = "<group>"; };
 		6941E8072130142700BD2765 /* mviplist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mviplist.json; sourceTree = "<group>"; };
-		6941E84A2133DB0E00BD2765 /* SPIQYVideo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPIQYVideo.h; sourceTree = "<group>"; };
-		6941E84B2133DB0E00BD2765 /* SPIQYVideo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPIQYVideo.m; sourceTree = "<group>"; };
 		7BC6C5468B14E80B3C4EE294 /* libPods-VipPlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-VipPlay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		902A4AB696095AF265C9F7C9 /* Pods-VipPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VipPlay.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay.debug.xcconfig"; sourceTree = "<group>"; };
 		D857EC3E4B86FA697680AD65 /* Pods-VipPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VipPlay.release.xcconfig"; path = "Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay.release.xcconfig"; sourceTree = "<group>"; };
@@ -84,8 +81,6 @@
 				6941E774212FB5F000BD2765 /* AppDelegate.h */,
 				6941E775212FB5F000BD2765 /* AppDelegate.m */,
 				6941E777212FB5F000BD2765 /* ViewController.h */,
-				6941E84A2133DB0E00BD2765 /* SPIQYVideo.h */,
-				6941E84B2133DB0E00BD2765 /* SPIQYVideo.m */,
 				6941E778212FB5F000BD2765 /* ViewController.m */,
 				6941E77A212FB5F000BD2765 /* Main.storyboard */,
 				6941E77D212FB5F000BD2765 /* Assets.xcassets */,
@@ -265,7 +260,6 @@
 				6941E784212FB5F000BD2765 /* main.m in Sources */,
 				6941E793212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m in Sources */,
 				6941E776212FB5F000BD2765 /* AppDelegate.m in Sources */,
-				6941E84C2133DB0E00BD2765 /* SPIQYVideo.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
