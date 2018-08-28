@@ -14,6 +14,8 @@
 
 #import "ListCell.h"
 
+#import "UIView+PulseView.h"
+
 @implementation ListController
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -126,6 +128,9 @@
         _mediaCountButton.frame = CGRectMake(200, 300, 64, 64);
         _mediaCountButton.backgroundColor = [UIColor redColor];
         [_mediaCountButton addTarget:self action:@selector(mediaList:) forControlEvents:UIControlEventTouchUpInside];
+        _mediaCountButton.layer.cornerRadius = 32;
+        _mediaCountButton.layer.masksToBounds = YES;
+        _mediaCountButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.55];
     }
     return _mediaCountButton;
 }
@@ -161,7 +166,8 @@
     
     self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton]];
     [self.view addSubview:self.mediaCountButton];
-    
+    [self.mediaCountButton startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
+
     
     self.showsToolBar = YES;
     self.navigationType = AXWebViewControllerNavigationToolItem;
