@@ -14,3 +14,9 @@
 
 @end
 
+
+@interface ListController : UITableViewController
+
+@property (nonatomic, strong) NSMutableArray <NSString *>*mediaObjs;
+@property (nonatomic, copy) void (^didSelectItemBlock)(NSString *url);
+@end

@@ -8,7 +8,6 @@
 
 #import "HybridNSURLProtocol.h"
 #import <UIKit/UIKit.h>
-#import <MediaPlayer/MediaPlayer.h>
 
 static NSString*const sourUrl  = @"https://m.baidu.com/static/index/plus/plus_logo.png";
 static NSString*const sourIconUrl  = @"http://m.baidu.com/static/search/baiduapp_icon.png";
@@ -87,7 +86,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     if(
        [requestUrl containsString:@".m3u8"]
 //       [requestUrl.pathExtension hasPrefix:@"m3u8"]
-       ||[requestUrl containsString:@".mp4"]
+//       ||[requestUrl containsString:@".mp4"]
        )
     {
 //        if (![[UIViewController topViewController] isKindOfClass:[HLPlayerViewController class]]) {
@@ -95,8 +94,9 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
             
 //            static bool isShow = NO;
 //            HLPlayerViewController *playerVC = [[HLPlayerViewController alloc] init];
+
+
         
-            
             NSLog(@"RealVideoUrl %@", [urlArray lastObject]);
 //            playerVC.url = [NSURL URLWithString:[urlArray lastObject]];
 //            UIViewController *topVC = [UIViewController topkeyWindowViewController];
@@ -125,11 +125,12 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         
         
         dispatch_async(dispatch_get_main_queue(), ^{
-            if([[self topViewController] isKindOfClass:[MPMoviePlayerViewController class]]) return ;
-
-            MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray lastObject]]];
-            playVC.view.frame = CGRectMake(0, 100, 414, 300);
-            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:playVC animated:YES completion:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":[urlArray lastObject]}];
+//            if([[self topViewController] isKindOfClass:[MPMoviePlayerViewController class]]) return ;
+//
+//            MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray lastObject]]];
+//            playVC.view.frame = CGRectMake(0, 100, 414, 300);
+//            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:playVC animated:YES completion:nil];
         });
      
         
@@ -199,25 +200,5 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     [self.client URLProtocolDidFinishLoading:self];
 }
 
-//FIXME:  -  自定义方法
-+ (UIViewController *)topViewController {
-    UIViewController *resultVC;
-    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
-    while (resultVC.presentedViewController) {
-        resultVC = [self _topViewController:resultVC.presentedViewController];
-        
-    }
-    return resultVC;
-}
-+ (UIViewController *)_topViewController:(UIViewController *)vc {
-    if ([vc isKindOfClass:[UINavigationController class]]) {
-        return [self _topViewController:[(UINavigationController *)vc topViewController]];
-    } else if ([vc isKindOfClass:[UITabBarController class]]) {
-        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
-    } else {
-        return vc;
-    }
-    return nil;
-}
 
 @end

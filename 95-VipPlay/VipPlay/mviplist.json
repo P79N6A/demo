@@ -17,11 +17,11 @@
     "list": [
              {
              "name": "原地址",
-             "url": "http://www.lanzhuzhibo.com/jiexi/?url="
+             "url": ""
              },
              {
              "name": "默认解析接口",
-             "url": ""
+             "url": "http://www.lanzhuzhibo.com/jiexi/?url="
              },
              {
              "name": "电视台及视频流播放接口",
