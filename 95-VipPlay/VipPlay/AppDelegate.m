@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "NSURLProtocol+WKWebVIew.h"
+//#import "NSURLProtocol+WKWebVIew.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [NSURLProtocol wk_registerScheme:@"http"];
-    [NSURLProtocol wk_registerScheme:@"https"];
+//    [NSURLProtocol wk_registerScheme:@"http"];
+//    [NSURLProtocol wk_registerScheme:@"https"];
 
     return YES;
 }

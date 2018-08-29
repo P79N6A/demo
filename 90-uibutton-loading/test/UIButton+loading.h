@@ -22,4 +22,5 @@ typedef NS_OPTIONS(NSUInteger, TTControlState) {
 
 @interface UIButton (loading)
 @property (nonatomic, assign) BOOL loading;
+- (void)setTitle:(NSString *)title forState:(TTControlState)state;
 @end

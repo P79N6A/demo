@@ -19,21 +19,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-//    [self.login setTitle:@"功能的高期望" forState:TTControlStateLoading];
+//    [self.login setTitle:@"555" forState:TTControlStateLoading];
     [self.login setTitle:@"tttr" forState:UIControlStateNormal];
-
-    
-    
+    [self.login setTitle:<#(nullable NSString *)#> forState:<#(UIControlState)#>];
 }
 
 
 - (IBAction)start:(id)sender {
     self.login.loading = YES;
+    UIButton
 }
 
 - (IBAction)stop:(id)sender {
     self.login.loading = NO;
-
 }
 
 

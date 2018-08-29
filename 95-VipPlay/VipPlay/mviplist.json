@@ -1,15 +1,15 @@
 {
     "platformlist":[
                     {
-                    "name":"某平台",
+                    "name":"爱奇艺",
                     "url":"http://www.iqiyi.com"
                     },
                     {
-                    "name":"某平台2",
+                    "name":"优酷",
                     "url":"https://www.youku.com/"
                     },
                     {
-                    "name":"某平台3",
+                    "name":"腾讯视频",
                     "url":"https://v.qq.com"
                     }
                     ],
