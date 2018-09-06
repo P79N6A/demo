@@ -200,7 +200,6 @@ static TTDownloader *_downloader;
     [self.downloadTasks[downloadURLString] resume];
     
 
-//    self.downloadStatus[downloadURLString] = @(TTDownloaderStateRunning);
     
 
     NSDictionary *model = @{@"title":name,@"url":downloadURLString,@"status":@(TTDownloaderStateRunning)};
@@ -214,7 +213,6 @@ static TTDownloader *_downloader;
     [self.downloadTasks[downloadURLString] cancelByProducingResumeData:^(NSData * resumeData) {
         __strong __typeof(wSelf) sSelf = wSelf;
         sSelf.resumeDatas[downloadURLString] = resumeData;
-//        self.downloadStatus[downloadURLString] = @(TTDownloaderStatePause);
         
         NSMutableDictionary *model = self.downloadSourcesDict[downloadURLString];
         model = model.mutableCopy;
@@ -233,7 +231,6 @@ static TTDownloader *_downloader;
         }
         [self.downloadTasks[downloadURLString] resume];
         [self.resumeDatas removeObjectForKey:downloadURLString];
-//        self.downloadStatus[downloadURLString] = @(TTDownloaderStateRunning);
 
         
         NSMutableDictionary *model = self.downloadSourcesDict[downloadURLString];
@@ -266,18 +263,20 @@ didFinishDownloadingToURL:(NSURL *)location {
     NSError *error;
     [[NSFileManager defaultManager] moveItemAtPath:locationString toPath:finalLocation error:&error];
     
-    [self.downloadTasks removeObjectForKey:downloadTask.response.URL.absoluteString];
-    [self.resumeDatas removeObjectForKey:downloadTask.response.URL.absoluteString];
+    NSString *url = downloadTask.originalRequest.URL.absoluteString;
+
+    [self.downloadTasks removeObjectForKey:url];
+    [self.resumeDatas removeObjectForKey:url];
     // 用 NSFileManager 将文件复制到应用的存储中
 
 
-    NSDictionary *dict = self.downloadSourcesDict[downloadTask.response.URL.absoluteString];
-    [self.downloadSourcesDict removeObjectForKey:dict[@"url"]];
+    NSDictionary *dict = self.downloadSourcesDict[url];
+    [self.downloadSourcesDict removeObjectForKey:url];
     [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
 
     NSDictionary *info = @{@"localURL":downloadTask.response.suggestedFilename,
                            @"title":dict[@"title"],
-                           @"url":dict[@"url"],
+                           @"url":url,
                            @"status":@(TTDownloaderStateSuccess)
                            };
     TTDownloadModel *model = [TTDownloadModel new];
@@ -315,9 +314,11 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     
     NSLog(@"downloadTask:%lu percent:%.2f%%",(unsigned long)downloadTask.taskIdentifier,(CGFloat)totalBytesWritten / totalBytesExpectedToWrite * 100);
     NSString *strProgress = [NSString stringWithFormat:@"%.2f",(CGFloat)totalBytesWritten / totalBytesExpectedToWrite];
-    [self postDownlaodProgressNotification:@{@"progress":strProgress,@"key":downloadTask.response.URL.absoluteString}];
     
-    CompletionDictType block = self.completionDict[downloadTask.response.URL.absoluteString];
+    NSString *url = downloadTask.originalRequest.URL.absoluteString;
+    [self postDownlaodProgressNotification:@{@"progress":strProgress,@"key":url}];
+    
+    CompletionDictType block = self.completionDict[url];
     block(strProgress.floatValue);
 }
 
@@ -339,6 +340,8 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
               task:(NSURLSessionTask *)task
 didCompleteWithError:(NSError *)error {
     
+    NSString *url = task.originalRequest.URL.absoluteString;
+
     if (error) {
         // check if resume data are available
         if ([error.userInfo objectForKey:NSURLSessionDownloadTaskResumeData]) {
@@ -346,25 +349,24 @@ didCompleteWithError:(NSError *)error {
             //通过之前保存的resumeData，获取断点的NSURLSessionTask，调用resume恢复下载
             self.resumeDatas[task.response.URL.absoluteString] = resumeData;
             self.downloadTasks[task.response.URL.absoluteString] = [self.backgroundSession downloadTaskWithResumeData:resumeData];
-//            self.downloadStatus[task.response.URL.absoluteString] = @(TTDownloaderStateRunning);
-            NSMutableDictionary *model = self.downloadSourcesDict[task.response.URL.absoluteString];
+
+            NSMutableDictionary *model = self.downloadSourcesDict[url];
             model = model.mutableCopy;
             model[@"status"] = @(TTDownloaderStateRunning);
             [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
             return;
         }
 //        self.downloadStatus[task.response.URL.absoluteString] = @(TTDownloaderStateFail);
-        [self.downloadTasks removeObjectForKey:task.response.URL.absoluteString];
-        NSMutableDictionary *model = self.downloadSourcesDict[task.response.URL.absoluteString];
+        [self.downloadTasks removeObjectForKey:url];
+        NSMutableDictionary *model = self.downloadSourcesDict[url];
         model = model.mutableCopy;
         model[@"status"] = @(TTDownloaderStateFail);
         [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
         
     } else {
-        [self postDownlaodProgressNotification:@{@"progress":@"1",@"key":task.response.URL.absoluteString}];
-//        self.downloadStatus[task.response.URL.absoluteString] = @(TTDownloaderStateSuccess);
-        [self.downloadTasks removeObjectForKey:task.response.URL.absoluteString];
-        [self.resumeDatas removeObjectForKey:task.response.URL.absoluteString];
+        [self postDownlaodProgressNotification:@{@"progress":@"1",@"key":url}];
+        [self.downloadTasks removeObjectForKey:url];
+        [self.resumeDatas removeObjectForKey:url];
     }
     
     if (self.awaitURLs.count) {
