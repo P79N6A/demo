@@ -75,16 +75,16 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     
     NSString *requestUrl = request.URL.absoluteString;
     // 拦截广告
-    if ([requestUrl containsString:@"img.09mk.cn"]
-        ||[requestUrl containsString:@"img.xiaohui2.cn"]
-        ||[requestUrl containsString:@".xiaohui"]
-        ||[requestUrl containsString:@".apple.com"]
-        ||[requestUrl containsString:@"img2."]
-        ||[requestUrl containsString:@"sysapr.cn"]
-        ) {
-        mutableReqeust = nil;
-    }
-    else
+//    if ([requestUrl containsString:@"img.09mk.cn"]
+//        ||[requestUrl containsString:@"img.xiaohui2.cn"]
+//        ||[requestUrl containsString:@".xiaohui"]
+//        ||[requestUrl containsString:@".apple.com"]
+//        ||[requestUrl containsString:@"img2."]
+//        ||[requestUrl containsString:@"sysapr.cn"]
+//        ) {
+//        mutableReqeust = nil;
+//    }
+//    else
     if(
 //       [requestUrl containsString:@".mp4"]
        [requestUrl containsString:@".m3u8"]
