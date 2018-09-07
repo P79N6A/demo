@@ -14,6 +14,12 @@
 		57C4541A1D8442EC00B6D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C454191D8442EC00B6D2B5 /* Assets.xcassets */; };
 		57C4541D1D8442EC00B6D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C4541B1D8442EC00B6D2B5 /* LaunchScreen.storyboard */; };
 		6922FA3E21410D3400A75BE1 /* TTDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922FA3D21410D3400A75BE1 /* TTDownloader.m */; };
+		69C5AAA321421AD9009259B3 /* NSObject+DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAA221421AD8009259B3 /* NSObject+DB.m */; };
+		69C5AAA621421C42009259B3 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAA521421C42009259B3 /* TableViewController.m */; };
+		69C5AAAB21421DA2009259B3 /* SPBase64Data.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAA721421DA1009259B3 /* SPBase64Data.m */; };
+		69C5AAAC21421DA2009259B3 /* NSString+Object.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAAA21421DA2009259B3 /* NSString+Object.m */; };
+		69C5AAAF21421E8D009259B3 /* DownItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAAE21421E8D009259B3 /* DownItem.m */; };
+		69C5AAB221422091009259B3 /* TableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAB121422091009259B3 /* TableViewCell.m */; };
 		84918AD21DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 84918AD11DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +36,18 @@
 		57C4541E1D8442EC00B6D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6922FA3C21410D3400A75BE1 /* TTDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTDownloader.h; sourceTree = "<group>"; };
 		6922FA3D21410D3400A75BE1 /* TTDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDownloader.m; sourceTree = "<group>"; };
+		69C5AAA121421AD8009259B3 /* NSObject+DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DB.h"; sourceTree = "<group>"; };
+		69C5AAA221421AD8009259B3 /* NSObject+DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DB.m"; sourceTree = "<group>"; };
+		69C5AAA421421C42009259B3 /* TableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewController.h; sourceTree = "<group>"; };
+		69C5AAA521421C42009259B3 /* TableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
+		69C5AAA721421DA1009259B3 /* SPBase64Data.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SPBase64Data.m; sourceTree = "<group>"; };
+		69C5AAA821421DA1009259B3 /* SPBase64Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SPBase64Data.h; sourceTree = "<group>"; };
+		69C5AAA921421DA2009259B3 /* NSString+Object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Object.h"; sourceTree = "<group>"; };
+		69C5AAAA21421DA2009259B3 /* NSString+Object.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Object.m"; sourceTree = "<group>"; };
+		69C5AAAD21421E8D009259B3 /* DownItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownItem.h; sourceTree = "<group>"; };
+		69C5AAAE21421E8D009259B3 /* DownItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DownItem.m; sourceTree = "<group>"; };
+		69C5AAB021422091009259B3 /* TableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TableViewCell.h; sourceTree = "<group>"; };
+		69C5AAB121422091009259B3 /* TableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TableViewCell.m; sourceTree = "<group>"; };
 		84918AD01DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLSession+CorrectedResumeData.h"; sourceTree = "<group>"; };
 		84918AD11DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLSession+CorrectedResumeData.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,17 +82,29 @@
 		57C4540C1D8442EC00B6D2B5 /* BackgroundDownloadDemo */ = {
 			isa = PBXGroup;
 			children = (
+				69C5AAA921421DA2009259B3 /* NSString+Object.h */,
+				69C5AAAA21421DA2009259B3 /* NSString+Object.m */,
+				69C5AAA821421DA1009259B3 /* SPBase64Data.h */,
+				69C5AAA721421DA1009259B3 /* SPBase64Data.m */,
 				57C454101D8442EC00B6D2B5 /* AppDelegate.h */,
 				57C454111D8442EC00B6D2B5 /* AppDelegate.m */,
 				57C454131D8442EC00B6D2B5 /* ViewController.h */,
+				69C5AAA421421C42009259B3 /* TableViewController.h */,
 				57C454141D8442EC00B6D2B5 /* ViewController.m */,
 				57C454161D8442EC00B6D2B5 /* Main.storyboard */,
+				69C5AAA521421C42009259B3 /* TableViewController.m */,
+				69C5AAAD21421E8D009259B3 /* DownItem.h */,
+				69C5AAAE21421E8D009259B3 /* DownItem.m */,
+				69C5AAB021422091009259B3 /* TableViewCell.h */,
+				69C5AAB121422091009259B3 /* TableViewCell.m */,
 				57C454191D8442EC00B6D2B5 /* Assets.xcassets */,
 				57C4541B1D8442EC00B6D2B5 /* LaunchScreen.storyboard */,
 				57C4541E1D8442EC00B6D2B5 /* Info.plist */,
 				57C4540D1D8442EC00B6D2B5 /* Supporting Files */,
 				6922FA3C21410D3400A75BE1 /* TTDownloader.h */,
 				6922FA3D21410D3400A75BE1 /* TTDownloader.m */,
+				69C5AAA121421AD8009259B3 /* NSObject+DB.h */,
+				69C5AAA221421AD8009259B3 /* NSObject+DB.m */,
 				84918AD01DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.h */,
 				84918AD11DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m */,
 			);
@@ -162,9 +192,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				6922FA3E21410D3400A75BE1 /* TTDownloader.m in Sources */,
+				69C5AAA321421AD9009259B3 /* NSObject+DB.m in Sources */,
+				69C5AAAF21421E8D009259B3 /* DownItem.m in Sources */,
+				69C5AAAC21421DA2009259B3 /* NSString+Object.m in Sources */,
 				57C454151D8442EC00B6D2B5 /* ViewController.m in Sources */,
+				69C5AAAB21421DA2009259B3 /* SPBase64Data.m in Sources */,
 				57C454121D8442EC00B6D2B5 /* AppDelegate.m in Sources */,
 				84918AD21DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m in Sources */,
+				69C5AAA621421C42009259B3 /* TableViewController.m in Sources */,
+				69C5AAB221422091009259B3 /* TableViewCell.m in Sources */,
 				57C4540F1D8442EC00B6D2B5 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

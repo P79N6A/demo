@@ -8,10 +8,12 @@
 
 #import "TTDownloader.h"
 #import "NSURLSession+CorrectedResumeData.h"
+#import "NSObject+DB.h"
 
 #define IS_IOS10ORLATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 10)
 typedef void(^CompletionHandlerType)();
-typedef void(^CompletionDictType)(CGFloat);
+typedef void(^ProgressHandlerType)(CGFloat,NSString*);
+typedef void(^SpeedHandlerType)(NSString*,NSString*);
 
 static TTDownloader *_downloader;
 
@@ -20,12 +22,15 @@ static TTDownloader *_downloader;
 @property (strong, nonatomic) NSMutableDictionary *downloadTasks;
 @property (strong, nonatomic) NSURLSession *backgroundSession;
 @property (strong, nonatomic) NSMutableDictionary *resumeDatas;
-@property (strong, nonatomic) NSMutableArray *awaitURLs;
+//@property (strong, nonatomic) NSMutableArray *awaitURLs;
 @property (strong, nonatomic) NSMutableDictionary *completionHandlerDictionary;
-@property (strong, nonatomic) NSMutableDictionary *completionDict;
-@property (nonatomic, strong) NSMutableArray *finishTasksDict;
-@property (nonatomic, strong) NSMutableDictionary *downloadSourcesDict;
+@property (strong, nonatomic) NSMutableDictionary *progressBlockDict;
+@property (strong, nonatomic) NSMutableDictionary *speedBlockDict;
+@property (strong, nonatomic) NSMutableDictionary *speedDict;
 
+//@property (nonatomic, strong) NSMutableArray *finishTasksDict;
+//@property (nonatomic, strong) NSMutableDictionary *downloadSourcesDict;
+@property (nonatomic, weak) NSTimer *timer;
 @end
 
 @implementation TTDownloader
@@ -61,44 +66,67 @@ static TTDownloader *_downloader;
     return _backgroundSession;
 }
 
-- (NSArray<TTDownloadModel *> *)downloadSources{
-    
-    NSMutableArray *tasks = [NSMutableArray array];
-    NSArray *objs = _downloadSourcesDict.allValues;
-    [objs enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        TTDownloadModel *model = [TTDownloadModel new];
-        [model setValuesForKeysWithDictionary:obj];
-        [tasks addObject:model];
+- (NSTimer *)timer{
+    if (!_timer) {
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:self selector:@selector(upDateSpeed) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        _timer = timer;
+    }
+    return _timer;
+}
+- (void)upDateSpeed{
+    [self.downloadTasks.allKeys enumerateObjectsUsingBlock:^(NSString * url, NSUInteger idx, BOOL * _Nonnull stop) {
+        SpeedHandlerType speedBlock = self.speedBlockDict[url];
+        
+        NSMutableDictionary *speedValue = self.speedDict[url];
+      
+        
+        NSInteger speed = [speedValue[@"now"] integerValue] - [speedValue[@"last"] integerValue];
+        NSNumber *nowBytes = [speedValue valueForKey:@"now"];
+        speedValue[@"last"] = nowBytes;
+        
+        !(speedBlock)? : speedBlock([self speedString:speed],url);
+
     }];
-    return tasks;
 }
-- (NSMutableDictionary *)downloadSourcesDict{
-    if (!_downloadSourcesDict) {
-        _downloadSourcesDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"downloadSourcesDict"].mutableCopy;
-        if (!_downloadSourcesDict) {
-            _downloadSourcesDict = [NSMutableDictionary dictionary];
-        }
-    }
-    return _downloadSourcesDict;
-}
+//- (NSArray<TTDownloadModel *> *)downloadSources{
+//
+//    NSMutableArray *tasks = [NSMutableArray array];
+//    NSArray *objs = _downloadSourcesDict.allValues;
+//    [objs enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        TTDownloadModel *model = [TTDownloadModel new];
+//        [model setValuesForKeysWithDictionary:obj];
+//        [tasks addObject:model];
+//    }];
+//    return tasks;
+//}
+//- (NSMutableDictionary *)downloadSourcesDict{
+//    if (!_downloadSourcesDict) {
+//        _downloadSourcesDict = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"downloadSourcesDict"].mutableCopy;
+//        if (!_downloadSourcesDict) {
+//            _downloadSourcesDict = [NSMutableDictionary dictionary];
+//        }
+//    }
+//    return _downloadSourcesDict;
+//}
 
-- (NSMutableArray<TTDownloadModel *> *)finishTasks{
-    if (!_finishTasks) {
-        _finishTasks = [NSMutableArray array];
-        _finishTasksDict = [NSMutableArray array];
-        NSArray * objs = [[NSUserDefaults standardUserDefaults] arrayForKey:@"finishTasks"];
-        [objs enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-            TTDownloadModel *model = [TTDownloadModel new];
-            [model setValuesForKeysWithDictionary:obj];
-            NSString *finalLocation = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",model.localURL]];
-            model.localURL = finalLocation;
-
-            [_finishTasks addObject:model];
-        }];
-        [_finishTasksDict addObjectsFromArray:objs];
-    }
-    return _finishTasks;
-}
+//- (NSMutableArray<TTDownloadModel *> *)finishTasks{
+//    if (!_finishTasks) {
+//        _finishTasks = [NSMutableArray array];
+//        _finishTasksDict = [NSMutableArray array];
+//        NSArray * objs = [[NSUserDefaults standardUserDefaults] arrayForKey:@"finishTasks"];
+//        [objs enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//            TTDownloadModel *model = [TTDownloadModel new];
+//            [model setValuesForKeysWithDictionary:obj];
+//            NSString *finalLocation = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory , NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",model.localURL]];
+//            model.localURL = finalLocation;
+//
+//            [_finishTasks addObject:model];
+//        }];
+//        [_finishTasksDict addObjectsFromArray:objs];
+//    }
+//    return _finishTasks;
+//}
 
 - (NSMutableDictionary *)completionHandlerDictionary{
     if (!_completionHandlerDictionary) {
@@ -107,13 +135,24 @@ static TTDownloader *_downloader;
     return _completionHandlerDictionary;
 }
 
-- (NSMutableDictionary *)completionDict{
-    if (!_completionDict) {
-        _completionDict = [NSMutableDictionary dictionary];
+- (NSMutableDictionary *)progressBlockDict{
+    if (!_progressBlockDict) {
+        _progressBlockDict = [NSMutableDictionary dictionary];
     }
-    return _completionDict;
+    return _progressBlockDict;
 }
-
+- (NSMutableDictionary *)speedBlockDict{
+    if (!_speedBlockDict) {
+        _speedBlockDict = [NSMutableDictionary dictionary];
+    }
+    return _speedBlockDict;
+}
+- (NSMutableDictionary *)speedDict{
+    if (!_speedDict) {
+        _speedDict = [NSMutableDictionary dictionary];
+    }
+    return _speedDict;
+}
 - (NSMutableDictionary *)downloadTasks{
     if (!_downloadTasks) {
         _downloadTasks = [NSMutableDictionary dictionary];
@@ -134,12 +173,12 @@ static TTDownloader *_downloader;
 //    }
 //    return _downloadStatus;
 //}
-- (NSMutableArray *)awaitURLs{
-    if (!_awaitURLs) {
-        _awaitURLs = [NSMutableArray array];
-    }
-    return _awaitURLs;
-}
+//- (NSMutableArray *)awaitURLs{
+//    if (!_awaitURLs) {
+//        _awaitURLs = [NSMutableArray array];
+//    }
+//    return _awaitURLs;
+//}
 
 
 
@@ -179,32 +218,44 @@ static TTDownloader *_downloader;
 #pragma mark - Public Mehtod
 - (BOOL)beginDownload:(NSString *)downloadURLString
              fileName:(NSString *)name
-    completionHandler:(void (^)(CGFloat progress))completionHandler{
+             progress:(void (^)(CGFloat progress,NSString *url))progressBlock
+                speed:(void (^)(NSString *speed,NSString *url))speedBlock{
+
+     TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+    // 下载中 或者 下载完毕
+    BOOL isExist = ([self.downloadTasks.allKeys containsObject:downloadURLString] &&  downloadModel.status == TTDownloaderStateRunning) || (downloadModel.status == TTDownloaderStateSuccess);
     
-    self.completionDict[downloadURLString] = completionHandler;
-    
-    if (self.downloadTasks.allKeys.count >= self.maxCount) {
-        [self.awaitURLs addObject:@{@"url":downloadURLString,@"name":name}];
+    if (isExist) {
         return NO;
     }
+
+    downloadModel = downloadModel? downloadModel : [TTDownloadModel new];
+    downloadModel.title = name;
+    downloadModel.url = downloadURLString;
+    downloadModel.status = TTDownloaderStateRunning;
     
+    if(progressBlock) self.progressBlockDict[downloadURLString] = progressBlock;
+    if(speedBlock) self.speedBlockDict[downloadURLString] = speedBlock;
+
+    //NSArray *downloadTasks = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateRunning]];
+    
+    if (self.downloadTasks.count >= self.maxCount) {
+        downloadModel.status = TTDownloaderStateAwait;
+        [downloadModel insertOrUpDate];
+        return NO;
+    }
+    [downloadModel insertOrUpDate];
     
     NSURL *downloadURL = [NSURL URLWithString:downloadURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:downloadURL];
     //cancel last download task
     [self.downloadTasks[downloadURLString] cancelByProducingResumeData:^(NSData * resumeData) {
-        
+        NSLog(@"%s", __func__);
     }];
     
     self.downloadTasks[downloadURLString] = [self.backgroundSession downloadTaskWithRequest:request];
     [self.downloadTasks[downloadURLString] resume];
-    
-
-    
-
-    NSDictionary *model = @{@"title":name,@"url":downloadURLString,@"status":@(TTDownloaderStateRunning)};
-    self.downloadSourcesDict[downloadURLString] = model;
-    [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
+    [self timer];
     return YES;
 }
 
@@ -213,12 +264,9 @@ static TTDownloader *_downloader;
     [self.downloadTasks[downloadURLString] cancelByProducingResumeData:^(NSData * resumeData) {
         __strong __typeof(wSelf) sSelf = wSelf;
         sSelf.resumeDatas[downloadURLString] = resumeData;
-        
-        NSMutableDictionary *model = self.downloadSourcesDict[downloadURLString];
-        model = model.mutableCopy;
-        model[@"status"] = @(TTDownloaderStatePause);
-        sSelf.downloadSourcesDict[downloadURLString] = model;
-        [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
+        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+        downloadModel.status = TTDownloaderStatePause;
+        [downloadModel update];
     }];
 }
 
@@ -231,13 +279,11 @@ static TTDownloader *_downloader;
         }
         [self.downloadTasks[downloadURLString] resume];
         [self.resumeDatas removeObjectForKey:downloadURLString];
+        [self timer];
+        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+        downloadModel.status = TTDownloaderStateRunning;
+        [downloadModel update];
 
-        
-        NSMutableDictionary *model = self.downloadSourcesDict[downloadURLString];
-        model = model.mutableCopy;
-        model[@"status"] = @(TTDownloaderStateRunning);
-        self.downloadSourcesDict[downloadURLString] = model;
-        [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
     }
 }
 
@@ -249,7 +295,22 @@ static TTDownloader *_downloader;
     return YES;
 }
 
-
+- (NSString *)speedString:(NSInteger)speed{
+    NSString *speedStr = nil;
+    if (speed >= 0 && speed < 1024) {
+        //B
+        speedStr = [NSString stringWithFormat:@"下载速度为：%ldb/s", (long)speed];
+    } else if (speed >= 1024 && speed < 1024 * 1024) {
+        //KB
+        speedStr = [NSString stringWithFormat:@"下载速度为：%.2lfkb/s", (long)speed / 1024.0];
+    } else if (speed >= 1024 * 1024) {
+        //MB
+        speedStr = [NSString stringWithFormat:@"下载速度为：%.2lfmb/s", (long)speed / 1024.0 / 1024.0];
+    }
+    
+    NSLog(@"文件：%@的下载速度：%@", @"",speedStr);
+    return speedStr;
+}
 
 #pragma mark - NSURLSessionDownloadDelegate
 - (void)URLSession:(NSURLSession *)session
@@ -269,31 +330,22 @@ didFinishDownloadingToURL:(NSURL *)location {
     [self.resumeDatas removeObjectForKey:url];
     // 用 NSFileManager 将文件复制到应用的存储中
 
+    TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+    downloadModel.status = TTDownloaderStateSuccess;
+    downloadModel.localURL = downloadTask.response.suggestedFilename;
+    [downloadModel update];
 
-    NSDictionary *dict = self.downloadSourcesDict[url];
-    [self.downloadSourcesDict removeObjectForKey:url];
-    [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
 
-    NSDictionary *info = @{@"localURL":downloadTask.response.suggestedFilename,
-                           @"title":dict[@"title"],
-                           @"url":url,
-                           @"status":@(TTDownloaderStateSuccess)
-                           };
-    TTDownloadModel *model = [TTDownloadModel new];
-    [model setValuesForKeysWithDictionary:info];
-    model.localURL = finalLocation;
-    
-    [self.finishTasks addObject:model];
-    [self.finishTasksDict addObject:info];
-    [[NSUserDefaults standardUserDefaults] setObject:self.finishTasksDict forKey:@"finishTasks"];
     // ...
-    if (self.awaitURLs.count) {
-        NSDictionary *obj = self.awaitURLs.firstObject;
-        NSString *url = obj[@"url"];
-        NSString *name = obj[@"name"];
-        CompletionDictType block = self.completionDict[url];
+    NSArray *awaitTasks = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
 
-        if ([self beginDownload:url fileName:name completionHandler:block]) [self.awaitURLs removeObject:obj];
+    if (awaitTasks.count) {
+
+        TTDownloadModel *model = awaitTasks.firstObject;
+        ProgressHandlerType block = self.progressBlockDict[url];
+        SpeedHandlerType speedBlock = self.speedBlockDict[url];
+
+        [self beginDownload:model.url fileName:model.title progress:block speed:speedBlock];
     }
     // 通知 UI 刷新
 }
@@ -314,12 +366,24 @@ totalBytesExpectedToWrite:(int64_t)totalBytesExpectedToWrite {
     
     NSLog(@"downloadTask:%lu percent:%.2f%%",(unsigned long)downloadTask.taskIdentifier,(CGFloat)totalBytesWritten / totalBytesExpectedToWrite * 100);
     NSString *strProgress = [NSString stringWithFormat:@"%.2f",(CGFloat)totalBytesWritten / totalBytesExpectedToWrite];
-    
     NSString *url = downloadTask.originalRequest.URL.absoluteString;
+
+    NSMutableDictionary *speedDict = self.speedDict[url];
+    speedDict = speedDict.mutableCopy;
+    if (speedDict) {
+        speedDict[@"now"] = @(totalBytesWritten);
+    }else{
+        speedDict = [NSMutableDictionary dictionary];
+        speedDict[@"last"] = @(0);
+        speedDict[@"now"] = @(totalBytesWritten);
+    }
+    
+    self.speedDict[url] = speedDict;
+    
     [self postDownlaodProgressNotification:@{@"progress":strProgress,@"key":url}];
     
-    CompletionDictType block = self.completionDict[url];
-    block(strProgress.floatValue);
+    ProgressHandlerType block = self.progressBlockDict[url];
+    !(block)? : block(strProgress.floatValue,url);
 }
 
 - (void)URLSessionDidFinishEventsForBackgroundURLSession:(NSURLSession *)session {
@@ -350,18 +414,17 @@ didCompleteWithError:(NSError *)error {
             self.resumeDatas[task.response.URL.absoluteString] = resumeData;
             self.downloadTasks[task.response.URL.absoluteString] = [self.backgroundSession downloadTaskWithResumeData:resumeData];
 
-            NSMutableDictionary *model = self.downloadSourcesDict[url];
-            model = model.mutableCopy;
-            model[@"status"] = @(TTDownloaderStateRunning);
-            [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
+            TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+            downloadModel.status = TTDownloaderStateFail;
+            [downloadModel update];
+            
             return;
         }
-//        self.downloadStatus[task.response.URL.absoluteString] = @(TTDownloaderStateFail);
+        
         [self.downloadTasks removeObjectForKey:url];
-        NSMutableDictionary *model = self.downloadSourcesDict[url];
-        model = model.mutableCopy;
-        model[@"status"] = @(TTDownloaderStateFail);
-        [[NSUserDefaults standardUserDefaults] setObject:self.downloadSourcesDict forKey:@"downloadSourcesDict"];
+        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+        downloadModel.status = TTDownloaderStateFail;
+        [downloadModel update];
         
     } else {
         [self postDownlaodProgressNotification:@{@"progress":@"1",@"key":url}];
@@ -369,14 +432,17 @@ didCompleteWithError:(NSError *)error {
         [self.resumeDatas removeObjectForKey:url];
     }
     
-    if (self.awaitURLs.count) {
-        NSDictionary *obj = self.awaitURLs.firstObject;
-        NSString *url = obj[@"url"];
-        NSString *name = obj[@"name"];
-        CompletionDictType block = self.completionDict[url];
+    NSArray *awaitTasks = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
 
-        if ([self beginDownload:url fileName:name completionHandler:block]) [self.awaitURLs removeObject:obj];
+    if (awaitTasks.count) {
+            
+            TTDownloadModel *model = awaitTasks.firstObject;
+            ProgressHandlerType block = self.progressBlockDict[url];
+            SpeedHandlerType speedBlock = self.speedBlockDict[url];
+        
+        [self beginDownload:model.url fileName:model.title progress:block speed:speedBlock];
     }
+    
 }
 
 - (void)postDownlaodProgressNotification:(NSDictionary *)userInfo {
@@ -390,6 +456,7 @@ didCompleteWithError:(NSError *)error {
 @end
 
 @implementation TTDownloadModel
++(NSString *)primaryKey{return @"mid";}
 @end
 
 @implementation UIApplication (TTDownloader)

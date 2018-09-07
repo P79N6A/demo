@@ -20,8 +20,10 @@
 @implementation ViewController
 - (IBAction)p2:(id)sender {
     
-    [TTDownloader.defaultDownloader beginDownload:@"http://sbslive.cnrmobile.com/storage/storage2/51/34/18/3e59db9bb51802c2ef7034793296b724.3gp" fileName:@"jlzg022677" completionHandler:^(CGFloat progress) {
+    [TTDownloader.defaultDownloader beginDownload:@"http://sbslive.cnrmobile.com/storage/storage2/51/34/18/3e59db9bb51802c2ef7034793296b724.3gp" fileName:@"jlzg022677" progress:^(CGFloat progress,NSString *url) {
         self.p2.progress = progress;
+    } speed:^(NSString *speed, NSString *url) {
+        
     }];
 }
 
@@ -51,8 +53,10 @@
 #pragma mark Method
 - (IBAction)download:(id)sender {
 //    AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
-    [TTDownloader.defaultDownloader beginDownload:@"http://jlzg.cnrmobile.com/resource/index/sp/jlzg0226.mp4" fileName:@"jlzg0226" completionHandler:^(CGFloat progress) {
+    [TTDownloader.defaultDownloader beginDownload:@"http://jlzg.cnrmobile.com/resource/index/sp/jlzg0226.mp4" fileName:@"jlzg0226" progress:^(CGFloat progress,NSString *url) {
         NSLog(@"%s---%f", __func__,progress);
+    } speed:^(NSString *speed, NSString *url) {
+        
     }];
 }
 

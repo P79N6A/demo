@@ -16,12 +16,12 @@ typedef NS_ENUM(NSUInteger, TTDownloaderState) {
     TTDownloaderStatePause,
     TTDownloaderStateFail,
     TTDownloaderStateSuccess,
-    TTDownloaderStateDeleted
+    TTDownloaderStateAwait
 };
 
 
 @interface TTDownloadModel : NSObject
-
+@property (nonatomic, assign) NSInteger mid;
 @property (copy, nonatomic) NSString *localURL;
 @property (copy, nonatomic) NSString *url;
 @property (copy, nonatomic) NSString *title;
@@ -36,7 +36,9 @@ typedef NS_ENUM(NSUInteger, TTDownloaderState) {
 
 - (BOOL)beginDownload:(NSString *)downloadURLString
              fileName:(NSString *)name
-    completionHandler:(void (^)(CGFloat progress))completionHandler;
+             progress:(void (^)(CGFloat progress,NSString *url))progressBlock
+                speed:(void (^)(NSString *speed,NSString *url))speedBlock;
+
 
 - (void)pauseDownload:(NSString *)downloadURLString;
 - (void)continueDownload:(NSString *)downloadURLString;

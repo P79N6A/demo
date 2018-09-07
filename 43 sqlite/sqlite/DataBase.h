@@ -10,9 +10,9 @@
 
 @interface DataBase : NSObject
 + (instancetype)sharedInstance;
-- (BOOL)openDB;
-- (BOOL)closeDB;
-- (BOOL)createTable:(Class)class;
+//- (BOOL)openDB;
+//- (BOOL)closeDB;
+//- (BOOL)createTable:(Class)class;
 - (void)insertData:(id)model;
 - (void)insertDatas:(NSArray <id>*)models;
 - (void)deleteWithModel:(Class)class where:(NSString *)condition;

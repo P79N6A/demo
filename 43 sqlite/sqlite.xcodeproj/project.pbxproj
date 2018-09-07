@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69C5AAA02142098B009259B3 /* NSObject+DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AA9F2142098B009259B3 /* NSObject+DB.m */; };
 		7A32F25B1FBE81BF00E3B7E4 /* DataBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A32F25A1FBE81BF00E3B7E4 /* DataBase.m */; };
 		7A32F2611FBE8B5400E3B7E4 /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A32F2601FBE8B5400E3B7E4 /* Dog.m */; };
 		7A7DD2E01FBC081C0004E741 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A7DD2DF1FBC081C0004E741 /* main.m */; };
@@ -38,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		69C5AA9E2142098B009259B3 /* NSObject+DB.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+DB.h"; sourceTree = "<group>"; };
+		69C5AA9F2142098B009259B3 /* NSObject+DB.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DB.m"; sourceTree = "<group>"; };
 		7A32F2591FBE81BF00E3B7E4 /* DataBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataBase.h; sourceTree = "<group>"; };
 		7A32F25A1FBE81BF00E3B7E4 /* DataBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataBase.m; sourceTree = "<group>"; };
 		7A32F25F1FBE8B5400E3B7E4 /* Dog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
@@ -124,6 +127,8 @@
 				7A32F25A1FBE81BF00E3B7E4 /* DataBase.m */,
 				7A32F25F1FBE8B5400E3B7E4 /* Dog.h */,
 				7A32F2601FBE8B5400E3B7E4 /* Dog.m */,
+				69C5AA9E2142098B009259B3 /* NSObject+DB.h */,
+				69C5AA9F2142098B009259B3 /* NSObject+DB.m */,
 			);
 			path = sqlite;
 			sourceTree = "<group>";
@@ -296,6 +301,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A32F2611FBE8B5400E3B7E4 /* Dog.m in Sources */,
+				69C5AAA02142098B009259B3 /* NSObject+DB.m in Sources */,
 				7A7DD2E61FBC081C0004E741 /* ViewController.m in Sources */,
 				7A7DD2E31FBC081C0004E741 /* AppDelegate.m in Sources */,
 				7A32F25B1FBE81BF00E3B7E4 /* DataBase.m in Sources */,

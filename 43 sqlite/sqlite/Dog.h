@@ -15,7 +15,6 @@
 @property (nonatomic, assign) BOOL sex;
 @property (nonatomic, assign) NSInteger age;
 @property (nonatomic, assign) CGFloat sorce;
-
-
+@property (nonatomic, assign) double sorce2;
 
 @end
