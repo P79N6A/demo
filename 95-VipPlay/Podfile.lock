@@ -1,15 +1,16 @@
 PODS:
+  - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.0.1)
   - Aspects (1.4.1)
   - AXIndicatorView (0.1.1)
   - AXNavigationBackItemInjection (0.0.2)
-  - AXPracticalHUD (2.1.4):
+  - AXPracticalHUD (2.0.2):
     - AXIndicatorView
   - AXWebViewController (0.7.2):
     - Aspects
     - AXNavigationBackItemInjection
     - AXPracticalHUD
     - NJKWebViewProgress
-  - FTPopOverMenu (1.3.6)
+  - FTPopOverMenu (1.3.4)
   - NJKWebViewProgress (0.2.3):
     - NJKWebViewProgress/Core (= 0.2.3)
     - NJKWebViewProgress/ProgressView (= 0.2.3)
@@ -17,18 +18,31 @@ PODS:
   - NJKWebViewProgress/ProgressView (0.2.3)
 
 DEPENDENCIES:
+  - AliyunPlayer_iOS/AliyunPlayerSDK (~> 3.4.0.1)
   - AXWebViewController (~> 0.7.2)
   - FTPopOverMenu
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - AliyunPlayer_iOS
+    - Aspects
+    - AXIndicatorView
+    - AXNavigationBackItemInjection
+    - AXPracticalHUD
+    - AXWebViewController
+    - FTPopOverMenu
+    - NJKWebViewProgress
+
 SPEC CHECKSUMS:
+  AliyunPlayer_iOS: 286ac3f4ca91ea9581e92b9e5a4bcd66c81db8ed
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
   AXIndicatorView: 566b490a2dd9781d4ffbcc9752be9b9cdc6e728e
   AXNavigationBackItemInjection: efe0446967f3cbcc85a9118decd1e145138912dd
-  AXPracticalHUD: 821d170b31e050c426ef8754b07b4264a8b1d861
+  AXPracticalHUD: 16c3ff6d97c061e80e80897b2e6ac8e330079472
   AXWebViewController: 96566c473fce2806f4da696132b31777f5404c9f
-  FTPopOverMenu: da4b2df7ae3341478e129a2585542f6e70cd67ec
+  FTPopOverMenu: 1f6c5fb6a690d8d438176d6844e1d1c05a8758fe
   NJKWebViewProgress: f481fd424cb5ecc27eacae11b5397db92fba9a4d
 
-PODFILE CHECKSUM: e1838e15ffa12d9b2ea233328e06d9eab4cbfb56
+PODFILE CHECKSUM: 6da1754ace873319ce7119ab619dd1f3ccae2c2d
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0

@@ -72,7 +72,7 @@ if ([NSThread isMainThread]) {\
 @property(strong, nonatomic) UIInterpolatingMotionEffect *xMotionEffect;
 @property(strong, nonatomic) UIInterpolatingMotionEffect *yMotionEffect;
 /// Is the hud is animating.
-@property(assign, nonatomic) BOOL forbidsLayoutSubviews;
+@property(assign, nonatomic) BOOL animating;
 @end
 
 @implementation AXPracticalHUD
@@ -144,13 +144,10 @@ if ([NSThread isMainThread]) {\
                                                  name:UIApplicationDidChangeStatusBarOrientationNotification
                                                object:nil];
 }
-
 #pragma mark - Override
-
-- (void)didMoveToSuperview {
-    [super didMoveToSuperview];
-    
-    if (self.superview) {
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (newSuperview) {
         // Layout subviews.
         [self setNeedsLayout];
         [self layoutIfNeeded];
@@ -160,7 +157,13 @@ if ([NSThread isMainThread]) {\
         {
             [_indicator performSelector:@selector(beginAnimating)];
         }
-        
+    }
+}
+
+- (void)didMoveToSuperview {
+    [super didMoveToSuperview];
+    
+    if (self.superview) {
         if (_position == AXPracticalHUDPositionCenter) {
             _contentView.motionEffects = @[self.xMotionEffect, self.yMotionEffect];
         } else {
@@ -215,7 +218,7 @@ if ([NSThread isMainThread]) {\
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    if (_forbidsLayoutSubviews) {
+    if (_animating) {
         return;
     }
     
@@ -503,9 +506,6 @@ if ([NSThread isMainThread]) {\
 
 #pragma mark - Private helper
 - (void)showingAnimated:(BOOL)animated {
-    if (_delegate && [_delegate respondsToSelector:@selector(HUDWillShow:)]) {
-        [_delegate HUDWillShow:self];
-    }
     // Cancel any scheduled hideDelayed: calls
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     [self performSelectorOnMainThread:@selector(setNeedsDisplay)
@@ -520,15 +520,17 @@ if ([NSThread isMainThread]) {\
     
     id<AXPracticalHUDAnimator> animator = _animator?:AXPracticalHUDFadeAnimator();
     _showStarted = [NSDate date];
-    [self setForbidsLayoutSubviews:!animator.allowsLayoutSubviewsDuringAnimation];
+    [self setAnimating:YES];
     // Animating
-    [animator hud:self animate:animated isHidden:NO];
+    [animator hud:self
+          animate:animated
+         isHidden:NO];
     if (animated) {
-        [self performSelector:@selector(setForbidsLayoutSubviews:)
+        [self performSelector:@selector(setAnimating:)
                    withObject:@(NO)
                    afterDelay:[animator durationForTransition:NO]];
     } else {
-        [self setForbidsLayoutSubviews:NO];
+        [self setAnimating:NO];
     }
 }
 
@@ -543,20 +545,20 @@ if ([NSThread isMainThread]) {\
 - (void)hidingAnimated:(BOOL)animated {
     [NSObject cancelPreviousPerformRequestsWithTarget:self];
     id<AXPracticalHUDAnimator> animator = _animator?:AXPracticalHUDFadeAnimator();
-    [self setForbidsLayoutSubviews:YES];
+    [self setAnimating:YES];
     [animator hud:self
           animate:animated
          isHidden:YES];
     
     if (animated) {
-        [self performSelector:@selector(setForbidsLayoutSubviews:)
+        [self performSelector:@selector(setAnimating:)
                    withObject:@(NO)
                    afterDelay:[animator durationForTransition:YES]];
         [self performSelector:@selector(completed)
                    withObject:nil
                    afterDelay:[animator durationForTransition:YES]];
     } else {
-        [self setForbidsLayoutSubviews:NO];
+        [self setAnimating:NO];
         [self completed];
     }
 }

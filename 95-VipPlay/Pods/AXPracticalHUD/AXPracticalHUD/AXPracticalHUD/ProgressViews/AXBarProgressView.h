@@ -25,7 +25,7 @@
 
 #import <UIKit/UIKit.h>
 /// Bar style progress view.
-NS_SWIFT_NAME(BarProgressView) @interface AXBarProgressView : UIView
+@interface AXBarProgressView : UIView
 /// Progress value. Values between [0, 1].
 @property(assign, nonatomic) CGFloat progress;
 /// Line color. Stroke color for the drawing.

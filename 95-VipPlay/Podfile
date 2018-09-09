@@ -8,6 +8,7 @@ target 'VipPlay' do
   # use_frameworks!
 pod 'AXWebViewController', '~> 0.7.2'
 pod 'FTPopOverMenu'
+pod 'AliyunPlayer_iOS/AliyunPlayerSDK','~>3.4.0.1'
 
   # Pods for VipPlay
 

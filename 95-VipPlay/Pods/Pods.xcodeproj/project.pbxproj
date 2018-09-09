@@ -7,62 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0778D185E6621D5DD6117CF23F73135F /* AXSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = D7A105947435F33F4E899D3C46FD62F7 /* AXSecurityPolicy.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0BF2B3D6729F30F125CB1CE4D0325275 /* AXPopNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 391893384AE53475D1F862135C939C86 /* AXPopNavigationController.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		0CEF0C8769662CEC14649C5FD2CBE0EB /* Aspects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C783C294FD0E577DC9A5BCED73BAD40 /* Aspects-dummy.m */; };
-		0D85CE65B88F574AD439D3D473003208 /* AXActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = C29EE09D8B4F931A8B80AD852A945523 /* AXActivityIndicatorView.m */; };
-		126D02C9A33054B2109D2A7FCA9414D9 /* AXActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2603EA717613759A133B4B1E3C416D7A /* AXActivityIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		13E1787A5B3560109CE6F6681906B08F /* AXPracticalHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AF99046F83493A5E02DBE9833AC754D /* AXPracticalHUD-dummy.m */; };
-		17420F599273467511CFC2F33CE454D2 /* NJKWebViewProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4731E14F27F8638B4A45DE97274D8F /* NJKWebViewProgress-dummy.m */; };
+		0778D185E6621D5DD6117CF23F73135F /* AXSecurityPolicy.h in Headers */ = {isa = PBXBuildFile; fileRef = 58323BEA941858DBB090B3E127CCAF84 /* AXSecurityPolicy.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0BF2B3D6729F30F125CB1CE4D0325275 /* AXPopNavigationController.h in Headers */ = {isa = PBXBuildFile; fileRef = 21D9446950549769B4294368D8EDF322 /* AXPopNavigationController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		0CEF0C8769662CEC14649C5FD2CBE0EB /* Aspects-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 304A50121BA323F108151C6CD791E22E /* Aspects-dummy.m */; };
+		0D85CE65B88F574AD439D3D473003208 /* AXActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 06978B9FFD07F1955CA622428B2BEF62 /* AXActivityIndicatorView.m */; };
+		126D02C9A33054B2109D2A7FCA9414D9 /* AXActivityIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 94C92AB7B464BEAD6C668F655F1525AC /* AXActivityIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		13E1787A5B3560109CE6F6681906B08F /* AXPracticalHUD-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 417EC4EA24731AF26DAA00E6D2593F5E /* AXPracticalHUD-dummy.m */; };
+		17420F599273467511CFC2F33CE454D2 /* NJKWebViewProgress-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A6B1D36BDC580A79A0141EC652EC516E /* NJKWebViewProgress-dummy.m */; };
 		17EB3CBBA427FB5AEF6BACBA577ACADC /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
-		1B3253C3EFB144B484D656275FC64979 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = B374D24A7A8A1F9B06B613D81F0C4BDB /* NJKWebViewProgress.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		2501C592E21AF6D5659B2FABA7C9A190 /* AXPracticalHUDAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D61A9518D665EB0983F878A900EADAA /* AXPracticalHUDAnimator.m */; };
-		30C487BA0491E51C5A5F2086CC2341DD /* AXCircleProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4DEBE2EE7093325DCE7B6E19BDBD68DF /* AXCircleProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		1B3253C3EFB144B484D656275FC64979 /* NJKWebViewProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C113BE0B206F9E2D6CB604C3F1D89096 /* NJKWebViewProgress.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		2501C592E21AF6D5659B2FABA7C9A190 /* AXPracticalHUDAnimator.m in Sources */ = {isa = PBXBuildFile; fileRef = A882F8EEF0F60A2018D846B242252A15 /* AXPracticalHUDAnimator.m */; };
+		30C487BA0491E51C5A5F2086CC2341DD /* AXCircleProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = B60CDB0C7369741E023E2BBCE29ED82F /* AXCircleProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		30E99A0CC979D39C247D884A1DC6DE4C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		335EBDBF21058FCD6C94EECB2A86937D /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FC9D491FBAC2987C25FB6328C4626F3 /* NJKWebViewProgressView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		33A46C87AE189B10251CE74740F19C92 /* AXPracticalHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = 8F1B422C6AE8446834C064C251592E4A /* AXPracticalHUD.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		335EBDBF21058FCD6C94EECB2A86937D /* NJKWebViewProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0F47BB1B00970DB1081B943746A3E254 /* NJKWebViewProgressView.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		33A46C87AE189B10251CE74740F19C92 /* AXPracticalHUD.h in Headers */ = {isa = PBXBuildFile; fileRef = BE86F93078E311EBBE2201A779CA374B /* AXPracticalHUD.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		35E311177E070C928A2253B3224359A8 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BAB14A55D4DB30C8D98DB7528D9807F4 /* WebKit.framework */; };
-		435C849B0108051E037302C84B49CBAF /* FTPopOverMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 7281710ABD96E0C4EE1C387F9903FF7E /* FTPopOverMenu-dummy.m */; };
-		454BE2A5234470CA1292485400BFB182 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = B51D4131FB37330572CEF746DE0AB419 /* AXWebViewControllerActivity.m */; };
+		435C849B0108051E037302C84B49CBAF /* FTPopOverMenu-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C03791C0414EB4B86D4D2F9E55A5CD /* FTPopOverMenu-dummy.m */; };
+		454BE2A5234470CA1292485400BFB182 /* AXWebViewControllerActivity.m in Sources */ = {isa = PBXBuildFile; fileRef = 9570EDA55DE9A2FA6D764F2417DA31EB /* AXWebViewControllerActivity.m */; };
 		47219CFC560A73191DB83242350AA22C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
 		4825DA9C56C675202BA04B9A5C08F2AD /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		543A30586074486D5E9610E12576D7E4 /* AXGradientProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = DACC716BD1C635FDB59705D0AB6C5EAE /* AXGradientProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		548E3C9FC2E986DD7151281A45A22A43 /* AXSpinningWaitCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = D4F68C085A594203C659D21417C3849E /* AXSpinningWaitCursor.m */; };
-		6003D952032EF318F4585AFBCB558AD7 /* AXSpinningWaitCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = BB769C966631C5D42DE29FEDBF730556 /* AXSpinningWaitCursor.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		639DFEB36D67A1507D5FCF65E2688B9B /* AXBreachedAnnulusIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = A7AD45C578CF773DC13CDCCF17D387BB /* AXBreachedAnnulusIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		64C4D58AF3C07F6A575D68A357D1AACC /* AXGradientProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DDE36E23E9C25B3F877EC236DA30CEDF /* AXGradientProgressView.m */; };
+		543A30586074486D5E9610E12576D7E4 /* AXGradientProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4898624CD48591CE06A62429B87EFD24 /* AXGradientProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		548E3C9FC2E986DD7151281A45A22A43 /* AXSpinningWaitCursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6FF08D9641D5329AEF00A8D88EA8879C /* AXSpinningWaitCursor.m */; };
+		6003D952032EF318F4585AFBCB558AD7 /* AXSpinningWaitCursor.h in Headers */ = {isa = PBXBuildFile; fileRef = 0D4AC83508C1C2403222A77A1640ED75 /* AXSpinningWaitCursor.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		639DFEB36D67A1507D5FCF65E2688B9B /* AXBreachedAnnulusIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 4FC875439ED97EA163799E7CF7EF6DCD /* AXBreachedAnnulusIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		64C4D58AF3C07F6A575D68A357D1AACC /* AXGradientProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 84DBF33DB51940E15811E1CD89D25474 /* AXGradientProgressView.m */; };
 		68B0B616638795C299DBE31DC7BBC8F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		801700CEC31220BC8EEA523B4555EEA4 /* AXBreachedAnnulusIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E64E30C26724E8ABB9C1E6BB0B560703 /* AXBreachedAnnulusIndicatorView.m */; };
+		801700CEC31220BC8EEA523B4555EEA4 /* AXBreachedAnnulusIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8297E43EDEC8CDECA74437EFA37E65B0 /* AXBreachedAnnulusIndicatorView.m */; };
 		80F9CDF4A751925DF82AB470FF8E9092 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
-		8598284D5B797E88F801FDD1CBCADCBF /* AXWebViewControllerActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 52675A62191112223EC7CC51C538C529 /* AXWebViewControllerActivity.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		86C27D05A33C357FC0DDE80DE02BFC63 /* AXBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = EB7862D72F581F31F8AE6E419E4DEDD1 /* AXBarProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		8C3DDBACEB5D8C844F09972DBE68D358 /* AXWebViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D9DFE7AC7130BDFCB41C520BB6349835 /* AXWebViewController-dummy.m */; };
+		8598284D5B797E88F801FDD1CBCADCBF /* AXWebViewControllerActivity.h in Headers */ = {isa = PBXBuildFile; fileRef = 38FBA628203B26C15C5D8C7DE4DA4349 /* AXWebViewControllerActivity.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		86C27D05A33C357FC0DDE80DE02BFC63 /* AXBarProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 85D1F55036299058A0D190039AD505CB /* AXBarProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		8C3DDBACEB5D8C844F09972DBE68D358 /* AXWebViewController-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E467AE849443B1469471CA53AD0F77D /* AXWebViewController-dummy.m */; };
 		92F11D7FFD0AAEA3C85EA535D91A42D4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		95839449E976956356C121C441CEE8B5 /* FTPopOverMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = 9A2A4854D3CCCB13734239788A5AB66F /* FTPopOverMenu.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		96E0459958B4B6E3369353B0D99058B2 /* AXIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 1BDFECD2EAC958F3EBC94992E9861D51 /* AXIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		9781DA2B6647A4F04D8DA187D6D76A00 /* AXIndicatorView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F54B5A789CBB85A43350D5AB801F80E /* AXIndicatorView-dummy.m */; };
+		95839449E976956356C121C441CEE8B5 /* FTPopOverMenu.h in Headers */ = {isa = PBXBuildFile; fileRef = D868124B9D9B73D2ED0142C39051A368 /* FTPopOverMenu.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		96E0459958B4B6E3369353B0D99058B2 /* AXIndicatorView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2A5510ED57F89056A23749CC61F95606 /* AXIndicatorView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9781DA2B6647A4F04D8DA187D6D76A00 /* AXIndicatorView-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 39C81CC54FB7D7D055D58ACCF9F70591 /* AXIndicatorView-dummy.m */; };
 		9AF7105AD5669A0CFA3F05FCDB0A31F4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		A1E5D406E57708CBA3851073C7680A6D /* AXNavigationBackItemInjection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = F4621AE036F79D2B23F39AFE8B47F73B /* AXNavigationBackItemInjection-dummy.m */; };
-		AC9023162F5D53252FB1F5F1C970BAAB /* AXPopNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8E22FC3A76B06FE9558614EA1F4DC80A /* AXPopNavigationController.m */; };
+		A1E5D406E57708CBA3851073C7680A6D /* AXNavigationBackItemInjection-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D83293FCCF035589091A4F8B35D5B31E /* AXNavigationBackItemInjection-dummy.m */; };
+		AC9023162F5D53252FB1F5F1C970BAAB /* AXPopNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BEC1A79C0A6A7A7C5EEFD371B947C35 /* AXPopNavigationController.m */; };
 		AC925707C1D791261D8D4B58D72AD662 /* Pods-VipPlay-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 4D429EE2F511CA4B5203B3F231DE8822 /* Pods-VipPlay-dummy.m */; };
-		B15641A4F2493AA651708DBE07BF77D2 /* AXPracticalHUDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 787B53589EEF12E7FA55B76178008F1E /* AXPracticalHUDContentView.m */; };
+		B15641A4F2493AA651708DBE07BF77D2 /* AXPracticalHUDContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = B4FF765B87C44B253AC4BD3B8295A125 /* AXPracticalHUDContentView.m */; };
 		B1DD4B9D8D5C70D49FA06FFA7FA540DB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		BC6B903F04F7DDA404ABD85BB1E9B1BB /* AXCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 51F99C470A21CFF7373E7C33DFA2CAB4 /* AXCircleProgressView.m */; };
+		BC6B903F04F7DDA404ABD85BB1E9B1BB /* AXCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = B140F70A3110D37D724B8CE2AE4CC8B0 /* AXCircleProgressView.m */; };
 		BF4A02AD8EF2C5A1D0D724972CB22834 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */; };
-		C3144BAC34EDC32AFAB7CD67AB1C8ADE /* AXBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD23FF1B7A3DA0F157B71CE8555E88B /* AXBarProgressView.m */; };
-		CC18D0AADD0FE34DE7D855A138A0E2E2 /* AXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3D49254CBB5F0AF7981FCA7C0F68BF8B /* AXWebViewController.m */; };
-		D77458A1CE4FFFD8846599C02325966B /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = E75F92A61ED9AD80B7FBF58422E9C652 /* Aspects.m */; };
-		D833F673A2B633638CF75D095361B6B0 /* AXPracticalHUDContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6CC18DC3A261A5C855FCB434FF378643 /* AXPracticalHUDContentView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C3144BAC34EDC32AFAB7CD67AB1C8ADE /* AXBarProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = DA99200CBEFAF8043B53B487151ECD22 /* AXBarProgressView.m */; };
+		CC18D0AADD0FE34DE7D855A138A0E2E2 /* AXWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0077AE7352FEFBCA5B8FBB5EEB0DAD60 /* AXWebViewController.m */; };
+		D77458A1CE4FFFD8846599C02325966B /* Aspects.m in Sources */ = {isa = PBXBuildFile; fileRef = 54EBB1D15C9B69D29539F204CADB2BC3 /* Aspects.m */; };
+		D833F673A2B633638CF75D095361B6B0 /* AXPracticalHUDContentView.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BD0F324BA7CBC5C0A94A9CE5F64FC95 /* AXPracticalHUDContentView.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		DBBD8DC5DB6E016ADD4374AD4695B930 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		E3AB0327F2C7456BA0A222934AD600BA /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = FCDA4E4D52950735C6BB97E41D2964FE /* Aspects.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		E4389C93DB8D5AD97DF34EEF0C12218D /* AXPracticalHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 89EDFCEF81AC31980354B2A8658C471E /* AXPracticalHUD.m */; };
-		E583F5134C0584EDA3AE0EB4C7C17864 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF80157FE70A8FA92A1EFC8C8A823E /* FTPopOverMenu.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EEE68E7B03E42BEB624EEC0CDC8F8BDA /* AXWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = AC05FEA787D56E08A81535B5B9D7CFD6 /* AXWebViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E3AB0327F2C7456BA0A222934AD600BA /* Aspects.h in Headers */ = {isa = PBXBuildFile; fileRef = 5F650E3A179A0C116C239C2E39CFCEAE /* Aspects.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		E4389C93DB8D5AD97DF34EEF0C12218D /* AXPracticalHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 415EC7D279EAFEC22C03A1985BCB0A14 /* AXPracticalHUD.m */; };
+		E583F5134C0584EDA3AE0EB4C7C17864 /* FTPopOverMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 54E8A6799385B16CC3C4521CFD95B75D /* FTPopOverMenu.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		EEE68E7B03E42BEB624EEC0CDC8F8BDA /* AXWebViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F10640789A91EFAB8454DFE524B05BC8 /* AXWebViewController.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		F02077253D3631DDCAB2B9DC5E86FEEE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */; };
-		F16A96A05ED9B88CC1634F8C7A68D87D /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 16C9F00544E49F5133CC515502966E8D /* AXSecurityPolicy.m */; };
-		F7EAF9A770DB35A7581FEEE89A8F04C1 /* AXPracticalHUDAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = F164AE1692C19A3A0DF5B6266881AFBD /* AXPracticalHUDAnimator.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		F8C2D02B0DA83525ABE0E67276127859 /* NJKWebViewProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = F37E5F02C6D35607797661E2D8405CDC /* NJKWebViewProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		FEFDC6B16832D63ACEFBA4542EAB9354 /* NJKWebViewProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = 3254FC0793CC528E8DFCE8E9FC306CC6 /* NJKWebViewProgress.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F16A96A05ED9B88CC1634F8C7A68D87D /* AXSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 31EC5238800A79C7251AFCDFAF1D7685 /* AXSecurityPolicy.m */; };
+		F7EAF9A770DB35A7581FEEE89A8F04C1 /* AXPracticalHUDAnimator.h in Headers */ = {isa = PBXBuildFile; fileRef = 04A27C4A6EDBF97F4723652C9CB326AE /* AXPracticalHUDAnimator.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		F8C2D02B0DA83525ABE0E67276127859 /* NJKWebViewProgressView.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B433BC28179B3AA860B4572D0C1D74F /* NJKWebViewProgressView.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		FEFDC6B16832D63ACEFBA4542EAB9354 /* NJKWebViewProgress.h in Headers */ = {isa = PBXBuildFile; fileRef = D3DFE00379A16EEF487E01E41583BCA0 /* NJKWebViewProgress.h */; settings = {ATTRIBUTES = (Project, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -160,84 +160,86 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0AF99046F83493A5E02DBE9833AC754D /* AXPracticalHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXPracticalHUD-dummy.m"; sourceTree = "<group>"; };
+		0077AE7352FEFBCA5B8FBB5EEB0DAD60 /* AXWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXWebViewController.m; path = AXWebViewController/AXWebViewController/AXWebViewController.m; sourceTree = "<group>"; };
+		0385CD5297E95287602FAAAAB692EC4A /* AXIndicatorView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXIndicatorView-prefix.pch"; sourceTree = "<group>"; };
+		04A27C4A6EDBF97F4723652C9CB326AE /* AXPracticalHUDAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUDAnimator.h; path = AXPracticalHUD/AXPracticalHUD/Animators/AXPracticalHUDAnimator.h; sourceTree = "<group>"; };
+		04C2785EB33E30971D02C1E782526286 /* Aspects-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Aspects-prefix.pch"; sourceTree = "<group>"; };
+		06978B9FFD07F1955CA622428B2BEF62 /* AXActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXActivityIndicatorView.m; path = AXIndicatorView/Classes/AXActivityIndicatorView.m; sourceTree = "<group>"; };
 		0B5A8165360D18C4389576AE9B03BE22 /* Pods-VipPlay-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VipPlay-resources.sh"; sourceTree = "<group>"; };
-		13B5E1B487D9F59545DBF0313941CB24 /* AXPracticalHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXPracticalHUD-prefix.pch"; sourceTree = "<group>"; };
-		16C9F00544E49F5133CC515502966E8D /* AXSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXSecurityPolicy.m; path = AXWebViewController/AXWebViewController/Security/AXSecurityPolicy.m; sourceTree = "<group>"; };
-		1BDFECD2EAC958F3EBC94992E9861D51 /* AXIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXIndicatorView.h; path = AXIndicatorView/Classes/AXIndicatorView.h; sourceTree = "<group>"; };
-		1E4731E14F27F8638B4A45DE97274D8F /* NJKWebViewProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NJKWebViewProgress-dummy.m"; sourceTree = "<group>"; };
-		1F54B5A789CBB85A43350D5AB801F80E /* AXIndicatorView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXIndicatorView-dummy.m"; sourceTree = "<group>"; };
+		0D4AC83508C1C2403222A77A1640ED75 /* AXSpinningWaitCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSpinningWaitCursor.h; path = AXIndicatorView/Classes/AXSpinningWaitCursor.h; sourceTree = "<group>"; };
+		0F47BB1B00970DB1081B943746A3E254 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgressView.m; path = NJKWebViewProgress/NJKWebViewProgressView.m; sourceTree = "<group>"; };
+		109F1400ADBD8395A234DD7CC3757EF9 /* AXIndicatorView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXIndicatorView.bundle; path = AXIndicatorView/Classes/AXIndicatorView.bundle; sourceTree = "<group>"; };
+		21D9446950549769B4294368D8EDF322 /* AXPopNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPopNavigationController.h; path = AXNavigationBackItemInjection/AXNavigationBackItemInjection/AXPopNavigationController.h; sourceTree = "<group>"; };
 		22CDABC2080FE8D1B5C6A0E5D8AFBDA0 /* Pods-VipPlay-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-VipPlay-frameworks.sh"; sourceTree = "<group>"; };
-		23CF80157FE70A8FA92A1EFC8C8A823E /* FTPopOverMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FTPopOverMenu.m; path = FTPopOverMenu/FTPopOverMenu.m; sourceTree = "<group>"; };
 		24C33F470BD6ACD38B9EAB27A5E6923B /* libAXNavigationBackItemInjection.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAXNavigationBackItemInjection.a; path = libAXNavigationBackItemInjection.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		2603EA717613759A133B4B1E3C416D7A /* AXActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXActivityIndicatorView.h; path = AXIndicatorView/Classes/AXActivityIndicatorView.h; sourceTree = "<group>"; };
-		2869E2DE04B1B5E1B37D2BB738E7BCD3 /* AXIndicatorView-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXIndicatorView-prefix.pch"; sourceTree = "<group>"; };
-		29426FED274647F4D0E637E1E62AB3AA /* AXNavigationBackItemInjection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXNavigationBackItemInjection-prefix.pch"; sourceTree = "<group>"; };
-		2D61A9518D665EB0983F878A900EADAA /* AXPracticalHUDAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUDAnimator.m; path = AXPracticalHUD/AXPracticalHUD/Animators/AXPracticalHUDAnimator.m; sourceTree = "<group>"; };
-		2DEE13BF0F784266589E45828FC8F708 /* AXNavigationBackItemInjection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXNavigationBackItemInjection.xcconfig; sourceTree = "<group>"; };
-		3254FC0793CC528E8DFCE8E9FC306CC6 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NJKWebViewProgress.h; path = NJKWebViewProgress/NJKWebViewProgress.h; sourceTree = "<group>"; };
-		391893384AE53475D1F862135C939C86 /* AXPopNavigationController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPopNavigationController.h; path = AXNavigationBackItemInjection/AXNavigationBackItemInjection/AXPopNavigationController.h; sourceTree = "<group>"; };
+		280D835D73D708EFA7E6ECB5BC0557D4 /* NJKWebViewProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NJKWebViewProgress-prefix.pch"; sourceTree = "<group>"; };
+		2A5510ED57F89056A23749CC61F95606 /* AXIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXIndicatorView.h; path = AXIndicatorView/Classes/AXIndicatorView.h; sourceTree = "<group>"; };
+		304A50121BA323F108151C6CD791E22E /* Aspects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Aspects-dummy.m"; sourceTree = "<group>"; };
+		31EC5238800A79C7251AFCDFAF1D7685 /* AXSecurityPolicy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXSecurityPolicy.m; path = AXWebViewController/AXWebViewController/Security/AXSecurityPolicy.m; sourceTree = "<group>"; };
+		37C03791C0414EB4B86D4D2F9E55A5CD /* FTPopOverMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FTPopOverMenu-dummy.m"; sourceTree = "<group>"; };
+		38FBA628203B26C15C5D8C7DE4DA4349 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXWebViewControllerActivity.h; path = AXWebViewController/AXWebViewController/Activity/AXWebViewControllerActivity.h; sourceTree = "<group>"; };
+		39C81CC54FB7D7D055D58ACCF9F70591 /* AXIndicatorView-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXIndicatorView-dummy.m"; sourceTree = "<group>"; };
+		39F3455C8A7303C251C5BC0C9384C953 /* FTPopOverMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FTPopOverMenu.xcconfig; sourceTree = "<group>"; };
 		3D43080B0FE120F41DEB7FDE9F9832E0 /* Pods-VipPlay-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-VipPlay-acknowledgements.plist"; sourceTree = "<group>"; };
-		3D49254CBB5F0AF7981FCA7C0F68BF8B /* AXWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXWebViewController.m; path = AXWebViewController/AXWebViewController/AXWebViewController.m; sourceTree = "<group>"; };
-		3FC9D491FBAC2987C25FB6328C4626F3 /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgressView.m; path = NJKWebViewProgress/NJKWebViewProgressView.m; sourceTree = "<group>"; };
-		46ECADF2CD161DA50F97DA98340EFFE0 /* FTPopOverMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FTPopOverMenu-prefix.pch"; sourceTree = "<group>"; };
-		47DD7D7603A3F4774C3DBA727CCDAD25 /* NJKWebViewProgress-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NJKWebViewProgress-prefix.pch"; sourceTree = "<group>"; };
+		415EC7D279EAFEC22C03A1985BCB0A14 /* AXPracticalHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUD.m; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.m; sourceTree = "<group>"; };
+		417EC4EA24731AF26DAA00E6D2593F5E /* AXPracticalHUD-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXPracticalHUD-dummy.m"; sourceTree = "<group>"; };
+		4898624CD48591CE06A62429B87EFD24 /* AXGradientProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXGradientProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXGradientProgressView.h; sourceTree = "<group>"; };
 		4D429EE2F511CA4B5203B3F231DE8822 /* Pods-VipPlay-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-VipPlay-dummy.m"; sourceTree = "<group>"; };
-		4DEBE2EE7093325DCE7B6E19BDBD68DF /* AXCircleProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXCircleProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXCircleProgressView.h; sourceTree = "<group>"; };
-		51F99C470A21CFF7373E7C33DFA2CAB4 /* AXCircleProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXCircleProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXCircleProgressView.m; sourceTree = "<group>"; };
-		52675A62191112223EC7CC51C538C529 /* AXWebViewControllerActivity.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXWebViewControllerActivity.h; path = AXWebViewController/AXWebViewController/Activity/AXWebViewControllerActivity.h; sourceTree = "<group>"; };
-		527506DF6F84CAEF8517704682E02048 /* NJKWebViewProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NJKWebViewProgress.xcconfig; sourceTree = "<group>"; };
-		5620CD78D924835326C8E64C3291EC7F /* Aspects.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Aspects.xcconfig; sourceTree = "<group>"; };
+		4F33F5113E1178220D9D2B8E6A9C4D9E /* FTPopOverMenu-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FTPopOverMenu-prefix.pch"; sourceTree = "<group>"; };
+		4FC875439ED97EA163799E7CF7EF6DCD /* AXBreachedAnnulusIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXBreachedAnnulusIndicatorView.h; path = AXIndicatorView/Classes/AXBreachedAnnulusIndicatorView.h; sourceTree = "<group>"; };
+		54E8A6799385B16CC3C4521CFD95B75D /* FTPopOverMenu.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FTPopOverMenu.m; path = FTPopOverMenu/FTPopOverMenu.m; sourceTree = "<group>"; };
+		54EBB1D15C9B69D29539F204CADB2BC3 /* Aspects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
 		57333435A29A477F31E38DD38909E924 /* Pods-VipPlay-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-VipPlay-acknowledgements.markdown"; sourceTree = "<group>"; };
+		58323BEA941858DBB090B3E127CCAF84 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSecurityPolicy.h; path = AXWebViewController/AXWebViewController/Security/AXSecurityPolicy.h; sourceTree = "<group>"; };
+		5F650E3A179A0C116C239C2E39CFCEAE /* Aspects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
 		5FFA4F28147FD934EC84F1DCE482B8C4 /* libAXWebViewController.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAXWebViewController.a; path = libAXWebViewController.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		6C783C294FD0E577DC9A5BCED73BAD40 /* Aspects-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Aspects-dummy.m"; sourceTree = "<group>"; };
-		6CC18DC3A261A5C855FCB434FF378643 /* AXPracticalHUDContentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUDContentView.h; path = AXPracticalHUD/AXPracticalHUD/ContentView/AXPracticalHUDContentView.h; sourceTree = "<group>"; };
+		6E0FF1F76FE250AEAB43879551D6944E /* AXPracticalHUD-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXPracticalHUD-prefix.pch"; sourceTree = "<group>"; };
+		6FF08D9641D5329AEF00A8D88EA8879C /* AXSpinningWaitCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXSpinningWaitCursor.m; path = AXIndicatorView/Classes/AXSpinningWaitCursor.m; sourceTree = "<group>"; };
 		724ADF1240D0C874E078D02DBCB530DC /* Pods-VipPlay.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VipPlay.debug.xcconfig"; sourceTree = "<group>"; };
-		7281710ABD96E0C4EE1C387F9903FF7E /* FTPopOverMenu-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FTPopOverMenu-dummy.m"; sourceTree = "<group>"; };
 		78303A97700CA406D0BCB9A42F086717 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		787B53589EEF12E7FA55B76178008F1E /* AXPracticalHUDContentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUDContentView.m; path = AXPracticalHUD/AXPracticalHUD/ContentView/AXPracticalHUDContentView.m; sourceTree = "<group>"; };
-		8111C60CB24757E7788FD5D31363D91E /* Aspects-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Aspects-prefix.pch"; sourceTree = "<group>"; };
-		81E8D6185267F4A285F08F694B2C548D /* FTPopOverMenu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FTPopOverMenu.xcconfig; sourceTree = "<group>"; };
+		7BD0F324BA7CBC5C0A94A9CE5F64FC95 /* AXPracticalHUDContentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUDContentView.h; path = AXPracticalHUD/AXPracticalHUD/ContentView/AXPracticalHUDContentView.h; sourceTree = "<group>"; };
+		7BEC1A79C0A6A7A7C5EEFD371B947C35 /* AXPopNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPopNavigationController.m; path = AXNavigationBackItemInjection/AXNavigationBackItemInjection/AXPopNavigationController.m; sourceTree = "<group>"; };
+		7E1115EB18D1D1E2E464ADFDA956B310 /* AXNavigationBackItemInjection.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXNavigationBackItemInjection.xcconfig; sourceTree = "<group>"; };
+		8297E43EDEC8CDECA74437EFA37E65B0 /* AXBreachedAnnulusIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXBreachedAnnulusIndicatorView.m; path = AXIndicatorView/Classes/AXBreachedAnnulusIndicatorView.m; sourceTree = "<group>"; };
 		83773066965AF21494D62C457C817E41 /* libAXPracticalHUD.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAXPracticalHUD.a; path = libAXPracticalHUD.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		89EDFCEF81AC31980354B2A8658C471E /* AXPracticalHUD.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUD.m; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.m; sourceTree = "<group>"; };
-		8E22FC3A76B06FE9558614EA1F4DC80A /* AXPopNavigationController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPopNavigationController.m; path = AXNavigationBackItemInjection/AXNavigationBackItemInjection/AXPopNavigationController.m; sourceTree = "<group>"; };
-		8F1B422C6AE8446834C064C251592E4A /* AXPracticalHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUD.h; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.h; sourceTree = "<group>"; };
-		932AD70081AF1A051C545B6FC814CC6F /* AXIndicatorView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXIndicatorView.xcconfig; sourceTree = "<group>"; };
+		84DBF33DB51940E15811E1CD89D25474 /* AXGradientProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXGradientProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXGradientProgressView.m; sourceTree = "<group>"; };
+		85D1F55036299058A0D190039AD505CB /* AXBarProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXBarProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXBarProgressView.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9A2A4854D3CCCB13734239788A5AB66F /* FTPopOverMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FTPopOverMenu.h; path = FTPopOverMenu/FTPopOverMenu.h; sourceTree = "<group>"; };
-		9C87879F8391B2E39A2F6483E326E1DC /* AXWebViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXWebViewController-prefix.pch"; sourceTree = "<group>"; };
+		94C92AB7B464BEAD6C668F655F1525AC /* AXActivityIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXActivityIndicatorView.h; path = AXIndicatorView/Classes/AXActivityIndicatorView.h; sourceTree = "<group>"; };
+		9570EDA55DE9A2FA6D764F2417DA31EB /* AXWebViewControllerActivity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXWebViewControllerActivity.m; path = AXWebViewController/AXWebViewController/Activity/AXWebViewControllerActivity.m; sourceTree = "<group>"; };
+		9B433BC28179B3AA860B4572D0C1D74F /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NJKWebViewProgressView.h; path = NJKWebViewProgress/NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		9E467AE849443B1469471CA53AD0F77D /* AXWebViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXWebViewController-dummy.m"; sourceTree = "<group>"; };
+		9E4C2FF7A63582299922E5FF21485847 /* AliyunPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunPlayerSDK.framework; sourceTree = "<group>"; };
+		9EC9C74007D06CB9E8C198AAB08C56FA /* AXIndicatorView.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXIndicatorView.xcconfig; sourceTree = "<group>"; };
+		A2A0DC24E636AC1A5D4B08136AF0D274 /* AXPracticalHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXPracticalHUD.bundle; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.bundle; sourceTree = "<group>"; };
 		A4031438C0DFA5961C2BA982076A1622 /* libNJKWebViewProgress.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libNJKWebViewProgress.a; path = libNJKWebViewProgress.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7AD45C578CF773DC13CDCCF17D387BB /* AXBreachedAnnulusIndicatorView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXBreachedAnnulusIndicatorView.h; path = AXIndicatorView/Classes/AXBreachedAnnulusIndicatorView.h; sourceTree = "<group>"; };
-		AC05FEA787D56E08A81535B5B9D7CFD6 /* AXWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXWebViewController.h; path = AXWebViewController/AXWebViewController/AXWebViewController.h; sourceTree = "<group>"; };
+		A43046BCB708207423AD3BFD427189FF /* AXWebViewController.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXWebViewController.bundle; path = AXWebViewController/AXWebViewController/AXWebViewController.bundle; sourceTree = "<group>"; };
+		A67F3D6B24DFA2989617F97F795D1CEF /* Aspects.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Aspects.xcconfig; sourceTree = "<group>"; };
+		A6B1D36BDC580A79A0141EC652EC516E /* NJKWebViewProgress-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NJKWebViewProgress-dummy.m"; sourceTree = "<group>"; };
+		A882F8EEF0F60A2018D846B242252A15 /* AXPracticalHUDAnimator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUDAnimator.m; path = AXPracticalHUD/AXPracticalHUD/Animators/AXPracticalHUDAnimator.m; sourceTree = "<group>"; };
 		ACCF78C37CDFCFDEB7867B41FA44FA26 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
-		AFAA5FC5900408F5FF61CD1FA4702972 /* AXPracticalHUD.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXPracticalHUD.bundle; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.bundle; sourceTree = "<group>"; };
-		B374D24A7A8A1F9B06B613D81F0C4BDB /* NJKWebViewProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgress.m; path = NJKWebViewProgress/NJKWebViewProgress.m; sourceTree = "<group>"; };
-		B51D4131FB37330572CEF746DE0AB419 /* AXWebViewControllerActivity.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXWebViewControllerActivity.m; path = AXWebViewController/AXWebViewController/Activity/AXWebViewControllerActivity.m; sourceTree = "<group>"; };
-		B5786CCA48EC7AC23EB532FA16CFB93C /* AXWebViewController.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXWebViewController.bundle; path = AXWebViewController/AXWebViewController/AXWebViewController.bundle; sourceTree = "<group>"; };
+		B140F70A3110D37D724B8CE2AE4CC8B0 /* AXCircleProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXCircleProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXCircleProgressView.m; sourceTree = "<group>"; };
+		B4FF765B87C44B253AC4BD3B8295A125 /* AXPracticalHUDContentView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXPracticalHUDContentView.m; path = AXPracticalHUD/AXPracticalHUD/ContentView/AXPracticalHUDContentView.m; sourceTree = "<group>"; };
+		B5F13E4235D1F2FDCD2144B290463997 /* AXWebViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXWebViewController-prefix.pch"; sourceTree = "<group>"; };
+		B60CDB0C7369741E023E2BBCE29ED82F /* AXCircleProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXCircleProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXCircleProgressView.h; sourceTree = "<group>"; };
+		B697725D3657721FF6A776EE00DC3C9D /* AXWebViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXWebViewController.xcconfig; sourceTree = "<group>"; };
 		BAB14A55D4DB30C8D98DB7528D9807F4 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
-		BB769C966631C5D42DE29FEDBF730556 /* AXSpinningWaitCursor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSpinningWaitCursor.h; path = AXIndicatorView/Classes/AXSpinningWaitCursor.h; sourceTree = "<group>"; };
-		BBB62A1C253630D4FDEEED4FDCD57D9A /* AXPracticalHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXPracticalHUD.xcconfig; sourceTree = "<group>"; };
-		C29EE09D8B4F931A8B80AD852A945523 /* AXActivityIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXActivityIndicatorView.m; path = AXIndicatorView/Classes/AXActivityIndicatorView.m; sourceTree = "<group>"; };
+		BE86F93078E311EBBE2201A779CA374B /* AXPracticalHUD.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUD.h; path = AXPracticalHUD/AXPracticalHUD/AXPracticalHUD.h; sourceTree = "<group>"; };
+		C113BE0B206F9E2D6CB604C3F1D89096 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgress.m; path = NJKWebViewProgress/NJKWebViewProgress.m; sourceTree = "<group>"; };
 		C5F3D39CFB7DBB5881A97F3DABD967F6 /* libFTPopOverMenu.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libFTPopOverMenu.a; path = libFTPopOverMenu.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		C730EF1DBF3ACBF97A9C6008F876B87E /* AXNavigationBackItemInjection-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AXNavigationBackItemInjection-prefix.pch"; sourceTree = "<group>"; };
 		CA7195A8E336BE360B32B79B741C8E05 /* Pods-VipPlay.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-VipPlay.release.xcconfig"; sourceTree = "<group>"; };
 		CF47792B5A65A68B38BE7E2AEB3A31A3 /* libPods-VipPlay.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-VipPlay.a"; path = "libPods-VipPlay.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CFBE62A92B277537362A97B095998586 /* libAspects.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAspects.a; path = libAspects.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		D4F68C085A594203C659D21417C3849E /* AXSpinningWaitCursor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXSpinningWaitCursor.m; path = AXIndicatorView/Classes/AXSpinningWaitCursor.m; sourceTree = "<group>"; };
-		D7519CE6E414F2D292E771967DDC57F9 /* AXWebViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXWebViewController.xcconfig; sourceTree = "<group>"; };
-		D7A105947435F33F4E899D3C46FD62F7 /* AXSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXSecurityPolicy.h; path = AXWebViewController/AXWebViewController/Security/AXSecurityPolicy.h; sourceTree = "<group>"; };
-		D9DFE7AC7130BDFCB41C520BB6349835 /* AXWebViewController-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXWebViewController-dummy.m"; sourceTree = "<group>"; };
-		DACC716BD1C635FDB59705D0AB6C5EAE /* AXGradientProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXGradientProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXGradientProgressView.h; sourceTree = "<group>"; };
-		DDE36E23E9C25B3F877EC236DA30CEDF /* AXGradientProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXGradientProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXGradientProgressView.m; sourceTree = "<group>"; };
-		E64E30C26724E8ABB9C1E6BB0B560703 /* AXBreachedAnnulusIndicatorView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXBreachedAnnulusIndicatorView.m; path = AXIndicatorView/Classes/AXBreachedAnnulusIndicatorView.m; sourceTree = "<group>"; };
-		E75F92A61ED9AD80B7FBF58422E9C652 /* Aspects.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = Aspects.m; sourceTree = "<group>"; };
-		EB7862D72F581F31F8AE6E419E4DEDD1 /* AXBarProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXBarProgressView.h; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXBarProgressView.h; sourceTree = "<group>"; };
-		EED7312D59E3A4CC68AF03BDDA492705 /* AXIndicatorView.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; name = AXIndicatorView.bundle; path = AXIndicatorView/Classes/AXIndicatorView.bundle; sourceTree = "<group>"; };
+		D3DFE00379A16EEF487E01E41583BCA0 /* NJKWebViewProgress.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NJKWebViewProgress.h; path = NJKWebViewProgress/NJKWebViewProgress.h; sourceTree = "<group>"; };
+		D83293FCCF035589091A4F8B35D5B31E /* AXNavigationBackItemInjection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXNavigationBackItemInjection-dummy.m"; sourceTree = "<group>"; };
+		D8650C176EC3CF1698F54BA0A27003E2 /* AXPracticalHUD.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AXPracticalHUD.xcconfig; sourceTree = "<group>"; };
+		D868124B9D9B73D2ED0142C39051A368 /* FTPopOverMenu.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FTPopOverMenu.h; path = FTPopOverMenu/FTPopOverMenu.h; sourceTree = "<group>"; };
+		DA99200CBEFAF8043B53B487151ECD22 /* AXBarProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXBarProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXBarProgressView.m; sourceTree = "<group>"; };
+		F10640789A91EFAB8454DFE524B05BC8 /* AXWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXWebViewController.h; path = AXWebViewController/AXWebViewController/AXWebViewController.h; sourceTree = "<group>"; };
 		F1233AC36579C265372474A7977832E2 /* libAXIndicatorView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libAXIndicatorView.a; path = libAXIndicatorView.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		F164AE1692C19A3A0DF5B6266881AFBD /* AXPracticalHUDAnimator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AXPracticalHUDAnimator.h; path = AXPracticalHUD/AXPracticalHUD/Animators/AXPracticalHUDAnimator.h; sourceTree = "<group>"; };
-		F37E5F02C6D35607797661E2D8405CDC /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NJKWebViewProgressView.h; path = NJKWebViewProgress/NJKWebViewProgressView.h; sourceTree = "<group>"; };
-		F4621AE036F79D2B23F39AFE8B47F73B /* AXNavigationBackItemInjection-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AXNavigationBackItemInjection-dummy.m"; sourceTree = "<group>"; };
-		FAD23FF1B7A3DA0F157B71CE8555E88B /* AXBarProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AXBarProgressView.m; path = AXPracticalHUD/AXPracticalHUD/ProgressViews/AXBarProgressView.m; sourceTree = "<group>"; };
-		FCDA4E4D52950735C6BB97E41D2964FE /* Aspects.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = Aspects.h; sourceTree = "<group>"; };
+		F401351C2F3C9B56662359B64B8D9471 /* NJKWebViewProgress.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = NJKWebViewProgress.xcconfig; sourceTree = "<group>"; };
+		FD0D7EA24C7F84070DA395A658809653 /* AliyunLanguageSource.bundle */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "wrapper.plug-in"; path = AliyunLanguageSource.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +315,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0AD95377BDF174B8B6D1D200ADAB913F /* AXIndicatorView */ = {
+			isa = PBXGroup;
+			children = (
+				94C92AB7B464BEAD6C668F655F1525AC /* AXActivityIndicatorView.h */,
+				06978B9FFD07F1955CA622428B2BEF62 /* AXActivityIndicatorView.m */,
+				4FC875439ED97EA163799E7CF7EF6DCD /* AXBreachedAnnulusIndicatorView.h */,
+				8297E43EDEC8CDECA74437EFA37E65B0 /* AXBreachedAnnulusIndicatorView.m */,
+				2A5510ED57F89056A23749CC61F95606 /* AXIndicatorView.h */,
+				0D4AC83508C1C2403222A77A1640ED75 /* AXSpinningWaitCursor.h */,
+				6FF08D9641D5329AEF00A8D88EA8879C /* AXSpinningWaitCursor.m */,
+				5672C4CB6EFCC8C78C4DE24DE39DACFB /* Resources */,
+				C3E3390AEA79E418BC06B38175F2AF43 /* Support Files */,
+			);
+			name = AXIndicatorView;
+			path = AXIndicatorView;
+			sourceTree = "<group>";
+		};
+		0F9B866C12AA6D56A3471F0E3B7F82C9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				7E1115EB18D1D1E2E464ADFDA956B310 /* AXNavigationBackItemInjection.xcconfig */,
+				D83293FCCF035589091A4F8B35D5B31E /* AXNavigationBackItemInjection-dummy.m */,
+				C730EF1DBF3ACBF97A9C6008F876B87E /* AXNavigationBackItemInjection-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AXNavigationBackItemInjection";
+			sourceTree = "<group>";
+		};
 		122DA2E5084A4393C29BE363C764795C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,26 +351,62 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		216506D2A52D215A91C386BC6B693ABF /* FTPopOverMenu */ = {
+		1B62CD6C2E4E04FD75264A3EAFC2A022 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				9A2A4854D3CCCB13734239788A5AB66F /* FTPopOverMenu.h */,
-				23CF80157FE70A8FA92A1EFC8C8A823E /* FTPopOverMenu.m */,
-				8C9E4DCF91822985083D7D4F964D809C /* Support Files */,
-			);
-			name = FTPopOverMenu;
-			path = FTPopOverMenu;
-			sourceTree = "<group>";
-		};
-		27487DFBD37BC063EDAE33D196D68F82 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				BBB62A1C253630D4FDEEED4FDCD57D9A /* AXPracticalHUD.xcconfig */,
-				0AF99046F83493A5E02DBE9833AC754D /* AXPracticalHUD-dummy.m */,
-				13B5E1B487D9F59545DBF0313941CB24 /* AXPracticalHUD-prefix.pch */,
+				B697725D3657721FF6A776EE00DC3C9D /* AXWebViewController.xcconfig */,
+				9E467AE849443B1469471CA53AD0F77D /* AXWebViewController-dummy.m */,
+				B5F13E4235D1F2FDCD2144B290463997 /* AXWebViewController-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/AXPracticalHUD";
+			path = "../Target Support Files/AXWebViewController";
+			sourceTree = "<group>";
+		};
+		1F17E2A018881CA446FA143066B1473C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				D3DFE00379A16EEF487E01E41583BCA0 /* NJKWebViewProgress.h */,
+				C113BE0B206F9E2D6CB604C3F1D89096 /* NJKWebViewProgress.m */,
+			);
+			name = Core;
+			sourceTree = "<group>";
+		};
+		281D3CEB7D5DEE7C4D3B373A0F93F63E /* AliyunPlayer_iOS */ = {
+			isa = PBXGroup;
+			children = (
+				28B76F03B27A53AA08544351EFA84428 /* AliyunPlayerSDK */,
+			);
+			name = AliyunPlayer_iOS;
+			path = AliyunPlayer_iOS;
+			sourceTree = "<group>";
+		};
+		28B76F03B27A53AA08544351EFA84428 /* AliyunPlayerSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5131BCC79EFB61DA10BCA6A47C82195A /* Frameworks */,
+				DC3CD971D0BDF1806A2012B1DA1F35B1 /* Resources */,
+			);
+			name = AliyunPlayerSDK;
+			sourceTree = "<group>";
+		};
+		2F49485675D49933F2B524863C2746B6 /* ProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				9B433BC28179B3AA860B4572D0C1D74F /* NJKWebViewProgressView.h */,
+				0F47BB1B00970DB1081B943746A3E254 /* NJKWebViewProgressView.m */,
+			);
+			name = ProgressView;
+			sourceTree = "<group>";
+		};
+		32E963200B0147F18BFD01D74020458E /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				39F3455C8A7303C251C5BC0C9384C953 /* FTPopOverMenu.xcconfig */,
+				37C03791C0414EB4B86D4D2F9E55A5CD /* FTPopOverMenu-dummy.m */,
+				4F33F5113E1178220D9D2B8E6A9C4D9E /* FTPopOverMenu-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FTPopOverMenu";
 			sourceTree = "<group>";
 		};
 		3D21A80A7717CA9FF6F518C4E1DFB9D0 /* iOS */ = {
@@ -353,6 +419,39 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
+		3F4B4F9938C49F8FAD69805E49EA4F70 /* AXPracticalHUD */ = {
+			isa = PBXGroup;
+			children = (
+				85D1F55036299058A0D190039AD505CB /* AXBarProgressView.h */,
+				DA99200CBEFAF8043B53B487151ECD22 /* AXBarProgressView.m */,
+				B60CDB0C7369741E023E2BBCE29ED82F /* AXCircleProgressView.h */,
+				B140F70A3110D37D724B8CE2AE4CC8B0 /* AXCircleProgressView.m */,
+				4898624CD48591CE06A62429B87EFD24 /* AXGradientProgressView.h */,
+				84DBF33DB51940E15811E1CD89D25474 /* AXGradientProgressView.m */,
+				BE86F93078E311EBBE2201A779CA374B /* AXPracticalHUD.h */,
+				415EC7D279EAFEC22C03A1985BCB0A14 /* AXPracticalHUD.m */,
+				04A27C4A6EDBF97F4723652C9CB326AE /* AXPracticalHUDAnimator.h */,
+				A882F8EEF0F60A2018D846B242252A15 /* AXPracticalHUDAnimator.m */,
+				7BD0F324BA7CBC5C0A94A9CE5F64FC95 /* AXPracticalHUDContentView.h */,
+				B4FF765B87C44B253AC4BD3B8295A125 /* AXPracticalHUDContentView.m */,
+				D141A838A84B04A03A2CE3B9C26E5E56 /* Resources */,
+				7A6661F1025A5D03697481C218C28F46 /* Support Files */,
+			);
+			name = AXPracticalHUD;
+			path = AXPracticalHUD;
+			sourceTree = "<group>";
+		};
+		41457EAB2C2CBFCB02CCE6F70BA9B5E1 /* Aspects */ = {
+			isa = PBXGroup;
+			children = (
+				5F650E3A179A0C116C239C2E39CFCEAE /* Aspects.h */,
+				54EBB1D15C9B69D29539F204CADB2BC3 /* Aspects.m */,
+				9A5A1CCF570D4197D8A713F45A7DC64B /* Support Files */,
+			);
+			name = Aspects;
+			path = Aspects;
+			sourceTree = "<group>";
+		};
 		460F61687585DA8BEA12076B62510CD7 /* Targets Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,90 +460,61 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		47467284494C69258FDEA67719AC8264 /* Core */ = {
+		5131BCC79EFB61DA10BCA6A47C82195A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3254FC0793CC528E8DFCE8E9FC306CC6 /* NJKWebViewProgress.h */,
-				B374D24A7A8A1F9B06B613D81F0C4BDB /* NJKWebViewProgress.m */,
+				9E4C2FF7A63582299922E5FF21485847 /* AliyunPlayerSDK.framework */,
 			);
-			name = Core;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		4DDD41211CC1B5D63A0AD480B3749C2A /* Resources */ = {
+		540B03882B3CBB185DADA3DCE406BB43 /* AXNavigationBackItemInjection */ = {
 			isa = PBXGroup;
 			children = (
-				AFAA5FC5900408F5FF61CD1FA4702972 /* AXPracticalHUD.bundle */,
+				21D9446950549769B4294368D8EDF322 /* AXPopNavigationController.h */,
+				7BEC1A79C0A6A7A7C5EEFD371B947C35 /* AXPopNavigationController.m */,
+				0F9B866C12AA6D56A3471F0E3B7F82C9 /* Support Files */,
+			);
+			name = AXNavigationBackItemInjection;
+			path = AXNavigationBackItemInjection;
+			sourceTree = "<group>";
+		};
+		5672C4CB6EFCC8C78C4DE24DE39DACFB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				109F1400ADBD8395A234DD7CC3757EF9 /* AXIndicatorView.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		53CDD93E2A64E8200F94EF5FAAD34EA9 /* AXPracticalHUD */ = {
+		59B642C75DD0AD4C5B412F2761FFF936 /* FTPopOverMenu */ = {
 			isa = PBXGroup;
 			children = (
-				EB7862D72F581F31F8AE6E419E4DEDD1 /* AXBarProgressView.h */,
-				FAD23FF1B7A3DA0F157B71CE8555E88B /* AXBarProgressView.m */,
-				4DEBE2EE7093325DCE7B6E19BDBD68DF /* AXCircleProgressView.h */,
-				51F99C470A21CFF7373E7C33DFA2CAB4 /* AXCircleProgressView.m */,
-				DACC716BD1C635FDB59705D0AB6C5EAE /* AXGradientProgressView.h */,
-				DDE36E23E9C25B3F877EC236DA30CEDF /* AXGradientProgressView.m */,
-				8F1B422C6AE8446834C064C251592E4A /* AXPracticalHUD.h */,
-				89EDFCEF81AC31980354B2A8658C471E /* AXPracticalHUD.m */,
-				F164AE1692C19A3A0DF5B6266881AFBD /* AXPracticalHUDAnimator.h */,
-				2D61A9518D665EB0983F878A900EADAA /* AXPracticalHUDAnimator.m */,
-				6CC18DC3A261A5C855FCB434FF378643 /* AXPracticalHUDContentView.h */,
-				787B53589EEF12E7FA55B76178008F1E /* AXPracticalHUDContentView.m */,
-				4DDD41211CC1B5D63A0AD480B3749C2A /* Resources */,
-				27487DFBD37BC063EDAE33D196D68F82 /* Support Files */,
+				D868124B9D9B73D2ED0142C39051A368 /* FTPopOverMenu.h */,
+				54E8A6799385B16CC3C4521CFD95B75D /* FTPopOverMenu.m */,
+				32E963200B0147F18BFD01D74020458E /* Support Files */,
 			);
-			name = AXPracticalHUD;
-			path = AXPracticalHUD;
+			name = FTPopOverMenu;
+			path = FTPopOverMenu;
 			sourceTree = "<group>";
 		};
-		5842D1FE74C76D7F231A5FBF2C3F6F65 /* Support Files */ = {
+		5EFE35A03BB881FB0943BE1F135BB54B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				5620CD78D924835326C8E64C3291EC7F /* Aspects.xcconfig */,
-				6C783C294FD0E577DC9A5BCED73BAD40 /* Aspects-dummy.m */,
-				8111C60CB24757E7788FD5D31363D91E /* Aspects-prefix.pch */,
+				A43046BCB708207423AD3BFD427189FF /* AXWebViewController.bundle */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		7A6661F1025A5D03697481C218C28F46 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				D8650C176EC3CF1698F54BA0A27003E2 /* AXPracticalHUD.xcconfig */,
+				417EC4EA24731AF26DAA00E6D2593F5E /* AXPracticalHUD-dummy.m */,
+				6E0FF1F76FE250AEAB43879551D6944E /* AXPracticalHUD-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/Aspects";
-			sourceTree = "<group>";
-		};
-		5CDF2F4E806EAE60ADCAE8BC8B7EA3A0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9A4779A3578159535D9ADF9F3AC2925B /* Aspects */,
-				C83AF432BE439FC57C6F916A66921BBB /* AXIndicatorView */,
-				E6F5E8E8465ECCD3ED2FF2F1F33A722F /* AXNavigationBackItemInjection */,
-				53CDD93E2A64E8200F94EF5FAAD34EA9 /* AXPracticalHUD */,
-				95F5B5F85023FCBAB5F8712E8F31C728 /* AXWebViewController */,
-				216506D2A52D215A91C386BC6B693ABF /* FTPopOverMenu */,
-				651C24BBF4C801566D94FFA75E66565C /* NJKWebViewProgress */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		651C24BBF4C801566D94FFA75E66565C /* NJKWebViewProgress */ = {
-			isa = PBXGroup;
-			children = (
-				47467284494C69258FDEA67719AC8264 /* Core */,
-				B62BD1E442CD9C3625486727276A3C9C /* ProgressView */,
-				BC852DE876D4B2302916443A2F6BF141 /* Support Files */,
-			);
-			name = NJKWebViewProgress;
-			path = NJKWebViewProgress;
-			sourceTree = "<group>";
-		};
-		79E04F8857F771C66C09B6E0F8C22513 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				D7519CE6E414F2D292E771967DDC57F9 /* AXWebViewController.xcconfig */,
-				D9DFE7AC7130BDFCB41C520BB6349835 /* AXWebViewController-dummy.m */,
-				9C87879F8391B2E39A2F6483E326E1DC /* AXWebViewController-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AXWebViewController";
+			path = "../Target Support Files/AXPracticalHUD";
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -452,59 +522,21 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				122DA2E5084A4393C29BE363C764795C /* Frameworks */,
-				5CDF2F4E806EAE60ADCAE8BC8B7EA3A0 /* Pods */,
+				C36E08C92A7C6069009C70D5336D1EDA /* Pods */,
 				F4633C3E900644736AEF9E2CDBDB0DE0 /* Products */,
 				460F61687585DA8BEA12076B62510CD7 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		8C9E4DCF91822985083D7D4F964D809C /* Support Files */ = {
+		9A5A1CCF570D4197D8A713F45A7DC64B /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				81E8D6185267F4A285F08F694B2C548D /* FTPopOverMenu.xcconfig */,
-				7281710ABD96E0C4EE1C387F9903FF7E /* FTPopOverMenu-dummy.m */,
-				46ECADF2CD161DA50F97DA98340EFFE0 /* FTPopOverMenu-prefix.pch */,
+				A67F3D6B24DFA2989617F97F795D1CEF /* Aspects.xcconfig */,
+				304A50121BA323F108151C6CD791E22E /* Aspects-dummy.m */,
+				04C2785EB33E30971D02C1E782526286 /* Aspects-prefix.pch */,
 			);
 			name = "Support Files";
-			path = "../Target Support Files/FTPopOverMenu";
-			sourceTree = "<group>";
-		};
-		93DAFB5C4A093FC931BE4B6C68B13FA3 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				932AD70081AF1A051C545B6FC814CC6F /* AXIndicatorView.xcconfig */,
-				1F54B5A789CBB85A43350D5AB801F80E /* AXIndicatorView-dummy.m */,
-				2869E2DE04B1B5E1B37D2BB738E7BCD3 /* AXIndicatorView-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AXIndicatorView";
-			sourceTree = "<group>";
-		};
-		95F5B5F85023FCBAB5F8712E8F31C728 /* AXWebViewController */ = {
-			isa = PBXGroup;
-			children = (
-				D7A105947435F33F4E899D3C46FD62F7 /* AXSecurityPolicy.h */,
-				16C9F00544E49F5133CC515502966E8D /* AXSecurityPolicy.m */,
-				AC05FEA787D56E08A81535B5B9D7CFD6 /* AXWebViewController.h */,
-				3D49254CBB5F0AF7981FCA7C0F68BF8B /* AXWebViewController.m */,
-				52675A62191112223EC7CC51C538C529 /* AXWebViewControllerActivity.h */,
-				B51D4131FB37330572CEF746DE0AB419 /* AXWebViewControllerActivity.m */,
-				EAAC8EB4EF21F32169C848DD489F53DC /* Resources */,
-				79E04F8857F771C66C09B6E0F8C22513 /* Support Files */,
-			);
-			name = AXWebViewController;
-			path = AXWebViewController;
-			sourceTree = "<group>";
-		};
-		9A4779A3578159535D9ADF9F3AC2925B /* Aspects */ = {
-			isa = PBXGroup;
-			children = (
-				FCDA4E4D52950735C6BB97E41D2964FE /* Aspects.h */,
-				E75F92A61ED9AD80B7FBF58422E9C652 /* Aspects.m */,
-				5842D1FE74C76D7F231A5FBF2C3F6F65 /* Support Files */,
-			);
-			name = Aspects;
-			path = Aspects;
+			path = "../Target Support Files/Aspects";
 			sourceTree = "<group>";
 		};
 		AAED82BCA8C489440CF3F1C4FB117E20 /* Pods-VipPlay */ = {
@@ -522,77 +554,82 @@
 			path = "Target Support Files/Pods-VipPlay";
 			sourceTree = "<group>";
 		};
-		B0419D477A20C0C5C8F2D78C4D123EF3 /* Support Files */ = {
+		AF6594F7AD050E04CECAF31C8CC40452 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2DEE13BF0F784266589E45828FC8F708 /* AXNavigationBackItemInjection.xcconfig */,
-				F4621AE036F79D2B23F39AFE8B47F73B /* AXNavigationBackItemInjection-dummy.m */,
-				29426FED274647F4D0E637E1E62AB3AA /* AXNavigationBackItemInjection-prefix.pch */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/AXNavigationBackItemInjection";
-			sourceTree = "<group>";
-		};
-		B62BD1E442CD9C3625486727276A3C9C /* ProgressView */ = {
-			isa = PBXGroup;
-			children = (
-				F37E5F02C6D35607797661E2D8405CDC /* NJKWebViewProgressView.h */,
-				3FC9D491FBAC2987C25FB6328C4626F3 /* NJKWebViewProgressView.m */,
-			);
-			name = ProgressView;
-			sourceTree = "<group>";
-		};
-		BC852DE876D4B2302916443A2F6BF141 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				527506DF6F84CAEF8517704682E02048 /* NJKWebViewProgress.xcconfig */,
-				1E4731E14F27F8638B4A45DE97274D8F /* NJKWebViewProgress-dummy.m */,
-				47DD7D7603A3F4774C3DBA727CCDAD25 /* NJKWebViewProgress-prefix.pch */,
+				F401351C2F3C9B56662359B64B8D9471 /* NJKWebViewProgress.xcconfig */,
+				A6B1D36BDC580A79A0141EC652EC516E /* NJKWebViewProgress-dummy.m */,
+				280D835D73D708EFA7E6ECB5BC0557D4 /* NJKWebViewProgress-prefix.pch */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/NJKWebViewProgress";
 			sourceTree = "<group>";
 		};
-		C83AF432BE439FC57C6F916A66921BBB /* AXIndicatorView */ = {
+		B0BEC13DCA8CADD5E1B300A7326C400C /* AXWebViewController */ = {
 			isa = PBXGroup;
 			children = (
-				2603EA717613759A133B4B1E3C416D7A /* AXActivityIndicatorView.h */,
-				C29EE09D8B4F931A8B80AD852A945523 /* AXActivityIndicatorView.m */,
-				A7AD45C578CF773DC13CDCCF17D387BB /* AXBreachedAnnulusIndicatorView.h */,
-				E64E30C26724E8ABB9C1E6BB0B560703 /* AXBreachedAnnulusIndicatorView.m */,
-				1BDFECD2EAC958F3EBC94992E9861D51 /* AXIndicatorView.h */,
-				BB769C966631C5D42DE29FEDBF730556 /* AXSpinningWaitCursor.h */,
-				D4F68C085A594203C659D21417C3849E /* AXSpinningWaitCursor.m */,
-				CA9AA2BC79F14B779A74A5EAE6838DFF /* Resources */,
-				93DAFB5C4A093FC931BE4B6C68B13FA3 /* Support Files */,
+				58323BEA941858DBB090B3E127CCAF84 /* AXSecurityPolicy.h */,
+				31EC5238800A79C7251AFCDFAF1D7685 /* AXSecurityPolicy.m */,
+				F10640789A91EFAB8454DFE524B05BC8 /* AXWebViewController.h */,
+				0077AE7352FEFBCA5B8FBB5EEB0DAD60 /* AXWebViewController.m */,
+				38FBA628203B26C15C5D8C7DE4DA4349 /* AXWebViewControllerActivity.h */,
+				9570EDA55DE9A2FA6D764F2417DA31EB /* AXWebViewControllerActivity.m */,
+				5EFE35A03BB881FB0943BE1F135BB54B /* Resources */,
+				1B62CD6C2E4E04FD75264A3EAFC2A022 /* Support Files */,
 			);
-			name = AXIndicatorView;
-			path = AXIndicatorView;
+			name = AXWebViewController;
+			path = AXWebViewController;
 			sourceTree = "<group>";
 		};
-		CA9AA2BC79F14B779A74A5EAE6838DFF /* Resources */ = {
+		C36E08C92A7C6069009C70D5336D1EDA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EED7312D59E3A4CC68AF03BDDA492705 /* AXIndicatorView.bundle */,
+				281D3CEB7D5DEE7C4D3B373A0F93F63E /* AliyunPlayer_iOS */,
+				41457EAB2C2CBFCB02CCE6F70BA9B5E1 /* Aspects */,
+				0AD95377BDF174B8B6D1D200ADAB913F /* AXIndicatorView */,
+				540B03882B3CBB185DADA3DCE406BB43 /* AXNavigationBackItemInjection */,
+				3F4B4F9938C49F8FAD69805E49EA4F70 /* AXPracticalHUD */,
+				B0BEC13DCA8CADD5E1B300A7326C400C /* AXWebViewController */,
+				59B642C75DD0AD4C5B412F2761FFF936 /* FTPopOverMenu */,
+				D1D641DBBA77D0C2A4361E36989CE7EF /* NJKWebViewProgress */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		C3E3390AEA79E418BC06B38175F2AF43 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				9EC9C74007D06CB9E8C198AAB08C56FA /* AXIndicatorView.xcconfig */,
+				39C81CC54FB7D7D055D58ACCF9F70591 /* AXIndicatorView-dummy.m */,
+				0385CD5297E95287602FAAAAB692EC4A /* AXIndicatorView-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/AXIndicatorView";
+			sourceTree = "<group>";
+		};
+		D141A838A84B04A03A2CE3B9C26E5E56 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				A2A0DC24E636AC1A5D4B08136AF0D274 /* AXPracticalHUD.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		E6F5E8E8465ECCD3ED2FF2F1F33A722F /* AXNavigationBackItemInjection */ = {
+		D1D641DBBA77D0C2A4361E36989CE7EF /* NJKWebViewProgress */ = {
 			isa = PBXGroup;
 			children = (
-				391893384AE53475D1F862135C939C86 /* AXPopNavigationController.h */,
-				8E22FC3A76B06FE9558614EA1F4DC80A /* AXPopNavigationController.m */,
-				B0419D477A20C0C5C8F2D78C4D123EF3 /* Support Files */,
+				1F17E2A018881CA446FA143066B1473C /* Core */,
+				2F49485675D49933F2B524863C2746B6 /* ProgressView */,
+				AF6594F7AD050E04CECAF31C8CC40452 /* Support Files */,
 			);
-			name = AXNavigationBackItemInjection;
-			path = AXNavigationBackItemInjection;
+			name = NJKWebViewProgress;
+			path = NJKWebViewProgress;
 			sourceTree = "<group>";
 		};
-		EAAC8EB4EF21F32169C848DD489F53DC /* Resources */ = {
+		DC3CD971D0BDF1806A2012B1DA1F35B1 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B5786CCA48EC7AC23EB532FA16CFB93C /* AXWebViewController.bundle */,
+				FD0D7EA24C7F84070DA395A658809653 /* AliyunLanguageSource.bundle */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -839,8 +876,8 @@
 		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0700;
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -1032,74 +1069,9 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		1A03F61D3C138679BB4A2F6376B14EF0 /* Debug */ = {
+		0AA4B3ADFF707B33BEFD61BA6649C86F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 932AD70081AF1A051C545B6FC814CC6F /* AXIndicatorView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXIndicatorView/AXIndicatorView-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		1DB59FCCAC54B899BD26ABF1CBFC168F /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBB62A1C253630D4FDEEED4FDCD57D9A /* AXPracticalHUD.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXPracticalHUD/AXPracticalHUD-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		21509285719587C0CC8BD338114CEBFB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DEE13BF0F784266589E45828FC8F708 /* AXNavigationBackItemInjection.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXNavigationBackItemInjection/AXNavigationBackItemInjection-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		270B0140004623A9E4DDC0B8479E03B1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5620CD78D924835326C8E64C3291EC7F /* Aspects.xcconfig */;
+			baseConfigurationReference = A67F3D6B24DFA2989617F97F795D1CEF /* Aspects.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1110,6 +1082,8 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Aspects;
+				PRODUCT_NAME = Aspects;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1119,7 +1093,240 @@
 			};
 			name = Release;
 		};
-		33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */ = {
+		0B7AC8F4F9F4EED015661541D2AFF0B7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 724ADF1240D0C874E078D02DBCB530DC /* Pods-VipPlay.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		164D997A27EB7E4D2E4E452534D1A0A4 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39F3455C8A7303C251C5BC0C9384C953 /* FTPopOverMenu.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FTPopOverMenu/FTPopOverMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FTPopOverMenu;
+				PRODUCT_NAME = FTPopOverMenu;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17007042A0FB19777BF122229FD2B20D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A67F3D6B24DFA2989617F97F795D1CEF /* Aspects.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/Aspects/Aspects-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = Aspects;
+				PRODUCT_NAME = Aspects;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		2424A4AD40D790DA21C326071E9E63A9 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EC9C74007D06CB9E8C198AAB08C56FA /* AXIndicatorView.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AXIndicatorView/AXIndicatorView-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXIndicatorView;
+				PRODUCT_NAME = AXIndicatorView;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		32434F49A0589B306A4DE3BE70FC2358 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = B697725D3657721FF6A776EE00DC3C9D /* AXWebViewController.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AXWebViewController/AXWebViewController-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXWebViewController;
+				PRODUCT_NAME = AXWebViewController;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		38A214A2BF0CB7697B07AD4CB52330BD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E1115EB18D1D1E2E464ADFDA956B310 /* AXNavigationBackItemInjection.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AXNavigationBackItemInjection/AXNavigationBackItemInjection-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXNavigationBackItemInjection;
+				PRODUCT_NAME = AXNavigationBackItemInjection;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4F6C39D003A36F71552A8E91B1596DDF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = D8650C176EC3CF1698F54BA0A27003E2 /* AXPracticalHUD.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/AXPracticalHUD/AXPracticalHUD-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXPracticalHUD;
+				PRODUCT_NAME = AXPracticalHUD;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		513F0B7481D99B537261FF567AA75A60 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 39F3455C8A7303C251C5BC0C9384C953 /* FTPopOverMenu.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/FTPopOverMenu/FTPopOverMenu-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = FTPopOverMenu;
+				PRODUCT_NAME = FTPopOverMenu;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		70294066F14465ED2840FB57084506FD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F401351C2F3C9B56662359B64B8D9471 /* NJKWebViewProgress.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/NJKWebViewProgress/NJKWebViewProgress-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = NJKWebViewProgress;
+				PRODUCT_NAME = NJKWebViewProgress;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7C002406F0F95A8C78D2B62B64B37118 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CA7195A8E336BE360B32B79B741C8E05 /* Pods-VipPlay.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1129,10 +1336,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1140,6 +1349,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1148,6 +1358,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1172,60 +1383,38 @@
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		4ED319DA7A27FE97220DB7E0719DEB11 /* Release */ = {
+		9D8826BD19FB5897EAE0B635E5D7179E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81E8D6185267F4A285F08F694B2C548D /* FTPopOverMenu.xcconfig */;
+			baseConfigurationReference = 7E1115EB18D1D1E2E464ADFDA956B310 /* AXNavigationBackItemInjection.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FTPopOverMenu/FTPopOverMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		5028AA585BBB37362EBC91913D4D57C6 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 932AD70081AF1A051C545B6FC814CC6F /* AXIndicatorView.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXIndicatorView/AXIndicatorView-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/AXNavigationBackItemInjection/AXNavigationBackItemInjection-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXNavigationBackItemInjection;
+				PRODUCT_NAME = AXNavigationBackItemInjection;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
 			};
-			name = Release;
+			name = Debug;
 		};
-		5A85831198098B2C66CD01104BEC9CF8 /* Debug */ = {
+		A6F9EDCBFFA716CA70654DD0B8C63176 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BBB62A1C253630D4FDEEED4FDCD57D9A /* AXPracticalHUD.xcconfig */;
+			baseConfigurationReference = D8650C176EC3CF1698F54BA0A27003E2 /* AXPracticalHUD.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1236,36 +1425,18 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXPracticalHUD;
+				PRODUCT_NAME = AXPracticalHUD;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
-		6E964B9E04FE2E0D5B4C4A45DF8D1564 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5620CD78D924835326C8E64C3291EC7F /* Aspects.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/Aspects/Aspects-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		731DC216E1A58545B559F6E0A2418060 /* Release */ = {
+		B42B54097A876E8A982CBF5DAA91B1AB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1275,10 +1446,12 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1286,6 +1459,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1294,6 +1468,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
 				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1314,56 +1489,14 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
 				STRIP_INSTALLED_PRODUCT = NO;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		7C119F88EB6707BB2ECFA72E04CCB70E /* Debug */ = {
+		CB2ACE4ADD55CBDA171CDCED3EC9EBD4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 724ADF1240D0C874E078D02DBCB530DC /* Pods-VipPlay.debug.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		945C30C63E8B87BE84AF3AA6110A704A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81E8D6185267F4A285F08F694B2C548D /* FTPopOverMenu.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/FTPopOverMenu/FTPopOverMenu-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		9D69D43D4505C49183F5B31BDDAAE13E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7519CE6E414F2D292E771967DDC57F9 /* AXWebViewController.xcconfig */;
+			baseConfigurationReference = B697725D3657721FF6A776EE00DC3C9D /* AXWebViewController.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -1374,39 +1507,22 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXWebViewController;
+				PRODUCT_NAME = AXWebViewController;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		9EF88CDE4D42681C4E19FA5ABE95A233 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA7195A8E336BE360B32B79B741C8E05 /* Pods-VipPlay.release.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
-				MACH_O_TYPE = staticlib;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		AB5BCB1956DEE2EBD9B8D8B69BC5642E /* Release */ = {
+		EB1B44CF8820B873E29EB2D07ED51224 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 527506DF6F84CAEF8517704682E02048 /* NJKWebViewProgress.xcconfig */;
+			baseConfigurationReference = F401351C2F3C9B56662359B64B8D9471 /* NJKWebViewProgress.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -1416,50 +1532,8 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D5632EF798BD05F6C284FB6A70DDA7A1 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = D7519CE6E414F2D292E771967DDC57F9 /* AXWebViewController.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXWebViewController/AXWebViewController-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		D938661A62A16FF6EFF6BD3B7C9CC283 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 527506DF6F84CAEF8517704682E02048 /* NJKWebViewProgress.xcconfig */;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/NJKWebViewProgress/NJKWebViewProgress-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = NJKWebViewProgress;
+				PRODUCT_NAME = NJKWebViewProgress;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -1468,26 +1542,29 @@
 			};
 			name = Debug;
 		};
-		D9581F837C0C6427560F6727D96947D3 /* Debug */ = {
+		F5490148853CF641B788A8FE631FD2F9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2DEE13BF0F784266589E45828FC8F708 /* AXNavigationBackItemInjection.xcconfig */;
+			baseConfigurationReference = 9EC9C74007D06CB9E8C198AAB08C56FA /* AXIndicatorView.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				GCC_PREFIX_HEADER = "Target Support Files/AXNavigationBackItemInjection/AXNavigationBackItemInjection-prefix.pch";
+				GCC_PREFIX_HEADER = "Target Support Files/AXIndicatorView/AXIndicatorView-prefix.pch";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = AXIndicatorView;
+				PRODUCT_NAME = AXIndicatorView;
 				PUBLIC_HEADERS_FOLDER_PATH = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 			};
-			name = Debug;
+			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
@@ -1495,8 +1572,8 @@
 		0F1B589BA995B9F458B4FF4EEA892200 /* Build configuration list for PBXNativeTarget "NJKWebViewProgress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D938661A62A16FF6EFF6BD3B7C9CC283 /* Debug */,
-				AB5BCB1956DEE2EBD9B8D8B69BC5642E /* Release */,
+				EB1B44CF8820B873E29EB2D07ED51224 /* Debug */,
+				70294066F14465ED2840FB57084506FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1504,8 +1581,8 @@
 		22339DF7416D5174B4E7D07D1EAD8EF1 /* Build configuration list for PBXNativeTarget "FTPopOverMenu" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				945C30C63E8B87BE84AF3AA6110A704A /* Debug */,
-				4ED319DA7A27FE97220DB7E0719DEB11 /* Release */,
+				164D997A27EB7E4D2E4E452534D1A0A4 /* Debug */,
+				513F0B7481D99B537261FF567AA75A60 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1513,8 +1590,8 @@
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				33DA7F43A1D2FA3C74A8C8FC246E1FA6 /* Debug */,
-				731DC216E1A58545B559F6E0A2418060 /* Release */,
+				8B33C5230DE4A9DFA6D8F46505DD7AF7 /* Debug */,
+				B42B54097A876E8A982CBF5DAA91B1AB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1522,8 +1599,8 @@
 		4B43D2A58BAA4FBF5C0B3B4D9B779094 /* Build configuration list for PBXNativeTarget "AXPracticalHUD" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5A85831198098B2C66CD01104BEC9CF8 /* Debug */,
-				1DB59FCCAC54B899BD26ABF1CBFC168F /* Release */,
+				4F6C39D003A36F71552A8E91B1596DDF /* Debug */,
+				A6F9EDCBFFA716CA70654DD0B8C63176 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1531,8 +1608,8 @@
 		6FCF514AE61E322DEC85CDD1B70DF5BD /* Build configuration list for PBXNativeTarget "AXIndicatorView" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				1A03F61D3C138679BB4A2F6376B14EF0 /* Debug */,
-				5028AA585BBB37362EBC91913D4D57C6 /* Release */,
+				2424A4AD40D790DA21C326071E9E63A9 /* Debug */,
+				F5490148853CF641B788A8FE631FD2F9 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1540,8 +1617,8 @@
 		9FF166F8CF05EE7A70C57620A3BD71A5 /* Build configuration list for PBXNativeTarget "AXWebViewController" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9D69D43D4505C49183F5B31BDDAAE13E /* Debug */,
-				D5632EF798BD05F6C284FB6A70DDA7A1 /* Release */,
+				32434F49A0589B306A4DE3BE70FC2358 /* Debug */,
+				CB2ACE4ADD55CBDA171CDCED3EC9EBD4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1549,8 +1626,8 @@
 		ADDD598D97160FAFC23522D96D16607C /* Build configuration list for PBXNativeTarget "Aspects" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6E964B9E04FE2E0D5B4C4A45DF8D1564 /* Debug */,
-				270B0140004623A9E4DDC0B8479E03B1 /* Release */,
+				17007042A0FB19777BF122229FD2B20D /* Debug */,
+				0AA4B3ADFF707B33BEFD61BA6649C86F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1558,8 +1635,8 @@
 		C7759EBF94570CC29FFE5929A0D45333 /* Build configuration list for PBXNativeTarget "Pods-VipPlay" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				7C119F88EB6707BB2ECFA72E04CCB70E /* Debug */,
-				9EF88CDE4D42681C4E19FA5ABE95A233 /* Release */,
+				0B7AC8F4F9F4EED015661541D2AFF0B7 /* Debug */,
+				7C002406F0F95A8C78D2B62B64B37118 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1567,8 +1644,8 @@
 		D5D5C0F8A34A222280A9D26C950432A5 /* Build configuration list for PBXNativeTarget "AXNavigationBackItemInjection" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9581F837C0C6427560F6727D96947D3 /* Debug */,
-				21509285719587C0CC8BD338114CEBFB /* Release */,
+				9D8826BD19FB5897EAE0B635E5D7179E /* Debug */,
+				38A214A2BF0CB7697B07AD4CB52330BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

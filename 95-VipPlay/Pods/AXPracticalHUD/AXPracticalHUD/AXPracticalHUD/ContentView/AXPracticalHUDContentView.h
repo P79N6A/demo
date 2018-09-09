@@ -38,7 +38,7 @@ NS_SWIFT_NAME(PracticalHUDContentView) @interface AXPracticalHUDContentView : UI
 /// End color of the content view. Default is nil.
 @property(strong, nonatomic) UIColor *endColor;
 /// Translucent. Default is NO.
-@property(assign, nonatomic, getter=isTranslucent) BOOL translucent;
+@property(assign, nonatomic) BOOL translucent;
 /// Translucent style. Default is Dark.
 @property(assign, nonatomic) AXPracticalHUDTranslucentStyle translucentStyle;
 /// Opacity. Default is 0.8f. If color of the content view is nil, then background color of the content view will

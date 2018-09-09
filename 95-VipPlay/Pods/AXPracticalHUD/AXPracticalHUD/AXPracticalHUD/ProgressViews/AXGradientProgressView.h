@@ -25,7 +25,7 @@
 
 #import <UIKit/UIKit.h>
 /// Gradient style progress view.
-NS_SWIFT_NAME(GradientProgressView) @interface AXGradientProgressView : UIView
+@interface AXGradientProgressView : UIView
 /// Progress value between [0, 1].
 @property(assign, nonatomic) CGFloat progress;
 /// Height of the progress indicator aera. Default is 1.0.

@@ -52,13 +52,6 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 @property (nonatomic, assign) NSTimeInterval animationDuration;
 @property (nonatomic, strong) UIColor *selectedTextColor;
 @property (nonatomic, strong) UIColor *selectedCellBackgroundColor;
-@property (nonatomic, strong) UIColor *separatorColor;
-@property (nonatomic, strong) UIColor *shadowColor;
-@property (nonatomic, assign) CGFloat shadowOpacity;
-@property (nonatomic, assign) CGFloat shadowRadius;
-@property (nonatomic, assign) CGFloat shadowOffsetX;
-@property (nonatomic, assign) CGFloat shadowOffsetY;
-
 /**
  *  defaultConfiguration
  *
@@ -86,6 +79,7 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
  */
 @interface FTPopOverMenu : NSObject
 
+
 /**
  show method with sender without images
 
@@ -101,7 +95,7 @@ typedef void (^FTPopOverMenuDismissBlock)(void);
 
 /**
  show method with sender and image resouce Array
-
+ 
  @param sender sender
  @param menuArray menuArray
  @param imageArray imageArray

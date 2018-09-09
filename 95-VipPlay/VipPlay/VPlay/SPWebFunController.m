@@ -10,9 +10,11 @@
 #import "HybridNSURLProtocol.h"
 #import "NSURLProtocol+WKWebVIew.h"
 
+#import "TJPlayController.h"
+
 #import <FTPopOverMenu/FTPopOverMenu.h>
 #import <AVFoundation/AVFoundation.h>
-#import <MediaPlayer/MediaPlayer.h>
+//#import <MediaPlayer/MediaPlayer.h>
 
 #import "ListCell.h"
 #import "UIView+PulseView.h"
@@ -183,6 +185,22 @@
 }
 
 - (void)dealloc{
+//    [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
+//    [NSURLProtocol wk_unregisterScheme:@"http"];
+//    [NSURLProtocol wk_unregisterScheme:@"https"];
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
+    [NSURLProtocol wk_registerScheme:@"http"];
+    [NSURLProtocol wk_registerScheme:@"https"];
+
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
     [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
     [NSURLProtocol wk_unregisterScheme:@"http"];
     [NSURLProtocol wk_unregisterScheme:@"https"];
@@ -190,17 +208,17 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
-    [NSURLProtocol wk_registerScheme:@"http"];
-    [NSURLProtocol wk_registerScheme:@"https"];
-
-
+//    [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
+//    [NSURLProtocol wk_registerScheme:@"http"];
+//    [NSURLProtocol wk_registerScheme:@"https"];
     
     self.mediaObjs = [NSMutableArray array];
     self.delegate = self;
     [self initDefaultData];
-    [self loadURL:[NSURL URLWithString:self.platformlist.firstObject[@"url"]]];
-    
+    [self loadWebURL:self.platformlist.firstObject];
+//    [self loadURL:[NSURL URLWithString:self.platformlist.firstObject[@"url"]]];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.platformlist.firstObject[@"adType"] forKey:@"adType"];
+//    [[NSUserDefaults standardUserDefaults] setObject:self.platformlist.firstObject[@"mediaType"] forKey:@"mediaType"];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(videoCurrentDidChange:)
@@ -236,11 +254,20 @@
 
 }
 
+- (void)loadWebURL:(NSDictionary *)obj{
+    [self loadURL:[NSURL URLWithString:obj[@"url"]]];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"adType"] forKey:@"adType"];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"mediaType"] forKey:@"mediaType"];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"sepType"] forKey:@"sepType"];
+}
+
 - (void)initDefaultData{
-    //NSError *error = nil;
-    //NSString *path = [[NSBundle mainBundle] pathForResource:@"mviplist" ofType:@"json"];
-    //NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
+    NSError *error = nil;
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"mviplist" ofType:@"json"];
+    NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
     NSDictionary *dict = [self mviplist];//[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+    dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+
     //NSLog(@"%@,error %@",dict, error);
     self.list = dict[@"list"];
     self.platformlist = ((NSArray *)dict[@"platformlist"]).mutableCopy;
@@ -250,11 +277,15 @@
 
 - (void)toNativePlay:(NSString *)url{
     
-    if([[self topViewController] isKindOfClass:[MPMoviePlayerViewController class]]) return ;
+    if([[self topViewController] isKindOfClass:[TJPlayController class]]) return ;
     
-    MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:url]];
-    playVC.view.frame = CGRectMake(0, 100, 414, 300);
-    [self presentViewController:playVC animated:YES completion:nil];
+    TJPlayController *playVC = [[TJPlayController alloc] init];
+    playVC.url = url;
+    playVC.title = self.navigationItem.title;
+    
+    [self.navigationController pushViewController:playVC animated:YES];
+    
+    [self.webView goBack];
 }
 
 //FIXME:  -  事件监听
@@ -290,7 +321,8 @@
             return ;
         }
         
-        [weakSelf loadURL:[NSURL URLWithString:url]];
+        //[weakSelf loadURL:[NSURL URLWithString:url]];
+        [weakSelf loadWebURL:weakSelf.platformlist[selectedIndex]];
     } dismissBlock:^{
         NSLog(@"user canceled. do nothing.");
     }];
@@ -326,7 +358,7 @@
     configuration.textAlignment = NSTextAlignmentCenter;
     __weak typeof(self) weakSelf = self;
     [FTPopOverMenu showForSender:sender withMenuArray:[self.list valueForKey:@"name"] doneBlock:^(NSInteger selectedIndex) {
-        [weakSelf vipVideoCurrentApiDidChange:weakSelf.list[selectedIndex][@"url"]];
+        [weakSelf vipVideoCurrentApiDidChange:weakSelf.list[selectedIndex]];
     } dismissBlock:^{
         NSLog(@"user canceled. do nothing.");
     }];
@@ -355,7 +387,7 @@
         [self toNativePlay:url];
     }
 }
-- (void)vipVideoCurrentApiDidChange:(NSString  *)vipURL{
+- (void)vipVideoCurrentApiDidChange:(NSDictionary  *)obj{
     
     
     [self.webView evaluateJavaScript:@"document.location.href" completionHandler:^(NSString *url, NSError * _Nullable error) {
@@ -366,9 +398,11 @@
             return ;
         }
         
-        NSString *finalUrl = [NSString stringWithFormat:@"%@%@", vipURL,originUrl];
-        
-        [self loadURL:[NSURL URLWithString:finalUrl]];
+        NSString *finalUrl = [NSString stringWithFormat:@"%@%@", obj[@"url"],originUrl];
+        NSMutableDictionary *objj = obj.mutableCopy;
+        objj[@"url"] = finalUrl;
+        //[self loadURL:[NSURL URLWithString:finalUrl]];
+        [self loadWebURL:objj];
     }];
     
 }

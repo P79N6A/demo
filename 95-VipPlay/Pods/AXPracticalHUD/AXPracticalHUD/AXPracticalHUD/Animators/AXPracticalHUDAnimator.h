@@ -13,10 +13,8 @@
 /// The abstract declaration of the animator of the hud to show or hide
 /// on the attached view. Custom classes should conform this protocol to
 /// offer the showing and hiding methods.
-NS_SWIFT_NAME(PracticalHUDAnimator) @protocol AXPracticalHUDAnimator<NSObject>
+@protocol AXPracticalHUDAnimator<NSObject>
 @required
-/// Should allow layouting subviews during animation.
-@property(readonly, nonatomic) BOOL allowsLayoutSubviewsDuringAnimation;
 /// The last time duration of the animation.
 - (NSTimeInterval)durationForTransition:(BOOL)isHidden;
 /// The hud will call this method to show or hide the hud view when the transition

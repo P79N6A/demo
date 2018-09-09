@@ -62,7 +62,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
 {
     NSMutableURLRequest *mutableReqeust = [request mutableCopy];
-    [mutableReqeust setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 11_2 like Mac OS X) AppleWebKit/604.4.7 (KHTML, like Gecko)" forHTTPHeaderField:@"User-Agent"];
+    [mutableReqeust setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1" forHTTPHeaderField:@"User-Agent"];
     
     //request截取重定向
     if ([request.URL.absoluteString isEqualToString:sourUrl])
@@ -72,32 +72,36 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     }
     
     NSString *requestUrl = request.URL.absoluteString;
-    // 拦截广告
-    if ([requestUrl containsString:@"img.09mk.cn"]
-        ||[requestUrl containsString:@"img.xiaohui2.cn"]
-        ||[requestUrl containsString:@".xiaohui"]
-        ||[requestUrl containsString:@".apple.com"]
-        ||[requestUrl containsString:@"img2."]
-        ||[requestUrl containsString:@"sysapr.cn"]
-        ) {
+//     拦截广告
+//    if ([requestUrl containsString:@"img.09mk.cn"]
+//        ||[requestUrl containsString:@"img.xiaohui2.cn"]
+//        ||[requestUrl containsString:@".xiaohui"]
+//        ||[requestUrl containsString:@".apple.com"]
+//        ||[requestUrl containsString:@"img2."]
+//        ||[requestUrl containsString:@"sysapr.cn"]
+//        ) {
+//        mutableReqeust = nil;
+//    }
+//    else
+    if ([self stringContainsAdTypeType:requestUrl]) {
         mutableReqeust = nil;
-    }
-    else
-    if(
-       [requestUrl containsString:@".m3u8"]
+    }else if([self stringContainsMediaTypeType:requestUrl]
+//       [requestUrl containsString:@".m3u8"]
 //       [requestUrl.pathExtension hasPrefix:@"m3u8"]
 //       ||[requestUrl containsString:@".mp4"]
        )
     {
 //        if (![[UIViewController topViewController] isKindOfClass:[HLPlayerViewController class]]) {
-            NSArray *urlArray = [requestUrl componentsSeparatedByString:@"url="];
+            NSArray *urlArray = [requestUrl componentsSeparatedByString:self.sepType];
             
 //            static bool isShow = NO;
 //            HLPlayerViewController *playerVC = [[HLPlayerViewController alloc] init];
 
 
-        
-            NSLog(@"RealVideoUrl %@", [urlArray lastObject]);
+        NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+        NSLog(@"RealVideoUrl %@", [urlArray lastObject]);
+        NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
 //            playerVC.url = [NSURL URLWithString:[urlArray lastObject]];
 //            UIViewController *topVC = [UIViewController topkeyWindowViewController];
 //            __block __weak HLHomeViewController *homeVC = nil;
@@ -198,6 +202,45 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 
 - (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
     [self.client URLProtocolDidFinishLoading:self];
+}
+
+
++ (BOOL)stringContainsMediaTypeType:(NSString *)str {
+    __block BOOL isContains = NO;
+    NSArray *filterTypes = [self mediaType];
+    [filterTypes enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *  stop) {
+        if([str containsString:obj]){
+            isContains = YES;
+            *stop = YES;
+        }
+    }];
+    return isContains;
+}
++ (BOOL)stringContainsAdTypeType:(NSString *)str {
+    __block BOOL isContains = NO;
+    NSArray *filterTypes = [self adType];
+    [filterTypes enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL *  stop) {
+        if([str containsString:obj]){
+            isContains = YES;
+            *stop = YES;
+        }
+    }];
+    return isContains;
+}
+
++ (NSArray <NSString *>*)mediaType{
+    NSArray *types = [[NSUserDefaults standardUserDefaults] arrayForKey:@"mediaType"];
+    return types? types : @[@".m3u8"];
+}
+
++ (NSArray <NSString *>*)adType{
+    NSArray *types = [[NSUserDefaults standardUserDefaults] arrayForKey:@"adType"];
+    return types? types : @[];
+}
+
++ (NSString *)sepType{
+    NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"sepType"];
+    return type? type : @"url=";
 }
 
 
