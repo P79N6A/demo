@@ -954,7 +954,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
     
-    NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
+    //NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
     total = total/1000;
     current = current/1000;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];

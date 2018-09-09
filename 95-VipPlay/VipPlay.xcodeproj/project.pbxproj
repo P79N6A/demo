@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		228B2BE5214503400042564A /* PlayerSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B2BDF214503400042564A /* PlayerSubView.m */; };
-		228B2BE6214503400042564A /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B2BE0214503400042564A /* PlayerView.m */; };
-		228B2BE7214503400042564A /* PlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 228B2BE1214503400042564A /* PlayerView.bundle */; };
-		228B2BE8214503400042564A /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228B2BE3214503400042564A /* PlayerView.xib */; };
 		228B2BEB214505300042564A /* TJPlayController.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B2BEA2145052F0042564A /* TJPlayController.m */; };
+		228B2BFE2145639A0042564A /* PlayerSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B2BF82145639A0042564A /* PlayerSubView.m */; };
+		228B2BFF2145639A0042564A /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 228B2BF92145639A0042564A /* PlayerView.m */; };
+		228B2C002145639A0042564A /* PlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 228B2BFA2145639A0042564A /* PlayerView.bundle */; };
+		228B2C012145639A0042564A /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 228B2BFC2145639A0042564A /* PlayerView.xib */; };
 		2BC48D1237064CDE04B95378 /* libPods-VipPlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BC6C5468B14E80B3C4EE294 /* libPods-VipPlay.a */; };
 		6941E776212FB5F000BD2765 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E775212FB5F000BD2765 /* AppDelegate.m */; };
 		6941E779212FB5F000BD2765 /* SPWebFunController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E778212FB5F000BD2765 /* SPWebFunController.m */; };
@@ -31,14 +31,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		228B2BDF214503400042564A /* PlayerSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSubView.m; sourceTree = "<group>"; };
-		228B2BE0214503400042564A /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
-		228B2BE1214503400042564A /* PlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PlayerView.bundle; sourceTree = "<group>"; };
-		228B2BE2214503400042564A /* PlayerSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSubView.h; sourceTree = "<group>"; };
-		228B2BE3214503400042564A /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
-		228B2BE4214503400042564A /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		228B2BE92145052F0042564A /* TJPlayController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TJPlayController.h; sourceTree = "<group>"; };
 		228B2BEA2145052F0042564A /* TJPlayController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TJPlayController.m; sourceTree = "<group>"; };
+		228B2BF82145639A0042564A /* PlayerSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSubView.m; sourceTree = "<group>"; };
+		228B2BF92145639A0042564A /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		228B2BFA2145639A0042564A /* PlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PlayerView.bundle; sourceTree = "<group>"; };
+		228B2BFB2145639A0042564A /* PlayerSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSubView.h; sourceTree = "<group>"; };
+		228B2BFC2145639A0042564A /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		228B2BFD2145639A0042564A /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
 		6941E771212FB5F000BD2765 /* VipPlay.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VipPlay.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6941E774212FB5F000BD2765 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6941E775212FB5F000BD2765 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -80,15 +80,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		228B2BDE214503400042564A /* Player */ = {
+		228B2BF72145639A0042564A /* Player */ = {
 			isa = PBXGroup;
 			children = (
-				228B2BDF214503400042564A /* PlayerSubView.m */,
-				228B2BE0214503400042564A /* PlayerView.m */,
-				228B2BE1214503400042564A /* PlayerView.bundle */,
-				228B2BE2214503400042564A /* PlayerSubView.h */,
-				228B2BE3214503400042564A /* PlayerView.xib */,
-				228B2BE4214503400042564A /* PlayerView.h */,
+				228B2BFB2145639A0042564A /* PlayerSubView.h */,
+				228B2BF82145639A0042564A /* PlayerSubView.m */,
+				228B2BFA2145639A0042564A /* PlayerView.bundle */,
+				228B2BFD2145639A0042564A /* PlayerView.h */,
+				228B2BF92145639A0042564A /* PlayerView.m */,
+				228B2BFC2145639A0042564A /* PlayerView.xib */,
 			);
 			path = Player;
 			sourceTree = "<group>";
@@ -114,9 +114,9 @@
 		6941E773212FB5F000BD2765 /* VipPlay */ = {
 			isa = PBXGroup;
 			children = (
+				228B2BF72145639A0042564A /* Player */,
 				228B2BE92145052F0042564A /* TJPlayController.h */,
 				228B2BEA2145052F0042564A /* TJPlayController.m */,
-				228B2BDE214503400042564A /* Player */,
 				69FA2E9221368C67008B3144 /* VPlay */,
 				6941E774212FB5F000BD2765 /* AppDelegate.h */,
 				6941E775212FB5F000BD2765 /* AppDelegate.m */,
@@ -188,8 +188,8 @@
 				6941E76D212FB5F000BD2765 /* Sources */,
 				6941E76E212FB5F000BD2765 /* Frameworks */,
 				6941E76F212FB5F000BD2765 /* Resources */,
-				DAC34D1564560CEB81323E43 /* [CP] Embed Pods Frameworks */,
-				B1ECF45A814BA846801C9119 /* [CP] Copy Pods Resources */,
+				2BBAF1BDB227B0C5106A7085 /* [CP] Embed Pods Frameworks */,
+				9E36502D115FDBDCF1B757BA /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,8 +239,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				69FA2E96213694DD008B3144 /* web@2x.png in Resources */,
-				228B2BE7214503400042564A /* PlayerView.bundle in Resources */,
-				228B2BE8214503400042564A /* PlayerView.xib in Resources */,
+				228B2C002145639A0042564A /* PlayerView.bundle in Resources */,
+				228B2C012145639A0042564A /* PlayerView.xib in Resources */,
 				6941E781212FB5F000BD2765 /* LaunchScreen.storyboard in Resources */,
 				6941E8082130142700BD2765 /* mviplist.json in Resources */,
 				6941E77E212FB5F000BD2765 /* Assets.xcassets in Resources */,
@@ -253,7 +253,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		B1ECF45A814BA846801C9119 /* [CP] Copy Pods Resources */ = {
+		2BBAF1BDB227B0C5106A7085 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay-frameworks.sh",
+				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9E36502D115FDBDCF1B757BA /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -275,24 +293,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		DAC34D1564560CEB81323E43 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay-frameworks.sh",
-				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-VipPlay/Pods-VipPlay-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FC94DBF41221EA00C889C59A /* [CP] Check Pods Manifest.lock */ = {
@@ -320,6 +320,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				228B2BFF2145639A0042564A /* PlayerView.m in Sources */,
+				228B2BFE2145639A0042564A /* PlayerSubView.m in Sources */,
 				6941E792212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m in Sources */,
 				6941E87C213539C100BD2765 /* ListCell.m in Sources */,
 				6941E791212FD25400BD2765 /* HybridNSURLProtocol.m in Sources */,
@@ -327,10 +329,8 @@
 				6941E784212FB5F000BD2765 /* main.m in Sources */,
 				228B2BEB214505300042564A /* TJPlayController.m in Sources */,
 				6941E8812135547100BD2765 /* UIView+PulseView.m in Sources */,
-				228B2BE5214503400042564A /* PlayerSubView.m in Sources */,
 				6941E793212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m in Sources */,
 				6941E776212FB5F000BD2765 /* AppDelegate.m in Sources */,
-				228B2BE6214503400042564A /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -468,7 +468,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S575E6NNCR;
 				INFOPLIST_FILE = VipPlay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.555;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -484,7 +484,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = S575E6NNCR;
 				INFOPLIST_FILE = VipPlay/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.555;
 				PRODUCT_NAME = "$(TARGET_NAME)";

@@ -26,7 +26,7 @@
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
     model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
-    
+    model.url = @"https://52dy.hanju2017.com/20180830/UiqpFYWy/index.m3u8?v2";
     [_playerView playWithModel:model];
     
     //    self.spStatusBarStyle = UIStatusBarStyleDefault;

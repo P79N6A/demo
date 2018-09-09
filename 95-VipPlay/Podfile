@@ -9,6 +9,7 @@ target 'VipPlay' do
 pod 'AXWebViewController', '~> 0.7.2'
 pod 'FTPopOverMenu'
 pod 'AliyunPlayer_iOS/AliyunPlayerSDK','~>3.4.0.1'
+#pod 'KSYMediaPlayer_iOS/KSYMediaPlayer_vod'
 
   # Pods for VipPlay
 

@@ -364,9 +364,21 @@
         // 设置WKWebView基本配置信息
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.preferences = [[WKPreferences alloc] init];
-        configuration.allowsInlineMediaPlayback = YES;
+        configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
         configuration.selectionGranularity = YES;
-        
+        if (@available(iOS 9.0, *)) {
+            configuration.requiresUserActionForMediaPlayback = NO;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackRequiresUserAction = NO;
+        }//把手动播放设置NO ios(8.0, 9.0)
+        if (@available(iOS 9.0, *)) {
+            configuration.allowsAirPlayForMediaPlayback = YES;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackAllowsAirPlay = YES;
+        }//允许播放，ios(8.0, 9.0)
+
         
         _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
         _wkWebView.allowsBackForwardNavigationGestures = YES;/**这一步是，开启侧滑返回上一历史界面**/
