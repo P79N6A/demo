@@ -2,8 +2,8 @@
     "platformlist":[
                     {
                     "name":"爱奇艺",
-                    "url":"http://www.iqiyi.com",
-                    "url5":"https://videos.fjhps.com/20171023/Fm0wCoXL/index.m3u8?sign=8045e849780e8e3bb70210486a263edf80d42ae6d1be96ac790703727b8ee001ae4e4c23bdf9bfd1267d7e0e63856e0893723b4623679a41e4549f226861a977"
+                    "url1":"http://www.iqiyi.com",
+                    "url":"https://cdn.zypbo.com/20180807/uvDWZsJ2/index.m3u8"
                     },
                     {
                     "name":"港剧TV",

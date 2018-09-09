@@ -421,7 +421,7 @@
 - (UIButton *)reloadBtn{
     if (!_reloadBtn) {
         self.reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _reloadBtn.frame = CGRectMake(0, 0, 200, 140);
+        _reloadBtn.frame = CGRectMake(0, 0, 200, 170);//140
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
         [_reloadBtn setTitle:@"网络异常，点击重新加载" forState:UIControlStateNormal];
