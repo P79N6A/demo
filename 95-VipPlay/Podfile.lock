@@ -22,17 +22,6 @@ DEPENDENCIES:
   - AXWebViewController (~> 0.7.2)
   - FTPopOverMenu
 
-SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
-    - AliyunPlayer_iOS
-    - Aspects
-    - AXIndicatorView
-    - AXNavigationBackItemInjection
-    - AXPracticalHUD
-    - AXWebViewController
-    - FTPopOverMenu
-    - NJKWebViewProgress
-
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: 286ac3f4ca91ea9581e92b9e5a4bcd66c81db8ed
   Aspects: 7595ba96a6727a58ebcbfc954497fc5d2fdde546
@@ -45,4 +34,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 9b7e01ac17a7b8eb8584855343994a21843f527d
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.4.0

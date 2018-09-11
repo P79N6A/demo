@@ -16,81 +16,9 @@
 #import <AVFoundation/AVFoundation.h>
 //#import <MediaPlayer/MediaPlayer.h>
 
-#import "ListCell.h"
 #import "UIView+PulseView.h"
 
-@implementation ListController
-- (void)viewDidLoad{
-    [super viewDidLoad];
-    UIToolbar *bgBar = [[UIToolbar alloc] init];
-    bgBar.barStyle = UIBarStyleBlack;
-    
-    self.tableView.backgroundView = bgBar;
-    
-    //[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"ListCell" bundle:nil] forCellReuseIdentifier:@"cell"];
-    self.tableView.estimatedRowHeight = 100;
-    self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.tableFooterView = [UIView new];
-    //1 去除掉自动布局添加的边距
-    self.tableView.layoutMargins = UIEdgeInsetsMake(0, 0, 0, 0);
-    //2 去掉iOS7的separatorInset边距
-    self.tableView.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0);
-    
-    UIToolbar *titleView = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 0, 44)];
-    titleView.backgroundColor = [UIColor clearColor];
-    titleView.translucent = YES;
-    titleView.barStyle = UIBarStyleBlack;
-    UILabel *titleLB = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 44)];
-    titleLB.text = @"自动嗅探列表";
-    titleLB.textAlignment = NSTextAlignmentCenter;
-    [titleView addSubview:titleLB];
-    titleLB.textColor = [UIColor whiteColor];
-    
-    UIBarButtonItem *back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(close)];
-    //UIBarButtonItem *
-    //UIToolbar *
-    [titleView setItems:@[back]];
-    
-    self.tableView.tableHeaderView = titleView;
-}
-- (void)viewDidAppear:(BOOL)animated{
-    [super viewDidAppear:animated];
-    self.tableView.superview.frame = self.smallFrame;
-    
-    [UIView animateWithDuration:0.25 animations:^{
-        self.tableView.superview.frame = [UIScreen mainScreen].bounds;
-        self.tableView.superview.alpha = 1.0;
-    } completion:^(BOOL finished) {
-        
-    }];
-}
-- (void)close{
-    [self dismissViewControllerAnimated:NO completion:nil];
-}
-- (UIStatusBarStyle)preferredStatusBarStyle{
-    return UIStatusBarStyleLightContent;
-}
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.mediaObjs.count;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-    cell.tilteLB.text = self.mediaObjs[indexPath.row];
-    cell.indexView.backgroundColor = [UIColor colorWithRed:arc4random_uniform(256)/255.0 green:arc4random_uniform(256)/255.0 blue:arc4random_uniform(256)/255.0 alpha:1.0];
-    cell.indexView.backgroundColor = [UIColor colorWithRed:119/255.0 green:238/255.0 blue:83/255.0 alpha:1.0];
-
-    return cell;
-}
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [self dismissViewControllerAnimated:NO completion:nil];
-    !(_didSelectItemBlock)? : _didSelectItemBlock(self.mediaObjs[indexPath.row]);
-}
-
-@end
 
 @interface SPWebFunController ()<AXWebViewControllerDelegate>
 
@@ -129,10 +57,7 @@
 - (UIButton *)leftButton{
     if (!_leftButton) {
         UIButton *leftButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        //[leftButton setTitle:@"平台" forState:UIControlStateNormal];
         [leftButton setImage:[UIImage imageNamed:@"web"] forState:UIControlStateNormal];
-        //leftButton.titleLabel.font = [UIFont systemFontOfSize:14];
-        //[leftButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
         leftButton.frame = CGRectMake(0, 0, 30, 44);
         [leftButton addTarget:self action:@selector(videosClicked:) forControlEvents:UIControlEventTouchUpInside];
         _leftButton = leftButton;
@@ -143,11 +68,8 @@
 - (UIButton *)rightButton{
     if (!_rightButton) {
         UIButton *rightButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        //[rightButton setTitle:@"转换" forState:UIControlStateNormal];
         [rightButton setImage:[UIImage imageNamed:@"vip"] forState:UIControlStateNormal];
-        //rightButton.titleLabel.font = [UIFont systemFontOfSize:14];
         rightButton.frame = CGRectMake(0, 0, 30, 44);
-        //[rightButton setTitleColor:self.view.tintColor forState:UIControlStateNormal];
         [rightButton addTarget:self action:@selector(apiClicked:) forControlEvents:UIControlEventTouchUpInside];
         _rightButton = rightButton;
     }
@@ -185,6 +107,7 @@
 }
 
 - (void)dealloc{
+    NSLog(@" webView dealloc ----");
 //    [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
 //    [NSURLProtocol wk_unregisterScheme:@"http"];
 //    [NSURLProtocol wk_unregisterScheme:@"https"];
@@ -208,18 +131,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-//    [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
-//    [NSURLProtocol wk_registerScheme:@"http"];
-//    [NSURLProtocol wk_registerScheme:@"https"];
-    
-    self.mediaObjs = [NSMutableArray array];
+
     self.delegate = self;
     [self initDefaultData];
     [self loadWebURL:self.platformlist.firstObject];
-//    [self loadURL:[NSURL URLWithString:self.platformlist.firstObject[@"url"]]];
-//    [[NSUserDefaults standardUserDefaults] setObject:self.platformlist.firstObject[@"adType"] forKey:@"adType"];
-//    [[NSUserDefaults standardUserDefaults] setObject:self.platformlist.firstObject[@"mediaType"] forKey:@"mediaType"];
-    
+
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(videoCurrentDidChange:)
                                                  name:@"SPVipVideoCurrentDidChange"
@@ -238,19 +154,14 @@
                                                  name:UIWindowDidBecomeHiddenNotification
                                                object:self.view.window];
     
-//    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-//    {
-//        self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton]];
-//    }
-//    else {
-//    self.navigationItem.rightBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton]];
-//    }
+
     [self.view addSubview:self.mediaCountButton];
 
     
     self.showsToolBar = YES;
     self.navigationType = AXWebViewControllerNavigationToolItem;
     self.maxAllowedTitleLength = 999;
+    self.cachePolicy = NSURLRequestReloadIgnoringCacheData;
 
 }
 
@@ -262,6 +173,7 @@
 }
 
 - (void)initDefaultData{
+    self.mediaObjs = [NSMutableArray array];
     NSError *error = nil;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"mviplist" ofType:@"json"];
     NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
@@ -291,20 +203,29 @@
 //FIXME:  -  事件监听
 
 - (void)mediaList:(UIButton *)sender{
-    NSLog(@"%s", __func__);
-     __weak typeof(self) weakSelf = self;
-    CGRect rect = [sender.superview convertRect:sender.frame toView:self.view];
-    ListController *alertVC = [[ListController alloc] init];
-    alertVC.mediaObjs = self.mediaObjs;
-    alertVC.smallFrame = rect;
-    alertVC.tableView.superview.alpha = 0.0;
-    alertVC.view.backgroundColor = [UIColor clearColor];
-    alertVC.tableView.superview.frame = rect;
-    alertVC.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    alertVC.didSelectItemBlock = ^(NSString *url) {
-        [weakSelf toNativePlay:url];
-    };
-    [self presentViewController:alertVC animated:NO completion:nil ];
+    
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"自动嗅探列表" message:@"包括之前浏览所自动嗅探到的多媒体资源列表" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [self.mediaObjs enumerateObjectsUsingBlock:^(NSString * url, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        UIAlertAction *name = [UIAlertAction actionWithTitle:url style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self toNativePlay:url];
+        }];
+        
+        [alertVC addAction:name];
+    }];
+
+    UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [alertVC addAction:cancel];
+    
+    UIPopoverPresentationController *popover = alertVC.popoverPresentationController;
+    if (popover) {
+        popover.sourceView = self.navigationItem.rightBarButtonItem.customView;
+        popover.sourceRect = self.navigationItem.rightBarButtonItem.customView.bounds;
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }else {
+        [self presentViewController:alertVC animated:YES completion:nil];
+    }
 }
 // 视频平台点击
 - (void)videosClicked:(id)sender {

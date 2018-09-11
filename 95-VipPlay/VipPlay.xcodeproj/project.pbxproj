@@ -23,8 +23,6 @@
 		6941E792212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E78E212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m */; };
 		6941E793212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E790212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m */; };
 		6941E8082130142700BD2765 /* mviplist.json in Resources */ = {isa = PBXBuildFile; fileRef = 6941E8072130142700BD2765 /* mviplist.json */; };
-		6941E87C213539C100BD2765 /* ListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E87A213539C100BD2765 /* ListCell.m */; };
-		6941E87D213539C100BD2765 /* ListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6941E87B213539C100BD2765 /* ListCell.xib */; };
 		6941E8812135547100BD2765 /* UIView+PulseView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6941E8802135547000BD2765 /* UIView+PulseView.m */; };
 		69FA2E95213694DD008B3144 /* vip@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69FA2E93213694DD008B3144 /* vip@2x.png */; };
 		69FA2E96213694DD008B3144 /* web@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 69FA2E94213694DD008B3144 /* web@2x.png */; };
@@ -56,9 +54,6 @@
 		6941E78F212FD25400BD2765 /* NSURLProtocol+WKWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+WKWebVIew.h"; sourceTree = "<group>"; };
 		6941E790212FD25400BD2765 /* NSURLProtocol+WKWebVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+WKWebVIew.m"; sourceTree = "<group>"; };
 		6941E8072130142700BD2765 /* mviplist.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = mviplist.json; sourceTree = "<group>"; };
-		6941E879213539C100BD2765 /* ListCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ListCell.h; sourceTree = "<group>"; };
-		6941E87A213539C100BD2765 /* ListCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ListCell.m; sourceTree = "<group>"; };
-		6941E87B213539C100BD2765 /* ListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListCell.xib; sourceTree = "<group>"; };
 		6941E87F2135547000BD2765 /* UIView+PulseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+PulseView.h"; sourceTree = "<group>"; };
 		6941E8802135547000BD2765 /* UIView+PulseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+PulseView.m"; sourceTree = "<group>"; };
 		69FA2E93213694DD008B3144 /* vip@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vip@2x.png"; sourceTree = "<group>"; };
@@ -148,9 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				6941E78A212FD25400BD2765 /* NSURLProtocol */,
-				6941E879213539C100BD2765 /* ListCell.h */,
-				6941E87A213539C100BD2765 /* ListCell.m */,
-				6941E87B213539C100BD2765 /* ListCell.xib */,
 				69FA2E93213694DD008B3144 /* vip@2x.png */,
 				69FA2E94213694DD008B3144 /* web@2x.png */,
 				6941E777212FB5F000BD2765 /* SPWebFunController.h */,
@@ -251,7 +243,6 @@
 				6941E77E212FB5F000BD2765 /* Assets.xcassets in Resources */,
 				69FA2E95213694DD008B3144 /* vip@2x.png in Resources */,
 				6941E77C212FB5F000BD2765 /* Main.storyboard in Resources */,
-				6941E87D213539C100BD2765 /* ListCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +319,6 @@
 				228B2BFF2145639A0042564A /* PlayerView.m in Sources */,
 				228B2BFE2145639A0042564A /* PlayerSubView.m in Sources */,
 				6941E792212FD25400BD2765 /* NSURLProtocol+UIWebVIew.m in Sources */,
-				6941E87C213539C100BD2765 /* ListCell.m in Sources */,
 				6941E791212FD25400BD2765 /* HybridNSURLProtocol.m in Sources */,
 				6941E779212FB5F000BD2765 /* SPWebFunController.m in Sources */,
 				6941E784212FB5F000BD2765 /* main.m in Sources */,
