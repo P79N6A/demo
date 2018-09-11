@@ -2,19 +2,7 @@
 #import "TJPlayController.h"
 
 #import "PlayerView.h"
-//#import "TJDetailCell.h"
-//
-////#import "JJVIModel.h"
-////#import "JJHomeModel.h"
-////#import "JJHtml.h"
-////#import "JJHttp.h"
-//#import "UIView+Loading.h"
-//#import "UIView+Extension.h"
-//#import "TJADMob.h"
-//#import "AudioPlayer.h"
-//#import "TJIQYVideo.h"
 
-//#import <MJExtension.h>
 #define kScreenW [UIScreen mainScreen].bounds.size.width
 
 #define kScreenH [UIScreen mainScreen].bounds.size.height
@@ -119,6 +107,7 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:self.movieView];
+    self.navigationItem.title = self.title;
     
     VideoModel *m = [VideoModel new];
     m.url = self.url;

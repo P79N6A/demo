@@ -33,26 +33,12 @@
 
 @property (nonatomic, strong) NSArray *list;
 @property (nonatomic, strong) NSMutableArray <NSDictionary *>*platformlist;
-@property (nonatomic, strong) NSMutableArray <NSDictionary *>*localPlatformlist;
 
 @end
 
 
 @implementation SPWebFunController
-- (NSMutableArray<NSDictionary *> *)localPlatformlist
-{
-    if (!_localPlatformlist) {
-        
-        NSMutableArray *datas = [[NSUserDefaults standardUserDefaults] mutableArrayValueForKey:@"localPlatformlist"];
-        if (datas.count) {
-            _localPlatformlist = datas.mutableCopy;
-        }else{
-            _localPlatformlist = [NSMutableArray array];
-            [_localPlatformlist addObject:@{@"url":@"app://add",@"name":@"我要添加"}];
-        }
-    }
-    return _localPlatformlist;
-}
+
 
 - (UIButton *)leftButton{
     if (!_leftButton) {
@@ -82,6 +68,8 @@
         _mediaCountButton.frame = CGRectMake(200, 300, 54, 54);
         _mediaCountButton.backgroundColor = [UIColor redColor];
         [_mediaCountButton addTarget:self action:@selector(mediaList:) forControlEvents:UIControlEventTouchUpInside];
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
+        [_mediaCountButton addGestureRecognizer:pan];
         _mediaCountButton.layer.cornerRadius = 27;
         _mediaCountButton.layer.masksToBounds = YES;
         _mediaCountButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.55];
@@ -90,6 +78,8 @@
     }
     return _mediaCountButton;
 }
+
+
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
@@ -133,14 +123,20 @@
     [super viewDidLoad];
 
     self.delegate = self;
+    self.showsToolBar = YES;
+    self.navigationType = AXWebViewControllerNavigationToolItem;
+    self.maxAllowedTitleLength = 999;
+    self.showsBackgroundLabel = NO;
+    self.cachePolicy = NSURLRequestReloadIgnoringCacheData;
+    
     [self initDefaultData];
+    
     [self loadWebURL:self.platformlist.firstObject];
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(videoCurrentDidChange:)
                                                  name:@"SPVipVideoCurrentDidChange"
                                                object:nil];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(playerItemBecameCurrent:)
                                                  name:@"AVPlayerItemBecameCurrentNotification"
@@ -154,14 +150,7 @@
                                                  name:UIWindowDidBecomeHiddenNotification
                                                object:self.view.window];
     
-
     [self.view addSubview:self.mediaCountButton];
-
-    
-    self.showsToolBar = YES;
-    self.navigationType = AXWebViewControllerNavigationToolItem;
-    self.maxAllowedTitleLength = 999;
-    self.cachePolicy = NSURLRequestReloadIgnoringCacheData;
 
 }
 
@@ -169,7 +158,7 @@
     [self loadURL:[NSURL URLWithString:obj[@"url"]]];
     [[NSUserDefaults standardUserDefaults] setObject:obj[@"adType"] forKey:@"adType"];
     [[NSUserDefaults standardUserDefaults] setObject:obj[@"mediaType"] forKey:@"mediaType"];
-    [[NSUserDefaults standardUserDefaults] setObject:obj[@"sepType"] forKey:@"sepType"];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"reload"] forKey:@"reload"];
 }
 
 - (void)initDefaultData{
@@ -184,7 +173,6 @@
     self.list = dict[@"list"];
     self.platformlist = ((NSArray *)dict[@"platformlist"]).mutableCopy;
     
-    [self.platformlist addObjectsFromArray:self.localPlatformlist];
 }
 
 - (void)toNativePlay:(NSString *)url{
@@ -204,11 +192,43 @@
     [self.webView goBack];
 }
 
+
 //FIXME:  -  事件监听
+#pragma mark - 手势
+- (void)handlePan:(UIPanGestureRecognizer *)recoginzer
+{
+
+    if (recoginzer.state != UIGestureRecognizerStateEnded && recoginzer.state != UIGestureRecognizerStateFailed) {
+        CGPoint location = [recoginzer locationInView:recoginzer.view.superview];
+        // x 27 w-27
+        
+        //y 50  h - 86
+        CGFloat x = location.x;
+        CGFloat y = location.y;
+
+        if (x < 30) {
+            x = 30;
+        }
+        if (x > self.view.bounds.size.width - 30) {
+            x = self.view.bounds.size.width - 30;
+        }
+        if (y < 100) {
+            y = 100;
+        }
+        if (y > self.view.bounds.size.height - 100) {
+            y = self.view.bounds.size.width - 100;
+        }
+        
+        recoginzer.view.center = CGPointMake(x, y);
+        [recoginzer.view startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
+        NSLog(@"%s--%@", __func__,NSStringFromCGPoint(location));
+    }
+
+}
 
 - (void)mediaList:(UIButton *)sender{
     
-    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"自动嗅探列表" message:@"包括之前浏览所自动嗅探到的多媒体资源列表" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alertVC = [UIAlertController alertControllerWithTitle:@"自动嗅探列表" message:@"浏览所自动嗅探到的多媒体资源列表" preferredStyle:UIAlertControllerStyleActionSheet];
     
     [self.mediaObjs enumerateObjectsUsingBlock:^(NSString * url, NSUInteger idx, BOOL * _Nonnull stop) {
         
@@ -261,9 +281,6 @@
         NSString *name = alert.textFields.firstObject.text;
         NSString *url = alert.textFields.lastObject.text;
         [self.platformlist insertObject:@{@"name":name,@"url":url} atIndex:self.platformlist.count - 1];
-        [self.localPlatformlist insertObject:@{@"name":name,@"url":url} atIndex:self.localPlatformlist.count - 1];
-        [[NSUserDefaults standardUserDefaults] setObject:self.localPlatformlist forKey:@"localPlatformlist"];
-        [[NSUserDefaults standardUserDefaults] synchronize];
     }]];
 
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {

@@ -63,23 +63,27 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     NSMutableURLRequest *mutableReqeust = [request mutableCopy];
     [mutableReqeust setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1" forHTTPHeaderField:@"User-Agent"];
     
-    //request截取重定向
-//    if ([request.URL.absoluteString isEqualToString:sourUrl])
-//    {
-//        NSURL* url1 = [NSURL URLWithString:localUrl];
-//        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
-//    }
+
     
     NSString *requestUrl = request.URL.absoluteString;
+    
+    //request截取重定向
+    if ([self reloadURL:requestUrl])
+    {
+        NSURL* url1 = [NSURL URLWithString:[self reloadURL:requestUrl]];
+        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
+        NSLog(@"\n重定向URL：%@", requestUrl);
+    }else
     //拦截广告
     if ([self stringContainsAdTypeType:requestUrl]) {
         NSLog(@"\n拦截广告URL：%@", requestUrl);
         mutableReqeust = nil;
-    }
+    }else
     //拦截视频
-    else if([self stringContainsMediaTypeType:requestUrl])
+    if([self stringContainsMediaTypeType:requestUrl])
     {
-        NSArray *urlArray = [requestUrl componentsSeparatedByString:self.sepType];
+        //NSArray *urlArray = [requestUrl componentsSeparatedByString:self.sepType];
+        NSArray *urlArray = [requestUrl componentsSeparatedByString:@"=http"];
         NSString *url = urlArray.lastObject;
         if (urlArray.count>1) {
             url = [NSString stringWithFormat:@"http%@",url];
@@ -93,8 +97,8 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         });
 
         mutableReqeust = nil;
-    }
-    else {
+    }else
+     {
         NSLog(@"\n请求URL：%@", requestUrl);
     }
     
@@ -198,6 +202,18 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     return isContains;
 }
 
+
++ (NSString *)reloadURL:(NSString *)orginURL{
+    __block NSString *url;
+    [[self reloadType] enumerateKeysAndObjectsUsingBlock:^(NSString *key, NSString *obj, BOOL *  stop) {
+        if([orginURL containsString:key]){
+            url = obj;
+            *stop = YES;
+        }
+    }];
+    return url;
+}
+
 + (NSArray <NSString *>*)mediaType{
     NSArray *types = [[NSUserDefaults standardUserDefaults] arrayForKey:@"mediaType"];
     return types? types : @[@".m3u8"];
@@ -208,10 +224,15 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     return types? types : @[];
 }
 
-+ (NSString *)sepType{
-    NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"sepType"];
-    return type? type : @"url=";
++ (NSDictionary*)reloadType{
+    NSDictionary *types = [[NSUserDefaults standardUserDefaults] dictionaryForKey:@"reload"];
+    return types? types : @{};
 }
+
+//+ (NSString *)sepType{
+//    NSString *type = [[NSUserDefaults standardUserDefaults] stringForKey:@"sepType"];
+//    return type? type : @"url=";
+//}
 
 
 @end
