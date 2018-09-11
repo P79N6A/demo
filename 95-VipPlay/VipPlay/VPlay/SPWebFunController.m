@@ -432,7 +432,7 @@
     [self.webView evaluateJavaScript:JsStr completionHandler:^(NSString * response, NSError * _Nullable error) {
         if(![response isEqual:[NSNull null]] && response.length > 0){
             //截获到视频地址了
-            NSLog(@"response == %@",response);
+            NSLog(@"通过webView截获到视频地址 == %@",response);
             dispatch_async(dispatch_get_main_queue(), ^{
                 //NSNotification *noti = [NSNotification notificationWithName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":response}];
                 [self videoCurrentDidChange:[NSNotification notificationWithName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":response}]];
