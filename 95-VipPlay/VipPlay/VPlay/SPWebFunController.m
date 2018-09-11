@@ -34,6 +34,10 @@
 @property (nonatomic, strong) NSArray *list;
 @property (nonatomic, strong) NSMutableArray <NSDictionary *>*platformlist;
 
+
+@property (nonatomic, assign) CGPoint startImageCenter;
+@property (nonatomic, assign) CGPoint startGCenter;
+
 @end
 
 
@@ -65,16 +69,16 @@
 - (UIButton *)mediaCountButton{
     if (!_mediaCountButton) {
         _mediaCountButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _mediaCountButton.frame = CGRectMake(200, 300, 54, 54);
+        _mediaCountButton.frame = CGRectMake(200, 300, 40, 40);
         _mediaCountButton.backgroundColor = [UIColor redColor];
         [_mediaCountButton addTarget:self action:@selector(mediaList:) forControlEvents:UIControlEventTouchUpInside];
         UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(handlePan:)];
         [_mediaCountButton addGestureRecognizer:pan];
-        _mediaCountButton.layer.cornerRadius = 27;
+        _mediaCountButton.layer.cornerRadius = 20;
         _mediaCountButton.layer.masksToBounds = YES;
         _mediaCountButton.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.55];
         _mediaCountButton.hidden = !self.mediaObjs.count;
-        _mediaCountButton.titleLabel.font = [UIFont boldSystemFontOfSize:24.0];;
+        _mediaCountButton.titleLabel.font = [UIFont boldSystemFontOfSize:15];;
     }
     return _mediaCountButton;
 }
@@ -88,7 +92,7 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
     {
         UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-
+        
         self.navigationItem.leftBarButtonItems = @[[[UIBarButtonItem alloc] initWithCustomView:self.leftButton],[[UIBarButtonItem alloc] initWithCustomView:self.rightButton],fixedSpace,fixedSpace];
     }
     else {
@@ -98,9 +102,9 @@
 
 - (void)dealloc{
     NSLog(@" webView dealloc ----");
-//    [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
-//    [NSURLProtocol wk_unregisterScheme:@"http"];
-//    [NSURLProtocol wk_unregisterScheme:@"https"];
+    //    [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
+    //    [NSURLProtocol wk_unregisterScheme:@"http"];
+    //    [NSURLProtocol wk_unregisterScheme:@"https"];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -108,7 +112,7 @@
     [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
     [NSURLProtocol wk_registerScheme:@"http"];
     [NSURLProtocol wk_registerScheme:@"https"];
-
+    
 }
 
 
@@ -121,7 +125,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
+    
     self.delegate = self;
     self.showsToolBar = YES;
     self.navigationType = AXWebViewControllerNavigationToolItem;
@@ -132,7 +136,7 @@
     [self initDefaultData];
     
     [self loadWebURL:self.platformlist.firstObject];
-
+    
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(videoCurrentDidChange:)
                                                  name:@"SPVipVideoCurrentDidChange"
@@ -151,7 +155,7 @@
                                                object:self.view.window];
     
     [self.view addSubview:self.mediaCountButton];
-
+    
 }
 
 - (void)loadWebURL:(NSDictionary *)obj{
@@ -168,7 +172,7 @@
     NSData *data = [NSData dataWithContentsOfFile:path options:NSDataReadingMappedIfSafe error:&error];
     NSDictionary *dict = [self mviplist];//[NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
     dict = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
-
+    
     //NSLog(@"%@,error %@",dict, error);
     self.list = dict[@"list"];
     self.platformlist = ((NSArray *)dict[@"platformlist"]).mutableCopy;
@@ -197,33 +201,73 @@
 #pragma mark - 手势
 - (void)handlePan:(UIPanGestureRecognizer *)recoginzer
 {
-
-    if (recoginzer.state != UIGestureRecognizerStateEnded && recoginzer.state != UIGestureRecognizerStateFailed) {
-        CGPoint location = [recoginzer locationInView:recoginzer.view.superview];
-        // x 27 w-27
+    UIButton * imageView = (UIButton *)recoginzer.view;
+    
+    if (recoginzer.state == UIGestureRecognizerStateBegan) {
         
-        //y 50  h - 86
-        CGFloat x = location.x;
-        CGFloat y = location.y;
-
-        if (x < 30) {
-            x = 30;
-        }
-        if (x > self.view.bounds.size.width - 30) {
-            x = self.view.bounds.size.width - 30;
-        }
-        if (y < 100) {
-            y = 100;
-        }
-        if (y > self.view.bounds.size.height - 100) {
-            y = self.view.bounds.size.width - 100;
-        }
-        
-        recoginzer.view.center = CGPointMake(x, y);
-        [recoginzer.view startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
-        NSLog(@"%s--%@", __func__,NSStringFromCGPoint(location));
+        //记录中心位置
+        self.startImageCenter = imageView.center;
+        self.startGCenter = [recoginzer locationInView:self.view];
+        return;
     }
-
+    
+    //非开始阶段
+    //获得手势移动的距离 现在的位置
+    CGPoint nowGCenter = [recoginzer locationInView:self.view];
+    float x = nowGCenter.x - self.startGCenter.x;
+    float y = nowGCenter.y - self.startGCenter.y;
+    
+    CGFloat centerX = self.startImageCenter.x+x;
+    CGFloat centerY = self.startImageCenter.y+y;
+    if (centerX < 30) {
+        centerX = 30;
+    }
+    if (centerX > self.view.bounds.size.width - 30) {
+        centerX = self.view.bounds.size.width - 30;
+    }
+    if (centerY < 100) {
+        centerY = 100;
+    }
+    if (centerY > self.view.bounds.size.height - 100) {
+        centerY = self.view.bounds.size.height - 100;
+    }
+    //计算imageview的相对位移
+    imageView.center = CGPointMake(centerX, centerY);
+    [imageView startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
+    
+    //    if (pan.state == UIGestureRecognizerStateEnded) {
+    //
+    //        imageView.center = self.startImageCenter;
+    //    }
+    
+    
+    return;
+    //    if (recoginzer.state != UIGestureRecognizerStateEnded && recoginzer.state != UIGestureRecognizerStateFailed) {
+    //        CGPoint location = [recoginzer locationInView:recoginzer.view.superview];
+    //        // x 27 w-27
+    //
+    //        //y 50  h - 86
+    //        CGFloat x = location.x;
+    //        CGFloat y = location.y;
+    //
+    //        if (x < 30) {
+    //            x = 30;
+    //        }
+    //        if (x > self.view.bounds.size.width - 30) {
+    //            x = self.view.bounds.size.width - 30;
+    //        }
+    //        if (y < 100) {
+    //            y = 100;
+    //        }
+    //        if (y > self.view.bounds.size.height - 100) {
+    //            y = self.view.bounds.size.width - 100;
+    //        }
+    //
+    //        recoginzer.view.center = CGPointMake(x, y);
+    //        [recoginzer.view startPulseWithColor:[UIColor lightGrayColor] scaleFrom:1.0 to:1.2 frequency:1.0 opacity:0.5 animation:PulseViewAnimationTypeRegularPulsing];
+    //        NSLog(@"%s--%@", __func__,NSStringFromCGPoint(location));
+    //    }
+    
 }
 
 - (void)mediaList:(UIButton *)sender{
@@ -238,7 +282,7 @@
         
         [alertVC addAction:name];
     }];
-
+    
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
     [alertVC addAction:cancel];
     
@@ -282,7 +326,7 @@
         NSString *url = alert.textFields.lastObject.text;
         [self.platformlist insertObject:@{@"name":name,@"url":url} atIndex:self.platformlist.count - 1];
     }]];
-
+    
     [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
         textField.placeholder = @"请输入视频网站的名称";
     }];
@@ -325,7 +369,7 @@
         [self.mediaObjs insertObject:url atIndex:0];
         [self.mediaCountButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)self.mediaObjs.count] forState:UIControlStateNormal];
         self.mediaCountButton.hidden = !self.mediaObjs.count;
-
+        
         [self toNativePlay:url];
     }
 }
@@ -368,8 +412,8 @@
 }
 - (void)webViewControllerDidFinishLoad:(AXWebViewController *)webViewController{
     
-
-
+    
+    
     NSString *JsStr = @"(document.getElementsByTagName(\"video\")[0]).src";
     [self.webView evaluateJavaScript:JsStr completionHandler:^(NSString * response, NSError * _Nullable error) {
         if(![response isEqual:[NSNull null]] && response.length > 0){
