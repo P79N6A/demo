@@ -73,7 +73,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     NSString *requestUrl = request.URL.absoluteString;
     //拦截广告
     if ([self stringContainsAdTypeType:requestUrl]) {
-        NSLog(@"拦截广告URL：%@", requestUrl);
+        NSLog(@"\n拦截广告URL：%@", requestUrl);
         mutableReqeust = nil;
     }
     //拦截视频
@@ -95,7 +95,7 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
         mutableReqeust = nil;
     }
     else {
-        NSLog(@"请求URL：%@", requestUrl);
+        NSLog(@"\n请求URL：%@", requestUrl);
     }
     
     return mutableReqeust;

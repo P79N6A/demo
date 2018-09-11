@@ -10,14 +10,5 @@
 #import <AXWebViewController/AXWebViewController.h>
 
 @interface SPWebFunController : AXWebViewController
-
-
 @end
 
-
-@interface ListController : UITableViewController
-
-@property (nonatomic, assign) CGRect smallFrame;
-@property (nonatomic, strong) NSMutableArray <NSString *>*mediaObjs;
-@property (nonatomic, copy) void (^didSelectItemBlock)(NSString *url);
-@end

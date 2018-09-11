@@ -193,7 +193,11 @@
     
     TJPlayController *playVC = [[TJPlayController alloc] init];
     playVC.url = url;
-    playVC.title = self.navigationItem.title;
+    NSArray *tltles = [self.navigationItem.title componentsSeparatedByString:@"-"];
+    if (tltles.count<2) {
+        tltles = [self.navigationItem.title componentsSeparatedByString:@"_"];
+    }
+    playVC.title = tltles.firstObject;
     
     [self.navigationController pushViewController:playVC animated:YES];
     
@@ -220,8 +224,8 @@
     
     UIPopoverPresentationController *popover = alertVC.popoverPresentationController;
     if (popover) {
-        popover.sourceView = self.navigationItem.rightBarButtonItem.customView;
-        popover.sourceRect = self.navigationItem.rightBarButtonItem.customView.bounds;
+        popover.sourceView = sender;
+        popover.sourceRect = sender.bounds;
         [self presentViewController:alertVC animated:YES completion:nil];
     }else {
         [self presentViewController:alertVC animated:YES completion:nil];
