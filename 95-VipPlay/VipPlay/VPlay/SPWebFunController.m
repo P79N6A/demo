@@ -422,10 +422,9 @@
 
 
 - (void)webViewController:(AXWebViewController *)webViewController didFailLoadWithError:(NSError *)error{
-    NSLog(@"%s", __func__);
+    NSLog(@"--webViewController加载出错--%@",error);
 }
 - (void)webViewControllerDidFinishLoad:(AXWebViewController *)webViewController{
-    NSLog(@"%s---%d", __func__,webViewController.webView.canGoBack);
     
 
 

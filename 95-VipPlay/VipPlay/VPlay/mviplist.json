@@ -2,19 +2,22 @@
     "platformlist":[
                     {
                     "name":"爱奇艺",
-                    "url1":"http://www.iqiyi.com",
-                    "url":"https://cdn.zypbo.com/20180807/uvDWZsJ2/index.m3u8"
+                    "url":"http://www.iqiyi.com",
+                    "url1":"https://cdn.zypbo.com/20180807/uvDWZsJ2/index.m3u8"
                     },
                     {
                     "name":"港剧TV",
                     "url":"https://m.dsmi.cc/",
-                    "sepType":"v=",
+                    "sepType":"=http",
+                    "adH":84,
                     "adType":[
                               "saugei.js",
                               "s13.cnzz.com",
                               "img.wsf-gz.cn",
                               "xlsschina15.net",
-                              "2hip.cn"
+                              "2hip.cn",
+                              "logo.png",
+                              "apple-touch-icon.png"
                               ],
                     "mediaType":[
                                  ".m3u8",
@@ -23,15 +26,18 @@
                     },
                     {
                     "name":"日剧TV",
-                    "url":"https://m.rijutv.com/riju",
-                    "sepType":"v=",
+                    "url1":"https://m.rijutv.com/riju",
+                    "url":"http://www.ykmov.com/",
+                    "sepType":"=http",
+                    "adH":0,
                     "adType":[
-                              "saugei.js",
-                              "s13.cnzz.com",
-                              "img.wsf-gz.cn",
-                              "xlsschina15.net",
-                              "2hip.cn"
-                              ],
+                               "e.changyan.sohu",
+                               "s13.cnzz.com",
+                               "img.wsf-gz.cn",
+                               "xlsschina15.net",
+                               "2hip.cn",
+                               "images/logo.png"
+                               ],
                     "mediaType":[
                                  ".m3u8",
                                  ".mp4"
@@ -41,7 +47,7 @@
                     {
                     "name":"TV",
                     "url":"http://bddn.cn/zb.htm",
-                    "sepType":"url=",
+                    "sepType":"=http",
                     "adType":[
                               "saugei.js",
                               "s13.cnzz.com",
@@ -337,3 +343,4 @@
              }
              ]
 }
+

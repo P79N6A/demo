@@ -9,14 +9,13 @@
 #import "HybridNSURLProtocol.h"
 #import <UIKit/UIKit.h>
 
-static NSString*const sourUrl  = @"https://m.baidu.com/static/index/plus/plus_logo.png";
-static NSString*const sourIconUrl  = @"http://m.baidu.com/static/search/baiduapp_icon.png";
-static NSString*const localUrl = @"http://mecrm.qa.medlinker.net/public/image?id=57026794&certType=workCertPicUrl&time=1484625241";
+//static NSString*const sourUrl  = @"https://m.baidu.com/static/index/plus/plus_logo.png";
+//static NSString*const sourIconUrl  = @"http://m.baidu.com/static/search/baiduapp_icon.png";
+//static NSString*const localUrl = @"http://mecrm.qa.medlinker.net/public/image?id=57026794&certType=workCertPicUrl&time=1484625241";
 
 static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
 @interface HybridNSURLProtocol ()<NSURLSessionDelegate>
 @property (nonnull,strong) NSURLSessionDataTask *task;
-
 @end
 
 
@@ -39,24 +38,24 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     return NO;
 }
 
-+ (BOOL)replaceAdHostsWebString:(NSArray *)adhosts response:(NSString **)response{
-    BOOL isContain = NO;
-    
-    for (NSString *adhost in adhosts) {
-        isContain = isContain | [[self class]  replaceWebString:adhost response:response];
-    }
-    return  isContain;
-}
-
-
-+ (BOOL)replaceWebString:(NSString *)adhost response:(NSString **)response{
-    BOOL isContain = NO;
-    if ([*response containsString:adhost]) {
-        *response = [*response stringByReplacingOccurrencesOfString:adhost withString:@""];
-        isContain = YES;
-    }
-    return  isContain;
-}
+//+ (BOOL)replaceAdHostsWebString:(NSArray *)adhosts response:(NSString **)response{
+//    BOOL isContain = NO;
+//
+//    for (NSString *adhost in adhosts) {
+//        isContain = isContain | [[self class]  replaceWebString:adhost response:response];
+//    }
+//    return  isContain;
+//}
+//
+//
+//+ (BOOL)replaceWebString:(NSString *)adhost response:(NSString **)response{
+//    BOOL isContain = NO;
+//    if ([*response containsString:adhost]) {
+//        *response = [*response stringByReplacingOccurrencesOfString:adhost withString:@""];
+//        isContain = YES;
+//    }
+//    return  isContain;
+//}
 
 
 + (NSURLRequest *)canonicalRequestForRequest:(NSURLRequest *)request
@@ -65,87 +64,38 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     [mutableReqeust setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1" forHTTPHeaderField:@"User-Agent"];
     
     //request截取重定向
-    if ([request.URL.absoluteString isEqualToString:sourUrl])
-    {
-        NSURL* url1 = [NSURL URLWithString:localUrl];
-        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
-    }
+//    if ([request.URL.absoluteString isEqualToString:sourUrl])
+//    {
+//        NSURL* url1 = [NSURL URLWithString:localUrl];
+//        mutableReqeust = [NSMutableURLRequest requestWithURL:url1];
+//    }
     
     NSString *requestUrl = request.URL.absoluteString;
-//     拦截广告
-//    if ([requestUrl containsString:@"img.09mk.cn"]
-//        ||[requestUrl containsString:@"img.xiaohui2.cn"]
-//        ||[requestUrl containsString:@".xiaohui"]
-//        ||[requestUrl containsString:@".apple.com"]
-//        ||[requestUrl containsString:@"img2."]
-//        ||[requestUrl containsString:@"sysapr.cn"]
-//        ) {
-//        mutableReqeust = nil;
-//    }
-//    else
+    //拦截广告
     if ([self stringContainsAdTypeType:requestUrl]) {
+        NSLog(@"拦截广告URL：%@", requestUrl);
         mutableReqeust = nil;
-    }else if([self stringContainsMediaTypeType:requestUrl]
-//       [requestUrl containsString:@".m3u8"]
-//       [requestUrl.pathExtension hasPrefix:@"m3u8"]
-//       ||[requestUrl containsString:@".mp4"]
-       )
+    }
+    //拦截视频
+    else if([self stringContainsMediaTypeType:requestUrl])
     {
-//        if (![[UIViewController topViewController] isKindOfClass:[HLPlayerViewController class]]) {
-            NSArray *urlArray = [requestUrl componentsSeparatedByString:self.sepType];
-            
-//            static bool isShow = NO;
-//            HLPlayerViewController *playerVC = [[HLPlayerViewController alloc] init];
-
+        NSArray *urlArray = [requestUrl componentsSeparatedByString:self.sepType];
+        NSString *url = urlArray.lastObject;
+        if (urlArray.count>1) {
+            url = [NSString stringWithFormat:@"http%@",url];
+        }
 
         NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-        NSLog(@"RealVideoUrl %@", [urlArray lastObject]);
+        NSLog(@"拦截视频URL:%@--请求URL--:%@", url,requestUrl);
         NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-
-//            playerVC.url = [NSURL URLWithString:[urlArray lastObject]];
-//            UIViewController *topVC = [UIViewController topkeyWindowViewController];
-//            __block __weak HLHomeViewController *homeVC = nil;
-//            for (UIViewController *vc in topVC.navigationController.childViewControllers) {
-//                if ([vc isKindOfClass:NSClassFromString(@"HLHomeViewController")]) {
-//                    playerVC.title = vc.title?:vc.navigationItem.title;
-//                    homeVC = (id)vc;
-//                    break;
-//                }
-//            }
-//
-//
-//            playerVC.backBlock = ^(BOOL finish){
-//                if (finish && (urlArray.count >= 2) && [[homeVC webView] respondsToSelector:@selector(canGoBack)]) {
-//                    if ([[homeVC webView] performSelector:@selector(canGoBack)]) {
-//                        [[homeVC webView] performSelector:@selector(goBack)];
-//                    }
-//                }
-//                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-//                    isShow = NO;
-//                });
-//            };
-//
-//            [[UIViewController topkeyWindowViewController] presentViewController:playerVC animated:YES completion:nil];
-        
-        
         dispatch_async(dispatch_get_main_queue(), ^{
-                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":[urlArray lastObject]}];
-//            if([[self topViewController] isKindOfClass:[MPMoviePlayerViewController class]]) return ;
-//
-//            MPMoviePlayerViewController *playVC = [[MPMoviePlayerViewController alloc]initWithContentURL:[NSURL URLWithString:[urlArray lastObject]]];
-//            playVC.view.frame = CGRectMake(0, 100, 414, 300);
-//            [[UIApplication sharedApplication].keyWindow.rootViewController presentViewController:playVC animated:YES completion:nil];
+                    [[NSNotificationCenter defaultCenter] postNotificationName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":url}];
         });
-     
-        
 
-        
-        
-            mutableReqeust = nil;
-//        }
+        mutableReqeust = nil;
     }
     else {
-        NSLog(@"requestUrl = %@",requestUrl);
+        NSLog(@"请求URL：%@", requestUrl);
     }
     
     return mutableReqeust;
@@ -163,20 +113,20 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     [NSURLProtocol setProperty:@YES forKey:KHybridNSURLProtocolHKey inRequest:mutableReqeust];
     
     //这里最好加上缓存判断，加载本地离线文件， 这个直接简单的例子。
-    if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
-    {
-            NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
-            NSURLResponse* response = [[NSURLResponse alloc] initWithURL:self.request.URL MIMEType:@"image/png" expectedContentLength:data.length textEncodingName:nil];
-            [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
-            [self.client URLProtocol:self didLoadData:data];
-            [self.client URLProtocolDidFinishLoading:self];
-    }
-    else
+//    if ([mutableReqeust.URL.absoluteString isEqualToString:sourIconUrl])
+//    {
+//            NSData* data = UIImagePNGRepresentation([UIImage imageNamed:@"medlinker"]);
+//            NSURLResponse* response = [[NSURLResponse alloc] initWithURL:self.request.URL MIMEType:@"image/png" expectedContentLength:data.length textEncodingName:nil];
+//            [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageAllowed];
+//            [self.client URLProtocol:self didLoadData:data];
+//            [self.client URLProtocolDidFinishLoading:self];
+//    }
+//    else
     {
         NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration] delegate:self delegateQueue:nil];
         self.task = [session dataTaskWithRequest:self.request];
         
-        NSLog(@"xxxx request %@", self.request.URL.absoluteString);
+        //NSLog(@"请求 request %@", self.request.URL.absoluteString);
         
         [self.task resume];
     }
@@ -200,9 +150,29 @@ static NSString* const KHybridNSURLProtocolHKey = @"KHybridNSURLProtocol";
     [[self client] URLProtocol:self didLoadData:data];
 }
 
-- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
-    [self.client URLProtocolDidFinishLoading:self];
+//- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(nullable NSError *)error {
+//    [self.client URLProtocolDidFinishLoading:self];
+//}
+
+
+- (void)URLSession:(NSURLSession *)session task:(NSURLSessionTask *)task didCompleteWithError:(NSError *)error {
+    if (error) {
+        [self.client URLProtocol:self didFailWithError:error];
+    } else {
+        [self.client URLProtocolDidFinishLoading:self];
+    }
 }
+
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveResponse:(NSURLResponse *)response completionHandler:(void (^)(NSURLSessionResponseDisposition))completionHandler {
+//    [self.client URLProtocol:self didReceiveResponse:response cacheStoragePolicy:NSURLCacheStorageNotAllowed];
+//
+//    completionHandler(NSURLSessionResponseAllow);
+//}
+
+//- (void)URLSession:(NSURLSession *)session dataTask:(NSURLSessionDataTask *)dataTask didReceiveData:(NSData *)data {
+//    [self.client URLProtocol:self didLoadData:data];
+//}
+
 
 
 + (BOOL)stringContainsMediaTypeType:(NSString *)str {
