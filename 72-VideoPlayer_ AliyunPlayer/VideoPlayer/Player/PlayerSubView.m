@@ -364,9 +364,21 @@
         // 设置WKWebView基本配置信息
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.preferences = [[WKPreferences alloc] init];
-        configuration.allowsInlineMediaPlayback = YES;
+        configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
         configuration.selectionGranularity = YES;
-        
+        if (@available(iOS 9.0, *)) {
+            configuration.requiresUserActionForMediaPlayback = NO;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackRequiresUserAction = NO;
+        }//把手动播放设置NO ios(8.0, 9.0)
+        if (@available(iOS 9.0, *)) {
+            configuration.allowsAirPlayForMediaPlayback = YES;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackAllowsAirPlay = YES;
+        }//允许播放，ios(8.0, 9.0)
+
         
         _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
         _wkWebView.allowsBackForwardNavigationGestures = YES;/**这一步是，开启侧滑返回上一历史界面**/
@@ -409,15 +421,17 @@
 - (UIButton *)reloadBtn{
     if (!_reloadBtn) {
         self.reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _reloadBtn.frame = CGRectMake(0, 0, 200, 140);
+        _reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
-        [_reloadBtn setTitle:@"网络异常，点击重新加载" forState:UIControlStateNormal];
+        [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
+
         _reloadBtn.titleLabel.numberOfLines = 0;
+
         _reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         CGRect rect = _reloadBtn.frame;
         rect.origin.y -= 100;
@@ -429,17 +443,22 @@
 
 - (UIBarButtonItem *)backBarButtonItem {
     if (!_backBarButtonItem) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_back"] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
         
-        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
-        [backView addSubview:button];
-        button.frame = CGRectMake(-33, 0, 66, 44);
-        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
+        UIImage* backImage = [[[UINavigationBar appearance] backIndicatorImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]?:[[UIImage imageFromBundleWithName:@"fullplayer_web_back"]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        _backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:self action:@selector(back:)];
+//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+//        [button setImage:backImage forState:UIControlStateNormal];
+//        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
+//
+//        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
+//        [backView addSubview:button];
+//        button.frame = CGRectMake(-33, 0, 66, 44);
+//        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
     }
     return _backBarButtonItem;
 }
+
 
 - (UIBarButtonItem *)closeBarButtonItem {
     if (!_closeBarButtonItem) {
@@ -451,7 +470,9 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
+    _urlString=[_urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
+
     [self setupUI];
     [self loadRequest];
     
@@ -464,7 +485,7 @@
     } else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    self.view.backgroundColor = [UIColor blackColor];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self showLeftBarButtonItem];
     [self.view addSubview:self.wkWebView];
     [self.view addSubview:self.progress];
@@ -495,7 +516,9 @@
 }
 
 - (void)wkWebViewReload{
-    [_wkWebView reload];
+    //[_wkWebView reload];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:_wkWebView.URL?_wkWebView.URL : [NSURL URLWithString:_urlString]];
+    [_wkWebView loadRequest:request];
 }
 
 - (void)showLeftBarButtonItem {

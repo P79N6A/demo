@@ -8,9 +8,11 @@
 
 #import "ViewController.h"
 #import "Player/PlayerView.h"
+#import "ZFNetworkSpeedMonitor.h"
 
 @interface ViewController ()
 @property (nonatomic, weak) PlayerView *player;
+@property (nonatomic, strong) ZFNetworkSpeedMonitor *speeder;
 @end
 
 @implementation ViewController
@@ -31,6 +33,9 @@
     [player playWithModel:model];
     [self.view addSubview:player];
     _player = player;
+    
+    self.speeder =  [[ZFNetworkSpeedMonitor alloc] init];
+    [self.speeder startNetworkSpeedMonitor];
 }
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];

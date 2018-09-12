@@ -315,9 +315,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.titleLabel.text = model.title;
     
-    
-    NSLog(@"%s----URL---%@----%@", __func__,url.absoluteString,[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject]);
-    
+    NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
+    NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+
     [self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
 }
 
@@ -953,7 +954,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
     
-    NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
+    //NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
     total = total/1000;
     current = current/1000;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
@@ -989,9 +990,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
     
     if (self.allowSafariPlay) {
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(跳转Safari浏览器观看)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];
     }else{
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或者切换视频源)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或切换视频源)",errorMsg] forState:UIControlStateNormal];
     }
     
     self.errorBtn.hidden = NO;
@@ -1200,7 +1201,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                                 @"4115":@"未找到合适的下载项，请先添加",
                                 @"4001":@"参数非法",
                                 @"4002":@"鉴权过期",
-                                @"4003":@"视频源无效",
+                                @"4003":@"视频源格式不支持",
                                 @"4004":@"视频源不存在",
                                 @"4005":@"读取视频源失败",
                                 @"4008":@"加载超时",
