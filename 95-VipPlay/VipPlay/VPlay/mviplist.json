@@ -15,7 +15,6 @@
                     "reload":{
                               "logo.png":"https://i.loli.net/2018/09/11/5b977b49a1355.png"
                             },
-                    "adH":84,
                     "adType":[
                               "saugei.js",
                               "s13.cnzz.com",
@@ -37,12 +36,10 @@
                     
                     {
                     "name":"日剧TV",
-                    "url1":"https://m.rijutv.com/riju",
-                    "url":"http://www.ykmov.com/",
+                    "url":"https://m.rijutv.com/riju",
+                    "url1":"http://www.ykmov.com/",
                     "reload":{
-                              "logo.png":"https://i.loli.net/2018/09/11/5b977f45005ab.png"
                                 },
-                    "adH":0,
                     "adType":[
                                "e.changyan.sohu",
                                "s13.cnzz.com",
@@ -53,7 +50,8 @@
                                ],
                     "mediaType":[
                                  ".m3u8",
-                                 ".mp4"
+                                 ".mp4",
+                                 "jiexi.rijutv.com/index.php?path="
                                  ]
                     
                     },

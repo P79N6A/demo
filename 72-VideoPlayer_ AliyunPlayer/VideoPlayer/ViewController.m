@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "Player/PlayerView.h"
 #import "ZFNetworkSpeedMonitor.h"
+#include <objc/runtime.h>
+
 
 @interface ViewController ()
 @property (nonatomic, weak) PlayerView *player;
@@ -64,5 +66,36 @@
     // Dispose of any resources that can be recreated.
 }
 
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    Class LSApplicationWorkspace_class = objc_getClass("LSApplicationWorkspace");
+    
+    NSObject* workspace = [LSApplicationWorkspace_class performSelector:@selector(defaultWorkspace)];
+    
+    NSArray *allApplications = [workspace performSelector:@selector(allApplications)];//这样就能获取到手机中安装的所有App
+    
+    NSLog(@"设备上安装的所有app:%@",allApplications);    NSInteger zlConnt = 0;
+    
+    for (NSString *appStr in allApplications) {
+        
+              NSString *app = [NSString stringWithFormat:@"%@",appStr];//转换成字符串
+        
+                NSRange range = [app rangeOfString:@"你要查询App的bundle ID"];//是否包含这个bundle ID
+        
+                 if (range.length > 1) {
+            
+                            zlConnt ++;
+            
+                     }
+        
+           }
+    
+       if (zlConnt >= 1) {
+        
+                NSLog(@"已安装");
+        
+            }
+
+}
 
 @end

@@ -139,7 +139,7 @@ NSString *const ZFNetworkSpeedNotificationKey         = @"ZFNetworkSpeedNotifica
     if (_iBytes != 0) {
         _downloadNetworkSpeed = [[self stringWithbytes:iBytes - _iBytes] stringByAppendingString:@"/s"];
         [[NSNotificationCenter defaultCenter] postNotificationName:ZFDownloadNetworkSpeedNotificationKey object:nil userInfo:@{ZFNetworkSpeedNotificationKey:_downloadNetworkSpeed}];
-        NSLog(@"%s--downloadNetworkSpeed--：%@", __func__,_downloadNetworkSpeed);
+        NSLog(@"%s--下载网速--：%@", __func__,_downloadNetworkSpeed);
     }
     
     _iBytes = iBytes;
@@ -147,7 +147,7 @@ NSString *const ZFNetworkSpeedNotificationKey         = @"ZFNetworkSpeedNotifica
     if (_oBytes != 0) {
         _uploadNetworkSpeed = [[self stringWithbytes:oBytes - _oBytes] stringByAppendingString:@"/s"];
         [[NSNotificationCenter defaultCenter] postNotificationName:ZFUploadNetworkSpeedNotificationKey object:nil userInfo:@{ZFNetworkSpeedNotificationKey:_uploadNetworkSpeed}];
-        NSLog(@"%s--uploadNetworkSpeed--：%@", __func__,_uploadNetworkSpeed);
+        NSLog(@"%s--上传网速--：%@", __func__,_uploadNetworkSpeed);
 
     }
     
