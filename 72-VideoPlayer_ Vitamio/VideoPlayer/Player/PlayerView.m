@@ -17,7 +17,8 @@
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+#define  iPhoneXX (([UIApplication sharedApplication].statusBarFrame.size.height > 20)? YES : NO)
 
 //typedef NS_ENUM(NSUInteger, Direction) {
 //    DirectionLeftOrRight,

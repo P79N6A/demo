@@ -17,7 +17,7 @@
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
 #define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
-
+//#define  iPhoneXX ([self.topViewController respondsToSelector:@selector(setNeedsUpdateOfHomeIndicatorAutoHidden)])
 //typedef NS_ENUM(NSUInteger, Direction) {
 //    DirectionLeftOrRight,
 //    DirectionUpOrDown,
@@ -125,6 +125,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 浏览器 */
 @property (strong, nonatomic)  UIButton *safariButton;
 
+/** 是否在调节音量*/
+@property (nonatomic, assign,getter=isIPhoneX) BOOL                   iPhoneX;
+
 @end
 
 
@@ -185,6 +188,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  布局位置
 - (void)layout{
     CGFloat spacing = iPhoneXX? 24 : 0;
+    
     
     self.contentView.frame = self.bounds;
     

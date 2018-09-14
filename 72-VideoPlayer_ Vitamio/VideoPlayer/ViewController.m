@@ -28,6 +28,7 @@
     
     PlayerView *player = [PlayerView playerView];
     player.frame = CGRectMake(0, 100, 320, 200);
+    player.allowSafariPlay = YES;
     [player playWithModel:model];
     [self.view addSubview:player];
     _player = player;
