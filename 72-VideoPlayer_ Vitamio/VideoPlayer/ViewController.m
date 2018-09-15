@@ -50,7 +50,7 @@
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
     model.name = @"hello tv";
-    model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
+    model.url = @"http://m.567it.com/jade.m3u8";
     
     [_player playWithModel:model];
     //self.spStatusBarStyle = UIStatusBarStyleLightContent;

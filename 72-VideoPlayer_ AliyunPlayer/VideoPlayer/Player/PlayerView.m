@@ -185,8 +185,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_on_iphone_44x44_"] forState:UIControlStateSelected];
     
     [self.modeButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_mode"] forState:UIControlStateNormal];
-
-    
 }
 //FIXME:  -  布局位置
 - (void)layout{
