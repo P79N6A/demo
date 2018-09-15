@@ -42,7 +42,6 @@
 @property (nonatomic,strong) UIColor *loadingProgressColor;
 /**是否下拉重新加载*/
 @property (nonatomic, assign) BOOL canDownRefresh;
-
 @end
 
 @interface UIImage (Bundle)

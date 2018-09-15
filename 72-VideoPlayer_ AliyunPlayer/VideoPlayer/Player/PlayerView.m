@@ -16,7 +16,7 @@
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 //#define  iPhoneXX ([self.topViewController respondsToSelector:@selector(setNeedsUpdateOfHomeIndicatorAutoHidden)])
 //typedef NS_ENUM(NSUInteger, Direction) {
 //    DirectionLeftOrRight,
@@ -125,8 +125,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 浏览器 */
 @property (strong, nonatomic)  UIButton *safariButton;
 
-/** 是否在调节音量*/
-@property (nonatomic, assign,getter=isIPhoneX) BOOL                   iPhoneX;
+/** 是否iPhoneX*/
+@property (nonatomic, assign,) BOOL iPhoneXX;
 
 @end
 
@@ -144,7 +144,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  添加控件
 - (void)awakeFromNib{
     [super awakeFromNib];
-    
+    self.iPhoneXX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     [self addGestureRecognizer:tapGestureRecognizer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDirection:)];
@@ -187,7 +187,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 //FIXME:  -  布局位置
 - (void)layout{
-    CGFloat spacing = iPhoneXX? 24 : 0;
+    CGFloat spacing = self.iPhoneXX? 24 : 0;
     
     
     self.contentView.frame = self.bounds;
@@ -233,8 +233,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
     
     
-    self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
-    self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
+    self.fullProgressView.frame = CGRectMake(self.iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(self.iPhoneXX?34:0), 2);
+    self.fullBufView.frame = CGRectMake(self.iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(self.iPhoneXX?34:0), 2);
     
     self.fastView.frame = CGRectMake(0, 0, 80*self.playViewSmallFrame.size.width/(self.playViewSmallFrame.size.height?self.playViewSmallFrame.size.height:320), 80);
     self.fastView.center = self.errorBtn.center;
@@ -323,7 +323,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-    [self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
+    //[self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
 }
 
 - (void)play
@@ -356,14 +356,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
         WHWebViewController *web = [[WHWebViewController alloc] init];
+        //web.iPhoneXX = self.iPhoneXX;
         web.urlString = self.model.url;
         web.canDownRefresh = YES;
         web.navigationItem.title = self.model.title;
         
         UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
-        webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
-        webVC.navigationBar.tintColor = [UIColor whiteColor];
-        [webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
+        //webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
+        //webVC.navigationBar.tintColor = [UIColor whiteColor];
+        //[webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         [self.viewController?self.viewController:self.topViewController presentViewController:webVC animated:YES completion:nil];
         //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
         return;

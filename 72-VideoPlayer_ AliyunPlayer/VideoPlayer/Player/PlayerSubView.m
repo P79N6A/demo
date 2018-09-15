@@ -338,11 +338,13 @@
 
 #import <WebKit/WebKit.h>
 
-#define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)
-#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
-
+//#define  NAV_HEIGHT  (self.iPhoneXX ? 88.f : 64.f)
+//#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
+//#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
+//#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
+#define kStatusBarH  ([UIApplication sharedApplication].statusBarFrame.size.height)
+#define kNavBarH  (self.navigationController.navigationBar.frame.size.height)
+#define NAV_HEIGHT (kStatusBarH + kNavBarH)
 
 @interface WHWebViewController ()<WKNavigationDelegate>
 
@@ -478,6 +480,17 @@
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
+- (BOOL)prefersStatusBarHidden{
+    return NO;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return UIStatusBarAnimationNone;
+}
+
 #pragma mark private Methods
 - (void)setupUI{
     if (@available(iOS 11.0, *)) {
@@ -498,11 +511,11 @@
 //FIXME:  -  屏幕旋转回调
 - (void)changeRotate:(NSNotification*)noti {
     
-    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
-    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
+//    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
+//    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
 
-    self.progress.frame = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, 2.5);
-    self.wkWebView.frame  = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, self.view.bounds.size.height - navBarH - statusBarH);
+    self.progress.frame = CGRectMake(0,NAV_HEIGHT, self.view.bounds.size.width, 2.5);
+    self.wkWebView.frame  = CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - NAV_HEIGHT);
     
     self.reloadBtn.center = self.view.center;
 
