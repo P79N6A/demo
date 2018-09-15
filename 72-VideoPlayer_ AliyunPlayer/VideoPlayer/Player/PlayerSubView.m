@@ -431,6 +431,8 @@
         _reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
+        [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
+
         [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
