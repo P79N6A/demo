@@ -48,3 +48,16 @@
 + (UIImage *)imageFromBundleWithName:(NSString *)imageName;
 @end
 
+//--------------------------------------------------------------------------------------
+// 网速检测
+@interface SpeedMonitor : NSObject
+
+@property (nonatomic, copy, readonly) NSString *downloadNetworkSpeed;
+@property (nonatomic, copy, readonly) NSString *uploadNetworkSpeed;
+
+- (void)startNetworkSpeedMonitor;
+- (void)stopNetworkSpeedMonitor;
+
+@end
+
+

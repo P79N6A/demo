@@ -42,6 +42,13 @@
                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VRE-Ee-SnB">
+                            <rect key="frame" x="159" y="11" width="80" height="20"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
@@ -123,6 +130,7 @@
                 <outlet property="loadingView" destination="QCw-hv-uYn" id="dXE-21-0ff"/>
                 <outlet property="lockBtn" destination="IrJ-lN-Fsc" id="bqb-bS-WWE"/>
                 <outlet property="modeButton" destination="aXk-jI-d9Z" id="Yrg-g1-IRf"/>
+                <outlet property="networkSpeedLabel" destination="VRE-Ee-SnB" id="jlB-os-FOX"/>
                 <outlet property="titleLabel" destination="GDd-vT-fId" id="tFp-Z5-E5m"/>
                 <outlet property="topBgView" destination="Fhm-Dn-mng" id="SI3-cf-ZW8"/>
                 <outlet property="topView" destination="Hhh-jq-1hg" id="Kce-Oh-yUN"/>

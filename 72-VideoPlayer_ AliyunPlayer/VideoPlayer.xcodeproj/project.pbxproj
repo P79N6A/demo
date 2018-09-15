@@ -14,7 +14,6 @@
 		693601AE20A6B556005083BE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 693601AC20A6B556005083BE /* LaunchScreen.storyboard */; };
 		693601B120A6B556005083BE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 693601B020A6B556005083BE /* main.m */; };
 		693601BF20A6B58C005083BE /* PlayerSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693601BC20A6B58C005083BE /* PlayerSubView.m */; };
-		6988F6262148A7C40081C790 /* ZFNetworkSpeedMonitor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6988F6252148A7C40081C790 /* ZFNetworkSpeedMonitor.m */; };
 		69DB18EA211850B000715D7B /* PlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69DB18E9211850B000715D7B /* PlayerView.bundle */; };
 		9A6A64112106180100C3EDD5 /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A6A640E2106180000C3EDD5 /* PlayerView.xib */; };
 		9A6A64122106180100C3EDD5 /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A6A64102106180000C3EDD5 /* PlayerView.m */; };
@@ -36,8 +35,6 @@
 		693601BB20A6B58C005083BE /* PlayerSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSubView.h; sourceTree = "<group>"; };
 		693601BC20A6B58C005083BE /* PlayerSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSubView.m; sourceTree = "<group>"; };
 		69387D3381D38B0DFCA42FB1 /* Pods-VideoPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoPlayer/Pods-VideoPlayer.debug.xcconfig"; sourceTree = "<group>"; };
-		6988F6242148A7C40081C790 /* ZFNetworkSpeedMonitor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZFNetworkSpeedMonitor.h; sourceTree = "<group>"; };
-		6988F6252148A7C40081C790 /* ZFNetworkSpeedMonitor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZFNetworkSpeedMonitor.m; sourceTree = "<group>"; };
 		69DB18E9211850B000715D7B /* PlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PlayerView.bundle; sourceTree = "<group>"; };
 		6A49EA3FBEB1AE290619F905 /* Pods-VideoPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoPlayer.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoPlayer/Pods-VideoPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		9A6A640E2106180000C3EDD5 /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
@@ -86,8 +83,6 @@
 		693601A020A6B556005083BE /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				6988F6242148A7C40081C790 /* ZFNetworkSpeedMonitor.h */,
-				6988F6252148A7C40081C790 /* ZFNetworkSpeedMonitor.m */,
 				693601B720A6B58C005083BE /* Player */,
 				693601A120A6B556005083BE /* AppDelegate.h */,
 				693601A220A6B556005083BE /* AppDelegate.m */,
@@ -262,7 +257,6 @@
 				693601A620A6B556005083BE /* ViewController.m in Sources */,
 				9A6A64122106180100C3EDD5 /* PlayerView.m in Sources */,
 				693601B120A6B556005083BE /* main.m in Sources */,
-				6988F6262148A7C40081C790 /* ZFNetworkSpeedMonitor.m in Sources */,
 				693601A320A6B556005083BE /* AppDelegate.m in Sources */,
 				693601BF20A6B58C005083BE /* PlayerSubView.m in Sources */,
 			);

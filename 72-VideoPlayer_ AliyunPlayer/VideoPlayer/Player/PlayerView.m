@@ -124,10 +124,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 /** 浏览器 */
 @property (strong, nonatomic)  UIButton *safariButton;
-
+/*流量监控*/
+@property (weak, nonatomic) IBOutlet UILabel *networkSpeedLabel;
 /** 是否iPhoneX*/
-@property (nonatomic, assign,) BOOL iPhoneXX;
+@property (nonatomic, assign,) BOOL iPhoneX;
 
+/** 网速检测*/
+@property (nonatomic, strong,) SpeedMonitor *speedMonitor;
 @end
 
 
@@ -144,7 +147,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  添加控件
 - (void)awakeFromNib{
     [super awakeFromNib];
-    self.iPhoneXX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
+    self.iPhoneX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     [self addGestureRecognizer:tapGestureRecognizer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDirection:)];
@@ -187,7 +190,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 //FIXME:  -  布局位置
 - (void)layout{
-    CGFloat spacing = self.iPhoneXX? 24 : 0;
+    
+    BOOL iPhoneXX = self.iPhoneX && (kScreenWidth > kScreenHeight);
+    
+    CGFloat spacing = iPhoneXX? 24 : 0;
     
     
     self.contentView.frame = self.bounds;
@@ -216,6 +222,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.topBgView.frame = self.topView.bounds;
     self.backButton.frame = CGRectMake(spacing, 20+spacing*0.5, 44, 44);
     self.titleLabel.frame = CGRectMake(44+spacing, 20+spacing*0.5, self.topView.bounds.size.width - 44, 44);
+    self.networkSpeedLabel.frame = CGRectMake(self.topView.frame.size.width * 0.75-85 , 0, 85, iPhoneXX?46:20);
+
     
     self.buttomView.frame = CGRectMake(0, self.bounds.size.height - 64, self.bounds.size.width , 64);
     self.buttomBgView.frame = self.buttomView.bounds;
@@ -233,8 +241,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.videoSlider.center = CGPointMake(self.videoSlider.center.x, self.progressView.center.y);
     
     
-    self.fullProgressView.frame = CGRectMake(self.iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(self.iPhoneXX?34:0), 2);
-    self.fullBufView.frame = CGRectMake(self.iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(self.iPhoneXX?34:0), 2);
+    self.fullProgressView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
+    self.fullBufView.frame = CGRectMake(iPhoneXX?34:0, self.bounds.size.height - 2, self.bounds.size.width - 2*(iPhoneXX?34:0), 2);
     
     self.fastView.frame = CGRectMake(0, 0, 80*self.playViewSmallFrame.size.width/(self.playViewSmallFrame.size.height?self.playViewSmallFrame.size.height:320), 80);
     self.fastView.center = self.errorBtn.center;
@@ -253,6 +261,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 - (void)dealloc{
     [_mediaPlayer destroy];
+    [_speedMonitor stopNetworkSpeedMonitor];
     //取消设置屏幕常亮
     //[UIApplication sharedApplication].idleTimerDisabled = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -941,6 +950,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return _timer;
 }
 
+- (SpeedMonitor *)speedMonitor{
+    if (!_speedMonitor) {
+        _speedMonitor = [[SpeedMonitor alloc] init];
+        [_speedMonitor startNetworkSpeedMonitor];
+    }
+    return _speedMonitor;
+}
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     if (! newSuperview && self.timer) {
@@ -959,12 +976,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
     
-    //NSLog(@"%s----缓存：%f----进度：%f----已经缓存多少毫秒:%f", __func__,self.progressView.progress,self.videoSlider.value,self.mediaPlayer.bufferingPostion-self.mediaPlayer.currentPosition);
     total = total/1000;
     current = current/1000;
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+    
     self.fullProgressView.progress = self.videoSlider.value;
     self.fullBufView.progress = self.progressView.progress;
+    
+    self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
 }
 
 

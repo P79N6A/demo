@@ -22,7 +22,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-#import "ZFNetworkSpeedMonitor.h"
+#import "SpeedMonitor.h"
 #include <arpa/inet.h>
 #include <ifaddrs.h>
 #include <net/if.h>
@@ -32,7 +32,7 @@ NSString *const ZFDownloadNetworkSpeedNotificationKey = @"ZFDownloadNetworkSpeed
 NSString *const ZFUploadNetworkSpeedNotificationKey   = @"ZFUploadNetworkSpeedNotificationKey";
 NSString *const ZFNetworkSpeedNotificationKey         = @"ZFNetworkSpeedNotificationKey";
 
-@interface ZFNetworkSpeedMonitor () {
+@interface SpeedMonitor () {
     // 总网速
     uint32_t _iBytes;
     uint32_t _oBytes;
@@ -53,7 +53,7 @@ NSString *const ZFNetworkSpeedNotificationKey         = @"ZFNetworkSpeedNotifica
 
 @end
 
-@implementation ZFNetworkSpeedMonitor
+@implementation SpeedMonitor
 
 - (instancetype)init {
     if (self = [super init]) {
