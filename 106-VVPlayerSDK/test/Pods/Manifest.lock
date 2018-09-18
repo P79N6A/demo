@@ -1,0 +1,15 @@
+PODS:
+  - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
+  - VVPlayer (2018.09.17):
+    - AliyunPlayer_iOS/AliyunPlayerSDK (= 3.4.5)
+
+DEPENDENCIES:
+  - VVPlayer
+
+SPEC CHECKSUMS:
+  AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
+  VVPlayer: 6d4b410dbe8ad93c3e3cdaaf7c41fbb32c75ff2d
+
+PODFILE CHECKSUM: 2aa74030f514141259c7e4d8be370d6e6b1f65aa
+
+COCOAPODS: 1.4.0
