@@ -10,19 +10,19 @@
 #import <UIKit/UIKit.h>
 
 
-@protocol VVPlayerModel<NSObject>
+@protocol YYPlayerModel<NSObject>
 
 @property (nonatomic, copy, readonly) NSString *url;
 @property (nonatomic, copy, readonly) NSString *title;
 
 @end
 
-@interface VVVideoModel : NSObject<VVPlayerModel>
+@interface YYVideoModel : NSObject<YYPlayerModel>
 @property (nonatomic, copy) NSString *url;
 @property (nonatomic, copy) NSString *title;
 @end
 
-@interface VVPlayerView : UIView
+@interface YYPlayerView : UIView
 
 /** 是否隐藏状态栏 */
 @property (nonatomic, assign) BOOL statusBarHidden;
@@ -31,25 +31,25 @@
 
 @property (nonatomic, assign) BOOL allowSafariPlay;
 
-@property (nonatomic, strong) id<VVPlayerModel> model;
+@property (nonatomic, strong) id<YYPlayerModel> model;
 
 - (instancetype)init NS_UNAVAILABLE;
 - (instancetype)initWithFrame:(CGRect)frame NS_UNAVAILABLE;
 
 + (instancetype)playerView;
 
-- (void)playWithModel:(id<VVPlayerModel>)model;
+- (void)playWithModel:(id<YYPlayerModel>)model;
 
 - (void)stop;
 
 @end
 
 
-@interface UIView (VVPlayer)
+@interface UIView (YYPlayer)
 - (UIViewController *)viewController;
 - (UIViewController *)topViewController;
 @end
-@interface UIViewController (VVPlayer)
+@interface UIViewController (YYPlayer)
 @property (nonatomic, assign) UIStatusBarStyle spStatusBarStyle;
 @property (nonatomic, assign) BOOL spStatusBarHidden;
 @property (nonatomic, assign) BOOL spHomeIndicatorAutoHidden;

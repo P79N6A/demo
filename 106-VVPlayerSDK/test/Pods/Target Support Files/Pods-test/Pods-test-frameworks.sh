@@ -136,12 +136,12 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/VVPlayer/VVPlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYPlayer/YYPlayer.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework"
   install_framework "${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/VVPlayer/VVPlayer.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/YYPlayer/YYPlayer.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

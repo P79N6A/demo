@@ -9,13 +9,13 @@
 
 //--------------------------------------------------------------------------------------
 // 进度view
-@interface SPVideoSlider : UISlider
+@interface YYVideoSlider : UISlider
 @property (nonatomic, strong) UIImage *thumbBackgroundImage;
 @end
 
 //--------------------------------------------------------------------------------------
 // 快进快退的view,快进快退时显示在中间
-@interface SPVideoPlayerFastView : UIView
+@interface YYVideoPlayerFastView : UIView
 @property (nonatomic, strong) UIImageView *backgroundImageView; // 背景图
 @property (nonatomic, strong) UILabel *fastTimeLabel;          // 时间
 @property (nonatomic, strong) UIImageView *fastIconView;       // 快进快退的图标
@@ -27,7 +27,7 @@
 
 //--------------------------------------------------------------------------------------
 // 亮度的view
-@interface SPBrightnessView : UIView
+@interface YYBrightnessView : UIView
 
 @property (nonatomic, assign) CGFloat brightness;
 
@@ -35,7 +35,7 @@
 
 //--------------------------------------------------------------------------------------
 // 自带浏览器
-@interface WHWebViewController : UIViewController
+@interface YYWebViewController : UIViewController
 /**请求的url*/
 @property (nonatomic,copy) NSString *urlString;
 /**进度条颜色 */
@@ -50,7 +50,7 @@
 
 //--------------------------------------------------------------------------------------
 // 网速检测
-@interface SpeedMonitor : NSObject
+@interface YYSpeedMonitor : NSObject
 
 @property (nonatomic, copy, readonly) NSString *downloadNetworkSpeed;
 @property (nonatomic, copy, readonly) NSString *uploadNetworkSpeed;

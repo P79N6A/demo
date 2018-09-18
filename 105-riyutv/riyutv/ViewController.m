@@ -43,8 +43,12 @@
 //        ;
 //    }];
     
-    [RiJuTV searchRiJu:@"日剧" pageNo:1 completed:^(NSArray<NSDictionary *> *objs, BOOL hasMore) {
-        ;
+//    [RiJuTV searchRiJu:@"日剧" pageNo:1 completed:^(NSArray<NSDictionary *> *objs, BOOL hasMore) {
+//        ;
+//    }];
+    
+    [RiJuTV getJianShuObj:@"https://www.jianshu.com/p/820831f547a2" completed:^(id obj) {
+        NSLog(@"%s", __func__);
     }];
 }
 

@@ -6,8 +6,8 @@
 //  Copyright © 2018年 Jay. All rights reserved.
 //
 
-#import "VVPlayerView.h"
-#import "VVPlayerSubView.h"
+#import "YYPlayerView.h"
+#import "YYPlayerSubView.h"
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
@@ -16,13 +16,7 @@
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
-//#define  iPhoneXX ([self.topViewController respondsToSelector:@selector(setNeedsUpdateOfHomeIndicatorAutoHidden)])
-//typedef NS_ENUM(NSUInteger, Direction) {
-//    DirectionLeftOrRight,
-//    DirectionUpOrDown,
-//    DirectionNone
-//};
+
 
 // 枚举值，包含水平移动方向和垂直移动方向
 typedef NS_ENUM(NSInteger, VVPlayerPanDirection){
@@ -39,7 +33,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 
 
 
-@interface VVPlayerView()
+@interface YYPlayerView()
 
 @property (nonatomic, strong) AliVcMediaPlayer *mediaPlayer;
 /** 视频View的父控件 */
@@ -69,7 +63,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 /** 进度 */
 @property (nonatomic, strong) UIProgressView *progressView;
 /** 快进 */
-@property (nonatomic, strong) SPVideoSlider *videoSlider;
+@property (nonatomic, strong) YYVideoSlider *videoSlider;
 /** 67:56/98:08 */
 @property (nonatomic, strong) UILabel *timeLabel;
 
@@ -112,9 +106,9 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 /** 是否在调节音量*/
 @property (nonatomic, assign) BOOL                   isVolume;
 /** 快进view */
-@property (nonatomic, strong) SPVideoPlayerFastView *fastView ;
+@property (nonatomic, strong) YYVideoPlayerFastView *fastView ;
 /** 亮度view */
-@property (nonatomic, strong) SPBrightnessView       *brightnessView;
+@property (nonatomic, strong) YYBrightnessView       *brightnessView;
 
 /** 切换模式 */
 @property (weak, nonatomic) IBOutlet UIButton *modeButton;
@@ -130,13 +124,13 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 @property (nonatomic, assign,) BOOL iPhoneX;
 
 /** 网速检测*/
-@property (nonatomic, strong,) SpeedMonitor *speedMonitor;
+@property (nonatomic, strong,) YYSpeedMonitor *speedMonitor;
 @end
 
 
-@implementation VVVideoModel
+@implementation YYVideoModel
 @end
-@implementation VVPlayerView
+@implementation YYPlayerView
 
 
 //FIXME:  -  生命周期
@@ -294,7 +288,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 #endif
 }
 #pragma mark  开始播放
-- (void)playWithModel:(id<VVPlayerModel>)model{
+- (void)playWithModel:(id<YYPlayerModel>)model{
     
     //设置屏幕常亮
     [UIApplication sharedApplication].idleTimerDisabled = YES;
@@ -363,7 +357,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
     
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
-        WHWebViewController *web = [[WHWebViewController alloc] init];
+        YYWebViewController *web = [[YYWebViewController alloc] init];
         //web.iPhoneXX = self.iPhoneXX;
         web.urlString = self.model.url;
         web.canDownRefresh = YES;
@@ -949,9 +943,9 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
     return _timer;
 }
 
-- (SpeedMonitor *)speedMonitor{
+- (YYSpeedMonitor *)speedMonitor{
     if (!_speedMonitor) {
-        _speedMonitor = [[SpeedMonitor alloc] init];
+        _speedMonitor = [[YYSpeedMonitor alloc] init];
         [_speedMonitor startNetworkSpeedMonitor];
     }
     return _speedMonitor;
@@ -1091,9 +1085,9 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
     return _progressView;
 }
 
-- (SPVideoSlider *)videoSlider {
+- (YYVideoSlider *)videoSlider {
     if (!_videoSlider) {
-        _videoSlider                       = [[SPVideoSlider alloc] init];
+        _videoSlider                       = [[YYVideoSlider alloc] init];
         [_videoSlider setMinimumTrackImage:[UIImage imageFromBundleWithName:@"fullplayer_progressbar_n_171x3_"] forState:UIControlStateNormal];
         [_videoSlider setThumbImage:[UIImage imageFromBundleWithName:@"fullplayer_slider_iphone_12x15_"] forState:UIControlStateNormal];
         
@@ -1154,9 +1148,9 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 }
 
 /** 亮度的view */
-- (SPBrightnessView *)brightnessView {
+- (YYBrightnessView *)brightnessView {
     if (!_brightnessView) {
-        _brightnessView = [[SPBrightnessView alloc] init];
+        _brightnessView = [[YYBrightnessView alloc] init];
     }
     return _brightnessView;
 }
@@ -1183,9 +1177,9 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 }
 
 /** 快进快退的view */
-- (SPVideoPlayerFastView *)fastView {
+- (YYVideoPlayerFastView *)fastView {
     if (!_fastView) {
-        _fastView                     = [[SPVideoPlayerFastView alloc] init];
+        _fastView                     = [[YYVideoPlayerFastView alloc] init];
         _fastView.backgroundColor     =  [UIColor colorWithRed:0 green:0 blue:0 alpha:0.618];
         _fastView.layer.cornerRadius  = 10;
         _fastView.layer.masksToBounds = YES;
@@ -1244,12 +1238,12 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 
 
 //FIXME:  -  事件监听
-- (void)videoDurationChange:(SPVideoSlider *)sender{
+- (void)videoDurationChange:(YYVideoSlider *)sender{
     NSLog(@"%s", __func__);
     self.progressDragging = NO;
     [self.mediaPlayer seekTo:sender.value * self.mediaPlayer.duration];
 }
-- (void)progressDraggBegin:(SPVideoSlider *)sender{
+- (void)progressDraggBegin:(YYVideoSlider *)sender{
     self.progressDragging = YES;
 }
 -(void)progressSliderTapped:(UIGestureRecognizer *)g
@@ -1280,7 +1274,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 
 /////////////
 
-@implementation UITabBarController (Player)
+@implementation UITabBarController (YYPlayer)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
     return self.selectedViewController.shouldAutorotate;
@@ -1307,7 +1301,7 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
     return self.selectedViewController.prefersHomeIndicatorAutoHidden;
 }
 @end
-@implementation UINavigationController (Player)
+@implementation UINavigationController (YYPlayer)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
     return self.topViewController.shouldAutorotate;
@@ -1337,12 +1331,12 @@ typedef NS_ENUM(NSUInteger, VVPlayerState) {
 static char kSPStatusBarStyleKey;
 static char kSPStatusBarHiddenKey;
 static char kSPHomeIndicatorAutoHiddenKey;
-@implementation UIViewController (VVPlayer)
+@implementation UIViewController (YYPlayer)
 //FIXME:  -  旋转 状态栏
 - (BOOL)shouldAutorotate{
     
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
+    if ([@[NSStringFromClass([YYWebViewController class]),@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
            ] containsObject:className])
     {
         return YES;
@@ -1352,7 +1346,7 @@ static char kSPHomeIndicatorAutoHiddenKey;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
+    if ([@[NSStringFromClass([YYWebViewController class]),@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
            ] containsObject:className])
     {
         return UIInterfaceOrientationMaskAllButUpsideDown;
@@ -1409,7 +1403,7 @@ static char kSPHomeIndicatorAutoHiddenKey;
 @end
 
 
-@implementation UIView (VVPlayer)
+@implementation UIView (YYPlayer)
 //FIXME:  -  View获取所在的Controller
 - (UIViewController *)viewController{
     for (UIView* next = [self superview]; next; next = next.superview) {

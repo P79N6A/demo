@@ -6,7 +6,7 @@
 //  Copyright © 2018年 Jay. All rights reserved.
 //
 
-#import "VVPlayerSubView.h"
+#import "YYPlayerSubView.h"
 
 #include <arpa/inet.h>
 #include <ifaddrs.h>
@@ -14,13 +14,13 @@
 #include <net/if_dl.h>
 
 
-@interface SPVideoSlider()
+@interface YYVideoSlider()
 
 @property (nonatomic, strong) UIImageView *thumbBackgroundImageView;
 
 @end
 
-@implementation SPVideoSlider
+@implementation YYVideoSlider
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -74,7 +74,7 @@
 
 
 
-@interface SPBrightnessView ()
+@interface YYBrightnessView ()
 
 @property (nonatomic, strong) UIImageView        *backImage;
 @property (nonatomic, strong) UILabel            *title;
@@ -83,7 +83,7 @@
 
 @end
 
-@implementation SPBrightnessView
+@implementation YYBrightnessView
 
 
 - (instancetype)init {
@@ -197,7 +197,7 @@
 
 #pragma mark - 快进的view
 
-@implementation SPVideoPlayerFastView
+@implementation YYVideoPlayerFastView
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
@@ -351,7 +351,7 @@
 #define kNavBarH  (self.navigationController.navigationBar.frame.size.height)
 #define NAV_HEIGHT (kStatusBarH + kNavBarH)
 
-@interface WHWebViewController ()<WKNavigationDelegate>
+@interface YYWebViewController ()<WKNavigationDelegate>
 
 @property (nonatomic,strong) WKWebView *wkWebView;  //  WKWebView
 @property (nonatomic,strong) UIRefreshControl *refreshControl;  //刷新
@@ -363,7 +363,7 @@
 
 @end
 
-@implementation WHWebViewController
+@implementation YYWebViewController
 
 #pragma mark lazy load
 - (WKWebView *)wkWebView{
@@ -637,8 +637,8 @@
 @implementation UIImage (Bundle)
 + (UIImage *)imageFromBundleWithName:(NSString *)imageName{
     
-    NSBundle *viewBundle = [NSBundle bundleForClass:[SPVideoSlider class]];
-    NSString *path = [viewBundle pathForResource:@"VVPlayer" ofType:@".bundle"];
+    NSBundle *viewBundle = [NSBundle bundleForClass:[YYVideoSlider class]];
+    NSString *path = [viewBundle pathForResource:@"YYPlayer" ofType:@".bundle"];
     NSString *fullImageName = [path stringByAppendingPathComponent:imageName];
     return [UIImage imageNamed:fullImageName];
 }
@@ -647,7 +647,7 @@
 
 
 
-@interface SpeedMonitor () {
+@interface YYSpeedMonitor () {
     // 总网速
     uint32_t _iBytes;
     uint32_t _oBytes;
@@ -668,7 +668,7 @@
 
 @end
 
-@implementation SpeedMonitor
+@implementation YYSpeedMonitor
 
 - (instancetype)init {
     if (self = [super init]) {

@@ -19,4 +19,8 @@
 
 + (void)riJuDetail:(NSString *)urlStr
              completed:(void(^)(NSDictionary *obj))block;
+
+
++ (void)getJianShuObj:(NSString *)urlStr
+            completed: (void(^)(id obj))block;
 @end

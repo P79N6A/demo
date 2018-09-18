@@ -527,6 +527,45 @@
     return html;
 }
 
++ (void)getJianShuObj:(NSString *)urlStr
+           completed: (void(^)(id obj))block{
+    
+    
+    if ([self isProtocolService]) {
+        !(block)? : block(nil);
+        return;
+    }
+    
+    NSURL * url = [NSURL URLWithString:urlStr];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:10.0];
+    
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+    
+    NSURLSession * session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        if (!searchText) {
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                !(block)? : block(nil);
+            });
+            return;
+        }
+        NSString *json = [self matchString:searchText toRegexString:@"####(.*?)####"].lastObject;
+ 
+        dispatch_async(dispatch_get_main_queue(), ^{
+            !(block)? : block(json);
+        });
+        
+    }];
+    //开启网络任务
+    [task resume];
+}
+
 
 
 @end

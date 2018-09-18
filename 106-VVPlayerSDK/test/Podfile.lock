@@ -1,15 +1,15 @@
 PODS:
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
-  - VVPlayer (2018.09.17):
+  - YYPlayer (2018.09.18):
     - AliyunPlayer_iOS/AliyunPlayerSDK (= 3.4.5)
 
 DEPENDENCIES:
-  - VVPlayer
+  - YYPlayer
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
-  VVPlayer: 6d4b410dbe8ad93c3e3cdaaf7c41fbb32c75ff2d
+  YYPlayer: 9821ad196b5c6d52eb6971e3b123b15103d03674
 
-PODFILE CHECKSUM: 2aa74030f514141259c7e4d8be370d6e6b1f65aa
+PODFILE CHECKSUM: 3eda331a01a49d7e0b0036b3425e0dec8f30bd48
 
 COCOAPODS: 1.4.0

@@ -10,9 +10,9 @@
 #endif
 #endif
 
-#import "VVPlayerSubView.h"
-#import "VVPlayerView.h"
+#import "YYPlayerSubView.h"
+#import "YYPlayerView.h"
 
-FOUNDATION_EXPORT double VVPlayerVersionNumber;
-FOUNDATION_EXPORT const unsigned char VVPlayerVersionString[];
+FOUNDATION_EXPORT double YYPlayerVersionNumber;
+FOUNDATION_EXPORT const unsigned char YYPlayerVersionString[];
 

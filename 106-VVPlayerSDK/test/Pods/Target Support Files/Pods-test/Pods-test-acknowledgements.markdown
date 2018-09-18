@@ -26,7 +26,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
-## VVPlayer
+## YYPlayer
 
 Copyright (c) 2018 czljcb@163.com <caozhi@mhace.com>
 
