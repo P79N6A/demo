@@ -21,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)  NSInteger age;
 @property (nonatomic, strong)  NSDictionary *dict;
 @property (nonatomic, strong)  T *model;
+@property (nonatomic, assign)  NSInteger mid;
+
 @end
 @interface TTT : NSObject
 
@@ -33,6 +35,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, strong) NSDictionary *info;
 @property (nonatomic, strong) NSMutableDictionary *info1;
+
+@property (nonatomic, strong)  TT *model;
+
 @end
 
 NS_ASSUME_NONNULL_END

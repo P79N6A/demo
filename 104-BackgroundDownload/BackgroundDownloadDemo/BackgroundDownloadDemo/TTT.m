@@ -11,6 +11,7 @@
 
 @end
 @implementation TT
++(NSString *)primaryKey{return @"mid";}
 
 @end
 

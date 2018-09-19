@@ -112,7 +112,7 @@ static sqlite3 *db = nil;
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     id primaryKey = [self isRespondsToSelector:@selector(primaryKey) forClass:class];
 #pragma clang diagnostic pop
-    NSArray <NSDictionary *> *infos = [self getProperties:class contains:YES];
+    NSArray <NSDictionary *> *infos = [self getProperties:class contains:YES isSqlType:YES];
     
     NSMutableArray *info = [NSMutableArray array];
     [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -464,7 +464,7 @@ static sqlite3 *db = nil;
     return obj;
 }
 
--(NSArray <NSDictionary *>*)getProperties:(Class)cls contains:(BOOL)isc{
+-(NSArray <NSDictionary *>*)getProperties:(Class)cls contains:(BOOL)isc isSqlType:(BOOL)isS{
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -511,17 +511,20 @@ static sqlite3 *db = nil;
             dict[name] = @"INTEGER";
             
         }else if ([type isEqualToString:@"@\"NSDictionary\""]) {
-            dict[name] = isc? @"NSDictionary": @"TEXT";
+            dict[name] = isS? @"TEXT":@"NSDictionary";
             
         }else if ([type isEqualToString:@"@\"NSArray\""]) {
-            dict[name] = isc? @"NSArray": @"TEXT";
+            dict[name] = isS? @"TEXT":@"NSArray";
 
         }else if ([type isEqualToString:@"@\"NSMutableDictionary\""]) {
-            dict[name] = isc? @"NSMutableDictionary": @"TEXT";
+            dict[name] = isS? @"TEXT":@"NSMutableDictionary";
 
         }else if ([type isEqualToString:@"@\"NSMutableArray\""]) {
-            dict[name] = isc? @"NSMutableArray": @"TEXT";
+            dict[name] = isS?  @"TEXT":@"NSMutableArray";
 
+        }else  if ([type containsString:@"@\""]) {
+            dict[name] = isS? @"TEXT": type;
+            
         }else
         {
             continue;
@@ -545,7 +548,7 @@ static sqlite3 *db = nil;
 @implementation NSObject (DB)
 
 -(NSString *)objectToJson:(id)obj{
-    if (obj == nil) {
+    if (obj == nil || [obj isKindOfClass:[NSNull class]]) {
         return nil;
     }
     NSError *error = nil;
@@ -645,7 +648,7 @@ static sqlite3 *db = nil;
     NSString *tableName = NSStringFromClass([self class]);
     
     
-    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO];
+    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO isSqlType:YES];
     
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -736,7 +739,7 @@ static sqlite3 *db = nil;
     NSString *tableName = NSStringFromClass([models.firstObject class]);
     
     
-    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[models.firstObject class] contains:NO];
+    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[models.firstObject class] contains:NO isSqlType:YES];
     
     NSMutableDictionary *info = [NSMutableDictionary dictionary];
     [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -778,6 +781,21 @@ static sqlite3 *db = nil;
             // 第五个参数：回调函数
             
             
+//            for (int i = 0; i < info.allKeys.count; i ++) {
+//
+//                NSString *key = info.allKeys[i];
+//                NSString *type = info.allValues[i];
+//                if ([type isEqualToString:@"INTEGER"]) {
+//                    sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
+//                }else if ([type isEqualToString:@"float"]) {
+//                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
+//                }if ([type isEqualToString:@"double"]) {
+//                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
+//                }if ([type isEqualToString:@"TEXT"]) {
+//                    sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
+//                }
+//            }
+            
             for (int i = 0; i < info.allKeys.count; i ++) {
                 
                 NSString *key = info.allKeys[i];
@@ -789,9 +807,16 @@ static sqlite3 *db = nil;
                 }if ([type isEqualToString:@"double"]) {
                     sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
                 }if ([type isEqualToString:@"TEXT"]) {
-                    sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
+                    id value = [model valueForKey:key];
+                    if (![value isKindOfClass:[NSString class]]) {
+                        NSDictionary *obj = [self getObjectData:model];
+                        value = [obj valueForKey:key];
+                        value = [self objectToJson:value];
+                    }
+                    sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
                 }
             }
+
             
             // sql语句已经全了
             // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
@@ -842,9 +867,9 @@ static sqlite3 *db = nil;
         NSString *propertyName = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"_" withString:@""];
         NSString *propertyType = [NSString stringWithCString:cType encoding:NSUTF8StringEncoding];
 
-        id propertyValue = dict[propertyName];
+        id propertyValue = [dict valueForKey:propertyName];
         
-        if(propertyValue == nil) continue;
+        if(propertyValue == nil || [propertyValue isKindOfClass:[NSNull class]]) continue;
         if ([propertyType isEqualToString:@"@\"NSMutableDictionary\""]
             || [propertyType isEqualToString:@"@\"NSDictionary\""]
             || [propertyType isEqualToString:@"B"]
@@ -866,6 +891,9 @@ static sqlite3 *db = nil;
             if(c) [self arrayToObjcs:propertyValue class:c];
             else [model setValue:propertyValue forKey:propertyName];
         }else{
+            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"@" withString:@""];
+
             [model setValue:[self dict:propertyValue toObjc:NSClassFromString(propertyType)] forKey:propertyName];
         }
     }
@@ -891,7 +919,7 @@ static sqlite3 *db = nil;
     
     if (result == SQLITE_OK) {
         
-        NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:self contains:YES];
+        NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:self contains:YES isSqlType:NO];
         
         
         // 当sqlite3_step(stmt) == SQLITE_ROW 的时候，代表还有下一条数据
@@ -902,18 +930,33 @@ static sqlite3 *db = nil;
                 NSString *type = infos[i].allValues.firstObject;
                 NSString *key = infos[i].allKeys.firstObject;
                 
-                if ([type isEqualToString:@"NSArray"]
-//                    || [type isEqualToString:@"NSMutableDictionary"]
-//                    || [type isEqualToString:@"NSDictionary"]
-                    || [type isEqualToString:@"NSMutableArray"]
-                    ) {
+                if ( [type isEqualToString:@"NSMutableDictionary"] || [type isEqualToString:@"NSDictionary"]) {
+                    
+                    Class  c = NSClassFromString(@"NSDictionary");
+                    
+                    const unsigned char *txt =  sqlite3_column_text(stmt, i);
+                    
+                    if (txt != NULL) {
+                        
+                        NSString *json = [NSString stringWithUTF8String:(const char *)txt];
+                        id value = [self jsonToObject:json];
+                        
+                        if ([c isSubclassOfClass:[NSDictionary class]]) {
+                            [model setValue:value forKey:key];
+                        }else {
+                            [model setValue:[self dict:value toObjc:c] forKey:key];
+                        }
+                    }
+                    
+                    
+                }else if ([type isEqualToString:@"NSArray"] || [type isEqualToString:@"NSMutableArray"]) {
                     
                     Class  c = NSClassFromString(@"NSString");
                     if([self respondsToSelector:@selector(classInArray)]){
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
                         NSDictionary * objDict = [self performSelector:@selector(classInArray)];
-                        c = [objDict valueForKey:key];
+                        c = [objDict valueForKey:key]? [objDict valueForKey:key] : c;
 #pragma clang diagnostic pop
                     }
                     
@@ -924,11 +967,11 @@ static sqlite3 *db = nil;
                         NSString *json = [NSString stringWithUTF8String:(const char *)txt];
                         id value = [self jsonToObject:json];
                      
-                        if ([c isKindOfClass:[NSString class]]) {
+                        if ([c isSubclassOfClass:[NSString class]]) {
                             [model setValue:value forKey:key];
                         }else {
                             [model setValue:[self arrayToObjcs:value class:c] forKey:key];
-                            ;
+                            
                         }
                     }
                     
@@ -955,8 +998,23 @@ static sqlite3 *db = nil;
                         (!name)? : [model setValue:name forKey:key];
                     }
 
+                }else if([type containsString:@"@\""]){
+                    type = [type stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+                    type = [type stringByReplacingOccurrencesOfString:@"@" withString:@""];
+                    
+                    const unsigned char *txt =  sqlite3_column_text(stmt, i);
+                    
+                    if (txt != NULL) {
+                        
+                        NSString *json = [NSString stringWithUTF8String:(const char *)txt];
+                        id value = [self jsonToObject:json];
+                        
+                        [model setValue:[self dict:value toObjc:NSClassFromString(type)] forKey:key];
+                        
+                    }
+                    
+
                 }
-                
             }
             [models addObject:model];
         }
@@ -994,7 +1052,7 @@ static sqlite3 *db = nil;
     BOOL isOK = NO;
         [[DB sharedInstance] openDB];
     NSString *tableName = NSStringFromClass([self class]);
-    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO];
+    NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO isSqlType:YES];
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"

@@ -325,7 +325,7 @@
 				INFOPLIST_FILE = BackgroundDownloadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo3333;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownlo3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -341,7 +341,7 @@
 				INFOPLIST_FILE = BackgroundDownloadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo3333;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownlo3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

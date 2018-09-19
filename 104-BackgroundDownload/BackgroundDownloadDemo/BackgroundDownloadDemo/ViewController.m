@@ -62,11 +62,21 @@
     ttt.models= @[tt1,tt2];
     ttt.strings = @[@"44",@"66"].mutableCopy;
     ttt.info1 = @{@"name":@"gg",@"title":@"hh"}.mutableCopy;
+    
+    TT *tt3 = [TT new];
+    tt3.title = @"kk22";
+    tt3.age = 44;
+    tt3.dict = @{@"name":@"gg",@"title":@"hh"};
+
+    ttt.model = tt2;
 
     NSDictionary *obj = [self getObjectData:ttt];
-    
+//    [TT insertDatas:@[tt1,tt2]];
 //    [ttt insert];
-    [TTT searchDataWhere:@""];
+    NSArray *tttts = [TTT searchDataWhere:@""];
+    TTT *model = tttts[1];
+    model.name = @"更次年777";
+    [model upDate];
     ;
 }
 
