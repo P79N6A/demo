@@ -155,291 +155,298 @@ static sqlite3 *db = nil;
     
     
 }
+//
+//- (void)insertDatas:(NSArray <id>*)models{
+//
+//    [self openDB];
+//    [self createTable:[models.firstObject class]];
+//
+//    NSString *tableName = NSStringFromClass([models.firstObject class]);
+//
+//
+//    NSArray <NSDictionary *> *infos = [self getProperties:[models.firstObject class] contains:NO];
+//
+//    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+//    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        info[obj.allKeys.firstObject] = obj.allValues.firstObject;
+//    }];
+//
+//    NSMutableString *insertString = [NSMutableString stringWithFormat:@"insert into %@ (",tableName];
+//
+//    [insertString appendFormat:@"%@ )",[info.allKeys componentsJoinedByString:@","]];
+//    [insertString appendString:@" values (?"];
+//    for (NSInteger i = 0; i < info.allKeys.count - 1; i ++) {
+//        [insertString appendString:@", ?"];
+//    }
+//    [insertString appendString:@")"];
+//
+//    Begin_Transcation
+//    [models enumerateObjectsUsingBlock:^(id  _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
+//
+//
+//        // 插入数据的sql语句，数据不确定，所以在values里面使用？代替，之后向里面绑定
+//        //NSString *insertString = @"insert into person (name, gender, age) values (?, ?, ?)";
+//        // sqlite的伴随指针
+//        sqlite3_stmt *stmt = nil;
+//
+//        // 预执行sql语句
+//        // 第一个参数：数据库
+//        // 第二个参数：sql语句
+//        // 第三个参数：如果为正，例如 ： 1， 表示在取参数的时候，只取一个字节;使用负数表示取值取到碰到结束符号（'\000','u000'）。
+//        // 第四个参数：伴随指针，会伴随着数据库的操作，获取值或绑定值
+//        // 第五个参数：取值的时候如果取的不全，那么剩下的都存在这里。
+//        int result = sqlite3_prepare(db, insertString.UTF8String, -1, &stmt, NULL);
+//        // 如果预执行成功的话，那么就要往里面放数据了
+//        if (result == SQLITE_OK) {
+//            // 向预执行的sql语句里面插入参数 (取代‘？’的位置)
+//            // 第一个参数：伴随指针
+//            // 第二个参数：‘？’的位置，从1开始
+//            // 第三个参数：插入的数据
+//            // 第四个参数：和上面的－1是一样的
+//            // 第五个参数：回调函数
+//
+//
+//            for (int i = 0; i < info.allKeys.count; i ++) {
+//
+//                NSString *key = info.allKeys[i];
+//                NSString *type = info.allValues[i];
+//                if ([type isEqualToString:@"INTEGER"]) {
+//                    sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
+//                }else if ([type isEqualToString:@"float"]) {
+//                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
+//                }if ([type isEqualToString:@"double"]) {
+//                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
+//                }if ([type isEqualToString:@"TEXT"]) {
+//                    sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
+//                }
+//            }
+//
+//            // sql语句已经全了
+//            // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
+//            if (sqlite3_step(stmt) == SQLITE_DONE) {
+//                //NSLog(@"插入成功");
+//            } else {
+//                NSLog(@"插入失败");
+//            }
+//        } else {
+//            NSLog(@"插入失败%d", result);
+//        }
+//
+//        // 一定要记得释放掉伴随指针
+//        sqlite3_finalize(stmt);
+//    }];
+//
+//    Commit_Transcation
+//
+//
+//    [self closeDB];
+//}
+//
+//- (void)insertData:(id)model{
+//
+//    [self openDB];
+//    [self createTable:[model class]];
+//
+//    NSString *tableName = NSStringFromClass([model class]);
+//
+//
+//    NSArray <NSDictionary *> *infos = [self getProperties:[model class] contains:NO];
+//
+//    NSMutableDictionary *info = [NSMutableDictionary dictionary];
+//    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        info[obj.allKeys.firstObject] = obj.allValues.firstObject;
+//    }];
+//
+//    NSMutableString *insertString = [NSMutableString stringWithFormat:@"insert into %@ (",tableName];
+//
+//    [insertString appendFormat:@"%@ )",[info.allKeys componentsJoinedByString:@","]];
+//    [insertString appendString:@" values (?"];
+//    for (NSInteger i = 0; i < info.allKeys.count - 1; i ++) {
+//        [insertString appendString:@", ?"];
+//    }
+//    [insertString appendString:@")"];
+//
+//    // 插入数据的sql语句，数据不确定，所以在values里面使用？代替，之后向里面绑定
+//    //NSString *insertString = @"insert into person (name, gender, age) values (?, ?, ?)";
+//    // sqlite的伴随指针
+//    sqlite3_stmt *stmt = nil;
+//
+//    // 预执行sql语句
+//    // 第一个参数：数据库
+//    // 第二个参数：sql语句
+//    // 第三个参数：如果为正，例如 ： 1， 表示在取参数的时候，只取一个字节;使用负数表示取值取到碰到结束符号（'\000','u000'）。
+//    // 第四个参数：伴随指针，会伴随着数据库的操作，获取值或绑定值
+//    // 第五个参数：取值的时候如果取的不全，那么剩下的都存在这里。
+//    int result = sqlite3_prepare(db, insertString.UTF8String, -1, &stmt, NULL);
+//    // 如果预执行成功的话，那么就要往里面放数据了
+//    if (result == SQLITE_OK) {
+//        // 向预执行的sql语句里面插入参数 (取代‘？’的位置)
+//        // 第一个参数：伴随指针
+//        // 第二个参数：‘？’的位置，从1开始
+//        // 第三个参数：插入的数据
+//        // 第四个参数：和上面的－1是一样的
+//        // 第五个参数：回调函数
+//
+//
+//        for (int i = 0; i < info.allKeys.count; i ++) {
+//
+//            NSString *key = info.allKeys[i];
+//            NSString *type = info.allValues[i];
+//            if ([type isEqualToString:@"INTEGER"]) {
+//                sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
+//            }else if ([type isEqualToString:@"float"]) {
+//                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
+//            }if ([type isEqualToString:@"double"]) {
+//                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
+//            }if ([type isEqualToString:@"TEXT"]) {
+//
+//                id value = [model valueForKey:key];
+//                if (![value isKindOfClass:[NSString class]]) {
+//                    NSDictionary *obj = [self getObjectData:model];
+//                    value = [obj valueForKey:key];
+//                    value = [self objectToJson:value];
+//                }
+//                sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
+//            }
+//        }
+//
+//        // sql语句已经全了
+//        // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
+//        if (sqlite3_step(stmt) == SQLITE_DONE) {
+//            //NSLog(@"插入成功");
+//        } else {
+//            NSLog(@"插入失败");
+//        }
+//    } else {
+//        NSLog(@"插入失败%d", result);
+//    }
+//
+//    // 一定要记得释放掉伴随指针
+//    sqlite3_finalize(stmt);
+//
+//    [self closeDB];
+//}
+////UPDATE table_name
+////SET column1 = value1, column2 = value2...., columnN = valueN
+////WHERE [condition];
+//- (void)updateWithModel:(id)model where:(NSString *)condition{
+//
+//    NSString *tableName = NSStringFromClass([model class]);
+//    NSArray <NSDictionary *> *infos = [self getProperties:[model class] contains:NO];
+//
+//    NSMutableString *updateString = [NSMutableString stringWithFormat:@"update %@ set ",tableName];
+//    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+//        [updateString appendFormat:@"%@ = '%@',",obj.allKeys.firstObject,[model valueForKey:obj.allKeys.firstObject]];
+//    }];
+//
+//
+//    NSString * updateSQL = [NSString stringWithFormat:@"%@ %@",[updateString substringToIndex:updateString.length-1],condition];
+//
+//    // 伴随指针
+//    sqlite3_stmt *stmt = nil;
+//
+//    int result = sqlite3_prepare(db, updateSQL.UTF8String, -1, &stmt, NULL);
+//
+//    if (result == SQLITE_OK) {
+//
+//        for (int i = 0; i < infos.count; i ++) {
+//
+//            NSString *key = infos[i].allKeys.firstObject;
+//            NSString *type = infos[i].allValues.firstObject;
+//            if ([type isEqualToString:@"INTEGER"]) {
+//                sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
+//            }else if ([type isEqualToString:@"float"]) {
+//                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
+//            }if ([type isEqualToString:@"double"]) {
+//                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
+//            }if ([type isEqualToString:@"TEXT"]) {
+//                sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
+//            }
+//        }
+//        if (sqlite3_step(stmt) == SQLITE_DONE) {
+//            //NSLog(@"修改成功");
+//        }
+//    }else{
+//        NSLog(@"更新失败%d", result);
+//
+//    }
+//
+//    sqlite3_finalize(stmt);
+//}
 
-- (void)insertDatas:(NSArray <id>*)models{
-    
-    [self openDB];
-    [self createTable:[models.firstObject class]];
-    
-    NSString *tableName = NSStringFromClass([models.firstObject class]);
-    
-    
-    NSArray <NSDictionary *> *infos = [self getProperties:[models.firstObject class] contains:NO];
-    
-    NSMutableDictionary *info = [NSMutableDictionary dictionary];
-    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        info[obj.allKeys.firstObject] = obj.allValues.firstObject;
-    }];
-    
-    NSMutableString *insertString = [NSMutableString stringWithFormat:@"insert into %@ (",tableName];
-    
-    [insertString appendFormat:@"%@ )",[info.allKeys componentsJoinedByString:@","]];
-    [insertString appendString:@" values (?"];
-    for (NSInteger i = 0; i < info.allKeys.count - 1; i ++) {
-        [insertString appendString:@", ?"];
-    }
-    [insertString appendString:@")"];
-    
-    Begin_Transcation
-    [models enumerateObjectsUsingBlock:^(id  _Nonnull model, NSUInteger idx, BOOL * _Nonnull stop) {
-        
-        
-        // 插入数据的sql语句，数据不确定，所以在values里面使用？代替，之后向里面绑定
-        //NSString *insertString = @"insert into person (name, gender, age) values (?, ?, ?)";
-        // sqlite的伴随指针
-        sqlite3_stmt *stmt = nil;
-        
-        // 预执行sql语句
-        // 第一个参数：数据库
-        // 第二个参数：sql语句
-        // 第三个参数：如果为正，例如 ： 1， 表示在取参数的时候，只取一个字节;使用负数表示取值取到碰到结束符号（'\000','u000'）。
-        // 第四个参数：伴随指针，会伴随着数据库的操作，获取值或绑定值
-        // 第五个参数：取值的时候如果取的不全，那么剩下的都存在这里。
-        int result = sqlite3_prepare(db, insertString.UTF8String, -1, &stmt, NULL);
-        // 如果预执行成功的话，那么就要往里面放数据了
-        if (result == SQLITE_OK) {
-            // 向预执行的sql语句里面插入参数 (取代‘？’的位置)
-            // 第一个参数：伴随指针
-            // 第二个参数：‘？’的位置，从1开始
-            // 第三个参数：插入的数据
-            // 第四个参数：和上面的－1是一样的
-            // 第五个参数：回调函数
-            
-            
-            for (int i = 0; i < info.allKeys.count; i ++) {
-                
-                NSString *key = info.allKeys[i];
-                NSString *type = info.allValues[i];
-                if ([type isEqualToString:@"INTEGER"]) {
-                    sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
-                }else if ([type isEqualToString:@"float"]) {
-                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
-                }if ([type isEqualToString:@"double"]) {
-                    sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
-                }if ([type isEqualToString:@"TEXT"]) {
-                    sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
-                }
-            }
-            
-            // sql语句已经全了
-            // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
-            if (sqlite3_step(stmt) == SQLITE_DONE) {
-                //NSLog(@"插入成功");
-            } else {
-                NSLog(@"插入失败");
-            }
-        } else {
-            NSLog(@"插入失败%d", result);
-        }
-        
-        // 一定要记得释放掉伴随指针
-        sqlite3_finalize(stmt);
-    }];
-    
-    Commit_Transcation
-    
-    
-    [self closeDB];
-}
 
-- (void)insertData:(id)model{
-    
-    [self openDB];
-    [self createTable:[model class]];
-    
-    NSString *tableName = NSStringFromClass([model class]);
-    
-    
-    NSArray <NSDictionary *> *infos = [self getProperties:[model class] contains:NO];
-    
-    NSMutableDictionary *info = [NSMutableDictionary dictionary];
-    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        info[obj.allKeys.firstObject] = obj.allValues.firstObject;
-    }];
-    
-    NSMutableString *insertString = [NSMutableString stringWithFormat:@"insert into %@ (",tableName];
-    
-    [insertString appendFormat:@"%@ )",[info.allKeys componentsJoinedByString:@","]];
-    [insertString appendString:@" values (?"];
-    for (NSInteger i = 0; i < info.allKeys.count - 1; i ++) {
-        [insertString appendString:@", ?"];
-    }
-    [insertString appendString:@")"];
-    
-    // 插入数据的sql语句，数据不确定，所以在values里面使用？代替，之后向里面绑定
-    //NSString *insertString = @"insert into person (name, gender, age) values (?, ?, ?)";
-    // sqlite的伴随指针
-    sqlite3_stmt *stmt = nil;
-    
-    // 预执行sql语句
-    // 第一个参数：数据库
-    // 第二个参数：sql语句
-    // 第三个参数：如果为正，例如 ： 1， 表示在取参数的时候，只取一个字节;使用负数表示取值取到碰到结束符号（'\000','u000'）。
-    // 第四个参数：伴随指针，会伴随着数据库的操作，获取值或绑定值
-    // 第五个参数：取值的时候如果取的不全，那么剩下的都存在这里。
-    int result = sqlite3_prepare(db, insertString.UTF8String, -1, &stmt, NULL);
-    // 如果预执行成功的话，那么就要往里面放数据了
-    if (result == SQLITE_OK) {
-        // 向预执行的sql语句里面插入参数 (取代‘？’的位置)
-        // 第一个参数：伴随指针
-        // 第二个参数：‘？’的位置，从1开始
-        // 第三个参数：插入的数据
-        // 第四个参数：和上面的－1是一样的
-        // 第五个参数：回调函数
-        
-        
-        for (int i = 0; i < info.allKeys.count; i ++) {
-            
-            NSString *key = info.allKeys[i];
-            NSString *type = info.allValues[i];
-            if ([type isEqualToString:@"INTEGER"]) {
-                sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
-            }else if ([type isEqualToString:@"float"]) {
-                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
-            }if ([type isEqualToString:@"double"]) {
-                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
-            }if ([type isEqualToString:@"TEXT"]) {
-                sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
-            }
-        }
-        
-        // sql语句已经全了
-        // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
-        if (sqlite3_step(stmt) == SQLITE_DONE) {
-            //NSLog(@"插入成功");
-        } else {
-            NSLog(@"插入失败");
-        }
-    } else {
-        NSLog(@"插入失败%d", result);
-    }
-    
-    // 一定要记得释放掉伴随指针
-    sqlite3_finalize(stmt);
-    
-    [self closeDB];
-}
-//UPDATE table_name
-//SET column1 = value1, column2 = value2...., columnN = valueN
-//WHERE [condition];
-- (void)updateWithModel:(id)model where:(NSString *)condition{
-    
-    NSString *tableName = NSStringFromClass([model class]);
-    NSArray <NSDictionary *> *infos = [self getProperties:[model class] contains:NO];
-    
-    NSMutableString *updateString = [NSMutableString stringWithFormat:@"update %@ set ",tableName];
-    [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [updateString appendFormat:@"%@ = '%@',",obj.allKeys.firstObject,[model valueForKey:obj.allKeys.firstObject]];
-    }];
-    
-    
-    NSString * updateSQL = [NSString stringWithFormat:@"%@ %@",[updateString substringToIndex:updateString.length-1],condition];
-    
-    // 伴随指针
-    sqlite3_stmt *stmt = nil;
-    
-    int result = sqlite3_prepare(db, updateSQL.UTF8String, -1, &stmt, NULL);
-    
-    if (result == SQLITE_OK) {
-        
-        for (int i = 0; i < infos.count; i ++) {
-            
-            NSString *key = infos[i].allKeys.firstObject;
-            NSString *type = infos[i].allValues.firstObject;
-            if ([type isEqualToString:@"INTEGER"]) {
-                sqlite3_bind_int64(stmt, i+1, [[model valueForKey:key] integerValue]);
-            }else if ([type isEqualToString:@"float"]) {
-                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] floatValue]);
-            }if ([type isEqualToString:@"double"]) {
-                sqlite3_bind_double(stmt, i+1, [[model valueForKey:key] doubleValue]);
-            }if ([type isEqualToString:@"TEXT"]) {
-                sqlite3_bind_text(stmt, i+1, ((NSString *)[model valueForKey:key]).UTF8String, -1, NULL);
-            }
-        }
-        if (sqlite3_step(stmt) == SQLITE_DONE) {
-            //NSLog(@"修改成功");
-        }
-    }else{
-        NSLog(@"更新失败%d", result);
-        
-    }
-    
-    sqlite3_finalize(stmt);
-}
-
-
-
-- (void)deleteWithModel:(Class)class where:(NSString *)condition{
-    
-    NSString *tableName = NSStringFromClass(class);
-    
-    NSString *deleteString = [NSString stringWithFormat:@"delete from %@ %@", tableName,condition];
-    
-    BOOL result = [self execSql:deleteString];//sqlite3_exec(db, deleteString.UTF8String, NULL, NULL, NULL);
-    
-    if (result) {
-        //NSLog(@"删除成功");
-    } else {
-        NSLog(@"删除失败");
-    }
-}
-
-- (NSArray <id>*)searchAllModel:(Class)class where:(NSString *)condition {
-    
-    [self openDB];
-    NSString *tableName = NSStringFromClass(class);
-    
-    NSString *searchString = [NSString stringWithFormat:@"select * from %@ %@", tableName,condition];
-    
-    sqlite3_stmt *stmt = nil;
-    
-    int result = sqlite3_prepare(db, searchString.UTF8String, -1, &stmt, NULL);
-    NSMutableArray *models = [NSMutableArray array];
-    
-    if (result == SQLITE_OK) {
-        
-        NSArray <NSDictionary *> *infos = [self getProperties:class contains:YES];
-        
-        
-        // 当sqlite3_step(stmt) == SQLITE_ROW 的时候，代表还有下一条数据
-        while (sqlite3_step(stmt) == SQLITE_ROW) {
-            
-            id model = [class new];
-            for (int i = 0 ; i < infos.count; i++) {
-                NSString *type = infos[i].allValues.firstObject;
-                NSString *key = infos[i].allKeys.firstObject;
-                
-                if ([type isEqualToString:@"INTEGER"]) {
-                    
-                    int uid = sqlite3_column_int(stmt, i);
-                    [model setValue:@(uid) forKey:key];
-                    
-                }else if ([type isEqualToString:@"float"]) {
-                    
-                    float uid = sqlite3_column_double(stmt, i);
-                    [model setValue:@(uid) forKey:key];
-                    
-                }if ([type isEqualToString:@"double"]) {
-                    
-                    double uid = sqlite3_column_double(stmt, i);
-                    [model setValue:@(uid) forKey:key];
-                    
-                }if ([type isEqualToString:@"TEXT"]) {
-                    NSString *name = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(stmt, i)];
-                    [model setValue:name forKey:key];
-                    
-                }
-                
-            }
-            [models addObject:model];
-        }
-        NSLog(@"%s--%@", __func__,models);
-    }
-    
-    sqlite3_finalize(stmt);
-    [self closeDB];
-    return models;
-}
+//
+//- (void)deleteWithModel:(Class)class where:(NSString *)condition{
+//
+//    NSString *tableName = NSStringFromClass(class);
+//
+//    NSString *deleteString = [NSString stringWithFormat:@"delete from %@ %@", tableName,condition];
+//
+//    BOOL result = [self execSql:deleteString];//sqlite3_exec(db, deleteString.UTF8String, NULL, NULL, NULL);
+//
+//    if (result) {
+//        //NSLog(@"删除成功");
+//    } else {
+//        NSLog(@"删除失败");
+//    }
+//}
+//
+//- (NSArray <id>*)searchAllModel:(Class)class where:(NSString *)condition {
+//
+//    [self openDB];
+//    NSString *tableName = NSStringFromClass(class);
+//
+//    NSString *searchString = [NSString stringWithFormat:@"select * from %@ %@", tableName,condition];
+//
+//    sqlite3_stmt *stmt = nil;
+//
+//    int result = sqlite3_prepare(db, searchString.UTF8String, -1, &stmt, NULL);
+//    NSMutableArray *models = [NSMutableArray array];
+//
+//    if (result == SQLITE_OK) {
+//
+//        NSArray <NSDictionary *> *infos = [self getProperties:class contains:YES];
+//
+//
+//        // 当sqlite3_step(stmt) == SQLITE_ROW 的时候，代表还有下一条数据
+//        while (sqlite3_step(stmt) == SQLITE_ROW) {
+//
+//            id model = [class new];
+//            for (int i = 0 ; i < infos.count; i++) {
+//                NSString *type = infos[i].allValues.firstObject;
+//                NSString *key = infos[i].allKeys.firstObject;
+//
+//                if ([type isEqualToString:@"INTEGER"]) {
+//
+//                    int uid = sqlite3_column_int(stmt, i);
+//                    [model setValue:@(uid) forKey:key];
+//
+//                }else if ([type isEqualToString:@"float"]) {
+//
+//                    float uid = sqlite3_column_double(stmt, i);
+//                    [model setValue:@(uid) forKey:key];
+//
+//                }if ([type isEqualToString:@"double"]) {
+//
+//                    double uid = sqlite3_column_double(stmt, i);
+//                    [model setValue:@(uid) forKey:key];
+//
+//                }if ([type isEqualToString:@"TEXT"]) {
+//                    NSString *name = [NSString stringWithUTF8String:(const char *) sqlite3_column_text(stmt, i)];
+//                    [model setValue:name forKey:key];
+//
+//                }
+//
+//            }
+//            [models addObject:model];
+//        }
+//        NSLog(@"%s--%@", __func__,models);
+//    }
+//
+//    sqlite3_finalize(stmt);
+//    [self closeDB];
+//    return models;
+//}
 
 -(id)isRespondsToSelector:(SEL)selector forClass:(Class)cla{
     id obj = nil;
@@ -503,6 +510,18 @@ static sqlite3 *db = nil;
         }else if ([type isEqualToString:@"Q"]) {
             dict[name] = @"INTEGER";
             
+        }else if ([type isEqualToString:@"@\"NSDictionary\""]) {
+            dict[name] = isc? @"NSDictionary": @"TEXT";
+            
+        }else if ([type isEqualToString:@"@\"NSArray\""]) {
+            dict[name] = isc? @"NSArray": @"TEXT";
+
+        }else if ([type isEqualToString:@"@\"NSMutableDictionary\""]) {
+            dict[name] = isc? @"NSMutableDictionary": @"TEXT";
+
+        }else if ([type isEqualToString:@"@\"NSMutableArray\""]) {
+            dict[name] = isc? @"NSMutableArray": @"TEXT";
+
         }else
         {
             continue;
@@ -517,10 +536,104 @@ static sqlite3 *db = nil;
 }
 
 
+
+
+
 @end
 
 
 @implementation NSObject (DB)
+
+-(NSString *)objectToJson:(id)obj{
+    if (obj == nil) {
+        return nil;
+    }
+    NSError *error = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:obj
+                                                       options:0
+                                                         error:&error];
+    
+    if ([jsonData length] && error == nil){
+        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
+    }else{
+        return @"";
+    }
+}
+
+-(id)jsonToObject:(NSString *)json{
+    if (json == nil) {
+        return nil;
+    }
+    
+    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *error;
+    id obj = [NSJSONSerialization JSONObjectWithData:jsonData
+                                             options:NSJSONReadingMutableContainers
+                                               error:&error];
+    if(error)
+    {
+        NSLog(@"json解析失败：%@",error);
+        return nil;
+    }
+    return obj;
+}
+
+- (NSDictionary*)getObjectData:(id)obj{
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    unsigned int propsCount;
+    objc_property_t *props = class_copyPropertyList([obj class], &propsCount);//获得属性列表
+    for(int i = 0;i < propsCount; i++){
+        
+        objc_property_t prop = props[i];
+        NSString *propName = [NSString stringWithUTF8String:property_getName(prop)];//获得属性的名称
+        id value = [obj valueForKey:propName];//kvc读值
+        if(value == nil){
+            value = [NSNull null];
+        }
+        else{
+            value = [self getObjectInternal:value];//自定义处理数组，字典，其他类
+        }
+        [dic setObject:value forKey:propName];
+    }
+    return dic;
+}
+
+- (id)getObjectInternal:(id)obj{
+    
+    if([obj isKindOfClass:[NSString class]]
+       || [obj isKindOfClass:[NSNumber class]]
+       || [obj isKindOfClass:[NSNull class]]){
+        
+        return obj;
+    }
+    
+    if([obj isKindOfClass:[NSArray class]]){
+        
+        NSArray *objarr = obj;
+        NSMutableArray *arr = [NSMutableArray arrayWithCapacity:objarr.count];
+        for(int i = 0;i < objarr.count; i++){
+            
+            [arr setObject:[self getObjectInternal:[objarr objectAtIndex:i]] atIndexedSubscript:i];
+        }
+        
+        return arr;
+    }
+    
+    if([obj isKindOfClass:[NSDictionary class]]){
+        
+        NSDictionary *objdic = obj;
+        NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:[objdic count]];
+        for(NSString *key in objdic.allKeys){
+            
+            [dic setObject:[self getObjectInternal:[objdic objectForKey:key]] forKey:key];
+            
+        }
+        return dic;
+    }
+    
+    return [self getObjectData:obj];
+}
 
 - (BOOL)insert{
     
@@ -581,7 +694,13 @@ static sqlite3 *db = nil;
             }if ([type isEqualToString:@"double"]) {
                 sqlite3_bind_double(stmt, i+1, [[self valueForKey:key] doubleValue]);
             }if ([type isEqualToString:@"TEXT"]) {
-                sqlite3_bind_text(stmt, i+1, ((NSString *)[self valueForKey:key]).UTF8String, -1, NULL);
+                id value = [self valueForKey:key];
+                if (![value isKindOfClass:[NSString class]]) {
+                    NSDictionary *obj = [self getObjectData:self];
+                    value = [obj valueForKey:key];
+                    value = [self objectToJson:value];
+                }
+                sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
             }
         }
         
@@ -700,7 +819,64 @@ static sqlite3 *db = nil;
     return isOK;
 }
 
++ (id)arrayToObjcs:(NSArray *)array class:(Class)cc{
+    NSMutableArray *modes = [NSMutableArray array];
+    [array enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [modes addObject:[self dict:obj toObjc:cc]];
+    }];
+    return modes;
+}
 
++ (id)dict:(NSDictionary *)dict toObjc:(Class)cc{
+    
+    id model = [[cc alloc] init];
+    
+    unsigned int outCount;
+    
+    //获取类中的所有成员属性
+    Ivar * ivars = class_copyIvarList(cc, &outCount);
+    for (unsigned int i = 0; i < outCount; i ++) {
+        Ivar ivar = ivars[i];
+        const char * cName = ivar_getName(ivar);
+        const char * cType = ivar_getTypeEncoding(ivar);
+        NSString *propertyName = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        NSString *propertyType = [NSString stringWithCString:cType encoding:NSUTF8StringEncoding];
+
+        id propertyValue = dict[propertyName];
+        
+        if(propertyValue == nil) continue;
+        if ([propertyType isEqualToString:@"@\"NSMutableDictionary\""]
+            || [propertyType isEqualToString:@"@\"NSDictionary\""]
+            || [propertyType isEqualToString:@"B"]
+            || [propertyType isEqualToString:@"@\"NSString\""]
+            || [propertyType isEqualToString:@"q"]
+            || [propertyType isEqualToString:@"d"]
+            || [propertyType isEqualToString:@"i"]
+            || [propertyType isEqualToString:@"f"]
+            || [propertyType isEqualToString:@"Q"]
+
+            ) {
+            [model setValue:propertyValue forKey:propertyName];
+        }else if ([propertyType isEqualToString:@"@\"NSMutableArray\""] || [propertyType isEqualToString:@"@\"NSArray\""]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            NSDictionary * objDict = [self performSelector:@selector(classInArray)];
+            Class c = [objDict valueForKey:propertyName];
+#pragma clang diagnostic pop
+            if(c) [self arrayToObjcs:propertyValue class:c];
+            else [model setValue:propertyValue forKey:propertyName];
+        }else{
+            [model setValue:[self dict:propertyValue toObjc:NSClassFromString(propertyType)] forKey:propertyName];
+        }
+    }
+    
+    free(ivars);
+
+    return model;
+}
+
+    
+    
 + (NSArray <id>*)searchDataWhere:(NSString *)condition{
     
     [[DB sharedInstance] openDB];
@@ -726,7 +902,38 @@ static sqlite3 *db = nil;
                 NSString *type = infos[i].allValues.firstObject;
                 NSString *key = infos[i].allKeys.firstObject;
                 
-                if ([type isEqualToString:@"INTEGER"]) {
+                if ([type isEqualToString:@"NSArray"]
+//                    || [type isEqualToString:@"NSMutableDictionary"]
+//                    || [type isEqualToString:@"NSDictionary"]
+                    || [type isEqualToString:@"NSMutableArray"]
+                    ) {
+                    
+                    Class  c = NSClassFromString(@"NSString");
+                    if([self respondsToSelector:@selector(classInArray)]){
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+                        NSDictionary * objDict = [self performSelector:@selector(classInArray)];
+                        c = [objDict valueForKey:key];
+#pragma clang diagnostic pop
+                    }
+                    
+                    const unsigned char *txt =  sqlite3_column_text(stmt, i);
+                    
+                    if (txt != NULL) {
+                        
+                        NSString *json = [NSString stringWithUTF8String:(const char *)txt];
+                        id value = [self jsonToObject:json];
+                     
+                        if ([c isKindOfClass:[NSString class]]) {
+                            [model setValue:value forKey:key];
+                        }else {
+                            [model setValue:[self arrayToObjcs:value class:c] forKey:key];
+                            ;
+                        }
+                    }
+                    
+                    
+                }else if ([type isEqualToString:@"INTEGER"]) {
                     
                     int uid = sqlite3_column_int(stmt, i);
                     [model setValue:@(uid) forKey:key];
@@ -736,12 +943,12 @@ static sqlite3 *db = nil;
                     float uid = sqlite3_column_double(stmt, i);
                     [model setValue:@(uid) forKey:key];
                     
-                }if ([type isEqualToString:@"double"]) {
+                }else if ([type isEqualToString:@"double"]) {
                     
                     double uid = sqlite3_column_double(stmt, i);
                     [model setValue:@(uid) forKey:key];
                     
-                }if ([type isEqualToString:@"TEXT"]) {
+                }else if ([type isEqualToString:@"TEXT"]) {
                     const unsigned char *txt =  sqlite3_column_text(stmt, i);
                     if (txt != NULL) {
                         NSString *name = [NSString stringWithUTF8String:(const char *)txt];
@@ -783,7 +990,7 @@ static sqlite3 *db = nil;
 //UPDATE table_name
 //SET column1 = value1, column2 = value2...., columnN = valueN
 //WHERE [condition];
-- (BOOL)update{
+- (BOOL)upDate{
     BOOL isOK = NO;
         [[DB sharedInstance] openDB];
     NSString *tableName = NSStringFromClass([self class]);
@@ -849,7 +1056,7 @@ static sqlite3 *db = nil;
 
     NSArray *result = [[self class] searchDataWhere:[NSString stringWithFormat:@"where %@ = %@",primaryKeyType,primaryKeyValue]];
     if (result.count) {
-        return [result.firstObject update];
+        return [result.firstObject upDate];
     }
     return [self insert];
 }

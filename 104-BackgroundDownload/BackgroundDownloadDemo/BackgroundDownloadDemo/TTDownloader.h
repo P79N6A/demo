@@ -26,7 +26,6 @@ typedef NS_ENUM(NSUInteger, TTDownloaderState) {
 @property (copy, nonatomic) NSString *url;
 @property (copy, nonatomic) NSString *title;
 @property (nonatomic, assign) TTDownloaderState status;
-
 @end
 
 @interface TTDownloader : NSObject
@@ -42,7 +41,6 @@ typedef NS_ENUM(NSUInteger, TTDownloaderState) {
 
 - (void)pauseDownload:(NSString *)downloadURLString;
 - (void)continueDownload:(NSString *)downloadURLString;
-- (TTDownloaderState)statusDownload:(NSString *)downloadURLString;
 
 @property (strong, nonatomic) NSArray <TTDownloadModel *>*downloadSources;
 /**获取已经完成的下载任务*/

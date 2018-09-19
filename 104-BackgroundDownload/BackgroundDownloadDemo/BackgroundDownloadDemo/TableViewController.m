@@ -58,19 +58,28 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     DownItem *item = self.lists[indexPath.row];
     TableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    [[TTDownloader defaultDownloader] beginDownload:item.down fileName:item.zhuti progress:item.progressBolck speed:item.speedBolck];
+    [[TTDownloader defaultDownloader] beginDownload:item.down fileName:item.zhuti progress:^(CGFloat progress, NSString *url) {
+        if([url isEqualToString:item.down]) item.progress.progress = progress;
+        else item.progress.progress = 0.0;
+    } speed:^(NSString *speed, NSString *url) {
+        if([url isEqualToString:item.down]) item.speed.text = speed;
+        else item.speed.text = nil;
+    }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     TableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
     DownItem *item = self.lists[indexPath.row];
-    item.progressBolck = ^(CGFloat progress,NSString *url) {
-        NSLog(@"%s---%@----%f", __func__,item.zhuti,progress);
-        if([url isEqualToString:item.down]) cell.progress.progress = progress;
-    };
-    item.speedBolck = ^(NSString *speed, NSString *url) {
-        if([url isEqualToString:item.down]) cell.speed.text = speed;
-    };
+    item.progress = cell.progress;
+//    item.progressBolck = ^(CGFloat progress,NSString *url) {
+////        NSLog(@"%s---%@----%f", __func__,item.zhuti,progress);
+//        if([url isEqualToString:item.down]) item.progress.progress = progress;
+////        else cell.progress.progress = 0.0;
+//    };
+//    item.speedBolck = ^(NSString *speed, NSString *url) {
+////        if([url isEqualToString:item.down]) cell.speed.text = speed;
+////        else cell.speed.text = nil;
+//    };
     cell.textLabel.text = item.zhuti;
     cell.detailTextLabel.text = [NSString stringWithFormat:@"%d",item.status];
     // Configure the cell...

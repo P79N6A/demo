@@ -13,6 +13,7 @@
 		57C454181D8442EC00B6D2B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C454161D8442EC00B6D2B5 /* Main.storyboard */; };
 		57C4541A1D8442EC00B6D2B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 57C454191D8442EC00B6D2B5 /* Assets.xcassets */; };
 		57C4541D1D8442EC00B6D2B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 57C4541B1D8442EC00B6D2B5 /* LaunchScreen.storyboard */; };
+		690C21E6215228B0002CBFD9 /* TTT.m in Sources */ = {isa = PBXBuildFile; fileRef = 690C21E5215228B0002CBFD9 /* TTT.m */; };
 		6922FA3E21410D3400A75BE1 /* TTDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 6922FA3D21410D3400A75BE1 /* TTDownloader.m */; };
 		69C5AAA321421AD9009259B3 /* NSObject+DB.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAA221421AD8009259B3 /* NSObject+DB.m */; };
 		69C5AAA621421C42009259B3 /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C5AAA521421C42009259B3 /* TableViewController.m */; };
@@ -34,6 +35,8 @@
 		57C454191D8442EC00B6D2B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57C4541C1D8442EC00B6D2B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		57C4541E1D8442EC00B6D2B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		690C21E4215228B0002CBFD9 /* TTT.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTT.h; sourceTree = "<group>"; };
+		690C21E5215228B0002CBFD9 /* TTT.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTT.m; sourceTree = "<group>"; };
 		6922FA3C21410D3400A75BE1 /* TTDownloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TTDownloader.h; sourceTree = "<group>"; };
 		6922FA3D21410D3400A75BE1 /* TTDownloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TTDownloader.m; sourceTree = "<group>"; };
 		69C5AAA121421AD8009259B3 /* NSObject+DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DB.h"; sourceTree = "<group>"; };
@@ -107,6 +110,8 @@
 				69C5AAA221421AD8009259B3 /* NSObject+DB.m */,
 				84918AD01DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.h */,
 				84918AD11DAE0D5300E3288C /* NSURLSession+CorrectedResumeData.m */,
+				690C21E4215228B0002CBFD9 /* TTT.h */,
+				690C21E5215228B0002CBFD9 /* TTT.m */,
 			);
 			path = BackgroundDownloadDemo;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				690C21E6215228B0002CBFD9 /* TTT.m in Sources */,
 				6922FA3E21410D3400A75BE1 /* TTDownloader.m in Sources */,
 				69C5AAA321421AD9009259B3 /* NSObject+DB.m in Sources */,
 				69C5AAAF21421E8D009259B3 /* DownItem.m in Sources */,
@@ -319,7 +325,7 @@
 				INFOPLIST_FILE = BackgroundDownloadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo3333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -335,7 +341,7 @@
 				INFOPLIST_FILE = BackgroundDownloadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = cn.com.hkhust.BackgroundDownloadDemo3333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

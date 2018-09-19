@@ -14,4 +14,6 @@
 @property (nonatomic, assign) NSInteger status;
 @property (nonatomic, copy) void (^progressBolck)(CGFloat progress,NSString *url);
 @property (nonatomic, copy) void (^speedBolck)(NSString *speed,NSString *url);
+@property (nonatomic, weak) UIProgressView *progress;
+@property (nonatomic, weak) UILabel *speed;
 @end

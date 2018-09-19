@@ -11,13 +11,16 @@
 @end
 @protocol DataBaseProtocol<NSObject>
 +(NSString *)primaryKey;
++(NSDictionary *)classInArray;
+@optional
+
 @end
 @interface NSObject (DB)
 ///<DataBaseProtocol>
 - (BOOL)insert;
 + (BOOL)insertDatas:(NSArray <id>*)models;
 + (BOOL)deleteDataWhere:(NSString *)condition;
-- (BOOL)update;
+- (BOOL)upDate;
 - (BOOL)insertOrUpDate;
 + (NSArray <id>*)searchDataWhere:(NSString *)condition;
 
