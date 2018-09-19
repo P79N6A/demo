@@ -47,9 +47,42 @@
 //        ;
 //    }];
     
-    [RiJuTV getJianShuObj:@"https://www.jianshu.com/p/820831f547a2" completed:^(id obj) {
-        NSLog(@"%s", __func__);
-    }];
+//    [RiJuTV getJianShuObj:@"https://www.jianshu.com/p/820831f547a2" completed:^(id obj) {
+//        NSLog(@"%s", __func__);
+//    }];
+    
+  
+        
+        UIView *fron = [[self.view subviews] objectAtIndex:0];
+        
+        UIView *back = [[self.view subviews] objectAtIndex:1];
+
+        
+        CGContextRef ctx = UIGraphicsGetCurrentContext();
+    
+        [UIView beginAnimations:nil context:ctx];
+    
+        [UIView setAnimationCurve:UIViewAnimationCurveEaseInOut];
+    
+        [UIView setAnimationDuration:2.0];
+    
+    
+//        fron.alpha = 0.0f;
+//    
+//        back.alpha = 1.0f;
+    
+//        fron.transform = CGAffineTransformMakeScale(0.25f, 0.25f);
+    
+//        back.transform = CGAffineTransformIdentity;
+    [self.view exchangeSubviewAtIndex:0 withSubviewAtIndex:1];
+
+    
+    
+        [UIView setAnimationDelegate:self];
+    
+        [UIView commitAnimations];
+    
+
 }
 
 @end

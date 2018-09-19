@@ -281,13 +281,15 @@
         CGFloat totalDuration = CMTimeGetSeconds(duration);
         
         
-        NSLog(@"下载进度：%.2f   %f %f %f", timeInterval / totalDuration,timeInterval,CMTimeGetSeconds(playerItem.currentTime),totalDuration);
+        CGFloat p = timeInterval / totalDuration;
+        NSLog(@"下载进度：%.2f   %f %f %f", p,timeInterval,CMTimeGetSeconds(playerItem.currentTime),totalDuration);
         
         CGFloat timeee = [[NSString stringWithFormat:@"%.3f",timeInterval] floatValue];
         CGFloat totall = [[NSString stringWithFormat:@"%.3f",totalDuration] floatValue];
         
-        if (timeee >= totall) {
-            
+        if(p >= 1.0){
+//        if (timeee + 1 >= totall) {
+        
             NSLog(@"下载wan");
             [self stopAnimation];
             

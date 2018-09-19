@@ -23,7 +23,7 @@
     [super viewDidLoad];
 
 //    NSString*urlPath = @"http://image.zhimabaobao.com/upload/quan/2017/08/24/d19eb5e00bb74c3ca3c566545a2a3ca6.mp4";
-    NSString*urlPath = @"https://cache.m.iqiyi.com/mus/224131601/006d0133f2bdcb3b62590c353d883125/afbe8fd3d73448c9//20180409/e0/af/206e157dfb993138daf7e4ec80f7274e.m3u8?qd_originate=tmts_py&tvid=993758500&bossStatus=0&qd_vip=0&px=&qd_src=01080031010000000000&prv=&previewType=&previewTime=&from=&qd_time=1537242734699&qd_p=716f376f&qd_asc=786ef33d292ffaa667b03a1cdb5a35cf&qypid=993758500_04000000001000000000_2&qd_k=8336bb31b6bc7f51e701bdf19b4cfa4b&isdol=0&code=2&iswb=0&preIdAll=51300ad2bd6cffef99bd65d80a55aa63-8f49f1fd7ff59d9782d7c7f32ca60216-c078adedeeeca712b4bfb7a229b50543&dfp=a0fef557bd00f345089c90d3a519c30404233e43bb4cffbebbaf4f29f22332e43a&vf=e4a115afb0a99dcea214e3e12acad38d&np_tag=nginx_part_tag";
+    NSString*urlPath = @"http://cache.m.iqiyi.com/mus/224131601/9aedd710f12c5b6c204543280b9ed789/afbe8fd3d73448c9//20180409/14/55/f1c7eb3d1c594e3c67096f56fcc4ae44.m3u8?qd_originate=tmts_py&tvid=993758500&bossStatus=0&qd_vip=0&px=&src=2_20_201&prv=&previewType=&previewTime=&from=&qd_time=1537259962613&qd_p=716f376f&qd_asc=04bb8d3ee37754870e2b18d108abf1d8&qypid=993758500_04000000001000000000_1&qd_k=4ced491cc8ecbd2a4e3e2c29b26abc69&isdol=0&code=2&ff=f4v&iswb=0&preIdAll=62a6bd28b1fd96ca48fd205a7a608432-3388e20264ee7e252017045edf529a9f-62a6bd28b1fd96ca48fd205a7a608432&sgti=12_v0j5eu22mofo7ch7n98sdljp_1537259961745&dfp=a05a1c3bc4057b4120ac9c6f18ea313f23c2f29092e308dbee14d1f64bd4563018&vf=859c7980de6b8ac5e075edf624344b74&np_tag=nginx_part_tag&qypid=993758500_31";
     
     NSArray*arr = [urlPath componentsSeparatedByString:@"/"];
     
