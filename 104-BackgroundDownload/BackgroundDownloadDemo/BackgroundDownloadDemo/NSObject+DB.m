@@ -84,7 +84,7 @@ static sqlite3 *db = nil;
     // 在数据库里面 所有的字符串都要变成utf－8的编码格式
     int result = sqlite3_close(db);
     if (result == SQLITE_OK) {
-        //NSLog(@"关闭成功");
+//        NSLog(@"关闭成功");
         return YES;
     } else {
         NSLog(@"关闭失败");
@@ -154,6 +154,24 @@ static sqlite3 *db = nil;
     }
     
     
+}
+
++ (NSArray *)columnNames:(Class)class{
+    NSString *tableName = NSStringFromClass(class);
+    NSString* SQL = [NSString stringWithFormat:@"select * from %@ limit 0,1;",tableName];
+    NSMutableArray* tempArrayM = [NSMutableArray array];
+    sqlite3_stmt * pp_stmt = nil;
+    if (sqlite3_prepare_v2(db, [SQL UTF8String], -1, &pp_stmt, nil) == SQLITE_OK) {
+        int columnCount = sqlite3_column_count(pp_stmt);
+        int columnIdx = 0;
+        for (columnIdx = 0; columnIdx < columnCount; columnIdx++){
+            [tempArrayM addObject:[NSString stringWithUTF8String:sqlite3_column_name(pp_stmt, columnIdx)]];
+        }
+        if (sqlite3_step(pp_stmt) != SQLITE_DONE) {
+            sqlite3_finalize(pp_stmt);
+        }
+    }
+    return tempArrayM.count?tempArrayM:nil;
 }
 //
 //- (void)insertDatas:(NSArray <id>*)models{
@@ -538,107 +556,232 @@ static sqlite3 *db = nil;
     return array;
 }
 
++(BOOL)dropTable:(Class)cla{
+    [[DB sharedInstance] openDB];
+    NSString* tableName = NSStringFromClass(cla);
+    NSString* SQL = [NSString stringWithFormat:@"DROP TABLE %@;",tableName];
+    BOOL result = [[DB sharedInstance] execSql:SQL];
+    [[DB sharedInstance] closeDB];
+   return result;
+}
 
++(void)refresh:(Class)cla{
+        //将就数据全部查询出来
+        NSArray* objects = [cla findWhere:@""];
+        [self dropTable:cla];//删除旧的数据库
 
+        if (objects.count) {
+            [cla saveArray:objects];
+        }
+}
+/**
+ 判断类属性是否有改变,智能刷新.
+ */
++(void)ifIvarChangeForClass:(Class)cla{
+    NSMutableArray* newKeys = [NSMutableArray array];
+    NSMutableArray* sqlKeys = [NSMutableArray array];
+    NSArray* columNames = [self columnNames:cla];
+    NSArray* propertyInfos = [[DB sharedInstance] getProperties:cla contains:YES isSqlType:YES];
 
+    if (!columNames.count || !propertyInfos.count)return;
+    
+    NSMutableArray* propertyNames = [NSMutableArray array];
+    
+    
+    for(NSDictionary * propertyInfo in propertyInfos){
+        
+        NSString *key = propertyInfo.allKeys.firstObject;
+        if (![columNames containsObject:key]) {
+            [newKeys addObject:@{key:propertyInfo.allValues.firstObject}];
+        }
+        [propertyNames addObject:key];
+    }
+    
+    [columNames enumerateObjectsUsingBlock:^(NSString* _Nonnull columName, NSUInteger idx, BOOL * _Nonnull stop) {
+        if(![propertyNames containsObject:columName]){
+            [sqlKeys addObject:columName];
+        }
+    }];
+    
+    NSString* tableName = NSStringFromClass(cla);
+    if((sqlKeys.count==0) && (newKeys.count>0)){NSLog(@"添加新字段...");
+        //此处只是增加了新的列.
+        for(NSDictionary* keyValue in newKeys){
+            //添加新字段
+            NSString* SQL = [NSString stringWithFormat:@"alter table %@ add %@ %@;",tableName,keyValue.allKeys.firstObject,keyValue.allValues.firstObject];
+            [[DB sharedInstance] execSql:SQL];
+        }
+    }else if (sqlKeys.count>0){NSLog(@"数据库刷新....");
+        //字段发生改变,减少或名称变化,实行刷新数据库.
+        [self refresh:cla];//进行刷新处理.
+    }else;
+}
 
 @end
 
 
 @implementation NSObject (DB)
 
--(NSString *)objectToJson:(id)obj{
-    if (obj == nil || [obj isKindOfClass:[NSNull class]]) {
-        return nil;
+
+
+- (NSData *)jsonData
+{
+    if ([self isKindOfClass:[NSString class]]) {
+        return [((NSString *)self) dataUsingEncoding:NSUTF8StringEncoding];
+    } else if ([self isKindOfClass:[NSData class]]) {
+        return (NSData *)self;
     }
-    NSError *error = nil;
-    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:obj
-                                                       options:0
-                                                         error:&error];
     
-    if ([jsonData length] && error == nil){
-        return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
-    }else{
+    return [NSJSONSerialization dataWithJSONObject:[self jsonObject] options:kNilOptions error:nil];
+}
+//FIXME:  -  json -> 字典/数组
+- (id)jsonObject
+{
+    if ([self isKindOfClass:[NSString class]]) {
+        return [NSJSONSerialization JSONObjectWithData:[((NSString *)self) dataUsingEncoding:NSUTF8StringEncoding] options:kNilOptions error:nil];
+    } else if ([self isKindOfClass:[NSData class]]) {
+        return [NSJSONSerialization JSONObjectWithData:(NSData *)self options:kNilOptions error:nil];
+    }
+    
+    return self;
+}
+//FIXME:  -  字典/数组 -> json
+- (NSString *)jsonString
+{
+    if (!self || [self isKindOfClass:[NSNull class]]) {
         return @"";
     }
-}
-
--(id)jsonToObject:(NSString *)json{
-    if (json == nil) {
-        return nil;
+    if ([self isKindOfClass:[NSString class]]) {
+        return (NSString *)self;
+    } else if ([self isKindOfClass:[NSData class]]) {
+        return [[NSString alloc] initWithData:(NSData *)self encoding:NSUTF8StringEncoding];
     }
     
-    NSData *jsonData = [json dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *error;
-    id obj = [NSJSONSerialization JSONObjectWithData:jsonData
-                                             options:NSJSONReadingMutableContainers
-                                               error:&error];
-    if(error)
-    {
-        NSLog(@"json解析失败：%@",error);
-        return nil;
-    }
-    return obj;
+    return [[NSString alloc] initWithData:[self jsonData] encoding:NSUTF8StringEncoding];
 }
 
-- (NSDictionary*)getObjectData:(id)obj{
+
+//FIXME:  -  字典数组 -> 模型数组
++ (NSMutableArray *)objectArrayWithKeyValuesArray:(id)keyValuesArray{
+    NSMutableArray *modes = [NSMutableArray array];
+    [keyValuesArray enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [modes addObject:[self objectWithKeyValues:obj]];
+    }];
+    return modes;
+}
+
+//FIXME:  -  字典 -> 模型
++ (instancetype)objectWithKeyValues:(id)keyValues{
+    if(![keyValues isKindOfClass:[NSDictionary class]]) return keyValues;
+    id model = [[self alloc] init];
+    unsigned int outCount;
+    //获取类中的所有成员属性
+    Ivar * ivars = class_copyIvarList(self, &outCount);
+    for (unsigned int i = 0; i < outCount; i ++) {
+        Ivar ivar = ivars[i];
+        const char * cName = ivar_getName(ivar);
+        const char * cType = ivar_getTypeEncoding(ivar);
+        NSString *propertyName = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"_" withString:@""];
+        NSString *propertyType = [NSString stringWithCString:cType encoding:NSUTF8StringEncoding];
+        
+        id propertyValue = [keyValues valueForKey:propertyName];
+        
+        if(propertyValue == nil || [propertyValue isKindOfClass:[NSNull class]]) continue;
+        if ([propertyType isEqualToString:@"@\"NSMutableDictionary\""]
+            || [propertyType isEqualToString:@"@\"NSDictionary\""]
+            || [propertyType isEqualToString:@"B"]
+            || [propertyType isEqualToString:@"@\"NSString\""]
+            || [propertyType isEqualToString:@"q"]
+            || [propertyType isEqualToString:@"d"]
+            || [propertyType isEqualToString:@"i"]
+            || [propertyType isEqualToString:@"f"]
+            || [propertyType isEqualToString:@"Q"]
+            
+            ) {
+            [model setValue:propertyValue forKey:propertyName];
+        }else if ([propertyType isEqualToString:@"@\"NSMutableArray\""] || [propertyType isEqualToString:@"@\"NSArray\""]) {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+            NSDictionary * objDict = [self performSelector:@selector(classInArray)];
+            Class c = [objDict valueForKey:propertyName];
+#pragma clang diagnostic pop
+            //if(c) [self arrayToObjcs:propertyValue class:c];
+            if(c) [c objectArrayWithKeyValuesArray:propertyValue];
+            else [model setValue:propertyValue forKey:propertyName];
+        }else{
+            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"\"" withString:@""];
+            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"@" withString:@""];
+            [model setValue:[NSClassFromString(propertyType) objectWithKeyValues:propertyValue] forKey:propertyName];
+
+            //[model setValue:[self dict:propertyValue toObjc:NSClassFromString(propertyType)] forKey:propertyName];
+        }
+    }
     
+    free(ivars);
+    
+    return model;
+}
+
+
+//FIXME:  -  模型 -> 字典
+- (NSMutableDictionary *)keyValues{
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     unsigned int propsCount;
-    objc_property_t *props = class_copyPropertyList([obj class], &propsCount);//获得属性列表
+    objc_property_t *props = class_copyPropertyList([self class], &propsCount);//获得属性列表
     for(int i = 0;i < propsCount; i++){
         
         objc_property_t prop = props[i];
         NSString *propName = [NSString stringWithUTF8String:property_getName(prop)];//获得属性的名称
-        id value = [obj valueForKey:propName];//kvc读值
+        id value = [self valueForKey:propName];//kvc读值
         if(value == nil){
             value = [NSNull null];
         }
         else{
-            value = [self getObjectInternal:value];//自定义处理数组，字典，其他类
+            value = [value object];//自定义处理数组，字典，其他类
         }
         [dic setObject:value forKey:propName];
     }
     return dic;
 }
-
-- (id)getObjectInternal:(id)obj{
+- (id)object{
     
-    if([obj isKindOfClass:[NSString class]]
-       || [obj isKindOfClass:[NSNumber class]]
-       || [obj isKindOfClass:[NSNull class]]){
+    if([self isKindOfClass:[NSString class]]
+       || [self isKindOfClass:[NSNumber class]]
+       || [self isKindOfClass:[NSNull class]]){
         
-        return obj;
+        return self;
     }
     
-    if([obj isKindOfClass:[NSArray class]]){
+    if([self isKindOfClass:[NSArray class]]){
         
-        NSArray *objarr = obj;
+        NSArray *objarr = (NSArray *)self;
         NSMutableArray *arr = [NSMutableArray arrayWithCapacity:objarr.count];
         for(int i = 0;i < objarr.count; i++){
-            
-            [arr setObject:[self getObjectInternal:[objarr objectAtIndex:i]] atIndexedSubscript:i];
+            //[arr setObject:[self getObjectInternal:[objarr objectAtIndex:i]] atIndexedSubscript:i];
+
+            [arr setObject:[[objarr objectAtIndex:i] object] atIndexedSubscript:i];
         }
         
         return arr;
     }
     
-    if([obj isKindOfClass:[NSDictionary class]]){
+    if([self isKindOfClass:[NSDictionary class]]){
         
-        NSDictionary *objdic = obj;
+        NSDictionary *objdic = (NSDictionary *)self;
         NSMutableDictionary *dic = [NSMutableDictionary dictionaryWithCapacity:[objdic count]];
         for(NSString *key in objdic.allKeys){
             
-            [dic setObject:[self getObjectInternal:[objdic objectForKey:key]] forKey:key];
+            [dic setObject:[[objdic objectForKey:key] object] forKey:key];
             
         }
         return dic;
     }
     
-    return [self getObjectData:obj];
+    return [self keyValues];//[self getObjectData:obj];
 }
 
-- (BOOL)insert{
+//FIXME:  -  插入一条记录
+- (BOOL)save{
     
     BOOL isOk = NO;
     
@@ -646,6 +789,8 @@ static sqlite3 *db = nil;
     [[DB sharedInstance] createTable:[self class]];
     
     NSString *tableName = NSStringFromClass([self class]);
+    
+    [DB ifIvarChangeForClass:[self class]];
     
     
     NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO isSqlType:YES];
@@ -699,9 +844,12 @@ static sqlite3 *db = nil;
             }if ([type isEqualToString:@"TEXT"]) {
                 id value = [self valueForKey:key];
                 if (![value isKindOfClass:[NSString class]]) {
-                    NSDictionary *obj = [self getObjectData:self];
+                    //NSDictionary *obj = [self getObjectData:self];
+                    NSDictionary *obj = [self keyValues];
+
                     value = [obj valueForKey:key];
-                    value = [self objectToJson:value];
+                    //value = [self objectToJson:value];
+                    value = [value jsonString];
                 }
                 sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
             }
@@ -710,7 +858,7 @@ static sqlite3 *db = nil;
         // sql语句已经全了
         // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
         if (sqlite3_step(stmt) == SQLITE_DONE) {
-            //NSLog(@"插入成功");
+            NSLog(@"插入成功");
             isOk = YES;
         } else {
             NSLog(@"插入失败");
@@ -728,8 +876,8 @@ static sqlite3 *db = nil;
     return isOk;
 }
 
-
-+ (BOOL)insertDatas:(NSArray <id>*)models{
+//FIXME:  -  插入一个集合的记录
++ (BOOL)saveArray:(NSArray <id>*)models{
     
     __block BOOL isOK = NO;
     
@@ -809,9 +957,13 @@ static sqlite3 *db = nil;
                 }if ([type isEqualToString:@"TEXT"]) {
                     id value = [model valueForKey:key];
                     if (![value isKindOfClass:[NSString class]]) {
-                        NSDictionary *obj = [self getObjectData:model];
+                        //NSDictionary *obj = [self getObjectData:model];
+                        NSDictionary *obj = [model keyValues];
+
                         value = [obj valueForKey:key];
-                        value = [self objectToJson:value];
+                        //value = [self objectToJson:value];
+                        value = [value jsonString];
+
                     }
                     sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
                 }
@@ -821,7 +973,7 @@ static sqlite3 *db = nil;
             // sql语句已经全了
             // 执行伴随指针，如果为SQLITE_DONE 代表执行成功，并且成功的插入数据。
             if (sqlite3_step(stmt) == SQLITE_DONE) {
-                //NSLog(@"插入成功");
+                NSLog(@"插入成功");
                 isOK = YES;
             } else {
                 NSLog(@"插入失败");
@@ -844,73 +996,15 @@ static sqlite3 *db = nil;
     return isOK;
 }
 
-+ (id)arrayToObjcs:(NSArray *)array class:(Class)cc{
-    NSMutableArray *modes = [NSMutableArray array];
-    [array enumerateObjectsUsingBlock:^(id  obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [modes addObject:[self dict:obj toObjc:cc]];
-    }];
-    return modes;
-}
-
-+ (id)dict:(NSDictionary *)dict toObjc:(Class)cc{
-    
-    id model = [[cc alloc] init];
-    
-    unsigned int outCount;
-    
-    //获取类中的所有成员属性
-    Ivar * ivars = class_copyIvarList(cc, &outCount);
-    for (unsigned int i = 0; i < outCount; i ++) {
-        Ivar ivar = ivars[i];
-        const char * cName = ivar_getName(ivar);
-        const char * cType = ivar_getTypeEncoding(ivar);
-        NSString *propertyName = [[NSString stringWithCString:cName encoding:NSUTF8StringEncoding] stringByReplacingOccurrencesOfString:@"_" withString:@""];
-        NSString *propertyType = [NSString stringWithCString:cType encoding:NSUTF8StringEncoding];
-
-        id propertyValue = [dict valueForKey:propertyName];
-        
-        if(propertyValue == nil || [propertyValue isKindOfClass:[NSNull class]]) continue;
-        if ([propertyType isEqualToString:@"@\"NSMutableDictionary\""]
-            || [propertyType isEqualToString:@"@\"NSDictionary\""]
-            || [propertyType isEqualToString:@"B"]
-            || [propertyType isEqualToString:@"@\"NSString\""]
-            || [propertyType isEqualToString:@"q"]
-            || [propertyType isEqualToString:@"d"]
-            || [propertyType isEqualToString:@"i"]
-            || [propertyType isEqualToString:@"f"]
-            || [propertyType isEqualToString:@"Q"]
-
-            ) {
-            [model setValue:propertyValue forKey:propertyName];
-        }else if ([propertyType isEqualToString:@"@\"NSMutableArray\""] || [propertyType isEqualToString:@"@\"NSArray\""]) {
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            NSDictionary * objDict = [self performSelector:@selector(classInArray)];
-            Class c = [objDict valueForKey:propertyName];
-#pragma clang diagnostic pop
-            if(c) [self arrayToObjcs:propertyValue class:c];
-            else [model setValue:propertyValue forKey:propertyName];
-        }else{
-            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"\"" withString:@""];
-            propertyType = [propertyType stringByReplacingOccurrencesOfString:@"@" withString:@""];
-
-            [model setValue:[self dict:propertyValue toObjc:NSClassFromString(propertyType)] forKey:propertyName];
-        }
-    }
-    
-    free(ivars);
-
-    return model;
-}
 
     
-    
-+ (NSArray <id>*)searchDataWhere:(NSString *)condition{
+//FIXME:  -  查找记录
++ (NSMutableArray <id>*)findWhere:(NSString *)condition{
     
     [[DB sharedInstance] openDB];
     NSString *tableName = NSStringFromClass(self);
     
-    NSString *searchString = [NSString stringWithFormat:@"select * from %@ %@", tableName,condition];
+    NSString *searchString = [NSString stringWithFormat:@"select * from %@ %@",tableName,condition?condition:@""];
     
     sqlite3_stmt *stmt = nil;
     
@@ -939,12 +1033,15 @@ static sqlite3 *db = nil;
                     if (txt != NULL) {
                         
                         NSString *json = [NSString stringWithUTF8String:(const char *)txt];
-                        id value = [self jsonToObject:json];
-                        
+                        //id value = [self jsonToObject:json];
+                        id value = [json jsonObject];
+
                         if ([c isSubclassOfClass:[NSDictionary class]]) {
                             [model setValue:value forKey:key];
                         }else {
-                            [model setValue:[self dict:value toObjc:c] forKey:key];
+                            [model setValue:[c objectWithKeyValues:value] forKey:key];
+
+                            //[model setValue:[self dict:value toObjc:c] forKey:key];
                         }
                     }
                     
@@ -965,13 +1062,14 @@ static sqlite3 *db = nil;
                     if (txt != NULL) {
                         
                         NSString *json = [NSString stringWithUTF8String:(const char *)txt];
-                        id value = [self jsonToObject:json];
-                     
+                        //id value = [self jsonToObject:json];
+                        id value = [json jsonObject];
                         if ([c isSubclassOfClass:[NSString class]]) {
                             [model setValue:value forKey:key];
                         }else {
-                            [model setValue:[self arrayToObjcs:value class:c] forKey:key];
-                            
+                            [model setValue:[c objectArrayWithKeyValuesArray:value] forKey:key];
+                            //[model setValue:[self arrayToObjcs:value class:c] forKey:key];
+
                         }
                     }
                     
@@ -1007,9 +1105,11 @@ static sqlite3 *db = nil;
                     if (txt != NULL) {
                         
                         NSString *json = [NSString stringWithUTF8String:(const char *)txt];
-                        id value = [self jsonToObject:json];
-                        
-                        [model setValue:[self dict:value toObjc:NSClassFromString(type)] forKey:key];
+                        //id value = [self jsonToObject:json];
+                        id value = [json jsonObject];
+
+                        [model setValue:[NSClassFromString(type) objectWithKeyValues:value] forKey:key];
+                        //[model setValue:[self dict:value toObjc:NSClassFromString(type)] forKey:key];
                         
                     }
                     
@@ -1018,7 +1118,6 @@ static sqlite3 *db = nil;
             }
             [models addObject:model];
         }
-        NSLog(@"%s--%@", __func__,models);
     }
     
     sqlite3_finalize(stmt);
@@ -1026,8 +1125,8 @@ static sqlite3 *db = nil;
     return models;
 }
 
-
-+ (BOOL)deleteDataWhere:(NSString *)condition{
+//FIXME:  -  删除记录
++ (BOOL)deleteWhere:(NSString *)condition{
     [[DB sharedInstance] openDB];
     NSString *tableName = NSStringFromClass(self);
     
@@ -1036,7 +1135,7 @@ static sqlite3 *db = nil;
     BOOL result = [[DB sharedInstance] execSql:deleteString];//sqlite3_exec(db, deleteString.UTF8String, NULL, NULL, NULL);
     
     if (result) {
-        //NSLog(@"删除成功");
+        NSLog(@"删除成功");
     } else {
         NSLog(@"删除失败");
     }
@@ -1048,12 +1147,14 @@ static sqlite3 *db = nil;
 //UPDATE table_name
 //SET column1 = value1, column2 = value2...., columnN = valueN
 //WHERE [condition];
-- (BOOL)upDate{
+//FIXME:  -  更新记录
+- (BOOL)update{
     BOOL isOK = NO;
         [[DB sharedInstance] openDB];
     NSString *tableName = NSStringFromClass([self class]);
     NSArray <NSDictionary *> *infos = [[DB sharedInstance] getProperties:[self class] contains:NO isSqlType:YES];
-    
+    //NSArray <NSDictionary *> *modelTypes = [[DB sharedInstance] getProperties:[self class] contains:NO isSqlType:NO];
+
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     id primaryKeyType = [[DB sharedInstance] isRespondsToSelector:@selector(primaryKey) forClass:[self class]];
@@ -1061,9 +1162,16 @@ static sqlite3 *db = nil;
     
     id primaryKeyValue = [self valueForKey:primaryKeyType];
     
+    NSDictionary *selfDict = [self object];
+    
     NSMutableString *updateString = [NSMutableString stringWithFormat:@"update %@ set ",tableName];
     [infos enumerateObjectsUsingBlock:^(NSDictionary * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        [updateString appendFormat:@"%@ = '%@',",obj.allKeys.firstObject,[self valueForKey:obj.allKeys.firstObject]];
+        NSString *key = obj.allKeys.firstObject;
+        NSString *value = [selfDict valueForKey:key];
+        //if([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) value =  [self objectToJson:value];
+        if([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) value =  [value jsonString];
+
+        [updateString appendFormat:@"%@ = '%@',",key,value];
     }];
     
     
@@ -1087,15 +1195,19 @@ static sqlite3 *db = nil;
             }if ([type isEqualToString:@"double"]) {
                 sqlite3_bind_double(stmt, i+1, [[self valueForKey:key] doubleValue]);
             }if ([type isEqualToString:@"TEXT"]) {
-                sqlite3_bind_text(stmt, i+1, ((NSString *)[self valueForKey:key]).UTF8String, -1, NULL);
+                NSString *value = [selfDict valueForKey:key];
+                //if([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) value =  [self objectToJson:value];
+                if([value isKindOfClass:[NSArray class]] || [value isKindOfClass:[NSDictionary class]]) value =  [value jsonString];
+
+                sqlite3_bind_text(stmt, i+1, ((NSString *)value).UTF8String, -1, NULL);
             }
         }
         if (sqlite3_step(stmt) == SQLITE_DONE) {
-            //NSLog(@"修改成功");
+            NSLog(@"更新成功");
             isOK = YES;
         }
     }else{
-        NSLog(@"更新失败%d", result);
+        NSLog(@"更新失败:%d", result);
         isOK = NO;
     }
     
@@ -1103,8 +1215,8 @@ static sqlite3 *db = nil;
         [[DB sharedInstance] closeDB];
     return isOK;
 }
-
-- (BOOL)insertOrUpDate{
+//FIXME:  -  自动插入或更新
+- (BOOL)saveOrUpdate{
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     id primaryKeyType = [[DB sharedInstance] isRespondsToSelector:@selector(primaryKey) forClass:[self class]];
@@ -1112,11 +1224,11 @@ static sqlite3 *db = nil;
     
     id primaryKeyValue = [self valueForKey:primaryKeyType];
 
-    NSArray *result = [[self class] searchDataWhere:[NSString stringWithFormat:@"where %@ = %@",primaryKeyType,primaryKeyValue]];
+    NSArray *result = [[self class] findWhere:[NSString stringWithFormat:@"where %@ = %@",primaryKeyType,primaryKeyValue]];
     if (result.count) {
-        return [result.firstObject upDate];
+        return [self update];
     }
-    return [self insert];
+    return [self save];
 }
 
 

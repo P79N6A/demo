@@ -87,12 +87,12 @@ static TTDownloader *_downloader;
 }
 
 - (NSArray<TTDownloadModel *> *)downloadSources{
-    NSArray *downloadModels = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status != %lu",(unsigned long)TTDownloaderStateSuccess]];
+    NSArray *downloadModels = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where status != %lu",(unsigned long)TTDownloaderStateSuccess]];
     return downloadModels;
 }
 
 - (NSMutableArray<TTDownloadModel *> *)finishTasks{
-    NSArray *downloadModels = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateSuccess]];
+    NSArray *downloadModels = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateSuccess]];
     
     
     return downloadModels.mutableCopy;
@@ -202,7 +202,7 @@ static TTDownloader *_downloader;
              progress:(void (^)(CGFloat progress,NSString *url))progressBlock
                 speed:(void (^)(NSString *speed,NSString *url))speedBlock{
 
-     TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+     TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
     // 下载中 或者 下载完毕
     BOOL isExist = ([self.downloadTasks.allKeys containsObject:downloadURLString] &&  downloadModel.status == TTDownloaderStateRunning) || (downloadModel.status == TTDownloaderStateSuccess);
     
@@ -220,11 +220,11 @@ static TTDownloader *_downloader;
     
     if (self.downloadTasks.count >= self.maxCount) {
         downloadModel.status = TTDownloaderStateAwait;
-        [downloadModel insertOrUpDate];
+        [downloadModel saveOrUpdate];
         return NO;
     }
     
-    [downloadModel insertOrUpDate];
+    [downloadModel saveOrUpdate];
     
     NSURL *downloadURL = [NSURL URLWithString:downloadURLString];
     NSURLRequest *request = [NSURLRequest requestWithURL:downloadURL];
@@ -250,9 +250,9 @@ static TTDownloader *_downloader;
     [self.downloadTasks[downloadURLString] cancelByProducingResumeData:^(NSData * resumeData) {
         __strong __typeof(wSelf) sSelf = wSelf;
         sSelf.resumeDatas[downloadURLString] = resumeData;
-        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+        TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
         downloadModel.status = TTDownloaderStatePause;
-        [downloadModel upDate];
+        [downloadModel update];
     }];
 }
 /**
@@ -270,9 +270,9 @@ static TTDownloader *_downloader;
         [self.downloadTasks[downloadURLString] resume];
         [self.resumeDatas removeObjectForKey:downloadURLString];
         [self timer];
-        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
+        TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",downloadURLString]].firstObject;
         downloadModel.status = TTDownloaderStateRunning;
-        [downloadModel upDate];
+        [downloadModel update];
     }
 }
 
@@ -319,14 +319,14 @@ didFinishDownloadingToURL:(NSURL *)location {
     [self.resumeDatas removeObjectForKey:url];
     // 用 NSFileManager 将文件复制到应用的存储中
 
-    TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+    TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
     downloadModel.status = TTDownloaderStateSuccess;
     downloadModel.localURL = downloadTask.response.suggestedFilename;
-    [downloadModel upDate];
+    [downloadModel update];
 
 
     // ...
-    NSArray *awaitTasks = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
+    NSArray *awaitTasks = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
 
     if (awaitTasks.count) {
 
@@ -403,17 +403,17 @@ didCompleteWithError:(NSError *)error {
             self.resumeDatas[task.response.URL.absoluteString] = resumeData;
             self.downloadTasks[task.response.URL.absoluteString] = [self.backgroundSession downloadTaskWithResumeData:resumeData];
 
-            TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+            TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
             downloadModel.status = TTDownloaderStateFail;
-            [downloadModel upDate];
+            [downloadModel update];
             
             return;
         }
         
         [self.downloadTasks removeObjectForKey:url];
-        TTDownloadModel *downloadModel = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
+        TTDownloadModel *downloadModel = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where url = '%@'",url]].firstObject;
         downloadModel.status = TTDownloaderStateFail;
-        [downloadModel upDate];
+        [downloadModel update];
         
     } else {
         [self postDownlaodProgressNotification:@{@"progress":@"1",@"key":url}];
@@ -421,7 +421,7 @@ didCompleteWithError:(NSError *)error {
         [self.resumeDatas removeObjectForKey:url];
     }
     
-    NSArray *awaitTasks = [TTDownloadModel searchDataWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
+    NSArray *awaitTasks = [TTDownloadModel findWhere:[NSString stringWithFormat:@"where status = %lu",(unsigned long)TTDownloaderStateAwait]];
 
     if (awaitTasks.count) {
             

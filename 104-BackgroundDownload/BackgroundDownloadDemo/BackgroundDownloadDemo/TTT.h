@@ -21,12 +21,14 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign)  NSInteger age;
 @property (nonatomic, strong)  NSDictionary *dict;
 @property (nonatomic, strong)  T *model;
-@property (nonatomic, assign)  NSInteger mid;
+//@property (nonatomic, assign)  NSInteger mid;
 
 @end
 @interface TTT : NSObject
 
 @property (nonatomic, copy) NSString *name;
+//@property (nonatomic, copy) NSString *title;
+//@property (nonatomic, copy) NSString *title2;
 
 @property (nonatomic, strong) NSArray <TT *>*models;
 @property (nonatomic, strong) NSMutableArray <NSString *>*strings;

@@ -11,17 +11,28 @@
 @end
 @protocol DataBaseProtocol<NSObject>
 +(NSString *)primaryKey;
-+(NSDictionary *)classInArray;
 @optional
++(NSDictionary *)classInArray;
 
 @end
 @interface NSObject (DB)
 ///<DataBaseProtocol>
-- (BOOL)insert;
-+ (BOOL)insertDatas:(NSArray <id>*)models;
-+ (BOOL)deleteDataWhere:(NSString *)condition;
-- (BOOL)upDate;
-- (BOOL)insertOrUpDate;
-+ (NSArray <id>*)searchDataWhere:(NSString *)condition;
+- (BOOL)save;
++ (BOOL)saveArray:(NSArray *)array;
++ (BOOL)deleteWhere:(NSString *)condition;
+- (BOOL)update;
+- (BOOL)saveOrUpdate;
++ (NSMutableArray *)findWhere:(NSString *)condition;
 
+///
+//FIXME:  -  json -> 字典/数组
+- (id)jsonObject;
+//FIXME:  -  字典/数组 -> json
+- (NSString *)jsonString;
+//FIXME:  -  字典数组 -> 模型数组
++ (NSMutableArray *)objectArrayWithKeyValuesArray:(id)keyValuesArray;
+//FIXME:  -  字典 -> 模型
++ (instancetype)objectWithKeyValues:(id)keyValues;
+//FIXME:  -  模型 -> 字典
+- (NSMutableDictionary *)keyValues;
 @end

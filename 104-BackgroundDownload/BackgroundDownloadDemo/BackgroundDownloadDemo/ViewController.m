@@ -39,6 +39,8 @@
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateDownloadProgress:) name:kDownloadProgressNotification object:nil];
     
+//    TTT *m = [TTT objectWithKeyValues:@{@"name":@"444",@"socre":@(99),@"age":@(88)}];
+    
     TTT *ttt = [TTT new];
     ttt.name = @"ffff";
     ttt.socre = 9.9;
@@ -70,13 +72,13 @@
 
     ttt.model = tt2;
 
-    NSDictionary *obj = [self getObjectData:ttt];
+//    NSDictionary *obj = [self getObjectData:ttt];
 //    [TT insertDatas:@[tt1,tt2]];
-//    [ttt insert];
-    NSArray *tttts = [TTT searchDataWhere:@""];
-    TTT *model = tttts[1];
+    [ttt save];
+    NSArray *tttts = [TTT findWhere:@""];
+    TTT *model = tttts.lastObject;
     model.name = @"更次年777";
-    [model upDate];
+    [model saveOrUpdate];
     ;
 }
 
