@@ -1,5 +1,4 @@
 #EXTM3U
 #EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=756000
-rtmp://live9.yshdtv.com/live/12110_2749d42abfa411e792905cb9018cf0d4
-#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=800000
-rtmp://live9.yshdtv.com/live/12110_2749d42abfa411e792905cb9018cf0d4
+http://edge26-1.edgeware.hk4.tvb.com/session/f0d8d88c-bd3d-11e8-b6fd-0050569023d7/dtysfd/newslive/smil:mobilehd_inews.smil/playlist.m3u8?token=bcc6e2dc85e409467f0516a0cd4023b1_1537579836_1537579836&file=.m3u8#EXT-X-STREAM-INF:PROGRAM-ID=1,BANDWIDTH=800000
+http://edge26-1.edgeware.hk4.tvb.com/session/f0d8d88c-bd3d-11e8-b6fd-0050569023d7/dtysfd/newslive/smil:mobilehd_inews.smil/playlist.m3u8?token=bcc6e2dc85e409467f0516a0cd4023b1_1537579836_1537579836&file=.m3u8
