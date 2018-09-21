@@ -18,12 +18,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    [self test];
 }
 
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+- (void)test{
+    
+    
+
+    NSLog(@"%s", __func__);
+    NSURL * url = [NSURL URLWithString:@"https://github.com/LQJJ/demo/blob/master/104-BackgroundDownload/rijutv.json?raw=trun"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:15.0];
+
+    
+    NSURLSession * session = [NSURLSession sharedSession];
+    
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        //        NSStringEncoding gb2312 = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
+        
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        NSLog(@"%s--searchText : %@", __func__,searchText);
+        
+    }];
+    //开启网络任务
+    [task resume];
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
