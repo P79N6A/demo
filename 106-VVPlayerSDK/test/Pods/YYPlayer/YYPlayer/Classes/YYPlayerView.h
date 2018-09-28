@@ -5,6 +5,7 @@
  * date : 2018.08.28 重试和Safari
  * date : 2018.09.15 适配iPhoneX 系列
  * date : 2018.09.17 禁用其他方式创建播放器
+ * date : 2018.09.28 优化
  */
 
 #import <UIKit/UIKit.h>

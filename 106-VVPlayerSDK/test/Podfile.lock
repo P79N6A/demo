@@ -1,6 +1,6 @@
 PODS:
   - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
-  - YYPlayer (2018.09.18):
+  - YYPlayer (2018.09.29):
     - AliyunPlayer_iOS/AliyunPlayerSDK (= 3.4.5)
 
 DEPENDENCIES:
@@ -8,7 +8,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
-  YYPlayer: 9821ad196b5c6d52eb6971e3b123b15103d03674
+  YYPlayer: 3d3f4aca426e0993189347c9c142a8651bfa7b04
 
 PODFILE CHECKSUM: 3eda331a01a49d7e0b0036b3425e0dec8f30bd48
 

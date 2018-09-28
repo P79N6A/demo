@@ -17,12 +17,15 @@ YYPlayer is available through [CocoaPods](https://cocoapods.org). To install
 it, simply add the following line to your Podfile:
 
 ```ruby
+source 'https://github.com/CocoaPods/Specs.git'  #官方仓库的地址
+source 'https://gitee.com/czljcb/DSSpecs.git'
+
 pod 'YYPlayer'
 ```
 
 ## Author
 
-czljcb@163.com, caozhi@mhace.com
+czljcb@163.com
 
 ## License
 
