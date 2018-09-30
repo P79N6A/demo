@@ -21,8 +21,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     [self.view addSubview:self.webView];
-    self.webView.scrollView.delegate = self;
-    self.webView.navigationDelegate = self;
+
     [self.webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:self.url]]];
 
 }
@@ -49,13 +48,13 @@
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     //NSLog(@"%@",navigationAction.request.URL.absoluteString);
     //允许跳转
-    decisionHandler(WKNavigationActionPolicyAllow);
+    //decisionHandler(WKNavigationActionPolicyAllow);
     //不允许跳转
     //decisionHandler(WKNavigationActionPolicyCancel);
     NSString *url = navigationAction.request.URL.absoluteString;
     NSLog(@"%s-域名--%@", __func__,url);
-//    if([self stringContainsAdTypeType:url]) decisionHandler(WKNavigationActionPolicyCancel);
-//    else decisionHandler(WKNavigationActionPolicyAllow);
+    if([self stringContainsAdTypeType:url]) decisionHandler(WKNavigationActionPolicyCancel);
+    else decisionHandler(WKNavigationActionPolicyAllow);
     
 }
 
@@ -91,6 +90,8 @@
         _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, 0, w, h) configuration:config];
         _webView.backgroundColor = [UIColor blackColor];
         //_webView.navigationDelegate = self;
+        _webView.scrollView.delegate = self;
+        _webView.navigationDelegate = self;
         _webView.scrollView.showsVerticalScrollIndicator = NO;
         _webView.scrollView.showsHorizontalScrollIndicator = NO;
         _webView.hidden = YES;
