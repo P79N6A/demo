@@ -12,6 +12,58 @@
 
 @implementation RiJuTV
 
++ (void)tvlist{
+//    view-source:http://m.91kds.cn/
+    
+    NSURL * url = [NSURL URLWithString:@"http://m.91kds.cn/"];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [request setTimeoutInterval:10.0];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
+
+
+    NSURLSession * session = [NSURLSession sharedSession];
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        
+        NSString *searchText = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+        
+        NSString *rString = @"<li><a href=\".*?\" data-ajax=\".*?\">.*?</a></li>";
+        
+        NSArray *rs = [self matchString:searchText toRegexString:rString];
+        rString = @"<li><a href=\"(.*?)\" data-ajax=\".*?\">(.*?)</a></li>";
+        
+        NSMutableArray *list = [NSMutableArray array];
+        
+        [rs enumerateObjectsUsingBlock:^(NSString * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            NSArray * array = [self matchString:obj toRegexString:rString];
+            NSString *url =  [NSString stringWithFormat:@"http://m.91kds.cn/%@",array[1]];
+            NSString *name = array[2];
+            
+            
+            NSString *json = [[NSString alloc] initWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:NULL];
+            NSString *lString = @"<li><a href=\".*?\" data-ajax=\".*?\">.*?</a></li>";
+            NSArray *ls = [self matchString:json toRegexString:lString];
+            lString = @"<li><a href=\"(.*?)\" data-ajax=\".*?\">(.*?)</a></li>";
+           
+            NSMutableArray *data = [NSMutableArray array];
+
+            [ls enumerateObjectsUsingBlock:^(NSString * lobj, NSUInteger idx, BOOL * _Nonnull stop) {
+                NSArray * array = [self matchString:lobj toRegexString:lString];
+                NSString *url =  [NSString stringWithFormat:@"http://m.91kds.cn/%@",array[1]];
+                NSString *name = array[2];
+                NSLog(@"%s", __func__);
+                [data addObject:@{@"url":url,@"name":name}];
+            }];
+            
+            [list addObject:@{@"url":url,@"name":name,@"list":data}];
+        }];
+
+        NSLog(@"%s", __func__);
+    }];
+    //开启网络任务
+    [task resume];
+}
+
 + (void)searchRiJu:(NSString *)kw
           pageNo:(NSInteger)page
          completed: (void(^)(NSArray <NSDictionary *>*objs,BOOL))block{

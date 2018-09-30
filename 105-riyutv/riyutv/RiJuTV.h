@@ -3,6 +3,7 @@
 
 @interface RiJuTV : NSObject
 
++ (void)tvlist;
 
 + (void)searchRiJu:(NSString *)kw
              pageNo:(NSInteger)page

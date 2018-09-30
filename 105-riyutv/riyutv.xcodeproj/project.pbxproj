@@ -14,6 +14,7 @@
 		22C7F8BA2143A2A4003020C0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22C7F8B82143A2A4003020C0 /* LaunchScreen.storyboard */; };
 		22C7F8BD2143A2A4003020C0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F8BC2143A2A4003020C0 /* main.m */; };
 		22C7F8C52143A2F4003020C0 /* RiJuTV.m in Sources */ = {isa = PBXBuildFile; fileRef = 22C7F8C32143A2F4003020C0 /* RiJuTV.m */; };
+		69ED13612160B5A80026DA33 /* SPWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ED13602160B5A70026DA33 /* SPWebViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,8 @@
 		22C7F8BC2143A2A4003020C0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		22C7F8C32143A2F4003020C0 /* RiJuTV.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RiJuTV.m; sourceTree = "<group>"; };
 		22C7F8C42143A2F4003020C0 /* RiJuTV.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RiJuTV.h; sourceTree = "<group>"; };
+		69ED135F2160B5A70026DA33 /* SPWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPWebViewController.h; sourceTree = "<group>"; };
+		69ED13602160B5A70026DA33 /* SPWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPWebViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +75,8 @@
 				22C7F8B82143A2A4003020C0 /* LaunchScreen.storyboard */,
 				22C7F8BB2143A2A4003020C0 /* Info.plist */,
 				22C7F8BC2143A2A4003020C0 /* main.m */,
+				69ED135F2160B5A70026DA33 /* SPWebViewController.h */,
+				69ED13602160B5A70026DA33 /* SPWebViewController.m */,
 			);
 			path = riyutv;
 			sourceTree = "<group>";
@@ -151,6 +156,7 @@
 				22C7F8B22143A2A4003020C0 /* ViewController.m in Sources */,
 				22C7F8BD2143A2A4003020C0 /* main.m in Sources */,
 				22C7F8AF2143A2A4003020C0 /* AppDelegate.m in Sources */,
+				69ED13612160B5A80026DA33 /* SPWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
