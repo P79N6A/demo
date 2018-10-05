@@ -420,10 +420,13 @@
 - (UIProgressView* )progress {
     if (!_progress) {
         self.progress = [[UIProgressView alloc]initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, 2.5)];
+        _progress.trackTintColor = [UIColor clearColor];
         _progress.progressTintColor = _loadingProgressColor?_loadingProgressColor:[UIColor colorWithRed:0.15 green:0.49 blue:0.96 alpha:1.0];
     }
     return _progress;
 }
+
+
 
 - (UIButton *)reloadBtn{
     if (!_reloadBtn) {
@@ -542,10 +545,11 @@
 }
 
 - (void)showLeftBarButtonItem {
+
     if ([_wkWebView canGoBack]) {
         self.navigationItem.leftBarButtonItems = @[self.backBarButtonItem,self.closeBarButtonItem];
     } else {
-        self.navigationItem.leftBarButtonItem = self.backBarButtonItem;
+        self.navigationItem.leftBarButtonItems = @[self.backBarButtonItem];
     }
 }
 #pragma mark 导航按钮

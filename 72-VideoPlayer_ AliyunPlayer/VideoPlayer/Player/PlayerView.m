@@ -127,7 +127,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /*流量监控*/
 @property (weak, nonatomic) IBOutlet UILabel *networkSpeedLabel;
 /** 是否iPhoneX*/
-@property (nonatomic, assign,) BOOL iPhoneX;
+@property (nonatomic, assign,) BOOL iPhoneXX;
 
 /** 网速检测*/
 @property (nonatomic, strong,) SpeedMonitor *speedMonitor;
@@ -147,7 +147,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  添加控件
 - (void)awakeFromNib{
     [super awakeFromNib];
-    self.iPhoneX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
+    self.iPhoneXX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     [self addGestureRecognizer:tapGestureRecognizer];
     UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panDirection:)];
@@ -189,7 +189,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  布局位置
 - (void)layout{
     
-    BOOL iPhoneXX = self.iPhoneX && (kScreenWidth > kScreenHeight);
+    BOOL iPhoneXX = self.iPhoneXX && (kScreenWidth > kScreenHeight);
     
     CGFloat spacing = iPhoneXX? 24 : 0;
     
