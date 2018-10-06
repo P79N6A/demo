@@ -10,4 +10,5 @@
 
 @interface SPButtomView : UIButton
 @property (nonatomic, copy) void (^funClick)(NSInteger code);
+@property (nonatomic, assign) CGFloat progress;
 @end

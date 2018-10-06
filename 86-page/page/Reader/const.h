@@ -28,6 +28,23 @@
 #define  StatusBarHeight (isX? 44 : 20)
 
 
+// iPhone X
+#define  iPhoneX (kStatusBarHeight>20 ? YES : NO)
+// Status bar height.
+#define  kStatusBarHeight      [[UIApplication sharedApplication] statusBarFrame].size.height
+// Navigation bar height.
+#define  kNavigationBarHeight  44.f
+// Tabbar height.
+#define  kTabbarHeight         (iPhoneX ? (49.f+34.f) : 49.f)
+// Tabbar safe bottom margin.
+#define  kTabbarSafeBottomMargin         (iPhoneX ? 34.f : 0.f)
+// Status bar & navigation bar height.
+#define  kStatusBarAndNavigationBarHeight  (iPhoneX ? 88.f : 64.f)
+#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
+#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
+
+
+
 // MARK: -- 颜色支持
 #define RGB(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
@@ -97,7 +114,7 @@
 #define LeftSpacing 20.0f
 #define RightSpacing  20.0f
 
-
+#define lightButtonWH 84.f
 // MARK: -- Key
 
 /// 是夜间还是日间模式   true:夜间 false:日间
@@ -111,11 +128,13 @@
 /// ReadView 手势通知
 #define DZMNotificationName_ReadView_Ges  @"ReadView_Ges"
 
+#define DZMNotificationNameProgressValueChange  @"DZMNotificationNameProgressValueChange"
 #define DZMNotificationNameFontSizeChange  @"DZMNotificationNameFontSizeChange"
 #define DZMNotificationNameThemeColorChange  @"DZMNotificationNameThemeColorChange"
 #define DZMNotificationNameFontChange  @"DZMNotificationNameFontChange"
-
 #define DZMNotificationNamePageWillScroll  @"DZMNotificationNamePageWillScroll"
+
+#define DZMNotificationNameChapterChange  @"DZMNotificationNameChapterChange"
 
 
 #endif /* const_h */

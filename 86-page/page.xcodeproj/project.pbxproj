@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		22DC820F216878BD001963D9 /* SPReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC820E216878BD001963D9 /* SPReaderView.m */; };
 		69DB19222119757100715D7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB19212119757100715D7B /* AppDelegate.m */; };
 		69DB19252119757100715D7B /* SPPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB19242119757100715D7B /* SPPageViewController.m */; };
 		69DB19282119757100715D7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB19262119757100715D7B /* Main.storyboard */; };
@@ -31,6 +32,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22DC820D216878BD001963D9 /* SPReaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPReaderView.h; sourceTree = "<group>"; };
+		22DC820E216878BD001963D9 /* SPReaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPReaderView.m; sourceTree = "<group>"; };
 		69DB191D2119757100715D7B /* page.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = page.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB19202119757100715D7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69DB19212119757100715D7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -149,6 +152,8 @@
 				69DB1955211C0E3400715D7B /* SPHaloButton.m */,
 				69DB1957211C117900715D7B /* UIView+PulseView.h */,
 				69DB1958211C117900715D7B /* UIView+PulseView.m */,
+				22DC820D216878BD001963D9 /* SPReaderView.h */,
+				22DC820E216878BD001963D9 /* SPReaderView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -254,6 +259,7 @@
 				69DB19252119757100715D7B /* SPPageViewController.m in Sources */,
 				69DB1959211C117A00715D7B /* UIView+PulseView.m in Sources */,
 				69DB194021198A7C00715D7B /* SPReadView.m in Sources */,
+				22DC820F216878BD001963D9 /* SPReaderView.m in Sources */,
 				69DB194621199CE600715D7B /* SPButtomView.m in Sources */,
 				69DB19302119757100715D7B /* main.m in Sources */,
 				69DB1966211C4F2000715D7B /* SPReadConfig.m in Sources */,

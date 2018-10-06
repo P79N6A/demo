@@ -24,7 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.readView.progressTitle = [NSString stringWithFormat:@"%ld(%ld-%ld)",self.chapter+1,self.page+1,(long)self.model.pageCount];
+    self.readView.progressTitle = [NSString stringWithFormat:@"%ld-%ld-%ld",self.chapter+1,self.page+1,(long)self.model.pageCount];
     self.readView.isShow = self.isShow;
     self.readView.content = [self.model stringOfPage:self.page];
     self.view.backgroundColor = [SPReadConfig defaultConfig].themeColor;;

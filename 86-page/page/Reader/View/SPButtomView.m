@@ -7,6 +7,7 @@
 //
 
 #import "SPButtomView.h"
+#import "const.h"
 
 @interface SPButtomView ()
 @property (nonatomic, weak) UIButton *previousChapter;
@@ -39,6 +40,8 @@
             previousChapter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
             previousChapter.titleLabel.font = [UIFont systemFontOfSize:12];
             [previousChapter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [previousChapter addTarget:self action:@selector(chapterAction:) forControlEvents:UIControlEventTouchUpInside];
+            previousChapter.tag = 100;
             _previousChapter = previousChapter;
             previousChapter;
         })];
@@ -50,6 +53,8 @@
             nextChapter.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
             nextChapter.titleLabel.font = [UIFont systemFontOfSize:12];
             [nextChapter setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+            [nextChapter addTarget:self action:@selector(chapterAction:) forControlEvents:UIControlEventTouchUpInside];
+            nextChapter.tag = 200;
             _nextChapter = nextChapter;
             nextChapter;
         })];
@@ -60,7 +65,8 @@
             UISlider *slider = [[UISlider alloc] init];
             [slider setThumbImage:[UIImage imageNamed:@"RM_3"] forState:UIControlStateNormal];
             slider.maximumValue = 1.0;
-            slider.maximumValue = 1.0;
+            slider.minimumValue = 0.0;
+            [slider addTarget:self action:@selector(progressChange:) forControlEvents:UIControlEventTouchUpInside];
             _slider = slider;
             slider;
         })];
@@ -69,10 +75,23 @@
     return self;
 }
 
+- (void)chapterAction:(UIButton *)sender{
+//    DZMNotificationNameChapterChange
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameChapterChange object:nil userInfo:@{@"tag":@(sender.tag)}];
+}
+
 - (void)funAction:(UIButton *)sender{
     !(_funClick)? : _funClick(sender.tag);
 }
 
+- (void)progressChange:(UISlider *)sender{
+    [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameProgressValueChange object:nil userInfo:@{@"progress":@(sender.value)}];
+}
+
+- (void)setProgress:(CGFloat)progress{
+    _progress = progress;
+    self.slider.value = progress;
+}
 
 - (void)layoutSubviews{
     [super layoutSubviews];
