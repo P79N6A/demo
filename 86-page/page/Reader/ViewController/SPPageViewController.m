@@ -75,7 +75,7 @@
         NSArray *indexs = self.models[self.chapter].pages;
         CGFloat progress = [[note.userInfo valueForKey:@"progress"] floatValue];
         self.page = (indexs.count - 1) * progress;
-        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:SPReaderShowTypeMenu]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:SPReaderShowTypeMenu]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
 
     }];
     

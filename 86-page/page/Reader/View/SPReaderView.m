@@ -34,7 +34,7 @@
 @property (nonatomic, assign) BOOL statusBarHidden;
 @property (nonatomic, weak)  SPSettingView *settingView;
 @property (nonatomic, weak)  SPStatusView *statusView;
-
+@property (nonatomic, weak) SPHaloButton *lightButton;
 @end
 
 @implementation SPReaderView
@@ -50,6 +50,10 @@
             SPReadView *readView = [[SPReadView alloc] initWithFrame:DZReaderContentFrame];
             _readView = readView;
             readView.backgroundColor = [UIColor clearColor];
+            [readView addGestureRecognizer:({
+                UILongPressGestureRecognizer *longGes = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressAction:)];
+                longGes;
+            })];
             readView;
         })];
         
@@ -63,17 +67,7 @@
             })];
             tapView;
         })];
-        //夜间模式
-        [self addSubview:({
-            
-            SPHaloButton *lightButton = [[SPHaloButton alloc] initWithFrame:CGRectMake(ScreenWidth - lightButtonWH - DZMSpace_1, ScreenHeight - 200, lightButtonWH, lightButtonWH) haloColor:[[UIColor blackColor] colorWithAlphaComponent:0.75] ];
-            lightButton.selectImage = [UIImage imageNamed:@"RM_14"];
-            lightButton.nomalImage = [UIImage imageNamed:@"RM_13"];
-            [lightButton addTarget:self action:@selector(lightAction:) forControlEvents:UIControlEventTouchUpInside];
-            lightButton.selected = NO;
-            lightButton;
-            
-        })];
+
         
         [self addSubview:({
             UIView *coverBtn = [[UIView alloc] init];
@@ -86,6 +80,18 @@
             coverBtn;
         })];
         
+        //夜间模式
+        [self addSubview:({
+            
+            SPHaloButton *lightButton = [[SPHaloButton alloc] initWithFrame:CGRectMake(ScreenWidth - lightButtonWH - DZMSpace_1, ScreenHeight, lightButtonWH, lightButtonWH) haloColor:[[UIColor blackColor] colorWithAlphaComponent:0.75] ];
+            lightButton.selectImage = [UIImage imageNamed:@"RM_14"];
+            lightButton.nomalImage = [UIImage imageNamed:@"RM_13"];
+            [lightButton addTarget:self action:@selector(lightAction:) forControlEvents:UIControlEventTouchUpInside];
+            lightButton.selected = NO;
+            _lightButton = lightButton;
+            lightButton;
+            
+        })];
         
         [self addSubview:({
             
@@ -158,9 +164,10 @@
     [UIView animateWithDuration:0.25 animations:^{
         self.lightView.alpha = (CGFloat)sender.spSelected;
     }];
+}
+- (void)longPressAction:(UILongPressGestureRecognizer *)sender{
     
 }
-
 - (void)showToolView:(UITapGestureRecognizer *)sender{
     
     if (self.coverButton.isHidden) {
@@ -172,15 +179,28 @@
             
         } completion:^(BOOL finished) {
         }];
+        
+        
+        ////
+        self.lightButton.frame = CGRectMake(ScreenWidth - lightButtonWH - DZMSpace_1, ScreenHeight, lightButtonWH, lightButtonWH);
+
+        [UIView animateWithDuration:0.25 delay:0.0 usingSpringWithDamping:0.7 initialSpringVelocity:0.0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            self.lightButton.frame = CGRectMake(ScreenWidth - lightButtonWH - DZMSpace_1, ScreenHeight - 112 - DZMSpace_2 * 2 - lightButtonWH, lightButtonWH, lightButtonWH);
+        } completion:nil];
+
     }else{
         self.statusBarHidden = YES;
         [UIView animateWithDuration:0.25 animations:^{
             self.topView.transform = CGAffineTransformIdentity;
             self.buttomView.transform = CGAffineTransformIdentity;
             self.settingView.transform = CGAffineTransformIdentity;
+            
+            self.lightButton.frame = CGRectMake(ScreenWidth, self.lightButton.frame.origin.y, lightButtonWH, lightButtonWH);
+            
         } completion:^(BOOL finished) {
             self.coverButton.hidden = YES;
         }];
+        
         
     }
 }
