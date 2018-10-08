@@ -19,11 +19,11 @@
 #import "const.h"
 #import "SPReadConfig.h"
 
-//#import <CoreText/CoreText.h>
 
 
 @interface SPReaderView()
-//@property (nonatomic,assign) CTFrameRef frameRef;
+
+@property (nonatomic, strong) UIWindow *lightView;
 
 @property (nonatomic, weak)  SPReadView *readView;
 
@@ -45,15 +45,15 @@
     if (self) {
         self.backgroundColor = [UIColor clearColor];
         
-        
+        // 内容View
         [self addSubview:({
-            SPReadView *readView = [[SPReadView alloc] initWithFrame:CGRectMake(DZMSpace_1, DZMSpace_2, ScreenWidth - 2 * DZMSpace_1, ScreenHeight - 2 * DZMSpace_2 - kTabbarSafeBottomMargin)];
+            SPReadView *readView = [[SPReadView alloc] initWithFrame:DZReaderContentFrame];
             _readView = readView;
             readView.backgroundColor = [UIColor clearColor];
             readView;
         })];
-
         
+        //触控区域
         [self addSubview:({
             UIView *tapView = [[UIView alloc] init];
             _tapView = tapView;
@@ -63,22 +63,16 @@
             })];
             tapView;
         })];
-        
+        //夜间模式
         [self addSubview:({
             
             SPHaloButton *lightButton = [[SPHaloButton alloc] initWithFrame:CGRectMake(ScreenWidth - lightButtonWH - DZMSpace_1, ScreenHeight - 200, lightButtonWH, lightButtonWH) haloColor:[[UIColor blackColor] colorWithAlphaComponent:0.75] ];
-            [lightButton setImage:[UIImage imageNamed:@"RM_14"] forState:UIControlStateNormal];
-            [lightButton setImage:[UIImage imageNamed:@"RM_13"] forState:UIControlStateSelected];
-
-            
-//                lightButton.isHidden = !menuShow
-            
-//                vc.view.addSubview(lightButton)
-            
-//                lightButton.addTarget(self, action: #selector(DZMReadMenu.clickLightButton), for: .touchUpInside)
-            
+            lightButton.selectImage = [UIImage imageNamed:@"RM_14"];
+            lightButton.nomalImage = [UIImage imageNamed:@"RM_13"];
+            [lightButton addTarget:self action:@selector(lightAction:) forControlEvents:UIControlEventTouchUpInside];
+            lightButton.selected = NO;
             lightButton;
-
+            
         })];
         
         [self addSubview:({
@@ -143,10 +137,29 @@
             }
         }];
         
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.lightView = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+            self.lightView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6];
+            self.lightView.windowLevel = UIWindowLevelStatusBar+2;
+            self.lightView.hidden = NO;
+            self.lightView.alpha = 0.0;
+            self.lightView.userInteractionEnabled = NO;
+            self.lightView.rootViewController = [LightViewController new];
+        });
+
     }
     return self;
 }
 
+- (void)lightAction:(SPHaloButton *)sender{
+    sender.spSelected = !sender.spSelected;
+    
+    [UIView animateWithDuration:0.25 animations:^{
+        self.lightView.alpha = (CGFloat)sender.spSelected;
+    }];
+    
+}
 
 - (void)showToolView:(UITapGestureRecognizer *)sender{
     
@@ -178,7 +191,7 @@
     self.coverButton.frame = self.bounds;
     
     
-    if (self.isShow && self.coverButton.isHidden) {
+    if (self.isShow == SPReaderShowTypeSet && self.coverButton.isHidden) {
         self.statusBarHidden = NO;
         self.coverButton.hidden = NO;
         self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight+DZMSpace_1);
@@ -186,6 +199,14 @@
         
         self.buttomView.transform = CGAffineTransformIdentity;
         
+        
+    }
+    
+    if (self.isShow == SPReaderShowTypeMenu && self.coverButton.isHidden) {
+        self.statusBarHidden = NO;
+        self.coverButton.hidden = NO;
+        self.topView.transform = CGAffineTransformMakeTranslation(0, kStatusBarAndNavigationBarHeight+DZMSpace_1);
+        self.buttomView.transform = CGAffineTransformMakeTranslation(0, -(kTabbarSafeBottomMargin+112+DZMSpace_1));
         
     }
     
@@ -211,7 +232,7 @@
     _statusBarHidden = statusBarHidden;
     if(statusBarHidden) [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar + 1];
     else [[UIApplication sharedApplication].keyWindow setWindowLevel:UIWindowLevelStatusBar - 1];
-
+    
 }
 
 //
@@ -256,7 +277,7 @@
 - (void)setContent:(NSString *)content{
     _content = content;
     self.readView.content = content;
-//    [self.readView setNeedsDisplay];
+    //    [self.readView setNeedsDisplay];
 }
 
 - (void)setProgressTitle:(NSString *)progressTitle{
@@ -278,3 +299,17 @@
 
 
 @end
+
+@implementation LightViewController
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+
+- (BOOL)prefersHomeIndicatorAutoHidden{
+    return YES;
+}
+
+@end
+
+

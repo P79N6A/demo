@@ -12,28 +12,43 @@
 
 @interface SPHaloButton()
 @property (nonatomic, strong) UIColor *haloColor;
-//@property (nonatomic, strong) UIImage *nomalImage;
-//@property (nonatomic, strong) UIImage *selectImage;
-//@property (nonatomic, assign) BOOL isSelected;
+
 @end
 
 
 @implementation SPHaloButton
 
-//- (void)setIsSelected:(BOOL)isSelected{
-//    _isSelected = isSelected;
-//    if (isSelected) {
-//        if (self.selectImage) self.imageView.image = self.selectImage;
-//    }else{
-//        if (self.nomalImage) self.imageView.image = self.nomalImage;
-//    }
-//}
+- (void)setSpSelected:(BOOL)spSelected{
+    _spSelected = spSelected;
+    if (spSelected) {
+        if (self.selectImage) self.spImageView.image = self.selectImage;
+    }else{
+        if (self.nomalImage) self.spImageView.image = self.nomalImage;
+    }
+}
+
+- (void)setNomalImage:(UIImage *)nomalImage{
+    _nomalImage = nomalImage;
+    if (!_spSelected) {
+        self.spImageView.image = nomalImage;
+    }
+}
+
+- (void)setSelectImage:(UIImage *)selectImage{
+    _selectImage = selectImage;
+    if (_spSelected) {
+        self.spImageView.image = selectImage;
+    }
+}
+
 
 
 - (instancetype)initWithFrame:(CGRect)frame
                     haloColor:(UIColor *)color{
     self = [super initWithFrame:frame];
     if (self) {
+        self.userInteractionEnabled = YES;
+        self.enabled = YES;
         self.haloColor = color;
         [self addSubview:({
 
@@ -43,13 +58,13 @@
             _spImageView = imageView;
             imageView;
         })];
-        
 
         [self setFrame];
         [self openHalo:color];
     }
     return self;
 }
+
 
 
 + (CGSize)HaloButtonSize:(CGSize)size{
@@ -62,7 +77,7 @@
 }
 
 - (void)closeHalo{
-    [self.imageView stopPulse];
+    [self.spImageView stopPulse];
 }
 
 - (void)setFrame{
@@ -72,6 +87,7 @@
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self setFrame];
+    NSLog(@"%s", __func__);
 }
 
 @end

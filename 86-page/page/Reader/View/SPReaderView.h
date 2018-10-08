@@ -8,9 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
+
+typedef enum : NSInteger {
+    SPReaderShowTypeNone = 0,
+    SPReaderShowTypeSet,
+    SPReaderShowTypeMenu,
+} SPReaderShowType;
+
+
+@interface LightViewController : UIViewController @end
 @interface SPReaderView : UIView
 @property (nonatomic,copy) NSString *content;
 @property (nonatomic, copy) NSString *progressTitle;
-@property (nonatomic, assign) BOOL isShow;
-
+@property (nonatomic, assign) SPReaderShowType isShow;
 @end

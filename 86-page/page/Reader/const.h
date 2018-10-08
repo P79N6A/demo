@@ -38,6 +38,8 @@
 #define  kTabbarHeight         (iPhoneX ? (49.f+34.f) : 49.f)
 // Tabbar safe bottom margin.
 #define  kTabbarSafeBottomMargin         (iPhoneX ? 34.f : 0.f)
+#define  kNavigationBarSafeTopMargin         (iPhoneX ? 44.f : 0.f)
+
 // Status bar & navigation bar height.
 #define  kStatusBarAndNavigationBarHeight  (iPhoneX ? 88.f : 64.f)
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -102,6 +104,8 @@
 /// 阅读最大阅读字体大小
 #define DZMReadMaxFontSize  25
 
+
+#define DZReaderContentFrame (CGRectMake(DZMSpace_1, DZMSpace_2+kNavigationBarSafeTopMargin, ScreenWidth - 2 * DZMSpace_1, ScreenHeight - 2 * DZMSpace_2 - kTabbarSafeBottomMargin - kNavigationBarSafeTopMargin))
 
 #define NovelsSettingViewH  (isX ? 250 : 218)
 

@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SPReadView.h"
+#import "SPReaderView.h"
 
 @class SPChapterModel;
 
@@ -15,6 +15,6 @@
 
 @property (nonatomic, assign) NSInteger chapter;
 @property (nonatomic, assign) NSInteger page;
-@property (nonatomic, assign) BOOL isShow;
+@property (nonatomic, assign) SPReaderShowType isShow;
 @property (nonatomic, strong) SPChapterModel *model;
 @end

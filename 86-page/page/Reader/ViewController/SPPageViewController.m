@@ -10,6 +10,8 @@
 #import "ReadViewController.h"
 #import "BackViewController.h"
 
+#import "SPReaderView.h"
+
 #import "SPChapterModel.h"
 
 #import "const.h"
@@ -31,6 +33,8 @@
 @end
 
 @implementation SPPageViewController
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -61,39 +65,6 @@
     
     [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNameFontSizeChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
         [self updateText];
-//        [self.models enumerateObjectsUsingBlock:^(SPChapterModel * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//            [obj updateFont];
-//        }];
-//
-//        NSArray *indexs = self.models[self.chapter].pages;
-////        0,
-////        229,
-////        462,
-////        679,
-////        910
-//
-////        399,609
-//
-//        __block NSInteger page = -1;
-//        [indexs enumerateObjectsUsingBlock:^(NSNumber * obj, NSUInteger idx, BOOL * _Nonnull stop) {
-//
-//            if (obj.integerValue < self.nowIndex) {
-//                page = idx;
-//            }else if (obj.integerValue == self.nowIndex){
-//                self.page = idx;
-//                *stop = YES;
-//            }else {
-//
-//                if (page>-1) {
-//                    self.page = idx-1;
-//                    *stop = YES;
-//                }
-//            }
-//
-//        }];
-//
-//        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:YES]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
-
     }];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:DZMNotificationNameFontChange object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
@@ -104,7 +75,7 @@
         NSArray *indexs = self.models[self.chapter].pages;
         CGFloat progress = [[note.userInfo valueForKey:@"progress"] floatValue];
         self.page = (indexs.count - 1) * progress;
-        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:NO]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:SPReaderShowTypeMenu]] direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
 
     }];
     
@@ -129,7 +100,7 @@
 
         }
         self.page = 0;
-        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:NO]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:SPReaderShowTypeMenu]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
     }];
 
@@ -169,7 +140,7 @@
             
         }];
         
-        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:YES]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
+        [self.pageVC setViewControllers:@[[self readViewWithChapter:self.chapter page:self.page isShowTool:SPReaderShowTypeSet]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:nil];
         
     
 }
@@ -178,7 +149,7 @@
 
 -(ReadViewController *)readViewWithChapter:(NSUInteger)chapter
                                       page:(NSUInteger)page
-                                isShowTool:(BOOL)show{
+                                isShowTool:(SPReaderShowType)show{
     
     ReadViewController *readView = [[ReadViewController alloc] init];
     readView.model = self.models[chapter];

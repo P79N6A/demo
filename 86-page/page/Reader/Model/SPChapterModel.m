@@ -8,6 +8,7 @@
 
 #import "SPChapterModel.h"
 #import "SPReadConfig.h"
+#import "const.h"
 #import <CoreText/CoreText.h>
 
 @implementation SPChapterModel
@@ -27,7 +28,8 @@
 
 -(void)updateFont
 {
-    [self paginateWithBounds:[UIScreen mainScreen].bounds];
+    [self paginateWithBounds:CGRectMake(0, 0,DZReaderContentFrame.size.width , DZReaderContentFrame.size.height)];
+//    [self paginateWithBounds:[UIScreen mainScreen].bounds];
 }
 
 

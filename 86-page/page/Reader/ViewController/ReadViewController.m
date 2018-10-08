@@ -8,17 +8,20 @@
 
 #import "ReadViewController.h"
 
+#import "SPReaderView.h"
+
 #import "SPChapterModel.h"
 #import "SPReadConfig.h"
 #include "const.h"
 
 @interface ReadViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *titleLB;
-@property (weak, nonatomic) IBOutlet SPReadView *readView;
+@property (weak, nonatomic) IBOutlet SPReaderView *readView;
 
 @end
 
 @implementation ReadViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -11,6 +11,5 @@
 @interface SPReadView : UIView
 
 @property (nonatomic,copy) NSString *content;
-@property (nonatomic, copy) NSString *progressTitle;
-@property (nonatomic, assign) BOOL isShow;
+
 @end
