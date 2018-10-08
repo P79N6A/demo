@@ -16,6 +16,8 @@
 #import "SPStatusView.h"
 #import "SPHaloButton.h"
 
+#import "DZMMagnifierView/DZMMagnifierView.h"
+
 #import "const.h"
 #import "SPReadConfig.h"
 
@@ -35,6 +37,8 @@
 @property (nonatomic, weak)  SPSettingView *settingView;
 @property (nonatomic, weak)  SPStatusView *statusView;
 @property (nonatomic, weak) SPHaloButton *lightButton;
+
+@property (nonatomic, strong) DZMMagnifierView *magnifierView;
 @end
 
 @implementation SPReaderView
@@ -165,7 +169,87 @@
         self.lightView.alpha = (CGFloat)sender.spSelected;
     }];
 }
+
+/// 创建放大镜
+- (void)creatMagnifierView:(CGPoint )windowPoint {
+    
+    if (self.magnifierView == nil) {
+        
+        self.magnifierView = [[DZMMagnifierView alloc] init];
+        self.magnifierView.targetWindow = self.window;
+        self.magnifierView.targetPoint = windowPoint;
+    }
+}
+
 - (void)longPressAction:(UILongPressGestureRecognizer *)sender{
+    
+        
+//        // 禁止上下滚动使用
+//        if DZMReadConfigure.shared().effectType == DZMRMEffectType.upAndDown.rawValue { return }
+//
+        // 触摸位置
+    CGPoint point = [sender locationInView:self];
+
+        // 触摸位置
+    CGPoint windowPoint = [sender locationInView:self.window];
+
+        // 触摸开始 触摸中
+    if(sender.state == UIGestureRecognizerStateBegan){
+
+            // 发送通知
+
+
+            // 放大镜
+        [self creatMagnifierView:windowPoint];
+
+    }else if (sender.state == UIGestureRecognizerStateChanged){
+
+            // 设置放大镜位置
+        self.magnifierView.targetPoint = windowPoint;
+
+        }else{ // 触摸结束
+
+            // 获得选中区域
+//            selectRange = DZMReadAuxiliary.GetTouchLineRange(point: point, frameRef: frameRef)
+//
+//             获得选中选中范围
+//            rects = DZMReadAuxiliary.GetRangeRects(range: selectRange!, frameRef: frameRef, content: content)
+//
+//            // 显示光标
+//            cursor(isShow: true)
+//
+            // 设置放大镜位置
+            self.magnifierView.targetPoint = windowPoint;
+             __weak typeof(self) weakSelf = self;
+            [self.magnifierView remove:^{
+                weakSelf.magnifierView = nil;
+            }];
+//
+//            // 移除
+//            magnifierView?.remove({ [weak self] () in
+//
+//                // 清空
+//                self?.magnifierView = nil
+//
+//                // 显示菜单
+//                self?.menu(isShow: true)
+//            })
+//
+//            // 重绘
+            [self setNeedsDisplay];
+//
+//            // 开启手势
+//            if !rects.isEmpty {
+//
+//                // 手势状态
+//                longGes?.isEnabled = false
+//                tapGes?.isEnabled = true
+//                isOpenDrag = true
+//
+//                // 发送通知
+//                DZMReadView.PostNotification(userInfo: [DZMKey_ReadView_Ges_isOpen: NSNumber(value: false)])
+//            }
+        }
     
 }
 - (void)showToolView:(UITapGestureRecognizer *)sender{

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		22DC820F216878BD001963D9 /* SPReaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 22DC820E216878BD001963D9 /* SPReaderView.m */; };
+		693EA98D216B5F2C00D977AB /* DZMMagnifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 693EA98C216B5F2C00D977AB /* DZMMagnifierView.m */; };
 		69DB19222119757100715D7B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB19212119757100715D7B /* AppDelegate.m */; };
 		69DB19252119757100715D7B /* SPPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69DB19242119757100715D7B /* SPPageViewController.m */; };
 		69DB19282119757100715D7B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69DB19262119757100715D7B /* Main.storyboard */; };
@@ -34,6 +35,8 @@
 /* Begin PBXFileReference section */
 		22DC820D216878BD001963D9 /* SPReaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SPReaderView.h; sourceTree = "<group>"; };
 		22DC820E216878BD001963D9 /* SPReaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPReaderView.m; sourceTree = "<group>"; };
+		693EA98B216B5F2C00D977AB /* DZMMagnifierView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DZMMagnifierView.h; sourceTree = "<group>"; };
+		693EA98C216B5F2C00D977AB /* DZMMagnifierView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DZMMagnifierView.m; sourceTree = "<group>"; };
 		69DB191D2119757100715D7B /* page.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = page.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69DB19202119757100715D7B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		69DB19212119757100715D7B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -87,6 +90,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		693EA98A216B5F2C00D977AB /* DZMMagnifierView */ = {
+			isa = PBXGroup;
+			children = (
+				693EA98B216B5F2C00D977AB /* DZMMagnifierView.h */,
+				693EA98C216B5F2C00D977AB /* DZMMagnifierView.m */,
+			);
+			path = DZMMagnifierView;
+			sourceTree = "<group>";
+		};
 		69DB19142119757100715D7B = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +144,7 @@
 		69DB1961211C4E5500715D7B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				693EA98A216B5F2C00D977AB /* DZMMagnifierView */,
 				69DB193E21198A7C00715D7B /* SPReadView.h */,
 				69DB193F21198A7C00715D7B /* SPReadView.m */,
 				69DB194421199CE600715D7B /* SPButtomView.h */,
@@ -256,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69DB195C211C231000715D7B /* SPFuncView.m in Sources */,
+				693EA98D216B5F2C00D977AB /* DZMMagnifierView.m in Sources */,
 				69DB19252119757100715D7B /* SPPageViewController.m in Sources */,
 				69DB1959211C117A00715D7B /* UIView+PulseView.m in Sources */,
 				69DB194021198A7C00715D7B /* SPReadView.m in Sources */,
