@@ -129,11 +129,18 @@
     if(sender.isSelected) return;
     [self selectButton:sender];
     
+    //字体
     if (self.funcType == SPFuncViewTypeFont) {
         [SPReadConfig defaultConfig].fontType = sender.tag;
         [[NSNotificationCenter defaultCenter] postNotificationName:DZMNotificationNameFontChange object:nil];
         return;
     }
+    // 动画
+    if (self.funcType == SPFuncViewTypeEffect) {
+
+        return;
+    }
+
     
 }
 
