@@ -5,7 +5,7 @@
  * date : 2018/08/28 重试和Safari
  * date : 2018/09/15 适配iPhoneX 系列
  * date : 2018/10/5 优化WebView
-
+ * date : 2018/10/08 优化errorReload
  */
 
 #import <UIKit/UIKit.h>

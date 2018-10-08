@@ -411,7 +411,7 @@
 
 - (UIRefreshControl *)refreshControl{
     if (!_refreshControl) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
+        _refreshControl = [[UIRefreshControl alloc] init];
         [_refreshControl addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventValueChanged)];
     }
     return _refreshControl;
@@ -419,7 +419,7 @@
 
 - (UIProgressView* )progress {
     if (!_progress) {
-        self.progress = [[UIProgressView alloc]initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, 2.5)];
+        _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, 2.5)];
         _progress.trackTintColor = [UIColor clearColor];
         _progress.progressTintColor = _loadingProgressColor?_loadingProgressColor:[UIColor colorWithRed:0.15 green:0.49 blue:0.96 alpha:1.0];
     }
@@ -430,8 +430,10 @@
 
 - (UIButton *)reloadBtn{
     if (!_reloadBtn) {
-        self.reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
+        _reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        //_reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
+        _reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
+
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
@@ -439,9 +441,11 @@
         [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
-        [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
-
+        //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        //[_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
+        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(140, -50, 0, -50)];
+        
         _reloadBtn.titleLabel.numberOfLines = 0;
 
         _reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
