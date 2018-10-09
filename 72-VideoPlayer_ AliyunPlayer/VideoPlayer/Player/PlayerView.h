@@ -6,6 +6,7 @@
  * date : 2018/09/15 适配iPhoneX 系列
  * date : 2018/10/5 优化WebView
  * date : 2018/10/08 优化errorReload
+ * date : 2018/10/09 适配iOS12
  */
 
 #import <UIKit/UIKit.h>

@@ -1341,22 +1341,30 @@ static char kSPHomeIndicatorAutoHiddenKey;
 - (BOOL)shouldAutorotate{
     
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray * fullScreenViewControllers = @[
+                                            @"UIViewController",
+                                            @"WHWebViewController",
+                                            @"AVPlayerViewController",
+                                            @"AVFullScreenViewController",
+                                            @"AVFullScreenPlaybackControlsViewController"
+                                            ];
+    if ([fullScreenViewControllers containsObject:className]){
         return YES;
     }
-    
     return NO;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray * fullScreenViewControllers = @[
+                                            @"UIViewController",
+                                            @"WHWebViewController",
+                                            @"AVPlayerViewController",
+                                            @"AVFullScreenViewController",
+                                            @"AVFullScreenPlaybackControlsViewController"
+                                            ];
+    if ([fullScreenViewControllers containsObject:className]){
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
-    
     return UIInterfaceOrientationMaskPortrait;
 }
 
