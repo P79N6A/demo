@@ -1336,9 +1336,14 @@ static char kSPHomeIndicatorAutoHiddenKey;
 - (BOOL)shouldAutorotate{
     
     NSString *className = NSStringFromClass([self class]);
-    if ([@[NSStringFromClass([YYWebViewController class]),@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray *fullScreenViewControllers = @[
+                                            @"UIViewController",
+                                            @"WHWebViewController",
+                                            @"AVPlayerViewController",
+                                            @"AVFullScreenViewController",
+                                            @"AVFullScreenPlaybackControlsViewController"
+                                            ];
+    if ([fullScreenViewControllers containsObject:className]){
         return YES;
     }
     
@@ -1346,9 +1351,14 @@ static char kSPHomeIndicatorAutoHiddenKey;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     NSString *className = NSStringFromClass([self class]);
-    if ([@[NSStringFromClass([YYWebViewController class]),@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray *fullScreenViewControllers = @[
+                                           @"UIViewController",
+                                           @"WHWebViewController",
+                                           @"AVPlayerViewController",
+                                           @"AVFullScreenViewController",
+                                           @"AVFullScreenPlaybackControlsViewController"
+                                           ];
+    if ([fullScreenViewControllers containsObject:className]){
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
     

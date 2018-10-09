@@ -411,7 +411,7 @@
 
 - (UIRefreshControl *)refreshControl{
     if (!_refreshControl) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
+        _refreshControl = [[UIRefreshControl alloc] init];
         [_refreshControl addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventValueChanged)];
     }
     return _refreshControl;
