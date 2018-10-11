@@ -6,7 +6,7 @@ project 'JSPlayer.xcodeproj'
 target 'JSPlayer' do
   # Uncomment the next line if you're using Swift or would like to use dynamic frameworks
   # use_frameworks!
-pod 'KSYMediaPlayer_iOS/KSYMediaPlayer_vod'
+  pod 'KSYMediaPlayer_iOS/KSYMediaPlayer_vod'#, "~> 3.0.4"
 
   # Pods for JSPlayer
 

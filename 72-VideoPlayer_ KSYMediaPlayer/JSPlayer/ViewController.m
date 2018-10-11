@@ -51,7 +51,7 @@
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
     //    model.live_stream = [NSURL fileURLWithPath:@"/Users/jay/Downloads/20180503102411_460.mp4"];
-    model.url = @"http://youku163.zuida-bofang.com/20180731/10509_02188919/index.m3u8";
+    model.url = @"http://app.zhangwangye.com/mdparse/app.php?id=https://www.iqiyi.com/v_19rrkrbwr4.html";
     //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     

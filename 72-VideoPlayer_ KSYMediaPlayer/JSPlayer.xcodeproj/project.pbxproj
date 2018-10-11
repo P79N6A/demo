@@ -67,8 +67,8 @@
 			children = (
 				69DB18C72113EF8D00715D7B /* JSPlayer */,
 				69DB18C62113EF8D00715D7B /* Products */,
-				EA18D9FD271E941D97130244 /* Pods */,
 				42517DA0E3D54E0182188710 /* Frameworks */,
+				EA18D9FD271E941D97130244 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
