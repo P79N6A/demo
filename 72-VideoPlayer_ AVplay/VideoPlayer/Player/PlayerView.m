@@ -325,40 +325,110 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
     self.titleLabel.text = model.title;
     
+    self.videoButtomView.hidden = YES;
     
-
-    AVPlayerItem *playerItem  = [AVPlayerItem playerItemWithURL:url];
-    [self.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
-
-    
-    if (self.playerItem) {
-        [self.playerItem removeObserver:self forKeyPath:@"status"];
-        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
-        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
-    }
-    
-    self.playerItem = playerItem;
-    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-    [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
-    [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
-    
-    
-    __weak __typeof(self) weakSelf = self;
-    [self.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-        //当前播放的时间
-        NSTimeInterval current = CMTimeGetSeconds(time);
-        //视频的总时间
-        NSTimeInterval total = CMTimeGetSeconds(weakSelf.mediaPlayer.currentItem.duration);
+     __weak typeof(self) weakSelf = self;
+    AVURLAsset *asset = [AVURLAsset assetWithURL:[NSURL URLWithString:model.url]];
+    [asset loadValuesAsynchronouslyForKeys:@[@"playable"] completionHandler:^{
         
-        if (current || total) {
-            [weakSelf timeChange:nil];
-            //!(weakSelf.progressBlock)? : weakSelf.progressBlock(current,total);
-        }
-        //设置滑块的当前进度
-        NSLog(@"当前进度：%f",current/total);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            // Load the asset's "playable" key
+            
+            NSError *error = nil;
+            AVKeyValueStatus status = [asset statusOfValueForKey:@"playable" error:&error];
+            
+            
+            
+            switch (status) {
+                case AVKeyValueStatusLoaded:
+                {
+                    if (self.playerItem != nil) {
+                        [self.playerItem removeObserver:self forKeyPath:@"status"];
+                        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+                        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+                        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+                    }
+                    
+                    
+                    AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
+                    self.playerItem = playerItem;
+                    
+                    [playerItem addObserver:weakSelf forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+                    
+                    [playerItem addObserver:weakSelf forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+                    
+                    [playerItem addObserver:weakSelf forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+                    
+                    [playerItem addObserver:weakSelf forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+                    
+                    [weakSelf.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
+                    
+                    
+                    [weakSelf play];
+                    
+                    [weakSelf.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+                        //当前播放的时间
+                        NSTimeInterval current = CMTimeGetSeconds(time);
+                        //视频的总时间
+                        NSTimeInterval total = CMTimeGetSeconds(weakSelf.mediaPlayer.currentItem.duration);
+                        
+                        if (current || total) {
+                            [weakSelf timeChange:nil];
+                            //!(weakSelf.progressBlock)? : weakSelf.progressBlock(current,total);
+                        }
+                        //设置滑块的当前进度
+                        NSLog(@"当前进度：%f",current/total);
+                    }];
+                    
+                    
+                }
+                    
+                    break;
+                    
+                default:
+                    NSLog(@"%@",error);
+                    break;
+            }
+            
+        });
+        
+        
     }];
+    
+
+//    AVPlayerItem *playerItem  = [AVPlayerItem playerItemWithURL:url];
+//    [self.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
+//
+//
+//    if (self.playerItem) {
+//        [self.playerItem removeObserver:self forKeyPath:@"status"];
+//        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+//        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+//        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+//    }
+//
+//    self.playerItem = playerItem;
+//    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
+//    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
+//    [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
+//    [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
+//
+//
+//    __weak __typeof(self) weakSelf = self;
+//    [self.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+//        //当前播放的时间
+//        NSTimeInterval current = CMTimeGetSeconds(time);
+//        //视频的总时间
+//        NSTimeInterval total = CMTimeGetSeconds(weakSelf.mediaPlayer.currentItem.duration);
+//
+//        if (current || total) {
+//            [weakSelf timeChange:nil];
+//            //!(weakSelf.progressBlock)? : weakSelf.progressBlock(current,total);
+//        }
+//        //设置滑块的当前进度
+//        NSLog(@"当前进度：%f",current/total);
+//    }];
     
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
@@ -401,6 +471,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
             double totalTime = CMTimeGetSeconds(_playerItem.duration);
             
+            if (totalTime && self.videoButtomView.isHidden) {
+                [self OnVideoPrepared:Nil];
+            }
             
             NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
             
@@ -409,24 +482,24 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             //some code show loading
             BOOL isLoading = _playerItem.playbackBufferEmpty;
             NSLog(@"开始转菊花---%d",isLoading);
-            if (isLoading) {
+//            if (isLoading) {
                 //!(_loadingBlock)? : _loadingBlock();
                 [self OnStartCache:nil];
-            }else{
-                //!(_completionBlock)? : _completionBlock();
-                [self OnEndCache:nil];
-            }
+//            }else{
+//                //!(_completionBlock)? : _completionBlock();
+//                [self OnEndCache:nil];
+//            }
             
         }else if([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
             //由于 AVPlayer 缓存不足就会自动暂停,所以缓存充足了需要手动播放,才能继续播放
             [self play];
-            if (_playerItem.playbackLikelyToKeepUp) {
+//            if (_playerItem.playbackLikelyToKeepUp) {
                 //!(_completionBlock)? : _completionBlock();
                  [self OnEndCache:nil];
-            }else{
-                //!(_loadingBlock)? : _loadingBlock();
-                 [self OnStartCache:nil];
-            }
+//            }else{
+//                //!(_loadingBlock)? : _loadingBlock();
+//                 [self OnStartCache:nil];
+//            }
             NSLog(@"停止转菊花----缓存足够，开始播放：%d",_playerItem.playbackLikelyToKeepUp);
             
         }
@@ -1121,10 +1194,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
-    if(islive){
-        self.fullBufView = nil;
-        self.fullProgressView = nil;
-    }
+//    if(islive){
+//        self.fullBufView = nil;
+//        self.fullProgressView = nil;
+//    }
+    self.fullBufView.alpha = (CGFloat) !islive;
+    self.fullProgressView.alpha = self.fullBufView.alpha;
+    
     self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
 }
 

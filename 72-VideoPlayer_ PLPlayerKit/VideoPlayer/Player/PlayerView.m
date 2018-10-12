@@ -9,7 +9,7 @@
 #import "PlayerView.h"
 #import "PlayerSubView.h"
 
-#import <AliyunPlayerSDK/AlivcMediaPlayer.h>
+//#import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <PLPlayerKit/PLPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
@@ -265,7 +265,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 - (void)dealloc{
-    [_mediaPlayer pause];
+    [self stop];
+    //[_mediaPlayer pause];
     [_speedMonitor stopNetworkSpeedMonitor];
     //取消设置屏幕常亮
     //[UIApplication sharedApplication].idleTimerDisabled = NO;
@@ -896,7 +897,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         //        //缓冲区超过设置值时开始丢帧，单位为毫秒。直播时设置，点播设置无效。范围：500～100000
         //        _mediaPlayer.dropBufferDuration = 8000;
         //
-        //        [self addNotification];
+        [self addNotification];
         
         //如果要切换视频需要调AVPlayer的replaceCurrentItemWithPlayerItem:方法
         //        _mediaPlayer = [AVPlayer playerWithPlayerItem:nil];
@@ -909,9 +910,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         //        [self.contentView.layer addSublayer:playerLayer];
         //        self.playerLayer = playerLayer;
         //
-        //        NSError *error = nil;
-        //        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error]       ;
-        //        [[AVAudioSession sharedInstance] setActive:YES error:&error];
+        NSError *error = nil;
+        [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:&error];
+        [[AVAudioSession sharedInstance] setActive:YES error:&error];
         
         // 初始化 PLPlayerOption 对象
         PLPlayerOption *option = [PLPlayerOption defaultOption];
@@ -922,14 +923,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         [option setOptionValue:@1000 forKey:PLPlayerOptionKeyMaxL2BufferDuration];
         [option setOptionValue:@(NO) forKey:PLPlayerOptionKeyVideoToolbox];
         [option setOptionValue:@(kPLLogInfo) forKey:PLPlayerOptionKeyLogLevel];
-        
+        //[option setOptionValue:@(YES) forKey:PLPlayerOptionKeyVODFFmpegEnable];
         // 初始化 PLPlayer
         _mediaPlayer = [PLPlayer playerWithURL:nil option:option];
         _mediaPlayer.delegate = self;
         [self.contentView insertSubview:_mediaPlayer.playerView atIndex:0];
         _mediaPlayer.playerView.frame = self.contentView.bounds;
         _mediaPlayer.playerView.contentMode = UIViewContentModeScaleAspectFit;
-        
+        _mediaPlayer.backgroundPlayEnable = YES;
         // 增加下面这行可以解决iOS10兼容性问题了
         if (@available(iOS 10.0, *)) {
             _mediaPlayer.avplayer.automaticallyWaitsToMinimizeStalling = NO;
@@ -942,7 +943,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return _mediaPlayer;
 }
 
-//- (void)addNotification{
+- (void)addNotification{
+    // 监听耳机插入和拔掉通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(initaudioRouteChangeObserver:) name:AVAudioSessionRouteChangeNotification object:nil];
+    
+    //进入前台
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidBecomeActive) name:UIApplicationDidBecomeActiveNotification object:nil];
+    //进入后他
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationWillResignActive) name:UIApplicationWillResignActiveNotification object:nil ];
+
 //    //一、播放器初始化视频文件完成通知，调用prepareToPlay函数，会发送该通知，代表视频文件已经准备完成，此时可以在这个通知中获取到视频的相关信息，如视频分辨率，视频时长等
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(OnVideoPrepared:)
@@ -979,8 +988,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //    [[NSNotificationCenter defaultCenter] addObserver:self
 //                                             selector:@selector(onCircleStart:)
 //                                                 name:AliVcMediaPlayerCircleStartNotification object:self.mediaPlayer];
-//    
-//}
+    
+}
 
 - (NSTimer *)timer{
     if (!_timer) {
@@ -1053,18 +1062,29 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)player:(nonnull PLPlayer *)player stoppedWithError:(nullable NSError *)error{
     [self tryReconnect:error];
 }
+static NSString *status[] = {
+    @"PLPlayerStatusUnknow",
+    @"PLPlayerStatusPreparing",
+    @"PLPlayerStatusReady",
+    @"PLPlayerStatusOpen",
+    @"PLPlayerStatusCaching",
+    @"PLPlayerStatusPlaying",
+    @"PLPlayerStatusPaused",
+    @"PLPlayerStatusStopped",
+    @"PLPlayerStatusError",
+    @"PLPlayerStatusCompleted"
+};
 - (void)player:(nonnull PLPlayer *)player statusDidChange:(PLPlayerStatus)state{
 
-//    if(state ==  PLPlayerStatusUnknow){
-//    //PLPlayerStatusUnknow = 0,PLPlayer 未知状态，只会作为 init 后的初始状态，开始播放之后任何情况下都不会再回到此状态
-//    }else if (state == PLPlayerStatusPreparing){
-//    //PLPlayerStatusPreparing,PLPlayer 正在准备播放所需组件，在调用 -play 方法时出现。
-//
-//    }else if (state == PLPlayerStatusReady){
-//
-//    //PLPlayerStatusReady,PLPlayer 播放组件准备完成，准备开始播放，在调用 -play 方法时出现
-//    }else
-    if (state == PLPlayerStatusCaching){
+    if(state ==  PLPlayerStatusUnknow){
+    //PLPlayerStatusUnknow = 0,PLPlayer 未知状态，只会作为 init 后的初始状态，开始播放之后任何情况下都不会再回到此状态
+    }else if (state == PLPlayerStatusPreparing){
+    //PLPlayerStatusPreparing,PLPlayer 正在准备播放所需组件，在调用 -play 方法时出现。
+
+    }else if (state == PLPlayerStatusReady){
+
+    //PLPlayerStatusReady,PLPlayer 播放组件准备完成，准备开始播放，在调用 -play 方法时出现
+    }else if (state == PLPlayerStatusCaching){
 
     //PLPlayerStatusCaching,PLPlayer 缓存数据为空状态。
         [self OnStartCache:nil];
@@ -1073,24 +1093,23 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     //PLPlayerStatusPlaying,PLPlayer 正在播放状态。
         [self OnVideoPrepared:nil];
         [self OnEndCache:nil];
-//    }else if (state == PLPlayerStatusPaused){
-//
-//    //PLPlayerStatusPaused,PLPlayer 暂停状态。
-//
-//    }else if (state == PLPlayerStatusStopped){
-//
-//    //PLPlayerStatusStopped,PLPlayer 停止状态
-//
-//    }else if (state == PLPlayerStatusError){
-//        [self OnVideoError:nil];
+    }else if (state == PLPlayerStatusPaused){
+
+    //PLPlayerStatusPaused,PLPlayer 暂停状态。
+
+    }else if (state == PLPlayerStatusStopped){
+
+    //PLPlayerStatusStopped,PLPlayer 停止状态
+
+    }else if (state == PLPlayerStatusError){
+        [self OnVideoError:nil];
     //PLPlayerStatusError,PLPlayer 错误状态，播放出现错误时会出现此状态。
     
-//    }else if (state == PLPlayerStateAutoReconnecting){
+    }else if (state == PLPlayerStateAutoReconnecting){
 
     //PLPlayerStateAutoReconnecting PLPlayer 自动重连的状态
-    }else{
-        [self OnEndCache:nil];
     }
+    NSLog(@"PLPlayerState---%@---", status[state]);
 }
 
 
@@ -1184,6 +1203,39 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)onCircleStart:(NSNotification *)noti{
     //    NSLog(@"%s--播放器开启循环播放", __func__);
 }
+
+//FIXME:  -  耳机插入拔出
+- (void)initaudioRouteChangeObserver:(NSNotification *)notification {
+    NSDictionary *interuptionDict = [notification userInfo];
+    NSInteger routeChangeReason = [[interuptionDict valueForKey:AVAudioSessionRouteChangeReasonKey] integerValue];
+    
+    switch (routeChangeReason) {
+            
+        case AVAudioSessionRouteChangeReasonNewDeviceAvailable:
+            // 耳机插入
+            break;
+        case AVAudioSessionRouteChangeReasonOldDeviceUnavailable: {
+            // 耳机拔掉
+            break;
+        }
+        case AVAudioSessionRouteChangeReasonCategoryChange:
+            // called at start - also when other audio wants to play
+            NSLog(@"AVAudioSessionRouteChangeReasonCategoryChange");
+            break;
+    }
+}
+//FIXME:  -  前台
+- (void)applicationDidBecomeActive {
+    if (!self.isPlaying) {
+        [self play];
+    }
+}
+
+//FIXME:  -  即将进入后台
+- (void)applicationWillResignActive {
+//    [self pause];
+}
+
 
 //FIXME:  -  get/set 方法
 

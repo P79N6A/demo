@@ -1,18 +1,15 @@
 PODS:
-  - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
   - HappyDNS (0.3.14)
   - PLPlayerKit (2.4.3):
     - HappyDNS (~> 0.3.10)
 
 DEPENDENCIES:
-  - AliyunPlayer_iOS/AliyunPlayerSDK
   - PLPlayerKit (~> 2.4.3)
 
 SPEC CHECKSUMS:
-  AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
   HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
   PLPlayerKit: 6575f900d3a1c3680e3fd8907338683d0eedcd79
 
-PODFILE CHECKSUM: f1d6748d57f440d24baa2de62eaa59e6f150b613
+PODFILE CHECKSUM: b4c9bbcaef06927af5dc8ab8e3d8c0ae1ea75d33
 
 COCOAPODS: 1.4.0

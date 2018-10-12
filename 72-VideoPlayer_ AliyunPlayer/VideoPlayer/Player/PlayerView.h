@@ -7,6 +7,8 @@
  * date : 2018/10/5 优化WebView
  * date : 2018/10/08 优化errorReload
  * date : 2018/10/09 适配iOS12
+ * date : 2018/10/12 优化min进度条
+
  */
 
 #import <UIKit/UIKit.h>
