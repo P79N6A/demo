@@ -326,6 +326,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.titleLabel.text = model.title;
     
+    self.videoButtomView.hidden = YES;
+    
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
@@ -993,10 +995,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSTimeInterval total = self.mediaPlayer.duration/1000;
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
-    if(islive){
-        self.fullBufView = nil;
-        self.fullProgressView = nil;
-    }
+//    if(islive){
+//        self.fullBufView = nil;
+//        self.fullProgressView = nil;
+//    }
+    self.fullBufView.alpha = (CGFloat) !islive;
+    self.fullProgressView.alpha  = self.fullBufView.alpha;
+
     self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
 }
 
