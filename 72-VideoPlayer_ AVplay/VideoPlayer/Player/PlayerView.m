@@ -9,7 +9,6 @@
 #import "PlayerView.h"
 #import "PlayerSubView.h"
 
-#import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
 #import <AVFoundation/AVFoundation.h>
 #import <SafariServices/SafariServices.h>
@@ -17,13 +16,7 @@
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
-//#define  iPhoneXX ([self.topViewController respondsToSelector:@selector(setNeedsUpdateOfHomeIndicatorAutoHidden)])
-//typedef NS_ENUM(NSUInteger, Direction) {
-//    DirectionLeftOrRight,
-//    DirectionUpOrDown,
-//    DirectionNone
-//};
+
 
 // 枚举值，包含水平移动方向和垂直移动方向
 typedef NS_ENUM(NSInteger, PanDirection){
@@ -78,7 +71,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 //@property (nonatomic, weak) NSTimer *timer;
 
-
 /** 错误按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *errorBtn;
 
@@ -104,10 +96,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 是否正在拖 */
 @property (nonatomic, assign) BOOL progressDragging;
 
-//@property (assign, nonatomic) CGPoint startPoint;
-//@property (assign, nonatomic) CGFloat volumeValue;
-//@property (assign, nonatomic) Direction direction;
-
 /** 平移方向 */
 @property (nonatomic, assign) PanDirection           panDirection;
 /** 用来保存快进的总时长 */
@@ -131,9 +119,11 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 @property (weak, nonatomic) IBOutlet UILabel *networkSpeedLabel;
 /** 是否iPhoneX*/
 @property (nonatomic, assign,) BOOL iPhoneXX;
-
 /** 网速检测*/
 @property (nonatomic, strong,) SpeedMonitor *speedMonitor;
+
+@property (nonatomic, weak) id timeObserver;
+
 @end
 
 
@@ -191,7 +181,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 //FIXME:  -  布局位置
 - (void)layout{
-    
+    //iPhoneX 横评
     BOOL iPhoneXX = self.iPhoneXX && (kScreenWidth > kScreenHeight);
     
     CGFloat spacing = iPhoneXX? 24 : 0;
@@ -258,11 +248,11 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self layout];
-//    [self timer];
+    //[self timer];
 }
 
 - (void)dealloc{
-    [_mediaPlayer pause];
+    [self stop];
     [_speedMonitor stopNetworkSpeedMonitor];
     //取消设置屏幕常亮
     //[UIApplication sharedApplication].idleTimerDisabled = NO;
@@ -348,11 +338,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                         [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
                         [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
                         [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+                        [self.mediaPlayer removeTimeObserver:_timeObserver];
                     }
                     
                     
                     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
                     self.playerItem = playerItem;
+                    if (@available(iOS 10.0, *)) {
+                        playerItem.preferredForwardBufferDuration = 5.0f;
+                    }
+                    playerItem.canUseNetworkResourcesForLiveStreamingWhilePaused = NO;
                     
                     [playerItem addObserver:weakSelf forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
                     
@@ -367,7 +362,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     
                     [weakSelf play];
                     
-                    [weakSelf.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
+                    _timeObserver = [weakSelf.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
                         //当前播放的时间
                         NSTimeInterval current = CMTimeGetSeconds(time);
                         //视频的总时间
@@ -444,7 +439,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     //推荐将视频播放放在这里
                     [self play];
                     [self OnVideoPrepared:nil];
-                    NSLog(@"AVPlayerItemStatusReadyToPlay-- 准备播放");
+                    NSLog(@"AVPlayerItemStatusReadyToPlay-- 准备播放--%@",_playerItem.accessLog.events.firstObject.playbackType);
                 }
                     break;
                 case AVPlayerItemStatusUnknown:
@@ -464,14 +459,18 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             }
             
         }else if ([keyPath isEqualToString:@"loadedTimeRanges"]){
+            
             NSArray *array = _playerItem.loadedTimeRanges;
             CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-            double startSeconds = CMTimeGetSeconds(timeRange.start);
-            double durationSeconds = CMTimeGetSeconds(timeRange.duration);
+            NSTimeInterval startSeconds = CMTimeGetSeconds(timeRange.start);
+            NSTimeInterval durationSeconds = CMTimeGetSeconds(timeRange.duration);
             NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-            double totalTime = CMTimeGetSeconds(_playerItem.duration);
+            NSTimeInterval totalTime = CMTimeGetSeconds(_playerItem.duration);
             
-            if (totalTime && self.videoButtomView.isHidden) {
+            self.progressView.progress = totalBuffer / totalTime;
+            self.fullBufView.progress = self.progressView.progress;
+
+            if (!isnan(totalTime) && totalTime > 0 && self.videoButtomView.isHidden) {
                 [self OnVideoPrepared:Nil];
             }
             
@@ -516,6 +515,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 - (void)stop{
     [self.mediaPlayer pause];
+    [self.mediaPlayer removeTimeObserver:_timeObserver];
+    _playerItem = nil;
+    _mediaPlayer = nil;
+    _timeObserver = nil;
 }
 
 - (void)pause{
@@ -524,8 +527,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 - (BOOL)isPlaying
 {
-    return YES;
-//    return self.mediaPlayer.isPlaying;
+    return (self.mediaPlayer.rate > 0);
 }
 
 //FIXME:  -  隐藏状态栏
@@ -1166,22 +1168,19 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSTimeInterval total = CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
     NSTimeInterval current = CMTimeGetSeconds(self.mediaPlayer.currentItem.currentTime);
 
-    NSArray *array = self.mediaPlayer.currentItem.loadedTimeRanges;
-    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-    double startSeconds = CMTimeGetSeconds(timeRange.start);
-    double durationSeconds = CMTimeGetSeconds(timeRange.duration);
-    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
+//    NSArray *array = self.mediaPlayer.currentItem.loadedTimeRanges;
+//    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+//    double startSeconds = CMTimeGetSeconds(timeRange.start);
+//    double durationSeconds = CMTimeGetSeconds(timeRange.duration);
+//    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
     
-    
-    self.progressView.progress = totalBuffer / total;
+//    self.progressView.progress = totalBuffer / total;
+//    self.fullBufView.progress = self.progressView.progress;
     self.videoSlider.value = current / total;
-
+    self.fullProgressView.progress = self.videoSlider.value;
 
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
-
-    self.fullProgressView.progress = self.videoSlider.value;
-    self.fullBufView.progress = self.progressView.progress;
-
+    
     self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
 }
 
