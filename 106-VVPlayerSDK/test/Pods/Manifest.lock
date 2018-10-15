@@ -1,15 +1,16 @@
 PODS:
-  - AliyunPlayer_iOS/AliyunPlayerSDK (3.4.5)
-  - YYPlayer (2018.10.09):
-    - AliyunPlayer_iOS/AliyunPlayerSDK (= 3.4.5)
+  - ZZLoading/AA (1.0.1)
 
 DEPENDENCIES:
-  - YYPlayer
+  - ZZLoading/AA
+
+SPEC REPOS:
+  https://gitee.com/czljcb/DSSpecs.git:
+    - ZZLoading
 
 SPEC CHECKSUMS:
-  AliyunPlayer_iOS: 8b73518e26c889d13ab95857d0bfe07eaa0c90db
-  YYPlayer: 801b34329b8f3133563dd0de93e4fe0dcbb9027a
+  ZZLoading: afc146e2b0a0032b0d2dada5f832ffdfbddf42fe
 
-PODFILE CHECKSUM: 3eda331a01a49d7e0b0036b3425e0dec8f30bd48
+PODFILE CHECKSUM: 1e90404914db634d058fe9669df054e181d5c69b
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
