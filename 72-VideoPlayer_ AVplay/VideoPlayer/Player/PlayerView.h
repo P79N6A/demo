@@ -4,9 +4,10 @@
  * date : 2018/08/09 3秒自动隐藏工具菜单
  * date : 2018/08/28 重试和Safari
  * date : 2018/09/15 适配iPhoneX 系列
- * date : 2018/10/5 优化WebView
+ * date : 2018/10/05 优化WebView
  * date : 2018/10/08 优化errorReload
  * date : 2018/10/09 适配iOS12
+ * date : 2018/10/16 优化播放
  */
 
 #import <UIKit/UIKit.h>

@@ -328,22 +328,22 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             NSError *error = nil;
             AVKeyValueStatus status = [asset statusOfValueForKey:@"playable" error:&error];
             
-            
+            if(![asset.URL.absoluteString isEqualToString:weakSelf.model.url]) return;
             
             switch (status) {
                 case AVKeyValueStatusLoaded:
                 {
-                    if (self.playerItem != nil) {
-                        [self.playerItem removeObserver:self forKeyPath:@"status"];
-                        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-                        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
-                        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
-                        [self.mediaPlayer removeTimeObserver:_timeObserver];
+                    if (weakSelf.playerItem != nil) {
+                        [weakSelf.playerItem removeObserver:self forKeyPath:@"status"];
+                        [weakSelf.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
+                        [weakSelf.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
+                        [weakSelf.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+                        [weakSelf.mediaPlayer removeTimeObserver:_timeObserver];
                     }
                     
                     
                     AVPlayerItem *playerItem = [AVPlayerItem playerItemWithAsset:asset];
-                    self.playerItem = playerItem;
+                    weakSelf.playerItem = playerItem;
                     if (@available(iOS 10.0, *)) {
                         playerItem.preferredForwardBufferDuration = 5.0f;
                     }
@@ -395,38 +395,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }];
     
 
-//    AVPlayerItem *playerItem  = [AVPlayerItem playerItemWithURL:url];
-//    [self.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
-//
-//
-//    if (self.playerItem) {
-//        [self.playerItem removeObserver:self forKeyPath:@"status"];
-//        [self.playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
-//        [self.playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
-//        [self.playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
-//    }
-//
-//    self.playerItem = playerItem;
-//    [self.playerItem addObserver:self forKeyPath:@"status" options:NSKeyValueObservingOptionNew context:nil];
-//    [self.playerItem addObserver:self forKeyPath:@"loadedTimeRanges" options:NSKeyValueObservingOptionNew context:nil];
-//    [self.playerItem addObserver:self forKeyPath:@"playbackBufferEmpty" options:NSKeyValueObservingOptionNew context:nil];
-//    [self.playerItem addObserver:self forKeyPath:@"playbackLikelyToKeepUp" options:NSKeyValueObservingOptionNew context:nil];
-//
-//
-//    __weak __typeof(self) weakSelf = self;
-//    [self.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
-//        //当前播放的时间
-//        NSTimeInterval current = CMTimeGetSeconds(time);
-//        //视频的总时间
-//        NSTimeInterval total = CMTimeGetSeconds(weakSelf.mediaPlayer.currentItem.duration);
-//
-//        if (current || total) {
-//            [weakSelf timeChange:nil];
-//            //!(weakSelf.progressBlock)? : weakSelf.progressBlock(current,total);
-//        }
-//        //设置滑块的当前进度
-//        NSLog(@"当前进度：%f",current/total);
-//    }];
+
     
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
     NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
@@ -1070,6 +1039,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
             
             if (!isnan(totalTime) && totalTime > 0 && self.videoButtomView.isHidden) {
                 [self OnVideoPrepared:Nil];
+            }
+            
+            if( totalBuffer > (CMTimeGetSeconds(_playerItem.currentTime)+1) && !self.isPlaying && self.playOrPauseButton.isSelected){
+                [self play];
             }
             
             NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
