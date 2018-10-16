@@ -359,8 +359,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     
                     [weakSelf.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
                     
-                    
                     [weakSelf play];
+                    weakSelf.loadingLabel.text = @"准备中...";
+
                     
                     _timeObserver = [weakSelf.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
                         //当前播放的时间
@@ -381,8 +382,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     
                     break;
                     
-                default:
+                default:{
                     NSLog(@"%@",error);
+                    [weakSelf OnVideoError:nil];
+                }
                     break;
             }
             
@@ -430,82 +433,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
 }
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    if ([object isKindOfClass:[AVPlayerItem class]]) {
-        
-        if ([keyPath isEqualToString:@"status"]) {
-            switch (_playerItem.status) {
-                case AVPlayerItemStatusReadyToPlay:{
-                    //推荐将视频播放放在这里
-                    [self play];
-                    [self OnVideoPrepared:nil];
-                    NSLog(@"AVPlayerItemStatusReadyToPlay-- 准备播放--%@",_playerItem.accessLog.events.firstObject.playbackType);
-                }
-                    break;
-                case AVPlayerItemStatusUnknown:
-                    //_isPlaying = NO;
-                    
-                    NSLog(@"AVPlayerItemStatusUnknown---%@",_playerItem.error);
-                    break;
-                    
-                case AVPlayerItemStatusFailed:
-                    //_isPlaying = NO;
-                    NSLog(@"AVPlayerItemStatusFailed---%@",_playerItem.error);
-                    [self OnVideoError:nil];
-                    break;
-                    
-                default:
-                    break;
-            }
-            
-        }else if ([keyPath isEqualToString:@"loadedTimeRanges"]){
-            
-            NSArray *array = _playerItem.loadedTimeRanges;
-            CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-            NSTimeInterval startSeconds = CMTimeGetSeconds(timeRange.start);
-            NSTimeInterval durationSeconds = CMTimeGetSeconds(timeRange.duration);
-            NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-            NSTimeInterval totalTime = CMTimeGetSeconds(_playerItem.duration);
-            
-            self.progressView.progress = totalBuffer / totalTime;
-            self.fullBufView.progress = self.progressView.progress;
 
-            if (!isnan(totalTime) && totalTime > 0 && self.videoButtomView.isHidden) {
-                [self OnVideoPrepared:Nil];
-            }
-            
-            NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
-            
-        }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
-            
-            //some code show loading
-            BOOL isLoading = _playerItem.playbackBufferEmpty;
-            NSLog(@"开始转菊花---%d",isLoading);
-//            if (isLoading) {
-                //!(_loadingBlock)? : _loadingBlock();
-                [self OnStartCache:nil];
-//            }else{
-//                //!(_completionBlock)? : _completionBlock();
-//                [self OnEndCache:nil];
-//            }
-            
-        }else if([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
-            //由于 AVPlayer 缓存不足就会自动暂停,所以缓存充足了需要手动播放,才能继续播放
-            [self play];
-//            if (_playerItem.playbackLikelyToKeepUp) {
-                //!(_completionBlock)? : _completionBlock();
-                 [self OnEndCache:nil];
-//            }else{
-//                //!(_loadingBlock)? : _loadingBlock();
-//                 [self OnStartCache:nil];
-//            }
-            NSLog(@"停止转菊花----缓存足够，开始播放：%d",_playerItem.playbackLikelyToKeepUp);
-            
-        }
-    }
-}
-- (void)play
-{
+- (void)play{
     if (@available(iOS 10.0, *)) {
         [self.mediaPlayer playImmediatelyAtRate:1.0];
     } else {
@@ -525,8 +454,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.mediaPlayer pause];
 }
 
-- (BOOL)isPlaying
-{
+- (BOOL)isPlaying{
     return (self.mediaPlayer.rate > 0);
 }
 
@@ -538,21 +466,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 //FIXME:  -  重新播放
 - (IBAction)rePlay:(UIButton *)sender {
-    
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
         WHWebViewController *web = [[WHWebViewController alloc] init];
-        //web.iPhoneXX = self.iPhoneXX;
         web.urlString = self.model.url;
         web.canDownRefresh = YES;
         web.navigationItem.title = self.model.title;
         
         UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
-        //webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
-        //webVC.navigationBar.tintColor = [UIColor whiteColor];
-        //[webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         [self.viewController?self.viewController:self.topViewController presentViewController:webVC animated:YES completion:nil];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
         return;
     }
     [self playWithModel:self.model];
@@ -560,14 +482,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 //FIXME:  -  屏幕旋转回调
 - (void)changeRotate:(NSNotification*)noti {
-    
     NSLog(@"playView所在的控制器:%@;topVC:%@",[self viewController],[self topViewController]);
-
-
+    
     if(self.lockBtn.isSelected) return;
-
     if(self.state == PlayViewStateAnimating) return;
-
     // 播放器所在的控制器不是最顶层的控制器就不执行
     if([self viewController] && [self topViewController] && [self viewController] != [self topViewController]) return;
 
@@ -618,7 +536,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         }
 
     }
-    
 }
 
 //FIXME:  -  处理音量和亮度
@@ -755,56 +672,6 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }
 }
 
-
-//- (void)panGesture:(UIPanGestureRecognizer *)sender{
-//    
-//
-//    if(self.state == PlayViewStateSmall) return;
-//    
-//    if(self.lockBtn.isSelected) return;
-//    
-//    CGPoint point = [sender translationInView:self];
-//    
-//    if (sender.state == UIGestureRecognizerStateBegan) {
-//        //记录首次触摸坐标
-//        self.startPoint = point;
-//        //音/量
-//        self.volumeValue = self.volumeViewSlider.value;
-//    }else if (sender.state == UIGestureRecognizerStateChanged) {
-//        //得出手指在Button上移动的距离
-//        CGPoint panPoint = CGPointMake(point.x - self.startPoint.x, point.y - self.startPoint.y);
-//        //分析出用户滑动的方向
-//        if (panPoint.x >= 30 || panPoint.x <= -30) {
-//            //进度
-//            self.direction = DirectionLeftOrRight;
-//        } else if (panPoint.y >= 30 || panPoint.y <= -30) {
-//            //音量和亮度
-//            self.direction = DirectionUpOrDown;
-//        }
-//        
-//        if (self.direction == DirectionNone) {
-//            return;
-//        } else if (self.direction == DirectionUpOrDown) {
-//            
-//            //音量
-//            if (panPoint.y < 0) {
-//                //增大音量
-//                [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
-//                if (self.volumeValue + (-panPoint.y / 30 / 10) - self.volumeViewSlider.value >= 0.1) {
-//                    [self.volumeViewSlider setValue:0.1 animated:NO];
-//                    [self.volumeViewSlider setValue:self.volumeValue + (-panPoint.y / 30.0 / 10) animated:YES];
-//                }
-//                
-//            } else {
-//                //减少音量
-//                [self.volumeViewSlider setValue:self.volumeValue - (panPoint.y / 30.0 / 10) animated:YES];
-//            }
-//            
-//        }
-//        
-//    }
-//    
-//}
 - (IBAction)videoViewMode:(UIButton *)sender {
     
     NSArray <AVLayerVideoGravity>*modes = @[
@@ -1160,31 +1027,81 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //        self.timer = nil;
 //    }
 //}
-//FIXME:  -  定时刷新进度
-- (void)timeChange:(NSTimer *)sender{
-    
-    if(self.progressDragging) return;
 
-    NSTimeInterval total = CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
-    NSTimeInterval current = CMTimeGetSeconds(self.mediaPlayer.currentItem.currentTime);
-
-//    NSArray *array = self.mediaPlayer.currentItem.loadedTimeRanges;
-//    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
-//    double startSeconds = CMTimeGetSeconds(timeRange.start);
-//    double durationSeconds = CMTimeGetSeconds(timeRange.duration);
-//    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-    
-//    self.progressView.progress = totalBuffer / total;
-//    self.fullBufView.progress = self.progressView.progress;
-    self.videoSlider.value = current / total;
-    self.fullProgressView.progress = self.videoSlider.value;
-
-    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
-    
-    self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([object isKindOfClass:[AVPlayerItem class]]) {
+        
+        if ([keyPath isEqualToString:@"status"]) {
+            switch (_playerItem.status) {
+                case AVPlayerItemStatusReadyToPlay:{
+                    //推荐将视频播放放在这里
+                    [self play];
+                    [self OnVideoPrepared:nil];
+                    NSLog(@"AVPlayerItemStatusReadyToPlay-- 准备播放--%@",_playerItem.accessLog.events.firstObject.playbackType);
+                }
+                    break;
+                case AVPlayerItemStatusUnknown:
+                    //_isPlaying = NO;
+                    
+                    NSLog(@"AVPlayerItemStatusUnknown---%@",_playerItem.error);
+                    break;
+                    
+                case AVPlayerItemStatusFailed:
+                    //_isPlaying = NO;
+                    NSLog(@"AVPlayerItemStatusFailed---%@",_playerItem.error);
+                    [self OnVideoError:nil];
+                    break;
+                    
+                default:
+                    break;
+            }
+            
+        }else if ([keyPath isEqualToString:@"loadedTimeRanges"]){
+            
+            NSArray *array = _playerItem.loadedTimeRanges;
+            CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+            NSTimeInterval startSeconds = CMTimeGetSeconds(timeRange.start);
+            NSTimeInterval durationSeconds = CMTimeGetSeconds(timeRange.duration);
+            NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
+            NSTimeInterval totalTime = CMTimeGetSeconds(_playerItem.duration);
+            
+            self.progressView.progress = totalBuffer / totalTime;
+            self.fullBufView.progress = self.progressView.progress;
+            
+            if (!isnan(totalTime) && totalTime > 0 && self.videoButtomView.isHidden) {
+                [self OnVideoPrepared:Nil];
+            }
+            
+            NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
+            
+        }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
+            
+            //some code show loading
+            BOOL isLoading = _playerItem.playbackBufferEmpty;
+            NSLog(@"开始转菊花---%d",isLoading);
+            //            if (isLoading) {
+            //!(_loadingBlock)? : _loadingBlock();
+            [self OnStartCache:nil];
+            //            }else{
+            //                //!(_completionBlock)? : _completionBlock();
+            //                [self OnEndCache:nil];
+            //            }
+            
+        }else if([keyPath isEqualToString:@"playbackLikelyToKeepUp"]) {
+            //由于 AVPlayer 缓存不足就会自动暂停,所以缓存充足了需要手动播放,才能继续播放
+            [self play];
+            //            if (_playerItem.playbackLikelyToKeepUp) {
+            //!(_completionBlock)? : _completionBlock();
+            [self OnEndCache:nil];
+            //            }else{
+            //                //!(_loadingBlock)? : _loadingBlock();
+            //                 [self OnStartCache:nil];
+            //            }
+            NSLog(@"停止转菊花----缓存足够，开始播放：%d",_playerItem.playbackLikelyToKeepUp);
+            
+        }
+    }
 }
-
-
 #pragma mark  - 获取到视频的相关信息
 - (void)OnVideoPrepared:(NSNotification *)noti{
     NSLog(@"%s--获取到视频的相关信息--时长：%f秒", __func__,CMTimeGetSeconds(self.mediaPlayer.currentItem.duration));
@@ -1397,52 +1314,53 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 
-- (NSString *)error:(NSString *)code{
-    
-    NSDictionary * errorDic = @{
-                                @"4500":@"请求错误",
-                                @"4501":@"数据错误",
-                                @"4502":@"请求saas服务器错误",
-                                @"4503":@"请求mts服务器错误",
-                                @"4504":@"服务器返回参数无效",
-                                @"4521":@"非法的播放器状态",
-                                @"4022":@"没有设置显示窗口，请先设置播放视图",
-                                @"4023":@"内存不足",
-                                @"4024":@"系统权限被拒绝",
-                                @"4101":@"视频下载时连接不到服务器",
-                                @"4102":@"视频下载时网络超时",
-                                @"4103":@"请求saas服务器错误",
-                                @"4104":@"请求mts服务器错误",
-                                @"4105":@"服务器返回参数无效",
-                                @"4106":@"视频下载流无效或地址过期",
-                                @"4107":@"未找到加密文件，请从控制台下载加密文件并集成",
-                                @"4108":@"获取秘钥失败，请检查秘钥文件",
-                                @"4109":@"下载地址无效",
-                                @"4110":@"磁盘空间不够",
-                                @"4111":@"视频文件保存路径不存在，请重新设置",
-                                @"4112":@"当前视频不可下载",
-                                @"4113":@"下载模式改变无法继续下载",
-                                @"4114":@"当前视频已经添加到下载项，请避免重复添加",
-                                @"4115":@"未找到合适的下载项，请先添加",
-                                @"4001":@"参数非法",
-                                @"4002":@"鉴权过期",
-                                @"4003":@"视频源格式不支持",
-                                @"4004":@"视频源不存在",
-                                @"4005":@"读取视频源失败",
-                                @"4008":@"加载超时",
-                                @"4009":@"请求数据错误",
-                                
-                                @"4011":@"视频格式不支持",
-                                @"4012":@"解析失败",
-                                @"4013":@"解码失败",
-                                @"4019":@"编码格式不支持",
-                                @"4400":@"未知错误",
-                                
-                                };
-    NSString *msg = errorDic[code];
-    
-    return msg?msg : @"未知错误";
-}
+//- (NSString *)error:(NSString *)code{
+//
+//    NSDictionary * errorDic = @{
+//                                @"4500":@"请求错误",
+//                                @"4501":@"数据错误",
+//                                @"4502":@"请求saas服务器错误",
+//                                @"4503":@"请求mts服务器错误",
+//                                @"4504":@"服务器返回参数无效",
+//                                @"4521":@"非法的播放器状态",
+//                                @"4022":@"没有设置显示窗口，请先设置播放视图",
+//                                @"4023":@"内存不足",
+//                                @"4024":@"系统权限被拒绝",
+//                                @"4101":@"视频下载时连接不到服务器",
+//                                @"4102":@"视频下载时网络超时",
+//                                @"4103":@"请求saas服务器错误",
+//                                @"4104":@"请求mts服务器错误",
+//                                @"4105":@"服务器返回参数无效",
+//                                @"4106":@"视频下载流无效或地址过期",
+//                                @"4107":@"未找到加密文件，请从控制台下载加密文件并集成",
+//                                @"4108":@"获取秘钥失败，请检查秘钥文件",
+//                                @"4109":@"下载地址无效",
+//                                @"4110":@"磁盘空间不够",
+//                                @"4111":@"视频文件保存路径不存在，请重新设置",
+//                                @"4112":@"当前视频不可下载",
+//                                @"4113":@"下载模式改变无法继续下载",
+//                                @"4114":@"当前视频已经添加到下载项，请避免重复添加",
+//                                @"4115":@"未找到合适的下载项，请先添加",
+//                                @"4001":@"参数非法",
+//                                @"4002":@"鉴权过期",
+//                                @"4003":@"视频源格式不支持",
+//                                @"4004":@"视频源不存在",
+//                                @"4005":@"读取视频源失败",
+//                                @"4008":@"加载超时",
+//                                @"4009":@"请求数据错误",
+//
+//                                @"4011":@"视频格式不支持",
+//                                @"4012":@"解析失败",
+//                                @"4013":@"解码失败",
+//                                @"4019":@"编码格式不支持",
+//                                @"4400":@"未知错误",
+//
+//                                };
+//    NSString *msg = errorDic[code];
+//
+//    return msg?msg : @"未知错误";
+//}
+
 
 
 //FIXME:  -  事件监听
@@ -1475,6 +1393,29 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }
 }
 
+//FIXME:  -  定时刷新进度
+- (void)timeChange:(NSTimer *)sender{
+    
+    if(self.progressDragging) return;
+    
+    NSTimeInterval total = CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
+    NSTimeInterval current = CMTimeGetSeconds(self.mediaPlayer.currentItem.currentTime);
+    
+    //    NSArray *array = self.mediaPlayer.currentItem.loadedTimeRanges;
+    //    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+    //    double startSeconds = CMTimeGetSeconds(timeRange.start);
+    //    double durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    //    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
+    
+    //    self.progressView.progress = totalBuffer / total;
+    //    self.fullBufView.progress = self.progressView.progress;
+    self.videoSlider.value = current / total;
+    self.fullProgressView.progress = self.videoSlider.value;
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+    
+    self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
+}
 
 @end
 
