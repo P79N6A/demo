@@ -1080,7 +1080,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s--获取到视频的相关信息--时长：%f秒", __func__,CMTimeGetSeconds(self.mediaPlayer.currentItem.duration));
     //视频的总时间
     NSTimeInterval total = CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
-    
+    NSTimeInterval current = CMTimeGetSeconds(self.mediaPlayer.currentItem.currentTime);
+
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
 //    if(islive){
@@ -1090,7 +1091,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.fullBufView.alpha = (CGFloat) !islive;
     self.fullProgressView.alpha = self.fullBufView.alpha;
     
-    self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
 }
 
 #pragma mark  - 视频正常播放完成
@@ -1371,6 +1372,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     if(self.progressDragging) return;
     
+    
     NSTimeInterval total = CMTimeGetSeconds(self.mediaPlayer.currentItem.duration);
     NSTimeInterval current = CMTimeGetSeconds(self.mediaPlayer.currentItem.currentTime);
     
@@ -1379,7 +1381,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     //    double startSeconds = CMTimeGetSeconds(timeRange.start);
     //    double durationSeconds = CMTimeGetSeconds(timeRange.duration);
     //    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
-    
+    if(self.loadingView.isAnimating && current) [self OnEndCache:nil];
+
     //    self.progressView.progress = totalBuffer / total;
     //    self.fullBufView.progress = self.progressView.progress;
     self.videoSlider.value = current / total;
