@@ -32,7 +32,7 @@
     
     PlayerView *player = [PlayerView playerView];
     player.allowSafariPlay = YES;
-    player.frame = CGRectMake(0, 64, 320, 200);
+    player.frame = CGRectMake(0, 88, self.view.bounds.size.width, self.view.bounds.size.width * 9.0/16.0);
     [player playWithModel:model];
     [self.view addSubview:player];
     _player = player;

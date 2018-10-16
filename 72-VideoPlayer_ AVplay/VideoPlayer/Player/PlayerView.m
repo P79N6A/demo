@@ -1041,7 +1041,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 [self OnVideoPrepared:Nil];
             }
             
-            if( totalBuffer > (CMTimeGetSeconds(_playerItem.currentTime)+1) && !self.isPlaying && self.playOrPauseButton.isSelected){
+            if( totalBuffer > (CMTimeGetSeconds(_playerItem.currentTime)+3) && !self.isPlaying && self.playOrPauseButton.isSelected){
                 [self play];
             }
             
