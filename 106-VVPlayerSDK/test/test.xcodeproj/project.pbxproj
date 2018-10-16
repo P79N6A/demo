@@ -107,7 +107,6 @@
 				69C9CF8F214F83A800FE992D /* Frameworks */,
 				69C9CF90214F83A800FE992D /* Resources */,
 				592C464AD159AC2237123537 /* [CP] Embed Pods Frameworks */,
-				711B861E044E4F0694441B35 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -172,37 +171,15 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-frameworks.sh",
-				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunPlayerSDK.framework",
-				"${PODS_ROOT}/AliyunPlayer_iOS/AliThirdparty.framework",
-				"${BUILT_PRODUCTS_DIR}/YYPlayer/YYPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/ZZLoading/ZZLoading.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliyunPlayerSDK.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AliThirdparty.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZZLoading.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		711B861E044E4F0694441B35 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-resources.sh",
-				"${PODS_ROOT}/AliyunPlayer_iOS/AliyunLanguageSource.bundle",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AliyunLanguageSource.bundle",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-test/Pods-test-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EC373CC8178B01CC389ED1AD /* [CP] Check Pods Manifest.lock */ = {

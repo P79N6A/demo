@@ -1,0 +1,6 @@
+framework module ZZLoading {
+  umbrella header "ZZLoading-umbrella.h"
+
+  export *
+  module * { export * }
+}
