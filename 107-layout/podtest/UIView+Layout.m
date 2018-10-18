@@ -14,12 +14,10 @@
      BOOL _relativeToViewBak;
 }
 @synthesize relativeToView  = _relativeToView;
-
 - (void)setRelativeToView:(id)relativeToView{
     _relativeToViewBak = YES;
     _relativeToView = relativeToView;
 }
-
 - (id)relativeToView{
     if (_relativeToViewBak) {
         return _relativeToView;

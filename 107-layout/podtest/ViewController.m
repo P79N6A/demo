@@ -7,8 +7,8 @@
 //
 
 #import "ViewController.h"
-#import <YHLibSrc/MBProgressHUD+MJ.h>
-#import <YHLibSrc/YHCategoryHeader.h>
+//#import <YHLibSrc/MBProgressHUD+MJ.h>
+//#import <YHLibSrc/YHCategoryHeader.h>
 
 #import "UIView+Layout.h"
 
@@ -30,42 +30,51 @@
     [self.view addSubview:redView];
     self.redView = redView;
     
-//    [redView setLyHeight:^(LayoutModel *__autoreleasing* _Nonnull layout) {
-//        (*layout).constant = 200;
-//        (*layout).relativeToView = nil;
-//
-//    }];
-//
-//    [redView setLyWidth:^(LayoutModel *__autoreleasing *layout) {
-//        (*layout).constant = 200;
-//        (*layout).relativeToView = nil;
-//    }];
-//
-//    [redView setLyCenterX:^(LayoutModel *__autoreleasing *layout) {
-//
-//    }];
-//    [redView setLyCenterY:^(LayoutModel *__autoreleasing *layout) {
-//
-//    }];
+    [redView setLyHeight:^(LayoutModel *__autoreleasing* _Nonnull layout) {
+        (*layout).constant = 200;
+        (*layout).relativeToView = nil;
+
+    }];
+
+    [redView setLyWidth:^(LayoutModel *__autoreleasing *layout) {
+        (*layout).constant = 200;
+        (*layout).relativeToView = nil;
+    }];
+
+    [redView setLyCenterX:^(LayoutModel *__autoreleasing *layout) {
+
+    }];
+    [redView setLyCenterY:^(LayoutModel *__autoreleasing *layout) {
+
+    }];
+    [UIView animateWithDuration:33 animations:^{
+        
+    }];
+    UISwitch *sw = [UISwitch new];
+    [redView addSubview:sw];
     
-    [redView setLyRight:^(LayoutModel *__autoreleasing *layout) {
-//        (*layout).relativeToView = self.view;
-        (*layout).constant = -10;
-    }];
-
-    [redView setLyTop:^(LayoutModel *__autoreleasing *layout) {
-//        (*layout).relativeToView = self.view;
-        (*layout).constant = 10;
-    }];
-    [redView setLyButtom:^(LayoutModel *__autoreleasing *layout) {
-//        (*layout).relativeToView = self.view;
+    [sw setLyCenterX:nil];
+    
+    [sw setLyCenterY:nil];
+    
+//    [redView setLyRight:^(LayoutModel *__autoreleasing *layout) {
+////        (*layout).relativeToView = self.view;
 //        (*layout).constant = -10;
-    }];
-
-    [redView setLyleft:^(LayoutModel *__autoreleasing *layout) {
-//        (*layout).relativeToView = self.view;
+//    }];
+//
+//    [redView setLyTop:^(LayoutModel *__autoreleasing *layout) {
+////        (*layout).relativeToView = self.view;
 //        (*layout).constant = 10;
-    }];
+//    }];
+//    [redView setLyButtom:^(LayoutModel *__autoreleasing *layout) {
+////        (*layout).relativeToView = self.view;
+////        (*layout).constant = -10;
+//    }];
+//
+//    [redView setLyleft:^(LayoutModel *__autoreleasing *layout) {
+////        (*layout).relativeToView = self.view;
+////        (*layout).constant = 10;
+//    }];
 
 }
 

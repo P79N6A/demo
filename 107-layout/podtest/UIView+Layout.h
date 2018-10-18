@@ -38,16 +38,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-- (void)setLyHeight:(void (^)(LayoutModel *__autoreleasing * layout))lyHeight;
-- (void)setLyWidth:(void (^)(LayoutModel *__autoreleasing *))lyWidth;
+- (void)setLyHeight:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyHeight;
+- (void)setLyWidth:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyWidth;
 
-- (void)setLyCenterX:(void (^)(LayoutModel *__autoreleasing *))lyCenterX;
-- (void)setLyCenterY:(void (^)(LayoutModel *__autoreleasing *))lyCenterY;
+- (void)setLyCenterX:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyCenterX;
+- (void)setLyCenterY:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyCenterY;
 
-- (void)setLyRight:(void (^)(LayoutModel *__autoreleasing *))lyRight;
-- (void)setLyleft:(void (^)(LayoutModel *__autoreleasing *))lyleft;
-- (void)setLyTop:(void (^)(LayoutModel *__autoreleasing *))lyTop;
-- (void)setLyButtom:(void (^)(LayoutModel *__autoreleasing *))lyButtom;
+- (void)setLyRight:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyRight;
+- (void)setLyleft:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyleft;
+- (void)setLyTop:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyTop;
+- (void)setLyButtom:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyButtom;
 
 
 
