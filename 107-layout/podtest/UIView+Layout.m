@@ -42,7 +42,8 @@
     !(lyHeight)? : lyHeight(&model);
     
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
-        model.relativeToView = self.superview;
+        //model.relativeToView = self.superview;
+        model.relativeToView = nil;
     }
     
     if(model.relativeToView && model.layoutAtt == NSLayoutAttributeNotAnAttribute){
@@ -72,7 +73,8 @@
     LayoutModel *model = [LayoutModel new];
     !(lyWidth)? : lyWidth(&model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
-        model.relativeToView = self.superview;
+        //model.relativeToView = self.superview;
+        model.relativeToView = nil;
     }
     if(model.relativeToView && model.layoutAtt == NSLayoutAttributeNotAnAttribute){
         model.layoutAtt = NSLayoutAttributeWidth;

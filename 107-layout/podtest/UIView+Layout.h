@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LayoutModel : NSObject
-/** 相对于谁布局*/
+/** 相对于谁布局 (除了hight/width 外默认是父控件)*/
 @property (nonatomic, weak) id relativeToView;
 /** 相对于那个属性 （上下...）*/
 @property (nonatomic, assign) NSLayoutAttribute layoutAtt;
