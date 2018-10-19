@@ -32,13 +32,11 @@
     
     [redView setLyHeight:^(LayoutModel *__autoreleasing* _Nonnull layout) {
         (*layout).constant = 200;
-        (*layout).relativeToView = nil;
 
     }];
 
     [redView setLyWidth:^(LayoutModel *__autoreleasing *layout) {
         (*layout).constant = 200;
-        (*layout).relativeToView = nil;
     }];
 
     [redView setLyCenterX:^(LayoutModel *__autoreleasing *layout) {
@@ -52,8 +50,9 @@
     }];
     UISwitch *sw = [UISwitch new];
     [redView addSubview:sw];
-    
     [sw setLyCenterX:nil];
+
+    
     
     [sw setLyCenterY:nil];
     
