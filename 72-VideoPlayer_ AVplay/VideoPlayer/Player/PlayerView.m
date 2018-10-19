@@ -384,7 +384,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     
                 default:{
                     NSLog(@"%@",error);
-                    [weakSelf OnVideoError:nil];
+                    [weakSelf OnVideoError:error];
                 }
                     break;
             }
@@ -1018,7 +1018,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 case AVPlayerItemStatusFailed:
                     //_isPlaying = NO;
                     NSLog(@"AVPlayerItemStatusFailed---%@",_playerItem.error);
-                    [self OnVideoError:nil];
+                    [self OnVideoError:_playerItem.error];
                     break;
                     
                 default:
@@ -1100,10 +1100,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 #pragma mark  - 播放器播放失败
-- (void)OnVideoError:(NSNotification *)noti{
-    NSLog(@"%s--播放器播放失败--%@", __func__,self.mediaPlayer.currentItem.error.localizedDescription);
+- (void)OnVideoError:(NSError *)error{
+    NSLog(@"%s--播放器播放失败--%@", __func__,error.localizedDescription);
     //NSString *errorMsg = [noti.userInfo valueForKey:@"errorMsg"];
-    NSString *errorMsg = self.mediaPlayer.currentItem.error.localizedDescription;//[self error:[NSString stringWithFormat:@"%@",self.mediaPlayer.currentItem.error.localizedDescription]];
+    NSString *errorMsg = error.localizedDescription;//[self error:[NSString stringWithFormat:@"%@",self.mediaPlayer.currentItem.error.localizedDescription]];
 
     if (self.allowSafariPlay) {
         [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];

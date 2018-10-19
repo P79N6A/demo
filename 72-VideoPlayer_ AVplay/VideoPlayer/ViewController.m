@@ -28,7 +28,8 @@
 //    model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
 //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
 //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
-    model.url = @"http://app.zhangwangye.com/mdparse/app.php?id=https://www.iqiyi.com/v_19rrkrbwr433.html3";
+    model.url = //@"https://vip2.pp63.org/201810/10/Dq1xd3Yq/index.m3u8";
+    @"http://app.zhangwangye.com/mdparse/app.php?id=https://www.iqiyi.com/v_19rrkrbwr433.html3";
     
     PlayerView *player = [PlayerView playerView];
     player.allowSafariPlay = YES;
