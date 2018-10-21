@@ -12,6 +12,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SPSafariController : UIViewController
 
+- (void)listButtonClicked:(id)sender;
+
+- (void)vipButtonClicked:(id)sender;
+
+- (void)failLoadWithError:(NSError *)error;
 @end
 
 NS_ASSUME_NONNULL_END

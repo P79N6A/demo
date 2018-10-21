@@ -13,25 +13,34 @@
 
 #import "UIView+Layout.h"
 
-@interface SPSafariController ()<WKNavigationDelegate,SKStoreProductViewControllerDelegate>
+@interface SPSafariController ()<WKNavigationDelegate,WKUIDelegate,SKStoreProductViewControllerDelegate>
 @property(nonatomic, readwrite) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
+
 @property (nonatomic, strong) UIBarButtonItem *backBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *stopBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *actionBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *forwardBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
-@property (nonatomic, strong) UIBarButtonItem *navigationBackItem;
+@property (nonatomic, strong) UIBarButtonItem *vipBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *navigationCloseItem;
 @end
 
 @implementation SPSafariController
 
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"UserAgent": [self userAgent]}];
+    }
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    self.navigationItem.leftBarButtonItem = self.navigationCloseItem;
     
 
     
@@ -88,6 +97,8 @@
 
     if ([self.webView canGoBack]) {
         [self.webView goBack];
+    }else{
+        [self backButtonClicked:nil];
     }
 }
 - (void)goForwardClicked:(UIBarButtonItem *)sender {
@@ -104,21 +115,16 @@
     [self.webView stopLoading];
 }
 
-- (void)actionButtonClicked:(id)sender {
-//    NSArray *activities = @[[LYWebViewControllerActivitySafari new], [LYWebViewControllerActivityChrome new]];
-//    NSURL *URL = self.webView.URL;
-//
-//    UIActivityViewController *activityController = [[UIActivityViewController alloc] initWithActivityItems:@[URL] applicationActivities:activities];
-//    [self presentViewController:activityController animated:YES completion:nil];
+- (void)listButtonClicked:(id)sender {
 }
 
-//- (void)navigationItemHandleBack:(UIBarButtonItem *)sender {
-//    if ([self.webView canGoBack]) {
-//        _navigation = [self.webView goBack];
-//        return;
-//    }
-//    [self.navigationController popViewControllerAnimated:YES];
-//}
+- (void)vipButtonClicked:(id)sender{
+    
+}
+
+- (void)failLoadWithError:(NSError *)error{
+    
+}
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -151,10 +157,7 @@
     }
     return nil;
 }
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= __IPHONE_9_0
-- (void)webViewDidClose:(WKWebView *)webView {
-}
-#endif
+
 - (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
     // Get host name of url.
     NSString *host = webView.URL.host;
@@ -234,6 +237,7 @@
     [alert addAction:okAction];
 }
 
+#pragma mark - 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
     // Disable all the '_blank' target in page's target.
@@ -261,13 +265,23 @@
             }
         }
         if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
-            [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+            if (@available(iOS 10.0, *)) {
+                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+            } else {
+                // Fallback on earlier versions
+                [[UIApplication sharedApplication] openURL:components.URL];
+            }
         }
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
     } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about'"] evaluateWithObject:components.scheme]) {// For any other schema but not `https`、`http` and `file`.
         if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
-            [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+            if (@available(iOS 10.0, *)) {
+                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+            } else {
+                // Fallback on earlier versions
+                [[UIApplication sharedApplication] openURL:components.URL];
+            }
         }
         decisionHandler(WKNavigationActionPolicyCancel);
         return;
@@ -278,14 +292,18 @@
     // Call the decision handler to allow to load web page.
     decisionHandler(WKNavigationActionPolicyAllow);
 }
+#pragma mark - 页面加载完成之后调用
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation
 {
     [self didFinishLoad];
 }
+
+#pragma mark - 页面开始加载时调用
 - (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(null_unspecified WKNavigation *)navigation
 {
     [self didStartLoad];
 }
+#pragma mark - 页面加载失败时调用
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
     if (error.code == NSURLErrorCancelled) {
@@ -293,6 +311,7 @@
         return;
     }
     [self didFailLoadWithError:error];
+    [self failLoadWithError:error];
 }
 
 - (void)didStartLoad
@@ -322,12 +341,19 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad) {
         fixedSpace.width = 35.0f;
 
-        NSArray *items = [NSArray arrayWithObjects:fixedSpace, refreshStopBarButtonItem, fixedSpace, self.backBarButtonItem, fixedSpace, self.forwardBarButtonItem, fixedSpace, self.actionBarButtonItem, nil];
+        //NSArray *items = [NSArray arrayWithObjects:fixedSpace, refreshStopBarButtonItem, fixedSpace, self.backBarButtonItem, fixedSpace, self.forwardBarButtonItem, fixedSpace, self.actionBarButtonItem, nil];
+        NSArray *items = [NSArray arrayWithObjects:self.backBarButtonItem, fixedSpace,refreshStopBarButtonItem, fixedSpace, self.forwardBarButtonItem, fixedSpace, self.actionBarButtonItem, nil];
 
-        self.navigationItem.rightBarButtonItems = items.reverseObjectEnumerator.allObjects;
+        self.navigationItem.leftBarButtonItems = items;
+        
+        self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects: self.navigationCloseItem, fixedSpace, self.actionBarButtonItem,fixedSpace, self.vipBarButtonItem, nil];
+        
+        
     } else {
+        self.navigationItem.leftBarButtonItem = self.navigationCloseItem;
+        
         self.navigationController.toolbarHidden = NO;
-        NSArray *items = [NSArray arrayWithObjects: fixedSpace, self.backBarButtonItem, flexibleSpace, self.forwardBarButtonItem, flexibleSpace, refreshStopBarButtonItem, flexibleSpace, self.actionBarButtonItem, fixedSpace, nil];
+        NSArray *items = [NSArray arrayWithObjects: fixedSpace, self.backBarButtonItem,flexibleSpace, refreshStopBarButtonItem, flexibleSpace, self.forwardBarButtonItem, flexibleSpace,self.vipBarButtonItem, flexibleSpace, self.actionBarButtonItem, fixedSpace, nil];
 
         self.navigationController.toolbar.barStyle = self.navigationController.navigationBar.barStyle;
         self.navigationController.toolbar.tintColor = self.navigationController.navigationBar.tintColor;
@@ -342,14 +368,19 @@
         // 设置WKWebView基本配置信息
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.preferences = [[WKPreferences alloc] init];
+        
         configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
+        
         configuration.selectionGranularity = YES;
+        
         if (@available(iOS 9.0, *)) {
-            configuration.requiresUserActionForMediaPlayback = NO;
+            configuration.requiresUserActionForMediaPlayback = YES;//解决弹不出
         } else {
             // Fallback on earlier versions
             configuration.mediaPlaybackRequiresUserAction = NO;
         }//把手动播放设置NO ios(8.0, 9.0)
+        
+        
         if (@available(iOS 9.0, *)) {
             configuration.allowsAirPlayForMediaPlayback = YES;
         } else {
@@ -403,6 +434,8 @@
 {
     if (_refreshBarButtonItem) return _refreshBarButtonItem;
     _refreshBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh target:self action:@selector(reloadClicked:)];
+    _refreshBarButtonItem.width = 18.0f;
+
     return _refreshBarButtonItem;
 }
 
@@ -410,25 +443,34 @@
 {
     if (_stopBarButtonItem) return _stopBarButtonItem;
     _stopBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(stopClicked:)];
+    _stopBarButtonItem.width = 18.0f;
+
     return _stopBarButtonItem;
 }
 
 - (UIBarButtonItem *)actionBarButtonItem
 {
     if (_actionBarButtonItem) return _actionBarButtonItem;
-    _actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonClicked:)];
+    _actionBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(listButtonClicked:)];
+    _actionBarButtonItem.width = 18.0f;
     return _actionBarButtonItem;
 }
+
+
+- (UIBarButtonItem *)vipBarButtonItem{
+    if (_vipBarButtonItem) return _vipBarButtonItem;
+    _vipBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(vipButtonClicked:)];
+    _vipBarButtonItem.width = 18.0f;
+    return _vipBarButtonItem;
+}
+
 
 - (UIBarButtonItem *)navigationCloseItem{
     if (_navigationCloseItem) return _navigationCloseItem;
     
-    _navigationCloseItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"backItemImage"] style:UIBarButtonItemStylePlain target:self action:@selector(backButtonClicked:)];
-    _backBarButtonItem.width = 18.0f;
+    _navigationCloseItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backButtonClicked:)];
+    _navigationCloseItem.width = 18.0f;
     return _navigationCloseItem;
-    
-//    _navigationCloseItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop target:self action:@selector(backButtonClicked:)];
-//    return _navigationCloseItem;
 }
 
 ////////////
@@ -450,4 +492,39 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [self.progressView setProgress:0.9 animated:YES];
 }
+
+- (NSString *)userAgent{
+    
+    
+    NSArray *userAgents = @[
+                            @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/40.0.2214.89 Mobile Safari/537.36",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC_D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30",
+                            @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 ACHEETAHI/2100501044",
+                            @"Mozilla/5.0 (Linux; Android 4.4.4; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Mobile Safari/537.36 bdbrowser_i18n/4.6.0.7",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; HTC D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.1.0.527 U3/0.8.0 Mobile Safari/534.30",
+                            @"Mozilla/5.0 (Android; Mobile; rv:35.0) Gecko/35.0 Firefox/35.0",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30 SogouMSE,SogouMobileBrowser/3.5.1",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-CN; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Oupeng/10.2.3.88150 Mobile Safari/537.36",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko)Version/4.0 MQQBrowser/5.6 Mobile Safari/537.36",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/534.24 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.24 T5/2.0 baidubrowser/5.3.4.0 (Baidu; P1 4.4.4)",
+                            @"Mozilla/5.0 (Linux; U; Android 4.4.4; zh-cn; HTC D820u Build/KTU84P) AppleWebKit/535.19 (KHTML, like Gecko) Version/4.0 LieBaoFast/2.28.1 Mobile Safari/535.19",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/8.0 Mobile/12A365 Safari/600.1.4",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X; zh-CN) AppleWebKit/537.51.1 (KHTML, like Gecko) Mobile/12A365 UCBrowser/10.2.5.551 Mobile",
+                            @"Mozilla/5.0 (iPhone 5SGLOBAL; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/6.0 MQQBrowser/5.6 Mobile/12A365 Safari/8536.25",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Version/7.0 Mobile/12A365 Safari/9537.53",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4.9 (KHTML, like Gecko) Version/6.0 Mobile/10A523 Safari/8536.25",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 7_0_4 like Mac OS X) AppleWebKit/537.51.1 (KHTML, like Gecko) Mercury/8.9.4 Mobile/11B554a Safari/9537.53",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12A365 SogouMobileBrowser/3.5.1",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Version/7.0 Mobile/11D167 Safari/9537.53",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Coast/4.01.88243 Mobile/12A365 Safari/7534.48.3",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 8_0 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) CriOS/40.0.2214.69 Mobile/12A365 Safari/600.1.4",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 10_3_2 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.0 Mobile/14F89 Safari/602.1",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 11_1_1 like Mac OS X) AppleWebKit/603.2.4 (KHTML, like Gecko) Version/10.0 Mobile/15F89 Safari/602.1",
+                            @"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1",
+                            ];
+    
+    NSInteger index = arc4random() % userAgents.count;
+    return  userAgents[index];
+}
+
 @end
