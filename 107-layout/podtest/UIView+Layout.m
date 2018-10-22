@@ -27,7 +27,13 @@
 }
 
 @end
+@implementation NSLayoutConstraint (Layout)
 
+- (void)remove{
+    UIView *Self = self.firstItem;
+    if([Self isKindOfClass:[UIView class]]) [Self.superview removeConstraint:self];
+}
+@end
 @implementation UIView (Layout)
 
 
@@ -36,10 +42,10 @@
     return objc_getAssociatedObject(self, @"lyHeight");
 }
 
-- (void)setLyHeight:(void (^)(LayoutModel *__autoreleasing * layout))lyHeight{
+- (void)setLyHeight:(void (^)(LayoutModel * layout))lyHeight{
     self.translatesAutoresizingMaskIntoConstraints = NO;
     LayoutModel *model = [LayoutModel new];
-    !(lyHeight)? : lyHeight(&model);
+    !(lyHeight)? : lyHeight(model);
     
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         //model.relativeToView = self.superview;
@@ -67,11 +73,11 @@
 - (NSLayoutConstraint *)lyWidth{
     return objc_getAssociatedObject(self, @"lyWidth");
 }
-- (void)setLyWidth:(void (^)(LayoutModel *__autoreleasing *))lyWidth{
+- (void)setLyWidth:(void (^)(LayoutModel *))lyWidth{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyWidth)? : lyWidth(&model);
+    !(lyWidth)? : lyWidth(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         //model.relativeToView = self.superview;
         model.relativeToView = nil;
@@ -97,11 +103,11 @@
 - (NSLayoutConstraint *)lyCenterX{
     return objc_getAssociatedObject(self, @"lyCenterX");
 }
-- (void)setLyCenterX:(void (^)(LayoutModel *__autoreleasing *))lyCenterX{
+- (void)setLyCenterX:(void (^)(LayoutModel *))lyCenterX{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyCenterX)? : lyCenterX(&model);
+    !(lyCenterX)? : lyCenterX(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }
@@ -125,11 +131,11 @@
 - (NSLayoutConstraint *)lyCenterY{
     return objc_getAssociatedObject(self, @"lyCenterY");
 }
-- (void)setLyCenterY:(void (^)(LayoutModel *__autoreleasing *))lyCenterY{
+- (void)setLyCenterY:(void (^)(LayoutModel  *))lyCenterY{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyCenterY)? : lyCenterY(&model);
+    !(lyCenterY)? : lyCenterY(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }
@@ -155,11 +161,11 @@
     return objc_getAssociatedObject(self, @"lyTop");
 }
 
-- (void)setLyTop:(void (^)(LayoutModel *__autoreleasing *))lyTop{
+- (void)setLyTop:(void (^)(LayoutModel *))lyTop{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyTop)? : lyTop(&model);
+    !(lyTop)? : lyTop(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }
@@ -184,11 +190,11 @@
 - (NSLayoutConstraint *)lyleft{
     return objc_getAssociatedObject(self, @"lyleft");
 }
--(void)setLyleft:(void (^)(LayoutModel *__autoreleasing *))lyleft{
+-(void)setLyleft:(void (^)(LayoutModel *))lyleft{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyleft)? : lyleft(&model);
+    !(lyleft)? : lyleft(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }
@@ -212,11 +218,11 @@
 -(NSLayoutConstraint *)lyRight{
     return objc_getAssociatedObject(self, @"lyRight");
 }
-- (void)setLyRight:(void (^)(LayoutModel *__autoreleasing *))lyRight{
+- (void)setLyRight:(void (^)(LayoutModel *))lyRight{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyRight)? : lyRight(&model);
+    !(lyRight)? : lyRight(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }
@@ -240,11 +246,11 @@
 -(NSLayoutConstraint *)lyButtom{
     return objc_getAssociatedObject(self, @"lyButtom");
 }
-- (void)setLyButtom:(void (^)(LayoutModel *__autoreleasing *))lyButtom{
+- (void)setLyButtom:(void (^)(LayoutModel *))lyButtom{
     self.translatesAutoresizingMaskIntoConstraints = NO;
 
     LayoutModel *model = [LayoutModel new];
-    !(lyButtom)? : lyButtom(&model);
+    !(lyButtom)? : lyButtom(model);
     if ([model.relativeToView isKindOfClass:[NSNull class]] ) {
         model.relativeToView = self.superview;
     }

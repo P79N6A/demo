@@ -29,20 +29,21 @@
     
     [self.view addSubview:redView];
     self.redView = redView;
-    
-    [redView setLyHeight:^(LayoutModel *__autoreleasing* _Nonnull layout) {
-        (*layout).constant = 200;
-
+     __weak typeof(self) weakSelf = self;
+    [redView setLyHeight:^(LayoutModel * _Nonnull layout) {
+        //(layout).constant = 200;
+        layout.relativeToView = weakSelf.view;
+        layout.multiplier = 0.6;
     }];
 
-    [redView setLyWidth:^(LayoutModel *__autoreleasing *layout) {
-        (*layout).constant = 200;
+    [redView setLyWidth:^(LayoutModel  *layout) {
+        (layout).constant = 200;
     }];
 
-    [redView setLyCenterX:^(LayoutModel *__autoreleasing *layout) {
+    [redView setLyCenterX:^(LayoutModel  *layout) {
 
     }];
-    [redView setLyCenterY:^(LayoutModel *__autoreleasing *layout) {
+    [redView setLyCenterY:^(LayoutModel  *layout) {
 
     }];
     [UIView animateWithDuration:33 animations:^{
@@ -74,6 +75,19 @@
 ////        (*layout).relativeToView = self.view;
 ////        (*layout).constant = 10;
 //    }];
+    
+    UIButton *add = [UIButton buttonWithType:UIButtonTypeContactAdd];
+    [redView addSubview:add];
+    
+    [add setLyTop:^(LayoutModel * _Nonnull layout) {
+        layout.constant = 10;
+    }];
+    
+
+    
+    [add setLyleft:^(LayoutModel * _Nonnull layout) {
+        layout.constant = 5;
+    }];
 
 }
 

@@ -10,8 +10,11 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+
+//view1.att1 =（以等号举栗子，layoutRel可> < ≥≤）relativeToView.layoutAtt * multiplier + constant;
+
 @interface LayoutModel : NSObject
-/** 相对于谁布局 (除了hight/width 外默认是父控件)*/
+/** 相对于谁布局 (除了hight/width（默认是nil） 外默认是父控件)*/
 @property (nonatomic, weak) id relativeToView;
 /** 相对于那个属性 （上下...）*/
 @property (nonatomic, assign) NSLayoutAttribute layoutAtt;
@@ -21,6 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) CGFloat multiplier;
 /** 相差多少*/
 @property (nonatomic, assign) CGFloat constant;
+@end
+
+@interface NSLayoutConstraint (Layout)
+- (void)remove;
 @end
 
 @interface UIView (Layout)
@@ -38,16 +45,16 @@ NS_ASSUME_NONNULL_BEGIN
 
 
 
-- (void)setLyHeight:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyHeight;
-- (void)setLyWidth:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyWidth;
+- (void)setLyHeight:(void (^__nullable)(LayoutModel *layout))lyHeight;
+- (void)setLyWidth:(void (^__nullable)(LayoutModel  *layout))lyWidth;
 
-- (void)setLyCenterX:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyCenterX;
-- (void)setLyCenterY:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyCenterY;
+- (void)setLyCenterX:(void (^__nullable)(LayoutModel  *layout))lyCenterX;
+- (void)setLyCenterY:(void (^__nullable)(LayoutModel  *layout))lyCenterY;
 
-- (void)setLyRight:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyRight;
-- (void)setLyleft:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyleft;
-- (void)setLyTop:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyTop;
-- (void)setLyButtom:(void (^__nullable)(LayoutModel *__autoreleasing *layout))lyButtom;
+- (void)setLyRight:(void (^__nullable)(LayoutModel  *layout))lyRight;
+- (void)setLyleft:(void (^__nullable)(LayoutModel  *layout))lyleft;
+- (void)setLyTop:(void (^__nullable)(LayoutModel  *layout))lyTop;
+- (void)setLyButtom:(void (^__nullable)(LayoutModel  *layout))lyButtom;
 
 
 
