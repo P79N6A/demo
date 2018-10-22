@@ -64,19 +64,19 @@
 		69D2E750217981160044485E /* web */ = {
 			isa = PBXGroup;
 			children = (
-				69D2E76B217986280044485E /* UIView+Layout.h */,
-				69D2E76A217986280044485E /* UIView+Layout.m */,
 				69D2E751217981160044485E /* AppDelegate.h */,
 				69D2E752217981160044485E /* AppDelegate.m */,
+				69D2E75A217981170044485E /* Assets.xcassets */,
+				69D2E75F217981170044485E /* Info.plist */,
+				69D2E75C217981170044485E /* LaunchScreen.storyboard */,
+				69D2E760217981170044485E /* main.m */,
+				69D2E757217981160044485E /* Main.storyboard */,
+				69D2E7672179819B0044485E /* SPSafariController.h */,
 				69D2E7682179819B0044485E /* SPSafariController.m */,
+				69D2E76B217986280044485E /* UIView+Layout.h */,
+				69D2E76A217986280044485E /* UIView+Layout.m */,
 				69D2E754217981160044485E /* ViewController.h */,
 				69D2E755217981160044485E /* ViewController.m */,
-				69D2E757217981160044485E /* Main.storyboard */,
-				69D2E75A217981170044485E /* Assets.xcassets */,
-				69D2E75C217981170044485E /* LaunchScreen.storyboard */,
-				69D2E75F217981170044485E /* Info.plist */,
-				69D2E760217981170044485E /* main.m */,
-				69D2E7672179819B0044485E /* SPSafariController.h */,
 			);
 			path = web;
 			sourceTree = "<group>";
