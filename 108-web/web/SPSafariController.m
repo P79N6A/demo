@@ -76,6 +76,7 @@
 }
 
 - (void)dealloc{
+
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
     [self.webView removeObserver:self forKeyPath:@"title"];
     
@@ -86,6 +87,9 @@
     self.webView.UIDelegate = nil;
 }
 
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+    
+}
 
 
 #pragma mark - Actions
@@ -329,9 +333,9 @@
 
 - (void)updateToolbarItems
 {
-    self.backBarButtonItem.enabled = NO;//self.webView.canGoBack;
-    self.forwardBarButtonItem.enabled = NO;//self.webView.canGoForward;
-    self.actionBarButtonItem.enabled = NO;//!self.webView.isLoading;
+    self.backBarButtonItem.enabled = self.webView.canGoBack;
+    self.forwardBarButtonItem.enabled = self.webView.canGoForward;
+    self.actionBarButtonItem.enabled = !self.webView.isLoading;
 
     UIBarButtonItem *refreshStopBarButtonItem = self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
