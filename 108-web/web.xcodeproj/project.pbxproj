@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		522802B66399DC3AF0B957E8 /* libPods-web.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F8ACCB70ECE3C93546C43E7A /* libPods-web.a */; };
 		69D2E753217981160044485E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E752217981160044485E /* AppDelegate.m */; };
 		69D2E756217981160044485E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E755217981160044485E /* ViewController.m */; };
 		69D2E759217981160044485E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69D2E757217981160044485E /* Main.storyboard */; };
@@ -15,6 +16,14 @@
 		69D2E761217981170044485E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E760217981170044485E /* main.m */; };
 		69D2E7692179819B0044485E /* SPSafariController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7682179819B0044485E /* SPSafariController.m */; };
 		69D2E76C217986290044485E /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E76A217986280044485E /* UIView+Layout.m */; };
+		69D2E7AB217EE8320044485E /* HybridNSURLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7A4217EE8320044485E /* HybridNSURLProtocol.m */; };
+		69D2E7AC217EE8320044485E /* NSURLProtocol+WKWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7A5217EE8320044485E /* NSURLProtocol+WKWebVIew.m */; };
+		69D2E7AD217EE8320044485E /* NSURLProtocol+UIWebVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7A6217EE8320044485E /* NSURLProtocol+UIWebVIew.m */; };
+		69D2E7B5217EF4F70044485E /* PlayerSubView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7AF217EF4F70044485E /* PlayerSubView.m */; };
+		69D2E7B6217EF4F70044485E /* PlayerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7B0217EF4F70044485E /* PlayerView.m */; };
+		69D2E7B7217EF4F70044485E /* PlayerView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69D2E7B1217EF4F70044485E /* PlayerView.bundle */; };
+		69D2E7B8217EF4F70044485E /* PlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D2E7B3217EF4F70044485E /* PlayerView.xib */; };
+		69D2E7BB217EF50B0044485E /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69D2E7BA217EF50A0044485E /* PlayViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +41,23 @@
 		69D2E7682179819B0044485E /* SPSafariController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SPSafariController.m; sourceTree = "<group>"; };
 		69D2E76A217986280044485E /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
 		69D2E76B217986280044485E /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		69D2E7A4217EE8320044485E /* HybridNSURLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HybridNSURLProtocol.m; sourceTree = "<group>"; };
+		69D2E7A5217EE8320044485E /* NSURLProtocol+WKWebVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+WKWebVIew.m"; sourceTree = "<group>"; };
+		69D2E7A6217EE8320044485E /* NSURLProtocol+UIWebVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURLProtocol+UIWebVIew.m"; sourceTree = "<group>"; };
+		69D2E7A7217EE8320044485E /* HybridNSURLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HybridNSURLProtocol.h; sourceTree = "<group>"; };
+		69D2E7A8217EE8320044485E /* NSURLProtocol+WKWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+WKWebVIew.h"; sourceTree = "<group>"; };
+		69D2E7AA217EE8320044485E /* NSURLProtocol+UIWebVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURLProtocol+UIWebVIew.h"; sourceTree = "<group>"; };
+		69D2E7AF217EF4F70044485E /* PlayerSubView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerSubView.m; sourceTree = "<group>"; };
+		69D2E7B0217EF4F70044485E /* PlayerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayerView.m; sourceTree = "<group>"; };
+		69D2E7B1217EF4F70044485E /* PlayerView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = PlayerView.bundle; sourceTree = "<group>"; };
+		69D2E7B2217EF4F70044485E /* PlayerSubView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerSubView.h; sourceTree = "<group>"; };
+		69D2E7B3217EF4F70044485E /* PlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerView.xib; sourceTree = "<group>"; };
+		69D2E7B4217EF4F70044485E /* PlayerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayerView.h; sourceTree = "<group>"; };
+		69D2E7B9217EF50A0044485E /* PlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		69D2E7BA217EF50A0044485E /* PlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		7C6C6737EB2BA8C9C2B53017 /* Pods-web.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-web.debug.xcconfig"; path = "Target Support Files/Pods-web/Pods-web.debug.xcconfig"; sourceTree = "<group>"; };
+		DD4EA87D2B5811400A8876F0 /* Pods-web.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-web.release.xcconfig"; path = "Target Support Files/Pods-web/Pods-web.release.xcconfig"; sourceTree = "<group>"; };
+		F8ACCB70ECE3C93546C43E7A /* libPods-web.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-web.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,17 +65,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				522802B66399DC3AF0B957E8 /* libPods-web.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		184FF280B33CE4236E87858A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7C6C6737EB2BA8C9C2B53017 /* Pods-web.debug.xcconfig */,
+				DD4EA87D2B5811400A8876F0 /* Pods-web.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		69D2E745217981160044485E = {
 			isa = PBXGroup;
 			children = (
 				69D2E750217981160044485E /* web */,
 				69D2E74F217981160044485E /* Products */,
+				184FF280B33CE4236E87858A /* Pods */,
+				E58B0609A5B450217F338DC3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +102,8 @@
 		69D2E750217981160044485E /* web */ = {
 			isa = PBXGroup;
 			children = (
+				69D2E7AE217EF4F70044485E /* Player */,
+				69D2E7A3217EE8320044485E /* NSURLProtocol */,
 				69D2E751217981160044485E /* AppDelegate.h */,
 				69D2E752217981160044485E /* AppDelegate.m */,
 				69D2E75A217981170044485E /* Assets.xcassets */,
@@ -77,8 +117,44 @@
 				69D2E76A217986280044485E /* UIView+Layout.m */,
 				69D2E754217981160044485E /* ViewController.h */,
 				69D2E755217981160044485E /* ViewController.m */,
+				69D2E7B9217EF50A0044485E /* PlayViewController.h */,
+				69D2E7BA217EF50A0044485E /* PlayViewController.m */,
 			);
 			path = web;
+			sourceTree = "<group>";
+		};
+		69D2E7A3217EE8320044485E /* NSURLProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				69D2E7A7217EE8320044485E /* HybridNSURLProtocol.h */,
+				69D2E7A4217EE8320044485E /* HybridNSURLProtocol.m */,
+				69D2E7AA217EE8320044485E /* NSURLProtocol+UIWebVIew.h */,
+				69D2E7A6217EE8320044485E /* NSURLProtocol+UIWebVIew.m */,
+				69D2E7A8217EE8320044485E /* NSURLProtocol+WKWebVIew.h */,
+				69D2E7A5217EE8320044485E /* NSURLProtocol+WKWebVIew.m */,
+			);
+			path = NSURLProtocol;
+			sourceTree = "<group>";
+		};
+		69D2E7AE217EF4F70044485E /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				69D2E7AF217EF4F70044485E /* PlayerSubView.m */,
+				69D2E7B0217EF4F70044485E /* PlayerView.m */,
+				69D2E7B1217EF4F70044485E /* PlayerView.bundle */,
+				69D2E7B2217EF4F70044485E /* PlayerSubView.h */,
+				69D2E7B3217EF4F70044485E /* PlayerView.xib */,
+				69D2E7B4217EF4F70044485E /* PlayerView.h */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		E58B0609A5B450217F338DC3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F8ACCB70ECE3C93546C43E7A /* libPods-web.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -88,6 +164,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 69D2E764217981170044485E /* Build configuration list for PBXNativeTarget "web" */;
 			buildPhases = (
+				A733CF52489EDF3B9A32372B /* [CP] Check Pods Manifest.lock */,
 				69D2E74A217981160044485E /* Sources */,
 				69D2E74B217981160044485E /* Frameworks */,
 				69D2E74C217981160044485E /* Resources */,
@@ -139,12 +216,39 @@
 			buildActionMask = 2147483647;
 			files = (
 				69D2E75E217981170044485E /* LaunchScreen.storyboard in Resources */,
+				69D2E7B7217EF4F70044485E /* PlayerView.bundle in Resources */,
 				69D2E75B217981170044485E /* Assets.xcassets in Resources */,
 				69D2E759217981160044485E /* Main.storyboard in Resources */,
+				69D2E7B8217EF4F70044485E /* PlayerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A733CF52489EDF3B9A32372B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-web-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		69D2E74A217981160044485E /* Sources */ = {
@@ -153,9 +257,15 @@
 			files = (
 				69D2E7692179819B0044485E /* SPSafariController.m in Sources */,
 				69D2E756217981160044485E /* ViewController.m in Sources */,
+				69D2E7AB217EE8320044485E /* HybridNSURLProtocol.m in Sources */,
 				69D2E761217981170044485E /* main.m in Sources */,
+				69D2E7AD217EE8320044485E /* NSURLProtocol+UIWebVIew.m in Sources */,
+				69D2E7BB217EF50B0044485E /* PlayViewController.m in Sources */,
 				69D2E76C217986290044485E /* UIView+Layout.m in Sources */,
+				69D2E7B5217EF4F70044485E /* PlayerSubView.m in Sources */,
 				69D2E753217981160044485E /* AppDelegate.m in Sources */,
+				69D2E7AC217EE8320044485E /* NSURLProtocol+WKWebVIew.m in Sources */,
+				69D2E7B6217EF4F70044485E /* PlayerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,6 +405,7 @@
 		};
 		69D2E765217981170044485E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C6C6737EB2BA8C9C2B53017 /* Pods-web.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -313,6 +424,7 @@
 		};
 		69D2E766217981170044485E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DD4EA87D2B5811400A8876F0 /* Pods-web.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

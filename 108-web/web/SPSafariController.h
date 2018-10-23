@@ -17,6 +17,9 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)vipButtonClicked:(id)sender;
 
 - (void)failLoadWithError:(NSError *)error;
+
+- (void)loadURL:(NSURL*)URL;
+
 @end
 
 NS_ASSUME_NONNULL_END

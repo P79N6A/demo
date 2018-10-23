@@ -7,11 +7,16 @@
 //
 
 #import "SPSafariController.h"
+#import "PlayViewController.h"
 
 #import <WebKit/WebKit.h>
 #import <StoreKit/StoreKit.h>
+#import <AVFoundation/AVFoundation.h>
+#import <MediaPlayer/MediaPlayer.h>
 
 #import "UIView+Layout.h"
+#import "NSURLProtocol/NSURLProtocol+WKWebVIew.h"
+#import "NSURLProtocol/HybridNSURLProtocol.h"
 
 @interface SPSafariController ()<WKNavigationDelegate,WKUIDelegate,SKStoreProductViewControllerDelegate>
 @property(nonatomic, readwrite) WKWebView *webView;
@@ -24,6 +29,13 @@
 @property (nonatomic, strong) UIBarButtonItem *refreshBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *vipBarButtonItem;
 @property (nonatomic, strong) UIBarButtonItem *navigationCloseItem;
+
+
+@property (nonatomic, strong) NSMutableArray <NSString *>*mediaObjs;
+@property (nonatomic, strong) NSArray *list;
+@property (nonatomic, strong) NSMutableArray <NSDictionary *>*platformlist;
+@property (nonatomic, assign) BOOL isBackAction;
+
 @end
 
 @implementation SPSafariController
@@ -33,6 +45,7 @@
     self = [super init];
     if (self) {
         [[NSUserDefaults standardUserDefaults] registerDefaults:@{ @"UserAgent": [self userAgent]}];
+        self.mediaObjs = @[].mutableCopy;
     }
     return self;
 }
@@ -41,7 +54,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(videoCurrentDidChange:)
+                                                 name:@"SPVipVideoCurrentDidChange"
+                                               object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(playerItemBecameCurrent:)
+                                                 name:@"AVPlayerItemBecameCurrentNotification"
+                                               object:nil];
 
     
     [self.view addSubview:self.webView];
@@ -67,13 +87,29 @@
     
     [self updateToolbarItems];
     
-    NSURL *url = [NSURL URLWithString:@"https://www.baidu.com"];
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [self loadData];
+    [self initDefaultData];
     
-    //[request setValue:@"Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1" forHTTPHeaderField:@"User-Agent"];
-    [self.webView loadRequest:request];
-
+    [self loadWebURL:self.platformlist.firstObject];
 }
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [NSURLProtocol registerClass:[HybridNSURLProtocol class]];
+    [NSURLProtocol wk_registerScheme:@"http"];
+    [NSURLProtocol wk_registerScheme:@"https"];
+    
+}
+
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    [NSURLProtocol unregisterClass:[HybridNSURLProtocol class]];
+    [NSURLProtocol wk_unregisterScheme:@"http"];
+    [NSURLProtocol wk_unregisterScheme:@"https"];
+}
+
+
 
 - (void)dealloc{
 
@@ -86,9 +122,131 @@
     self.webView.navigationDelegate = nil;
     self.webView.UIDelegate = nil;
 }
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
+//FIXME:  -  自定义方法
+- (void)loadWebURL:(NSDictionary *)obj{
+    [self loadURL:[NSURL URLWithString:obj[@"url"]]];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"adType"] forKey:@"adType"];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"mediaType"] forKey:@"mediaType"];
+    [[NSUserDefaults standardUserDefaults] setObject:obj[@"reload"] forKey:@"reload"];
+    self.isBackAction = ![obj[@"stop"] boolValue];
+}
+- (void)loadURL:(NSURL *)URL{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:URL];
+    [self.webView loadRequest:request];
+}
+- (void)initDefaultData{
+    NSDictionary *dict = [[NSUserDefaults standardUserDefaults] objectForKey:@"kApi"];
+    dict = dict? dict : [self mviplist];
+    self.list = dict[@"list"];
+    self.platformlist = ((NSArray *)dict[@"platformlist"]).mutableCopy;
+}
+- (void)loadData{
     
+    
+    NSString *url = [NSString stringWithFormat:@"%@?r=%d&t=%f&d=%f",@"https://czljcb.gitee.io/v2/api/pingshu/viplist.json",rand(),[[NSDate date] timeIntervalSince1970],[[NSDate date] timeIntervalSince1970]*[[NSDate date] timeIntervalSince1970]];
+    
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    [request setTimeoutInterval:15.0];
+
+    NSURLSession * session = [NSURLSession sharedSession];
+    NSURLSessionDataTask * task = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        id respones = [NSJSONSerialization JSONObjectWithData:data options:kNilOptions error:nil];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if(![respones isKindOfClass:[NSDictionary class]] || error) return ;
+            self.list = respones[@"list"];
+            self.platformlist = ((NSArray *)respones[@"platformlist"]).mutableCopy;
+            [self loadWebURL:self.platformlist.firstObject];
+            [[NSUserDefaults standardUserDefaults] setObject:respones forKey:@"kApi"];
+        });
+        
+        
+    }];
+    //开启网络任务
+    [task resume];
+    
+}
+
+
+//FIXME:  -  通知
+- (void)playerItemBecameCurrent:(NSNotification *)notification{
+    AVPlayerItem *playerItem = [notification object];
+    if(playerItem == nil) return;
+    if ([playerItem isKindOfClass:[AVPlayerItem class]])
+    {
+        // Break down the AVPlayerItem to get to the path
+        AVURLAsset *asset = (AVURLAsset*)[playerItem asset];
+        if(CMTimeGetSeconds(asset.duration) < 180) return;
+        NSURL *url = [asset URL];
+        NSString *path = [url absoluteString];
+        NSLog(@"bbbbbbb %@", path);
+        [self videoCurrentDidChange:[NSNotification notificationWithName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":path}]];
+    }
+}
+- (void)videoCurrentDidChange:(NSNotification *)notification{
+    NSString *url = [notification.userInfo valueForKey:@"url"];
+    if (![self.mediaObjs containsObject:url]) {
+        [self.mediaObjs insertObject:url atIndex:0];
+        //[self.mediaCountButton setTitle:[NSString stringWithFormat:@"%lu",(unsigned long)self.mediaObjs.count] forState:UIControlStateNormal];
+        //self.mediaCountButton.hidden = !self.mediaObjs.count;
+        
+        [self toNativePlay:url];
+    }
+}
+- (void)vipVideoCurrentApiDidChange:(NSDictionary  *)obj{
+    
+    
+    [self.webView evaluateJavaScript:@"document.location.href" completionHandler:^(NSString *url, NSError * _Nullable error) {
+        
+        NSString *originUrl = [[url componentsSeparatedByString:@"url="] lastObject];
+        
+        if (![url hasPrefix:@"http"]) {
+            return ;
+        }
+        
+        NSString *finalUrl = [NSString stringWithFormat:@"%@%@", obj[@"url"],originUrl];
+
+        [self loadURL:[NSURL URLWithString:finalUrl]];
+
+    }];
+    
+}
+
+- (UIViewController *)topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+        
+    }
+    return resultVC;
+}
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
+}
+
+- (void)toNativePlay:(NSString *)url{
+    
+    if([[self topViewController] isKindOfClass:[PlayViewController class]]) return ;
+    
+    
+    PlayViewController *playVC = [[PlayViewController alloc] init];
+    NSArray *tltles = [self.navigationItem.title componentsSeparatedByString:@"-"];
+    if (tltles.count<2) {
+        tltles = [self.navigationItem.title componentsSeparatedByString:@"_"];
+    }
+    playVC.title = tltles.firstObject;
+    playVC.url = url;
+    
+    [self.navigationController pushViewController:playVC animated:YES];
+    
+    if(self.isBackAction) [self.webView goBack];
 }
 
 
@@ -119,10 +277,59 @@
 }
 
 - (void)listButtonClicked:(id)sender {
+    UIAlertController *YYCAlertVC = [UIAlertController alertControllerWithTitle:@"视频平台" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [self.platformlist enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *title = [obj valueForKey:@"name"];
+        
+        UIAlertAction *YYCDone = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self loadWebURL:obj];
+        }];
+        
+        [YYCAlertVC addAction:YYCDone];
+    }];
+    
+    UIAlertAction *YYCCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [YYCAlertVC addAction:YYCCancel];
+    
+    UIPopoverPresentationController *YYCPopover = YYCAlertVC.popoverPresentationController;
+    if (YYCPopover) {
+        YYCPopover.sourceView = self.progressView;
+        YYCPopover.sourceRect = self.progressView.bounds;
+        [self presentViewController:YYCAlertVC animated:YES completion:nil];
+    }else {
+        [self presentViewController:YYCAlertVC animated:YES completion:nil];
+    }
 }
 
 - (void)vipButtonClicked:(id)sender{
+    [self toNativePlay:@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8"];
+    return;
+    UIAlertController *YYCAlertVC = [UIAlertController alertControllerWithTitle:@"接口切换" message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
+    [self.list enumerateObjectsUsingBlock:^(NSDictionary * obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSString *title = [obj valueForKey:@"name"];
+        
+        UIAlertAction *YYCDone = [UIAlertAction actionWithTitle:title style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+            [self vipVideoCurrentApiDidChange:obj];
+        }];
+        
+        [YYCAlertVC addAction:YYCDone];
+    }];
+    
+    UIAlertAction *YYCCancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    [YYCAlertVC addAction:YYCCancel];
+    
+    UIPopoverPresentationController *YYCPopover = YYCAlertVC.popoverPresentationController;
+    if (YYCPopover) {
+        YYCPopover.sourceView = self.progressView;
+        YYCPopover.sourceRect = self.progressView.bounds;
+        [self presentViewController:YYCAlertVC animated:YES completion:nil];
+    }else {
+        [self presentViewController:YYCAlertVC animated:YES completion:nil];
+    }
 }
 
 - (void)failLoadWithError:(NSError *)error{
@@ -243,52 +450,52 @@
 #pragma mark - 在发送请求之前，决定是否跳转
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
 
-    // Disable all the '_blank' target in page's target.
-    if (!navigationAction.targetFrame.isMainFrame) {
-        [webView evaluateJavaScript:@"var a = document.getElementsByTagName('a');for(var i=0;i<a.length;i++){a[i].setAttribute('target','');}" completionHandler:nil];
-    }
-    NSURLComponents *components = [[NSURLComponents alloc] initWithString:navigationAction.request.URL.absoluteString];
-    // For appstore and system defines. This action will jump to AppStore app or the system apps.
-    if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'https://itunes.apple.com/' OR SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:components.URL.absoluteString]) {
-        
-        if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'https://itunes.apple.com/'"] evaluateWithObject:components.URL.absoluteString]) {
-            SKStoreProductViewController *productVC = [[SKStoreProductViewController alloc] init];
-            productVC.delegate = self;
-            NSError *error;
-            NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"id[1-9]\\d*" options:NSRegularExpressionCaseInsensitive error:&error];
-            NSTextCheckingResult *result = [regex firstMatchInString:components.URL.absoluteString options:NSMatchingReportCompletion range:NSMakeRange(0, components.URL.absoluteString.length)];
-            
-            if (!error && result) {
-                NSRange range = NSMakeRange(result.range.location+2, result.range.length-2);
-                [productVC loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier: @([[components.URL.absoluteString substringWithRange:range] integerValue])} completionBlock:^(BOOL result, NSError * _Nullable error) {
-                }];
-                [self presentViewController:productVC animated:YES completion:NULL];
-                decisionHandler(WKNavigationActionPolicyCancel);
-                return;
-            }
-        }
-        if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
-            if (@available(iOS 10.0, *)) {
-                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
-            } else {
-                // Fallback on earlier versions
-                [[UIApplication sharedApplication] openURL:components.URL];
-            }
-        }
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about'"] evaluateWithObject:components.scheme]) {// For any other schema but not `https`、`http` and `file`.
-        if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
-            if (@available(iOS 10.0, *)) {
-                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
-            } else {
-                // Fallback on earlier versions
-                [[UIApplication sharedApplication] openURL:components.URL];
-            }
-        }
-        decisionHandler(WKNavigationActionPolicyCancel);
-        return;
-    }
+//    // Disable all the '_blank' target in page's target.
+//    if (!navigationAction.targetFrame.isMainFrame) {
+//        [webView evaluateJavaScript:@"var a = document.getElementsByTagName('a');for(var i=0;i<a.length;i++){a[i].setAttribute('target','');}" completionHandler:nil];
+//    }
+//    NSURLComponents *components = [[NSURLComponents alloc] initWithString:navigationAction.request.URL.absoluteString];
+//    // For appstore and system defines. This action will jump to AppStore app or the system apps.
+//    if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'https://itunes.apple.com/' OR SELF BEGINSWITH[cd] 'mailto:' OR SELF BEGINSWITH[cd] 'tel:' OR SELF BEGINSWITH[cd] 'telprompt:'"] evaluateWithObject:components.URL.absoluteString]) {
+//        
+//        if ([[NSPredicate predicateWithFormat:@"SELF BEGINSWITH[cd] 'https://itunes.apple.com/'"] evaluateWithObject:components.URL.absoluteString]) {
+//            SKStoreProductViewController *productVC = [[SKStoreProductViewController alloc] init];
+//            productVC.delegate = self;
+//            NSError *error;
+//            NSRegularExpression *regex = [[NSRegularExpression alloc] initWithPattern:@"id[1-9]\\d*" options:NSRegularExpressionCaseInsensitive error:&error];
+//            NSTextCheckingResult *result = [regex firstMatchInString:components.URL.absoluteString options:NSMatchingReportCompletion range:NSMakeRange(0, components.URL.absoluteString.length)];
+//            
+//            if (!error && result) {
+//                NSRange range = NSMakeRange(result.range.location+2, result.range.length-2);
+//                [productVC loadProductWithParameters:@{SKStoreProductParameterITunesItemIdentifier: @([[components.URL.absoluteString substringWithRange:range] integerValue])} completionBlock:^(BOOL result, NSError * _Nullable error) {
+//                }];
+//                [self presentViewController:productVC animated:YES completion:NULL];
+//                decisionHandler(WKNavigationActionPolicyCancel);
+//                return;
+//            }
+//        }
+//        if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
+//            if (@available(iOS 10.0, *)) {
+//                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+//            } else {
+//                // Fallback on earlier versions
+//                [[UIApplication sharedApplication] openURL:components.URL];
+//            }
+//        }
+//        decisionHandler(WKNavigationActionPolicyCancel);
+//        return;
+//    } else if (![[NSPredicate predicateWithFormat:@"SELF MATCHES[cd] 'https' OR SELF MATCHES[cd] 'http' OR SELF MATCHES[cd] 'file' OR SELF MATCHES[cd] 'about'"] evaluateWithObject:components.scheme]) {// For any other schema but not `https`、`http` and `file`.
+//        if ([[UIApplication sharedApplication] canOpenURL:components.URL]) {
+//            if (@available(iOS 10.0, *)) {
+//                [UIApplication.sharedApplication openURL:components.URL options:@{} completionHandler:NULL];
+//            } else {
+//                // Fallback on earlier versions
+//                [[UIApplication sharedApplication] openURL:components.URL];
+//            }
+//        }
+//        decisionHandler(WKNavigationActionPolicyCancel);
+//        return;
+//    }
 
     [self updateToolbarItems];
 
@@ -310,7 +517,7 @@
 - (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error
 {
     if (error.code == NSURLErrorCancelled) {
-        [webView reloadFromOrigin];
+        [webView goBack];
         return;
     }
     [self didFailLoadWithError:error];
@@ -327,15 +534,30 @@
 }
 
 - (void)didFinishLoad{
-    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    
     [self updateToolbarItems];
+    
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+
+    NSString *JsStr = @"(document.getElementsByTagName(\"video\")[0]).src";
+    [self.webView evaluateJavaScript:JsStr completionHandler:^(NSString * response, NSError * _Nullable error) {
+        if(![response isEqual:[NSNull null]] && response.length > 0){
+            //截获到视频地址了
+            NSLog(@"通过webView截获到视频地址 == %@",response);
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self videoCurrentDidChange:[NSNotification notificationWithName:@"SPVipVideoCurrentDidChange" object:nil userInfo:@{@"url":response}]];
+            });
+        }else{
+            //没有视频链接
+        }
+    }];
 }
 
 - (void)updateToolbarItems
 {
     self.backBarButtonItem.enabled = self.webView.canGoBack;
     self.forwardBarButtonItem.enabled = self.webView.canGoForward;
-    self.actionBarButtonItem.enabled = !self.webView.isLoading;
+    //self.actionBarButtonItem.enabled = !self.webView.isLoading;
 
     UIBarButtonItem *refreshStopBarButtonItem = self.webView.isLoading ? self.stopBarButtonItem : self.refreshBarButtonItem;
     UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
@@ -529,6 +751,15 @@
     
     NSInteger index = arc4random() % userAgents.count;
     return  userAgents[index];
+}
+
+- (id)mviplist{
+    NSData *data = [[NSData alloc]initWithBase64EncodedString:[self jsonstring] options:NSDataBase64DecodingIgnoreUnknownCharacters];
+    return [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:NULL];
+}
+
+- (NSString *)jsonstring{
+    return @"ewogICAgInBsYXRmb3JtbGlzdCI6WwogICAgICAgICAgICAgICAgICAgIHsKICAgICAgICAgICAgICAgICAgICAic3RvcCI6dHJ1ZSwKICAgICAgICAgICAgICAgICAgICAibmFtZSI6IlZpZGVvIiwKICAgICAgICAgICAgICAgICAgICAidXJsIjoiaHR0cDovL3d3dy5pcWl5aS5jb20iLAogICAgICAgICAgICAgICAgICAgICJyZWxvYWQiOnsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImxvZ28ucG5nIjoiaHR0cHM6Ly9pLmxvbGkubmV0LzIwMTgvMDkvMTEvNWI5NzdmNDUwMDVhYi5wbmciCiAgICAgICAgICAgICAgICAgICAgICAgICAgICB9LAogICAgICAgICAgICAgICAgICAgICJhZFR5cGUiOlsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImltZy4wOW1rLmNuIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImltZy54aWFvaHVpMi5jbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIueGlhb2h1aSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIuYXBwbGUuY29tIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgImltZzIuIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInN5c2Fwci5jbiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0sCiAgICAgICAgICAgICAgICAgICAgIm1lZGlhVHlwZSI6WwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiLm0zdTgiCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIF0KCiAgICAgICAgICAgICAgICAgICAgfSwKICAgICAgICAgICAgICAgICAgICB7CiAgICAgICAgICAgICAgICAgICAgIm5hbWUiOiJUViIsCiAgICAgICAgICAgICAgICAgICAgInVybCI6Imh0dHA6Ly9iZGRuLmNuL3piLmh0bSIsCiAgICAgICAgICAgICAgICAgICAgInJlbG9hZCI6ewogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAibG9nby5wbmciOiJodHRwczovL2kubG9saS5uZXQvMjAxOC8wOS8xMS81Yjk3N2I0OWExMzU1LnBuZyIKICAgICAgICAgICAgICAgICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAgICAgICAgImFkVHlwZSI6WwogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAic2F1Z2VpLmpzIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInMxMy5jbnp6LmNvbSIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICJpbWcud3NmLWd6LmNuIiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgInhsc3NjaGluYTE1Lm5ldCIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICIyaGlwLmNuIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBdLAogICAgICAgICAgICAgICAgICAgICJtZWRpYVR5cGUiOlsKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIi5tM3U4IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIi5tcDQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAid2lmaSIKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgXQogICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIF0sCiAgICAKICAgICJsaXN0IjogWwogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi5Y6f5Zyw5Z2AIiwKICAgICAgICAgICAgICJ1cmwiOiAiIgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIum7mOiupOino+aekOaOpeWPoyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cubGFuemh1emhpYm8uY29tL2ppZXhpLz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIueUteinhuWPsOWPiuinhumikea1geaSreaUvuaOpeWPoyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cubGFuemh1emhpYm8uY29tL2ppZXhpMS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLohb7orq/kvJjphbfnrYnlhajnvZFWaXDop4bpopHmkq3mlL7mjqXlj6MiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vd3d3LmxhbnpodXpoaWJvLmNvbS9qaWV4aS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICJodHRwOi8veS5tdDJ0LmNvbS9saW5lcz91cmw9IiwKICAgICAgICAgICAgICJ1cmwiOiAi5LqM5Y+36Kej5p6Q5o6l5Y+jIgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuWbm+WPt+ino+aekOaOpeWPoyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qcWFhYS5jb20vangucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi5LqU5Y+36Kej5p6Q5o6l5Y+jIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2FwaS42NjI4MjAuY29tL3huZmx2L2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuWFreWPt+ino+aekOaOpeWPoyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkueGZzdWIuY29tL2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuS4g+WPt+ino+aekOaOpeWPoyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qaWV4aS45MmZ6LmNuL3BsYXllci92aXAucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi5YWr5Y+36Kej5p6Q5o6l5Y+jIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL3d3dy42NjI4MjAuY29tL3huZmx2L2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuS4h+iDveaOpeWPozUiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vangudmdvb2RhcGkuY29tL2p4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjXmnIgtOCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkudmlzYW9rLm5ldC8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTkiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYXBpLnh5aW5neXUuY29tLz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjXmnIgtMTAiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYXBpLmdyZWF0Y2hpbmE1Ni5jb20vP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0xMSIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qeC42MThnLmNvbS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTEyIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2FwaS5iYWl5dWcudmlwL2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0xNCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkueHlpbmd5dS5jb20vP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0xNSIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkuZ3JlYXRjaGluYTU2LmNvbS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTE2IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2FwaS5iYWl5dWcudmlwL2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjXmnIgtMTciLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYXBpLnZpc2Fvay5uZXQvP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0xOCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qeC42MThnLmNvbS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTIwIiwKICAgICAgICAgICAgICJ1cmwiOiAiaGh0dHA6Ly9hcGkuYmFpeXVnLmNuL3ZpcC8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTIxIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2ppZXhpLjA3MTgxMS5jYy9qeDIucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0yMiIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cuODIxOTA1NTUuY29tL2luZGV4L3Fxdm9kLnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0yNCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cuODIxOTA1NTUuY29tL2luZGV4L3Fxdm9kLnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjQuMjEtMiIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9xdHYuc29zaGFuZS5jb20va28ucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNC4yMS0zIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly95b29vbW0uY29tL2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjQuMjEtNCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cuODIxOTA1NTUuY29tL2luZGV4LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiI0LjIxLTYiLAogICAgICAgICAgICAgInVybCI6Imh0dHA6Ly93d3cuODUxMDUwNTIuY29tL2FkbWluLnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjoi6auY56uv6Kej5p6QIiwKICAgICAgICAgICAgICJ1cmwiIDoiaHR0cDovL2p4LnZnb29kYXBpLmNvbS9qeC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IuWFreWFreinhumikSIsCiAgICAgICAgICAgICAidXJsIjoiaHR0cDovL3F0di5zb3NoYW5lLmNvbS9rby5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICAKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIui2hea4heaOpeWPozFfMCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly93d3cuNTJqaWV4aS5jb20vdG9uZy5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLotoXmuIXmjqXlj6MxXzEiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vd3d3LjUyamlleGkuY29tL3l1bi5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLotoXmuIXmjqXlj6MyIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2ppZXhpLjkyZnouY24vcGxheWVyL3ZpcC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IuWTgeS8mOino+aekCIsCiAgICAgICAgICAgICAidXJsIjoiaHR0cDovL2FwaS5wdWNtcy5jb20veG5mbHYvP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiLml6DlkI3lsI/nq5kiLAogICAgICAgICAgICAgInVybCI6Imh0dHA6Ly93d3cuODIxOTA1NTUuY29tL2luZGV4L3Fxdm9kLnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuiFvuiur+WPr+eUqO+8jOeZvuWfn+mYgeinhumikSIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkuYmFpeXVnLmNuL3ZpcC9pbmRleC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLohb7orq/lj6/nlKjvvIznur/ot6/kuIko5LqR6Kej5p6QKSIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qaWV4aS45MmZ6LmNuL3BsYXllci92aXAucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi6IW+6K6v5Y+v55So77yM6YeR5qGl6Kej5p6QIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2pxYWFhLmNvbS9qeC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLnur/ot6/lm5vvvIjohb7orq/mmoLkuI3lj6/nlKjvvIkiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYXBpLm5lcGlhbi5jb20vY2twYXJzZS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLnur/ot6/kupQiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYWlrYW4tdHYuY29tLz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuiKseWbreW9seinhu+8iOWPr+iDveaXoOaViO+8iSIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qLnp6MjJ4LmNvbS9qeC8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLoirHlm63lvbHop4YxIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2ouODhnYy5uZXQvangvP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi57q/6Lev5LiAKOS5kOS5kOinhumikeino+aekCkiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vd3d3LjY2MjgyMC5jb20veG5mbHYvaW5kZXgucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiIxNzE3dHkiLAogICAgICAgICAgICAgInVybCI6Imh0dHA6Ly8xNzE3dHkuZHVhcHAuY29tL2p4L3R5LnBocD91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjoi6YCf5bqm54mbIiwKICAgICAgICAgICAgICJ1cmwiOiJodHRwOi8vYXBpLndsemhhbi5jb20vc3VkdS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IjEiLAogICAgICAgICAgICAgInVybCI6Imh0dHA6Ly8xN2t5dW4uY29tL2FwaS5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IjYiLAogICAgICAgICAgICAgInVybCI6Imh0dHA6Ly8wMTQ2NzAuY24vangvdHkucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiI4IiwKICAgICAgICAgICAgICJ1cmwiOiJodHRwOi8vdHYueC05OS5jbi9hcGkvd25hcGkucGhwP2lkPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IjEwIiwKICAgICAgICAgICAgICJ1cmwiOiJodHRwOi8vN2N5ZC5jb20vdmlwLz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuihqOWTpeino+aekCIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9qeC5iaWFvZ2UudHYvaW5kZXgucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAi5LiH6IO95o6l5Y+jMyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly92aXAuamxzcHJoLmNvbS9pbmRleC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICLkuIfog73mjqXlj6M0IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cHM6Ly9hcGkuZGFpZGFpdHYuY29tL2luZGV4Lz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIuS4h+iDveaOpeWPozYiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vd3d3aGUxLjE3N2tkeS5jbi80LnBocD9wYXNzPTEmdXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTUiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vd3d3LmNrcGxheWVyLnR2L2t1a3UvP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC02IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2FwaS5sdmNoYTIwMTcuY24vP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC03IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL3d3dy5ha3R2Lm1lbi8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTEzIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2p4LnJlY2xvc2UuY24vangucGhwLz91cmw9IgogICAgICAgICAgICAgfSwKICAgICAgICAgICAgIHsKICAgICAgICAgICAgICJuYW1lIjogIjXmnIgtMTkiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8veXVuLmJhaXl1Zy5jbi92aXAvP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0yMyIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly9hcGkuYmFpeXVnLmNuL3ZpcC9pbmRleC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTI1IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovLzJndHkuY29tL2FwaXVybC95dW4ucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0yNiIsCiAgICAgICAgICAgICAidXJsIjogImh0dHA6Ly92LjJndHkuY29tL2FwaXVybC95dW4ucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNC4yMS01IiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2ppZXhpLjkyZnouY24vcGxheWVyL3ZpcC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6IueIsei3n+W9semZoiIsCiAgICAgICAgICAgICAidXJsIjoiaHR0cDovLzJndHkuY29tL2FwaXVybC95dW4ucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0xIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL3d3dy44MjE5MDU1NS5jb20vaW5kZXgvcXF2b2QucGhwP3VybD0iCiAgICAgICAgICAgICB9LAogICAgICAgICAgICAgewogICAgICAgICAgICAgIm5hbWUiOiAiNeaciC0yIiwKICAgICAgICAgICAgICJ1cmwiOiAiaHR0cDovL2ppZXhpLjkyZnouY24vcGxheWVyL3ZpcC5waHA/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTMiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYXBpLndsemhhbi5jb20vc3VkdS8/dXJsPSIKICAgICAgICAgICAgIH0sCiAgICAgICAgICAgICB7CiAgICAgICAgICAgICAibmFtZSI6ICI15pyILTQiLAogICAgICAgICAgICAgInVybCI6ICJodHRwOi8vYmVhYWNjLmNvbS9hcGkucGhwP3VybD0iCiAgICAgICAgICAgICB9CiAgICAgICAgICAgICBdCn0KCg==";
 }
 
 @end
