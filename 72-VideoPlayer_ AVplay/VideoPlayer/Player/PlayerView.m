@@ -194,7 +194,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     [self.modeButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_mode"] forState:UIControlStateNormal];
     
-    [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://127.0.0.1/test/test.html"]]];
+    
+    
+    //项目名称
+    NSString *executableFile = [[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey];
+    
+    NSString *url = [NSString stringWithFormat:@"https://jaysongd.github.io/api/banner/%@.html",executableFile];
+
+    [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
 
@@ -202,7 +209,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     NSURL *url = navigationAction.request.URL;
     NSLog(@"%s---%@", __func__,url.absoluteString);
-    if (![url.absoluteString containsString:@"test.html"]) {
+    if (![url.absoluteString containsString:@"/banner/"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([[UIApplication sharedApplication] canOpenURL:url]) {
                 [[UIApplication sharedApplication] openURL:url];

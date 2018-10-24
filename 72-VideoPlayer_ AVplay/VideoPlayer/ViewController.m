@@ -37,7 +37,7 @@
     [player playWithModel:model];
     [self.view addSubview:player];
     _player = player;
-    
+
     self.speeder =  [[SpeedMonitor alloc] init];
     [self.speeder startNetworkSpeedMonitor];
 }
