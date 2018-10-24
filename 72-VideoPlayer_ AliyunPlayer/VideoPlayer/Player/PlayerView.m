@@ -248,6 +248,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle: UIAlertControllerStyleAlert];
     // Init the cancel action.
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
         if (completionHandler != NULL) {
             completionHandler();
         }
@@ -265,12 +266,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
     // Initialize cancel action.
     UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
         if (completionHandler != NULL) {
             completionHandler(NO);
         }
     }];
     // Initialize ok action.
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
         if (completionHandler != NULL) {
             completionHandler(YES);
         }
@@ -290,9 +293,12 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         textField.text = defaultText;
     }];
     // Initialize cancel action.
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+    }];
     // Initialize ok action.
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
         // Get inputed string.
         NSString *string = [alert.textFields firstObject].text;
         if (completionHandler != NULL) {
