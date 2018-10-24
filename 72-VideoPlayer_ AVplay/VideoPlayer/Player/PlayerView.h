@@ -8,6 +8,7 @@
  * date : 2018/10/08 优化errorReload
  * date : 2018/10/09 适配iOS12
  * date : 2018/10/16 优化播放
+ * date : 2018/10/24 弹幕
  */
 
 #import <UIKit/UIKit.h>

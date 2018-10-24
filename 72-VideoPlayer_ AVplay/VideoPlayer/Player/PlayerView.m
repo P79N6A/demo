@@ -198,14 +198,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     //项目名称
     NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
-    NSString *url = [NSString stringWithFormat:@"https://jaysongd.github.io/api/banner/%@?r=%d",fileName,rand()];
+    NSString *url = [NSString stringWithFormat:@"https://jaysongd.github.io/api/banner/%@?r=%ld",fileName,rand()*random()];
     [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
 
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     
-    NSURL *url = navigationAction.request.URL;    
+    NSURL *url = navigationAction.request.URL;
     if (![url.absoluteString containsString:@"https://jaysongd.github.io"]) {
         dispatch_async(dispatch_get_main_queue(), ^{
             if ([[UIApplication sharedApplication] canOpenURL:url]) {
