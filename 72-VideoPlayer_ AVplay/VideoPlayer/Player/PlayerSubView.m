@@ -91,9 +91,9 @@
         
         CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
         CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-
+        
         self.frame = CGRectMake(screenWidth * 0.5, screenHeight * 0.5, 155, 155);
-
+        
         self.layer.cornerRadius  = 10;
         self.layer.masksToBounds = YES;
         
@@ -106,7 +106,7 @@
         self.backImage.image =  [UIImage imageFromBundleWithName:@"fullplayer_brightness"];
         [self addSubview:self.backImage];
         self.backImage.center = CGPointMake(155 * 0.5, 155 * 0.5);
-
+        
         self.title      = [[UILabel alloc] initWithFrame:CGRectMake(0, 5, self.bounds.size.width, 30)];
         self.title.font          = [UIFont boldSystemFontOfSize:16];
         self.title.textColor     = [UIColor colorWithRed:0.25f green:0.22f blue:0.21f alpha:1.00f];
@@ -217,7 +217,7 @@
     [self addSubview:self.backgroundImageView];
     [self addSubview:self.fastIconView];
     [self addSubview:self.fastTimeLabel];
-//    [self addSubview:self.fastVideoImageView];
+    //    [self addSubview:self.fastVideoImageView];
     [self addSubview:self.fastProgressView];
 }
 
@@ -273,19 +273,19 @@
     [super layoutSubviews];
     
     CGFloat selfW = self.bounds.size.width;
-//    CGFloat selfH = self.bounds.size.height;
+    //    CGFloat selfH = self.bounds.size.height;
     
     self.backgroundImageView.frame = self.bounds;
     
     CGFloat padding = 10;
     
-//    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
-//    if (currentOrientation == UIDeviceOrientationPortrait || !self.fastVideoImageView.image)
+    //    UIInterfaceOrientation currentOrientation = [UIApplication sharedApplication].statusBarOrientation;
+    //    if (currentOrientation == UIDeviceOrientationPortrait || !self.fastVideoImageView.image)
     { // 竖屏
-
+        
         self.fastProgressView.hidden = NO;
         //self.fastVideoImageView.hidden = YES;
-
+        
         CGFloat fastIconViewX = 0;
         CGFloat fastIconViewY = 5;
         CGFloat fastIconViewH = 30;
@@ -294,48 +294,48 @@
         CGPoint fastIconViewCenter = self.fastIconView.center;
         fastIconViewCenter.x = selfW*0.5;
         self.fastIconView.center = fastIconViewCenter;
-
+        
         CGFloat fastProgressViewX = padding;
         CGFloat fastProgressViewY = CGRectGetMaxY(self.fastIconView.frame)+5;
         CGFloat fastProgressViewW = selfW-2*fastProgressViewX;
         CGFloat fastProgressViewH = 20;
         self.fastProgressView.frame = CGRectMake(fastProgressViewX, fastProgressViewY, fastProgressViewW, fastProgressViewH);
-
+        
         CGFloat fastTimeLabelX = padding;
         CGFloat fastTimeLabelY = CGRectGetMaxY(self.fastProgressView.frame)+5;
         CGFloat fastTimeLabelW = selfW-2*fastTimeLabelX;
         CGFloat fastTimeLabelH = fastIconViewH;
         self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
-
+        
     }
-//    else
-//    { // 横屏
-//
-//        self.fastProgressView.hidden = YES;
-//        self.fastVideoImageView.hidden = NO;
-//
-//        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
-//        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
-//
-//        // 要与屏幕宽高成比例
-//        CGFloat fastVideoImageViewX = padding;
-//        CGFloat fastVideoImageViewW = 180;
-//        CGFloat fastVideoImageViewH = fastVideoImageViewW*screenHeight/screenWidth;
-//        CGFloat fastVideoImageViewY = 35;
-//        self.fastVideoImageView.frame = CGRectMake(fastVideoImageViewX, fastVideoImageViewY, fastVideoImageViewW, fastVideoImageViewH);
-//
-//        CGFloat fastIconViewX = 20;
-//        CGFloat fastIconViewY = 5;
-//        CGFloat fastIconViewH = 30;
-//        CGFloat fastIconViewW = fastIconViewH;
-//        self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
-//
-//        CGFloat fastTimeLabelX = CGRectGetMaxX(self.fastIconView.frame);
-//        CGFloat fastTimeLabelY = fastIconViewY;
-//        CGFloat fastTimeLabelW = 100;
-//        CGFloat fastTimeLabelH = fastIconViewH;
-//        self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
-//    }
+    //    else
+    //    { // 横屏
+    //
+    //        self.fastProgressView.hidden = YES;
+    //        self.fastVideoImageView.hidden = NO;
+    //
+    //        CGFloat screenHeight = [UIScreen mainScreen].bounds.size.height;
+    //        CGFloat screenWidth = [UIScreen mainScreen].bounds.size.width;
+    //
+    //        // 要与屏幕宽高成比例
+    //        CGFloat fastVideoImageViewX = padding;
+    //        CGFloat fastVideoImageViewW = 180;
+    //        CGFloat fastVideoImageViewH = fastVideoImageViewW*screenHeight/screenWidth;
+    //        CGFloat fastVideoImageViewY = 35;
+    //        self.fastVideoImageView.frame = CGRectMake(fastVideoImageViewX, fastVideoImageViewY, fastVideoImageViewW, fastVideoImageViewH);
+    //
+    //        CGFloat fastIconViewX = 20;
+    //        CGFloat fastIconViewY = 5;
+    //        CGFloat fastIconViewH = 30;
+    //        CGFloat fastIconViewW = fastIconViewH;
+    //        self.fastIconView.frame = CGRectMake(fastIconViewX, fastIconViewY, fastIconViewW, fastIconViewH);
+    //
+    //        CGFloat fastTimeLabelX = CGRectGetMaxX(self.fastIconView.frame);
+    //        CGFloat fastTimeLabelY = fastIconViewY;
+    //        CGFloat fastTimeLabelW = 100;
+    //        CGFloat fastTimeLabelH = fastIconViewH;
+    //        self.fastTimeLabel.frame = CGRectMake(fastTimeLabelX, fastTimeLabelY, fastTimeLabelW, fastTimeLabelH);
+    //    }
 }
 
 @end
@@ -385,11 +385,11 @@
             // Fallback on earlier versions
             configuration.mediaPlaybackAllowsAirPlay = YES;
         }//允许播放，ios(8.0, 9.0)
-
         
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
+        
+        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectZero];//CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
         _wkWebView.allowsBackForwardNavigationGestures = YES;/**这一步是，开启侧滑返回上一历史界面**/
-
+        
         // 设置代理
         _wkWebView.navigationDelegate = self;
         
@@ -433,11 +433,11 @@
         _reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         //_reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
         _reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
-
+        
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
-
+        
         [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
@@ -447,7 +447,7 @@
         [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(140, -50, 0, -50)];
         
         _reloadBtn.titleLabel.numberOfLines = 0;
-
+        
         _reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         CGRect rect = _reloadBtn.frame;
         rect.origin.y -= 100;
@@ -463,14 +463,14 @@
         UIImage* backImage = [[[UINavigationBar appearance] backIndicatorImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]?:[[UIImage imageFromBundleWithName:@"fullplayer_web_back"]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         
         _backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:self action:@selector(back:)];
-//        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [button setImage:backImage forState:UIControlStateNormal];
-//        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
-//
-//        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
-//        [backView addSubview:button];
-//        button.frame = CGRectMake(-33, 0, 66, 44);
-//        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
+        //        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [button setImage:backImage forState:UIControlStateNormal];
+        //        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
+        //
+        //        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
+        //        [backView addSubview:button];
+        //        button.frame = CGRectMake(-33, 0, 66, 44);
+        //        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
     }
     return _backBarButtonItem;
 }
@@ -488,7 +488,7 @@
     [super viewDidLoad];
     _urlString=[_urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
     
-
+    
     [self setupUI];
     [self loadRequest];
     
@@ -507,33 +507,67 @@
 
 #pragma mark private Methods
 - (void)setupUI{
-    if (@available(iOS 11.0, *)) {
-        self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
+//    if (@available(iOS 11.0, *)) {
+//        self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    } else {
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
     self.view.backgroundColor = [UIColor whiteColor];
     [self showLeftBarButtonItem];
+    
     [self.view addSubview:self.wkWebView];
-    [self.view addSubview:self.progress];
+    self.wkWebView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:@[
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                ]];
+    
+    
     [self.view addSubview:self.reloadBtn];
+    self.reloadBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:@[
+                                                     
+                                                     [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0],
+                                                       [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0],
+                                               
+                                                     [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:101.7],
+                                                    [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:118.8]
+                                                     ]];
+    
+    [self.navigationController.view addSubview:self.progress];
+    [self.navigationController.view bringSubviewToFront:self.progress];
+    self.progress.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.navigationController.view addConstraints:@[
+            
+                                [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.progress.superview attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.navigationController.navigationBar attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.progress.superview attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:2]
+                                
+                                ]];
 
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
-
+    
+    
+    [self.view addSubview:self.reloadBtn];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    
 }
 
 //FIXME:  -  屏幕旋转回调
-- (void)changeRotate:(NSNotification*)noti {
-    
-//    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
-//    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
-
-    self.progress.frame = CGRectMake(0,NAV_HEIGHT, self.view.bounds.size.width, 2.5);
-    self.wkWebView.frame  = CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - NAV_HEIGHT);
-    
-    self.reloadBtn.center = self.view.center;
-
-}
+//- (void)changeRotate:(NSNotification*)noti {
+//
+//    //    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
+//    //    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
+//
+//    self.progress.frame = CGRectMake(0,NAV_HEIGHT, self.view.bounds.size.width, 2.5);
+//    self.wkWebView.frame  = CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height - NAV_HEIGHT);
+//
+//    self.reloadBtn.center = self.view.center;
+//
+//}
 - (void)loadRequest {
     if (![self.urlString hasPrefix:@"http"]) {//容错处理 不要忘记plist文件中设置http可访问 App Transport Security Settings
         self.urlString = [NSString stringWithFormat:@"http://%@",self.urlString];
@@ -549,7 +583,7 @@
 }
 
 - (void)showLeftBarButtonItem {
-
+    
     if ([_wkWebView canGoBack]) {
         self.navigationItem.leftBarButtonItems = @[self.backBarButtonItem,self.closeBarButtonItem];
     } else {
@@ -630,7 +664,7 @@
     [_wkWebView stopLoading];
     _wkWebView.UIDelegate = nil;
     _wkWebView.navigationDelegate = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
