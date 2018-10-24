@@ -202,7 +202,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
 
-
+//FIXME:  -  处理弹幕
 - (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
     
     NSURL *url = navigationAction.request.URL;
@@ -216,6 +216,32 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         return;
     }
     decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+// 返回内容是否允许加载
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler
+{
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;
+    NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
+    if (response.statusCode != 200 && [response.suggestedFilename isEqualToString:fileName]) {
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+//页面加载失败
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+    
+    if ([webView.URL.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
