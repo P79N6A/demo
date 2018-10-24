@@ -32,7 +32,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 
 
-@interface PlayerView()<WKNavigationDelegate,UIGestureRecognizerDelegate>
+@interface PlayerView()<WKNavigationDelegate,WKUIDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) AliVcMediaPlayer *mediaPlayer;
 /** 视频View的父控件 */
@@ -161,7 +161,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.errorBtn addSubview:self.safariButton];
 
     [self insertSubview:self.danmuView aboveSubview:self.contentView];
-
+ 
     [self initUI];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -230,6 +230,80 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         });
         return;
     }
+}
+
+
+- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    NSLog(@"创建一个新的webView");
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+// 展示
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    // Get host name of url.
+    //NSString *host = webView.URL.host;
+    // Init the alert view controller.
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle: UIAlertControllerStyleAlert];
+    // Init the cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        if (completionHandler != NULL) {
+            completionHandler();
+        }
+    }];
+    
+    // Add actions.
+    [alert addAction:cancelAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
+    // Get the host name.
+    //NSString *host = webView.URL.host;
+    // Initialize alert view controller.
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // Initialize cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        if (completionHandler != NULL) {
+            completionHandler(NO);
+        }
+    }];
+    // Initialize ok action.
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        if (completionHandler != NULL) {
+            completionHandler(YES);
+        }
+    }];
+    // Add actions.
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+}
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler {
+    
+    //NSString *host = webView.URL.host;
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // Add text field.
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入";
+        textField.text = defaultText;
+    }];
+    // Initialize cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    // Initialize ok action.
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        // Get inputed string.
+        NSString *string = [alert.textFields firstObject].text;
+        if (completionHandler != NULL) {
+            completionHandler(string?:defaultText);
+        }
+    }];
+    // Add actions.
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+
 }
 
 - (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
@@ -415,18 +489,14 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     if (self.allowSafariPlay && sender.tag) {
         [self exitFullscreen];
+            
         WHWebViewController *web = [[WHWebViewController alloc] init];
-        //web.iPhoneXX = self.iPhoneXX;
         web.urlString = self.model.url;
         web.canDownRefresh = YES;
         web.navigationItem.title = self.model.title;
         
         UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
-        //webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
-        //webVC.navigationBar.tintColor = [UIColor whiteColor];
-        //[webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         [self.viewController?self.viewController:self.topViewController presentViewController:webVC animated:YES completion:nil];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
         return;
     }
     [self playWithModel:self.model];
@@ -1262,6 +1332,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     _danmuView.scrollView.scrollEnabled = NO;
     [_danmuView addGestureRecognizer:tap];
     _danmuView.navigationDelegate = self;
+    _danmuView.UIDelegate = self;
     
     return _danmuView;
 }
