@@ -11,18 +11,11 @@
 
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <SafariServices/SafariServices.h>
+#import <WebKit/WebKit.h>
 #import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
-//#define  iPhoneXX ([self.topViewController respondsToSelector:@selector(setNeedsUpdateOfHomeIndicatorAutoHidden)])
-//typedef NS_ENUM(NSUInteger, Direction) {
-//    DirectionLeftOrRight,
-//    DirectionUpOrDown,
-//    DirectionNone
-//};
 
 // 枚举值，包含水平移动方向和垂直移动方向
 typedef NS_ENUM(NSInteger, PanDirection){
@@ -39,7 +32,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 
 
-@interface PlayerView()
+@interface PlayerView()<WKNavigationDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) AliVcMediaPlayer *mediaPlayer;
 /** 视频View的父控件 */
@@ -131,6 +124,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 /** 网速检测*/
 @property (nonatomic, strong,) SpeedMonitor *speedMonitor;
+
+@property (strong, nonatomic)  WKWebView *danmuView;
+
 @end
 
 
@@ -164,6 +160,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.errorBtn addSubview:self.rePlayButton];
     [self.errorBtn addSubview:self.safariButton];
 
+    [self insertSubview:self.danmuView aboveSubview:self.contentView];
+
     [self initUI];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -185,7 +183,59 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.lockBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_lockScreen_on_iphone_44x44_"] forState:UIControlStateSelected];
     
     [self.modeButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_mode"] forState:UIControlStateNormal];
+    
+    //项目名称
+    NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
+    NSString *url = [NSString stringWithFormat:@"https://jaysongd.github.io/api/banner/%@?r=%ld",fileName,rand()*random()];
+    [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
 }
+
+//FIXME:  -  处理弹幕
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    
+    NSURL *url = navigationAction.request.URL;
+    if (![url.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        });
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+// 返回内容是否允许加载
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler
+{
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;
+    NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
+    if (response.statusCode != 200 && [response.suggestedFilename isEqualToString:fileName]) {
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+
+//页面加载失败
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+    
+    if ([webView.URL.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
+}
+
 //FIXME:  -  布局位置
 - (void)layout{
     
@@ -193,6 +243,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     CGFloat spacing = iPhoneXX? 24 : 0;
     
+    self.danmuView.frame = self.bounds;
     
     self.contentView.frame = self.bounds;
     
@@ -1198,6 +1249,22 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return _fastView;
 }
 
+- (WKWebView *)danmuView{
+    if (_danmuView) return _danmuView;
+    _danmuView = [[WKWebView alloc] initWithFrame:CGRectZero];
+    _danmuView.backgroundColor = [UIColor clearColor];
+    _danmuView.scrollView.backgroundColor = [UIColor clearColor];
+    _danmuView.opaque = NO;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
+    tap.delegate = self;
+    
+    _danmuView.scrollView.scrollEnabled = NO;
+    [_danmuView addGestureRecognizer:tap];
+    _danmuView.navigationDelegate = self;
+    
+    return _danmuView;
+}
 
 - (NSString *)error:(NSString *)code{
     
