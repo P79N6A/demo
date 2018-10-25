@@ -232,7 +232,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     }
     decisionHandler(WKNavigationResponsePolicyAllow);
 }
-
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    if ([webView.URL.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            webView.hidden = NO;
+        });
+        return;
+    }
+}
 //页面加载失败
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
     
@@ -1442,7 +1450,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     _danmuView.backgroundColor = [UIColor clearColor];
     _danmuView.scrollView.backgroundColor = [UIColor clearColor];
     _danmuView.opaque = NO;
-
+    _danmuView.hidden = YES;
+    
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
     tap.delegate = self;
     
