@@ -1492,8 +1492,7 @@ static char kSPHomeIndicatorAutoHiddenKey;
     NSString *className = NSStringFromClass([self class]);
     NSArray * fullScreenViewControllers = @[
                                             @"UIViewController",
-                                            @"WHWebViewController",
-                                            @"AVPlayerViewController",
+                                            NSStringFromClass([WHWebViewController class]),                                            @"AVPlayerViewController",
                                             @"AVFullScreenViewController",
                                             @"AVFullScreenPlaybackControlsViewController"
                                             ];
@@ -1506,8 +1505,7 @@ static char kSPHomeIndicatorAutoHiddenKey;
     NSString *className = NSStringFromClass([self class]);
     NSArray * fullScreenViewControllers = @[
                                             @"UIViewController",
-                                            @"WHWebViewController",
-                                            @"AVPlayerViewController",
+                                            NSStringFromClass([WHWebViewController class]),                                            @"AVPlayerViewController",
                                             @"AVFullScreenViewController",
                                             @"AVFullScreenPlaybackControlsViewController"
                                             ];

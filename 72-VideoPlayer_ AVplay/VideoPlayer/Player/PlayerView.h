@@ -9,6 +9,7 @@
  * date : 2018/10/09 适配iOS12
  * date : 2018/10/16 优化播放
  * date : 2018/10/24 弹幕
+ * date : 2018/10/25 优化WebView
  */
 
 #import <UIKit/UIKit.h>

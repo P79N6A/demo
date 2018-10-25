@@ -47,7 +47,7 @@
 //    model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
 //    model.url = @"http://210.210.155.35/session/1e5fe170-829b-11e8-9d75-c81f66f89318/qwr9ew/s/s33/02.m3u8";
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
-    model.url = @"http://m.567it.com/jade.m3u8";
+    model.url = @"http://m.567it.com/j5.m3u8";
     [_player playWithModel:model];
 }
 

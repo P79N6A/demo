@@ -347,9 +347,9 @@
 //#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 //#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
 //#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
-#define kStatusBarH  ([UIApplication sharedApplication].statusBarFrame.size.height)
-#define kNavBarH  (self.navigationController.navigationBar.frame.size.height)
-#define NAV_HEIGHT (kStatusBarH + kNavBarH)
+//#define kStatusBarH  ([UIApplication sharedApplication].statusBarFrame.size.height)
+//#define kNavBarH  (self.navigationController.navigationBar.frame.size.height)
+//#define NAV_HEIGHT (kStatusBarH + kNavBarH)
 
 @interface WHWebViewController ()<WKNavigationDelegate>
 
@@ -387,7 +387,7 @@
         }//允许播放，ios(8.0, 9.0)
         
         
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectZero];//CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
+        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
         _wkWebView.allowsBackForwardNavigationGestures = YES;/**这一步是，开启侧滑返回上一历史界面**/
         
         // 设置代理
@@ -419,7 +419,7 @@
 
 - (UIProgressView* )progress {
     if (!_progress) {
-        _progress = [[UIProgressView alloc]initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, 2.5)];
+        _progress = [[UIProgressView alloc]initWithFrame:CGRectZero];
         _progress.trackTintColor = [UIColor clearColor];
         _progress.progressTintColor = _loadingProgressColor?_loadingProgressColor:[UIColor colorWithRed:0.15 green:0.49 blue:0.96 alpha:1.0];
     }
@@ -550,7 +550,7 @@
 
     
     
-    [self.view addSubview:self.reloadBtn];
+    //[self.view addSubview:self.reloadBtn];
     
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
@@ -600,7 +600,7 @@
 }
 
 - (void)close:(UIBarButtonItem*)item {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
