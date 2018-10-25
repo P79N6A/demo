@@ -336,11 +336,11 @@
 
 #import <WebKit/WebKit.h>
 
-#define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)
-#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
-#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
-
+//#define  NAV_HEIGHT  (iPhoneXX ? 88.f : 64.f)
+//#define  kScreenWidth [UIScreen mainScreen].bounds.size.width
+//#define  kScreenHeight [UIScreen mainScreen].bounds.size.height
+//#define  iPhoneXX (kScreenWidth == 375.f && kScreenHeight == 812.f ? YES : NO)
+//
 
 @interface WHWebViewController ()<WKNavigationDelegate>
 
@@ -362,13 +362,25 @@
         // 设置WKWebView基本配置信息
         WKWebViewConfiguration *configuration = [[WKWebViewConfiguration alloc] init];
         configuration.preferences = [[WKPreferences alloc] init];
-        configuration.allowsInlineMediaPlayback = YES;
+        configuration.allowsInlineMediaPlayback = YES;//是否允许内联(YES)或使用本机全屏控制器(NO)，默认是NO。
         configuration.selectionGranularity = YES;
+        if (@available(iOS 9.0, *)) {
+            configuration.requiresUserActionForMediaPlayback = NO;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackRequiresUserAction = NO;
+        }//把手动播放设置NO ios(8.0, 9.0)
+        if (@available(iOS 9.0, *)) {
+            configuration.allowsAirPlayForMediaPlayback = YES;
+        } else {
+            // Fallback on earlier versions
+            configuration.mediaPlaybackAllowsAirPlay = YES;
+        }//允许播放，ios(8.0, 9.0)
         
         
-        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, self.view.bounds.size.height-NAV_HEIGHT) configuration:configuration];
+        _wkWebView = [[WKWebView alloc] initWithFrame:CGRectZero configuration:configuration];
         _wkWebView.allowsBackForwardNavigationGestures = YES;/**这一步是，开启侧滑返回上一历史界面**/
-
+        
         // 设置代理
         _wkWebView.navigationDelegate = self;
         
@@ -390,7 +402,7 @@
 
 - (UIRefreshControl *)refreshControl{
     if (!_refreshControl) {
-        self.refreshControl = [[UIRefreshControl alloc] init];
+        _refreshControl = [[UIRefreshControl alloc] init];
         [_refreshControl addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventValueChanged)];
     }
     return _refreshControl;
@@ -398,7 +410,8 @@
 
 - (UIProgressView* )progress {
     if (!_progress) {
-        self.progress = [[UIProgressView alloc]initWithFrame:CGRectMake(0, NAV_HEIGHT, self.view.bounds.size.width, 2.5)];
+        _progress = [[UIProgressView alloc]initWithFrame:CGRectZero];
+        _progress.trackTintColor = [UIColor clearColor];
         _progress.progressTintColor = _loadingProgressColor?_loadingProgressColor:[UIColor colorWithRed:0.15 green:0.49 blue:0.96 alpha:1.0];
     }
     return _progress;
@@ -406,16 +419,24 @@
 
 - (UIButton *)reloadBtn{
     if (!_reloadBtn) {
-        self.reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _reloadBtn.frame = CGRectMake(0, 0, 200, 140);
+        _reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
+        //_reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
+        _reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
+        
         _reloadBtn.center = self.view.center;
         [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
-        [_reloadBtn setTitle:@"网络异常，点击重新加载" forState:UIControlStateNormal];
+        [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
+        
+        [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-        [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
+        //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
+        //[_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
+        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(140, -50, 0, -50)];
+        
         _reloadBtn.titleLabel.numberOfLines = 0;
+        
         _reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         CGRect rect = _reloadBtn.frame;
         rect.origin.y -= 100;
@@ -427,14 +448,18 @@
 
 - (UIBarButtonItem *)backBarButtonItem {
     if (!_backBarButtonItem) {
-        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_back"] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
         
-        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
-        [backView addSubview:button];
-        button.frame = CGRectMake(-33, 0, 66, 44);
-        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
+        UIImage* backImage = [[[UINavigationBar appearance] backIndicatorImage] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate]?:[[UIImage imageFromBundleWithName:@"fullplayer_web_back"]  imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+        
+        _backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:backImage style:UIBarButtonItemStyleDone target:self action:@selector(back:)];
+        //        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+        //        [button setImage:backImage forState:UIControlStateNormal];
+        //        [button addTarget:self action:@selector(back:) forControlEvents:(UIControlEventTouchUpInside)];
+        //
+        //        UIView *backView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 33, 44)];
+        //        [backView addSubview:button];
+        //        button.frame = CGRectMake(-33, 0, 66, 44);
+        //        _backBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:backView];
     }
     return _backBarButtonItem;
 }
@@ -449,41 +474,82 @@
 - (void)viewDidLoad {
     
     [super viewDidLoad];
-    
+    _urlString=[_urlString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+
     [self setupUI];
     [self loadRequest];
     
 }
 
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleDefault;
+}
+- (BOOL)prefersStatusBarHidden{
+    return NO;
+}
+
+- (UIStatusBarAnimation)preferredStatusBarUpdateAnimation {
+    return UIStatusBarAnimationNone;
+}
+
 #pragma mark private Methods
 - (void)setupUI{
-    if (@available(iOS 11.0, *)) {
-        self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
-    } else {
-        self.automaticallyAdjustsScrollViewInsets = NO;
-    }
-    self.view.backgroundColor = [UIColor colorWithRed:38/255.0 green:38/255.0 blue:38/255.0 alpha:1.0];
+//    if (@available(iOS 11.0, *)) {
+//        self.wkWebView.scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//    } else {
+//        self.automaticallyAdjustsScrollViewInsets = NO;
+//    }
+    self.view.backgroundColor = [UIColor whiteColor];
     [self showLeftBarButtonItem];
+    
     [self.view addSubview:self.wkWebView];
-    [self.view addSubview:self.progress];
+    self.wkWebView.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:@[
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTop multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.wkWebView attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                ]];
+    
     [self.view addSubview:self.reloadBtn];
-
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    self.reloadBtn.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.view addConstraints:@[
+                                
+                                [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0],
+                                [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0],
+                                
+                                [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:101.7],
+                                [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:118.8]
+                                ]];
+    
+    [self.navigationController.view addSubview:self.progress];
+    [self.navigationController.view bringSubviewToFront:self.progress];
+    self.progress.translatesAutoresizingMaskIntoConstraints = NO;
+    [self.navigationController.view addConstraints:@[
+                                                     
+                                                     [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeRight relatedBy:NSLayoutRelationEqual toItem:self.progress.superview attribute:NSLayoutAttributeRight multiplier:1.0 constant:0],
+                                                     [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.navigationController.navigationBar attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0],
+                                                     [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeLeft relatedBy:NSLayoutRelationEqual toItem:self.progress.superview attribute:NSLayoutAttributeLeft multiplier:1.0 constant:0],
+                                                     [NSLayoutConstraint constraintWithItem:self.progress attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:2]
+                                                     
+                                                     ]];
+    
+    //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
 
 }
 
 //FIXME:  -  屏幕旋转回调
-- (void)changeRotate:(NSNotification*)noti {
-    
-    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
-    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
-
-    self.progress.frame = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, 2.5);
-    self.wkWebView.frame  = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, self.view.bounds.size.height - navBarH - statusBarH);
-    
-    self.reloadBtn.center = self.view.center;
-
-}
+//- (void)changeRotate:(NSNotification*)noti {
+//
+//    CGFloat statusBarH = [UIApplication sharedApplication].statusBarFrame.size.height;
+//    CGFloat navBarH = self.navigationController.navigationBar.frame.size.height;
+//
+//    self.progress.frame = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, 2.5);
+//    self.wkWebView.frame  = CGRectMake(0, navBarH + statusBarH, self.view.bounds.size.width, self.view.bounds.size.height - navBarH - statusBarH);
+//
+//    self.reloadBtn.center = self.view.center;
+//
+//}
 - (void)loadRequest {
     if (![self.urlString hasPrefix:@"http"]) {//容错处理 不要忘记plist文件中设置http可访问 App Transport Security Settings
         self.urlString = [NSString stringWithFormat:@"http://%@",self.urlString];
@@ -493,7 +559,9 @@
 }
 
 - (void)wkWebViewReload{
-    [_wkWebView reload];
+//    [_wkWebView reload];
+    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:_wkWebView.URL?_wkWebView.URL : [NSURL URLWithString:_urlString]];
+    [_wkWebView loadRequest:request];
 }
 
 - (void)showLeftBarButtonItem {
@@ -513,7 +581,7 @@
 }
 
 - (void)close:(UIBarButtonItem*)item {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
@@ -577,7 +645,7 @@
     [_wkWebView stopLoading];
     _wkWebView.UIDelegate = nil;
     _wkWebView.navigationDelegate = nil;
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+//    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

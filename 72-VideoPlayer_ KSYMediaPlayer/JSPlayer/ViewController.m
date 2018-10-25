@@ -25,8 +25,7 @@
 - (IBAction)video:(id)sender {
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
-    model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";
-    model.url = @"https://52dy.hanju2017.com/20180830/UiqpFYWy/index.m3u8?v2";
+    model.url = @"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
     [_playerView playWithModel:model];
     
     //    self.spStatusBarStyle = UIStatusBarStyleDefault;
@@ -37,7 +36,7 @@
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
-    model.url = @"http://116.199.5.51:8114/LIVES/index.m3u8?Fsv_otype=1&FvSeid=&Pcontent_id=&Provider_id=&Fsv_chan_hls_se_idx=23";
+    model.url = @"http://m.567it.com/j5.m3u8";
     
     [_playerView playWithModel:model];
     //self.spStatusBarStyle = UIStatusBarStyleLightContent;
@@ -51,7 +50,7 @@
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
     //    model.live_stream = [NSURL fileURLWithPath:@"/Users/jay/Downloads/20180503102411_460.mp4"];
-    model.url = @"http://app.zhangwangye.com/mdparse/app.php?id=https://www.iqiyi.com/v_19rrkrbwr4.html";
+    model.url = @"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
     //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
@@ -92,7 +91,7 @@
 - (IBAction)click:(UIButton *)sender {
     
     
-    NSArray *lists = @[@"rtmp://live.hkstv.hk.lxdns.com/live/hks",@"https://doubanzyv1.tyswmp.com/2018/07/30/yLdWQynQOGPZjkK2/playlist.m3u8",@"http://m.567it.com/jade.m3u8"];
+    NSArray *lists = @[@"rtmp://live.hkstv.hk.lxdns.com/live/hks",@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8",@"http://m.567it.com/jade.m3u8"];
     
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";

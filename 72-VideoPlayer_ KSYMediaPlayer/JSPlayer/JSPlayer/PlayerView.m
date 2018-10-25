@@ -11,18 +11,13 @@
 
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
 #import <MediaPlayer/MediaPlayer.h>
-#import <SafariServices/SafariServices.h>
 #import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
+//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 
-//typedef NS_ENUM(NSUInteger, Direction) {
-//    DirectionLeftOrRight,
-//    DirectionUpOrDown,
-//    DirectionNone
-//};
+
 typedef NS_ENUM(NSUInteger, PlayViewState) {
     PlayViewStateSmall,
     PlayViewStateAnimating,
@@ -117,14 +112,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (weak, nonatomic) IBOutlet UIButton *modeButton;
 
 /** 重试 */
-@property (strong, nonatomic)  UIButton *rePlayButton;
+@property (strong, nonatomic) UIButton *rePlayButton;
 
 /** 浏览器 */
-@property (strong, nonatomic)  UIButton *safariButton;
+@property (strong, nonatomic) UIButton *safariButton;
 /** 快进view */
 @property (nonatomic, strong) SPVideoPlayerFastView *fastView ;
 /** 亮度view */
-@property (nonatomic, strong) SPBrightnessView       *brightnessView;
+@property (nonatomic, strong) SPBrightnessView *brightnessView;
 
 @property (nonatomic, assign) BOOL reloading;
 @property (nonatomic, strong) NSArray *status;
@@ -134,6 +129,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
 @property (nonatomic, assign) double lastSize;
 @property (nonatomic, assign) int fvr_costtime;
 @property (nonatomic, assign) int far_costtime;
+
+/** 是否iPhoneX*/
+@property (nonatomic, assign,) BOOL iPhoneXX;
+
+
 @end
 
 
@@ -151,6 +151,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)awakeFromNib{
     [super awakeFromNib];
     
+    self.iPhoneXX = ([UIApplication sharedApplication].statusBarFrame.size.height > 20);
     
     _loadStatus = @[@"加载情况未知",@"加载完成，可以播放",@"加载完成，如果shouldAutoplay为YES，将自动开始播放",@"",@"如果视频正在加载中"];
     _status = @[@"播放停止",@"正在播放",@"播放暂停",@"播放被打断",@"向前seeking中",@"向后seeking中"];
@@ -198,6 +199,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 - (void)layout{
+    
+    //iPhoneX 横评
+    BOOL iPhoneXX = self.iPhoneXX && (kScreenWidth > kScreenHeight);
+
     CGFloat spacing = iPhoneXX? 24 : 0;
     
     self.contentView.frame = self.bounds;
@@ -299,10 +304,15 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [self.loadingView startAnimating];
+    
     self.loadingLabel.text = @"加载中...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
+    self.videoButtomView.hidden = !self.loadingView.isHidden;
+
+    self.titleLabel.text = model.title;
     
+    self.model = model;
     
     NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
     if ([model.url hasPrefix:@"http://"] || [model.url hasPrefix:@"https://"]) {
@@ -317,18 +327,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
         url = [NSURL URLWithString:@"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8"];
     }
     
-    self.model = model;
     
 //    [self.mediaPlayer reset:NO];
 //    [self.mediaPlayer setUrl:url];
 //    [self.mediaPlayer prepareToPlay];
-    [self.mediaPlayer reload:url flush:NO mode:MPMovieReloadMode_Fast];
+    [self.mediaPlayer reload:url flush:YES mode:MPMovieReloadMode_Accurate];
     //开始播放
     //[self play];
     
-    self.titleLabel.text = model.title;
-    
-
     NSLog(@"%s----URL---%@", __func__,url.absoluteString);
 }
 
@@ -367,11 +373,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         web.navigationItem.title = self.model.title;
         
         UINavigationController *webVC = [[UINavigationController alloc] initWithRootViewController:web];
-        webVC.navigationBar.barTintColor = [UIColor colorWithRed:10/255 green:149/255 blue:31/255 alpha:1.0];
-        webVC.navigationBar.tintColor = [UIColor whiteColor];
-        [webVC.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName : [UIColor whiteColor]}];
         [self.viewController?self.viewController:self.topViewController presentViewController:webVC animated:YES completion:nil];
-        //[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.model.live_stream]];
         return;
     }
     [self playWithModel:self.model];
@@ -1090,7 +1092,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (NSTimer *)timer{
     if (!_timer) {
         __weak typeof(self) weakSelf = self;
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/3.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/2.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         _timer = timer;
     }
@@ -1117,7 +1119,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (progress < 100 && (progress > 0)) {
         NSLog(@"加载进度加载进度加载进度加载进度加载进度加载进度加载进度加载进度：%d%%", progress);
         self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress?progress:0];
-        //[self printLog];
+        [self printLog];
     }
 
     
@@ -1131,7 +1133,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.fullProgressView.progress = self.videoSlider.value;
     self.fullBufView.progress = self.progressView.progress;
     
-    self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",1024.0*((_mediaPlayer.readSize - _lastSize)?(_mediaPlayer.readSize - _lastSize):0) * 3.0];
+    
+    double speed =  (_mediaPlayer.readSize - _lastSize)? 2.0 * 1024.0 * (_mediaPlayer.readSize - _lastSize) : 0.1;
+    
+    self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",speed];
     _lastSize = _mediaPlayer.readSize;
 
 }
@@ -1218,13 +1223,19 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma mark  - 获取到视频的相关信息
 - (void)OnVideoPrepared:(NSNotification *)noti{
     NSTimeInterval total = self.mediaPlayer.duration;
+    NSTimeInterval current = self.mediaPlayer.currentPlaybackTime;
+
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
-    if(islive){
-        self.fullBufView = nil;
-        self.fullProgressView = nil;
-    }
-    self.timeLabel.text = [NSString stringWithFormat:@"00:00/%02ld:%02ld",(NSInteger)total/60,(NSInteger)total%60];
+//    if(islive){
+//        self.fullBufView = nil;
+//        self.fullProgressView = nil;
+//    }
+    self.fullBufView.alpha = (CGFloat) !islive;
+    self.fullProgressView.alpha = self.fullBufView.alpha;
+    
+    self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+
 }
 
 #pragma mark  - 视频正常播放完成
@@ -1235,8 +1246,34 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma mark  - 播放器播放失败
 - (void)OnVideoError:(NSNotification *)noti{
     NSLog(@"%s--播放器播放失败--%@", __func__,noti.userInfo);
+    NSString *errorMsg = @"播放器播放失败";//;
+    NSNumber *reason =
+    [noti.userInfo
+     valueForKey:MPMoviePlayerPlaybackDidFinishReasonUserInfoKey];
+    if (reason != nil){
+        NSInteger reasonAsInteger = [reason integerValue];
+        switch (reasonAsInteger){
+            case MPMovieFinishReasonPlaybackEnded:{
+                /* The movie ended normally */
+                errorMsg = @"播放器播放结束";
+                break;
+                
+            }
+            case MPMovieFinishReasonPlaybackError:{
+                /* An error happened and the movie ended */
+                errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
+                break;
+            }
+            case MPMovieFinishReasonUserExited:{
+                /* The user exited the player */
+                errorMsg = @"用户退出播放";
+                break;
+            }
+        }
+        NSLog(@"Finish Reason = %ld", (long)reasonAsInteger);
+    }
     
-    NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
+
 
     
     if (self.allowSafariPlay) {
@@ -1265,7 +1302,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.loadingLabel.text = [NSString stringWithFormat:@"(0%%)"];
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
-    
 }
 
 #pragma mark  - 播放器结束缓冲视频
@@ -1548,22 +1584,30 @@ static char kSPHomeIndicatorAutoHiddenKey;
 - (BOOL)shouldAutorotate{
     
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray * fullScreenViewControllers = @[
+                                            @"UIViewController",
+                                            NSStringFromClass([WHWebViewController class]),
+                                            @"AVPlayerViewController",
+                                            @"AVFullScreenViewController",
+                                            @"AVFullScreenPlaybackControlsViewController"
+                                            ];
+    if ([fullScreenViewControllers containsObject:className]){
         return YES;
     }
-    
     return NO;
 }
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations{
     NSString *className = NSStringFromClass([self class]);
-    if ([@[@"WHWebViewController",@"AVPlayerViewController", @"AVFullScreenViewController", @"AVFullScreenPlaybackControlsViewController"
-           ] containsObject:className])
-    {
+    NSArray * fullScreenViewControllers = @[
+                                            @"UIViewController",
+                                            NSStringFromClass([WHWebViewController class]),
+                                            @"AVPlayerViewController",
+                                            @"AVFullScreenViewController",
+                                            @"AVFullScreenPlaybackControlsViewController"
+                                            ];
+    if ([fullScreenViewControllers containsObject:className]){
         return UIInterfaceOrientationMaskAllButUpsideDown;
     }
-    
     return UIInterfaceOrientationMaskPortrait;
 }
 
