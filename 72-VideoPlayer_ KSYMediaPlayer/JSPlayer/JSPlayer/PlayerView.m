@@ -10,7 +10,7 @@
 #import "SPPlayerSubview.h"
 
 #import <KSYMediaPlayer/KSYMediaPlayer.h>
-#import <MediaPlayer/MediaPlayer.h>
+#import <WebKit/WebKit.h>
 #import <objc/runtime.h>
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
@@ -32,7 +32,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 };
 
 
-@interface PlayerView()
+@interface PlayerView()<WKNavigationDelegate,WKUIDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) KSYMoviePlayerController *mediaPlayer;
 
@@ -133,6 +133,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
 /** 是否iPhoneX*/
 @property (nonatomic, assign,) BOOL iPhoneXX;
 
+/** 网速计数器 */
+@property (nonatomic, assign) NSInteger readSizeCount;
+
+@property (strong, nonatomic)  WKWebView *danmuView;
 
 @end
 
@@ -175,6 +179,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     [self addSubview:self.fastView];
     [self addSubview:self.brightnessView];
     
+    [self insertSubview:self.danmuView aboveSubview:self.contentView];
+
     [self initUI];
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
@@ -196,6 +202,144 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     [self.modeButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_mode"] forState:UIControlStateNormal];
     
+    //项目名称
+    NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
+    NSString *url = [NSString stringWithFormat:@"https://jaysongd.github.io/api/banner/%@?r=%ld",fileName,rand()*random()];
+    [self.danmuView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+
+}
+
+//FIXME:  -  处理弹幕
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    
+    NSURL *url = navigationAction.request.URL;
+    if (![url.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([[UIApplication sharedApplication] canOpenURL:url]) {
+                [[UIApplication sharedApplication] openURL:url];
+            }
+        });
+        decisionHandler(WKNavigationActionPolicyCancel);
+        return;
+    }
+    decisionHandler(WKNavigationActionPolicyAllow);
+}
+
+// 返回内容是否允许加载
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler
+{
+    NSHTTPURLResponse *response = (NSHTTPURLResponse *)navigationResponse.response;
+    NSString *fileName = [NSString stringWithFormat:@"%@.html",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleExecutableKey]];
+    if (response.statusCode != 200 && [response.suggestedFilename isEqualToString:fileName]) {
+        decisionHandler(WKNavigationResponsePolicyCancel);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
+    decisionHandler(WKNavigationResponsePolicyAllow);
+}
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation
+{
+    if ([webView.URL.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            webView.hidden = NO;
+        });
+        return;
+    }
+}
+//页面加载失败
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error{
+    
+    if ([webView.URL.absoluteString containsString:@"https://jaysongd.github.io"]) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [webView removeFromSuperview];
+        });
+        return;
+    }
+}
+
+- (nullable WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures {
+    NSLog(@"创建一个新的webView");
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}
+// 展示
+- (void)webView:(WKWebView *)webView runJavaScriptAlertPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(void))completionHandler {
+    // Get host name of url.
+    //NSString *host = webView.URL.host;
+    // Init the alert view controller.
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle: UIAlertControllerStyleAlert];
+    // Init the cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+        if (completionHandler != NULL) {
+            completionHandler();
+        }
+    }];
+    
+    // Add actions.
+    [alert addAction:cancelAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+}
+
+- (void)webView:(WKWebView *)webView runJavaScriptConfirmPanelWithMessage:(NSString *)message initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(BOOL result))completionHandler {
+    // Get the host name.
+    //NSString *host = webView.URL.host;
+    // Initialize alert view controller.
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:message message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // Initialize cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+        if (completionHandler != NULL) {
+            completionHandler(NO);
+        }
+    }];
+    // Initialize ok action.
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+        if (completionHandler != NULL) {
+            completionHandler(YES);
+        }
+    }];
+    // Add actions.
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+}
+- (void)webView:(WKWebView *)webView runJavaScriptTextInputPanelWithPrompt:(NSString *)prompt defaultText:(nullable NSString *)defaultText initiatedByFrame:(WKFrameInfo *)frame completionHandler:(void (^)(NSString * __nullable result))completionHandler {
+    
+    //NSString *host = webView.URL.host;
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:prompt message:nil preferredStyle:UIAlertControllerStyleAlert];
+    // Add text field.
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"请输入";
+        textField.text = defaultText;
+    }];
+    // Initialize cancel action.
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+    }];
+    // Initialize ok action.
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"完成" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+        [alert dismissViewControllerAnimated:YES completion:NULL];
+        // Get inputed string.
+        NSString *string = [alert.textFields firstObject].text;
+        if (completionHandler != NULL) {
+            completionHandler(string?:defaultText);
+        }
+    }];
+    // Add actions.
+    [alert addAction:cancelAction];
+    [alert addAction:okAction];
+    [self.viewController?self.viewController:self.topViewController presentViewController:alert animated:YES completion:NULL];
+    
+}
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer{
+    return YES;
 }
 
 - (void)layout{
@@ -205,11 +349,13 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
     CGFloat spacing = iPhoneXX? 24 : 0;
     
+    self.danmuView.frame = self.bounds;
+
     self.contentView.frame = self.bounds;
     
     self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
     
-    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
+    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 15, self.bounds.size.height * 0.5);
     self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 70, 70);
@@ -888,12 +1034,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
         _mediaPlayer.controlStyle = MPMovieControlStyleNone;
         [_mediaPlayer.view setFrame: self.contentView.bounds];  // player's frame must match parent's
         [self.contentView addSubview: _mediaPlayer.view];
+        self.contentView.autoresizesSubviews = YES;
         _mediaPlayer.view.autoresizingMask =
         UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleWidth|
         UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|
         UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
         _mediaPlayer.shouldAutoplay = YES;
         _mediaPlayer.scalingMode = MPMovieScalingModeAspectFit;
+        [_mediaPlayer setTimeout:5 readTimeout:15];
         [self setupObservers:_mediaPlayer];
         _prepared_time = (long long int)([self getCurrentTime] * 1000);
         [_mediaPlayer prepareToPlay];
@@ -1092,7 +1240,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (NSTimer *)timer{
     if (!_timer) {
         __weak typeof(self) weakSelf = self;
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/2.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0/4.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         _timer = timer;
     }
@@ -1117,8 +1265,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     int progress = (cache - current) * 100;
     if (progress < 100 && (progress > 0)) {
-        NSLog(@"加载进度加载进度加载进度加载进度加载进度加载进度加载进度加载进度：%d%%", progress);
-        self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress?progress:0];
+        NSLog(@"加载进度：%d%%", progress);
+        self.loadingLabel.text = [NSString stringWithFormat:@" (%d%%)",progress?progress:0];
         [self printLog];
     }
 
@@ -1126,19 +1274,19 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.progressView.progress = cache / total;
     self.videoSlider.value = current / total;
     
-    //NSLog(@"%s----缓存(%f)：%f----进度(%f)：%f", __func__,cache,self.progressView.progress,current,self.videoSlider.value);
-
 
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
     self.fullProgressView.progress = self.videoSlider.value;
     self.fullBufView.progress = self.progressView.progress;
     
+    self.readSizeCount ++;
+    if (self.readSizeCount == 6) {
+        self.readSizeCount = 0;
+        double speed =  (_mediaPlayer.readSize - _lastSize)? 2 * 1024.0 / 3.0 * (_mediaPlayer.readSize - _lastSize) : 0.1;
+        self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",speed];
+        _lastSize = _mediaPlayer.readSize;
+    }
     
-    double speed =  (_mediaPlayer.readSize - _lastSize)? 2.0 * 1024.0 * (_mediaPlayer.readSize - _lastSize) : 0.1;
-    
-    self.networkSpeedLabel.text = [NSString stringWithFormat:@"%0.1f kb/s",speed];
-    _lastSize = _mediaPlayer.readSize;
-
 }
 
 
@@ -1299,16 +1447,20 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma mark  - 播放器开始缓冲视频时
 - (void)OnStartCache:(NSNotification *)noti{
     [self.loadingView startAnimating];
-    self.loadingLabel.text = [NSString stringWithFormat:@"(0%%)"];
+    self.loadingLabel.text = [NSString stringWithFormat:@" (0%%)"];
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
 }
 
 #pragma mark  - 播放器结束缓冲视频
 - (void)OnEndCache:(NSNotification *)noti{
-    self.loadingLabel.text = [NSString stringWithFormat:@"(100%%)"];
-    [self.loadingView stopAnimating];
-    self.loadingLabel.hidden = self.loadingView.isHidden;
+    self.loadingLabel.text = [NSString stringWithFormat:@" (100%%)"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.loadingView stopAnimating];
+        self.loadingLabel.hidden = self.loadingView.isHidden;
+    });
+
     self.errorBtn.hidden = YES;
     [self timer];
 }
@@ -1451,6 +1603,24 @@ typedef NS_ENUM(NSInteger, PanDirection){
         _fastView.alpha = 0.0;
     }
     return _fastView;
+}
+
+- (WKWebView *)danmuView{
+    if (_danmuView) return _danmuView;
+    _danmuView = [[WKWebView alloc] initWithFrame:CGRectZero];
+    _danmuView.backgroundColor = [UIColor clearColor];
+    _danmuView.scrollView.backgroundColor = [UIColor clearColor];
+    _danmuView.opaque = NO;
+    _danmuView.hidden = YES;
+    
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapGesture)];
+    tap.delegate = self;
+    
+    _danmuView.scrollView.scrollEnabled = NO;
+    [_danmuView addGestureRecognizer:tap];
+    _danmuView.navigationDelegate = self;
+    _danmuView.UIDelegate = self;
+    return _danmuView;
 }
 
 - (NSString *)error:(NSString *)code{
