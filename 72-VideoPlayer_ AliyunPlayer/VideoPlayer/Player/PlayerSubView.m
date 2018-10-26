@@ -553,7 +553,29 @@
     //[self.view addSubview:self.reloadBtn];
     
     //[[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(changeRotate:) name:UIDeviceOrientationDidChangeNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowVisible:)
+                                                 name:UIWindowDidBecomeVisibleNotification
+                                               object:self.view.window];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(windowHidden:)
+                                                 name:UIWindowDidBecomeHiddenNotification
+                                               object:self.view.window];
     
+}
+
+- (void)windowVisible:(NSNotification *)notification
+{
+    UIWindow *fullPlayerView = (UIWindow*)notification.object;
+    if ([fullPlayerView isKindOfClass:[UIWindow class]] && fullPlayerView != self.view.window && self.view.window.windowLevel > fullPlayerView.windowLevel) {
+        fullPlayerView.windowLevel = self.view.window.windowLevel + 1;
+    }
+    NSLog(@"------------------------------------------窗口画显示-windowVisible");
+}
+
+- (void)windowHidden:(NSNotification *)notification
+{
+    NSLog(@"------------------------------------------窗口画隐藏-windowHidden");
 }
 
 //FIXME:  -  屏幕旋转回调
@@ -664,7 +686,7 @@
     [_wkWebView stopLoading];
     _wkWebView.UIDelegate = nil;
     _wkWebView.navigationDelegate = nil;
-    //[[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 

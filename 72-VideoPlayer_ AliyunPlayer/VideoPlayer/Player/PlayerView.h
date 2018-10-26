@@ -10,7 +10,7 @@
  * date : 2018/10/12 优化min进度条
  * date : 2018/10/24 弹幕
  * date : 2018/10/25 优化WebView
-
+ * date : 2018/10/26 修复WebView播放视频弹不出
  */
 
 #import <UIKit/UIKit.h>

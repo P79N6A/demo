@@ -550,7 +550,7 @@
 - (void)windowVisible:(NSNotification *)notification
 {
     UIWindow *fullPlayerView = (UIWindow*)notification.object;
-    if ([fullPlayerView isKindOfClass:[UIWindow class]] && fullPlayerView != self.view.window) {
+    if ([fullPlayerView isKindOfClass:[UIWindow class]] && fullPlayerView != self.view.window && self.view.window.windowLevel > fullPlayerView.windowLevel) {
         fullPlayerView.windowLevel = self.view.window.windowLevel + 1;
     }
     NSLog(@"------------------------------------------窗口画显示-windowVisible");

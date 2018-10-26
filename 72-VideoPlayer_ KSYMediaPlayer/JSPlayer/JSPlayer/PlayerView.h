@@ -1,5 +1,6 @@
 /**
  * date : 2018/08/23 5秒自动隐藏工具菜单
+ * date : 2018/10/26 修复WebView播放视频弹不出
  */
 
 #import <UIKit/UIKit.h>
