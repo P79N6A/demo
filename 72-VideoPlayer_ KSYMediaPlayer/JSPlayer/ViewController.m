@@ -29,7 +29,7 @@
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
-    model.url = @"http://m.567it.com/j5.m3u8";
+    model.url = @"https://de035ceb0768225b04e9a007abe39fca.live.prod.hkatv.com/a1_cbr_lo_1.m3u8";//@"http://m.567it.com/j5.m3u8";
     
     [_playerView playWithModel:model];
     //self.spStatusBarStyle = UIStatusBarStyleLightContent;
