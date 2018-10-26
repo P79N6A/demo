@@ -667,7 +667,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
                 // 取消隐藏
                 self.panDirection = PanDirectionHorizontalMoved;
                 // 给sumTime初值 (点播)
-                //if(!self.videoButtomView.isHidden) self.sumTime = self.mediaPlayer.getCurrentPosition;
+                if(!self.videoButtomView.isHidden) self.sumTime = self.mediaPlayer.currentPlaybackTime;
             }
             else if (x < y){ // 垂直移动
                 self.panDirection = PanDirectionVerticalMoved;
