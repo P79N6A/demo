@@ -1040,7 +1040,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
         _mediaPlayer.shouldAutoplay = YES;
         _mediaPlayer.scalingMode = MPMovieScalingModeAspectFit;
-        [_mediaPlayer setTimeout:5 readTimeout:15];
+        //[_mediaPlayer setTimeout:5 readTimeout:15];
         [self setupObservers:_mediaPlayer];
         _prepared_time = (long long int)([self getCurrentTime] * 1000);
         [_mediaPlayer prepareToPlay];

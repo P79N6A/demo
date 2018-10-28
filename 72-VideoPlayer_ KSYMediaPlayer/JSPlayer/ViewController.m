@@ -18,7 +18,7 @@
 - (IBAction)video:(id)sender {
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
-    model.url = @"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
+    model.url = @"https://t.bwzybf.com/2018/10/25/oWEYZvMJUDeyxaWJ/playlist.m3u8";//@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
     [_playerView playWithModel:model];
     
     //    self.spStatusBarStyle = UIStatusBarStyleDefault;

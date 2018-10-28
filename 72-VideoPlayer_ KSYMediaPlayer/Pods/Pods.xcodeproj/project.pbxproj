@@ -6,87 +6,37 @@
 	objectVersion = 48;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		2A59063CD01BC2C12DD8B56B422F99C0 /* KSYMediaPlayer_iOS */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = B27F6CB4D3879E186C9E2687DE577C0D /* Build configuration list for PBXAggregateTarget "KSYMediaPlayer_iOS" */;
-			buildPhases = (
-			);
-			dependencies = (
-			);
-			name = KSYMediaPlayer_iOS;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
-		656B010E34C7021D0328B1AD390F242C /* Pods-JSPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E3E8342F5E6C2F1BDBC200AD410EEBC9 /* Pods-JSPlayer-dummy.m */; };
+		8B35B37F9DE8EC61C0BE2D4CFB8CB659 /* Pods-JSPlayer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 776D04C3D47EBFC2C0FB0BF0EC7F6B5D /* Pods-JSPlayer-dummy.m */; };
+		B21BBB13059F69079ACA9738FBDC2A14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EE8D5E8330EEEE7994D5C0FAAFDF1D13 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 2A59063CD01BC2C12DD8B56B422F99C0;
-			remoteInfo = KSYMediaPlayer_iOS;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		26AD4CC9B9F90683894B465A2E60AF29 /* Pods-JSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSPlayer.release.xcconfig"; sourceTree = "<group>"; };
-		518009AE3E4EFE20496C61313185A855 /* Pods-JSPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		0EA2AD111573E713D5CBA6F053300E56 /* Pods-JSPlayer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JSPlayer-resources.sh"; sourceTree = "<group>"; };
+		4DEA54E769617F889EC25B2972793CBD /* Pods-JSPlayer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSPlayer-acknowledgements.plist"; sourceTree = "<group>"; };
+		6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		776D04C3D47EBFC2C0FB0BF0EC7F6B5D /* Pods-JSPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JSPlayer-dummy.m"; sourceTree = "<group>"; };
 		7C733ACBBF37FFB0DD09EC8763CE4472 /* libPods-JSPlayer.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-JSPlayer.a"; path = "libPods-JSPlayer.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		7CDDBA742DB8CD21422B1F62396E39FA /* KSYMediaPlayer_iOS.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = KSYMediaPlayer_iOS.xcconfig; sourceTree = "<group>"; };
+		7ECF9A19188061C147F10852937D8EBB /* Pods-JSPlayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSPlayer.release.xcconfig"; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		992F783DA3AAB061B628B20D36DF1B33 /* Pods-JSPlayer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-JSPlayer-acknowledgements.plist"; sourceTree = "<group>"; };
-		C5D610F4B9086DAC7060915BFF9DF120 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KSYMediaPlayer.framework; path = framework/vod/KSYMediaPlayer.framework; sourceTree = "<group>"; };
-		E2E5AD81EDDA55B20F2B9EB5DF5C2349 /* Pods-JSPlayer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JSPlayer-acknowledgements.markdown"; sourceTree = "<group>"; };
-		E3E8342F5E6C2F1BDBC200AD410EEBC9 /* Pods-JSPlayer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-JSPlayer-dummy.m"; sourceTree = "<group>"; };
+		AD14BDAD7A1AD531EC1977DB9B5043B4 /* Pods-JSPlayer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-JSPlayer-frameworks.sh"; sourceTree = "<group>"; };
+		AF31722034429886B9B08A3C1B03259A /* Pods-JSPlayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-JSPlayer.debug.xcconfig"; sourceTree = "<group>"; };
+		C97204EF5C45A81C6572F1125285DDEB /* Pods-JSPlayer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-JSPlayer-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E31E11A1E0F517FB9D0CE8BB9AD88152 /* KSYMediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KSYMediaPlayer.framework; path = framework/vod/KSYMediaPlayer.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F42F1FEFA44DF0497457E997EEDC6F29 /* Frameworks */ = {
+		3CF93A4973FF8A5C4F5FFD8618047A90 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B21BBB13059F69079ACA9738FBDC2A14 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		004811A6203391B547CF85EDADC56CDB /* KSYMediaPlayer_vod */ = {
-			isa = PBXGroup;
-			children = (
-				0152064F47F2F349B50F48F9AA60154D /* Frameworks */,
-			);
-			name = KSYMediaPlayer_vod;
-			sourceTree = "<group>";
-		};
-		0152064F47F2F349B50F48F9AA60154D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				C5D610F4B9086DAC7060915BFF9DF120 /* KSYMediaPlayer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		13C4A9C621D59EC2FE4760762DFD6092 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				7CDDBA742DB8CD21422B1F62396E39FA /* KSYMediaPlayer_iOS.xcconfig */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/KSYMediaPlayer_iOS";
-			sourceTree = "<group>";
-		};
 		190BAC5FF4E7140B83D9BEC9017B09B7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,22 +45,32 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		22A1F7E9A5D2550A4AD3D518B64FBDF1 /* Pods */ = {
+		2C6FE5D8477502AF4EA7146FBF300042 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				E5F27AADEF0DEE4E2612408E280A52CE /* KSYMediaPlayer_iOS */,
+				8765B5A880EA4FA2324C1155C76CDED3 /* KSYMediaPlayer_iOS */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		4F7D8B7FACFCADAF606A714A057260F7 /* Pods-JSPlayer */ = {
+		40AF7A68B34C1ADDC231633895E7C13F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E2E5AD81EDDA55B20F2B9EB5DF5C2349 /* Pods-JSPlayer-acknowledgements.markdown */,
-				992F783DA3AAB061B628B20D36DF1B33 /* Pods-JSPlayer-acknowledgements.plist */,
-				E3E8342F5E6C2F1BDBC200AD410EEBC9 /* Pods-JSPlayer-dummy.m */,
-				518009AE3E4EFE20496C61313185A855 /* Pods-JSPlayer.debug.xcconfig */,
-				26AD4CC9B9F90683894B465A2E60AF29 /* Pods-JSPlayer.release.xcconfig */,
+				E31E11A1E0F517FB9D0CE8BB9AD88152 /* KSYMediaPlayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5964367730B009A13247B68BD7347E0C /* Pods-JSPlayer */ = {
+			isa = PBXGroup;
+			children = (
+				C97204EF5C45A81C6572F1125285DDEB /* Pods-JSPlayer-acknowledgements.markdown */,
+				4DEA54E769617F889EC25B2972793CBD /* Pods-JSPlayer-acknowledgements.plist */,
+				776D04C3D47EBFC2C0FB0BF0EC7F6B5D /* Pods-JSPlayer-dummy.m */,
+				AD14BDAD7A1AD531EC1977DB9B5043B4 /* Pods-JSPlayer-frameworks.sh */,
+				0EA2AD111573E713D5CBA6F053300E56 /* Pods-JSPlayer-resources.sh */,
+				AF31722034429886B9B08A3C1B03259A /* Pods-JSPlayer.debug.xcconfig */,
+				7ECF9A19188061C147F10852937D8EBB /* Pods-JSPlayer.release.xcconfig */,
 			);
 			name = "Pods-JSPlayer";
 			path = "Target Support Files/Pods-JSPlayer";
@@ -120,56 +80,67 @@
 			isa = PBXGroup;
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
-				22A1F7E9A5D2550A4AD3D518B64FBDF1 /* Pods */,
+				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
+				2C6FE5D8477502AF4EA7146FBF300042 /* Pods */,
 				190BAC5FF4E7140B83D9BEC9017B09B7 /* Products */,
-				84F2D1F61D20629B6C15773C1C923AB8 /* Targets Support Files */,
+				99BFC948326D1F8FBBA9F7C6E20F63A4 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		84F2D1F61D20629B6C15773C1C923AB8 /* Targets Support Files */ = {
+		8765B5A880EA4FA2324C1155C76CDED3 /* KSYMediaPlayer_iOS */ = {
 			isa = PBXGroup;
 			children = (
-				4F7D8B7FACFCADAF606A714A057260F7 /* Pods-JSPlayer */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		E5F27AADEF0DEE4E2612408E280A52CE /* KSYMediaPlayer_iOS */ = {
-			isa = PBXGroup;
-			children = (
-				004811A6203391B547CF85EDADC56CDB /* KSYMediaPlayer_vod */,
-				13C4A9C621D59EC2FE4760762DFD6092 /* Support Files */,
+				8B8B99A9451EA0B7FC6683C256ACCE31 /* KSYMediaPlayer_vod */,
 			);
 			name = KSYMediaPlayer_iOS;
 			path = KSYMediaPlayer_iOS;
 			sourceTree = "<group>";
 		};
+		8B8B99A9451EA0B7FC6683C256ACCE31 /* KSYMediaPlayer_vod */ = {
+			isa = PBXGroup;
+			children = (
+				40AF7A68B34C1ADDC231633895E7C13F /* Frameworks */,
+			);
+			name = KSYMediaPlayer_vod;
+			sourceTree = "<group>";
+		};
+		99BFC948326D1F8FBBA9F7C6E20F63A4 /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5964367730B009A13247B68BD7347E0C /* Pods-JSPlayer */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D35AF013A5F0BAD4F32504907A52519E /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D35AF013A5F0BAD4F32504907A52519E /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				6604A7D69453B4569E4E4827FB9155A9 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		215874D03B8656A4E554E490BBC47E05 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
-		B0362FFCF0E53C8CFA3B03D129A00BDC /* Pods-JSPlayer */ = {
+		E42A80C09EBD6685194877271E8FF6AA /* Pods-JSPlayer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 60BF104CDE7C7B8447A50CCE78AFE5C8 /* Build configuration list for PBXNativeTarget "Pods-JSPlayer" */;
+			buildConfigurationList = D8C42F1A52B9C9A5A68E6C364A3CD264 /* Build configuration list for PBXNativeTarget "Pods-JSPlayer" */;
 			buildPhases = (
-				215874D03B8656A4E554E490BBC47E05 /* Headers */,
-				92F9849F8275237C07466E416254CF7D /* Sources */,
-				F42F1FEFA44DF0497457E997EEDC6F29 /* Frameworks */,
+				21650434B03EDC2FD14DC19694E84BC9 /* Sources */,
+				3CF93A4973FF8A5C4F5FFD8618047A90 /* Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				1C6BC7053DB63FFBA51DC971A3152B13 /* PBXTargetDependency */,
 			);
 			name = "Pods-JSPlayer";
 			productName = "Pods-JSPlayer";
@@ -197,106 +168,24 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2A59063CD01BC2C12DD8B56B422F99C0 /* KSYMediaPlayer_iOS */,
-				B0362FFCF0E53C8CFA3B03D129A00BDC /* Pods-JSPlayer */,
+				E42A80C09EBD6685194877271E8FF6AA /* Pods-JSPlayer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		92F9849F8275237C07466E416254CF7D /* Sources */ = {
+		21650434B03EDC2FD14DC19694E84BC9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				656B010E34C7021D0328B1AD390F242C /* Pods-JSPlayer-dummy.m in Sources */,
+				8B35B37F9DE8EC61C0BE2D4CFB8CB659 /* Pods-JSPlayer-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		1C6BC7053DB63FFBA51DC971A3152B13 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = KSYMediaPlayer_iOS;
-			target = 2A59063CD01BC2C12DD8B56B422F99C0 /* KSYMediaPlayer_iOS */;
-			targetProxy = EE8D5E8330EEEE7994D5C0FAAFDF1D13 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		0819A0A33B269D1D0515C24059E818A4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CDDBA742DB8CD21422B1F62396E39FA /* KSYMediaPlayer_iOS.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		96434B6C8FF320C976A10DAD7174A4BB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_ALLOWED = NO;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				STRIP_INSTALLED_PRODUCT = NO;
-				SYMROOT = "${SRCROOT}/../build";
-			};
-			name = Release;
-		};
-		D11C82AF2204B41B80412B8DC9C1D652 /* Debug */ = {
+		1EE19F5DD95931924296F637BF18BD8F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -350,8 +239,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
+				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
@@ -360,9 +248,9 @@
 			};
 			name = Debug;
 		};
-		DB15598485C838673ABDFD587BF3D97C /* Release */ = {
+		9913B6BE9CB7C6B4D66BFFF5525B2B5A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 26AD4CC9B9F90683894B465A2E60AF29 /* Pods-JSPlayer.release.xcconfig */;
+			baseConfigurationReference = 7ECF9A19188061C147F10852937D8EBB /* Pods-JSPlayer.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -382,9 +270,67 @@
 			};
 			name = Release;
 		};
-		ED01EDFFFF39782BE9A5949EB331FED9 /* Debug */ = {
+		F4568DEE257655D290C2B9CEAB37C934 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 518009AE3E4EFE20496C61313185A855 /* Pods-JSPlayer.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		F7FB989F3142D89C6DB816E15A4E5505 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = AF31722034429886B9B08A3C1B03259A /* Pods-JSPlayer.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -403,46 +349,23 @@
 			};
 			name = Debug;
 		};
-		ED7C9DE92CDF405184C6C00F0645748A /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7CDDBA742DB8CD21422B1F62396E39FA /* KSYMediaPlayer_iOS.xcconfig */;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				SDKROOT = iphoneos;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
 		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D11C82AF2204B41B80412B8DC9C1D652 /* Debug */,
-				96434B6C8FF320C976A10DAD7174A4BB /* Release */,
+				1EE19F5DD95931924296F637BF18BD8F /* Debug */,
+				F4568DEE257655D290C2B9CEAB37C934 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		60BF104CDE7C7B8447A50CCE78AFE5C8 /* Build configuration list for PBXNativeTarget "Pods-JSPlayer" */ = {
+		D8C42F1A52B9C9A5A68E6C364A3CD264 /* Build configuration list for PBXNativeTarget "Pods-JSPlayer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				ED01EDFFFF39782BE9A5949EB331FED9 /* Debug */,
-				DB15598485C838673ABDFD587BF3D97C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B27F6CB4D3879E186C9E2687DE577C0D /* Build configuration list for PBXAggregateTarget "KSYMediaPlayer_iOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				0819A0A33B269D1D0515C24059E818A4 /* Debug */,
-				ED7C9DE92CDF405184C6C00F0645748A /* Release */,
+				F7FB989F3142D89C6DB816E15A4E5505 /* Debug */,
+				9913B6BE9CB7C6B4D66BFFF5525B2B5A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
