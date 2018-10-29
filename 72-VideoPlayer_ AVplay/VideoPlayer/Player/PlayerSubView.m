@@ -432,26 +432,28 @@
     if (!_reloadBtn) {
         _reloadBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         //_reloadBtn.frame = CGRectMake(0, 0, 175, 150);//140
-        _reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
-        
+        //_reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
+        //_reloadBtn.frame = CGRectMake(0, 0, 50, 50);//140
+
         _reloadBtn.center = self.view.center;
-        [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
-        [_reloadBtn setBackgroundImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
+        [_reloadBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
+        [_reloadBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
         
-        [_reloadBtn setTitle:@"网络异常,点击重新加载" forState:UIControlStateNormal];
+        //_reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+        //[_reloadBtn setTitle:@"页面加载失败,请稍后再试\n点击重新加载\t" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
         [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         //[_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
-        _reloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
-        [_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(140, -50, 0, -50)];
+        //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];
+        //_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(150, -140, 0, -30)];
         
-        _reloadBtn.titleLabel.numberOfLines = 0;
+        //_reloadBtn.titleLabel.numberOfLines = 0;
         
-        _reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
-        CGRect rect = _reloadBtn.frame;
-        rect.origin.y -= 100;
-        _reloadBtn.frame = rect;
+        //_reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
+        //CGRect rect = _reloadBtn.frame;
+        //rect.origin.y -= 100;
+        //_reloadBtn.frame = rect;
         _reloadBtn.hidden = YES;
     }
     return _reloadBtn;
@@ -532,8 +534,8 @@
                                                      [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0],
                                                        [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeCenterY relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeCenterY multiplier:1.0 constant:0],
                                                
-                                                     [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:101.7],
-                                                    [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:118.8]
+                                                     [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:160],
+                                                    [NSLayoutConstraint constraintWithItem:self.reloadBtn attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:200]
                                                      ]];
     
     [self.navigationController.view addSubview:self.progress];

@@ -359,8 +359,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
         self.safariButton.frame = CGRectMake(44, 0, 44, 44);
-        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 22);
-        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 22);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 33);
+        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 33);
     }else{
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
         self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 22);
@@ -1420,8 +1420,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         _rePlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rePlayButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_replay"] forState:UIControlStateNormal];
         [_rePlayButton setTitle:@"重新播放" forState:UIControlStateNormal];
-        [_rePlayButton setTitleEdgeInsets:UIEdgeInsetsMake(60, -130, 0, -80)];
-        _rePlayButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [_rePlayButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _rePlayButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
         _rePlayButton.tag = 0;
         _rePlayButton.showsTouchWhenHighlighted = YES;
         [_rePlayButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
@@ -1433,8 +1433,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         _safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_safariButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_safari"] forState:UIControlStateNormal];
         [_safariButton setTitle:@"极速播放" forState:UIControlStateNormal];
-        [_safariButton setTitleEdgeInsets:UIEdgeInsetsMake(60, -120, 0, -80)];
-        _safariButton.titleLabel.font = [UIFont systemFontOfSize:14.0];
+        [_safariButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _safariButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
 
         _safariButton.tag = 1;
         _safariButton.showsTouchWhenHighlighted = YES;
