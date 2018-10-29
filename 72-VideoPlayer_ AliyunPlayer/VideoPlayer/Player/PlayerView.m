@@ -347,11 +347,11 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
         self.safariButton.frame = CGRectMake(44, 0, 44, 44);
-        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 22);
-        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 22);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 33);
+        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 33);
     }else{
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
-        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 22);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 33);
     }
 
     
@@ -1152,7 +1152,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSString *errorMsg = [self error:[NSString stringWithFormat:@"%@",[noti.userInfo valueForKey:@"error"]]];
     
     if (self.allowSafariPlay) {
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(推荐使用万能极速播放)",errorMsg] forState:UIControlStateNormal];
     }else{
         [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或切换视频源)",errorMsg] forState:UIControlStateNormal];
     }
@@ -1304,6 +1304,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if(!_rePlayButton){
         _rePlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rePlayButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_replay"] forState:UIControlStateNormal];
+        [_rePlayButton setTitle:@"重新播放" forState:UIControlStateNormal];
+        [_rePlayButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _rePlayButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        
         _rePlayButton.tag = 0;
         _rePlayButton.showsTouchWhenHighlighted = YES;
         [_rePlayButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
@@ -1314,6 +1318,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     if(!_safariButton){
         _safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_safariButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_safari"] forState:UIControlStateNormal];
+        [_safariButton setTitle:@"极速播放" forState:UIControlStateNormal];
+        [_safariButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _safariButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
         _safariButton.tag = 1;
         _safariButton.showsTouchWhenHighlighted = YES;
         [_safariButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
