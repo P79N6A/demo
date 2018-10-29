@@ -435,14 +435,14 @@
         //_reloadBtn.frame = CGRectMake(0, 0, 118.8, 101.7);//140
         //_reloadBtn.frame = CGRectMake(0, 0, 50, 50);//140
 
-        _reloadBtn.center = self.view.center;
+        //_reloadBtn.center = self.view.center;
         [_reloadBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateNormal];
         [_reloadBtn setImage:[UIImage imageFromBundleWithName:@"fullplayer_web_error"] forState:UIControlStateHighlighted];
         
         //_reloadBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
         //[_reloadBtn setTitle:@"页面加载失败,请稍后再试\n点击重新加载\t" forState:UIControlStateNormal];
         [_reloadBtn addTarget:self action:@selector(wkWebViewReload) forControlEvents:(UIControlEventTouchUpInside)];
-        [_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
+        //[_reloadBtn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:18];
         //[_reloadBtn setTitleEdgeInsets:UIEdgeInsetsMake(200, -50, 0, -50)];
         //_reloadBtn.titleLabel.font = [UIFont systemFontOfSize:13];

@@ -366,11 +366,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
         self.safariButton.frame = CGRectMake(44, 0, 44, 44);
-        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 22);
-        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 22);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.333, self.errorBtn.bounds.size.height - 33);
+        self.safariButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.666, self.errorBtn.bounds.size.height - 33);
     }else{
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
-        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 22);
+        self.rePlayButton.center = CGPointMake(self.errorBtn.bounds.size.width *0.5, self.errorBtn.bounds.size.height - 33);
     }
     
     self.topView.frame = CGRectMake(0, 0, self.bounds.size.width, 84);
@@ -444,7 +444,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 #pragma mark  开始播放
 - (void)playWithModel:(id<SPPlayerModel>)model{
-    
+    self.model = model;
     //设置屏幕常亮
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
@@ -457,7 +457,6 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
     self.titleLabel.text = model.title;
     
-    self.model = model;
     
     NSURL *url = [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"];
     if ([model.url hasPrefix:@"http://"] || [model.url hasPrefix:@"https://"]) {
@@ -473,9 +472,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     }
     
     
-//    [self.mediaPlayer reset:NO];
-//    [self.mediaPlayer setUrl:url];
-//    [self.mediaPlayer prepareToPlay];
+//    [_mediaPlayer reset:NO];
+//    [_mediaPlayer setUrl:url];
+//    [_mediaPlayer prepareToPlay];
     [self.mediaPlayer reload:url flush:YES mode:MPMovieReloadMode_Accurate];
     //开始播放
     //[self play];
@@ -485,20 +484,20 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (void)play
 {
-    [self.mediaPlayer play];
+    [_mediaPlayer play];
 }
 
 - (void)stop{
-    [self.mediaPlayer stop];
+    [_mediaPlayer stop];
 }
 
 - (void)pause{
-    [self.mediaPlayer pause];
+    [_mediaPlayer pause];
 }
 
 - (BOOL)isPlaying
 {
-    return self.mediaPlayer.isPlaying;
+    return _mediaPlayer.isPlaying;
 }
 
 //FIXME:  -  隐藏状态栏
@@ -604,7 +603,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     // 每次滑动需要叠加时间
     self.sumTime += value / 200 ;//* 1000;
     // 需要限定sumTime的范围
-    NSTimeInterval totalMovieDuration           = self.mediaPlayer.duration;
+    NSTimeInterval totalMovieDuration           = _mediaPlayer.duration;
     if (self.sumTime > totalMovieDuration) { self.sumTime = totalMovieDuration;}
     if (self.sumTime < 0) { self.sumTime = 0; }
     
@@ -613,7 +612,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.fastView.alpha = 1.0;
     
     
-    NSTimeInterval total = self.mediaPlayer.duration;
+    NSTimeInterval total = _mediaPlayer.duration;
     NSTimeInterval current = self.sumTime;
     
     total = total;///1000.0;
@@ -667,7 +666,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
                 // 取消隐藏
                 self.panDirection = PanDirectionHorizontalMoved;
                 // 给sumTime初值 (点播)
-                if(!self.videoButtomView.isHidden) self.sumTime = self.mediaPlayer.currentPlaybackTime;
+                if(!self.videoButtomView.isHidden) self.sumTime = _mediaPlayer.currentPlaybackTime;
             }
             else if (x < y){ // 垂直移动
                 self.panDirection = PanDirectionVerticalMoved;
@@ -704,7 +703,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
                 case PanDirectionHorizontalMoved:{
                     
                     if(!self.videoButtomView.isHidden){
-                        [self.mediaPlayer seekTo:self.sumTime accurate:YES];
+                        [_mediaPlayer seekTo:self.sumTime accurate:YES];
 
                         // 把sumTime滞空，不然会越加越多
                         self.sumTime = 0;
@@ -789,7 +788,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     static int curModeIdx = 0;
     
     curModeIdx = (curModeIdx + 1) % (int)(sizeof(modes)/sizeof(modes[0]));
-    [self.mediaPlayer setScalingMode:modes[curModeIdx]];//
+    [_mediaPlayer setScalingMode:modes[curModeIdx]];//
     // Determines how the content scales to fit the view. Defaults to MPMovieScalingModeAspectFit.
 
 
@@ -1258,9 +1257,9 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     if(self.progressDragging) return;
  
-    NSTimeInterval total = self.mediaPlayer.duration;
-    NSTimeInterval current = self.mediaPlayer.currentPlaybackTime;
-    NSTimeInterval cache = self.mediaPlayer.playableDuration;
+    NSTimeInterval total = _mediaPlayer.duration;
+    NSTimeInterval current = _mediaPlayer.currentPlaybackTime;
+    NSTimeInterval cache = _mediaPlayer.playableDuration;
     
     int progress = (cache - current) * 100;
     if (progress < 100 && (progress > 0)) {
@@ -1369,8 +1368,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 #pragma mark  - 获取到视频的相关信息
 - (void)OnVideoPrepared:(NSNotification *)noti{
-    NSTimeInterval total = self.mediaPlayer.duration;
-    NSTimeInterval current = self.mediaPlayer.currentPlaybackTime;
+    NSTimeInterval total = _mediaPlayer.duration;
+    NSTimeInterval current = _mediaPlayer.currentPlaybackTime;
 
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
@@ -1424,7 +1423,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
     
     if (self.allowSafariPlay) {
-        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或浏览器观看)",errorMsg] forState:UIControlStateNormal];
+        [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(推荐使用万能极速播放)",errorMsg] forState:UIControlStateNormal];
     }else{
         [self.errorBtn setTitle:[NSString stringWithFormat:@"%@\n(重新播放或切换视频源)",errorMsg] forState:UIControlStateNormal];
     }
@@ -1552,6 +1551,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if(!_rePlayButton){
         _rePlayButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_rePlayButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_replay"] forState:UIControlStateNormal];
+        [_rePlayButton setTitle:@"重新播放" forState:UIControlStateNormal];
+        [_rePlayButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _rePlayButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+
         _rePlayButton.tag = 0;
         _rePlayButton.showsTouchWhenHighlighted = YES;
         [_rePlayButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
@@ -1562,6 +1565,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
     if(!_safariButton){
         _safariButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_safariButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_safari"] forState:UIControlStateNormal];
+        [_safariButton setTitle:@"极速播放" forState:UIControlStateNormal];
+        [_safariButton setTitleEdgeInsets:UIEdgeInsetsMake(50, -125, 0, -80)];
+        _safariButton.titleLabel.font = [UIFont systemFontOfSize:12.0];
+        
         _safariButton.tag = 1;
         _safariButton.showsTouchWhenHighlighted = YES;
         [_safariButton addTarget:self action:@selector(rePlay:) forControlEvents:UIControlEventTouchUpInside];
@@ -1658,7 +1665,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 //FIXME:  -  事件监听
 - (void)videoDurationChange:(SPVideoSlider *)sender{
     self.progressDragging = NO;
-    [self.mediaPlayer seekTo:sender.value * self.mediaPlayer.duration accurate:YES];
+    [_mediaPlayer seekTo:sender.value * _mediaPlayer.duration accurate:YES];
 }
 - (void)progressDraggBegin:(SPVideoSlider *)sender{
     self.progressDragging = YES;
@@ -1673,7 +1680,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     CGFloat value = s.minimumValue + delta;
     [s setValue:value animated:YES];
 
-    [self.mediaPlayer seekTo:s.value * self.mediaPlayer.duration accurate:YES];
+    [_mediaPlayer seekTo:s.value * _mediaPlayer.duration accurate:YES];
 }
 
 - (void)playOrPause:(UIButton *)sender{
