@@ -409,7 +409,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 }
 
 - (void)dealloc{
-    [_mediaPlayer stop];
+    [self stop];
+    //[_mediaPlayer stop];
     //取消设置屏幕常亮
     //[UIApplication sharedApplication].idleTimerDisabled = NO;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
@@ -489,6 +490,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
 
 - (void)stop{
     [_mediaPlayer stop];
+    _mediaPlayer = nil;
 }
 
 - (void)pause{

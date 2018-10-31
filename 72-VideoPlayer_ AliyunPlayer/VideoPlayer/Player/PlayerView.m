@@ -398,6 +398,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 - (void)dealloc{
     [_mediaPlayer destroy];
+    _mediaPlayer = nil;
     [_speedMonitor stopNetworkSpeedMonitor];
     //取消设置屏幕常亮
     //[UIApplication sharedApplication].idleTimerDisabled = NO;
@@ -471,25 +472,25 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s----URL-----%@", __func__,url.absoluteString);
     NSLog(@"++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 
-    //[self.mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
+    //[_mediaPlayer setPlayingCache:YES saveDir:[NSSearchPathForDirectoriesInDomains(NSCachesDirectory, NSUserDomainMask, YES)firstObject] maxSize:LLONG_MAX maxDuration:INT_MAX];
 }
 
 - (void)play
 {
-    [self.mediaPlayer play];
+    [_mediaPlayer play];
 }
 
 - (void)stop{
-    [self.mediaPlayer stop];
+    [_mediaPlayer stop];
 }
 
 - (void)pause{
-    [self.mediaPlayer pause];
+    [_mediaPlayer pause];
 }
 
 - (BOOL)isPlaying
 {
-    return self.mediaPlayer.isPlaying;
+    return _mediaPlayer.isPlaying;
 }
 
 //FIXME:  -  隐藏状态栏
@@ -596,7 +597,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     // 每次滑动需要叠加时间
     self.sumTime += value / 200 * 1000;
     // 需要限定sumTime的范围
-    NSTimeInterval totalMovieDuration           = self.mediaPlayer.duration;
+    NSTimeInterval totalMovieDuration           = _mediaPlayer.duration;
     if (self.sumTime > totalMovieDuration) { self.sumTime = totalMovieDuration;}
     if (self.sumTime < 0) { self.sumTime = 0; }
     
@@ -605,7 +606,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.fastView.alpha = 1.0;
     
     
-    NSTimeInterval total = self.mediaPlayer.duration;
+    NSTimeInterval total = _mediaPlayer.duration;
     NSTimeInterval current = self.sumTime;
     
     total = total/1000.0;
@@ -652,7 +653,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 // 取消隐藏
                 self.panDirection = PanDirectionHorizontalMoved;
                 // 给sumTime初值 (点播)
-                if(!self.videoButtomView.isHidden) self.sumTime = self.mediaPlayer.currentPosition;
+                if(!self.videoButtomView.isHidden) self.sumTime = _mediaPlayer.currentPosition;
             }
             else if (x < y){ // 垂直移动
                 self.panDirection = PanDirectionVerticalMoved;
@@ -689,7 +690,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 case PanDirectionHorizontalMoved:{
                     
                     if(!self.videoButtomView.isHidden){
-                        [self.mediaPlayer seekTo:self.sumTime];
+                        [_mediaPlayer seekTo:self.sumTime];
                         // 把sumTime滞空，不然会越加越多
                         self.sumTime = 0;
                         [UIView animateWithDuration:0.50 animations:^{
@@ -775,7 +776,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     static int curModeIdx = 0;
     
     curModeIdx = (curModeIdx + 1) % (int)(sizeof(modes)/sizeof(modes[0]));
-    [self.mediaPlayer setScalingMode:modes[curModeIdx]];//
+    [_mediaPlayer setScalingMode:modes[curModeIdx]];//
 }
 //FIXME:  -  视频触摸的回调
 - (void)handleTapGesture{
@@ -1013,7 +1014,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
         //创建播放器
         _mediaPlayer = [[AliVcMediaPlayer alloc] init];
         //创建播放器视图，其中contentView为UIView实例，自己根据业务需求创建一个视图即可
-        /*self.mediaPlayer:NSObject类型，需要UIView来展示播放界面。
+        /*_mediaPlayer:NSObject类型，需要UIView来展示播放界面。
          self.contentView：承载mediaPlayer图像的UIView类。
          self.contentView = [[UIView alloc] init];
          [self.view addSubview:self.contentView];
@@ -1039,39 +1040,39 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     //一、播放器初始化视频文件完成通知，调用prepareToPlay函数，会发送该通知，代表视频文件已经准备完成，此时可以在这个通知中获取到视频的相关信息，如视频分辨率，视频时长等
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnVideoPrepared:)
-                                                 name:AliVcMediaPlayerLoadDidPreparedNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerLoadDidPreparedNotification object:_mediaPlayer];
     //二、播放完成通知。视频正常播放完成时触发。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnVideoFinish:)
-                                                 name:AliVcMediaPlayerPlaybackDidFinishNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerPlaybackDidFinishNotification object:_mediaPlayer];
     //三、播放器播放失败发送该通知，并在该通知中可以获取到错误码。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnVideoError:)
-                                                 name:AliVcMediaPlayerPlaybackErrorNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerPlaybackErrorNotification object:_mediaPlayer];
     //四、播放器Seek完成后发送该通知。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnSeekDone:)
-                                                 name:AliVcMediaPlayerSeekingDidFinishNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerSeekingDidFinishNotification object:_mediaPlayer];
     //五、播放器开始缓冲视频时发送该通知，当播放网络文件时，网络状态不佳或者调用seekTo时，此通知告诉用户网络下载数据已经开始缓冲。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnStartCache:)
-                                                 name:AliVcMediaPlayerStartCachingNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerStartCachingNotification object:_mediaPlayer];
     //六、播放器结束缓冲视频时发送该通知，当数据已经缓冲完，告诉用户已经缓冲结束，来更新相关UI显示。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(OnEndCache:)
-                                                 name:AliVcMediaPlayerEndCachingNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerEndCachingNotification object:_mediaPlayer];
     //七、播放器主动调用Stop功能时触发。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onVideoStop:)
-                                                 name:AliVcMediaPlayerPlaybackStopNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerPlaybackStopNotification object:_mediaPlayer];
     //八、播放器状态首帧显示后发送的通知。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onVideoFirstFrame:)
-                                                 name:AliVcMediaPlayerFirstFrameNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerFirstFrameNotification object:_mediaPlayer];
     //九、播放器开启循环播放功能，开始循环播放时发送的通知。
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onCircleStart:)
-                                                 name:AliVcMediaPlayerCircleStartNotification object:self.mediaPlayer];
+                                                 name:AliVcMediaPlayerCircleStartNotification object:_mediaPlayer];
     
 }
 
@@ -1105,10 +1106,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     if(self.progressDragging) return;
     
-    NSTimeInterval total = self.mediaPlayer.duration;
-    NSTimeInterval current = self.mediaPlayer.currentPosition;
+    NSTimeInterval total = _mediaPlayer.duration;
+    NSTimeInterval current = _mediaPlayer.currentPosition;
     
-    self.progressView.progress = self.mediaPlayer.bufferingPostion / total;
+    self.progressView.progress = _mediaPlayer.bufferingPostion / total;
     self.videoSlider.value = current / total;
     
     total = total/1000;
@@ -1124,10 +1125,10 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 #pragma mark  - 获取到视频的相关信息
 - (void)OnVideoPrepared:(NSNotification *)noti{
-    NSLog(@"%s--获取到视频的相关信息--时长：%f秒", __func__,self.mediaPlayer.duration/1000);
+    NSLog(@"%s--获取到视频的相关信息--时长：%f秒", __func__,_mediaPlayer.duration/1000);
     //!(_playerLoading)? : _playerLoading();
     
-    NSTimeInterval total = self.mediaPlayer.duration/1000;
+    NSTimeInterval total = _mediaPlayer.duration/1000;
     BOOL islive = !(total > 0);
     self.videoButtomView.hidden = islive;
 //    if(islive){
@@ -1190,7 +1191,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = YES;
     
-    if(self.mediaPlayer.duration) [self timer];
+    if(_mediaPlayer.duration) [self timer];
 }
 
 #pragma mark  - 播放器主动调用Stop功能
@@ -1202,7 +1203,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)onVideoFirstFrame:(NSNotification *)noti{
     NSLog(@"%s--播放器状态首帧显示", __func__);
     //!(_playerCompletion)? : _playerCompletion();
-    if(self.mediaPlayer.duration) {[self timer];self.errorBtn.hidden = YES;}
+    if(_mediaPlayer.duration) {[self timer];self.errorBtn.hidden = YES;}
 }
 
 #pragma mark  - 播放器开启循环播放
@@ -1411,7 +1412,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)videoDurationChange:(SPVideoSlider *)sender{
     NSLog(@"%s", __func__);
     self.progressDragging = NO;
-    [self.mediaPlayer seekTo:sender.value * self.mediaPlayer.duration];
+    [_mediaPlayer seekTo:sender.value * _mediaPlayer.duration];
 }
 - (void)progressDraggBegin:(SPVideoSlider *)sender{
     self.progressDragging = YES;
@@ -1425,7 +1426,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     CGFloat delta = percentage * (s.maximumValue - s.minimumValue);
     CGFloat value = s.minimumValue + delta;
     [s setValue:value animated:YES];
-    [self.mediaPlayer seekTo:s.value * self.mediaPlayer.duration];
+    [_mediaPlayer seekTo:s.value * _mediaPlayer.duration];
 }
 
 - (void)playOrPause:(UIButton *)sender{
