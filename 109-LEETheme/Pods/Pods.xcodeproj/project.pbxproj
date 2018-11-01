@@ -1,0 +1,507 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22A0FF44AF3CB6274A0C7107F5D6DB59 /* LEETheme-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 122757DAD2FB8D62C01DC96C3F8FE29D /* LEETheme-dummy.m */; };
+		345AE22EC83CF0B8AEDEDAA75293FB1D /* LEETheme.h in Headers */ = {isa = PBXBuildFile; fileRef = 64656F9621349D9F7EF3A921A196CCB6 /* LEETheme.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		4619AAAA82FD7CBF248EFE83734BD350 /* LEEThemeHelper.h in Headers */ = {isa = PBXBuildFile; fileRef = 2CD20BFF1D55C7A96A9EA8840C2CC978 /* LEEThemeHelper.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		C45B22B4524A5276BC240141FDABD5BD /* LEETheme.m in Sources */ = {isa = PBXBuildFile; fileRef = 8493F6508121C43D0C5672CD341CA62E /* LEETheme.m */; };
+		E72ACE6C89914B28D1FCADEAE104BC82 /* Pods-LEETheme-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE177030E1EB8A87C2AAA17E44B7770 /* Pods-LEETheme-dummy.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		47F0E23121209AD45FD727C28FDE1494 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2CFEF67E68ABDCD93C93F737C0BC84B2;
+			remoteInfo = LEETheme;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		122757DAD2FB8D62C01DC96C3F8FE29D /* LEETheme-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "LEETheme-dummy.m"; sourceTree = "<group>"; };
+		1F74BBA6CF60E391025E2069F6D64AAA /* Pods-LEETheme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LEETheme.debug.xcconfig"; sourceTree = "<group>"; };
+		2847601950361E0A8A6F70395BE4B9A0 /* Pods-LEETheme-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-LEETheme-acknowledgements.plist"; sourceTree = "<group>"; };
+		2CD20BFF1D55C7A96A9EA8840C2CC978 /* LEEThemeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LEEThemeHelper.h; path = LEETheme/LEEThemeHelper.h; sourceTree = "<group>"; };
+		47776E986CC9D866FB18C0FA144762D0 /* libPods-LEETheme.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = "libPods-LEETheme.a"; path = "libPods-LEETheme.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C104BFB26604DF774DB27975895D216 /* Pods-LEETheme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-LEETheme.release.xcconfig"; sourceTree = "<group>"; };
+		62AE7796E0B2CA27D9F73128BA20D02E /* LEETheme.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = LEETheme.xcconfig; sourceTree = "<group>"; };
+		64656F9621349D9F7EF3A921A196CCB6 /* LEETheme.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = LEETheme.h; path = LEETheme/LEETheme.h; sourceTree = "<group>"; };
+		8493F6508121C43D0C5672CD341CA62E /* LEETheme.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = LEETheme.m; path = LEETheme/LEETheme.m; sourceTree = "<group>"; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9AE177030E1EB8A87C2AAA17E44B7770 /* Pods-LEETheme-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-LEETheme-dummy.m"; sourceTree = "<group>"; };
+		AE79F76EB15A136C3ACB269D2743EB05 /* libLEETheme.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; name = libLEETheme.a; path = libLEETheme.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E33DC9F9EB3D78A074A2CF2DCBF41269 /* LEETheme-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "LEETheme-prefix.pch"; sourceTree = "<group>"; };
+		F3A7DE245146EC77A2DB54EBCB17A52E /* Pods-LEETheme-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-LEETheme-acknowledgements.markdown"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3E1138EEC509D84A001FE92B05E117A6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BD7D30D881363012D2588AA5C6079376 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0D87742DE06814AEDD1ECDEFBF310B3C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2D26510FC1AC41C36C05E687BC2F66E7 /* LEETheme */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1BF71B179C29E348F0EA03F1EE4EEA33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AE79F76EB15A136C3ACB269D2743EB05 /* libLEETheme.a */,
+				47776E986CC9D866FB18C0FA144762D0 /* libPods-LEETheme.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		2D26510FC1AC41C36C05E687BC2F66E7 /* LEETheme */ = {
+			isa = PBXGroup;
+			children = (
+				64656F9621349D9F7EF3A921A196CCB6 /* LEETheme.h */,
+				8493F6508121C43D0C5672CD341CA62E /* LEETheme.m */,
+				2CD20BFF1D55C7A96A9EA8840C2CC978 /* LEEThemeHelper.h */,
+				755717B9954526592ED8DC0EFD119C8D /* Support Files */,
+			);
+			name = LEETheme;
+			path = LEETheme;
+			sourceTree = "<group>";
+		};
+		755717B9954526592ED8DC0EFD119C8D /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				62AE7796E0B2CA27D9F73128BA20D02E /* LEETheme.xcconfig */,
+				122757DAD2FB8D62C01DC96C3F8FE29D /* LEETheme-dummy.m */,
+				E33DC9F9EB3D78A074A2CF2DCBF41269 /* LEETheme-prefix.pch */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/LEETheme";
+			sourceTree = "<group>";
+		};
+		7DB346D0F39D3F0E887471402A8071AB = {
+			isa = PBXGroup;
+			children = (
+				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
+				0F8D2E47FE03D3B91B51069F7C273AF4 /* Frameworks */,
+				0D87742DE06814AEDD1ECDEFBF310B3C /* Pods */,
+				1BF71B179C29E348F0EA03F1EE4EEA33 /* Products */,
+				84C3A12E946F03E7F9A6E06A4F5F7A8E /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		84C3A12E946F03E7F9A6E06A4F5F7A8E /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				985E6E5B4C034D8C83FE7FAE4CFC8846 /* Pods-LEETheme */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		985E6E5B4C034D8C83FE7FAE4CFC8846 /* Pods-LEETheme */ = {
+			isa = PBXGroup;
+			children = (
+				F3A7DE245146EC77A2DB54EBCB17A52E /* Pods-LEETheme-acknowledgements.markdown */,
+				2847601950361E0A8A6F70395BE4B9A0 /* Pods-LEETheme-acknowledgements.plist */,
+				9AE177030E1EB8A87C2AAA17E44B7770 /* Pods-LEETheme-dummy.m */,
+				1F74BBA6CF60E391025E2069F6D64AAA /* Pods-LEETheme.debug.xcconfig */,
+				5C104BFB26604DF774DB27975895D216 /* Pods-LEETheme.release.xcconfig */,
+			);
+			name = "Pods-LEETheme";
+			path = "Target Support Files/Pods-LEETheme";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		28D330C9F96A781A842BEB68D54A7197 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				345AE22EC83CF0B8AEDEDAA75293FB1D /* LEETheme.h in Headers */,
+				4619AAAA82FD7CBF248EFE83734BD350 /* LEEThemeHelper.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F8E2214380A8DBA21F940495625BB669 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		2CFEF67E68ABDCD93C93F737C0BC84B2 /* LEETheme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C70D383EAB31D450DC158491011C1589 /* Build configuration list for PBXNativeTarget "LEETheme" */;
+			buildPhases = (
+				28D330C9F96A781A842BEB68D54A7197 /* Headers */,
+				94D0A07AF5257AB6A05E97C422CAA3DC /* Sources */,
+				3E1138EEC509D84A001FE92B05E117A6 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LEETheme;
+			productName = LEETheme;
+			productReference = AE79F76EB15A136C3ACB269D2743EB05 /* libLEETheme.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		351233F18B51BCA084E6F6B6EA3B5F4D /* Pods-LEETheme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88973B179FEB0C9E83E741FF6705F126 /* Build configuration list for PBXNativeTarget "Pods-LEETheme" */;
+			buildPhases = (
+				F8E2214380A8DBA21F940495625BB669 /* Headers */,
+				22673BA090608624BA29781CAC323F98 /* Sources */,
+				BD7D30D881363012D2588AA5C6079376 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4B15FEDA7B857216CF3B45ED8A086CC6 /* PBXTargetDependency */,
+			);
+			name = "Pods-LEETheme";
+			productName = "Pods-LEETheme";
+			productReference = 47776E986CC9D866FB18C0FA144762D0 /* libPods-LEETheme.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+			};
+			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
+			productRefGroup = 1BF71B179C29E348F0EA03F1EE4EEA33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				2CFEF67E68ABDCD93C93F737C0BC84B2 /* LEETheme */,
+				351233F18B51BCA084E6F6B6EA3B5F4D /* Pods-LEETheme */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22673BA090608624BA29781CAC323F98 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E72ACE6C89914B28D1FCADEAE104BC82 /* Pods-LEETheme-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94D0A07AF5257AB6A05E97C422CAA3DC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22A0FF44AF3CB6274A0C7107F5D6DB59 /* LEETheme-dummy.m in Sources */,
+				C45B22B4524A5276BC240141FDABD5BD /* LEETheme.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4B15FEDA7B857216CF3B45ED8A086CC6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = LEETheme;
+			target = 2CFEF67E68ABDCD93C93F737C0BC84B2 /* LEETheme */;
+			targetProxy = 47F0E23121209AD45FD727C28FDE1494 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		09F72435939CC3CC3DCDB5D52730A223 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1F74BBA6CF60E391025E2069F6D64AAA /* Pods-LEETheme.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		13D461788D8585166424FAE61CD433C5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62AE7796E0B2CA27D9F73128BA20D02E /* LEETheme.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/LEETheme/LEETheme-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = LEETheme;
+				PRODUCT_NAME = LEETheme;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		18EC162C4A76A1E534C6D459685FC3AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62AE7796E0B2CA27D9F73128BA20D02E /* LEETheme.xcconfig */;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				GCC_PREFIX_HEADER = "Target Support Files/LEETheme/LEETheme-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_MODULE_NAME = LEETheme;
+				PRODUCT_NAME = LEETheme;
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		219C65B0B1C231EBB6A13F811AD77131 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C104BFB26604DF774DB27975895D216 /* Pods-LEETheme.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MACH_O_TYPE = staticlib;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7FC7B8135FDED1560A80CA98EC6F7207 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		B4A339C5C9837FC180FD2D276CBB365A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGNING_ALLOWED = NO;
+				CODE_SIGNING_REQUIRED = NO;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B4A339C5C9837FC180FD2D276CBB365A /* Debug */,
+				7FC7B8135FDED1560A80CA98EC6F7207 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88973B179FEB0C9E83E741FF6705F126 /* Build configuration list for PBXNativeTarget "Pods-LEETheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09F72435939CC3CC3DCDB5D52730A223 /* Debug */,
+				219C65B0B1C231EBB6A13F811AD77131 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C70D383EAB31D450DC158491011C1589 /* Build configuration list for PBXNativeTarget "LEETheme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				18EC162C4A76A1E534C6D459685FC3AD /* Debug */,
+				13D461788D8585166424FAE61CD433C5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+}

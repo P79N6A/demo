@@ -1,0 +1,16 @@
+PODS:
+  - LEETheme (1.1.7)
+
+DEPENDENCIES:
+  - LEETheme
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - LEETheme
+
+SPEC CHECKSUMS:
+  LEETheme: e5dc623fe58ee9f2b973e9a7445267e3e972deb4
+
+PODFILE CHECKSUM: 9fd2e97ba9733d6c86afcaa545a2339b7c911c82
+
+COCOAPODS: 1.6.0.beta.1

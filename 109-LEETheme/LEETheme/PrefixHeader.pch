@@ -1,0 +1,18 @@
+//
+//  PrefixHeader.pch
+//  LEETheme
+//
+//  Created by Jay on 1/11/2018.
+//  Copyright © 2018 Jay. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+#define kDay @"Day"
+
+#define kNight @"Night"
+
+
+#endif /* PrefixHeader_pch */

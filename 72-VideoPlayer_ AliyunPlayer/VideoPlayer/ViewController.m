@@ -32,13 +32,18 @@
     
     PlayerView *player = [PlayerView playerView];
     player.allowSafariPlay = YES;
-    player.frame = CGRectMake(0, 88, self.view.bounds.size.width, self.view.bounds.size.width/16.0 * 9);
+    player.frame = CGRectMake(0, 50, self.view.bounds.size.width, self.view.bounds.size.width/16.0 * 9);
     [player playWithModel:model];
     [self.view addSubview:player];
     _player = player;
     
     self.speeder =  [[SpeedMonitor alloc] init];
     [self.speeder startNetworkSpeedMonitor];
+    
+    CGRect t = self.tabBarController.tabBar.frame;
+    CGRect n = self.navigationController.navigationBar.frame;
+    
+    NSLog(@"%s", __func__);
 }
 - (IBAction)living:(id)sender {
     VideoModel *model = [VideoModel new];
