@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 
+#import "ZZTabBarController.h"
+#import "ZZNavigationController.h"
+#import "ViewController.h"
+
 #import <LEETheme/LEETheme.h>
 
 @interface AppDelegate ()
@@ -40,6 +44,20 @@
 
         [LEETheme addThemeConfigWithJson:json Tag:kNight ResourcesPath:nil];
     }
+    
+    
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+
+    
+    ZZTabBarController *tab = [[ZZTabBarController alloc] init];
+    ZZNavigationController *nav = [[ZZNavigationController alloc] initWithRootViewController:[UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController];
+    tab.viewControllers = @[nav];
+    self.window.rootViewController = tab;
+
+    [self.window makeKeyAndVisible];
+
+    
     
     return YES;
 }

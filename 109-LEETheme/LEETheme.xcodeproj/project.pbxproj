@@ -15,6 +15,8 @@
 		692F8DF8218AA202004C8E6A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 692F8DF7218AA202004C8E6A /* main.m */; };
 		692F8E01218AA968004C8E6A /* tag_day_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 692F8DFF218AA968004C8E6A /* tag_day_json.json */; };
 		692F8E02218AA968004C8E6A /* tag_night_json.json in Resources */ = {isa = PBXBuildFile; fileRef = 692F8E00218AA968004C8E6A /* tag_night_json.json */; };
+		69F2EF35218AFEAF00C9E449 /* ZZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F2EF34218AFEAF00C9E449 /* ZZTabBarController.m */; };
+		69F2EF38218AFEDB00C9E449 /* ZZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69F2EF37218AFEDB00C9E449 /* ZZNavigationController.m */; };
 		B19FBBBAEAA04F1517DBB0E2 /* libPods-LEETheme.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F51DEA4868931D4D1C2492B /* libPods-LEETheme.a */; };
 /* End PBXBuildFile section */
 
@@ -34,6 +36,10 @@
 		692F8DFE218AA3FD004C8E6A /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		692F8DFF218AA968004C8E6A /* tag_day_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_day_json.json; sourceTree = "<group>"; };
 		692F8E00218AA968004C8E6A /* tag_night_json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tag_night_json.json; sourceTree = "<group>"; };
+		69F2EF33218AFEAF00C9E449 /* ZZTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZTabBarController.h; sourceTree = "<group>"; };
+		69F2EF34218AFEAF00C9E449 /* ZZTabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZTabBarController.m; sourceTree = "<group>"; };
+		69F2EF36218AFEDB00C9E449 /* ZZNavigationController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZZNavigationController.h; sourceTree = "<group>"; };
+		69F2EF37218AFEDB00C9E449 /* ZZNavigationController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZZNavigationController.m; sourceTree = "<group>"; };
 		8F51DEA4868931D4D1C2492B /* libPods-LEETheme.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LEETheme.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +105,10 @@
 				692F8DF6218AA202004C8E6A /* Info.plist */,
 				692F8DF7218AA202004C8E6A /* main.m */,
 				692F8DFE218AA3FD004C8E6A /* PrefixHeader.pch */,
+				69F2EF33218AFEAF00C9E449 /* ZZTabBarController.h */,
+				69F2EF34218AFEAF00C9E449 /* ZZTabBarController.m */,
+				69F2EF36218AFEDB00C9E449 /* ZZNavigationController.h */,
+				69F2EF37218AFEDB00C9E449 /* ZZNavigationController.m */,
 			);
 			path = LEETheme;
 			sourceTree = "<group>";
@@ -200,7 +210,9 @@
 			files = (
 				692F8DED218AA202004C8E6A /* ViewController.m in Sources */,
 				692F8DF8218AA202004C8E6A /* main.m in Sources */,
+				69F2EF38218AFEDB00C9E449 /* ZZNavigationController.m in Sources */,
 				692F8DEA218AA202004C8E6A /* AppDelegate.m in Sources */,
+				69F2EF35218AFEAF00C9E449 /* ZZTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
