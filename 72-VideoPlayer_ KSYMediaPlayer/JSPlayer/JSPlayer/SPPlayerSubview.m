@@ -574,9 +574,9 @@
 //
 //}
 - (void)loadRequest {
-    if (![self.urlString hasPrefix:@"http"]) {//容错处理 不要忘记plist文件中设置http可访问 App Transport Security Settings
-        self.urlString = [NSString stringWithFormat:@"http://%@",self.urlString];
-    }
+//    if (![self.urlString hasPrefix:@"http"]) {//容错处理 不要忘记plist文件中设置http可访问 App Transport Security Settings
+//        self.urlString = [NSString stringWithFormat:@"http://%@",self.urlString];
+//    }
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:_urlString]];
     [_wkWebView loadRequest:request];
 }
