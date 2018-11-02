@@ -1129,7 +1129,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSTimeInterval currentP = _mediaPlayer.currentPosition;
     
     int progress = (cacheP - currentP) / 31.0;
-    if (progress < 100 && (progress > 0)) {
+    if (self.loadingView.isAnimating && progress < 100 && (progress > 0)) {
         NSLog(@"加载进度：%d%%", progress);
         self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress];
     }

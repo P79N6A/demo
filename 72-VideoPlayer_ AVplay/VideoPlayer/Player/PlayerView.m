@@ -1571,7 +1571,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //FIXME:  -  定时刷新进度
 - (void)bufTimeChange:(NSTimer *)sender{
     
-    if(self.progressDragging) return;
+    if(self.progressDragging || !self.loadingView.isAnimating) return;
     
     
     NSArray *array = self.playerItem.loadedTimeRanges;
