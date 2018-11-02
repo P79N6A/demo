@@ -18,8 +18,8 @@
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
 
 #ifdef DEBUG
-//#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
-#define NSLog(...)
+#define NSLog(FORMAT, ...) fprintf(stderr,"%s\n",[[NSString stringWithFormat:FORMAT, ##__VA_ARGS__] UTF8String]);
+//#define NSLog(...)
 #else
 #define NSLog(...)
 #endif
@@ -76,7 +76,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 /** 67:56/98:08 */
 @property (nonatomic, strong) UILabel *timeLabel;
 
-//@property (nonatomic, weak) NSTimer *timer;
+@property (nonatomic, weak) NSTimer *timer;
 
 /** 错误按钮 */
 @property (weak, nonatomic) IBOutlet UIButton *errorBtn;
@@ -181,6 +181,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)initUI{
     self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+
     
     self.topBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_top"];
     [self.backButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_back"] forState:UIControlStateNormal];
@@ -347,14 +349,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.contentView.frame = self.bounds;
     self.playerLayer.frame = self.contentView.bounds;
 
-    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
-    self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
+    //self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
+    //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 40, 40);
-    self.lockBtn.center = CGPointMake(15+20+spacing, self.loadingView.center.y);
+    self.lockBtn.center = CGPointMake(15+20+spacing, self.contentView.center.y);
+    
     self.modeButton.frame = CGRectMake(0, 0, 70, 70);
-    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
-    self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
+    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.contentView.center.y);
+    
+    self.errorBtn.center = self.contentView.center;
     
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
@@ -405,7 +409,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self layout];
-    //[self timer];
+    [self timer];
 }
 
 - (void)dealloc{
@@ -531,7 +535,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                             //!(weakSelf.progressBlock)? : weakSelf.progressBlock(current,total);
                         }
                         //设置滑块的当前进度
-                        NSLog(@"当前进度：%f",current/total);
+                        //NSLog(@"当前进度：%f",current/total);
                     }];
                     
                     
@@ -1132,15 +1136,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 //    
 //}
 
-//- (NSTimer *)timer{
-//    if (!_timer) {
-//        __weak typeof(self) weakSelf = self;
-//        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
-//        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
-//        _timer = timer;
-//    }
-//    return _timer;
-//}
+- (NSTimer *)timer{
+    if (!_timer) {
+        __weak typeof(self) weakSelf = self;
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.25 target:weakSelf selector:@selector(bufTimeChange:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+        _timer = timer;
+    }
+    return _timer;
+}
 
 - (SpeedMonitor *)speedMonitor{
     if (!_speedMonitor) {
@@ -1150,13 +1154,13 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     return _speedMonitor;
 }
 
-//- (void)willMoveToSuperview:(UIView *)newSuperview {
-//    [super willMoveToSuperview:newSuperview];
-//    if (! newSuperview && self.timer) {
-//        [self.timer invalidate];
-//        self.timer = nil;
-//    }
-//}
+- (void)willMoveToSuperview:(UIView *)newSuperview {
+    [super willMoveToSuperview:newSuperview];
+    if (! newSuperview && self.timer) {
+        [self.timer invalidate];
+        self.timer = nil;
+    }
+}
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     if ([object isKindOfClass:[AVPlayerItem class]]) {
@@ -1206,7 +1210,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 [self play];
             }
             
-            NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
+            //NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
             
         }else if ([keyPath isEqualToString:@"playbackBufferEmpty"]) {
             
@@ -1277,8 +1281,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [self.loadingView stopAnimating];
     self.loadingLabel.hidden = self.loadingView.isHidden;
 
-//    [self.timer invalidate];
-//    self.timer = nil;
+    [self.timer invalidate];
+    self.timer = nil;
 }
 
 #pragma mark  - 播放器Seek完成后
@@ -1291,7 +1295,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s--播放器开始缓冲视频时", __func__);
     //!(_playerLoading)? : _playerLoading();
     [self.loadingView startAnimating];
-    self.loadingLabel.text = @"缓存中...";
+    self.loadingLabel.text = [NSString stringWithFormat:@"(0%%)"];
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
     
@@ -1299,13 +1303,24 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 #pragma mark  - 播放器结束缓冲视频
 - (void)OnEndCache:(NSNotification *)noti{
-    NSLog(@"%s--播放器结束缓冲视频", __func__);
-    //!(_playerCompletion)? : _playerCompletion();
-    [self.loadingView stopAnimating];
-    self.loadingLabel.hidden = self.loadingView.isHidden;
-    self.errorBtn.hidden = YES;
 
-//    if(self.mediaPlayer.duration) [self timer];
+    self.loadingLabel.text = [NSString stringWithFormat:@"(100%%)"];
+
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.loadingView stopAnimating];
+        self.loadingLabel.hidden = self.loadingView.isHidden;
+        [self timer];
+    });
+    
+    NSArray *array = self.playerItem.loadedTimeRanges;
+    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+    NSTimeInterval startSeconds = CMTimeGetSeconds(timeRange.start);
+    NSTimeInterval durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval totalBuffer = startSeconds + durationSeconds;//缓冲总长度
+    NSTimeInterval currentTime = CMTimeGetSeconds(_playerItem.currentTime);
+    
+    NSLog(@"播放器结束缓冲视频-b=%f,c=%f,x=%f",totalBuffer,currentTime,totalBuffer-currentTime);
+
 }
 
 #pragma mark  - 播放器主动调用Stop功能
@@ -1554,6 +1569,26 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 }
 
 //FIXME:  -  定时刷新进度
+- (void)bufTimeChange:(NSTimer *)sender{
+    
+    if(self.progressDragging) return;
+    
+    
+    NSArray *array = self.playerItem.loadedTimeRanges;
+    CMTimeRange timeRange = [array.firstObject CMTimeRangeValue];//本次缓冲时间范围
+    NSTimeInterval startSeconds = CMTimeGetSeconds(timeRange.start);
+    NSTimeInterval durationSeconds = CMTimeGetSeconds(timeRange.duration);
+    NSTimeInterval cacheP = startSeconds + durationSeconds;//缓冲总长度
+    NSTimeInterval currentP = CMTimeGetSeconds(_playerItem.currentTime);
+
+    
+    int progress = (cacheP - currentP) * 1000.0 / 45.0;
+    if (progress < 100 && (progress > 0)) {
+        NSLog(@"加载进度：%d%%", progress);
+        self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress];
+    }
+
+}
 - (void)timeChange:(NSTimer *)sender{
     
     if(self.progressDragging) return;
@@ -1577,6 +1612,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
     
     self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
+    
 }
 
 @end

@@ -360,9 +360,11 @@ typedef NS_ENUM(NSInteger, PanDirection){
     //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 70, 70);
-    self.lockBtn.center = CGPointMake(35+spacing, self.loadingView.center.y);
+    self.lockBtn.center = CGPointMake(35+spacing, self.contentView.center.y);
+    
     self.modeButton.frame = CGRectMake(0, 0, 70, 70);
-    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
+    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.contentView.center.y);
+    
     self.errorBtn.center = self.contentView.center;//CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);

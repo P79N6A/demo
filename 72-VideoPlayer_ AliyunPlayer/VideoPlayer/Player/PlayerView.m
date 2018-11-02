@@ -171,6 +171,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)initUI{
     self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+
     
     self.topBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_top"];
     [self.backButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_back"] forState:UIControlStateNormal];
@@ -335,14 +337,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     
     self.contentView.frame = self.bounds;
     
-    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
-    self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
+    //self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
+    //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 40, 40);
-    self.lockBtn.center = CGPointMake(15+20+spacing, self.loadingView.center.y);
+    self.lockBtn.center = CGPointMake(15+20+spacing, self.contentView.center.y);
+    
     self.modeButton.frame = CGRectMake(0, 0, 70, 70);
-    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.lockBtn.center.y);
-    self.errorBtn.center = CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
+    self.modeButton.center = CGPointMake(self.bounds.size.width - (35+spacing), self.contentView.center.y);
+    
+    self.errorBtn.center = self.contentView.center;//CGPointMake(self.loadingView.center.x + 30, self.loadingView.center.y );
     
     if (self.allowSafariPlay) {
         self.rePlayButton.frame = CGRectMake(0, 0, 44, 44);
@@ -1079,7 +1083,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (NSTimer *)timer{
     if (!_timer) {
         __weak typeof(self) weakSelf = self;
-        NSTimer *timer = [NSTimer timerWithTimeInterval:1.0 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.25 target:weakSelf selector:@selector(timeChange:) userInfo:nil repeats:YES];
         [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
         _timer = timer;
     }
@@ -1120,6 +1124,16 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.fullBufView.progress = self.progressView.progress;
     
     self.networkSpeedLabel.text = self.speedMonitor.downloadNetworkSpeed;
+    
+    NSTimeInterval cacheP = _mediaPlayer.bufferingPostion;
+    NSTimeInterval currentP = _mediaPlayer.currentPosition;
+    
+    int progress = (cacheP - currentP) / 31.0;
+    if (progress < 100 && (progress > 0)) {
+        NSLog(@"加载进度：%d%%", progress);
+        self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress];
+    }
+
 }
 
 
@@ -1177,21 +1191,26 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSLog(@"%s--播放器开始缓冲视频时", __func__);
     //!(_playerLoading)? : _playerLoading();
     [self.loadingView startAnimating];
-    self.loadingLabel.text = @"缓存中...";
+    self.loadingLabel.text = [NSString stringWithFormat:@"(0%%)"];
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
-    
 }
 
 #pragma mark  - 播放器结束缓冲视频
 - (void)OnEndCache:(NSNotification *)noti{
-    NSLog(@"%s--播放器结束缓冲视频", __func__);
-    //!(_playerCompletion)? : _playerCompletion();
-    [self.loadingView stopAnimating];
-    self.loadingLabel.hidden = self.loadingView.isHidden;
-    self.errorBtn.hidden = YES;
+
+    NSTimeInterval cacheP = _mediaPlayer.bufferingPostion;
+    NSTimeInterval currentP = _mediaPlayer.currentPosition;
+    NSLog(@"--播放器结束缓冲视频--buffer=%f,current=%f,xxx=%f", cacheP,currentP,cacheP - currentP);
+
     
-    if(_mediaPlayer.duration) [self timer];
+    self.loadingLabel.text = [NSString stringWithFormat:@"(100%%)"];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.loadingView stopAnimating];
+        self.loadingLabel.hidden = self.loadingView.isHidden;
+        if(_mediaPlayer.duration) [self timer];
+    });
 }
 
 #pragma mark  - 播放器主动调用Stop功能

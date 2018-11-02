@@ -18,7 +18,7 @@
 - (IBAction)video:(id)sender {
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
-    model.url = @"https1://t.bwzybf.com/2018/10/25/oWEYZvMJUDeyxaWJ/playlist.m3u8";//@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
+    model.url = @"http://vip888.kuyun99.com/20180802/wcFfyu0v/index.m3u8?sign=9a2f77b13159249164e257ed7356dab84549a9f7b9a70e5509bc3e0359cdcfd7a258b5708ab7d87677196d08cb14c397bce8db18e488383ddf21376648d73e35";//@"https1://t.bwzybf.com/2018/10/25/oWEYZvMJUDeyxaWJ/playlist.m3u8";//@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
     [_playerView playWithModel:model];
     
     //    self.spStatusBarStyle = UIStatusBarStyleDefault;
@@ -48,7 +48,7 @@
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
     PlayerView *player = [PlayerView playerView];
-    player.frame = CGRectMake( 0, 100, 300,  300 * 9.0 / 16.0);
+    player.frame = CGRectMake( 0, 100, self.view.bounds.size.width,  self.view.bounds.size.width * 9.0 / 16.0);
     player.allowSafariPlay = YES;
     [player playWithModel:model];
     [self.view addSubview:player];
