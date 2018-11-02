@@ -188,6 +188,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (void)initUI{
     self.errorBtn.titleLabel.textAlignment = NSTextAlignmentCenter;
     
+    self.loadingView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+
     
     self.topBgView.image = [UIImage imageFromBundleWithName:@"fullplayer_bg_top"];
     [self.backButton setImage:[UIImage imageFromBundleWithName:@"fullplayer_icon_back"] forState:UIControlStateNormal];
@@ -354,8 +356,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
     
-    self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 15, self.bounds.size.height * 0.5);
-    self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
+    //self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 15, self.bounds.size.height * 0.5);
+    //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     
     self.lockBtn.frame = CGRectMake(0, 0, 70, 70);
     self.lockBtn.center = CGPointMake(35+spacing, self.loadingView.center.y);
@@ -1269,7 +1271,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     int progress = (cache - current) * 100;
     if (progress < 100 && (progress > 0)) {
         NSLog(@"加载进度：%d%%", progress);
-        self.loadingLabel.text = [NSString stringWithFormat:@" (%d%%)",progress?progress:0];
+        self.loadingLabel.text = [NSString stringWithFormat:@"(%d%%)",progress?progress:0];
         [self printLog];
     }
 
@@ -1387,7 +1389,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
     
-    _mediaPlayer.bufferTimeMax = islive? 0 : 3600;
+    _mediaPlayer.bufferTimeMax = islive? 0 : 60;
 
 }
 
@@ -1452,14 +1454,14 @@ typedef NS_ENUM(NSInteger, PanDirection){
 #pragma mark  - 播放器开始缓冲视频时
 - (void)OnStartCache:(NSNotification *)noti{
     [self.loadingView startAnimating];
-    self.loadingLabel.text = [NSString stringWithFormat:@" (0%%)"];
+    self.loadingLabel.text = [NSString stringWithFormat:@"(0%%)"];
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
 }
 
 #pragma mark  - 播放器结束缓冲视频
 - (void)OnEndCache:(NSNotification *)noti{
-    self.loadingLabel.text = [NSString stringWithFormat:@" (100%%)"];
+    self.loadingLabel.text = [NSString stringWithFormat:@"(100%%)"];
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.loadingView stopAnimating];
