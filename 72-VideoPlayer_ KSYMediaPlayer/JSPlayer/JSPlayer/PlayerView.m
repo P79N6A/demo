@@ -15,7 +15,6 @@
 
 #define  kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define  kScreenHeight [UIScreen mainScreen].bounds.size.height
-//#define  iPhoneXX (kScreenHeight == 375.f && kScreenWidth == 812.f ? YES : NO)
 
 
 typedef NS_ENUM(NSUInteger, PlayViewState) {
@@ -1030,7 +1029,10 @@ typedef NS_ENUM(NSInteger, PanDirection){
 - (KSYMoviePlayerController *)mediaPlayer{
     if (!_mediaPlayer) {
         //创建播放器
-        _mediaPlayer = [[KSYMoviePlayerController alloc] initWithContentURL: [NSURL URLWithString:@"rtmp://live.hkstv.hk.lxdns.com/live/hks"]];
+        
+        NSString *url = self.model.url? self.model.url : @"http://devimages.apple.com/iphone/samples/bipbop/bipbopall.m3u8";
+        
+        _mediaPlayer = [[KSYMoviePlayerController alloc] initWithContentURL: [NSURL URLWithString:url]];
         _mediaPlayer.controlStyle = MPMovieControlStyleNone;
         [_mediaPlayer.view setFrame: self.contentView.bounds];  // player's frame must match parent's
         [self.contentView addSubview: _mediaPlayer.view];
@@ -1041,7 +1043,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
         _mediaPlayer.shouldAutoplay = YES;
         _mediaPlayer.scalingMode = MPMovieScalingModeAspectFit;
-        _mediaPlayer.bufferTimeMax = 0;
+        //_mediaPlayer.bufferTimeMax = 0;
         //[_mediaPlayer setTimeout:5 readTimeout:15];
         [self setupObservers:_mediaPlayer];
         _prepared_time = (long long int)([self getCurrentTime] * 1000);
