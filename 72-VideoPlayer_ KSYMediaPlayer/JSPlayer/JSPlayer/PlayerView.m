@@ -1041,6 +1041,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
         UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleBottomMargin;
         _mediaPlayer.shouldAutoplay = YES;
         _mediaPlayer.scalingMode = MPMovieScalingModeAspectFit;
+        _mediaPlayer.bufferTimeMax = 0;
         //[_mediaPlayer setTimeout:5 readTimeout:15];
         [self setupObservers:_mediaPlayer];
         _prepared_time = (long long int)([self getCurrentTime] * 1000);
@@ -1383,6 +1384,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     self.fullProgressView.alpha = self.fullBufView.alpha;
     
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld/%02ld:%02ld",(NSInteger)current/60,(NSInteger)current%60,(NSInteger)total/60,(NSInteger)total%60];
+    
+    _mediaPlayer.bufferTimeMax = islive? 0 : 3600;
 
 }
 

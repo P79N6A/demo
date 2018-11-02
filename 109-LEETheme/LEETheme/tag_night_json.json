@@ -3,10 +3,12 @@
         "ident1": "#c22b4f",
         "ident2": "#9a1938",
         "ident7": "#FFFFFF",
-        "ident8": "#000000"
+        "ident8": "#000000",
+        "navColor":"#000000",
+        "tabColor":"#000000"
     },
     "image": {
-        "ident3": "2.png",
+        "ident3": "r_select",
         "ident4": "true.png"
     },
     "other": {

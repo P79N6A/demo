@@ -23,28 +23,22 @@
 }
 -(void)setUI {
     self.view.backgroundColor = [UIColor whiteColor];
-    //[self.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:kNavigationBarTitleFont}];
     
     
-    self.navigationBar.lee_theme.LeeConfigTintColor(@"ident1").LeeConfigBarTintColor(@"ident2");
+    
+    self.navigationBar.lee_theme.LeeConfigTintColor(@"ident1")//左右
+                      .LeeConfigBarTintColor(@"navColor");//主题
     self.navigationBar.lee_theme
     .LeeAddCustomConfig(kDay, ^(UINavigationBar *bar) {
-        
-        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor blackColor]};
+        // title
+        bar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor yellowColor],NSFontAttributeName:[UIFont systemFontOfSize:24]};
     })
     .LeeAddCustomConfig(kNight, ^(UINavigationBar *bar) {
         
-        bar.titleTextAttributes = @{NSForegroundColorAttributeName : [UIColor whiteColor]};
+        bar.titleTextAttributes = @{NSForegroundColorAttributeName:[UIColor orangeColor],NSFontAttributeName:[UIFont systemFontOfSize:24]};
     });
+    
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

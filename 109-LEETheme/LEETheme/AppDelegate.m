@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 
 #import "ZZTabBarController.h"
-#import "ZZNavigationController.h"
-#import "ViewController.h"
 
 #import <LEETheme/LEETheme.h>
 
@@ -51,8 +49,9 @@
 
     
     ZZTabBarController *tab = [[ZZTabBarController alloc] init];
-    ZZNavigationController *nav = [[ZZNavigationController alloc] initWithRootViewController:[UIStoryboard storyboardWithName:@"Main" bundle:nil].instantiateInitialViewController];
-    tab.viewControllers = @[nav];
+    
+
+
     self.window.rootViewController = tab;
 
     [self.window makeKeyAndVisible];

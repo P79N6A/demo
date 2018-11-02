@@ -353,7 +353,7 @@
 				GCC_PREFIX_HEADER = LEETheme/PrefixHeader.pch;
 				INFOPLIST_FILE = LEETheme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LEETheme;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LEETheme44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -370,7 +370,7 @@
 				GCC_PREFIX_HEADER = LEETheme/PrefixHeader.pch;
 				INFOPLIST_FILE = LEETheme/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.LEETheme;
+				PRODUCT_BUNDLE_IDENTIFIER = com.LEETheme44;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

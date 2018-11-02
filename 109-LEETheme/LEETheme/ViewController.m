@@ -29,6 +29,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"右侧" style:UIBarButtonItemStyleDone target:nil action:nil];
+    self.navigationItem.title = @"标题";
+    
     //self.btn.lee_theme.LeeAddBackgroundColor(kDay, [UIColor redColor])
                       //.LeeAddBackgroundColor(kNight, [UIColor blackColor]);
     
@@ -40,6 +43,10 @@
     self.img.lee_theme.LeeConfigImage(@"ident3");
     
  
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{

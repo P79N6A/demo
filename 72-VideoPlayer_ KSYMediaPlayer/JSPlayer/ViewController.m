@@ -43,7 +43,7 @@
     VideoModel *model = [VideoModel new];
     model.title = @"hello tv";
     //    model.live_stream = [NSURL fileURLWithPath:@"/Users/jay/Downloads/20180503102411_460.mp4"];
-    model.url = @"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
+    model.url = @"http://aldirect.hls.huya.com/huyalive/94525224-2472147404-10617792251071299584-2777026638-10057-A-0-1_1200.m3u8";//@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
     //    model.live_stream = @"http://e1.vdowowza.vip.hk1.tvb.com/tvblive/smil:mobilehd_financeintl.smil/playlist.m3u8";
     //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     
