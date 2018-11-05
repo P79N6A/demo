@@ -443,7 +443,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [self.loadingView startAnimating];
-    self.loadingLabel.text = @"加载中...";
+    self.loadingLabel.text = @"loading...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
     

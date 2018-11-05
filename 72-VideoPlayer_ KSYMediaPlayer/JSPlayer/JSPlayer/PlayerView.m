@@ -454,7 +454,7 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     [self.loadingView startAnimating];
     
-    self.loadingLabel.text = @"加载中...";
+    self.loadingLabel.text = @"loading...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
     self.videoButtomView.hidden = !self.loadingView.isHidden;

@@ -454,7 +454,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     [UIApplication sharedApplication].idleTimerDisabled = YES;
     
     [self.loadingView startAnimating];
-    self.loadingLabel.text = @"加载中...";
+    self.loadingLabel.text = @"loading...";
     self.loadingLabel.hidden = self.loadingView.isHidden;
     self.errorBtn.hidden = !self.loadingView.isHidden;
     
@@ -521,7 +521,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                     [weakSelf.mediaPlayer replaceCurrentItemWithPlayerItem:playerItem];
                     
                     [weakSelf play];
-                    weakSelf.loadingLabel.text = @"准备中...";
+                    weakSelf.loadingLabel.text = @"preparing...";
 
                     
                     weakSelf.timeObserver = [weakSelf.mediaPlayer addPeriodicTimeObserverForInterval:CMTimeMake(1, 1) queue:dispatch_get_main_queue() usingBlock:^(CMTime time) {
