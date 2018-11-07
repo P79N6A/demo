@@ -356,6 +356,8 @@ typedef NS_ENUM(NSInteger, PanDirection){
     
     self.volumeView.frame = CGRectMake(0, 0, kScreenWidth ,kScreenWidth* 9.0 / 16.0);
     
+    self.loadingView.frame = self.bounds;
+    self.loadingLabel.center = CGPointMake(self.loadingView.center.x, self.loadingView.center.y + 20);
     //self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 15, self.bounds.size.height * 0.5);
     //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     

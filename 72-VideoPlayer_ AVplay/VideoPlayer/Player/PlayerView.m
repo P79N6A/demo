@@ -349,6 +349,8 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     self.contentView.frame = self.bounds;
     self.playerLayer.frame = self.contentView.bounds;
 
+    self.loadingView.frame = self.bounds;
+    self.loadingLabel.center = CGPointMake(self.loadingView.center.x, self.loadingView.center.y + 20);
     //self.loadingView.center = CGPointMake(self.bounds.size.width * 0.5 - 30, self.bounds.size.height * 0.5);
     //self.loadingLabel.frame = CGRectMake(CGRectGetMaxX(self.loadingView.frame) + 5, self.loadingView.frame.origin.y, 50, self.loadingView.frame.size.height);
     

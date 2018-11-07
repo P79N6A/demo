@@ -14,6 +14,7 @@
  * date : 2018/10/26 修复出错文案
  * date : 2018/10/30 修复销毁时至空对象
  * date : 2018/11/02 优化loading
+ * date : 2018/11/02 优化loading布局
  */
 
 #import <UIKit/UIKit.h>
