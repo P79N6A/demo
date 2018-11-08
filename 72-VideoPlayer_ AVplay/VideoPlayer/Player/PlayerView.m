@@ -577,10 +577,15 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 - (void)stop{
     [_mediaPlayer pause];
     [_mediaPlayer removeTimeObserver:_timeObserver];
+    [_mediaPlayer cancelPendingPrerolls];
+    [_mediaPlayer replaceCurrentItemWithPlayerItem:nil];
+
+    [_playerItem.asset cancelLoading];
     [_playerItem removeObserver:self forKeyPath:@"status"];
     [_playerItem removeObserver:self forKeyPath:@"loadedTimeRanges"];
     [_playerItem removeObserver:self forKeyPath:@"playbackBufferEmpty"];
     [_playerItem removeObserver:self forKeyPath:@"playbackLikelyToKeepUp"];
+    
     _playerItem = nil;
     _mediaPlayer = nil;
     _timeObserver = nil;
@@ -1308,7 +1313,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
     self.loadingLabel.text = [NSString stringWithFormat:@"(100%%)"];
 
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.25 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         [self.loadingView stopAnimating];
         self.loadingLabel.hidden = self.loadingView.isHidden;
         [self timer];

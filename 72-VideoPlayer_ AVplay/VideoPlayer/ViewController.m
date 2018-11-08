@@ -30,7 +30,7 @@
 //    model.live_stream = @"http://onair.onair.network:8068/listen.pls";
     model.url = //@"https://vip2.pp63.org/201810/10/Dq1xd3Yq/index.m3u8";
     //@"https://cdn.youku-letv.com/20181022/m4MlVDnt/index.m3u8";
-    @"https11://de035ceb0768225b04e9a007abe39fca.live.prod.hkatv.com/a1_cbr_lo_1.m3u8";
+    @"https://de035ceb0768225b04e9a007abe39fca.live.prod.hkatv.com/a1_cbr_lo_1.m3u8";
     PlayerView *player = [PlayerView playerView];
     player.allowSafariPlay = YES;
     player.frame = CGRectMake(0, 88, self.view.bounds.size.width, self.view.bounds.size.width * 9.0/16.0);
