@@ -7,32 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6917C56221958F0B00E268F1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6917C56121958F0B00E268F1 /* AppDelegate.m */; };
-		6917C56521958F0B00E268F1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6917C56421958F0B00E268F1 /* ViewController.m */; };
-		6917C56821958F0B00E268F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6917C56621958F0B00E268F1 /* Main.storyboard */; };
-		6917C56A21958F0C00E268F1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6917C56921958F0C00E268F1 /* Assets.xcassets */; };
-		6917C56D21958F0C00E268F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6917C56B21958F0C00E268F1 /* LaunchScreen.storyboard */; };
-		6917C57021958F0C00E268F1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6917C56F21958F0C00E268F1 /* main.m */; };
-		6917C57821958F1900E268F1 /* TaiJuHtml.m in Sources */ = {isa = PBXBuildFile; fileRef = 6917C57621958F1900E268F1 /* TaiJuHtml.m */; };
+		69E5C134219914160098DF98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C133219914160098DF98 /* AppDelegate.m */; };
+		69E5C137219914160098DF98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C136219914160098DF98 /* ViewController.m */; };
+		69E5C13A219914160098DF98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C138219914160098DF98 /* Main.storyboard */; };
+		69E5C13C219914170098DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C13B219914170098DF98 /* Assets.xcassets */; };
+		69E5C13F219914170098DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C13D219914170098DF98 /* LaunchScreen.storyboard */; };
+		69E5C142219914170098DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C141219914170098DF98 /* main.m */; };
+		69E5C14A2199144E0098DF98 /* MeiJuApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C1482199144E0098DF98 /* MeiJuApi.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6917C55D21958F0B00E268F1 /* TaiJuHtml.m meiju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TaiJuHtml.m meiju.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6917C56021958F0B00E268F1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		6917C56121958F0B00E268F1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6917C56321958F0B00E268F1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6917C56421958F0B00E268F1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		6917C56721958F0B00E268F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		6917C56921958F0C00E268F1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		6917C56C21958F0C00E268F1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		6917C56E21958F0C00E268F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		6917C56F21958F0C00E268F1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		6917C57621958F1900E268F1 /* TaiJuHtml.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaiJuHtml.m; sourceTree = "<group>"; };
-		6917C57721958F1900E268F1 /* TaiJuHtml.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaiJuHtml.h; sourceTree = "<group>"; };
+		69E5C12F219914160098DF98 /* meiju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meiju.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69E5C132219914160098DF98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		69E5C133219914160098DF98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		69E5C135219914160098DF98 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		69E5C136219914160098DF98 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		69E5C139219914160098DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69E5C13B219914170098DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69E5C13E219914170098DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69E5C140219914170098DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69E5C141219914170098DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69E5C1482199144E0098DF98 /* MeiJuApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeiJuApi.m; sourceTree = "<group>"; };
+		69E5C1492199144E0098DF98 /* MeiJuApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeiJuApi.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6917C55A21958F0B00E268F1 /* Frameworks */ = {
+		69E5C12C219914160098DF98 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,75 +42,75 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		6917C55421958F0B00E268F1 = {
+		69E5C126219914160098DF98 = {
 			isa = PBXGroup;
 			children = (
-				6917C55F21958F0B00E268F1 /* TaiJuHtml.m meiju */,
-				6917C55E21958F0B00E268F1 /* Products */,
+				69E5C131219914160098DF98 /* meiju */,
+				69E5C130219914160098DF98 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		6917C55E21958F0B00E268F1 /* Products */ = {
+		69E5C130219914160098DF98 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				6917C55D21958F0B00E268F1 /* TaiJuHtml.m meiju.app */,
+				69E5C12F219914160098DF98 /* meiju.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		6917C55F21958F0B00E268F1 /* TaiJuHtml.m meiju */ = {
+		69E5C131219914160098DF98 /* meiju */ = {
 			isa = PBXGroup;
 			children = (
-				6917C57721958F1900E268F1 /* TaiJuHtml.h */,
-				6917C57621958F1900E268F1 /* TaiJuHtml.m */,
-				6917C56021958F0B00E268F1 /* AppDelegate.h */,
-				6917C56121958F0B00E268F1 /* AppDelegate.m */,
-				6917C56321958F0B00E268F1 /* ViewController.h */,
-				6917C56421958F0B00E268F1 /* ViewController.m */,
-				6917C56621958F0B00E268F1 /* Main.storyboard */,
-				6917C56921958F0C00E268F1 /* Assets.xcassets */,
-				6917C56B21958F0C00E268F1 /* LaunchScreen.storyboard */,
-				6917C56E21958F0C00E268F1 /* Info.plist */,
-				6917C56F21958F0C00E268F1 /* main.m */,
+				69E5C1492199144E0098DF98 /* MeiJuApi.h */,
+				69E5C1482199144E0098DF98 /* MeiJuApi.m */,
+				69E5C132219914160098DF98 /* AppDelegate.h */,
+				69E5C133219914160098DF98 /* AppDelegate.m */,
+				69E5C135219914160098DF98 /* ViewController.h */,
+				69E5C136219914160098DF98 /* ViewController.m */,
+				69E5C138219914160098DF98 /* Main.storyboard */,
+				69E5C13B219914170098DF98 /* Assets.xcassets */,
+				69E5C13D219914170098DF98 /* LaunchScreen.storyboard */,
+				69E5C140219914170098DF98 /* Info.plist */,
+				69E5C141219914170098DF98 /* main.m */,
 			);
-			path = "TaiJuHtml.m meiju";
+			path = meiju;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6917C55C21958F0B00E268F1 /* TaiJuHtml.m meiju */ = {
+		69E5C12E219914160098DF98 /* meiju */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 6917C57321958F0C00E268F1 /* Build configuration list for PBXNativeTarget "TaiJuHtml.m meiju" */;
+			buildConfigurationList = 69E5C145219914170098DF98 /* Build configuration list for PBXNativeTarget "meiju" */;
 			buildPhases = (
-				6917C55921958F0B00E268F1 /* Sources */,
-				6917C55A21958F0B00E268F1 /* Frameworks */,
-				6917C55B21958F0B00E268F1 /* Resources */,
+				69E5C12B219914160098DF98 /* Sources */,
+				69E5C12C219914160098DF98 /* Frameworks */,
+				69E5C12D219914160098DF98 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "TaiJuHtml.m meiju";
-			productName = "TaiJuHtml.m meiju";
-			productReference = 6917C55D21958F0B00E268F1 /* TaiJuHtml.m meiju.app */;
+			name = meiju;
+			productName = meiju;
+			productReference = 69E5C12F219914160098DF98 /* meiju.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		6917C55521958F0B00E268F1 /* Project object */ = {
+		69E5C127219914160098DF98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Jay;
 				TargetAttributes = {
-					6917C55C21958F0B00E268F1 = {
+					69E5C12E219914160098DF98 = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = 6917C55821958F0B00E268F1 /* Build configuration list for PBXProject "TaiJuHtml.m meiju" */;
+			buildConfigurationList = 69E5C12A219914160098DF98 /* Build configuration list for PBXProject "meiju" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,56 +118,56 @@
 				en,
 				Base,
 			);
-			mainGroup = 6917C55421958F0B00E268F1;
-			productRefGroup = 6917C55E21958F0B00E268F1 /* Products */;
+			mainGroup = 69E5C126219914160098DF98;
+			productRefGroup = 69E5C130219914160098DF98 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				6917C55C21958F0B00E268F1 /* TaiJuHtml.m meiju */,
+				69E5C12E219914160098DF98 /* meiju */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6917C55B21958F0B00E268F1 /* Resources */ = {
+		69E5C12D219914160098DF98 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6917C56D21958F0C00E268F1 /* LaunchScreen.storyboard in Resources */,
-				6917C56A21958F0C00E268F1 /* Assets.xcassets in Resources */,
-				6917C56821958F0B00E268F1 /* Main.storyboard in Resources */,
+				69E5C13F219914170098DF98 /* LaunchScreen.storyboard in Resources */,
+				69E5C13C219914170098DF98 /* Assets.xcassets in Resources */,
+				69E5C13A219914160098DF98 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6917C55921958F0B00E268F1 /* Sources */ = {
+		69E5C12B219914160098DF98 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6917C57821958F1900E268F1 /* TaiJuHtml.m in Sources */,
-				6917C56521958F0B00E268F1 /* ViewController.m in Sources */,
-				6917C57021958F0C00E268F1 /* main.m in Sources */,
-				6917C56221958F0B00E268F1 /* AppDelegate.m in Sources */,
+				69E5C137219914160098DF98 /* ViewController.m in Sources */,
+				69E5C14A2199144E0098DF98 /* MeiJuApi.m in Sources */,
+				69E5C142219914170098DF98 /* main.m in Sources */,
+				69E5C134219914160098DF98 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		6917C56621958F0B00E268F1 /* Main.storyboard */ = {
+		69E5C138219914160098DF98 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6917C56721958F0B00E268F1 /* Base */,
+				69E5C139219914160098DF98 /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		6917C56B21958F0C00E268F1 /* LaunchScreen.storyboard */ = {
+		69E5C13D219914170098DF98 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				6917C56C21958F0C00E268F1 /* Base */,
+				69E5C13E219914170098DF98 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -175,7 +175,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		6917C57121958F0C00E268F1 /* Debug */ = {
+		69E5C143219914170098DF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +234,7 @@
 			};
 			name = Debug;
 		};
-		6917C57221958F0C00E268F1 /* Release */ = {
+		69E5C144219914170098DF98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,35 +287,35 @@
 			};
 			name = Release;
 		};
-		6917C57421958F0C00E268F1 /* Debug */ = {
+		69E5C146219914170098DF98 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDU5GR594Q;
-				INFOPLIST_FILE = "TaiJuHtml.m meiju/Info.plist";
+				INFOPLIST_FILE = meiju/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.TaiJuHtml-m-meiju";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meiju;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		6917C57521958F0C00E268F1 /* Release */ = {
+		69E5C147219914170098DF98 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDU5GR594Q;
-				INFOPLIST_FILE = "TaiJuHtml.m meiju/Info.plist";
+				INFOPLIST_FILE = meiju/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.TaiJuHtml-m-meiju";
+				PRODUCT_BUNDLE_IDENTIFIER = com.meiju;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -324,25 +324,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6917C55821958F0B00E268F1 /* Build configuration list for PBXProject "TaiJuHtml.m meiju" */ = {
+		69E5C12A219914160098DF98 /* Build configuration list for PBXProject "meiju" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6917C57121958F0C00E268F1 /* Debug */,
-				6917C57221958F0C00E268F1 /* Release */,
+				69E5C143219914170098DF98 /* Debug */,
+				69E5C144219914170098DF98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6917C57321958F0C00E268F1 /* Build configuration list for PBXNativeTarget "TaiJuHtml.m meiju" */ = {
+		69E5C145219914170098DF98 /* Build configuration list for PBXNativeTarget "meiju" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				6917C57421958F0C00E268F1 /* Debug */,
-				6917C57521958F0C00E268F1 /* Release */,
+				69E5C146219914170098DF98 /* Debug */,
+				69E5C147219914170098DF98 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 6917C55521958F0B00E268F1 /* Project object */;
+	rootObject = 69E5C127219914160098DF98 /* Project object */;
 }

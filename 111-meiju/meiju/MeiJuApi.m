@@ -6,32 +6,32 @@
 //  Copyright © 2018年 sdl. All rights reserved.
 //
 
-#import "TaiJuHtml.h"
+#import "MeiJuApi.h"
 //#import "TJData.h"
 
 
-@implementation TaiJuHtml
+@implementation MeiJuApi
 
-+ (void)taiJuSearch:(NSString *)kw
++ (void)MeiJuSearch:(NSString *)kw
           pageNo:(NSInteger)page
          completed: (void(^)(NSArray <NSDictionary *>*objs,BOOL))block{
     
     if (self.isProtocolService){
         !(block)? : block(@[],NO);
         return;
-    }
+    }//http://www.97pd.com/index.php?s=vod-search-wd-%E5%83%B5%E5%B0%B8%E5%9B%BD%E5%BA%A6-p-1.html
     page = page? page : 1;
-    NSString* encodedString = [[NSString stringWithFormat:@"http://www.97taiju.com/index.php?s=vod-search-wd-%@-p.html",kw] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSString* encodedString = [[NSString stringWithFormat:@"http://www.97pd.com/index.php?s=vod-search-wd-%@-p.html",kw] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 
     if (page>1) {
-        encodedString = [[NSString stringWithFormat:@"http://www.97taiju.com/index.php?s=vod-search-wd-%@-p-%ld.html",kw,(long)page] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+        encodedString = [[NSString stringWithFormat:@"http://www.97pd.com/index.php?s=vod-search-wd-%@-p-%ld.html",kw,(long)page] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     }
     NSURL * url = [NSURL URLWithString:encodedString];
     
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:10.0];
     [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
-    [request setValue:@"http://www.97taiju.com" forHTTPHeaderField:@"Origin"];
+    [request setValue:@"http://www.97pd.com" forHTTPHeaderField:@"Origin"];
     //request.HTTPMethod = @"POST";
     
     //NSData *paramData = [[NSString stringWithFormat:@"keyword=%@",kw] dataUsingEncoding:NSUTF8StringEncoding];
@@ -78,7 +78,7 @@
             NSLog(@"%s--%@", __func__,d);
             NSMutableDictionary *dict = [NSMutableDictionary dictionary];
             dict[@"img"] = d[3];
-            dict[@"url"] = [NSString stringWithFormat:@"http://www.97taiju.com/%@", d[1]];
+            dict[@"url"] = [NSString stringWithFormat:@"http://www.97pd.com/%@", d[1]];
             dict[@"title"] = d[2];
             
 
@@ -107,7 +107,7 @@
 
 
 
-+ (void)taiJuM3u8:(NSString *)urlStr
++ (void)MeiJuGetM3u8:(NSString *)urlStr
             completed: (void(^)(NSArray *objs))block{
 
     
@@ -117,11 +117,9 @@
     }
     
     NSURL * url = [NSURL URLWithString:urlStr];
-    
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
     [request setTimeoutInterval:10.0];
-
-    [request setValue:@"Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Mobile Safari/537.36" forHTTPHeaderField:@"User-Agent"];
+    [request setValue:self.userAgent forHTTPHeaderField:@"User-Agent"];
     
     NSURLSession * session = [NSURLSession sharedSession];
     
@@ -201,7 +199,7 @@
 
 
 
-+ (void)getTaiJuDetail:(NSString *)urlStr
++ (void)MeiJuGetDetail:(NSString *)urlStr
            completed: (void(^)(NSDictionary *obj))block{
     
     if (self.isProtocolService) {
@@ -318,7 +316,7 @@
 }
 
 //FIXME:  -  泰剧列表
-+ (void)getTaiJuPageNo:(NSInteger)page
++ (void)MeiJuListPageNo:(NSInteger)page
                  completed: (void(^)(NSArray <NSDictionary *>*objs))block{
 
     
