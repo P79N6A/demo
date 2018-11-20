@@ -1,0 +1,6 @@
+framework module MandhelingSDK {
+  umbrella header "MandhelingSDK.h"
+
+  export *
+  module * { export * }
+}

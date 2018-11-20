@@ -14,6 +14,7 @@
  * date : 2018/10/26 修复观察者闪退和优化错误提醒
  * date : 2018/11/02 优化loading
  * date : 2018/11/07 优化loading布局
+ * date : 2018/11/07 优化播放
  */
 
 #import <UIKit/UIKit.h>

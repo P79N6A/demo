@@ -7,85 +7,299 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69E5C134219914160098DF98 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C133219914160098DF98 /* AppDelegate.m */; };
-		69E5C137219914160098DF98 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C136219914160098DF98 /* ViewController.m */; };
-		69E5C13A219914160098DF98 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C138219914160098DF98 /* Main.storyboard */; };
-		69E5C13C219914170098DF98 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C13B219914170098DF98 /* Assets.xcassets */; };
-		69E5C13F219914170098DF98 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69E5C13D219914170098DF98 /* LaunchScreen.storyboard */; };
-		69E5C142219914170098DF98 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C141219914170098DF98 /* main.m */; };
-		69E5C14A2199144E0098DF98 /* MeiJuApi.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5C1482199144E0098DF98 /* MeiJuApi.m */; };
+		69685AE621A251BC004426BB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 69685AE521A251BC004426BB /* AppDelegate.m */; };
+		69685AE921A251BC004426BB /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69685AE821A251BC004426BB /* ViewController.m */; };
+		69685AEC21A251BC004426BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69685AEA21A251BC004426BB /* Main.storyboard */; };
+		69685AEE21A251BD004426BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69685AED21A251BD004426BB /* Assets.xcassets */; };
+		69685AF121A251BD004426BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69685AEF21A251BD004426BB /* LaunchScreen.storyboard */; };
+		69685AF421A251BD004426BB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 69685AF321A251BD004426BB /* main.m */; };
+		69685AFC21A2521C004426BB /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 69685AFB21A2521C004426BB /* UIView+Layout.m */; };
+		696863E421A26089004426BB /* libAdViewSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 69685E2D21A26085004426BB /* libAdViewSDK.a */; };
+		696863E521A26089004426BB /* AdViewRes.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 69685E3221A26085004426BB /* AdViewRes.bundle */; };
+		696863E821A26199004426BB /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863E721A26199004426BB /* AdSupport.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		696863EA21A261AE004426BB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863E921A261AE004426BB /* CoreLocation.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		696863EC21A261BD004426BB /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863EB21A261BC004426BB /* AddressBook.framework */; };
+		696863EE21A261C9004426BB /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863ED21A261C9004426BB /* libc++.tbd */; settings = {ATTRIBUTES = (Required, ); }; };
+		696863F021A261D8004426BB /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863EF21A261D8004426BB /* libsqlite3.0.tbd */; };
+		696863F221A261E2004426BB /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863F121A261E2004426BB /* libxml2.tbd */; };
+		696863F421A261EA004426BB /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 696863F321A261EA004426BB /* libz.tbd */; };
+		696863FB21A26496004426BB /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 696863F821A26496004426BB /* icon.png */; };
+		696863FC21A26496004426BB /* Adview_Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 696863F921A26496004426BB /* Adview_Logo.jpg */; };
+		696863FD21A26496004426BB /* logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 696863FA21A26496004426BB /* logo.jpg */; };
+		6968641421A27E8D004426BB /* AdViewToolX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 6968640821A27E8D004426BB /* AdViewToolX.mm */; };
+		6968641521A27E8D004426BB /* AdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6968640921A27E8D004426BB /* AdViewController.m */; };
+		6968641621A27E8D004426BB /* AdRunStateManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6968640D21A27E8D004426BB /* AdRunStateManager.m */; };
+		6968641721A27E8D004426BB /* AdSingleTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6968640E21A27E8D004426BB /* AdSingleTestViewController.m */; };
+		6968641821A27E8D004426BB /* AdSingleTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6968640F21A27E8D004426BB /* AdSingleTestViewController.xib */; };
+		6968641921A27E8D004426BB /* SimMethod.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 6968641221A27E8D004426BB /* SimMethod.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		69E5C12F219914160098DF98 /* meiju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meiju.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		69E5C132219914160098DF98 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		69E5C133219914160098DF98 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		69E5C135219914160098DF98 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		69E5C136219914160098DF98 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		69E5C139219914160098DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		69E5C13B219914170098DF98 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		69E5C13E219914170098DF98 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		69E5C140219914170098DF98 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69E5C141219914170098DF98 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		69E5C1482199144E0098DF98 /* MeiJuApi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeiJuApi.m; sourceTree = "<group>"; };
-		69E5C1492199144E0098DF98 /* MeiJuApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeiJuApi.h; sourceTree = "<group>"; };
+		69685AE121A251BC004426BB /* meiju.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meiju.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		69685AE421A251BC004426BB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		69685AE521A251BC004426BB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		69685AE721A251BC004426BB /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		69685AE821A251BC004426BB /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		69685AEB21A251BC004426BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		69685AED21A251BD004426BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		69685AF021A251BD004426BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		69685AF221A251BD004426BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		69685AF321A251BD004426BB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		69685AFA21A2521C004426BB /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Layout.h"; sourceTree = "<group>"; };
+		69685AFB21A2521C004426BB /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Layout.m"; sourceTree = "<group>"; };
+		69685E0E21A26085004426BB /* AdNativeManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdNativeManager.h; sourceTree = "<group>"; };
+		69685E0F21A26085004426BB /* AdInstlManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdInstlManager.h; sourceTree = "<group>"; };
+		69685E1021A26085004426BB /* AdViewDelegateProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewDelegateProtocol.h; sourceTree = "<group>"; };
+		69685E1121A26085004426BB /* AdSpreadScreenUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSpreadScreenUtils.h; sourceTree = "<group>"; };
+		69685E1221A26085004426BB /* AdSpreadScreenManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSpreadScreenManager.h; sourceTree = "<group>"; };
+		69685E1321A26085004426BB /* AdSpreadScreenManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSpreadScreenManagerDelegate.h; sourceTree = "<group>"; };
+		69685E1521A26085004426BB /* AdInstlManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdInstlManagerImpl.h; sourceTree = "<group>"; };
+		69685E1621A26085004426BB /* AdViewViewImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewViewImpl.h; sourceTree = "<group>"; };
+		69685E1721A26085004426BB /* AdViewCommonDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewCommonDef.h; sourceTree = "<group>"; };
+		69685E1821A26085004426BB /* adViewAdNetworkConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adViewAdNetworkConfig.h; sourceTree = "<group>"; };
+		69685E1921A26085004426BB /* AdViewExtraManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewExtraManager.h; sourceTree = "<group>"; };
+		69685E1A21A26085004426BB /* AdCommonNetworkType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdCommonNetworkType.h; sourceTree = "<group>"; };
+		69685E1B21A26085004426BB /* AdInstlAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdInstlAdNetworkAdapter.h; sourceTree = "<group>"; };
+		69685E1C21A26085004426BB /* AdNativeManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdNativeManagerImpl.h; sourceTree = "<group>"; };
+		69685E1D21A26085004426BB /* AdVideoManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVideoManagerImpl.h; sourceTree = "<group>"; };
+		69685E1E21A26085004426BB /* AdViewAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewAdNetworkAdapter.h; sourceTree = "<group>"; };
+		69685E1F21A26085004426BB /* AdNativeAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdNativeAdNetworkAdapter.h; sourceTree = "<group>"; };
+		69685E2021A26085004426BB /* AdViewDeviceCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewDeviceCollector.h; sourceTree = "<group>"; };
+		69685E2121A26085004426BB /* AdSpreadScreenAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSpreadScreenAdNetworkAdapter.h; sourceTree = "<group>"; };
+		69685E2221A26085004426BB /* SingletonAdapterBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingletonAdapterBase.h; sourceTree = "<group>"; };
+		69685E2321A26085004426BB /* AdSpreadScreenManagerImpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSpreadScreenManagerImpl.h; sourceTree = "<group>"; };
+		69685E2421A26085004426BB /* AdviewObjCollector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdviewObjCollector.h; sourceTree = "<group>"; };
+		69685E2521A26085004426BB /* adViewLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adViewLog.h; sourceTree = "<group>"; };
+		69685E2621A26085004426BB /* adViewAdNetworkRegistry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adViewAdNetworkRegistry.h; sourceTree = "<group>"; };
+		69685E2721A26085004426BB /* AdVideoAdNetworkAdapter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVideoAdNetworkAdapter.h; sourceTree = "<group>"; };
+		69685E2821A26085004426BB /* AWNetworkReachabilityWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWNetworkReachabilityWrapper.h; sourceTree = "<group>"; };
+		69685E2921A26085004426BB /* adViewConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = adViewConfig.h; sourceTree = "<group>"; };
+		69685E2A21A26085004426BB /* adViewAdNetworkAdapter+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "adViewAdNetworkAdapter+Helpers.h"; sourceTree = "<group>"; };
+		69685E2B21A26085004426BB /* AWNetworkReachabilityDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWNetworkReachabilityDelegate.h; sourceTree = "<group>"; };
+		69685E2C21A26085004426BB /* AdNativeManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdNativeManagerDelegate.h; sourceTree = "<group>"; };
+		69685E2D21A26085004426BB /* libAdViewSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libAdViewSDK.a; sourceTree = "<group>"; };
+		69685E2E21A26085004426BB /* AdViewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewView.h; sourceTree = "<group>"; };
+		69685E2F21A26085004426BB /* AdInstlManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdInstlManagerDelegate.h; sourceTree = "<group>"; };
+		69685E3021A26085004426BB /* AdVideoManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVideoManagerDelegate.h; sourceTree = "<group>"; };
+		69685E3121A26085004426BB /* AdVideoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVideoManager.h; sourceTree = "<group>"; };
+		69685E3221A26085004426BB /* AdViewRes.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AdViewRes.bundle; sourceTree = "<group>"; };
+		69685E3321A26085004426BB /* AdViewConfigStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewConfigStore.h; sourceTree = "<group>"; };
+		69685E3421A26085004426BB /* AdViewUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewUtils.h; sourceTree = "<group>"; };
+		69685E3521A26085004426BB /* AdViewNativeAdInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewNativeAdInfo.h; sourceTree = "<group>"; };
+		69685E3621A26085004426BB /* AdInstlUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdInstlUtils.h; sourceTree = "<group>"; };
+		69685E3721A26085004426BB /* AdVideoUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdVideoUtils.h; sourceTree = "<group>"; };
+		69685E3821A26085004426BB /* AdNativeUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdNativeUtils.h; sourceTree = "<group>"; };
+		696863E721A26199004426BB /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		696863E921A261AE004426BB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		696863EB21A261BC004426BB /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		696863ED21A261C9004426BB /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		696863EF21A261D8004426BB /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		696863F121A261E2004426BB /* libxml2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libxml2.tbd; path = usr/lib/libxml2.tbd; sourceTree = SDKROOT; };
+		696863F321A261EA004426BB /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		696863F821A26496004426BB /* icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon.png; sourceTree = "<group>"; };
+		696863F921A26496004426BB /* Adview_Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Adview_Logo.jpg; sourceTree = "<group>"; };
+		696863FA21A26496004426BB /* logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = logo.jpg; sourceTree = "<group>"; };
+		6968640821A27E8D004426BB /* AdViewToolX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AdViewToolX.mm; sourceTree = "<group>"; };
+		6968640921A27E8D004426BB /* AdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdViewController.m; sourceTree = "<group>"; };
+		6968640B21A27E8D004426BB /* AdRunStateManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdRunStateManager.h; sourceTree = "<group>"; };
+		6968640C21A27E8D004426BB /* AdSingleTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdSingleTestViewController.h; sourceTree = "<group>"; };
+		6968640D21A27E8D004426BB /* AdRunStateManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdRunStateManager.m; sourceTree = "<group>"; };
+		6968640E21A27E8D004426BB /* AdSingleTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdSingleTestViewController.m; sourceTree = "<group>"; };
+		6968640F21A27E8D004426BB /* AdSingleTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AdSingleTestViewController.xib; sourceTree = "<group>"; };
+		6968641021A27E8D004426BB /* AdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewController.h; sourceTree = "<group>"; };
+		6968641221A27E8D004426BB /* SimMethod.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SimMethod.cpp; sourceTree = "<group>"; };
+		6968641321A27E8D004426BB /* AdViewToolX.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdViewToolX.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		69E5C12C219914160098DF98 /* Frameworks */ = {
+		69685ADE21A251BC004426BB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				696863F421A261EA004426BB /* libz.tbd in Frameworks */,
+				696863F221A261E2004426BB /* libxml2.tbd in Frameworks */,
+				696863F021A261D8004426BB /* libsqlite3.0.tbd in Frameworks */,
+				696863EE21A261C9004426BB /* libc++.tbd in Frameworks */,
+				696863EC21A261BD004426BB /* AddressBook.framework in Frameworks */,
+				696863EA21A261AE004426BB /* CoreLocation.framework in Frameworks */,
+				696863E821A26199004426BB /* AdSupport.framework in Frameworks */,
+				696863E421A26089004426BB /* libAdViewSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		69E5C126219914160098DF98 = {
+		69685AD821A251BC004426BB = {
 			isa = PBXGroup;
 			children = (
-				69E5C131219914160098DF98 /* meiju */,
-				69E5C130219914160098DF98 /* Products */,
+				69685AE321A251BC004426BB /* meiju */,
+				69685AE221A251BC004426BB /* Products */,
+				696863E621A26198004426BB /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		69E5C130219914160098DF98 /* Products */ = {
+		69685AE221A251BC004426BB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69E5C12F219914160098DF98 /* meiju.app */,
+				69685AE121A251BC004426BB /* meiju.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		69E5C131219914160098DF98 /* meiju */ = {
+		69685AE321A251BC004426BB /* meiju */ = {
 			isa = PBXGroup;
 			children = (
-				69E5C1492199144E0098DF98 /* MeiJuApi.h */,
-				69E5C1482199144E0098DF98 /* MeiJuApi.m */,
-				69E5C132219914160098DF98 /* AppDelegate.h */,
-				69E5C133219914160098DF98 /* AppDelegate.m */,
-				69E5C135219914160098DF98 /* ViewController.h */,
-				69E5C136219914160098DF98 /* ViewController.m */,
-				69E5C138219914160098DF98 /* Main.storyboard */,
-				69E5C13B219914170098DF98 /* Assets.xcassets */,
-				69E5C13D219914170098DF98 /* LaunchScreen.storyboard */,
-				69E5C140219914170098DF98 /* Info.plist */,
-				69E5C141219914170098DF98 /* main.m */,
+				696863F721A26496004426BB /* res */,
+				69685B0021A26084004426BB /* AdViewSDK-3.5.2 */,
+				69685AFA21A2521C004426BB /* UIView+Layout.h */,
+				69685AFB21A2521C004426BB /* UIView+Layout.m */,
+				69685AE421A251BC004426BB /* AppDelegate.h */,
+				69685AE521A251BC004426BB /* AppDelegate.m */,
+				69685AE721A251BC004426BB /* ViewController.h */,
+				69685AE821A251BC004426BB /* ViewController.m */,
+				69685AEA21A251BC004426BB /* Main.storyboard */,
+				69685AED21A251BD004426BB /* Assets.xcassets */,
+				69685AEF21A251BD004426BB /* LaunchScreen.storyboard */,
+				69685AF221A251BD004426BB /* Info.plist */,
+				69685AF321A251BD004426BB /* main.m */,
 			);
 			path = meiju;
+			sourceTree = "<group>";
+		};
+		69685B0021A26084004426BB /* AdViewSDK-3.5.2 */ = {
+			isa = PBXGroup;
+			children = (
+				6968640721A27E8D004426BB /* AdViewToolLevel */,
+				69685E0D21A26085004426BB /* AdView */,
+			);
+			path = "AdViewSDK-3.5.2";
+			sourceTree = "<group>";
+		};
+		69685E0D21A26085004426BB /* AdView */ = {
+			isa = PBXGroup;
+			children = (
+				69685E0E21A26085004426BB /* AdNativeManager.h */,
+				69685E0F21A26085004426BB /* AdInstlManager.h */,
+				69685E1021A26085004426BB /* AdViewDelegateProtocol.h */,
+				69685E1121A26085004426BB /* AdSpreadScreenUtils.h */,
+				69685E1221A26085004426BB /* AdSpreadScreenManager.h */,
+				69685E1321A26085004426BB /* AdSpreadScreenManagerDelegate.h */,
+				69685E1421A26085004426BB /* include */,
+				69685E2C21A26085004426BB /* AdNativeManagerDelegate.h */,
+				69685E2D21A26085004426BB /* libAdViewSDK.a */,
+				69685E2E21A26085004426BB /* AdViewView.h */,
+				69685E2F21A26085004426BB /* AdInstlManagerDelegate.h */,
+				69685E3021A26085004426BB /* AdVideoManagerDelegate.h */,
+				69685E3121A26085004426BB /* AdVideoManager.h */,
+				69685E3221A26085004426BB /* AdViewRes.bundle */,
+				69685E3321A26085004426BB /* AdViewConfigStore.h */,
+				69685E3421A26085004426BB /* AdViewUtils.h */,
+				69685E3521A26085004426BB /* AdViewNativeAdInfo.h */,
+				69685E3621A26085004426BB /* AdInstlUtils.h */,
+				69685E3721A26085004426BB /* AdVideoUtils.h */,
+				69685E3821A26085004426BB /* AdNativeUtils.h */,
+			);
+			path = AdView;
+			sourceTree = "<group>";
+		};
+		69685E1421A26085004426BB /* include */ = {
+			isa = PBXGroup;
+			children = (
+				69685E1521A26085004426BB /* AdInstlManagerImpl.h */,
+				69685E1621A26085004426BB /* AdViewViewImpl.h */,
+				69685E1721A26085004426BB /* AdViewCommonDef.h */,
+				69685E1821A26085004426BB /* adViewAdNetworkConfig.h */,
+				69685E1921A26085004426BB /* AdViewExtraManager.h */,
+				69685E1A21A26085004426BB /* AdCommonNetworkType.h */,
+				69685E1B21A26085004426BB /* AdInstlAdNetworkAdapter.h */,
+				69685E1C21A26085004426BB /* AdNativeManagerImpl.h */,
+				69685E1D21A26085004426BB /* AdVideoManagerImpl.h */,
+				69685E1E21A26085004426BB /* AdViewAdNetworkAdapter.h */,
+				69685E1F21A26085004426BB /* AdNativeAdNetworkAdapter.h */,
+				69685E2021A26085004426BB /* AdViewDeviceCollector.h */,
+				69685E2121A26085004426BB /* AdSpreadScreenAdNetworkAdapter.h */,
+				69685E2221A26085004426BB /* SingletonAdapterBase.h */,
+				69685E2321A26085004426BB /* AdSpreadScreenManagerImpl.h */,
+				69685E2421A26085004426BB /* AdviewObjCollector.h */,
+				69685E2521A26085004426BB /* adViewLog.h */,
+				69685E2621A26085004426BB /* adViewAdNetworkRegistry.h */,
+				69685E2721A26085004426BB /* AdVideoAdNetworkAdapter.h */,
+				69685E2821A26085004426BB /* AWNetworkReachabilityWrapper.h */,
+				69685E2921A26085004426BB /* adViewConfig.h */,
+				69685E2A21A26085004426BB /* adViewAdNetworkAdapter+Helpers.h */,
+				69685E2B21A26085004426BB /* AWNetworkReachabilityDelegate.h */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		696863E621A26198004426BB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				696863F321A261EA004426BB /* libz.tbd */,
+				696863F121A261E2004426BB /* libxml2.tbd */,
+				696863EF21A261D8004426BB /* libsqlite3.0.tbd */,
+				696863ED21A261C9004426BB /* libc++.tbd */,
+				696863EB21A261BC004426BB /* AddressBook.framework */,
+				696863E921A261AE004426BB /* CoreLocation.framework */,
+				696863E721A26199004426BB /* AdSupport.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		696863F721A26496004426BB /* res */ = {
+			isa = PBXGroup;
+			children = (
+				696863F821A26496004426BB /* icon.png */,
+				696863F921A26496004426BB /* Adview_Logo.jpg */,
+				696863FA21A26496004426BB /* logo.jpg */,
+			);
+			path = res;
+			sourceTree = "<group>";
+		};
+		6968640721A27E8D004426BB /* AdViewToolLevel */ = {
+			isa = PBXGroup;
+			children = (
+				6968640821A27E8D004426BB /* AdViewToolX.mm */,
+				6968640921A27E8D004426BB /* AdViewController.m */,
+				6968640A21A27E8D004426BB /* testsuit */,
+				6968641021A27E8D004426BB /* AdViewController.h */,
+				6968641121A27E8D004426BB /* unity3d */,
+				6968641321A27E8D004426BB /* AdViewToolX.h */,
+			);
+			path = AdViewToolLevel;
+			sourceTree = "<group>";
+		};
+		6968640A21A27E8D004426BB /* testsuit */ = {
+			isa = PBXGroup;
+			children = (
+				6968640B21A27E8D004426BB /* AdRunStateManager.h */,
+				6968640C21A27E8D004426BB /* AdSingleTestViewController.h */,
+				6968640D21A27E8D004426BB /* AdRunStateManager.m */,
+				6968640E21A27E8D004426BB /* AdSingleTestViewController.m */,
+				6968640F21A27E8D004426BB /* AdSingleTestViewController.xib */,
+			);
+			path = testsuit;
+			sourceTree = "<group>";
+		};
+		6968641121A27E8D004426BB /* unity3d */ = {
+			isa = PBXGroup;
+			children = (
+				6968641221A27E8D004426BB /* SimMethod.cpp */,
+			);
+			path = unity3d;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		69E5C12E219914160098DF98 /* meiju */ = {
+		69685AE021A251BC004426BB /* meiju */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 69E5C145219914170098DF98 /* Build configuration list for PBXNativeTarget "meiju" */;
+			buildConfigurationList = 69685AF721A251BD004426BB /* Build configuration list for PBXNativeTarget "meiju" */;
 			buildPhases = (
-				69E5C12B219914160098DF98 /* Sources */,
-				69E5C12C219914160098DF98 /* Frameworks */,
-				69E5C12D219914160098DF98 /* Resources */,
+				69685ADD21A251BC004426BB /* Sources */,
+				69685ADE21A251BC004426BB /* Frameworks */,
+				69685ADF21A251BC004426BB /* Resources */,
 			);
 			buildRules = (
 			);
@@ -93,24 +307,24 @@
 			);
 			name = meiju;
 			productName = meiju;
-			productReference = 69E5C12F219914160098DF98 /* meiju.app */;
+			productReference = 69685AE121A251BC004426BB /* meiju.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		69E5C127219914160098DF98 /* Project object */ = {
+		69685AD921A251BC004426BB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = Jay;
 				TargetAttributes = {
-					69E5C12E219914160098DF98 = {
+					69685AE021A251BC004426BB = {
 						CreatedOnToolsVersion = 10.1;
 					};
 				};
 			};
-			buildConfigurationList = 69E5C12A219914160098DF98 /* Build configuration list for PBXProject "meiju" */;
+			buildConfigurationList = 69685ADC21A251BC004426BB /* Build configuration list for PBXProject "meiju" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,56 +332,66 @@
 				en,
 				Base,
 			);
-			mainGroup = 69E5C126219914160098DF98;
-			productRefGroup = 69E5C130219914160098DF98 /* Products */;
+			mainGroup = 69685AD821A251BC004426BB;
+			productRefGroup = 69685AE221A251BC004426BB /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				69E5C12E219914160098DF98 /* meiju */,
+				69685AE021A251BC004426BB /* meiju */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		69E5C12D219914160098DF98 /* Resources */ = {
+		69685ADF21A251BC004426BB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69E5C13F219914170098DF98 /* LaunchScreen.storyboard in Resources */,
-				69E5C13C219914170098DF98 /* Assets.xcassets in Resources */,
-				69E5C13A219914160098DF98 /* Main.storyboard in Resources */,
+				69685AF121A251BD004426BB /* LaunchScreen.storyboard in Resources */,
+				696863FB21A26496004426BB /* icon.png in Resources */,
+				696863FC21A26496004426BB /* Adview_Logo.jpg in Resources */,
+				69685AEE21A251BD004426BB /* Assets.xcassets in Resources */,
+				696863FD21A26496004426BB /* logo.jpg in Resources */,
+				6968641821A27E8D004426BB /* AdSingleTestViewController.xib in Resources */,
+				69685AEC21A251BC004426BB /* Main.storyboard in Resources */,
+				696863E521A26089004426BB /* AdViewRes.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		69E5C12B219914160098DF98 /* Sources */ = {
+		69685ADD21A251BC004426BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69E5C137219914160098DF98 /* ViewController.m in Sources */,
-				69E5C14A2199144E0098DF98 /* MeiJuApi.m in Sources */,
-				69E5C142219914170098DF98 /* main.m in Sources */,
-				69E5C134219914160098DF98 /* AppDelegate.m in Sources */,
+				69685AFC21A2521C004426BB /* UIView+Layout.m in Sources */,
+				6968641621A27E8D004426BB /* AdRunStateManager.m in Sources */,
+				6968641421A27E8D004426BB /* AdViewToolX.mm in Sources */,
+				69685AE921A251BC004426BB /* ViewController.m in Sources */,
+				6968641521A27E8D004426BB /* AdViewController.m in Sources */,
+				6968641721A27E8D004426BB /* AdSingleTestViewController.m in Sources */,
+				69685AF421A251BD004426BB /* main.m in Sources */,
+				6968641921A27E8D004426BB /* SimMethod.cpp in Sources */,
+				69685AE621A251BC004426BB /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		69E5C138219914160098DF98 /* Main.storyboard */ = {
+		69685AEA21A251BC004426BB /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69E5C139219914160098DF98 /* Base */,
+				69685AEB21A251BC004426BB /* Base */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		69E5C13D219914170098DF98 /* LaunchScreen.storyboard */ = {
+		69685AEF21A251BD004426BB /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				69E5C13E219914170098DF98 /* Base */,
+				69685AF021A251BD004426BB /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -175,7 +399,7 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		69E5C143219914170098DF98 /* Debug */ = {
+		69685AF521A251BD004426BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -234,7 +458,7 @@
 			};
 			name = Debug;
 		};
-		69E5C144219914170098DF98 /* Release */ = {
+		69685AF621A251BD004426BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -287,35 +511,141 @@
 			};
 			name = Release;
 		};
-		69E5C146219914170098DF98 /* Debug */ = {
+		69685AF821A251BD004426BB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDU5GR594Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Tanx/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Unity/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/InMobi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Baidu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/JDAdview/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Adwo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Lmmob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/XingYun/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdColony/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/MillennialMedia/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/MobFox/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GoogleAdMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdPro/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/VPon/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Chartboost/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YiJiFen/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Waps/lib",
+				);
 				INFOPLIST_FILE = meiju/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meiju;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Tanx/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Greystripe/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Vtime/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Smtaran/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GuoHe/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/UMAd/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdSmar/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Domob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Adwo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdFracta/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Miidi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/WQMobile/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GDTMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Appnext/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Chance/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdChina/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/SmartMad/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Guomob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YouMi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/DIanRu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Opera/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/STMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Aduu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AirAD/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YouLan/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Waps/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Pingcoo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Mopan/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdView",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unakayou.AdViewAll1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		69E5C147219914170098DF98 /* Release */ = {
+		69685AF921A251BD004426BB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = LDU5GR594Q;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Tanx/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Unity/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/InMobi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Baidu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/JDAdview/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Adwo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Lmmob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/XingYun/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdColony/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/MillennialMedia/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/MobFox/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GoogleAdMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdPro/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/VPon/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Chartboost/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YiJiFen/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Waps/lib",
+				);
 				INFOPLIST_FILE = meiju/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.meiju;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Tanx/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Greystripe/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Vtime/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Smtaran/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GuoHe/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/UMAd/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdSmar/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Domob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Adwo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdFracta/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Miidi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/WQMobile/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/GDTMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Appnext/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Chance/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AdChina/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/SmartMad/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Guomob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YouMi/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/DIanRu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Opera/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/STMob/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Aduu/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/AirAD/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/YouLan/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Waps/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Pingcoo/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdNetworks/Mopan/lib",
+					"$(PROJECT_DIR)/meiju/AdViewSDK-3.5.2/AdView",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_BUNDLE_IDENTIFIER = com.unakayou.AdViewAll1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -324,25 +654,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		69E5C12A219914160098DF98 /* Build configuration list for PBXProject "meiju" */ = {
+		69685ADC21A251BC004426BB /* Build configuration list for PBXProject "meiju" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69E5C143219914170098DF98 /* Debug */,
-				69E5C144219914170098DF98 /* Release */,
+				69685AF521A251BD004426BB /* Debug */,
+				69685AF621A251BD004426BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		69E5C145219914170098DF98 /* Build configuration list for PBXNativeTarget "meiju" */ = {
+		69685AF721A251BD004426BB /* Build configuration list for PBXNativeTarget "meiju" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				69E5C146219914170098DF98 /* Debug */,
-				69E5C147219914170098DF98 /* Release */,
+				69685AF821A251BD004426BB /* Debug */,
+				69685AF921A251BD004426BB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 69E5C127219914160098DF98 /* Project object */;
+	rootObject = 69685AD921A251BC004426BB /* Project object */;
 }

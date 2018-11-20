@@ -131,10 +131,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
 
 @property (nonatomic, weak) id timeObserver;
 
-
-//@property (weak, nonatomic) IBOutlet UIWebView *bannerView;
-
 @property (strong, nonatomic)  WKWebView *danmuView;
+
+@property (nonatomic, assign)  NSInteger rePlayCount;
 
 @end
 
@@ -1213,8 +1212,9 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
                 [self OnVideoPrepared:Nil];
             }
             
-            if( totalBuffer > (CMTimeGetSeconds(_playerItem.currentTime)+3) && !self.isPlaying && self.playOrPauseButton.isSelected){
+            if( totalBuffer > (CMTimeGetSeconds(_playerItem.currentTime)+3) && !self.isPlaying && self.playOrPauseButton.isSelected && !self.rePlayCount){
                 [self play];
+                self.rePlayCount = 10;
             }
             
             //NSLog(@"当前缓冲时间:%f ------- 总时间：%f",totalBuffer,totalTime);
@@ -1588,6 +1588,7 @@ typedef NS_ENUM(NSUInteger, PlayViewState) {
     NSTimeInterval cacheP = startSeconds + durationSeconds;//缓冲总长度
     NSTimeInterval currentP = CMTimeGetSeconds(_playerItem.currentTime);
 
+    if(self.rePlayCount) self.rePlayCount--;
     
     int progress = (cacheP - currentP) * 1000.0 / 45.0;
     if (progress < 100 && (progress > 0)) {

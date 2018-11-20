@@ -1,0 +1,19 @@
+#ifndef MiidiMobAdSDK_PubCONFIG_H
+#define MiidiMobAdSDK_PubCONFIG_H
+//Generate At: 2015年 5月14日 星期四 17时23分17秒 CST
+#define MiidiMobAd ADPWPattee
+#define setMiidiBasPublisher ADPWRibaldly
+#define withMiidiBasSecret ADPWSubventive
+#define getMiidiBasSdkVersion ADPWPharyngoglossal
+#define setMiidiBasSdkResourceBundlePath ADPWSportswomanly
+#define requestMiidiBasBanner ADPWZobtenite
+#define withMiidiBasDelegate ADPWRame
+#define requestMiidiBasSplash ADPWIditol
+#define requestMiidiBasSplashState ADPWNoncapture
+#define displayMiidiBasSplash ADPWNaish
+#define requestMiidiBasSplashOverForFailed ADPWMenorrhea
+#define MiidiMobAdBannerDelegate ADPWExtracalendar
+#define didMiidiBasBannerFinishLoad ADPWSemilocular
+#define didMiidiBasBannerFailedLoad ADPWMagicking
+#define withMiidiBasError ADPWUnsmote
+#endif

@@ -4,9 +4,13 @@ PODS:
 DEPENDENCIES:
   - VitamioSDK-iOS (~> 1.0.2)
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - VitamioSDK-iOS
+
 SPEC CHECKSUMS:
   VitamioSDK-iOS: e42b72c80508fd163e0dbbde0145b3f089f2629a
 
 PODFILE CHECKSUM: e6e59f64ae70b174491754400dc4c229d657b86f
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.6.0.beta.1

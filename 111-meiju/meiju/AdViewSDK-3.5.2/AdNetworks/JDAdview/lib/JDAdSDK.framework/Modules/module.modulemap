@@ -1,0 +1,6 @@
+framework module JDAdSDK {
+  umbrella header "JDAdSDK.h"
+
+  export *
+  module * { export * }
+}
